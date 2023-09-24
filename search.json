@@ -1,0 +1,513 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About the Workshop",
+    "section": "",
+    "text": "Location: UKZN Medical School, Durban, SA\nTime: 9 am - 5 pm October 16th through October 20th"
+  },
+  {
+    "objectID": "about.html#teaching-team",
+    "href": "about.html#teaching-team",
+    "title": "About the Workshop",
+    "section": "Teaching Team",
+    "text": "Teaching Team"
+  },
+  {
+    "objectID": "about.html#about-these-materials",
+    "href": "about.html#about-these-materials",
+    "title": "About the Workshop",
+    "section": "About these materials",
+    "text": "About these materials\nThis source code and license for all of the materials found on this website can be found on Github. This website was adapted from Andrew Bray et al’s posit::conf(2023) workshop on Quarto ."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Science Durban Workshop I",
+    "section": "",
+    "text": "Data Science Durban Workshop I\nR, Rstudio, and Quarto  for clinical research\n\n\n\n\n\nFigure 1: Workshop 1 sticker\n\n\n\n\nThis week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research.\n\n\n\nMonday October 16th\n\n9-10:30 am\n10:30-11 am\n11-12:30 pm\n12:30-1:30 pm Lunch\n1:30-3 pm\n3-3:30 pm\n3:30-5:00 pm\n\n\n\nTuesday October 17th\n\n9-10:30 am\n10:30-11 am\n11-12:30 pm\n12:30-1:30 pm Lunch\n1:30-3 pm\n3-3:30 pm\n3:30-5:00 pm"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/images/ex-2.html",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/images/ex-2.html",
+    "title": "Quarto for R & RStudio",
+    "section": "",
+    "text": "Spatial Logical Toy Inventor: Erno Rubik Assignee: Politoys Ipari Szovetkezet, Budapest, Hungary The first patent by the inventor is registered in Hungary. Appl. No.: 289,192 Filed: Aug. 3, 1981 Background of the Invention The invention relates to a spatial logical toy having a total of eighteen toy elements which form a regular or an irregular spatial body, preferably an oblong body, in the assembled state. Spatial logical toys are well known, such as that described in the HU-PS No. 170 062 of the same applicant, which relates to a spatial logical toy consisting of twenty-seven solids which form a cube in the assembled state. The toy elements, in the shape of small cubes, may be turned along the spatial axes of the cube by means of connecting elements arranged in the geometric center of the large cube. The surfaces of the small cubes forming each surface of the large cube are colored or carry numbers, figures or any other symbols which can be assembled into the predetermined logical order of sequence by simultaneously rotating the nine toy elements forming the surfaces of the large cube. Summary of the Invention The logical toy according to the present invention represents an improved form of the previously described spatial logical toy. The construction is based on the same principles, however, the internal connection is performed by means of absolutely new and particular solids. The key feature according to the invention, i.e. shape, name, sounds, mode of interconnection and central fixture will be described in detail by means of two preferred embodiments, by the aid of the accompanying drawings, wherein. Component blocks of the spatial logial toy. ex-2-figs.png What is claimed is: 1. In a spatial logical toy assembled from a plurality of toy elements, of which a predetermined number may be rotated in the direction of the spatial axes starting from the geometrical center of the logical toy, the improvement wherein the spatial logical toy is formed by a total of eighteen toy elements. Two sets of eight toy elements each comprise substantially cubiforms with integally formed cam elements and each of the sets comprise eight identical toy elements, and two connecting toy elements, and means for joining the connecting toy elements to coact with the cam elements to form an integrated toy body, the joining means comprising a single screw enclosed by a spring. The spatial logical toy as claimed in claim 1, wherein the toy has the shape of a regular geometrical body in the assembled state. The toy elements thereof belonging to one set comprise eight cubiform homologous elements each having a first cam element connected to one corner thereof. Two confining surfaces of which lie at a unit distance from two surfaces of the cube and are parallel therewith and are cut-off in the form of an ellipsis-quarter, and a third confining surface thereof is coplanar with another surface of the cube and between the two confining faces of the first cam element running parallel with the cube and the cube there is a hollow with a convex spherical surface."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/index.html",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/index.html",
+    "title": "Welcome to Quarto",
+    "section": "",
+    "text": "Meet your neighbors, familiarize yourself with the format of the workshop, practing rendering documents with Quarto, and build a sense of the three components that make up the anatomy of a Quarto document.\n\nFull Screen"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#introductions",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#introductions",
+    "title": "Welcome to Quarto",
+    "section": "Introductions",
+    "text": "Introductions\nTake ~2 minutes to introduce yourself to your neighbors.\n\n\n\nPlease share …\n\nYour name\nWhere you’re from\nWhat you work on in 3 words or fewer\nName one thing you’ve made that you’re proud of"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section",
+    "title": "Welcome to Quarto",
+    "section": "",
+    "text": "Workshop materials are at:\npos.it/quarto-r-conf23"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-1",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-1",
+    "title": "Welcome to Quarto",
+    "section": "",
+    "text": "Goals for the Workshop\n\n\nEveryone leaves with a report and presentation.\nLearn from one another.\nBuild an understanding of the big picture."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#from-magic-to-magical-machines",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#from-magic-to-magical-machines",
+    "title": "Welcome to Quarto",
+    "section": "From Magic to Magical Machines",
+    "text": "From Magic to Magical Machines\n\n\n\nArtwork by Allison Horst"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#workshop-schedule",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#workshop-schedule",
+    "title": "Welcome to Quarto",
+    "section": "Workshop Schedule",
+    "text": "Workshop Schedule\n\n\n\nIntroduction to Quarto\n\n9-10:30 am Welcome to Quarto\n10:30-11 am Coffee Break\n11-12:30 pm Polishing Documents\n12:30-1:30 pm Lunch\n1:30-3 pm Presentations\n3-3:30 pm Coffee Break\n3:30-5:00 pm Sharing your Work"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#discussions-discord",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#discussions-discord",
+    "title": "Welcome to Quarto",
+    "section": "Discussions: discord",
+    "text": "Discussions: discord\nAsk questions at #introduction-to-quarto-with-r-and-rstudio."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#flow-of-the-workshop",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#flow-of-the-workshop",
+    "title": "Welcome to Quarto",
+    "section": "Flow of the Workshop",
+    "text": "Flow of the Workshop"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#stickies",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#stickies",
+    "title": "Welcome to Quarto",
+    "section": "Stickies",
+    "text": "Stickies\n\n\n\n\n\n\nDuring an activity, place a blue sticky on your laptop if you’re good to go and a red sticky if you want help.\n\n\n\n\nImage by Megan Duffy"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#practicalities",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#practicalities",
+    "title": "Welcome to Quarto",
+    "section": "Practicalities",
+    "text": "Practicalities\n\n\n\nWiFi:\n\nNetwork: Posit Conf 2023\nPassword: conf2023\n\nThere are gender-neutral bathrooms located are among the Grand Suite Bathrooms.\nThere are two meditation/prayer rooms: Grand Suite 2A and Grand Suite 2B. Open Sunday - Tuesday 7:30 a.m. - 7:00 p.m., Wednesday 8:00 a.m. - 6:00 p.m.\nThe lactation room is located in Grand Suite 1. Open Sunday - Tuesday 7:30 a.m. - 7:00 p.m., Wednesday 8:00 a.m. - 6:00 p.m.\n\n\n\nParticipants who do not wish to be photographed have red lanyards; please note everyone’s lanyard colors before taking a photo and respect their choices.\nThe Code of Conduct and COVID policies can be found at https://posit.co/code-of-conduct/. Please review them carefully. You can report Code of Conduct violations in person, by email, or by phone. Please see the policy linked above for contact information."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-2",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-2",
+    "title": "Welcome to Quarto",
+    "section": "",
+    "text": "Join me in Posit Cloud!"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#your-turn",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#your-turn",
+    "title": "Welcome to Quarto",
+    "section": "Your Turn",
+    "text": "Your Turn\nOpen hello-penguins.qmd in RStudio and…\n\nRender the document.\nReplace the name with your own and re-render.\nInspect the components of the document and modify one or two more and re-render. Consider changing the options at the top, the text, or the code.\nLook carefully through the source of hello-penguins.qmd. What do you notice that’s different from what it would look like in an Rmd document? Work with your neighbor to see if you can find the differences (there are at least 3).\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#articles",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#articles",
+    "title": "Welcome to Quarto",
+    "section": "Articles",
+    "text": "Articles"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#presentations",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#presentations",
+    "title": "Welcome to Quarto",
+    "section": "Presentations",
+    "text": "Presentations"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#websites",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#websites",
+    "title": "Welcome to Quarto",
+    "section": "Websites",
+    "text": "Websites"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#books",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#books",
+    "title": "Welcome to Quarto",
+    "section": "Books",
+    "text": "Books"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#quarto-and-r-markdown-a-history-.-.-.",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#quarto-and-r-markdown-a-history-.-.-.",
+    "title": "Welcome to Quarto",
+    "section": "Quarto and R Markdown, a history . . .",
+    "text": "Quarto and R Markdown, a history . . .\n\n\n1984 Literate Programming proposed to combine text with code\n2002 Sweave weaves together S/R and \\(\\TeX\\)\n2006 pandoc converts between different document formats\n2012 knitr a next gen Sweave for R and Markdown\n2014 knitr::pandoc added to leverage pandoc flexible outputs\n2015 pandoc functionality moved into new rmarkdown\n2018 R Markdown: A definite guide\n2020 R Markdown Cookbook\n\n\n\n. . . throughout, an ecosystem of R packages develops . . . (bookdown, blogdown, distill, etc.)"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#how-is-quarto-different-than-r-markdown",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#how-is-quarto-different-than-r-markdown",
+    "title": "Welcome to Quarto",
+    "section": "How is Quarto Different than R Markdown?",
+    "text": "How is Quarto Different than R Markdown?\n\n\nQuarto is compute-agnostic. R Markdown requires R.\nThe ecosystem of R packages is replaced by a single framework."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#what-can-you-do-with-r-markdown-that-you-cant-with-quarto",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#what-can-you-do-with-r-markdown-that-you-cant-with-quarto",
+    "title": "Welcome to Quarto",
+    "section": "What can you do with R Markdown that you can’t with Quarto?",
+    "text": "What can you do with R Markdown that you can’t with Quarto?\n\nAccess tools built around R Markdown (e.g. workflowr, papaja) that haven’t yet been implemented in Quarto.\n\n\nHeavy users of such tools may want to stick with R Markdown."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#what-can-you-do-with-quarto-that-you-cant-with-r-markdown",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#what-can-you-do-with-quarto-that-you-cant-with-r-markdown",
+    "title": "Welcome to Quarto",
+    "section": "What can you do with Quarto that you can’t with R Markdown?",
+    "text": "What can you do with Quarto that you can’t with R Markdown?\n\n\nEasier to organize appearance across documents\nFeatures (e.g. figures, tables) have better cross-format support\nBetter cross referencing\nUp-to-date revealjs slides\nEasier to customize websites and books with projects\nConvince your Python-user colleagues to use it\n\n\n\n\nNote: You can render existing R Markdown documents with Quarto and/or rename them to .qmd files to turn them into Quarto documents."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-10",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-10",
+    "title": "Welcome to Quarto",
+    "section": "",
+    "text": "Inputs\n\n\n\n\n\n\n\n\n\n\n\n\n\nOutputs"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#quarto-render",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#quarto-render",
+    "title": "Welcome to Quarto",
+    "section": "Quarto Render",
+    "text": "Quarto Render\nRender input file to various document formats.\n\n\n\n\n\n\n\nInput\n\n*.qmd\n*.ipynb\n*.md\n*.Rmd\n\n\n\nFormat\n\nhtml\npdf\nrevealjs\ndocx\nppt\nand many more!"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#three-ways-to-render",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#three-ways-to-render",
+    "title": "Welcome to Quarto",
+    "section": "Three ways to render",
+    "text": "Three ways to render\n\n\nQuarto is integrated into RStudio\nClick  in Editor pane of RStudio.\n\n\n\n\nQuarto is an R package\nRun in R:\nquarto::quarto_render(input = ___, output_format = ___)\n\n\n\n\nQuarto has a command line interface (CLI)\nRun at the terminal:\nquarto render &lt;input&gt; --to &lt;format&gt;"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#element-expression-depends-on-format",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#element-expression-depends-on-format",
+    "title": "Welcome to Quarto",
+    "section": "Element expression depends on format",
+    "text": "Element expression depends on format\nEmphasis\nHTML\nA &lt;em&gt;spatial logical toy&lt;/em&gt;\nLATEX\nA \\emph{spatial logical toy}\n\n\nImage\nHTML\n&lt;img src=\"images/med-rubiks-cube.png\" class=\"img-fluid\"&gt;\nLATEX\n\\includegraphics{images/med-rubiks-cube.png}\n\n\nNavigate to the terminal tab of the console pane\nRun quarto render demo.qmd –to html\nRun quarto render demo.qmd –to docx\nRun quarto render demo.qmd –to latex\nInspect how emphasis and the image is expressed"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#your-turn-1",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#your-turn-1",
+    "title": "Welcome to Quarto",
+    "section": "Your Turn",
+    "text": "Your Turn\n\nRender 2-formats.qmd to html and view the html file in an editor. How is the list expressed in html? (you can click on it in the Files pane)\nRender 2-formats.qmd to latex and view the latex file in an editor. How is the list expressed in latex?\nChange the extension of 2-formats.qmd to be .md and .Rmd and re-render. Does the output differ?\nTry rendering the file to a pdf format but this time using the CLI (command line interval) in the Terminal tab.\nquarto render &lt;input&gt; --to &lt;format&gt;\n\n\n\n\n−+\n07:00"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#try-pandoc",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#try-pandoc",
+    "title": "Welcome to Quarto",
+    "section": "Try Pandoc!",
+    "text": "Try Pandoc!\nA quick way to find out how Pandoc will convert: https://pandoc.org/try/."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#metadata-yaml",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#metadata-yaml",
+    "title": "Welcome to Quarto",
+    "section": "Metadata: YAML",
+    "text": "Metadata: YAML\n“Yet Another Markup Language” or “YAML Ain’t Markup Language” is used to provide document level metadata …\n\n\n\n\n… in key-value pairs,\n… that can nest,\n… are fussy about indentation,\n… and are kept between ---.\n\n\n\n---\nformat: \n  html:\n    toc: true\n    code-fold: true\n---"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-11",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-11",
+    "title": "Welcome to Quarto",
+    "section": "",
+    "text": "Which of the following are valid ways to include metadata?\n\n\n\nA\n---\ntitle: US Patent: A Spatial Toy\nauthor: Erno Rubik\nformat: html\n---\n\nMy idea is to build a cube...\nC\n---\nformat: html\n---\n\nMy idea is to build a cube...\n\n---\ntitle: A Spatial Toy\nauthor: Erno Rubik\n---\n\nC\nMy idea is to build a cube...\n… then at the command line, run:\nquarto render patent.qmd --to html -M title:patent\nD\n---\ntitle: \"US Patent: A Spatial Toy\"\nauthor: \"Erno Rubik\"\nformat: \"html\"\n---\n\nMy idea is to build a cube..."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#metadata-yaml-syntax-rules",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#metadata-yaml-syntax-rules",
+    "title": "Welcome to Quarto",
+    "section": "Metadata: YAML Syntax Rules",
+    "text": "Metadata: YAML Syntax Rules\n\n\n---\ntitle: \"US Patent: A Toy\"\nauthor:\n  - Erno Rubrik\n  - Albert Einstein\nformat:\n  html:\n    toc: true\n    abstract: |\n      This is the abstract.\n\n      It has two paragraphs.\n---\n\n\n\nSet a single value with\nkey: value\nSet a list of values either:\nkey: [val1, val2]\nkey:\n  - val1\n  - val2\nQuote values that contain :\nIndent 2 spaces to nest\nMulti-line strings follow |\nMultiple YAML blocks will be merged\n\n\n\n\n\n\nAn overview of YAML syntax: https://en.m.wikipedia.org/wiki/YAML#Syntax"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#metadata-fussing-with-yaml",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#metadata-fussing-with-yaml",
+    "title": "Welcome to Quarto",
+    "section": "Metadata: Fussing with YAML",
+    "text": "Metadata: Fussing with YAML\nInvalid\n\n\n---\nformat:html\n---\n\n\n---\nformat:\nhtml\n---\n\n\n---\nformat: \n  html:\n---\n\nValid\nformat: html\n\n\nformat:\n  html\n\n\nformat: \n  html:\n    toc: true"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#quarto-linting",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#quarto-linting",
+    "title": "Welcome to Quarto",
+    "section": "Quarto linting",
+    "text": "Quarto linting\nLint, or a linter, is a static code analysis tool used to flag programming errors, bugs, stylistic errors and suspicious constructs.\n\n\n\n\n\n\n\n\nSource: https://en.wikipedia.org/wiki/Lint_(software)"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#quarto-yaml-intelligence",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#quarto-yaml-intelligence",
+    "title": "Welcome to Quarto",
+    "section": "Quarto YAML Intelligence",
+    "text": "Quarto YAML Intelligence\nRStudio + VSCode provide rich tab-completion - start a word and tab to complete, or Ctrl + space to see all available options."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#your-turn-2",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#your-turn-2",
+    "title": "Welcome to Quarto",
+    "section": "Your Turn",
+    "text": "Your Turn\n\nOpen hello-penguins.qmd in RStudio.\nTry Ctrl + space to see the available YAML options.\nTry out the tab-completion of any options that sound interesting.\nBring back your two favorite to share in chat when we return from breakout rooms.\nUse the HTML reference as needed.\n\n\n\n\n−+\n05:00"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-12",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-12",
+    "title": "Welcome to Quarto",
+    "section": "",
+    "text": "Markdown is designed to be easy to write and easy to read:\n\nA Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions.\n-John Gruber\n\n\n\n\nQuarto uses extended version of Pandoc markdown.\nPandoc classifies markdown in terms of Inline and Block elements."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-13",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-13",
+    "title": "Welcome to Quarto",
+    "section": "",
+    "text": "Whenever I hear “Pandoc”, I picture . . .\n\n\n\n\n\n\n\n\n\n\n\n\n\n. . . but there’s help!\n\n\n\n\n\nVia giphy."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-14",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-14",
+    "title": "Welcome to Quarto",
+    "section": "",
+    "text": "Which of the following forms of text formatting are possible in pandoc markdown?\n\nitalics\nbold\nunderline\nsuperscript\nsubscript\nstrikethrough"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#inline-elements-text-formatting",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#inline-elements-text-formatting",
+    "title": "Welcome to Quarto",
+    "section": "Inline Elements: Text Formatting",
+    "text": "Inline Elements: Text Formatting\n\n\nMarkdown\nMarkdown allows you to format text\nwith *emphasis* and **strong emphasis**.\nYou can also add superscripts^2^, \nsubscripts~2~, and display code \n`verbatim`. Little known fact: you can \nalso ~~strikethrough~~ text and present\nit in [small caps]{.smallcaps}.\n\n\nOutput\nMarkdown allows you to format text with emphasis and strong emphasis. You can also add superscripts2, subscripts2, and display code verbatim. Little known fact: you can also strikethrough text and present it in small caps.\n\n\n\n1\n\nEither the * or _ can be used for emphasis and strong."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#inline-elements-math",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#inline-elements-math",
+    "title": "Welcome to Quarto",
+    "section": "Inline Elements: Math",
+    "text": "Inline Elements: Math\n\n\nMarkdown\nThe area of a circle is $A = \\pi r^2$,\nwhere $r$ is the radius and $\\pi$ is\nthe constant $3.141592\\ldots$.\n\n\nOutput\nThe area of a circle is \\(A = \\pi r^2\\), where \\(r\\) is the radius and \\(\\pi\\) is the constant \\(3.141592\\ldots\\).\n\n\n\n\n\n\n\n\n\nTeX math lives between two $. Opening $ must have a non-space character immediately to its right, while the closing $ must have a non-space character immediately to its left, and must not be followed immediately by a digit.\n– the Pandoc Docs"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#inline-elements-links-and-images",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#inline-elements-links-and-images",
+    "title": "Welcome to Quarto",
+    "section": "Inline Elements: Links and Images",
+    "text": "Inline Elements: Links and Images\nMarkdown\nYou can embed [links with names](https://quarto.org/), direct urls\nlike &lt;https://quarto.org/&gt;, and links to \n[other places](#inline-elements-text-formatting) in the document. \nThe syntax is similar for embedding an inline image:\n![render icon](images/render-icon.png).\n\n\n\n\nOutput\nYou can embed links with names, direct urls like https://quarto.org/, and links to other places in the document. The syntax is similar for embedding an inline image: ."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#inline-elements-footnotes",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#inline-elements-footnotes",
+    "title": "Welcome to Quarto",
+    "section": "Inline Elements: Footnotes",
+    "text": "Inline Elements: Footnotes\n\n\nMarkdown\nA short note.^[Fits inline.]\n\n\nOutput\nA short note.1\n\n\n\n\n\n\n\nA longer footnote[^9]\n\n[^9]:  Can be placed in a separate block.\nThe id can be any alphanumeric string.\n\nA longer footnote2\n\n\n\n\n\nPlacement of the actual footnote depends on the format: end of page for pdf, end of doc for HTML, bottom of slide for presentations.\n\n\nFits inline.Can be placed in a separate block. The id can be any alphanumeric string."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#block-elements-paragraph",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#block-elements-paragraph",
+    "title": "Welcome to Quarto",
+    "section": "Block Elements: Paragraph",
+    "text": "Block Elements: Paragraph\nOne or more lines of text followed by one or more blank lines.\n\n\nMarkdown\nLorem ipsum dolor sit amet,\nconsectetur adipiscing elit.\n\nSed do eiusmod tempor.\n\n\nOutput\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nSed do eiusmod tempor.\n\n\n\n\n\nWithout the blank line, the line break is treated as a space.\n\n\nLorem ipsum dolor sit amet,\nsconsectetur adipiscing elit.\nSed do eiusmod tempor.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#block-elements-headers",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#block-elements-headers",
+    "title": "Welcome to Quarto",
+    "section": "Block Elements: Headers",
+    "text": "Block Elements: Headers\n\n\n\n\n\n\n\nMarkdown Syntax\nOutput\n\n\n\n\n# Header 1\nHeader 1\n\n\n## Header 2\nHeader 2\n\n\n### Header 3\nHeader 3\n\n\n#### Header 4\nHeader 4\n\n\n##### Header 5\nHeader 5\n\n\n###### Header 6\nHeader 6"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#block-elements-lists",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#block-elements-lists",
+    "title": "Welcome to Quarto",
+    "section": "Block Elements: Lists",
+    "text": "Block Elements: Lists\nCan use *, -, or + may be used for unordered list items.\n\n\nMarkdown\nUnordered list:\n\n* red\n* green\n* blue\n\nOrdered list:\n\n1. red\n1. green\n3. blue\n\nOutput\n\nUnordered list:\n\nred\ngreen\nblue\n\nOrdered list:\n\nred\ngreen\nblue\n\n\n\n\nPandoc gives you a lot of control over lists, including nesting, fancy lists, definition lists, blocks in lists, and example lists.\n\n\n\n\nRead the docs for details: https://pandoc.org/MANUAL.html#pandocs-markdown"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-15",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-15",
+    "title": "Welcome to Quarto",
+    "section": "",
+    "text": "Which of the following will render to the output on the right?\n\n\n\nA\n1. I has a sandwich.\n\n   It was deliicous.\n\n1. I had coffee.\n\n   It gave me joy.\nC\n1. I has a sandwich.\nIt was deliicous.\n\n2. I had coffee.\nIt gave me joy.\n\nB\n1. I has a sandwich.\n  It was deliicous.\n\n2. I had coffee.\n  It gave me joy.\nD\n1. I has a sandwich.\n\n    It was deliicous.\n\n2. I had coffee.\n\n    It gave me joy.\n\nOutput\n\nI has a sandwich.\nIt was deliicous.\nI had coffee.\nIt gave me joy."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#block-elements-lists-blocks-in-lists",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#block-elements-lists-blocks-in-lists",
+    "title": "Welcome to Quarto",
+    "section": "Block Elements: Lists (blocks in lists)",
+    "text": "Block Elements: Lists (blocks in lists)\n\nA list item may contain multiple paragraphs and other block-level content. Subsequent block elements must be preceded by a blank line and indented to line up with the first non-space content after the list marker. – the Pandoc Docs\n\n\n\nMarkdown\n1. First item...\n\n   ...Continued.\n\n1. Second item\n\n   # header\n\n1. Third item\n\nOutput\n\nFirst item…\n…Continued.\nSecond item\nheader\nThird item"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#block-elements-lists-example-lists",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#block-elements-lists-example-lists",
+    "title": "Welcome to Quarto",
+    "section": "Block Elements: Lists (example lists)",
+    "text": "Block Elements: Lists (example lists)\n\nThe first list item with a @ marker will be numbered 1., the next 2., etc. The numbered examples need not occur in a single list; each new list using @ will take up where the last stopped. – the Pandoc Docs\n\n\n\nMarkdown\n(@)  The first example.\n(@)  The second example.\n\nExplanation of examples.\n\n(@)  The third example.\n\nOutput\n\nThe first example.\nThe second example.\n\nExplanation of examples.\n\nThe third example.\n\n\n\n\nYou can also label your examples: (@goodname)."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#block-elements-math",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#block-elements-math",
+    "title": "Welcome to Quarto",
+    "section": "Block Elements: Math",
+    "text": "Block Elements: Math\n\n\nMarkdown\nA larger equation:\n\n$$\nf(x)={\\sqrt{\\frac{\\tau}{2\\pi}}}\n      e^{-\\tau (x-\\mu )^{2}/2}\n$$\n\nThis breaks it:\n\n$$\n\n\\bar{x} = \\sum_{i=i}^n x_1\n$$\n\n\nOutput\nA larger equation:\n\\[\nf(x)=\\sqrt{\\frac{\\tau}{2\\pi}}\n    e^{-\\tau (x-\\mu )^{2}/2}\n\\]\nThis breaks it:\n$$\n{x} = _{i=i}^n x_1 $$\n\n\nFor “display” math, use $$ delimiters."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#block-elements-images",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#block-elements-images",
+    "title": "Welcome to Quarto",
+    "section": "Block Elements: Images",
+    "text": "Block Elements: Images\nBlock images use the same syntax as inline images.\n\n\nMarkdown\nImages are a block element...\n\n![Elephant](images/elephant.png)\n\nor are they?\n\n\nOutput\nImages are a block element…\n\n\n\nElephant\n\n\nor are they?\n\n\n\n\n\n\n\n\n\nImages behave mostly like inline elements but actually live in a block (e.g. a paragraph). Their behavior depends on output format."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#your-turn-3",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#your-turn-3",
+    "title": "Welcome to Quarto",
+    "section": "Your Turn",
+    "text": "Your Turn\nYour goal is to create from scratch the beautiful documents 3-markdown-goal.html and 3-markdown-goal.pdf. Add into 3-markdown.qmd the markdown syntax needed to create the various inline and block elements found in the output documents.\n\n\n\n\n\n\n\n\n\nInline\n\ntext formatting\nmath\nlinks and images\nfootnotes\n\n\n\nBlock\n\nparagraphs\nheaders\nlists\nmath\nimages\n\n\n\n\n\n\n\n\n\n\n\n−+\n10:00\n\n\n\n\n\nFor reference, see: https://pandoc.org/MANUAL.html#pandocs-markdown"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#pandocs-fenced-code-block",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#pandocs-fenced-code-block",
+    "title": "Welcome to Quarto",
+    "section": "Pandoc’s Fenced Code Block",
+    "text": "Pandoc’s Fenced Code Block\nSandwich the code between “fences” of at least three backticks1. An optional language provides syntax highlighting.\n\n\n```cobol\n1 + 1\n```\n\n\nUseful for displaying source code, not running it\nNote that the language is not in { }\nPandoc supports 140 languages!\n\n\n\nPandoc also allows ~~~"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#r-markdowns-code-chunk",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#r-markdowns-code-chunk",
+    "title": "Welcome to Quarto",
+    "section": "R Markdown’s Code Chunk",
+    "text": "R Markdown’s Code Chunk\n\n\n\n\n```{r, echo=FALSE}\nrnorm(3)\n```\n\n\n\n\n\n\n\n\n What syntax is being used in echo=FALSE?\n\nHTML\nPandoc attribute syntax\nYAML\nCSS\nR"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#generalizing-the-code-chunk",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#generalizing-the-code-chunk",
+    "title": "Welcome to Quarto",
+    "section": "Generalizing the Code Chunk",
+    "text": "Generalizing the Code Chunk\nHow can this be generalized to other languages?\n\n\n```{r, echo=FALSE}\nrnorm(3)\n```\n\n\nExecutable code flagged by { }"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#generalizing-the-code-chunk-1",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#generalizing-the-code-chunk-1",
+    "title": "Welcome to Quarto",
+    "section": "Generalizing the Code Chunk",
+    "text": "Generalizing the Code Chunk\nHow can this be generalized to other languages?\n\n\n```{language, echo=FALSE}\ncode\n```\n\n\nExecutable code flagged by { }\nSupport R, Python, Julia\nAlso support mermaid and dot diagram languages1.\n\n\n\nSee https://quarto.org/docs/authoring/diagrams.html."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#generalizing-the-code-chunk-2",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#generalizing-the-code-chunk-2",
+    "title": "Welcome to Quarto",
+    "section": "Generalizing the Code Chunk",
+    "text": "Generalizing the Code Chunk\nHow can this be generalized to other languages?\n\n\n```{language}\n#| echo: false\n\ncode\n```\n\n\nExecutable code flagged by { }\nSupport R, Python, Julia\nAlso support mermaid and dot diagram languages1\nCell options live as YAML inside the cell after #| (the hash pipe!)2\n\n\nThis is a Quarto Code Cell.\n\n\n\nSee https://quarto.org/docs/authoring/diagrams.html.The hash pipe is available in the R Markdown too."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#the-perks-of-the-hashpipe",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#the-perks-of-the-hashpipe",
+    "title": "Welcome to Quarto",
+    "section": "The Perks of the Hashpipe #|",
+    "text": "The Perks of the Hashpipe #|\n\n\nLine breaks prevent chunk options that go on {r, and=on, and=on, and=on, and=on, and=on, and=on}\n\n\n\n\nChunk options are now pan-language with &lt;commentchar&gt;|.\n\n\n\n```{python}\n#| echo: false\n```\n\n```{mermaid}\n%%| echo: false\n```\n\n\n\n\n\nNo more yelling! (eval=FALSE)"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#execution-options",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#execution-options",
+    "title": "Welcome to Quarto",
+    "section": "Execution Options",
+    "text": "Execution Options\nControl how the code is executed with options.\n\n\n\n\n\n\n\n\nOption\nDescription\n\n\n\n\neval\nEvaluate the code chunk (if false, just echos the code into the output).\n\n\necho\nInclude the source code in output\n\n\noutput\nInclude the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).\n\n\nwarning\nInclude warnings in the output.\n\n\nerror\nInclude errors in the output.\n\n\ninclude\nCatch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block)."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#setting-knitr-options",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#setting-knitr-options",
+    "title": "Welcome to Quarto",
+    "section": "Setting knitr options",
+    "text": "Setting knitr options\nThe knitr syntax for passing options still works since Quarto uses knitr.\n\n\nSource\n```{r, error=TRUE}\n#| echo: true\n\nrnorm(5       # this is missing a parens\n```\n\n\nOutput\n\nrnorm(5       # this is missing a parens\n\nError: &lt;text&gt;:2:0: unexpected end of input\n1: rnorm(5       # this is missing a parens\n   ^\n\n\n\n\n\n\nWhile it’s possible to use R chunks options, hash pipe options are more portable across computational engines.\n\n\n\n\nWithout error=TRUE, this would error out on rendering and produce no output."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-17",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#section-17",
+    "title": "Welcome to Quarto",
+    "section": "",
+    "text": "Don’t forget to use tab-completion to see the available options!"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#from-cell-option-to-yaml",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#from-cell-option-to-yaml",
+    "title": "Welcome to Quarto",
+    "section": "From Cell Option to YAML",
+    "text": "From Cell Option to YAML\n\n\n---\ntitle: My Doc\nformat: html\n---\n\n```{r}\n#| echo: true\n\npi + 1\n```"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#from-cell-option-to-yaml-1",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#from-cell-option-to-yaml-1",
+    "title": "Welcome to Quarto",
+    "section": "From Cell Option to YAML",
+    "text": "From Cell Option to YAML\n\n\n---\ntitle: My Doc\nformat: html\nexecute:\n  echo: true\n---\n\n```{r}\npi + 1\n```\n\n\nOptions can be moved into YAML under the execute key to apply to all chunks. Exceptions to that option can be set cell-by-cell."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#from-cell-option-to-yaml-2",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#from-cell-option-to-yaml-2",
+    "title": "Welcome to Quarto",
+    "section": "From Cell Option to YAML",
+    "text": "From Cell Option to YAML\n\n\n---\ntitle: My Doc\nformat: html\nexecute:\n  echo: true\nknitr:\n  opts_chunk: \n    collapse: true\n---\n\n```{r}\npi + 1\n```\n\n\nOptions can be moved into YAML under the execute key to apply to all chunks. Exceptions to that option can be set cell-by-cell.\nYou can also pass options via YAML to knitr through the knitr key1.\n\n\n\nNo more ```{r setup} 🎉"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#from-cell-option-to-yaml-3",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#from-cell-option-to-yaml-3",
+    "title": "Welcome to Quarto",
+    "section": "From Cell Option to YAML",
+    "text": "From Cell Option to YAML\n\n\n---\ntitle: My Doc\nformat: html\nexecute:\n  echo: true\nknitr:\n  opts_chunk: \n    collapse: true\n    R.options:\n      digits: 2\n---\n\n```{r}\npi + 1\n```\n\n\nOptions can be moved into YAML under the execute key to apply to all chunks. Exceptions to that option can be set cell-by-cell.\nYou can also pass options via YAML to knitr through the knitr key1.\nYou can use knitr to pass options that control your R session.\n\n\n\nNo more ```{r setup} 🎉"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#example-figures-from-code",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#example-figures-from-code",
+    "title": "Welcome to Quarto",
+    "section": "Example: Figures from Code",
+    "text": "Example: Figures from Code\n\n\n```{r}\nlibrary(palmerpenguins)\nlibrary(ggplot2)\n\nggplot(penguins,\n       aes(x = bill_length_mm,\n           y = bill_depth_mm,\n           col = island)) +\n  geom_point()\n```"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#example-figures-from-code-1",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#example-figures-from-code-1",
+    "title": "Welcome to Quarto",
+    "section": "Example: Figures from Code",
+    "text": "Example: Figures from Code\n\n\n```{r}\n#| fig-width: 5\n#| fig-height: 3\n\nlibrary(palmerpenguins)\nlibrary(ggplot2)\n\nggplot(penguins,\n       aes(x = bill_length_mm,\n           y = bill_depth_mm,\n           col = island)) +\n  geom_point()\n```\n\n\n\n\n\n\n\n\n\n\nSave time/code by moving figure sizing defaults up to the YAML."
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#your-turn-4",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#your-turn-4",
+    "title": "Welcome to Quarto",
+    "section": "Your turn",
+    "text": "Your turn\n\n\nOpen 3-code-cells.qmd and render the document.\nAdd echo: false to the code cell and re-render.\nAdd 2 more cell options by using Ctrl + Space after the #| or consult the Quarto Reference.\nAdd a second code cell (you can copy + paste the first), move your cell options to the YAML, and re-render.\nPlease share your favorite code cell option on .\n\n\n\n\n\n−+\n07:00"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#questions",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#questions",
+    "title": "Welcome to Quarto",
+    "section": "Questions",
+    "text": "Questions\n\nAny questions / anything you’d like to review before we wrap up this module?"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#one-last-thing",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#one-last-thing",
+    "title": "Welcome to Quarto",
+    "section": "One last thing!",
+    "text": "One last thing!\n\nWhere does the name “Quarto” come from?\n\n\n\n\n\n\n\n\nSource: https://en.wikipedia.org/wiki/Quarto"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#references-and-further-reading",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#references-and-further-reading",
+    "title": "Welcome to Quarto",
+    "section": "References and further reading",
+    "text": "References and further reading\n\nA Brief History of R Markdown: a presentation by Yihui Xie in 2021.\nPandoc documentation on type references: this section documents the tools needed to write Lua filters but included in this is a compendium of the different block and inline elements recognized by pandoc.\nBlock and Inline Elements: from Client-side Web Development by Ross and Freeman. Provides clear description of elements in the setting of HTML.\nCommand Line Essentials: a short primer on how to navigate through a file structure at the command line.sla\nSpatial Logical Toy: The US patent of what became the Rubik’s Cube. Several examples in these slides borrow figures and text from the patent.\n\n\n\nQuarto for R & RStudio"
+  }
+]
