@@ -1,0 +1,47 @@
+project:
+  type: website
+  render:
+    - "*.qmd"
+    - "!materials/*/exercises/"
+  output-dir: docs
+
+from: markdown+emoji
+
+website:
+  title: "Quarto for R & RStudio"
+  page-navigation: true
+  navbar:
+    background: light
+    foreground: dark
+    right:
+      - text: "About"
+        href: about.qmd
+      - icon: cloud-fill
+        href: https://github.com/elsherbini/
+        aria-label: Posit Cloud
+      - icon: github
+        href: https://github.com/elsherbini/
+        aria-label: GitHub
+  sidebar:
+    - title: "Materials"
+      style: docked
+      align: left
+      contents:
+          - section: "Workshop content"
+            contents:
+            - text: "1. Welcome to Quarto"
+              href: materials/1-r-rstudio-quarto/1-welcome-to-quarto/index.qmd
+  page-footer:
+    right: "This page is built with {{< fa heart >}} and [Quarto](https://quarto.org/)."
+    left: "&copy; 2023"
+
+format: 
+  html:
+    theme: [default, assets/custom.scss]
+    toc: false
+    
+# Design tips:
+# 1. maggieappleton.com
+# 2. Palette: https://www.jpl.nasa.gov/images/the-grand-tour-jpl-travel-poster
+
+  

@@ -1,0 +1,53 @@
+---
+anchor-sections: false
+section-divs: false
+css: assets/index.css
+---
+
+::: {.grid}
+
+::: {.g-col-4}
+\
+
+# Data Science Durban Workshop I
+
+#### R, Rstudio, and Quarto <br> for clinical research
+:::
+
+::: {.g-col-8}
+
+![Workshop 1 sticker](assets/images/sticker_workshop_1.svg){#fig-ref width="300px"} 
+
+:::
+
+:::
+
+This week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research.
+
+::: content-block
+::: features
+::: feature
+### Monday October 16^th^
+
+-   9-10:30 am 
+-   10:30-11 am 
+-   11-12:30 pm
+-   12:30-1:30 pm Lunch
+-   1:30-3 pm 
+-   3-3:30 pm
+-   3:30-5:00 pm
+:::
+
+::: feature
+### Tuesday October 17^th^
+
+-   9-10:30 am 
+-   10:30-11 am 
+-   11-12:30 pm
+-   12:30-1:30 pm Lunch
+-   1:30-3 pm 
+-   3-3:30 pm
+-   3:30-5:00 pm
+:::
+:::
+:::

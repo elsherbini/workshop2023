@@ -1,0 +1,16 @@
+---
+title: "About the Workshop"
+sidebar: false
+---
+
+- [Location:]{.smallcaps} UKZN Medical School, Durban, SA
+- [Time:]{.smallcaps} 9 am - 5 pm October 16^th^ through  October 20^th^
+
+
+## Teaching Team
+
+
+
+## About these materials
+
+This source code and license for all of the materials found on this website can be found on Github. This website was adapted from Andrew Bray et al's posit::conf(2023) workshop on Quarto [{{< fa brands github >}}](https://github.com/posit-conf-2023/quarto-r).
