@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://elsherbini.github.io/workshop2023/about.html</loc>
-    <lastmod>2023-09-25T13:49:22.653Z</lastmod>
-  </url>
-  <url>
-    <loc>https://elsherbini.github.io/workshop2023/index.html</loc>
-    <lastmod>2023-09-25T13:49:24.602Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html</loc>
+    <lastmod>2023-09-25T16:06:11.514Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/workshop2023/materials/1-r-rstudio-quarto/1-welcome-to-quarto/images/ex-2.html</loc>
-    <lastmod>2023-09-25T13:49:26.319Z</lastmod>
+    <lastmod>2023-09-25T16:06:05.300Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elsherbini.github.io/workshop2023/about.html</loc>
+    <lastmod>2023-09-25T16:06:04.161Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elsherbini.github.io/workshop2023/index.html</loc>
+    <lastmod>2023-09-25T16:06:04.779Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/workshop2023/materials/1-r-rstudio-quarto/1-welcome-to-quarto/index.html</loc>
-    <lastmod>2023-09-25T13:49:27.858Z</lastmod>
-  </url>
-  <url>
-    <loc>https://elsherbini.github.io/workshop2023/materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html</loc>
-    <lastmod>2023-09-25T13:49:46.885Z</lastmod>
+    <lastmod>2023-09-25T16:06:05.817Z</lastmod>
   </url>
 </urlset>

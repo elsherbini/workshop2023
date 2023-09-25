@@ -1,47 +1,5 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About the Workshop",
-    "section": "",
-    "text": "Location: UKZN Medical School, Durban, SA\nTime: 9 am - 5 pm October 16th through October 20th"
-  },
-  {
-    "objectID": "about.html#teaching-team",
-    "href": "about.html#teaching-team",
-    "title": "About the Workshop",
-    "section": "Teaching Team",
-    "text": "Teaching Team"
-  },
-  {
-    "objectID": "about.html#about-these-materials",
-    "href": "about.html#about-these-materials",
-    "title": "About the Workshop",
-    "section": "About these materials",
-    "text": "About these materials\nThis source code and license for all of the materials found on this website can be found on Github. This website was adapted from Andrew Bray et al’s posit::conf(2023) workshop on Quarto ."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Data Science Durban Workshop",
-    "section": "",
-    "text": "Data Science Durban Workshop\nR, Rstudio, and Quarto  for clinical research\n\n\n\n\n\nFigure 1: Workshop 1 sticker\n\n\n\n\nThis week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research.\n\n\n\nMonday October 16th\n\n9-10:30 am\n10:30-11 am\n11-12:30 pm\n12:30-1:30 pm Lunch\n1:30-3 pm\n3-3:30 pm\n3:30-5:00 pm\n\n\n\nTuesday October 17th\n\n9-10:30 am\n10:30-11 am\n11-12:30 pm\n12:30-1:30 pm Lunch\n1:30-3 pm\n3-3:30 pm\n3:30-5:00 pm\n\n\n\n\n\nWednesday October 18th\n\n9-10:30 am\n10:30-11 am\n11-12:30 pm\n12:30-1:30 pm Lunch\n1:30-3 pm\n3-3:30 pm\n3:30-5:00 pm\n\n\n\nThursday October 19th\n\n9-10:30 am\n10:30-11 am\n11-12:30 pm\n12:30-1:30 pm Lunch\n1:30-3 pm\n3-3:30 pm\n3:30-5:00 pm\n\n\n\n\n\nFriday October 20th\n\n9-10:30 am\n10:30-11 am\n11-12:30 pm\n12:30-1:30 pm Lunch\n1:30-3 pm\n3-3:30 pm\n3:30-5:00 pm"
-  },
-  {
-    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/images/ex-2.html",
-    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/images/ex-2.html",
-    "title": "Quarto for R & RStudio",
-    "section": "",
-    "text": "Spatial Logical Toy Inventor: Erno Rubik Assignee: Politoys Ipari Szovetkezet, Budapest, Hungary The first patent by the inventor is registered in Hungary. Appl. No.: 289,192 Filed: Aug. 3, 1981 Background of the Invention The invention relates to a spatial logical toy having a total of eighteen toy elements which form a regular or an irregular spatial body, preferably an oblong body, in the assembled state. Spatial logical toys are well known, such as that described in the HU-PS No. 170 062 of the same applicant, which relates to a spatial logical toy consisting of twenty-seven solids which form a cube in the assembled state. The toy elements, in the shape of small cubes, may be turned along the spatial axes of the cube by means of connecting elements arranged in the geometric center of the large cube. The surfaces of the small cubes forming each surface of the large cube are colored or carry numbers, figures or any other symbols which can be assembled into the predetermined logical order of sequence by simultaneously rotating the nine toy elements forming the surfaces of the large cube. Summary of the Invention The logical toy according to the present invention represents an improved form of the previously described spatial logical toy. The construction is based on the same principles, however, the internal connection is performed by means of absolutely new and particular solids. The key feature according to the invention, i.e. shape, name, sounds, mode of interconnection and central fixture will be described in detail by means of two preferred embodiments, by the aid of the accompanying drawings, wherein. Component blocks of the spatial logial toy. ex-2-figs.png What is claimed is: 1. In a spatial logical toy assembled from a plurality of toy elements, of which a predetermined number may be rotated in the direction of the spatial axes starting from the geometrical center of the logical toy, the improvement wherein the spatial logical toy is formed by a total of eighteen toy elements. Two sets of eight toy elements each comprise substantially cubiforms with integally formed cam elements and each of the sets comprise eight identical toy elements, and two connecting toy elements, and means for joining the connecting toy elements to coact with the cam elements to form an integrated toy body, the joining means comprising a single screw enclosed by a spring. The spatial logical toy as claimed in claim 1, wherein the toy has the shape of a regular geometrical body in the assembled state. The toy elements thereof belonging to one set comprise eight cubiform homologous elements each having a first cam element connected to one corner thereof. Two confining surfaces of which lie at a unit distance from two surfaces of the cube and are parallel therewith and are cut-off in the form of an ellipsis-quarter, and a third confining surface thereof is coplanar with another surface of the cube and between the two confining faces of the first cam element running parallel with the cube and the cube there is a hollow with a convex spherical surface."
-  },
-  {
-    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/index.html",
-    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/index.html",
-    "title": "Welcome to Quarto",
-    "section": "",
-    "text": "Meet your neighbors, familiarize yourself with the format of the workshop, practing rendering documents with Quarto, and build a sense of the three components that make up the anatomy of a Quarto document.\n\nFull Screen"
-  },
-  {
     "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#introductions",
     "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html#introductions",
     "title": "Welcome to Quarto",
@@ -509,5 +467,47 @@
     "title": "Welcome to Quarto",
     "section": "References and further reading",
     "text": "References and further reading\n\nA Brief History of R Markdown: a presentation by Yihui Xie in 2021.\nPandoc documentation on type references: this section documents the tools needed to write Lua filters but included in this is a compendium of the different block and inline elements recognized by pandoc.\nBlock and Inline Elements: from Client-side Web Development by Ross and Freeman. Provides clear description of elements in the setting of HTML.\nCommand Line Essentials: a short primer on how to navigate through a file structure at the command line.sla\nSpatial Logical Toy: The US patent of what became the Rubik’s Cube. Several examples in these slides borrow figures and text from the patent.\n\n\n\nQuarto for R & RStudio"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/images/ex-2.html",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/images/ex-2.html",
+    "title": "Quarto for R & RStudio",
+    "section": "",
+    "text": "Spatial Logical Toy Inventor: Erno Rubik Assignee: Politoys Ipari Szovetkezet, Budapest, Hungary The first patent by the inventor is registered in Hungary. Appl. No.: 289,192 Filed: Aug. 3, 1981 Background of the Invention The invention relates to a spatial logical toy having a total of eighteen toy elements which form a regular or an irregular spatial body, preferably an oblong body, in the assembled state. Spatial logical toys are well known, such as that described in the HU-PS No. 170 062 of the same applicant, which relates to a spatial logical toy consisting of twenty-seven solids which form a cube in the assembled state. The toy elements, in the shape of small cubes, may be turned along the spatial axes of the cube by means of connecting elements arranged in the geometric center of the large cube. The surfaces of the small cubes forming each surface of the large cube are colored or carry numbers, figures or any other symbols which can be assembled into the predetermined logical order of sequence by simultaneously rotating the nine toy elements forming the surfaces of the large cube. Summary of the Invention The logical toy according to the present invention represents an improved form of the previously described spatial logical toy. The construction is based on the same principles, however, the internal connection is performed by means of absolutely new and particular solids. The key feature according to the invention, i.e. shape, name, sounds, mode of interconnection and central fixture will be described in detail by means of two preferred embodiments, by the aid of the accompanying drawings, wherein. Component blocks of the spatial logial toy. ex-2-figs.png What is claimed is: 1. In a spatial logical toy assembled from a plurality of toy elements, of which a predetermined number may be rotated in the direction of the spatial axes starting from the geometrical center of the logical toy, the improvement wherein the spatial logical toy is formed by a total of eighteen toy elements. Two sets of eight toy elements each comprise substantially cubiforms with integally formed cam elements and each of the sets comprise eight identical toy elements, and two connecting toy elements, and means for joining the connecting toy elements to coact with the cam elements to form an integrated toy body, the joining means comprising a single screw enclosed by a spring. The spatial logical toy as claimed in claim 1, wherein the toy has the shape of a regular geometrical body in the assembled state. The toy elements thereof belonging to one set comprise eight cubiform homologous elements each having a first cam element connected to one corner thereof. Two confining surfaces of which lie at a unit distance from two surfaces of the cube and are parallel therewith and are cut-off in the form of an ellipsis-quarter, and a third confining surface thereof is coplanar with another surface of the cube and between the two confining faces of the first cam element running parallel with the cube and the cube there is a hollow with a convex spherical surface."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About the Workshop",
+    "section": "",
+    "text": "Location: UKZN Medical School, Durban, SA\nTime: 9 am - 5 pm October 16th through October 20th"
+  },
+  {
+    "objectID": "about.html#teaching-team",
+    "href": "about.html#teaching-team",
+    "title": "About the Workshop",
+    "section": "Teaching Team",
+    "text": "Teaching Team\nScott Handley, PhD Associate Professor Washington University School of Medicine Department of Pathology and Immunology shandley@wustl.edu\nJoseph Elsherbini, PhD Data Scientist Ragon Institute of MGH, MIT and Harvard jelsherbini@mgh.harvard.edu\nChandani Desai Project Manager Ragon Institute of MGH, MIT and Harvard cdesai@mgh.harvard.edu\nSan Emmanuel James (Title) University of KwaZulu Natal (Email)\nMarothi Letsoalo (Title) University of KwaZulu Natal (Email)\nLaura Symul (Title) Stanford University (Email)\nLenine Liebenberg (Title) CAPRISA (Email)\nSalina Hussain Research Technician II Ragon Institute of MGH, MIT and Harvard SHUSSAIN0@mgh.harvard.edu\nSuuba Demby Research Technician II Ragon Institute of MGH, MIT and Harvard suubademby@college.harvard.edu"
+  },
+  {
+    "objectID": "about.html#about-these-materials",
+    "href": "about.html#about-these-materials",
+    "title": "About the Workshop",
+    "section": "About these materials",
+    "text": "About these materials\nThis source code and license for all of the materials found on this website can be found on Github. This website was adapted from Andrew Bray et al’s posit::conf(2023) workshop on Quarto ."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Science Durban Workshop",
+    "section": "",
+    "text": "Data Science Durban Workshop\nR, Rstudio, and Quarto  for clinical research\n\n\n\n\n\nFigure 1: Workshop 1 sticker\n\n\n\n\nThis week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research.\n\n\n\nMonday October 16th\n\n9-10:30 am\n10:30-11 am\n11-12:30 pm\n12:30-1:30 pm Lunch\n1:30-3 pm\n3-3:30 pm\n3:30-5:00 pm\n\n\n\nTuesday October 17th\n\n9-10:30 am\n10:30-11 am\n11-12:30 pm\n12:30-1:30 pm Lunch\n1:30-3 pm\n3-3:30 pm\n3:30-5:00 pm\n\n\n\n\n\nWednesday October 18th\n\n9-10:30 am\n10:30-11 am\n11-12:30 pm\n12:30-1:30 pm Lunch\n1:30-3 pm\n3-3:30 pm\n3:30-5:00 pm\n\n\n\nThursday October 19th\n\n9-10:30 am\n10:30-11 am\n11-12:30 pm\n12:30-1:30 pm Lunch\n1:30-3 pm\n3-3:30 pm\n3:30-5:00 pm\n\n\n\n\n\nFriday October 20th\n\n9-10:30 am\n10:30-11 am\n11-12:30 pm\n12:30-1:30 pm Lunch\n1:30-3 pm\n3-3:30 pm\n3:30-5:00 pm"
+  },
+  {
+    "objectID": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/index.html",
+    "href": "materials/1-r-rstudio-quarto/1-welcome-to-quarto/index.html",
+    "title": "Welcome to Quarto",
+    "section": "",
+    "text": "Meet your neighbors, familiarize yourself with the format of the workshop, practing rendering documents with Quarto, and build a sense of the three components that make up the anatomy of a Quarto document.\n\nFull Screen"
   }
 ]
