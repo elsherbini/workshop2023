@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://elsherbini.github.io/workshop2023/materials/1-r-rstudio-quarto/1-welcome-to-quarto/slides.html</loc>
-    <lastmod>2023-09-25T16:06:11.514Z</lastmod>
+    <lastmod>2023-09-25T16:33:36.725Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/workshop2023/materials/1-r-rstudio-quarto/1-welcome-to-quarto/images/ex-2.html</loc>
-    <lastmod>2023-09-25T16:06:05.300Z</lastmod>
+    <lastmod>2023-09-25T16:33:29.380Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elsherbini.github.io/workshop2023/glossary.html</loc>
+    <lastmod>2023-09-25T16:33:28.036Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/workshop2023/about.html</loc>
-    <lastmod>2023-09-25T16:06:04.161Z</lastmod>
+    <lastmod>2023-09-25T16:33:27.297Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/workshop2023/index.html</loc>
-    <lastmod>2023-09-25T16:06:04.779Z</lastmod>
+    <lastmod>2023-09-25T16:33:28.720Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/workshop2023/materials/1-r-rstudio-quarto/1-welcome-to-quarto/index.html</loc>
-    <lastmod>2023-09-25T16:06:05.817Z</lastmod>
+    <lastmod>2023-09-25T16:33:29.971Z</lastmod>
   </url>
 </urlset>
