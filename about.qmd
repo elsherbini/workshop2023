@@ -4,57 +4,57 @@ sidebar: false
 ---
 
 - Location: UKZN Medical School, Durban, SA
-- Time: 9 am - 5 pm October 16^th^ through  October 20^th^
+- Time: 9:00 am - 5:00 pm October 16^th^ through  October 20^th^
 
 
 ## Teaching Team
 
 
-**Scott Handley, PhD**
-Associate Professor 
-Washington University School of Medicine 
-Department of Pathology and Immunology 
-shandley@wustl.edu 
+**Scott Handley, PhD**  
+Associate Professor  
+Washington University School of Medicine  
+Department of Pathology and Immunology  
+shandley@wustl.edu  
 
-**Joseph Elsherbini, PhD**
-Data Scientist 
-Ragon Institute of MGH, MIT and Harvard 
-jelsherbini@mgh.harvard.edu 
+**Joseph Elsherbini, PhD**  
+Data Scientist  
+Ragon Institute of MGH, MIT and Harvard  
+jelsherbini@mgh.harvard.edu  
 
-**Chandani Desai**
-Project Manager 
-Ragon Institute of MGH, MIT and Harvard 
-cdesai@mgh.harvard.edu 
+**Chandani Desai**  
+Project Manager  
+Ragon Institute of MGH, MIT and Harvard  
+cdesai@mgh.harvard.edu  
 
-**San Emmanuel James**
-(Title)
-University of KwaZulu Natal 
-(Email)
+**San Emmanuel James**  
+(Title)  
+University of KwaZulu Natal  
+(Email)  
 
-**Marothi Letsoalo**
-(Title)
-University of KwaZulu Natal 
-(Email)
+**Marothi Letsoalo**  
+(Title)  
+University of KwaZulu Natal  
+(Email)  
 
-**Laura Symul** 
-(Title)
-Stanford University
-(Email)
+**Laura Symul**  
+(Title)  
+Stanford University  
+(Email)  
 
-**Lenine Liebenberg**
-(Title)
-CAPRISA
-(Email)
+**Lenine Liebenberg**  
+(Title)  
+CAPRISA  
+(Email)  
 
-**Salina Hussain**
-Research Technician II
-Ragon Institute of MGH, MIT and Harvard 
-SHUSSAIN0@mgh.harvard.edu
+**Salina Hussain**  
+Research Technician II  
+Ragon Institute of MGH, MIT and Harvard  
+SHUSSAIN0@mgh.harvard.edu  
 
-**Suuba Demby**
-Research Technician II
-Ragon Institute of MGH, MIT and Harvard 
-suubademby@college.harvard.edu
+**Suuba Demby**  
+Research Technician II  
+Ragon Institute of MGH, MIT and Harvard  
+suubademby@college.harvard.edu  
 
 ## About these materials
 

@@ -14,6 +14,8 @@ website:
     background: light
     foreground: dark
     right:
+      - text: "Glossary"
+        href: glossary.html
       - text: "About"
         href: about.qmd
       - icon: cloud-fill

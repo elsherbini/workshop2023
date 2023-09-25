@@ -1,0 +1,40 @@
+---
+title: "Glossary"
+sidebar: false
+---
+
+
+## Definitions from Glosaro
+
+
+**Argument**: one of possibly several expressions that are passed to a function. Oftentimes parameter and arugument are used interchangably, even though techincally parameter refers to the variable and argument refers to the value.
+
+**Assignment operator**: Symbol that assigns values on the right to an object on the left. Looks like <-. Keyboard shortcut is Alt + -
+
+**Comment**: Text written in a script that is not treated as code to be run, but rather as text that describes what the code is doing. These are usually short notes, beginning with a #
+
+**Comprehensive R Archive Network (CRAN)**: A public repository of R packages.
+
+**Data frame**: A two-dimensional data structure for storing tabular data in memory. Rows represent records and columns represent variables.
+
+**Function**: A code block which gathers a sequence of operations into a whole, preserving it for ongoing use by defining a set of tasks that takes zero or more required and optional arguments as inputs and returns expected outputs (return values), if any. Functions enable repeating these defined tasks with one command, known as a function call.
+
+**NA**: A special value used to represent data that is not available.
+
+**Pipe operator**: The %>% used to make the output of one function the input of the next.
+
+**Package**: A collection of code, data, and documentation that can be distributed and re-used. Also referred to in some languages as a library or module.
+
+**Parameter**: A variable specified in a function definition whose value is passed to the function when the function is called. Parameters and arguments are distinct, but related concepts. Parameters are variables and arguments are the values assigned to those variables. In practice though these terms are often used interchangeably.
+
+**Positional argument**: An argument to a function that gets its value according to its place in the function’s definition, as opposed to a named argument that is explicitly matched by name.
+
+**Reproducible research**: The practice of describing and documenting research results in such a way that another researcher or person can re-run the analysis code on the same data to obtain the same result.
+
+**Tibble**: A modern replacement for R’s data frame, which stores tabular data in columns and rows, defined and used in the tidyverse. Almost always when you are working with a data frame, you are actually working with a tibble.
+
+**Tidy data**: Tabular data that satisfies three conditions that facilitate initial cleaning, and later exploration and analysis—(1) each variable forms a column, (2) each observation forms a row, and (3) each type of observation unit forms a table.
+
+**Tidyverse**: A collection of R packages for operating on tabular data in consistent ways.
+
+**Vector**: A sequence of values that have all the same type. Vectors are the fundamental data structure in R; a scalar is just a vector with exactly one element.
