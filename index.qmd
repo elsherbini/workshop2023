@@ -9,7 +9,7 @@ css: assets/index.css
 ::: {.g-col-4}
 \
 
-# Data Science Durban Workshop I
+# Data Science Durban Workshop
 
 #### R, Rstudio, and Quarto <br> for clinical research
 :::
@@ -49,5 +49,44 @@ This week of content will prepare you to use R, RStudio, and Quarto for data ana
 -   3-3:30 pm
 -   3:30-5:00 pm
 :::
+:::
+::: features
+::: feature
+### Wednesday October 18^th^
+
+-   9-10:30 am 
+-   10:30-11 am 
+-   11-12:30 pm
+-   12:30-1:30 pm Lunch
+-   1:30-3 pm 
+-   3-3:30 pm
+-   3:30-5:00 pm
+:::
+
+::: feature
+### Thursday October 19^th^
+
+-   9-10:30 am 
+-   10:30-11 am 
+-   11-12:30 pm
+-   12:30-1:30 pm Lunch
+-   1:30-3 pm 
+-   3-3:30 pm
+-   3:30-5:00 pm
+:::
+:::
+::: features
+::: feature
+### Friday October 20^th^
+
+-   9-10:30 am 
+-   10:30-11 am 
+-   11-12:30 pm
+-   12:30-1:30 pm Lunch
+-   1:30-3 pm 
+-   3-3:30 pm
+-   3:30-5:00 pm
+:::
+
 :::
 :::
