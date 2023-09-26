@@ -10,51 +10,114 @@ sidebar: false
 ## Teaching Team
 
 
+::: columns
+::: {.column width="30%"}
+![](images/Scott.png){fig-align="left"}
+:::
+::: {.column width="70%"}
 **Scott Handley, PhD**  
 Associate Professor  
 Washington University School of Medicine  
 Department of Pathology and Immunology  
 shandley@wustl.edu  
+:::
+:::
 
+::: columns
+::: {.column width="30%"}
+![](images/Joseph.png){fig-align="left"}
+:::
+::: {.column width="70%"}
 **Joseph Elsherbini, PhD**  
 Data Scientist  
 Ragon Institute of MGH, MIT and Harvard  
 jelsherbini@mgh.harvard.edu  
+:::
+:::
 
+::: columns
+::: {.column width="30%"}
+![](images/Chandani.png){fig-align="left"}
+:::
+::: {.column width="70%"}
 **Chandani Desai**  
 Project Manager  
 Ragon Institute of MGH, MIT and Harvard  
 cdesai@mgh.harvard.edu  
+:::
+:::
 
+::: columns
+::: {.column width="30%"}
+![](images/Emmanuel.png){fig-align="left"}
+:::
+::: {.column width="70%"}
 **San Emmanuel James**  
 (Title)  
 University of KwaZulu Natal  
 (Email)  
+:::
+:::
 
+::: columns
+::: {.column width="30%"}
+![](){fig-align="left"}
+:::
+::: {.column width="70%"}
 **Marothi Letsoalo**  
 (Title)  
 University of KwaZulu Natal  
 (Email)  
+:::
+:::
 
+::: columns
+::: {.column width="30%"}
+![](images/Laura.png){fig-align="left"}
+:::
+::: {.column width="70%"}
 **Laura Symul**  
 (Title)  
 Stanford University  
 (Email)  
+:::
+:::
 
+::: columns
+::: {.column width="30%"}
+![](){fig-align="left"}
+:::
+::: {.column width="70%"}
 **Lenine Liebenberg**  
 (Title)  
 CAPRISA  
 (Email)  
+:::
+:::
 
+::: columns
+::: {.column width="30%"}
+![](images/Salina.png){fig-align="left"}
+:::
+::: {.column width="70%"}
 **Salina Hussain**  
 Research Technician II  
 Ragon Institute of MGH, MIT and Harvard  
 SHUSSAIN0@mgh.harvard.edu  
+:::
+:::
 
+::: columns
+::: {.column width="30%"}
+![](images/Suuba.png){fig-align="left"}
+:::
+::: {.column width="70%"}
 **Suuba Demby**  
 Research Technician II  
 Ragon Institute of MGH, MIT and Harvard  
 suubademby@college.harvard.edu  
+:::
+:::
 
 ## About these materials
 

@@ -26,6 +26,30 @@ This week of content will prepare you to use R, RStudio, and Quarto for data ana
 
 ::: content-block
 ::: features
+| Date/Time  | Topic  | Session Leader|
+|--------|--------|--------|
+| **Monday, October 16^th^**  | | |
+| AM   | Course Introduction & Introduction to data types (lecture) | Salina Hussain and Suuba Demby (HMS)|
+| PM | Introduction to R, R Studio, and Quarto notebooks (lab) | Joseph Elsherbini (HMS) |
+| **Tuesday, October 17^th^**  | | |
+| AM   | Data wrangling and visualization with tidyverse (lecture/lab) | Scott Handley (WUSM)|
+| PM | Exploratory Data Analysis and Visualization (lab) | San Emmanuel James (UKZN) |
+| **Wednesday, October 18^th^**  | | |
+| AM   | Basic Statistics in R (lecture) | Marothi Letsoalo (UKZN)|
+| PM | Small group worktime (lab) | Participants |
+| **Thursday, October 19^th^**  | | |
+| AM   | Data distributions and practical considerations (lecture)| Laura Symul (Stanford)|
+| PM | Customizing visualizations for publications (lab) | Joseph Elsherbini and Chandani Desai (HMS)  
+|Reception|||
+| **Friday, October 20^th^**  | | |
+| AM   | Keynote | Lenine Liebenberg|  
+| Small group work time |  | Participants |  
+| PM | Small group presentations | |Small group work time | Participants |
+ |
+
+: Program {tbl-colwidths="[75,25]"}
+:::
+
 ::: feature
 ### Monday October 16^th^
 

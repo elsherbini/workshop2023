@@ -4,7 +4,8 @@ sidebar: false
 ---
 
 
-## Definitions from Glosaro
+## Definitions from Glosario
+Further definitions at [Glosario](https://glosario.carpentries.org/)  
 
 
 **Argument**: one of possibly several expressions that are passed to a function. Oftentimes parameter and arugument are used interchangably, even though techincally parameter refers to the variable and argument refers to the value.
