@@ -10,7 +10,7 @@ project:
 from: markdown+emoji
 
 website:
-  title: "Data Science for Biology"
+  title: "Data Science for Biology Workshop Series"
   page-navigation: true
   navbar:
     background: light

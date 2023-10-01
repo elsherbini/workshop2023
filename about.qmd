@@ -1,13 +1,12 @@
 ---
-title: "About the Workshop"
+title: "About"
 sidebar: false
 ---
 
+## Workshop 1
+
 - Location: UKZN Medical School, Durban, SA
 - Time: 9:00 am - 5:00 pm October 16^th^ through  October 20^th^
-
-
-## Teaching Team
 
 
 ::: columns
