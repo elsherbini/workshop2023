@@ -4,11 +4,13 @@ project:
     - "*.qmd"
     - "!materials/*/exercises/"
   output-dir: docs
+  resources:
+    - "datasets/*/*.csv"
 
 from: markdown+emoji
 
 website:
-  title: "Quarto for R & RStudio"
+  title: "Data Science for Biology"
   page-navigation: true
   navbar:
     background: light
@@ -19,20 +21,20 @@ website:
       - text: "About"
         href: about.qmd
       - icon: cloud-fill
-        href: https://github.com/elsherbini/
+        href: https://github.com/elsherbini/durban-data-science-for-biology
         aria-label: Posit Cloud
       - icon: github
-        href: https://github.com/elsherbini/
+        href: https://github.com/elsherbini/durban-data-science-for-biology
         aria-label: GitHub
   sidebar:
     - title: "Materials"
       style: docked
       align: left
       contents:
-          - section: "Workshop content"
+          - section: "Reproducible data analysis with R"
             contents:
             - text: "1. Welcome to Quarto"
-              href: materials/1-r-rstudio-quarto/1-welcome-to-quarto/index.qmd
+              href: materials/1-workshop1/1-welcome-to-quarto/index.qmd
   page-footer:
     right: "This page is built with {{< fa heart >}} and [Quarto](https://quarto.org/)."
     left: "&copy; 2023"
