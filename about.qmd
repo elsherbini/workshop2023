@@ -3,7 +3,7 @@ title: "About"
 sidebar: false
 ---
 
-## Workshop 1
+## Reproducible Data Analysis with R Workshop
 
 - Location: UKZN Medical School, Durban, SA
 - Time: 9:00 am - 5:00 pm October 16^th^ through  October 20^th^
@@ -48,23 +48,11 @@ cdesai@mgh.harvard.edu
 
 ::: columns
 ::: {.column width="30%"}
-![](images/Emmanuel.png){fig-align="left"}
-:::
-::: {.column width="70%"}
-**San Emmanuel James**  
-(Title)  
-University of KwaZulu Natal  
-(Email)  
-:::
-:::
-
-::: columns
-::: {.column width="30%"}
 ![](){fig-align="left"}
 :::
 ::: {.column width="70%"}
 **Marothi Letsoalo**  
-(Title)  
+Biostatistician  
 University of KwaZulu Natal  
 (Email)  
 :::
@@ -76,21 +64,21 @@ University of KwaZulu Natal
 :::
 ::: {.column width="70%"}
 **Laura Symul**  
-(Title)  
-Stanford University  
-(Email)  
+Assistant Professor  
+Institute of Statistics, Biostatistics and Actuarial Sciences
+lsymul@stanford.edu
 :::
 :::
 
 ::: columns
 ::: {.column width="30%"}
-![](){fig-align="left"}
+![](images/Lenine.png){fig-align="left"}
 :::
 ::: {.column width="70%"}
 **Lenine Liebenberg**  
-(Title)  
-CAPRISA  
-(Email)  
+Chief Researcher  
+Centre for Epidemic Response and Innovation  
+Lenine.Liebenberg@caprisa.org
 :::
 :::
 
@@ -120,4 +108,4 @@ suubademby@college.harvard.edu
 
 ## About these materials
 
-This source code and license for all of the materials found on this website can be found on Github. This website was adapted from Andrew Bray et al's posit::conf(2023) workshop on Quarto [{{< fa brands github >}}](https://github.com/posit-conf-2023/quarto-r).
+This website started with the code from Andrew Bray's workshop website and much of the R content has been remixed from SDS375, a course by Claus Wilke.

@@ -1,8 +1,12 @@
 ---
-title: "Glossary"
+title: "Resources"
 sidebar: false
 ---
 
+## Textbooks  
+![](images/R_for_data_science.png){fig-align="left" width=15%}  
+R for Data Science: Import, Tidy, Transform, Visualize, and Model Data by Garrett Grolemund and Hadley Wickham  
+[Link](https://r4ds.had.co.nz/)
 
 ## Definitions from Glosario
 Further definitions at [Glosario](https://glosario.carpentries.org/)  

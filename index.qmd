@@ -7,7 +7,7 @@ css: assets/index.css
 ::: {.grid}
 
 ::: {.g-col-4}
-\
+
 
 # Data Science Durban Workshop
 
@@ -16,7 +16,7 @@ css: assets/index.css
 
 ::: {.g-col-8}
 
-![](assets/images/durban_workshop_stickers_front_page.png){#fig-ref width="50%"} 
+![](assets/images/durban_workshop_stickers_front_page.png){#fig-ref width=50%} 
 
 :::
 
@@ -112,5 +112,4 @@ This week of content will prepare you to use R, RStudio, and Quarto for data ana
 -   3:30-5:00 pm
 :::
 
-:::
 :::

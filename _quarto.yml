@@ -16,8 +16,8 @@ website:
     background: light
     foreground: dark
     right:
-      - text: "Glossary"
-        href: glossary.html
+      - text: "Resources"
+        href: resources.qmd
       - text: "About"
         href: about.qmd
       - icon: cloud-fill
@@ -31,10 +31,17 @@ website:
       style: docked
       align: left
       contents:
-          - section: "Reproducible data analysis with R"
+          - section: "Reproducible Data Analysis with R"
             contents:
-            - text: "1. Welcome to Quarto"
-              href: materials/1-workshop1/1-welcome-to-quarto/index.qmd
+            - section: "Modules "
+              contents:
+              - text: "Module 1: Intro to R"
+                contents:
+                href: materials/2-r-rstudio-quarto/1-welcome-to-quarto/index.qmd
+              - text: "Module 2: Welcome to Quarto"
+                href: materials/1-workshop1/1-welcome-to-quarto/index.qmd
+          - section: "Working with High Dimensional 16S rRNA Sequencing Data in R"
+          - section: "Bioinformatics and Transcriptomics Data Analysis"
   page-footer:
     right: "This page is built with {{< fa heart >}} and [Quarto](https://quarto.org/)."
     left: "&copy; 2023"
