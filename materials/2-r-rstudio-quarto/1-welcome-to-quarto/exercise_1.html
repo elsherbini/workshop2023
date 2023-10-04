@@ -64,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -169,7 +169,8 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="exercise_1.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -204,10 +205,11 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td style="text-align: right;"><strong>Patterns</strong> are the essence of data exploration. What kinds of representation will produce the most meaningful insights? <img src="images\ws_patterns1.png" class="img-fluid" width="200"> <img src="images\ws_patterns2.png" class="img-fluid" width="200"> <img src="images\ws_patterns3.png" class="img-fluid" width="200"> <img src="images\ws_patterns4.png" class="img-fluid" width="200"></td>
-<td style="text-align: left;"><strong>Color</strong> is a powerful encoding that presents several challenges. Have you chosen a color scale that is optimal for that data type? <img src="images\ws_color1.png" class="img-fluid" width="100"> <img src="images\ws_color2.png" class="img-fluid" width="100"> <img src="images\ws_color3.png" class="img-fluid" width="100"> <img src="images\ws_color4.png" class="img-fluid" width="100"></td>
+<td style="text-align: left;"><strong>Color</strong> is a powerful encoding that presents several challenges. Have you chosen a color scale that is optimal for that data type?<br>
+<img src="images\ws_color2.png" class="img-fluid" width="100"> <img src="images\ws_color3.png" class="img-fluid" width="100"> <img src="images\ws_color4.png" class="img-fluid" width="100"> <img src="images\ws_color1.png" class="img-fluid" width="100"></td>
 </tr>
 <tr class="even">
-<td style="text-align: right;"><strong>Encodings</strong> Some visual estimations are easier to make than others. How might you use encodings that are less accurate but otherwise better at conveying overall trends? <img src="images\ws_encod1.png" class="img-fluid" width="150"> <img src="images\ws_encod2.png" class="img-fluid" width="150"> <img src="images\ws_encod3.png" class="img-fluid" width="100"></td>
+<td style="text-align: right;"><strong>Encodings</strong> Some visual estimations are easier to make than others. How might you use encodings that are less accurate but otherwise better at conveying overall trends? <img src="images\ws_encod1.png" class="img-fluid" width="200"> <img src="images\ws_encod2.png" class="img-fluid" width="200"> <img src="images\ws_encod3.png" class="img-fluid" width="225"></td>
 <td style="text-align: left;"><strong>Salience and Relevance</strong> Pop-out effects enable quick recognition. Are the most noticeable elements of your visualizations also the most relevant? <img src="images\ws_salience2.png" class="img-fluid" width="400"></td>
 </tr>
 </tbody>
@@ -222,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
 </p>
 <section id="genetic-profiles-of-cancer" class="level3">
 <h3 class="anchored" data-anchor-id="genetic-profiles-of-cancer">Genetic profiles of cancer</h3>
-<p>These datasets contains 10 cancer samples. <a href="#tbl-1">Table&nbsp;1</a> describes the mutational status for a set of genes (A-E) and whether a mutation if absent (0) or present (1). <a href="#tbl-2">Table&nbsp;2</a> summarizes the expression levels of those genes, ranging from no expression (0) to high expression (3).</p>
+<p>These datasets contains 10 cancer samples. Table 1 describes the mutational status for a set of genes (A-E) and whether a mutation is absent (0) or present (1). Table 2 summarizes the expression levels of those genes, ranging from no expression (0) to high expression (3).</p>
 <div id="tbl-1" class="anchored">
 <table class="table">
 <caption>Table&nbsp;1: Mutational status for a set of genes</caption>
