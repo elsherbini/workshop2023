@@ -1,39 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/2-intro-to-r/slides.html</loc>
-    <lastmod>2023-10-01T20:31:50.181Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/resources.html</loc>
+    <lastmod>2023-10-04T02:25:27.673Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/2-intro-to-r/images/ex-2.html</loc>
-    <lastmod>2023-10-01T20:31:47.241Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/materials/2-r-rstudio-quarto/1-welcome-to-quarto/index.html</loc>
+    <lastmod>2023-10-04T02:25:19.145Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/1-welcome-to-quarto/index.html</loc>
-    <lastmod>2023-10-01T20:31:44.225Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/2-intro-to-r/slides.html</loc>
+    <lastmod>2023-10-04T02:25:15.896Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/index.html</loc>
-    <lastmod>2023-10-01T20:31:43.817Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/2-intro-to-r/images/ex-2.html</loc>
+    <lastmod>2023-10-04T02:25:08.469Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/about.html</loc>
-    <lastmod>2023-10-01T20:31:43.297Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/1-welcome-to-quarto/index.html</loc>
+    <lastmod>2023-10-04T02:24:59.719Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/glossary.html</loc>
-    <lastmod>2023-10-01T20:31:43.521Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-r-rstudio-quarto/Exercise-1/slides.html</loc>
+    <lastmod>2023-10-04T02:24:58.195Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/1-welcome-to-quarto/images/ex-2.html</loc>
-    <lastmod>2023-10-01T20:31:44.041Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/about.html</loc>
+    <lastmod>2023-10-04T02:24:48.683Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/1-welcome-to-quarto/slides.html</loc>
-    <lastmod>2023-10-01T20:31:47.009Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/index.html</loc>
+    <lastmod>2023-10-04T02:24:49.788Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/2-intro-to-r/index.html</loc>
-    <lastmod>2023-10-01T20:31:47.461Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/1-welcome-to-quarto/images/ex-2.html</loc>
+    <lastmod>2023-10-04T02:24:59.054Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/1-welcome-to-quarto/slides.html</loc>
+    <lastmod>2023-10-04T02:25:07.534Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/2-intro-to-r/index.html</loc>
+    <lastmod>2023-10-04T02:25:09.110Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elsherbini.github.io/workshop2023/materials/2-r-rstudio-quarto/1-welcome-to-quarto/exercise_1.html</loc>
+    <lastmod>2023-10-04T02:25:18.270Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elsherbini.github.io/workshop2023/materials/2-r-rstudio-quarto/1-welcome-to-quarto/slides.html</loc>
+    <lastmod>2023-10-04T02:25:26.579Z</lastmod>
   </url>
 </urlset>
