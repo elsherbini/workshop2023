@@ -1,5 +1,6 @@
 ---
 title: "Intro to R,R Studio, and Quarto"
+subtitle: "Slides remixed from Andrew P. Bray and Claus O. Wilke"
 format: qmdrslides-revealjs
 ---
 
@@ -9,6 +10,9 @@ library(countdown)
 ```
 
 # About the Workshop
+::: {footer}
+Slides remixed from Andrew P. Bray and Claus O. Wilke
+:::
 
 ## {data-menu-title="Website Link" style="text-align: center"}
 
@@ -19,7 +23,7 @@ library(countdown)
 :::{.r-fit-text}
 Workshop materials are at:
 
-[pos.it/quarto-r-conf23](pos.it/quarto-r-conf23)
+[https://elsherbini.github.io/durban-data-science-for-biology/](https://elsherbini.github.io/durban-data-science-for-biology/)
 :::
 
 ## {data-menu-item="Workshop Goals"}
@@ -37,25 +41,9 @@ Workshop materials are at:
 3. Begin interacting with data in R.
 :::
 
-## Workshop Schedule
-
-\
-
-:::{style="text-align: center"}
-**Introduction to Quarto**
-
--   9-10:30 am [Welcome to Quarto](materials/1-single-docs/1-welcome-to-quarto)
--   10:30-11 am Coffee Break
--   11-12:30 pm [Polishing Documents](materials/1-single-docs/2-polishing-docs)
--   12:30-1:30 pm Lunch
--   1:30-3 pm [Presentations](materials/1-single-docs/3-presentations)
--   3-3:30 pm Coffee Break
--   3:30-5:00 pm [Sharing your Work](materials/1-single-docs/4-sharing-your-work)
-:::
-
 ## Discussions: discord
 
-Ask questions at **#workshop-questions** on https://discord.gg/UDAsYTzZE.
+Ask questions at **#workshop-questions** on [https://discord.gg/UDAsYTzZE](https://discord.gg/UDAsYTzZE).
 
 ![](images/discord.png){fig-alt="Screenshot of the discord server app that serves as the forum for the workshop." fig-align="center" width="546"}
 
@@ -78,11 +66,9 @@ Image by [Megan Duffy](https://dynamicecology.wordpress.com/2015/01/13/sticky-no
 :::{.column width=50%}
 
 - WiFi:
-  - Network: Posit Conf 2023
-  - Password: conf2023
-- There are gender-neutral bathrooms located are among the Grand Suite Bathrooms.
-- There are two meditation/prayer rooms: Grand Suite 2A and Grand Suite 2B. Open Sunday - Tuesday 7:30 a.m. - 7:00 p.m., Wednesday 8:00 a.m. - 6:00 p.m.
-- The lactation room is located in Grand Suite 1. Open Sunday - Tuesday 7:30 a.m. - 7:00 p.m., Wednesday 8:00 a.m. - 6:00 p.m.
+  - Network: CAPRISA-Corp
+  - Password: corp@caprisa17
+
 :::
 :::
 
@@ -384,6 +370,7 @@ Render input file to various document formats.
 ``` yaml
 ---
 format: 
+  title: "Intro to R,R Studio, and Quarto"
   html:
     toc: true
     code-fold: true
