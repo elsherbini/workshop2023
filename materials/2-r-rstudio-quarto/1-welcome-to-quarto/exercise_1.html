@@ -142,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../materials/2-r-rstudio-quarto/1-welcome-to-quarto/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/1-workshop1/2-intro-to-r/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 1: Intro to R</span></a>
   </div>
 </li>
@@ -204,11 +204,10 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td style="text-align: right;"><strong>Patterns</strong> are the essence of data exploration. What kinds of representation will produce the most meaningful insights? <img src="images\ws_patterns1.png" class="img-fluid" width="200"> <img src="images\ws_patterns2.png" class="img-fluid" width="200"> <img src="images\ws_patterns3.png" class="img-fluid" width="200"> <img src="images\ws_patterns4.png" class="img-fluid" width="200"></td>
-<td style="text-align: left;"><strong>Color</strong> is a powerful encoding that presents several challenges. Have you chosen a color scale that is optimal for that data type?<br>
-<img src="images\ws_color2.png" class="img-fluid" width="100"> <img src="images\ws_color3.png" class="img-fluid" width="100"> <img src="images\ws_color4.png" class="img-fluid" width="100"> <img src="images\ws_color1.png" class="img-fluid" width="100"></td>
+<td style="text-align: left;"><strong>Color</strong> is a powerful encoding that presents several challenges. Have you chosen a color scale that is optimal for that data type? <img src="images\ws_color1.png" class="img-fluid" width="100"> <img src="images\ws_color2.png" class="img-fluid" width="100"> <img src="images\ws_color3.png" class="img-fluid" width="100"> <img src="images\ws_color4.png" class="img-fluid" width="100"></td>
 </tr>
 <tr class="even">
-<td style="text-align: right;"><strong>Encodings</strong> Some visual estimations are easier to make than others. How might you use encodings that are less accurate but otherwise better at conveying overall trends? <img src="images\ws_encod1.png" class="img-fluid" width="200"> <img src="images\ws_encod2.png" class="img-fluid" width="200"> <img src="images\ws_encod3.png" class="img-fluid" width="225"></td>
+<td style="text-align: right;"><strong>Encodings</strong> Some visual estimations are easier to make than others. How might you use encodings that are less accurate but otherwise better at conveying overall trends? <img src="images\ws_encod1.png" class="img-fluid" width="150"> <img src="images\ws_encod2.png" class="img-fluid" width="150"> <img src="images\ws_encod3.png" class="img-fluid" width="100"></td>
 <td style="text-align: left;"><strong>Salience and Relevance</strong> Pop-out effects enable quick recognition. Are the most noticeable elements of your visualizations also the most relevant? <img src="images\ws_salience2.png" class="img-fluid" width="400"></td>
 </tr>
 </tbody>
@@ -223,9 +222,9 @@ ul.task-list li input[type="checkbox"] {
 </p>
 <section id="genetic-profiles-of-cancer" class="level3">
 <h3 class="anchored" data-anchor-id="genetic-profiles-of-cancer">Genetic profiles of cancer</h3>
-<p>These datasets contains 10 cancer samples. Table 1 describes the mutational status for a set of genes (A-E) and whether a mutation is absent (0) or present (1). Table 2 summarizes the expression levels of those genes, ranging from no expression (0) to high expression (3).</p>
+<p>These datasets contains 10 cancer samples. <a href="#tbl-1">Table&nbsp;1</a> describes the mutational status for a set of genes (A-E) and whether a mutation if absent (0) or present (1). <a href="#tbl-2">Table&nbsp;2</a> summarizes the expression levels of those genes, ranging from no expression (0) to high expression (3).</p>
 <div id="tbl-1" class="anchored">
-<table class="table">
+<table class="table-striped table-bordered table-sm small table">
 <caption>Table&nbsp;1: Mutational status for a set of genes</caption>
 <colgroup>
 <col style="width: 9%">
@@ -242,7 +241,7 @@ ul.task-list li input[type="checkbox"] {
 </colgroup>
 <thead>
 <tr class="header">
-<th></th>
+<th>sample -&gt;</th>
 <th>1</th>
 <th>2</th>
 <th>3</th>
@@ -257,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td>A</td>
+<td><strong>Gene A</strong></td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -270,7 +269,7 @@ ul.task-list li input[type="checkbox"] {
 <td>0</td>
 </tr>
 <tr class="even">
-<td>B</td>
+<td><strong>Gene B</strong></td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -283,7 +282,7 @@ ul.task-list li input[type="checkbox"] {
 <td>1</td>
 </tr>
 <tr class="odd">
-<td>C</td>
+<td><strong>Gene C</strong></td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
@@ -296,7 +295,7 @@ ul.task-list li input[type="checkbox"] {
 <td>1</td>
 </tr>
 <tr class="even">
-<td>D</td>
+<td><strong>Gene D</strong></td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
@@ -309,7 +308,7 @@ ul.task-list li input[type="checkbox"] {
 <td>0</td>
 </tr>
 <tr class="odd">
-<td>E</td>
+<td><strong>Gene E</strong></td>
 <td>0</td>
 <td>1</td>
 <td>1</td>
@@ -325,7 +324,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </div>
 <div id="tbl-2" class="anchored">
-<table class="table">
+<table class="table-striped table-bordered table-sm small table">
 <caption>Table&nbsp;2: Expression levels for a set of genes</caption>
 <colgroup>
 <col style="width: 9%">
@@ -342,7 +341,7 @@ ul.task-list li input[type="checkbox"] {
 </colgroup>
 <thead>
 <tr class="header">
-<th></th>
+<th>sample -&gt;</th>
 <th>1</th>
 <th>2</th>
 <th>3</th>
@@ -357,7 +356,7 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td>A</td>
+<td><strong>Gene A</strong></td>
 <td>2</td>
 <td>1</td>
 <td>1</td>
@@ -370,7 +369,7 @@ ul.task-list li input[type="checkbox"] {
 <td>2</td>
 </tr>
 <tr class="even">
-<td>B</td>
+<td><strong>Gene B</strong></td>
 <td>1</td>
 <td>1</td>
 <td>2</td>
@@ -383,7 +382,7 @@ ul.task-list li input[type="checkbox"] {
 <td>0</td>
 </tr>
 <tr class="odd">
-<td>C</td>
+<td><strong>Gene C</strong></td>
 <td>1</td>
 <td>1</td>
 <td>3</td>
@@ -396,7 +395,7 @@ ul.task-list li input[type="checkbox"] {
 <td>0</td>
 </tr>
 <tr class="even">
-<td>D</td>
+<td><strong>Gene D</strong></td>
 <td>0</td>
 <td>0</td>
 <td>2</td>
@@ -409,7 +408,7 @@ ul.task-list li input[type="checkbox"] {
 <td>1</td>
 </tr>
 <tr class="odd">
-<td>E</td>
+<td><strong>Gene E</strong></td>
 <td>1</td>
 <td>3</td>
 <td>3</td>
@@ -665,7 +664,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">© 2023</div>   
+    <div class="nav-footer-left">© 2023. Huge thanks to <a href="https://github.com/andrewpbray">Andrew P. Bray</a> and <a href="https://github.com/clauswilke">Claus O. Wilke</a> for open source code.</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>

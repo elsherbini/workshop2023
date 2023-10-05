@@ -39,7 +39,7 @@
     "href": "materials/1-workshop1/2-intro-to-r/slides.html#section-1",
     "title": "Intro to R,R Studio, and Quarto",
     "section": "",
-    "text": "Goals for this session\n\n\nAnswer the question “Why R?”\nLearn how to read data into R.\nLearn how to use Quarto to make notebook reports."
+    "text": "Goals for this session\n\n\nAnswer the question “Why R?”\nLearn how to use Quarto to make notebook reports.\nBegin interacting with data in R."
   },
   {
     "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#workshop-schedule",
@@ -67,21 +67,91 @@
     "href": "materials/1-workshop1/2-intro-to-r/slides.html#practicalities",
     "title": "Intro to R,R Studio, and Quarto",
     "section": "Practicalities",
-    "text": "Practicalities\n\n\n\nWiFi:\n\nNetwork: Posit Conf 2023\nPassword: conf2023\n\nThere are gender-neutral bathrooms located are among the Grand Suite Bathrooms.\nThere are two meditation/prayer rooms: Grand Suite 2A and Grand Suite 2B. Open Sunday - Tuesday 7:30 a.m. - 7:00 p.m., Wednesday 8:00 a.m. - 6:00 p.m.\nThe lactation room is located in Grand Suite 1. Open Sunday - Tuesday 7:30 a.m. - 7:00 p.m., Wednesday 8:00 a.m. - 6:00 p.m.\n\n\n\nParticipants who do not wish to be photographed have red lanyards; please note everyone’s lanyard colors before taking a photo and respect their choices.\nThe Code of Conduct and COVID policies can be found at https://posit.co/code-of-conduct/. Please review them carefully. You can report Code of Conduct violations in person, by email, or by phone. Please see the policy linked above for contact information."
+    "text": "Practicalities\n\n\n\nWiFi:\n\nNetwork: Posit Conf 2023\nPassword: conf2023\n\nThere are gender-neutral bathrooms located are among the Grand Suite Bathrooms.\nThere are two meditation/prayer rooms: Grand Suite 2A and Grand Suite 2B. Open Sunday - Tuesday 7:30 a.m. - 7:00 p.m., Wednesday 8:00 a.m. - 6:00 p.m.\nThe lactation room is located in Grand Suite 1. Open Sunday - Tuesday 7:30 a.m. - 7:00 p.m., Wednesday 8:00 a.m. - 6:00 p.m."
   },
   {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#section-2",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#section-2",
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#what-is-r",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#what-is-r",
     "title": "Intro to R,R Studio, and Quarto",
-    "section": "",
-    "text": "Join me in Posit Cloud!"
+    "section": "What is R?",
+    "text": "What is R?\nR is a general purpose programming language that’s really well suited to statistics, manipulating tabular data, and plotting."
   },
   {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#your-turn",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#your-turn",
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#why-r",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#why-r",
     "title": "Intro to R,R Studio, and Quarto",
-    "section": "Your Turn",
-    "text": "Your Turn\nOpen hello-penguins.qmd in RStudio and…\n\nRender the document.\nReplace the name with your own and re-render.\nInspect the components of the document and modify one or two more and re-render. Consider changing the options at the top, the text, or the code.\nLook carefully through the source of hello-penguins.qmd. What do you notice that’s different from what it would look like in an Rmd document? Work with your neighbor to see if you can find the differences (there are at least 3).\n\n\n\n\n−+\n10:00"
+    "section": "Why R?",
+    "text": "Why R?"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#why-r-1",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#why-r-1",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Why R?",
+    "text": "Why R?\n\nR is completely free and open source\nUsing R connects you with a community around the whole world\nR has a huge amount of packages - code someone else wrote so you don’t have to!"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#obtaining-r",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#obtaining-r",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Obtaining R",
+    "text": "Obtaining R\nWindows, Mac or Linux OS: https://www.r-project.org"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#running-r",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#running-r",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Running R",
+    "text": "Running R\n\n\n\nRStudio\n\nRStudio: http://www.rstudio.com\nBuilt-in tools for viewing plots, tables, and rendering documents\nThe best way to work if you only use R\n\n\n\nVSCode\n\nhttps://code.visualstudio.com/download\nnot a full IDE, but you can customize it with extensions\nWorks well with not just R, but all major programming languages\nGuide on setting up VSCode for R programming: link and link"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#create-an-r-project",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#create-an-r-project",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Create an R Project",
+    "text": "Create an R Project\n\n\n\nFile -&gt; New Project…"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#create-an-r-project-1",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#create-an-r-project-1",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Create an R Project",
+    "text": "Create an R Project\n\n\n\nClick on New Directory"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#create-an-r-project-2",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#create-an-r-project-2",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Create an R Project",
+    "text": "Create an R Project\n\n\n\nName your directory and click “Create Project”"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#create-an-r-project-3",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#create-an-r-project-3",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Create an R Project",
+    "text": "Create an R Project\n\n\n\nYou made a project! This creates a file for you with the .qmd extension"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#create-an-r-project-4",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#create-an-r-project-4",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Create an R Project",
+    "text": "Create an R Project\n\n\n\nSwitch from “visual” to “source” to see the plain-text version of this document."
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#create-an-r-project-5",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#create-an-r-project-5",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Create an R Project",
+    "text": "Create an R Project\n\n\n\nClick on “Render” to ask Quarto to turn this plain-text document into an HTML page"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#create-an-r-project-6",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#create-an-r-project-6",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Create an R Project",
+    "text": "Create an R Project\n\n\n\nYour default web-browser will open and show you the rendered document!"
   },
   {
     "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#articles",
@@ -112,46 +182,11 @@
     "text": "Books"
   },
   {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#quarto-and-r-markdown-a-history-.-.-.",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#quarto-and-r-markdown-a-history-.-.-.",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "Quarto and R Markdown, a history . . .",
-    "text": "Quarto and R Markdown, a history . . .\n\n\n1984 Literate Programming proposed to combine text with code\n2002 Sweave weaves together S/R and \\(\\TeX\\)\n2006 pandoc converts between different document formats\n2012 knitr a next gen Sweave for R and Markdown\n2014 knitr::pandoc added to leverage pandoc flexible outputs\n2015 pandoc functionality moved into new rmarkdown\n2018 R Markdown: A definite guide\n2020 R Markdown Cookbook\n\n\n\n. . . throughout, an ecosystem of R packages develops . . . (bookdown, blogdown, distill, etc.)"
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#how-is-quarto-different-than-r-markdown",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#how-is-quarto-different-than-r-markdown",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "How is Quarto Different than R Markdown?",
-    "text": "How is Quarto Different than R Markdown?\n\n\nQuarto is compute-agnostic. R Markdown requires R.\nThe ecosystem of R packages is replaced by a single framework."
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#what-can-you-do-with-r-markdown-that-you-cant-with-quarto",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#what-can-you-do-with-r-markdown-that-you-cant-with-quarto",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "What can you do with R Markdown that you can’t with Quarto?",
-    "text": "What can you do with R Markdown that you can’t with Quarto?\n\nAccess tools built around R Markdown (e.g. workflowr, papaja) that haven’t yet been implemented in Quarto.\n\n\nHeavy users of such tools may want to stick with R Markdown."
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#what-can-you-do-with-quarto-that-you-cant-with-r-markdown",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#what-can-you-do-with-quarto-that-you-cant-with-r-markdown",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "What can you do with Quarto that you can’t with R Markdown?",
-    "text": "What can you do with Quarto that you can’t with R Markdown?\n\n\nEasier to organize appearance across documents\nFeatures (e.g. figures, tables) have better cross-format support\nBetter cross referencing\nUp-to-date revealjs slides\nEasier to customize websites and books with projects\nConvince your Python-user colleagues to use it\n\n\n\n\nNote: You can render existing R Markdown documents with Quarto and/or rename them to .qmd files to turn them into Quarto documents."
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#section-10",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#section-10",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "",
-    "text": "Inputs\n\n\n\n\n\n\n\n\n\n\n\n\n\nOutputs"
-  },
-  {
     "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#quarto-render",
     "href": "materials/1-workshop1/2-intro-to-r/slides.html#quarto-render",
     "title": "Intro to R,R Studio, and Quarto",
     "section": "Quarto Render",
-    "text": "Quarto Render\nRender input file to various document formats.\n\n\n\n\n\n\n\nInput\n\n*.qmd\n*.ipynb\n*.md\n*.Rmd\n\n\n\nFormat\n\nhtml\npdf\nrevealjs\ndocx\nppt\nand many more!"
+    "text": "Quarto Render\nRender input file to various document formats.\n\n\n\n\n\n\n\nInput\n\n*.qmd\n*.ipynb\n*.md\n*.Rmd\n\n\n\nFormat\n\nhtml\npdf\nrevealjs (like these slides!)\ndocx\nppt\nand many more!"
   },
   {
     "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#three-ways-to-render",
@@ -161,27 +196,6 @@
     "text": "Three ways to render\n\n\nQuarto is integrated into RStudio\nClick  in Editor pane of RStudio.\n\n\n\n\nQuarto is an R package\nRun in R:\nquarto::quarto_render(input = ___, output_format = ___)\n\n\n\n\nQuarto has a command line interface (CLI)\nRun at the terminal:\nquarto render &lt;input&gt; --to &lt;format&gt;"
   },
   {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#element-expression-depends-on-format",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#element-expression-depends-on-format",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "Element expression depends on format",
-    "text": "Element expression depends on format\nEmphasis\nHTML\nA &lt;em&gt;spatial logical toy&lt;/em&gt;\nLATEX\nA \\emph{spatial logical toy}\n\n\nImage\nHTML\n&lt;img src=\"images/med-rubiks-cube.png\" class=\"img-fluid\"&gt;\nLATEX\n\\includegraphics{images/med-rubiks-cube.png}\n\n\nNavigate to the terminal tab of the console pane\nRun quarto render demo.qmd –to html\nRun quarto render demo.qmd –to docx\nRun quarto render demo.qmd –to latex\nInspect how emphasis and the image is expressed"
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#your-turn-1",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#your-turn-1",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "Your Turn",
-    "text": "Your Turn\n\nRender 2-formats.qmd to html and view the html file in an editor. How is the list expressed in html? (you can click on it in the Files pane)\nRender 2-formats.qmd to latex and view the latex file in an editor. How is the list expressed in latex?\nChange the extension of 2-formats.qmd to be .md and .Rmd and re-render. Does the output differ?\nTry rendering the file to a pdf format but this time using the CLI (command line interval) in the Terminal tab.\nquarto render &lt;input&gt; --to &lt;format&gt;\n\n\n\n\n−+\n07:00"
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#try-pandoc",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#try-pandoc",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "Try Pandoc!",
-    "text": "Try Pandoc!\nA quick way to find out how Pandoc will convert: https://pandoc.org/try/."
-  },
-  {
     "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#metadata-yaml",
     "href": "materials/1-workshop1/2-intro-to-r/slides.html#metadata-yaml",
     "title": "Intro to R,R Studio, and Quarto",
@@ -189,67 +203,11 @@
     "text": "Metadata: YAML\n“Yet Another Markup Language” or “YAML Ain’t Markup Language” is used to provide document level metadata …\n\n\n\n\n… in key-value pairs,\n… that can nest,\n… are fussy about indentation,\n… and are kept between ---.\n\n\n\n---\nformat: \n  html:\n    toc: true\n    code-fold: true\n---"
   },
   {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#section-11",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#section-11",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "",
-    "text": "Which of the following are valid ways to include metadata?\n\n\n\nA\n---\ntitle: US Patent: A Spatial Toy\nauthor: Erno Rubik\nformat: html\n---\n\nMy idea is to build a cube...\nC\n---\nformat: html\n---\n\nMy idea is to build a cube...\n\n---\ntitle: A Spatial Toy\nauthor: Erno Rubik\n---\n\nC\nMy idea is to build a cube...\n… then at the command line, run:\nquarto render patent.qmd --to html -M title:patent\nD\n---\ntitle: \"US Patent: A Spatial Toy\"\nauthor: \"Erno Rubik\"\nformat: \"html\"\n---\n\nMy idea is to build a cube..."
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#metadata-yaml-syntax-rules",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#metadata-yaml-syntax-rules",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "Metadata: YAML Syntax Rules",
-    "text": "Metadata: YAML Syntax Rules\n\n\n---\ntitle: \"US Patent: A Toy\"\nauthor:\n  - Erno Rubrik\n  - Albert Einstein\nformat:\n  html:\n    toc: true\n    abstract: |\n      This is the abstract.\n\n      It has two paragraphs.\n---\n\n\n\nSet a single value with\nkey: value\nSet a list of values either:\nkey: [val1, val2]\nkey:\n  - val1\n  - val2\nQuote values that contain :\nIndent 2 spaces to nest\nMulti-line strings follow |\nMultiple YAML blocks will be merged\n\n\n\n\n\n\nAn overview of YAML syntax: https://en.m.wikipedia.org/wiki/YAML#Syntax"
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#metadata-fussing-with-yaml",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#metadata-fussing-with-yaml",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "Metadata: Fussing with YAML",
-    "text": "Metadata: Fussing with YAML\nInvalid\n\n\n---\nformat:html\n---\n\n\n---\nformat:\nhtml\n---\n\n\n---\nformat: \n  html:\n---\n\nValid\nformat: html\n\n\nformat:\n  html\n\n\nformat: \n  html:\n    toc: true"
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#quarto-linting",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#quarto-linting",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "Quarto linting",
-    "text": "Quarto linting\nLint, or a linter, is a static code analysis tool used to flag programming errors, bugs, stylistic errors and suspicious constructs.\n\n\n\n\n\n\n\n\nSource: https://en.wikipedia.org/wiki/Lint_(software)"
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#quarto-yaml-intelligence",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#quarto-yaml-intelligence",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "Quarto YAML Intelligence",
-    "text": "Quarto YAML Intelligence\nRStudio + VSCode provide rich tab-completion - start a word and tab to complete, or Ctrl + space to see all available options."
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#your-turn-2",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#your-turn-2",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "Your Turn",
-    "text": "Your Turn\n\nOpen hello-penguins.qmd in RStudio.\nTry Ctrl + space to see the available YAML options.\nTry out the tab-completion of any options that sound interesting.\nBring back your two favorite to share in chat when we return from breakout rooms.\nUse the HTML reference as needed.\n\n\n\n\n−+\n05:00"
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#section-12",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#section-12",
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#section-2",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#section-2",
     "title": "Intro to R,R Studio, and Quarto",
     "section": "",
     "text": "Markdown is designed to be easy to write and easy to read:\n\nA Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions.\n-John Gruber\n\n\n\n\nQuarto uses extended version of Pandoc markdown.\nPandoc classifies markdown in terms of Inline and Block elements."
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#section-13",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#section-13",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "",
-    "text": "Whenever I hear “Pandoc”, I picture . . .\n\n\n\n\n\n\n\n\n\n\n\n\n\n. . . but there’s help!\n\n\n\n\n\nVia giphy."
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#section-14",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#section-14",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "",
-    "text": "Which of the following forms of text formatting are possible in pandoc markdown?\n\nitalics\nbold\nunderline\nsuperscript\nsubscript\nstrikethrough"
   },
   {
     "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#inline-elements-text-formatting",
@@ -264,6 +222,13 @@
     "title": "Intro to R,R Studio, and Quarto",
     "section": "Inline Elements: Math",
     "text": "Inline Elements: Math\n\n\nMarkdown\nThe area of a circle is $A = \\pi r^2$,\nwhere $r$ is the radius and $\\pi$ is\nthe constant $3.141592\\ldots$.\n\n\nOutput\nThe area of a circle is \\(A = \\pi r^2\\), where \\(r\\) is the radius and \\(\\pi\\) is the constant \\(3.141592\\ldots\\).\n\n\n\n\n\n\n\n\n\nTeX math lives between two $. Opening $ must have a non-space character immediately to its right, while the closing $ must have a non-space character immediately to its left, and must not be followed immediately by a digit.\n– the Pandoc Docs"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#block-elements-math",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#block-elements-math",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Block Elements: Math",
+    "text": "Block Elements: Math\n\n\nMarkdown\nA larger equation:\n\n$$\nf(x)={\\sqrt{\\frac{\\tau}{2\\pi}}}\n      e^{-\\tau (x-\\mu )^{2}/2}\n$$\n\nThis breaks it:\n\n$$\n\n\\bar{x} = \\sum_{i=i}^n x_1\n$$\n\n\nOutput\nA larger equation:\n\\[\nf(x)=\\sqrt{\\frac{\\tau}{2\\pi}}\n    e^{-\\tau (x-\\mu )^{2}/2}\n\\]\nThis breaks it:\n$$\n{x} = _{i=i}^n x_1 $$\n\n\nFor “display” math, use $$ delimiters."
   },
   {
     "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#inline-elements-links-and-images",
@@ -301,8 +266,8 @@
     "text": "Block Elements: Lists\nCan use *, -, or + may be used for unordered list items.\n\n\nMarkdown\nUnordered list:\n\n* red\n* green\n* blue\n\nOrdered list:\n\n1. red\n1. green\n3. blue\n\nOutput\n\nUnordered list:\n\nred\ngreen\nblue\n\nOrdered list:\n\nred\ngreen\nblue\n\n\n\n\nPandoc gives you a lot of control over lists, including nesting, fancy lists, definition lists, blocks in lists, and example lists.\n\n\n\n\nRead the docs for details: https://pandoc.org/MANUAL.html#pandocs-markdown"
   },
   {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#section-15",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#section-15",
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#section-3",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#section-3",
     "title": "Intro to R,R Studio, and Quarto",
     "section": "",
     "text": "Which of the following will render to the output on the right?\n\n\n\nA\n1. I has a sandwich.\n\n   It was deliicous.\n\n1. I had coffee.\n\n   It gave me joy.\nC\n1. I has a sandwich.\nIt was deliicous.\n\n2. I had coffee.\nIt gave me joy.\n\nB\n1. I has a sandwich.\n  It was deliicous.\n\n2. I had coffee.\n  It gave me joy.\nD\n1. I has a sandwich.\n\n    It was deliicous.\n\n2. I had coffee.\n\n    It gave me joy.\n\nOutput\n\nI has a sandwich.\nIt was deliicous.\nI had coffee.\nIt gave me joy."
@@ -322,13 +287,6 @@
     "text": "Block Elements: Lists (example lists)\n\nThe first list item with a @ marker will be numbered 1., the next 2., etc. The numbered examples need not occur in a single list; each new list using @ will take up where the last stopped. – the Pandoc Docs\n\n\n\nMarkdown\n(@)  The first example.\n(@)  The second example.\n\nExplanation of examples.\n\n(@)  The third example.\n\nOutput\n\nThe first example.\nThe second example.\n\nExplanation of examples.\n\nThe third example.\n\n\n\n\nYou can also label your examples: (@goodname)."
   },
   {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#block-elements-math",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#block-elements-math",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "Block Elements: Math",
-    "text": "Block Elements: Math\n\n\nMarkdown\nA larger equation:\n\n$$\nf(x)={\\sqrt{\\frac{\\tau}{2\\pi}}}\n      e^{-\\tau (x-\\mu )^{2}/2}\n$$\n\nThis breaks it:\n\n$$\n\n\\bar{x} = \\sum_{i=i}^n x_1\n$$\n\n\nOutput\nA larger equation:\n\\[\nf(x)=\\sqrt{\\frac{\\tau}{2\\pi}}\n    e^{-\\tau (x-\\mu )^{2}/2}\n\\]\nThis breaks it:\n$$\n{x} = _{i=i}^n x_1 $$\n\n\nFor “display” math, use $$ delimiters."
-  },
-  {
     "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#block-elements-images",
     "href": "materials/1-workshop1/2-intro-to-r/slides.html#block-elements-images",
     "title": "Intro to R,R Studio, and Quarto",
@@ -336,8 +294,8 @@
     "text": "Block Elements: Images\nBlock images use the same syntax as inline images.\n\n\nMarkdown\nImages are a block element...\n\n![Elephant](images/elephant.png)\n\nor are they?\n\n\nOutput\nImages are a block element…\n\n\n\nElephant\n\n\nor are they?\n\n\n\n\n\n\n\n\n\nImages behave mostly like inline elements but actually live in a block (e.g. a paragraph). Their behavior depends on output format."
   },
   {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#your-turn-3",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#your-turn-3",
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#your-turn",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#your-turn",
     "title": "Intro to R,R Studio, and Quarto",
     "section": "Your Turn",
     "text": "Your Turn\nYour goal is to create from scratch the beautiful documents 3-markdown-goal.html and 3-markdown-goal.pdf. Add into 3-markdown.qmd the markdown syntax needed to create the various inline and block elements found in the output documents.\n\n\n\n\n\n\n\n\n\nInline\n\ntext formatting\nmath\nlinks and images\nfootnotes\n\n\n\nBlock\n\nparagraphs\nheaders\nlists\nmath\nimages\n\n\n\n\n\n\n\n\n\n\n\n−+\n10:00\n\n\n\n\n\nFor reference, see: https://pandoc.org/MANUAL.html#pandocs-markdown"
@@ -399,8 +357,8 @@
     "text": "Setting knitr options\nThe knitr syntax for passing options still works since Quarto uses knitr.\n\n\nSource\n```{r, error=TRUE}\n#| echo: true\n\nrnorm(5       # this is missing a parens\n```\n\n\nOutput\n\nrnorm(5       # this is missing a parens\n\nError: &lt;text&gt;:2:0: unexpected end of input\n1: rnorm(5       # this is missing a parens\n   ^\n\n\n\n\n\n\nWhile it’s possible to use R chunks options, hash pipe options are more portable across computational engines.\n\n\n\n\nWithout error=TRUE, this would error out on rendering and produce no output."
   },
   {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#section-17",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#section-17",
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#section-5",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#section-5",
     "title": "Intro to R,R Studio, and Quarto",
     "section": "",
     "text": "Don’t forget to use tab-completion to see the available options!"
@@ -448,8 +406,8 @@
     "text": "Example: Figures from Code\n\n\n```{r}\n#| fig-width: 5\n#| fig-height: 3\n\nlibrary(palmerpenguins)\nlibrary(ggplot2)\n\nggplot(penguins,\n       aes(x = bill_length_mm,\n           y = bill_depth_mm,\n           col = island)) +\n  geom_point()\n```\n\n\n\n\n\n\n\n\n\n\nSave time/code by moving figure sizing defaults up to the YAML."
   },
   {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#your-turn-4",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#your-turn-4",
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#your-turn-1",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#your-turn-1",
     "title": "Intro to R,R Studio, and Quarto",
     "section": "Your turn",
     "text": "Your turn\n\n\nOpen 3-code-cells.qmd and render the document.\nAdd echo: false to the code cell and re-render.\nAdd 2 more cell options by using Ctrl + Space after the #| or consult the Quarto Reference.\nAdd a second code cell (you can copy + paste the first), move your cell options to the YAML, and re-render.\nPlease share your favorite code cell option on .\n\n\n\n\n\n−+\n07:00"
@@ -1474,7 +1432,7 @@
     "href": "materials/2-r-rstudio-quarto/1-welcome-to-quarto/exercise_1.html",
     "title": "Exploring Data for Patterns",
     "section": "",
-    "text": "Patterns are the essence of data exploration and our eyes’ ability to pick them out is integral to data understanding. Much of the data we work with, however, do not have a natural form and we need to make decisions about how they are to be represented. Try different ways to visualize the datasets so meaningful patterns may be found.\n\n\n\nConsider the following concepts when creating your visualizations\n\n\n\n\n\n\n\nPatterns are the essence of data exploration. What kinds of representation will produce the most meaningful insights?    \nColor is a powerful encoding that presents several challenges. Have you chosen a color scale that is optimal for that data type?\n   \n\n\nEncodings Some visual estimations are easier to make than others. How might you use encodings that are less accurate but otherwise better at conveying overall trends?   \nSalience and Relevance Pop-out effects enable quick recognition. Are the most noticeable elements of your visualizations also the most relevant? \n\n\n\n\n\n          1. Working in small groups, choose to work with dataset 1 or 2\n          2. Create different visualizations to highlight underlying patterns\n          3. Summarize the group’s approach\n          4. Elect/volunteer a spokesperson to present the solution\n\n\n\nGenetic profiles of cancer\nThese datasets contains 10 cancer samples. Table 1 describes the mutational status for a set of genes (A-E) and whether a mutation is absent (0) or present (1). Table 2 summarizes the expression levels of those genes, ranging from no expression (0) to high expression (3).\n\n\nTable 1: Mutational status for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nA\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n\n\nB\n0\n0\n0\n0\n1\n1\n1\n0\n1\n1\n\n\nC\n0\n0\n1\n0\n0\n0\n1\n1\n1\n1\n\n\nD\n1\n1\n0\n0\n1\n1\n0\n0\n0\n0\n\n\nE\n0\n1\n1\n0\n1\n0\n0\n0\n1\n0\n\n\n\n\n\n\nTable 2: Expression levels for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nA\n2\n1\n1\n2\n2\n0\n2\n1\n1\n2\n\n\nB\n1\n1\n2\n1\n0\n0\n0\n2\n0\n0\n\n\nC\n1\n1\n3\n1\n2\n2\n3\n0\n3\n0\n\n\nD\n0\n0\n2\n1\n3\n3\n2\n1\n1\n1\n\n\nE\n1\n3\n3\n1\n3\n1\n2\n1\n3\n2"
+    "text": "Patterns are the essence of data exploration and our eyes’ ability to pick them out is integral to data understanding. Much of the data we work with, however, do not have a natural form and we need to make decisions about how they are to be represented. Try different ways to visualize the datasets so meaningful patterns may be found.\n\n\n\nConsider the following concepts when creating your visualizations\n\n\n\n\n\n\n\nPatterns are the essence of data exploration. What kinds of representation will produce the most meaningful insights?    \nColor is a powerful encoding that presents several challenges. Have you chosen a color scale that is optimal for that data type?    \n\n\nEncodings Some visual estimations are easier to make than others. How might you use encodings that are less accurate but otherwise better at conveying overall trends?   \nSalience and Relevance Pop-out effects enable quick recognition. Are the most noticeable elements of your visualizations also the most relevant? \n\n\n\n\n\n          1. Working in small groups, choose to work with dataset 1 or 2\n          2. Create different visualizations to highlight underlying patterns\n          3. Summarize the group’s approach\n          4. Elect/volunteer a spokesperson to present the solution\n\n\n\nGenetic profiles of cancer\nThese datasets contains 10 cancer samples. Table 1 describes the mutational status for a set of genes (A-E) and whether a mutation if absent (0) or present (1). Table 2 summarizes the expression levels of those genes, ranging from no expression (0) to high expression (3).\n\n\nTable 1: Mutational status for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n\n\nGene B\n0\n0\n0\n0\n1\n1\n1\n0\n1\n1\n\n\nGene C\n0\n0\n1\n0\n0\n0\n1\n1\n1\n1\n\n\nGene D\n1\n1\n0\n0\n1\n1\n0\n0\n0\n0\n\n\nGene E\n0\n1\n1\n0\n1\n0\n0\n0\n1\n0\n\n\n\n\n\n\nTable 2: Expression levels for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n2\n1\n1\n2\n2\n0\n2\n1\n1\n2\n\n\nGene B\n1\n1\n2\n1\n0\n0\n0\n2\n0\n0\n\n\nGene C\n1\n1\n3\n1\n2\n2\n3\n0\n3\n0\n\n\nGene D\n0\n0\n2\n1\n3\n3\n2\n1\n1\n1\n\n\nGene E\n1\n3\n3\n1\n3\n1\n2\n1\n3\n2"
   },
   {
     "objectID": "materials/2-r-rstudio-quarto/1-welcome-to-quarto/slides.html#introductions",
