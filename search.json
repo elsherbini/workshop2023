@@ -32,7 +32,7 @@
     "href": "materials/1-workshop1/2-intro-to-r/slides.html#section",
     "title": "Intro to R,R Studio, and Quarto",
     "section": "",
-    "text": "Workshop materials are at:\npos.it/quarto-r-conf23"
+    "text": "Workshop materials are at:\nhttps://elsherbini.github.io/durban-data-science-for-biology/"
   },
   {
     "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#section-1",
@@ -40,13 +40,6 @@
     "title": "Intro to R,R Studio, and Quarto",
     "section": "",
     "text": "Goals for this session\n\n\nAnswer the question “Why R?”\nLearn how to use Quarto to make notebook reports.\nBegin interacting with data in R."
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#workshop-schedule",
-    "href": "materials/1-workshop1/2-intro-to-r/slides.html#workshop-schedule",
-    "title": "Intro to R,R Studio, and Quarto",
-    "section": "Workshop Schedule",
-    "text": "Workshop Schedule\n\n\n\nIntroduction to Quarto\n\n9-10:30 am Welcome to Quarto\n10:30-11 am Coffee Break\n11-12:30 pm Polishing Documents\n12:30-1:30 pm Lunch\n1:30-3 pm Presentations\n3-3:30 pm Coffee Break\n3:30-5:00 pm Sharing your Work"
   },
   {
     "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#discussions-discord",
@@ -67,7 +60,7 @@
     "href": "materials/1-workshop1/2-intro-to-r/slides.html#practicalities",
     "title": "Intro to R,R Studio, and Quarto",
     "section": "Practicalities",
-    "text": "Practicalities\n\n\n\nWiFi:\n\nNetwork: Posit Conf 2023\nPassword: conf2023\n\nThere are gender-neutral bathrooms located are among the Grand Suite Bathrooms.\nThere are two meditation/prayer rooms: Grand Suite 2A and Grand Suite 2B. Open Sunday - Tuesday 7:30 a.m. - 7:00 p.m., Wednesday 8:00 a.m. - 6:00 p.m.\nThe lactation room is located in Grand Suite 1. Open Sunday - Tuesday 7:30 a.m. - 7:00 p.m., Wednesday 8:00 a.m. - 6:00 p.m."
+    "text": "Practicalities\n\n\n\nWiFi:\n\nNetwork: CAPRISA-Corp\nPassword: corp@caprisa17"
   },
   {
     "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#what-is-r",
@@ -200,7 +193,7 @@
     "href": "materials/1-workshop1/2-intro-to-r/slides.html#metadata-yaml",
     "title": "Intro to R,R Studio, and Quarto",
     "section": "Metadata: YAML",
-    "text": "Metadata: YAML\n“Yet Another Markup Language” or “YAML Ain’t Markup Language” is used to provide document level metadata …\n\n\n\n\n… in key-value pairs,\n… that can nest,\n… are fussy about indentation,\n… and are kept between ---.\n\n\n\n---\nformat: \n  html:\n    toc: true\n    code-fold: true\n---"
+    "text": "Metadata: YAML\n“Yet Another Markup Language” or “YAML Ain’t Markup Language” is used to provide document level metadata …\n\n\n\n\n… in key-value pairs,\n… that can nest,\n… are fussy about indentation,\n… and are kept between ---.\n\n\n\n---\nformat: \n  title: \"Intro to R,R Studio, and Quarto\"\n  html:\n    toc: true\n    code-fold: true\n---"
   },
   {
     "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#section-2",
