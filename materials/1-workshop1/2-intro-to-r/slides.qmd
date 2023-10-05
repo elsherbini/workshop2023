@@ -32,9 +32,9 @@ Workshop materials are at:
 :::{.incremental style="font-size: 1.5em"}
 1. Answer the question "Why R?"
 
-2. Learn how to read data into R.
+2. Learn how to use Quarto to make notebook reports.
 
-3. Learn how to use Quarto to make notebook reports.
+3. Begin interacting with data in R.
 :::
 
 ## Workshop Schedule
@@ -84,42 +84,179 @@ Image by [Megan Duffy](https://dynamicecology.wordpress.com/2015/01/13/sticky-no
 - There are two meditation/prayer rooms: Grand Suite 2A and Grand Suite 2B. Open Sunday - Tuesday 7:30 a.m. - 7:00 p.m., Wednesday 8:00 a.m. - 6:00 p.m.
 - The lactation room is located in Grand Suite 1. Open Sunday - Tuesday 7:30 a.m. - 7:00 p.m., Wednesday 8:00 a.m. - 6:00 p.m.
 :::
-
-:::{.column width=50%}
-- Participants who do not wish to be photographed have red lanyards; please note everyone's lanyard colors before taking a photo and respect their choices.
-- The Code of Conduct and COVID policies can be found at https://posit.co/code-of-conduct/. Please review them carefully. You can report Code of Conduct violations in person, by email, or by phone. Please see the policy linked above for contact information.
-:::
-:::
-
-# Hello Quarto!
-
-. . .
-
-[Sit back and enjoy the tour!]{.bigadage}
-
-## {menu-title="Posit Cloud"}
-
-:::{style="text-align: center"}
-{{< fa solid cloud size=8x >}}
-
-[Join me in Posit Cloud!]{.bigadage}
 :::
 
 
 
-## Your Turn {.your-turn}
+---
 
-Open `hello-penguins.qmd` in RStudio and...
+## What is R?
 
-1. Render the document.
-2. Replace the name with your own and re-render.
-3. Inspect the components of the document and modify one or two more and re-render. Consider changing the options at the top, the text, or the code. 
-4. Look carefully through the source of `hello-penguins.qmd`. What do you notice that's different from what it would look like in an Rmd document? Work with your neighbor to see if you can find the differences (there are at least 3).
+R is a general purpose programming language that's really well suited to statistics, manipulating tabular data, and plotting.
 
-```{r}
-countdown::countdown(10)
-```
 
+
+---
+
+## Why R?
+
+![](images/Data_science_venn.svg){fig-alt="Venn diagram showing overlaps of programming, statistics, and communication yielding data science" width=100%}
+
+
+## Why R?
+
+
+- R is completely free and open source
+- Using R connects you with a community around the whole world
+- R has a huge amount of packages - code someone else wrote so you don't have to!
+
+::::: {.columns style='display: flex !important; height: 40%;'}
+
+::: {.column width="10%" style='display: flex; justify-content: center; align-items: center;'}
+
+![](images/Rlogo.svg){fig-alt="R logo"}
+:::
+
+::: {.column width="10%" style='display: flex; justify-content: center; align-items: center;'}
+
+![](images/package-hexlogos.svg){fig-alt="hexagonal stickers representing different packages availale in R"}
+:::
+::::
+---
+
+
+## Obtaining R
+
+
+Windows, Mac or Linux OS: https://www.r-project.org
+
+![](images/Rlogo.svg){fig-alt="R logo"}
+---
+
+## Running R
+
+
+::: {layout-ncol="2"}
+### RStudio
+- RStudio: [http://www.rstudio.com](http://www.rstudio.com)
+- Built-in tools for viewing plots, tables, and rendering documents
+- The best way to work if you only use R
+
+### VSCode
+- [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
+- not a full IDE, but you can customize it with extensions
+- Works well with not just R, but all major programming languages
+- Guide on setting up VSCode for R programming: [link](https://renkun.me/2019/12/11/writing-r-in-vscode-a-fresh-start/) and [link](https://renkun.me/2022/03/06/my-recommendations-of-vs-code-extensions-for-r/)
+:::
+---
+
+
+
+## Create an R Project {.your-turn}
+::::: {columns}
+
+::: {.column width=20%}
+
+1. File -> New Project...
+
+:::
+
+::: {.column width=75%}
+
+![](images/01-new-project.png)
+
+:::
+
+
+
+:::::
+
+## Create an R Project {.your-turn}
+::::: {columns}
+
+::: {.column width=20%}
+
+2. Click on New Directory
+
+:::
+::: {.column width=75%}
+![](images/02-new-directory.png)
+:::
+
+:::::
+
+## Create an R Project {.your-turn}
+::::: {columns}
+
+::: {.column width=20%}
+
+3. Name your directory and click "Create Project"
+
+:::
+::: {.column width=75%}
+![](images/03-create-project.png)
+:::
+
+:::::
+## Create an R Project {.your-turn}
+
+::::: {columns}
+
+::: {.column width=20%}
+
+4. You made a project! This creates a file for you with the `.qmd` extension
+
+:::
+::: {.column width=75%}
+![](images/04-you-made-a-project.png)
+:::
+
+:::::
+
+## Create an R Project {.your-turn}
+
+::::: {columns}
+
+::: {.column width=20%}
+
+5. Switch from "visual" to "source" to see the plain-text version of this document.
+
+:::
+::: {.column width=75%}
+![](images/05-switch-to-source.png)
+:::
+
+:::::
+
+## Create an R Project {.your-turn}
+
+::::: {columns}
+
+::: {.column width=20%}
+
+6. Click on "Render" to ask Quarto to turn this plain-text document into an HTML page
+
+:::
+::: {.column width=75%}
+![](images/06-render.png)
+:::
+
+:::::
+
+## Create an R Project {.your-turn}
+
+::::: {columns}
+
+::: {.column width=20%}
+
+7. Your default web-browser will open and show you the rendered document!
+
+:::
+::: {.column width=75%}
+![](images/07-rendered.png)
+:::
+
+:::::
 
 # What can you do with Quarto?
 
@@ -157,106 +294,6 @@ countdown::countdown(10)
 ![](images/gallery-books-r4ds.png)
 :::
 
-
-# Quarto and R Markdown
-
-## Quarto and R Markdown, a history . . .
-
-::: incremental
-- 1984 **Literate Programming** proposed to combine text with code
-- 2002 `Sweave` weaves together S/R and $\TeX$
-- 2006 `pandoc` converts between different document formats
-- 2012 `knitr` a next gen Sweave for R and Markdown
-- 2014 `knitr::pandoc` added to leverage `pandoc` flexible outputs
-- 2015  `pandoc` functionality moved into new `rmarkdown`
-- 2018 *R Markdown: A definite guide*
-- 2020 *R Markdown Cookbook*
-:::
-
-. . .
-
-. . . throughout, an ecosystem of R packages develops . . . (`bookdown`, `blogdown`, `distill`, etc.)
-
-## {menu-title="R Markdown Workflow" background-image="images/quarto-workshop-1.jpg" background-size="contain"}
-
-## {menu-title="R Markdown Workflow" background-image="images/quarto-workshop-2.jpg" background-size="contain"}
-
-## {menu-title="R Markdown Workflow" background-image="images/quarto-workshop-3.jpg" background-size="contain"}
-
-## {menu-title="Quarto Workflow" background-image="images/quarto-workshop-4.jpg" background-size="contain"}
-
-## {menu-title="Quarto Workflow" background-image="images/quarto-workshop-5.jpg" background-size="contain"}
-
-
-## How is Quarto Different than R Markdown?
-
-::: incremental
-1. Quarto is compute-agnostic. R Markdown requires R.
-
-2. The ecosystem of R packages is replaced by a single framework.
-:::
-
-## What can you do with R Markdown that you can't with Quarto?
-
-- Access tools built around R Markdown (e.g. `workflowr`, `papaja`) that haven't yet been implemented in Quarto.
-
-> Heavy users of such tools may want to stick with R Markdown.
-
-
-## What can you do with Quarto that you can't with R Markdown?
-
-:::incremental
-- Easier to organize appearance across documents
-- Features (e.g. figures, tables) have better cross-format support
-- Better cross referencing
-- Up-to-date revealjs slides
-- Easier to customize websites and books with projects
-- Convince your Python-user colleagues to use it
-:::
-
-. . .
-
-> Note: You can render existing R Markdown documents with Quarto and/or rename them to .qmd files to turn them into Quarto documents.
-
-
-# Rendering in Quarto
-
-<!-- ##  -->
-
-<!-- ![By user Curis on Wikipedia, CC BY 2.5](images/disassembled-rubix.jpg){fig-align="center"} -->
-
-## {menu-title="Quarto Workflow" background-image="images/quarto-workshop-5.jpg" background-size="contain"}
-
-## {menu-title="Pandoc Workflow" background-image="images/quarto-workshop-6.jpg" background-size="contain"}
-
-
-##
-
-::: columns
-:::{.column width="25%"}
-\
-\
-\
-\
-\
-
-### Inputs
-:::
-:::{.column width="50%"}
-![](images/pandoc-diagram.svg){fig-align="center"}
-:::
-
-:::{.column width="25%"}
-\
-\
-\
-\
-\
-
-### Outputs
-:::
-:::
-
 ## Quarto Render
 
 Render input file to various document formats.
@@ -275,7 +312,7 @@ Render input file to various document formats.
 
 -   `html`
 -   `pdf`
--   `revealjs`
+-   `revealjs` (like these slides!)
 -   `docx`
 -   `ppt`
 -   and many more!
@@ -311,65 +348,6 @@ Render input file to various document formats.
    ```bash
    quarto render <input> --to <format>
    ```
-
-## Element expression depends on format
-
-#### Emphasis
-
-[HTML]{.smallcaps style="font-size: .7em"}
-``` html
-A <em>spatial logical toy</em>
-```
-
-[LATEX]{.smallcaps style="font-size: .7em"}
-``` latex
-A \emph{spatial logical toy}
-```
-
-\
-
-#### Image
-
-[HTML]{.smallcaps style="font-size: .7em"}
-``` html
-<img src="images/med-rubiks-cube.png" class="img-fluid">
-```
-
-[LATEX]{.smallcaps style="font-size: .7em"}
-``` latex
-\includegraphics{images/med-rubiks-cube.png}
-```
-
-::: notes
-1.  Navigate to the terminal tab of the console pane
-2.  Run quarto render demo.qmd --to html
-3.  Run quarto render demo.qmd --to docx
-4.  Run quarto render demo.qmd --to latex
-5.  Inspect how emphasis and the image is expressed
-:::
-
-
-##  Your Turn {.your-turn style="font-size: .9em"}
-
-1.  Render `2-formats.qmd` to `html` and view the html file in an editor. How is the list expressed in html? (you can click on it in the Files pane)
-2.  Render `2-formats.qmd` to `latex` and view the latex file in an editor. How is the list expressed in latex?
-3.  Change the extension of `2-formats.qmd` to be `.md` and `.Rmd` and re-render. Does the output differ?
-4.  Try rendering the file to a pdf format but this time using the CLI (command line interval) in the Terminal tab.
-
-    ```bash
-    quarto render <input> --to <format>
-    ```
-
-```{r}
-countdown::countdown(7)
-```
-
-
-## Try Pandoc!
-
-A quick way to find out how Pandoc will convert: <https://pandoc.org/try/>.
-
-![](images/try-pandoc.png){fig-align=center}
 
 # Anatomy of a Document
 
@@ -416,249 +394,6 @@ format:
 :::
 
 
-
-<!-- ## [Metadata:]{.meta-el} Types of values -->
-
-<!-- ZZQ could add slide talking about single value, [] list and - lists. -->
-
-
-<!-- :::columns -->
-
-<!-- :::{.column width=50%} -->
-<!-- ``` yaml -->
-<!-- --- -->
-<!-- format: something -->
-<!-- --- -->
-<!-- ``` -->
-<!-- ::: -->
-
-<!-- :::{.column width=50% .fragment} -->
-
-<!-- ``` yaml -->
-<!-- --- -->
-<!-- format: html -->
-<!-- --- -->
-<!-- ``` -->
-
-<!-- ``` yaml -->
-<!-- --- -->
-<!-- format: pdf -->
-<!-- --- -->
-<!-- ``` -->
-
-<!-- ``` yaml -->
-<!-- --- -->
-<!-- format: revealjs -->
-<!-- --- -->
-<!-- ``` -->
-<!-- ::: -->
-<!-- ::: -->
-
-
-## {menu-title="YAML Poll" style="font-size: .8em"}
-
-::: poll
-{{< fa brands discord >}} Which of the following are valid ways to include metadata?
-:::
-
-:::columns
-:::{.column width="50%"}
-[A]{.smallcaps}
-```markdown
----
-title: US Patent: A Spatial Toy
-author: Erno Rubik
-format: html
----
-
-My idea is to build a cube...
-```
-
-[C]{.smallcaps}
-```markdown
----
-format: html
----
-
-My idea is to build a cube...
-
----
-title: A Spatial Toy
-author: Erno Rubik
----
-```
-
-:::
-
-:::{.column width="50%"}
-[C]{.smallcaps}
-
-```markdown
-My idea is to build a cube...
-```
-
-... then at the command line, run:
-
-```bash
-quarto render patent.qmd --to html -M title:patent
-```
-
-
-[D]{.smallcaps}
-```markdown
----
-title: "US Patent: A Spatial Toy"
-author: "Erno Rubik"
-format: "html"
----
-
-My idea is to build a cube...
-```
-
-:::
-:::
-
-## [Metadata:]{.meta-el} YAML Syntax Rules
-
-:::columns
-:::{.column width="50%" style="max-height: 1000px"}
-```yaml
----
-title: "US Patent: A Toy"
-author:
-  - Erno Rubrik
-  - Albert Einstein
-format:
-  html:
-    toc: true
-    abstract: |
-      This is the abstract.
-
-      It has two paragraphs.
----
-```
-:::
-
-:::{.column width="50%" style="font-size: .85em"}
-
-::: incremental
-- Set a single value with
-  ```yaml
-  key: value
-  ```
-- Set a list of values either:
-  ```yaml
-  key: [val1, val2]
-  ```
-  ```yaml
-  key:
-    - val1
-    - val2
-  ```
-- Quote values that contain `:`
-- Indent 2 spaces to nest
-- Multi-line strings follow `|`
-- Multiple YAML blocks will be merged
-:::
-
-:::
-:::
-
-:::aside
-An overview of YAML syntax: <https://en.m.wikipedia.org/wiki/YAML#Syntax>
-:::
-
-## [Metadata:]{.meta-el} Fussing with YAML
-
-[Invalid]{.inline-el}
-
-:::columns
-:::{.column width=50%}
-``` yaml {.fragment}
----
-format:html
----
-```
-
-\
-
-``` yaml {.fragment}
----
-format:
-html
----
-```
-
-\
-
-``` yaml {.fragment}
----
-format: 
-  html:
----
-```
-
-:::
-:::{.column width=50%}
-
-[Valid]{.block-el}
-
-``` yaml {.fragment}
-format: html
-```
-
-\
-
-``` yaml {.fragment}
-format:
-  html
-```
-
-\
-
-``` yaml {.fragment}
-format: 
-  html:
-    toc: true
-```
-:::
-:::
-
-## Quarto linting
-
-Lint, or a linter, is a static code analysis tool used to flag programming errors, bugs, stylistic errors and suspicious constructs.
-
-<br>
-
-![](images/lint-rstudio.png){.drop fig-align="center"}
-
-
-::: aside
-Source: <https://en.wikipedia.org/wiki/Lint_(software)>
-:::
-
-## Quarto YAML Intelligence
-
-RStudio + VSCode provide rich tab-completion - start a word and tab to complete, or <kbd>`Ctrl + space`</kbd> to see all available options.
-
-\
-
-![](images/quarto-tab-complete.png){.drop fig-align="center" width="600"}
-
-## Your Turn {.your-turn}
-
--   Open `hello-penguins.qmd` in RStudio.
--   Try <kbd>`Ctrl + space`</kbd> to see the available YAML options.
--   Try out the tab-completion of any options that sound interesting.
--   Bring back your two favorite to share in chat when we return from breakout rooms.
--   Use the [HTML reference](https://quarto.org/docs/reference/formats/html.html) as needed.
-
-```{r}
-#| echo: false
-
-countdown::countdown(minutes = 5)
-```
-
 # Text
 
 [The Elements of Markdown]{style="font-family: 'Nanum Myeongjo', serif; font-size:1.7em"}
@@ -679,41 +414,6 @@ countdown::countdown(minutes = 5)
 - Quarto uses extended version of **Pandoc markdown**.
 - Pandoc classifies markdown in terms of [Inline]{.inline-el} and [Block]{.block-el} elements.
 
-
-## {data-menu-title="Working with pandoc"}
-
-Whenever I hear "Pandoc", I picture . . .
-
-. . .
-
-::: columns
-:::{.column width="50%"}
-\
-
-<iframe src="https://giphy.com/embed/3L8k2sJ2DwEZG" width="480" height="333" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p></p>
-:::
-
-:::{.column width="50%"}
-![ . . . but there's help!](images/pandoc-docs.png){.fragment .fade-left}
-:::
-:::
-
-::: footer
-Via giphy.
-:::
-
-## {menu-title="Markdown poll"}
-
-::: poll
-{{< fa brands discord >}} Which of the following forms of text formatting are possible in pandoc markdown?
-
-1. italics
-2. bold
-3. underline
-4. superscript
-5. subscript
-6. strikethrough
-:::
 
 ## [Inline Elements:]{.inline-el} Text Formatting
 
@@ -775,6 +475,53 @@ The area of a circle is $A = \pi r^2$, where $r$ is the radius and $\pi$ is the 
 > -- the Pandoc Docs
 <!-- ::: -->
 
+
+## [Block Elements:]{.block-el} Math
+
+::: columns
+::: {.column width="50%"}
+#### Markdown
+
+```markdown
+A larger equation:
+
+$$
+f(x)={\sqrt{\frac{\tau}{2\pi}}}
+      e^{-\tau (x-\mu )^{2}/2}
+$$
+
+This breaks it:
+
+$$
+
+\bar{x} = \sum_{i=i}^n x_1
+$$
+```
+:::
+
+::: {.column width="50%" .fragment}
+#### Output
+
+A larger equation:
+
+$$
+f(x)=\sqrt{\frac{\tau}{2\pi}}
+    e^{-\tau (x-\mu )^{2}/2}
+$$
+
+This breaks it:
+
+$$
+
+\bar{x} = \sum_{i=i}^n x_1
+$$
+
+:::{.fragment}
+> For "display" math, use `$$` delimiters.
+:::
+
+:::
+:::
 
 ## [Inline Elements:]{.inline-el} Links and Images
 
@@ -1091,53 +838,6 @@ Explanation of examples.
 
 > You can also label your examples: `(@goodname)`.
 
-
-## [Block Elements:]{.block-el} Math
-
-::: columns
-::: {.column width="50%"}
-#### Markdown
-
-```markdown
-A larger equation:
-
-$$
-f(x)={\sqrt{\frac{\tau}{2\pi}}}
-      e^{-\tau (x-\mu )^{2}/2}
-$$
-
-This breaks it:
-
-$$
-
-\bar{x} = \sum_{i=i}^n x_1
-$$
-```
-:::
-
-::: {.column width="50%" .fragment}
-#### Output
-
-A larger equation:
-
-$$
-f(x)=\sqrt{\frac{\tau}{2\pi}}
-    e^{-\tau (x-\mu )^{2}/2}
-$$
-
-This breaks it:
-
-$$
-
-\bar{x} = \sum_{i=i}^n x_1
-$$
-
-:::{.fragment}
-> For "display" math, use `$$` delimiters.
-:::
-
-:::
-:::
 
 ## [Block Elements:]{.block-el} Images
 
