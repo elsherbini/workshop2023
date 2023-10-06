@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science for Biology Workshop Series - Welcome to Quarto</title>
+<title>Data Science for Biology Workshop Series - Intro to R, RStudio, and Quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../materials/1-workshop1/1-welcome-to-quarto/index.html" rel="next">
+<link href="../../../materials/1-workshop1/3-tidyverse-101/index.html" rel="next">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -66,6 +66,7 @@ ul.task-list li input[type="checkbox"] {
 </head>
 
 <body class="nav-sidebar docked nav-fixed fullcontent">
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -111,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Reproducible Data Analysis with R</li><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/2-intro-to-r/index.html">Modules</a></li><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/2-intro-to-r/index.html">Module 1: Intro to R</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><b>1. Reproducible Data Analysis with R</b></li><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/2-intro-to-r/index.html"><b>Module 2</b>: Intro to R, Rstudio, and Quarto</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -126,44 +127,48 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Reproducible Data Analysis with R</span></a>
+ <span class="menu-text"><b>1. Reproducible Data Analysis with R</b></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Modules</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Module 0:</b> Welcome to the workshop</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Module 1</b>: How data analysis is informed by data generation</span>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/1-workshop1/2-intro-to-r/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Module 1: Intro to R</span></a>
+ <span class="menu-text"><b>Module 2</b>: Intro to R, Rstudio, and Quarto</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../materials/1-workshop1/1-welcome-to-quarto/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Module 2: Welcome to Quarto</span></a>
+  <a href="../../../materials/1-workshop1/3-tidyverse-101/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 3</b>: Intro to data visualizaion with the <code>tidyverse</code></span></a>
   </div>
 </li>
-      </ul>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Module 4</b>: Data wrangling and more data visualization</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Module 5</b>: <code>tableone</code> and statistics for clincal data</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Module 6</b>: Data transformations and more statistics</span>
   </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Working with High Dimensional 16S rRNA Sequencing Data in R</span></span>
+ <span class="menu-text"><em>2. Working with High Dimensional Data in R - human microbiome - Coming April 2024 </em></span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Bioinformatics and Transcriptomics Data Analysis</span></span>
+ <span class="menu-text"><em>3. Bioinformatics and Transcriptomics Data Analysis - Coming October 2024</em></span></span>
   </li>
     </ul>
     </div>
@@ -176,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome to Quarto</h1>
+<h1 class="title">Intro to R, RStudio, and Quarto</h1>
 </div>
 
 
@@ -192,30 +197,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <blockquote class="blockquote">
-<p>Meet your neighbors, familiarize yourself with the format of the workshop, practing rendering documents with Quarto, and build a sense of the three components that make up the anatomy of a Quarto document.</p>
+<p>Let’s learn how to use RStudio to run R code and render documents with Quarto.</p>
 </blockquote>
-<p><a href="../../../materials/1-workshop1/2-intro-to-r/slides.html">Full Screen</a></p>
+<p><a href="../../../materials/1-workshop1/2-intro-to-r/slides.html">Make slides full screen</a></p>
 <iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
-<!-- #### Outline -->
-<!-- 1. About the Workshop -->
-<!-- 2. What can you do with Quarto? -->
-<!-- 3. Quarto and R Markdown: A History -->
-<!-- 4. Rendering in Quarto -->
-<!-- 5. The Structure of a Document -->
-<!--    i. Inline Elements -->
-<!--    ii. Block Elements -->
-<!--    iii. Metadata -->
-<!-- 6. The Elements of Markdown -->
-<!--    i. Text Formatting -->
-<!--    ii. Math -->
-<!--    iii. Links and Images -->
-<!--    iv. Footnotes -->
-<!--    v. Paragraph -->
-<!--    vi. Headers -->
-<!--    vii. Lists -->
-<!--    viii. Display Math -->
-<!--    ix. YAML -->
-<!-- #### Exercises -->
 
 
 
@@ -457,15 +442,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../materials/1-workshop1/1-welcome-to-quarto/index.html" class="pagination-link">
-        <span class="nav-page-text">Module 2: Welcome to Quarto</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../materials/1-workshop1/3-tidyverse-101/index.html" class="pagination-link">
+        <span class="nav-page-text"><b>Module 3</b>: Intro to data visualizaion with the <code>tidyverse</code></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">© 2023. Huge thanks to <a href="https://github.com/andrewpbray">Andrew P. Bray</a> and <a href="https://github.com/clauswilke">Claus O. Wilke</a> for open source code.</div>   
+    <div class="nav-footer-left">© 2023. Huge thanks to <a href="https://github.com/andrewpbray">Andrew P. Bray</a> and <a href="https://github.com/clauswilke">Claus O. Wilke</a> for open source code and sharing content.</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
