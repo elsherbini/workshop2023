@@ -16,7 +16,7 @@ css: assets/index.css
 
 ::: {.g-col-8}
 
-![](assets/images/durban_workshop_stickers_front_page.png){#fig-ref width=50%} 
+![](assets/images/durban_workshop_stickers_front_page.png){width=50%} 
 
 :::
 

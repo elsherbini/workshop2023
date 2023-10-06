@@ -31,20 +31,24 @@ website:
       style: docked
       align: left
       contents:
-          - section: "Reproducible Data Analysis with R"
+          - section: "<b>1. Reproducible Data Analysis with R</b>"
             contents:
-            - section: "Modules "
+            - text: "<b>Module 0:</b> Welcome to the workshop"
+            - text: "<b>Module 1</b>: How data analysis is informed by data generation"
+            - text: "<b>Module 2</b>: Intro to R, Rstudio, and Quarto"
               contents:
-              - text: "Module 1: Intro to R"
-                contents:
-                href: materials/1-workshop1/2-intro-to-r/index.qmd
-              - text: "Module 2: Welcome to Quarto"
-                href: materials/1-workshop1/1-welcome-to-quarto/index.qmd
-          - section: "Working with High Dimensional 16S rRNA Sequencing Data in R"
-          - section: "Bioinformatics and Transcriptomics Data Analysis"
+              href: materials/1-workshop1/2-intro-to-r/index.qmd
+            - text: "<b>Module 3</b>: Intro to data visualizaion with the <code>tidyverse</code>"
+              contents:
+              href: materials/1-workshop1/3-tidyverse-101/index.qmd
+            - text: "<b>Module 4</b>: Data wrangling and more data visualization"
+            - text: "<b>Module 5</b>: <code>tableone</code> and statistics for clincal data"
+            - text: "<b>Module 6</b>: Data transformations and more statistics"
+          - section: "<em>2. Working with High Dimensional Data in R - human microbiome - Coming April 2024 </em>"
+          - section: "<em>3. Bioinformatics and Transcriptomics Data Analysis - Coming October 2024</em>"
   page-footer:
     right: "This page is built with {{< fa heart >}} and [Quarto](https://quarto.org/)."
-    left: "&copy; 2023. Huge thanks to [Andrew P. Bray](https://github.com/andrewpbray) and [Claus O. Wilke](https://github.com/clauswilke) for open source code."
+    left: "&copy; 2023. Huge thanks to [Andrew P. Bray](https://github.com/andrewpbray) and [Claus O. Wilke](https://github.com/clauswilke) for open source code and sharing content."
 
 format: 
   html:

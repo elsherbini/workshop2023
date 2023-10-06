@@ -1,0 +1,75 @@
+---
+title: "`tidyverse` plotting and data wrangling"
+subtitle: "Slides remixed from Claus O. Wilke"
+format: qmdrslides-revealjs
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r}
+#| echo: false
+library(countdown)
+```
+
+## {data-menu-title="Website Link" style="text-align: center"}
+
+\
+\
+\
+
+:::{.r-fit-text}
+Workshop materials are at:
+
+[https://elsherbini.github.io/durban-data-science-for-biology/](https://elsherbini.github.io/durban-data-science-for-biology/)
+:::
+
+## {data-menu-item="Workshop Goals"}
+
+\
+\
+
+### Goals for this session {style="font-size: 2.5em; text-align: center"}
+
+:::{.incremental style="font-size: 1.5em"}
+1. Get the big picture of data visualization 
+
+2. Learn how to use make plots with the `tidyverse`
+
+:::
+
+## Discussions: discord
+
+Ask questions at **#workshop-questions** on [https://discord.gg/UDAsYTzZE](https://discord.gg/UDAsYTzZE).
+
+![](images/discord_durban.png){fig-alt="Screenshot of the discord server app that serves as the forum for the workshop." fig-align="center" width="546"}
+
+## Stickies
+
+:::{layout="[[4, 5, 1]]" layout-valign=center}
+![](images/sticky.jpeg){fig-alt="Picture of a laptop with a red sticky note stuck to the top." width=540}
+
+During an activity, place a [**blue**]{style="color: DarkTurquoise"}  sticky on your laptop if you're good to go and a [**pink**]{style="color: hotpink"} sticky if you want help.
+:::
+
+:::footer
+Image by [Megan Duffy](https://dynamicecology.wordpress.com/2015/01/13/sticky-notes-as-a-teaching-and-lab-meeting-tool/)
+:::
+
+## Practicalities
+:::{.r-fit-text}
+WiFi:
+
+Network: CAPRISA-Corp
+
+Password: corp@caprisa17
+:::
+
+## 
+
+:::{style="text-align:center"}
+{{< fa clone size=5x >}}
+:::
+
+\
+
+On your way out the door for lunch, please write on a [**blue**]{style="color: DarkTurquoise"} sticky note one that confused or frustrated you and on a [**pink**]{style="color: HotPink"} sticky something that you enjoyed, or got your excited.

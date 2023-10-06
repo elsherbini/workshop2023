@@ -9,3 +9,6 @@ title: "Intro to R, RStudio, and Quarto"
 ```{=html}
 <iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 ```
+
+
+[Go to exercise](exercise_1.qmd)

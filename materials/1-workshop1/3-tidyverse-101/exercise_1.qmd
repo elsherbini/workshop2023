@@ -1,46 +1,14 @@
 ---
 title: "Exploring Data for Patterns"
+subtitle: "<em>reproduced from a Schmidt Science Fellowship activity, thanks to Fatima Hussain</em>"
 ---
 
+
+\
+
+## Activity
+
 > Patterns are the essence of data exploration and our eyes' ability to pick them out is integral to data understanding. Much of the data we work with, however, do not have a natural form and we need to make decisions about how they are to be represented. Try different ways to visualize the datasets so meaningful patterns may be found.  
-
-\
-
-**Consider the following concepts when creating your visualizations**  
-
-+------------------------------------------------------------------:+:----------------------------------------------------------------------+
-|**Patterns** are the essence of data exploration. What             |**Color** is a powerful encoding that presents several challenges.     |
-|kinds of representation will produce the most meaningful           |Have you chosen a color scale that is optimal for that data type?      |
-|insights?                                                          |   ![](images\ws_color1.png){width=100}                                |
-|  ![](images\ws_patterns1.png){width=200}                          |   ![](images\ws_color2.png){width=100}                                |
-|  ![](images\ws_patterns2.png){width=200}                          |   ![](images\ws_color3.png){width=100}                                |
-|  ![](images\ws_patterns3.png){width=200}                          |   ![](images\ws_color4.png){width=100}                                |
-|  ![](images\ws_patterns4.png){width=200}                          |                                                                       |
-|                                                                   |                                                                       |
-|                                                                   |                                                                       |
-|                                                                   |                                                                       |
-+-------------------------------------------------------------------+-----------------------------------------------------------------------+
-| **Encodings**                                                     | **Salience and Relevance**                                            |
-|Some visual estimations are easier to make than others. How        | Pop-out effects enable quick recognition. Are the most noticeable     |  
-| might you use encodings that are less accurate but otherwise      | elements of your visualizations also the most relevant?               |
-| better at conveying overall trends?                               |     ![](images\ws_salience2.png){width=400}                           |
-| ![](images\ws_encod1.png){width=150}                              |                                                                       |
-| ![](images\ws_encod2.png){width=150}                              |                                                                       |
-| ![](images\ws_encod3.png){width=100}                              |                                                                       |
-|                                                                   |                                                                       | 
-|                                                                   |                                                                       |
-|                                                                   |                                                                       |
-+-------------------------------------------------------------------+-----------------------------------------------------------------------+
-
-\
-
-|           1. Working in small groups, choose to work with dataset 1 or 2  
-|           2. Create different visualizations to highlight underlying patterns  
-|           3. Summarize the group's approach  
-|           4. Elect/volunteer a spokesperson to present the solution  
-  
-  
-\
 
 
 ### Genetic profiles of cancer  
@@ -70,15 +38,56 @@ These datasets contains 10 cancer samples. @tbl-1 describes the mutational statu
 
 
 
- 
+ \
+
+|           1. Think about the problem on your own for 5 minutes.  
+|           2. In your groups, discuss and create different visualizations to highlight underlying patterns  
+|           3. Summarize the group's approach  
+|           4. Elect/volunteer a spokesperson to present the solution  
+  
+  
+\
 
 
 
 
 
 
+**Consider the following concepts when creating your visualizations**
+
+::: {.grid}
+
+:::{.g-col-6}
+**Patterns** are the essence of data exploration. What kinds of representation will produce the most meaningful insights? 
+
+![](images/ws_patterns1.png){width=200}
+![](images/ws_patterns2.png){width=200}
+![](images/ws_patterns3.png){width=200}
+![](images/ws_patterns4.png){width=200}
 
 
+**Encodings** 
+Some visual estimations are easier to make than others. How might you use encodings that are less accurate but otherwise better at conveying overall trends?
+
+![](images/ws_encod1.png){width=150}
+![](images/ws_encod2.png){width=150}
+![](images/ws_encod3.png){width=100}
+:::
+
+:::{.g-col-6}
+**Color** is a powerful encoding that presents several challenges. Have you chosen a color scale that is optimal for that data type?
+
+![](images/ws_color1.png){width=100}
+![](images/ws_color2.png){width=100}
+![](images/ws_color3.png){width=100}
+![](images/ws_color4.png){width=100}
+
+**Salience and Relevance**
+Pop-out effects enable quick recognition. Are the most noticeable elements of your visualizations also the most relevant?
+![](images/ws_salience2.png){width=400}
+
+:::
+:::
 
 
 ```{r}
