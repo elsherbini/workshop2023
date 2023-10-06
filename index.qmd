@@ -24,92 +24,25 @@ css: assets/index.css
 
 This week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research.
 
-::: content-block
-::: features
-| Date/Time  | Topic  | Session Leader|
+
+| Date/Time  | Topic  | Instructor|
 |--------|--------|--------|
-| **Monday, October 16^th^**  | | |
-| AM   | Course Introduction & Introduction to data types (lecture) | Salina Hussain and Suuba Demby (HMS)|
-| PM | Introduction to R, R Studio, and Quarto notebooks (lab) | Joseph Elsherbini (HMS) |
-| **Tuesday, October 17^th^**  | | |
-| AM   | Data wrangling and visualization with tidyverse (lecture/lab) | Scott Handley (WUSM)|
-| PM | Exploratory Data Analysis and Visualization (lab) | San Emmanuel James (UKZN) |
-| **Wednesday, October 18^th^**  | | |
-| AM   | Basic Statistics in R (lecture) | Marothi Letsoalo (UKZN)|
-| PM | Small group worktime (lab) | Participants |
-| **Thursday, October 19^th^**  | | |
-| AM   | Data distributions and practical considerations (lecture)| Laura Symul (Stanford)|
-| PM | Customizing visualizations for publications (lab) | Joseph Elsherbini and Chandani Desai (HMS)  
-|Reception|||
-| **Friday, October 20^th^**  | | |
-| AM   | Keynote | Lenine Liebenberg|  
-| Small group work time |  | Participants |  
+| **Monday, October 16^th^**  | --|-- |
+| AM   | Course Introduction & Introduction to data types | Salina Hussain and Suuba Demby (Ragon Institute)|
+| PM | Intro to R, Rstudio, and Quarto  | Chandani Desai and Joseph Elsherbini (Ragon Institute) |
+| **Tuesday, October 17^th^**  |-- |-- |
+| AM   | Intro to data visualizaion with the <code>tidyverse</code> | Scott Handley (Wash U School of Medicine)|
+| PM | Data wrangling and more data visualization | Joseph Elsherbini  (Ragon Institute) |
+| **Wednesday, October 18^th^**  |-- | --|
+| AM   | <code>tableone</code> and statistics for clincal data  | Marothi Letsoalo (CAPRISA)|
+| PM | Small group worktime  | Participants |
+| **Thursday, October 19^th^**  |-- | --|
+| AM   | Data transformations and more statistics | Laura Symul (UCLouvain)|
+| PM | Small group worktime  | Participants |
+|Evening|Reception||
+| **Friday, October 20^th^**  |-- | --|
+| AM   | Keynote | Lenine Liebenberg (CERI Stellenbosch)|  
+| | Small group work time | Participants |  
 | PM | Small group presentations | |Small group work time | Participants |
- |
+: Schedule {#tbl-1 .table-bordered .table-sm}
 
-: Program {tbl-colwidths="[75,25]"}
-:::
-
-::: feature
-### Monday October 16^th^
-
--   9-10:30 am 
--   10:30-11 am 
--   11-12:30 pm
--   12:30-1:30 pm Lunch
--   1:30-3 pm 
--   3-3:30 pm
--   3:30-5:00 pm
-:::
-
-::: feature
-### Tuesday October 17^th^
-
--   9-10:30 am 
--   10:30-11 am 
--   11-12:30 pm
--   12:30-1:30 pm Lunch
--   1:30-3 pm 
--   3-3:30 pm
--   3:30-5:00 pm
-:::
-:::
-::: features
-::: feature
-### Wednesday October 18^th^
-
--   9-10:30 am 
--   10:30-11 am 
--   11-12:30 pm
--   12:30-1:30 pm Lunch
--   1:30-3 pm 
--   3-3:30 pm
--   3:30-5:00 pm
-:::
-
-::: feature
-### Thursday October 19^th^
-
--   9-10:30 am 
--   10:30-11 am 
--   11-12:30 pm
--   12:30-1:30 pm Lunch
--   1:30-3 pm 
--   3-3:30 pm
--   3:30-5:00 pm
-:::
-:::
-::: features
-::: feature
-### Friday October 20^th^
-
--   9-10:30 am 
--   10:30-11 am 
--   11-12:30 pm
--   12:30-1:30 pm Lunch
--   1:30-3 pm 
--   3-3:30 pm
--   3:30-5:00 pm
-:::
-
-:::

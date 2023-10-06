@@ -17,8 +17,7 @@ sidebar: false
 **Scott Handley, PhD**  
 Associate Professor  
 Washington University School of Medicine  
-Department of Pathology and Immunology  
-shandley@wustl.edu  
+Department of Pathology and Immunology
 :::
 :::
 
@@ -29,8 +28,7 @@ shandley@wustl.edu
 ::: {.column width="70%"}
 **Joseph Elsherbini, PhD**  
 Data Scientist  
-Ragon Institute of MGH, MIT and Harvard  
-jelsherbini@mgh.harvard.edu  
+Ragon Institute of MGH, MIT and Harvard
 :::
 :::
 
@@ -41,20 +39,18 @@ jelsherbini@mgh.harvard.edu
 ::: {.column width="70%"}
 **Chandani Desai**  
 Project Manager  
-Ragon Institute of MGH, MIT and Harvard  
-cdesai@mgh.harvard.edu  
+Ragon Institute of MGH, MIT and Harvard
 :::
 :::
 
 ::: columns
 ::: {.column width="30%"}
-![](){fig-align="left"}
+![](images/Marothi.png){fig-align="left"}
 :::
 ::: {.column width="70%"}
-**Marothi Letsoalo**  
-Biostatistician  
-University of KwaZulu Natal  
-(Email)  
+**Marothi Peter Letsoalo**  
+Senior Biostatistician  
+Center for the AIDS Programme of Research in South Africa
 :::
 :::
 
@@ -66,7 +62,6 @@ University of KwaZulu Natal
 **Laura Symul**  
 Assistant Professor  
 Institute of Statistics, Biostatistics and Actuarial Sciences
-lsymul@stanford.edu
 :::
 :::
 
@@ -77,8 +72,7 @@ lsymul@stanford.edu
 ::: {.column width="70%"}
 **Lenine Liebenberg**  
 Chief Researcher  
-Centre for Epidemic Response and Innovation  
-Lenine.Liebenberg@caprisa.org
+Centre for Epidemic Response and Innovation
 :::
 :::
 
@@ -88,9 +82,8 @@ Lenine.Liebenberg@caprisa.org
 :::
 ::: {.column width="70%"}
 **Salina Hussain**  
-Research Technician II  
-Ragon Institute of MGH, MIT and Harvard  
-SHUSSAIN0@mgh.harvard.edu  
+Research Technician
+Ragon Institute of MGH, MIT and Harvard
 :::
 :::
 
@@ -100,9 +93,8 @@ SHUSSAIN0@mgh.harvard.edu
 :::
 ::: {.column width="70%"}
 **Suuba Demby**  
-Research Technician II  
-Ragon Institute of MGH, MIT and Harvard  
-suubademby@college.harvard.edu  
+Research Technician
+Ragon Institute of MGH, MIT and Harvard
 :::
 :::
 
