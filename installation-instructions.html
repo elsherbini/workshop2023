@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science for Biology Workshop Series – ex-2</title>
+<title>Data Science for Biology Workshop Series - Installing R and RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../../">
-<script src="../../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="../../../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Data Science for Biology Workshop Series</span>
     </a>
   </div>
@@ -83,15 +117,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../../installation-instructions.html" rel="" target="">
+    <a class="nav-link active" href="./installation-instructions.html" rel="" target="" aria-current="page">
  <span class="menu-text">Installation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../../resources.html" rel="" target="">
+    <a class="nav-link" href="./resources.html" rel="" target="">
  <span class="menu-text">Resources</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../../about.html" rel="" target="">
+    <a class="nav-link" href="./about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -115,7 +149,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Installing R and RStudio</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -138,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../materials/1-workshop1/0-welcome/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./materials/1-workshop1/0-welcome/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 0:</b> Welcome to the workshop</span></a>
   </div>
 </li>
@@ -147,13 +181,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../materials/1-workshop1/2-intro-to-r/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./materials/1-workshop1/2-intro-to-r/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 2</b>: Intro to R, Rstudio, and Quarto</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../materials/1-workshop1/3-tidyverse-101/index.html" class="sidebar-item-text sidebar-link">
+  <a href="./materials/1-workshop1/3-tidyverse-101/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 3</b>: Intro to data visualizaion with the <code>tidyverse</code></span></a>
   </div>
 </li>
@@ -185,11 +219,109 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Installing R and RStudio</h1>
+</div>
 
 
-<p>Spatial Logical Toy Inventor: Erno Rubik Assignee: Politoys Ipari Szovetkezet, Budapest, Hungary The first patent by the inventor is registered in Hungary. Appl. No.: 289,192 Filed: Aug.&nbsp;3, 1981 Background of the Invention The invention relates to a spatial logical toy having a total of eighteen toy elements which form a regular or an irregular spatial body, preferably an oblong body, in the assembled state. Spatial logical toys are well known, such as that described in the HU-PS No.&nbsp;170 062 of the same applicant, which relates to a spatial logical toy consisting of twenty-seven solids which form a cube in the assembled state. The toy elements, in the shape of small cubes, may be turned along the spatial axes of the cube by means of connecting elements arranged in the geometric center of the large cube. The surfaces of the small cubes forming each surface of the large cube are colored or carry numbers, figures or any other symbols which can be assembled into the predetermined logical order of sequence by simultaneously rotating the nine toy elements forming the surfaces of the large cube. Summary of the Invention The logical toy according to the present invention represents an improved form of the previously described spatial logical toy. The construction is based on the same principles, however, the internal connection is performed by means of absolutely new and particular solids. The key feature according to the invention, i.e.&nbsp;shape, <del>name, sounds,</del> mode of interconnection and central fixture will be described in detail by means of two preferred embodiments, by the aid of the accompanying drawings, wherein. Component blocks of the spatial logial toy. ex-2-figs.png What is claimed is: 1. In a spatial logical toy assembled from a plurality of toy elements, of which a predetermined number may be rotated in the direction of the spatial axes starting from the geometrical center of the logical toy, the improvement wherein the spatial logical toy is formed by a total of eighteen toy elements. Two sets of eight toy elements each comprise substantially cubiforms with integally formed cam elements and each of the sets comprise eight identical toy elements, and two connecting toy elements, and means for joining the connecting toy elements to coact with the cam elements to form an integrated toy body, the joining means comprising a single screw enclosed by a spring. The spatial logical toy as claimed in claim 1, wherein the toy has the shape of a regular geometrical body in the assembled state. The toy elements thereof belonging to one set comprise eight cubiform homologous elements each having a first cam element connected to one corner thereof. Two confining surfaces of which lie at a unit distance from two surfaces of the cube and are parallel therewith and are cut-off in the form of an ellipsis-quarter, and a third confining surface thereof is coplanar with another surface of the cube and between the two confining faces of the first cam element running parallel with the cube and the cube there is a hollow with a convex spherical surface.</p>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>adapted from <a href="datacarpentry.org">datacarpentry.org</a></p>
+<p>For this workshop, we will need R as well RStudio. R and RStudio are both completely free and open source software. While R is the underlying statistical computing environment, RStudio is the graphical IDE (integrated development environment) that makes using R easier, more intuitive, and interactive. Both are separate downloads and installations, and you will need to install R first, followed by RStudio. Once both are installed, you would just open and work in RStudio, which will run R in the background. Then you will install some R packages (collections of functions you can use in your own coding) which we are using for this workshop. Please install <code>R version 4.3.1</code> or later and <code>RStudio version 2023.09.0</code> or later.</p>
+<section id="step-1---follow-instructions-for-your-operating-system" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="step-1---follow-instructions-for-your-operating-system"><span class="header-section-number">1</span> Step 1 - follow instructions for your operating system</h2>
+<section id="for-windows-see-sec-windows" class="level4" data-number="1.0.1">
+<h4 data-number="1.0.1" class="anchored" data-anchor-id="for-windows-see-sec-windows"><span class="header-section-number">1.0.1</span> For Windows see <strong><a href="#sec-windows">Section&nbsp;3</a></strong></h4>
+</section>
+<section id="for-macos-see-sec-mac" class="level4" data-number="1.0.2">
+<h4 data-number="1.0.2" class="anchored" data-anchor-id="for-macos-see-sec-mac"><span class="header-section-number">1.0.2</span> For MacOS see <strong><a href="#sec-mac">Section&nbsp;4</a></strong></h4>
+</section>
+<section id="for-linux-see-sec-linux" class="level4" data-number="1.0.3">
+<h4 data-number="1.0.3" class="anchored" data-anchor-id="for-linux-see-sec-linux"><span class="header-section-number">1.0.3</span> For Linux see <strong><a href="#sec-linux">Section&nbsp;5</a></strong></h4>
+</section>
+</section>
+<section id="step-2---install-r-packages" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="step-2---install-r-packages"><span class="header-section-number">2</span> Step 2 - install R packages</h2>
+<p>Open RStudio and <i class="fa-solid fa-paste"></i>Paste the following into your console on the left/bottom-left.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"broom"</span>, <span class="st">"cluster"</span>, <span class="st">"colorspace"</span>, <span class="st">"cowplot"</span>, <span class="st">"distill"</span>, <span class="st">"gapminder"</span>, <span class="st">"GGally"</span>, <span class="st">"gganimate"</span>, <span class="st">"ggbeeswarm"</span>, <span class="st">"ggiraph"</span>, <span class="st">"ggdendro"</span>, <span class="st">"ggdist"</span>, <span class="st">"ggforce"</span>,<span class="st">"ggplot2movies"</span>, <span class="st">"ggrepel"</span>, <span class="st">"ggridges"</span>, <span class="st">"ggthemes"</span>, <span class="st">"gifski"</span>, <span class="st">"glue"</span>,<span class="st">"knitr"</span>, <span class="st">"learnr"</span>, <span class="st">"naniar"</span>, <span class="st">"margins"</span>, <span class="st">"MASS"</span>, <span class="st">"Matrix"</span>,<span class="st">"nycflights13"</span>, <span class="st">"palmerpenguins"</span>, <span class="st">"patchwork"</span>, <span class="st">"quarto"</span>, <span class="st">"rgdal"</span>, <span class="st">"rmarkdown"</span>,<span class="st">"rnaturalearth"</span>, <span class="st">"sf"</span>, <span class="st">"shinyjs"</span>, <span class="st">"tableone"</span>, <span class="st">"tidyverse"</span>, <span class="st">"transformr"</span>, <span class="st">"umap"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="sec-windows" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="sec-windows"><span class="header-section-number">3</span> Windows</h2>
+<section id="if-you-dont-have-r-and-rstudio-installed" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="if-you-dont-have-r-and-rstudio-installed"><span class="header-section-number">3.1</span> If you don’t have R and RStudio installed:</h3>
+<p>Go to <a href="https://posit.co/download/rstudio-desktop/">https://posit.co/download/rstudio-desktop/</a> and follow this instruction for windows.</p>
+</section>
+<section id="if-you-already-have-r-and-rstudio-installed-check-to-see-if-updates-are-available." class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="if-you-already-have-r-and-rstudio-installed-check-to-see-if-updates-are-available."><span class="header-section-number">3.2</span> If you already have R and RStudio installed, check to see if updates are available.</h3>
+<p>RStudio: Open RStudio and click on Help &gt; Check for updates. If a new version is available, quit RStudio, and download the latest version.</p>
+<p>R: Upon starting RStudio, the version of R you are running will appear on the console. You can also type <code>sessionInfo()</code> in the console to display the version of R you are running. The CRAN website will tell you if there is a more recent version available. You can update R using the <code>installr</code> package, by running:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># installr is for windows only!</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="sc">!</span>(<span class="st">"installr"</span> <span class="sc">%in%</span> <span class="fu">installed.packages</span>()) ){<span class="fu">install.packages</span>(<span class="st">"installr"</span>)} </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>installr<span class="sc">::</span><span class="fu">updateR</span>(<span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="sec-mac" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="sec-mac"><span class="header-section-number">4</span> MacOs</h2>
+<section id="check-your-processor" class="level3 text-left" data-number="4.1">
+<h3 class="text-left anchored" data-number="4.1" data-anchor-id="check-your-processor"><span class="header-section-number">4.1</span> Check your processor</h3>
+<p><em>adapted from <a href="https://docs.cse.lehigh.edu/determine-mac-architecture/">https://docs.cse.lehigh.edu/determine-mac-architecture/</a></em></p>
+<p>Make sure you are downloading and installing the right version of R and R Studio for your laptop’s CPU. Some Macs have an intel chip (also known as x64 or x86_64 architecture), while the newest macs have M1 or M2 chips (also known as ARM architecture).</p>
+<p>To determine whether a Mac is running an Intel Processor or Apple ARM M1 or M2, click on the <i class="fa-brands fa-apple"></i> Apple Menu and select ‘About this Mac’:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/images/determine-mac-architecture01.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">click about this mac</figcaption>
+</figure>
+</div>
+<p>From the ‘About this Mac’ screen, on the ‘Overview’ tab, look for a line that indicates either ‘Chip’ or ‘Processor’. If the line contains M1 or M2, the machine is running Apple Silicon. Alternatively, the word Intel indicates that the machine is running an Intel-based Core series processor.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/images/determine-mac-architecture-m1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">M1 or M2</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/images/determine-mac-architecture-intel.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">intel</figcaption>
+</figure>
+</div>
+</section>
+<section id="if-you-dont-have-r-and-rstudio-installed-1" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="if-you-dont-have-r-and-rstudio-installed-1"><span class="header-section-number">4.2</span> If you don’t have R and RStudio installed:</h3>
+<p>Go to <a href="https://posit.co/download/rstudio-desktop/">https://posit.co/download/rstudio-desktop/</a> and follow this instruction for MacOS.</p>
+</section>
+<section id="if-you-already-have-r-and-rstudio-installed-check-to-see-if-updates-are-available.-1" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="if-you-already-have-r-and-rstudio-installed-check-to-see-if-updates-are-available.-1"><span class="header-section-number">4.3</span> If you already have R and RStudio installed, check to see if updates are available.</h3>
+<p><strong>RStudio:</strong> Open RStudio and click on Help &gt; Check for updates. If a new version is available, quit RStudio, and download the latest version.</p>
+<p><strong>R:</strong> Upon starting RStudio, the version of R you are running will appear on the console. You can also type sessionInfo() to display the version of R you are running. The CRAN website will tell you if there is a more recent version available. For this workshop install version 4.3.1 of R</p>
+</section>
+</section>
+<section id="sec-linux" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="sec-linux"><span class="header-section-number">5</span> Linux</h2>
+<section id="if-you-dont-have-r-and-rstudio-installed-2" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="if-you-dont-have-r-and-rstudio-installed-2"><span class="header-section-number">5.1</span> If you don’t have R and RStudio installed:</h3>
+<p>Go to <a href="https://posit.co/download/rstudio-desktop/">https://posit.co/download/rstudio-desktop/</a> and follow this instruction for your Linux OS.</p>
+</section>
+<section id="if-you-already-have-r-and-rstudio-installed-check-to-see-if-updates-are-available.-2" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="if-you-already-have-r-and-rstudio-installed-check-to-see-if-updates-are-available.-2"><span class="header-section-number">5.2</span> If you already have R and RStudio installed, check to see if updates are available.</h3>
+<p><strong>RStudio:</strong> Open RStudio and click on Help &gt; Check for updates. If a new version is available, quit RStudio, and download the latest version.</p>
+<p><strong>R:</strong> Upon starting RStudio, the version of R you are running will appear on the console. You can also type sessionInfo() to display the version of R you are running. The CRAN website will tell you if there is a more recent version available. For this workshop install version 4.3.1 of R</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
