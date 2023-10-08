@@ -6,23 +6,30 @@ css: assets/index.css
 
 ::: {.grid}
 
-::: {.g-col-4}
+::: {.g-col-6}
 
+# Data Science for Biology
 
-# Data Science Durban Workshop
-
-#### R, Rstudio, and Quarto <br> for clinical research
+#### Workshop 1 - R, Rstudio, and Quarto for clinical research
+This week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research.
 :::
 
-::: {.g-col-8}
+::: {.g-col-6 .text-start}
 
 ![](assets/images/durban_workshop_stickers_front_page.png){width=50%} 
 
 :::
 
+
+
 :::
 
-This week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research.
+
+
+
+## Before the workshop: Installing R and RStudio
+
+Please install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install `R version 4.3.1` and `RStudio version 2023.09.0` [Click here for instructions on installing R and RStudio](installation-instructions.qmd)
 
 
 | Date/Time  | Topic  | Instructor|

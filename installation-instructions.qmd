@@ -1,0 +1,91 @@
+---
+title: "Installing R and RStudio"
+number-sections: true
+format:
+  html:
+    code-overflow: wrap
+execute:
+  eval: false
+---
+
+adapted from [datacarpentry.org](datacarpentry.org)
+
+For this workshop, we will need R as well RStudio. R and RStudio are both completely free and open source software. While R is the underlying statistical computing environment, RStudio is the graphical IDE (integrated development environment) that makes using R easier, more intuitive, and interactive. Both are separate downloads and installations, and you will need to install R first, followed by RStudio. Once both are installed, you would just open and work in RStudio, which will run R in the background. Then you will install some R packages (collections of functions you can use in your own coding) which we are using for this workshop. Please install `R version 4.3.1` or later  and `RStudio version 2023.09.0` or later. 
+
+## Step 1 - follow instructions for your operating system
+
+#### For Windows see **@sec-windows**
+
+#### For MacOS see **@sec-mac**
+
+#### For Linux see **@sec-linux**
+
+
+## Step 2 - install R packages
+
+Open RStudio and {{< fa solid paste >}}Paste the following into your console on the left/bottom-left.
+
+```r
+install.packages(c("broom", "cluster", "colorspace", "cowplot", "distill", "gapminder", "GGally", "gganimate", "ggbeeswarm", "ggiraph", "ggdendro", "ggdist", "ggforce","ggplot2movies", "ggrepel", "ggridges", "ggthemes", "gifski", "glue","knitr", "learnr", "naniar", "margins", "MASS", "Matrix","nycflights13", "palmerpenguins", "patchwork", "quarto", "rgdal", "rmarkdown","rnaturalearth", "sf", "shinyjs", "tableone", "tidyverse", "transformr", "umap"))
+```
+
+
+## Windows {#sec-windows}
+
+### If you don’t have R and RStudio installed:
+
+Go to [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/) and follow this instruction for windows.
+
+### If you already have R and RStudio installed, check to see if updates are available. 
+
+RStudio: Open RStudio and click on Help > Check for updates. If a new version is available, quit RStudio, and download the latest version. 
+
+R: Upon starting RStudio, the version of R you are running will appear on the console. You can also type `sessionInfo()` in the console to display the version of R you are running. The CRAN website will tell you if there is a more recent version available. You can update R using the `installr` package, by running: 
+
+```r
+# installr is for windows only!
+if( !("installr" %in% installed.packages()) ){install.packages("installr")} 
+
+installr::updateR(TRUE) 
+```
+
+## MacOs {#sec-mac}
+
+
+### Check your processor {.text-left}
+*adapted from [https://docs.cse.lehigh.edu/determine-mac-architecture/](https://docs.cse.lehigh.edu/determine-mac-architecture/)*
+
+Make sure you are downloading and installing the right version of R and R Studio for your laptop's CPU. Some Macs have an intel chip (also known as x64 or x86_64 architecture), while the newest macs have M1 or M2 chips (also known as ARM architecture).
+
+To determine whether a Mac is running an Intel Processor or Apple ARM M1 or M2, click on the {{< fa brands apple >}} Apple Menu and select 'About this Mac':
+
+![click about this mac](assets/images/determine-mac-architecture01.png)
+
+From the 'About this Mac' screen, on the 'Overview' tab, look for a line that indicates either 'Chip' or 'Processor'. If the line contains M1 or M2, the machine is running Apple Silicon. Alternatively, the word Intel indicates that the machine is running an Intel-based Core series processor.
+
+![M1 or M2](assets/images/determine-mac-architecture-m1.png)
+
+![intel](assets/images/determine-mac-architecture-intel.png)
+
+### If you don’t have R and RStudio installed:
+
+Go to [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/) and follow this instruction for MacOS.
+
+### If you already have R and RStudio installed, check to see if updates are available.
+
+**RStudio:** Open RStudio and click on Help > Check for updates. If a new version is available, quit RStudio, and download the latest version.
+
+**R:** Upon starting RStudio, the version of R you are running will appear on the console. You can also type sessionInfo() to display the version of R you are running. The CRAN website will tell you if there is a more recent version available. For this workshop install version 4.3.1 of R
+
+## Linux {#sec-linux}
+
+### If you don’t have R and RStudio installed:
+
+Go to [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/) and follow this instruction for your Linux OS.
+
+### If you already have R and RStudio installed, check to see if updates are available.
+
+**RStudio:** Open RStudio and click on Help > Check for updates. If a new version is available, quit RStudio, and download the latest version.
+
+**R:** Upon starting RStudio, the version of R you are running will appear on the console. You can also type sessionInfo() to display the version of R you are running. The CRAN website will tell you if there is a more recent version available. For this workshop install version 4.3.1 of R
+

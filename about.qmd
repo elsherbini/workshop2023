@@ -70,7 +70,7 @@ Institute of Statistics, Biostatistics and Actuarial Sciences
 ![](images/Lenine.png){fig-align="left"}
 :::
 ::: {.column width="70%"}
-**Lenine Liebenberg**  
+**Lenine Liebenberg** - Keynote speaker  
 Chief Researcher  
 Centre for Epidemic Response and Innovation
 :::

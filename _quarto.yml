@@ -16,6 +16,8 @@ website:
     background: light
     foreground: dark
     right:
+      - text: "Installation"
+        href: installation-instructions.qmd
       - text: "Resources"
         href: resources.qmd
       - text: "About"
@@ -34,6 +36,8 @@ website:
           - section: "<b>1. Reproducible Data Analysis with R</b>"
             contents:
             - text: "<b>Module 0:</b> Welcome to the workshop"
+              contents:
+              href: materials/1-workshop1/0-welcome/index.qmd
             - text: "<b>Module 1</b>: How data analysis is informed by data generation"
             - text: "<b>Module 2</b>: Intro to R, Rstudio, and Quarto"
               contents:

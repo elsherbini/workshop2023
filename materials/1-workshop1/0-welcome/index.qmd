@@ -1,0 +1,15 @@
+---
+title: "Welcome to the workshop"
+---
+
+> Get to know your neighbors and instructors and learn what to expect from this workshop
+
+[Make slides full screen](slides.qmd)
+
+```{=html}
+<iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
+
+## Before the workshop: Installing R and RStudio
+
+Please install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install `R version 4.3.1` and `RStudio version 2023.09.0` [Click here for instructions on installing R and RStudio](../../../installation-instructions.qmd)
