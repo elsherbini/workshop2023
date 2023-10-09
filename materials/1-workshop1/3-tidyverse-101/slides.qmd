@@ -1,6 +1,6 @@
 ---
 title: "`tidyverse` plotting and data wrangling"
-subtitle: "Slides remixed from Claus O. Wilke"
+subtitle: "<em>remixed from <a href='https://github.com/wilkelab/SDS375'>Claus O. Wilke's SDS375 course</a></em>"
 format: qmdrslides-revealjs
 editor_options: 
   chunk_output_type: inline
@@ -64,7 +64,36 @@ Network: CAPRISA-Corp
 Password: corp@caprisa17
 :::
 
-## 
+## Group Pen and Paper exercise {.your-turn}
+
+```{r}
+#| echo: false
+countdown::countdown(10, left=0, right=NULL)
+countdown::countdown(30)
+```
+
+Get with your group.
+Go to [this module](index.html/#data-visualization-activity)
+
+1. For the first 10 minutes think on your own
+2. For 30 minutes discuss with your group and produce at least one plot
+3. Someone post a picture on the [{{< fa brands discord >}} #pen-and-paper-activity](https://discord.com/channels/1158136582201692202/1160951454417301585) channel.
+4. Decide on one member of your group to present your plot (3 minute limit per group)
+
+*Note, you can press `'b'` on your keyboard when the slides are full screen to bring up a blackboard. `'b'` again to close. `'del'` to clear your drawing.*
+
+## Presentation {.your-turn}
+
+Have one member from your group present the plot  to everyone! 3 minute limit!
+
+```{r}
+#| echo: false
+countdown::countdown(3)
+```
+
+## The elements of data visualization
+
+Plots map data onto graphical elements
 
 :::{style="text-align:center"}
 {{< fa clone size=5x >}}

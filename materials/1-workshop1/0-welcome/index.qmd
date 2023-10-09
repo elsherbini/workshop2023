@@ -1,9 +1,14 @@
 ---
 title: "Welcome to the workshop"
+format:
+  html:
+    toc: true
 ---
 
 > Get to know your neighbors and instructors and learn what to expect from this workshop
 
+
+## Slides
 [Make slides full screen](slides.qmd)
 
 ```{=html}

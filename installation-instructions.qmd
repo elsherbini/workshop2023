@@ -3,6 +3,7 @@ title: "Installing R and RStudio"
 number-sections: true
 format:
   html:
+    toc: true
     code-overflow: wrap
 execute:
   eval: false
@@ -25,7 +26,7 @@ For this workshop, we will need R as well RStudio. R and RStudio are both comple
 
 Open RStudio and {{< fa solid paste >}}Paste the following into your console on the left/bottom-left.
 
-```r
+```{.r .code-overflow-wrap}
 install.packages(c("broom", "cluster", "colorspace", "cowplot", "distill", "gapminder", "GGally", "gganimate", "ggbeeswarm", "ggiraph", "ggdendro", "ggdist", "ggforce","ggplot2movies", "ggrepel", "ggridges", "ggthemes", "gifski", "glue","knitr", "learnr", "naniar", "margins", "MASS", "Matrix","nycflights13", "palmerpenguins", "patchwork", "quarto", "rgdal", "rmarkdown","rnaturalearth", "sf", "shinyjs", "tableone", "tidyverse", "transformr", "umap"))
 ```
 
@@ -42,7 +43,7 @@ RStudio: Open RStudio and click on Help > Check for updates. If a new version is
 
 R: Upon starting RStudio, the version of R you are running will appear on the console. You can also type `sessionInfo()` in the console to display the version of R you are running. The CRAN website will tell you if there is a more recent version available. You can update R using the `installr` package, by running: 
 
-```r
+```{.r .code-overflow-wrap}
 # installr is for windows only!
 if( !("installr" %in% installed.packages()) ){install.packages("installr")} 
 

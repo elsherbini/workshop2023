@@ -1,6 +1,6 @@
 ---
 title: "Intro to R,R Studio, and Quarto"
-subtitle: "Slides remixed from Andrew P. Bray and Claus O. Wilke"
+subtitle: "<em>remixed from <a href='https://github.com/wilkelab/SDS375'>Claus O. Wilke's SDS375 course</a></em> and <a href='https://github.com/posit-conf-2023/quarto-r'> Andrew P. Bray's quarto workshop</a></em>"
 format: qmdrslides-revealjs
 editor_options: 
   chunk_output_type: inline

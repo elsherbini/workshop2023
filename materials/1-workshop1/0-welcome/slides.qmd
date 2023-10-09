@@ -68,18 +68,6 @@ Password: corp@caprisa17
 :::
 
 
-## Flow of the Workshop
-
-:::{.r-stretch layout="[2, 2]" style="text-align: center"}
-![](images/slide-normal.png){width=540 .drop .fragment}
-
-![](images/slide-discord.png){width=540 .drop .fragment}
-
-![](images/slide-our-turn.png){width=540 .drop .fragment}
-
-![](images/slide-your-turn.png){width=540 .drop .fragment}
-:::
-
 ## Introductions {.your-turn}
 
 ```{r}
@@ -112,8 +100,33 @@ Who are we?
 3. This is a challenging but friendly environment. We are here to learn and grow. In order to make the right environment please follow "[the 4 social rules](https://www.recurse.com/social-rules)" and [code-of-conduct](https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html).
 
 :::
-##
 
+## Flow of the Workshop
+
+:::{.r-stretch layout="[2, 2]" style="text-align: center"}
+![](images/slide-normal.png){width=540 .drop .fragment}
+
+![](images/slide-discord.png){width=540 .drop .fragment}
+
+![](images/slide-our-turn.png){width=540 .drop .fragment}
+
+![](images/slide-your-turn.png){width=540 .drop .fragment}
+:::
+
+## The premise of the workshop
+
+We've created a true-to-life "medium dimensional" dataset that we'll use for all instruction
+
+- about 40 participants split across two treatment arms
+- three time points (before treatment, after treatment, and longer follow-up)
+- several measurements per time-point
+
+We've also created group datasets so you can practice applying what you've learned on new data.
+
+
+
+
+##
 :::{style="text-align:center"}
 {{< fa clone size=5x >}}
 :::
