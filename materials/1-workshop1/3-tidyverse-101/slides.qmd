@@ -395,13 +395,19 @@ ggplot(
 
 ## Exercise {.your-turn}
 
+```{r}
+#| echo: false
+
+countdown(30)
+
+```
+
 Time to try it yourself. Go to [the first coding exercise](index.html#coding-exercise-3.1).
 
-:::{layout="[[4, 5, 1]]" layout-valign=center}
 ![](images/sticky.jpeg){fig-alt="Picture of a laptop with a red sticky note stuck to the top." width=540}
 
 During an activity, place a [**blue**]{style="color: DarkTurquoise"}  sticky on your laptop if you're good to go and a [**pink**]{style="color: hotpink"} sticky if you want help.
-:::
+
 
 ---
 
