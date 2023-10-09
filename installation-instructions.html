@@ -98,7 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed">
 
 
 <div id="quarto-search-results"></div>
@@ -215,7 +215,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#step-1---follow-instructions-for-your-operating-system" id="toc-step-1---follow-instructions-for-your-operating-system" class="nav-link active" data-scroll-target="#step-1---follow-instructions-for-your-operating-system"><span class="header-section-number">1</span> Step 1 - follow instructions for your operating system</a></li>
+  <li><a href="#step-2---install-r-packages" id="toc-step-2---install-r-packages" class="nav-link" data-scroll-target="#step-2---install-r-packages"><span class="header-section-number">2</span> Step 2 - install R packages</a></li>
+  <li><a href="#sec-windows" id="toc-sec-windows" class="nav-link" data-scroll-target="#sec-windows"><span class="header-section-number">3</span> Windows</a>
+  <ul class="collapse">
+  <li><a href="#if-you-dont-have-r-and-rstudio-installed" id="toc-if-you-dont-have-r-and-rstudio-installed" class="nav-link" data-scroll-target="#if-you-dont-have-r-and-rstudio-installed"><span class="header-section-number">3.1</span> If you don’t have R and RStudio installed:</a></li>
+  <li><a href="#if-you-already-have-r-and-rstudio-installed-check-to-see-if-updates-are-available." id="toc-if-you-already-have-r-and-rstudio-installed-check-to-see-if-updates-are-available." class="nav-link" data-scroll-target="#if-you-already-have-r-and-rstudio-installed-check-to-see-if-updates-are-available."><span class="header-section-number">3.2</span> If you already have R and RStudio installed, check to see if updates are available.</a></li>
+  </ul></li>
+  <li><a href="#sec-mac" id="toc-sec-mac" class="nav-link" data-scroll-target="#sec-mac"><span class="header-section-number">4</span> MacOs</a>
+  <ul class="collapse">
+  <li><a href="#check-your-processor" id="toc-check-your-processor" class="nav-link" data-scroll-target="#check-your-processor"><span class="header-section-number">4.1</span> Check your processor</a></li>
+  <li><a href="#if-you-dont-have-r-and-rstudio-installed-1" id="toc-if-you-dont-have-r-and-rstudio-installed-1" class="nav-link" data-scroll-target="#if-you-dont-have-r-and-rstudio-installed-1"><span class="header-section-number">4.2</span> If you don’t have R and RStudio installed:</a></li>
+  <li><a href="#if-you-already-have-r-and-rstudio-installed-check-to-see-if-updates-are-available.-1" id="toc-if-you-already-have-r-and-rstudio-installed-check-to-see-if-updates-are-available.-1" class="nav-link" data-scroll-target="#if-you-already-have-r-and-rstudio-installed-check-to-see-if-updates-are-available.-1"><span class="header-section-number">4.3</span> If you already have R and RStudio installed, check to see if updates are available.</a></li>
+  </ul></li>
+  <li><a href="#sec-linux" id="toc-sec-linux" class="nav-link" data-scroll-target="#sec-linux"><span class="header-section-number">5</span> Linux</a>
+  <ul class="collapse">
+  <li><a href="#if-you-dont-have-r-and-rstudio-installed-2" id="toc-if-you-dont-have-r-and-rstudio-installed-2" class="nav-link" data-scroll-target="#if-you-dont-have-r-and-rstudio-installed-2"><span class="header-section-number">5.1</span> If you don’t have R and RStudio installed:</a></li>
+  <li><a href="#if-you-already-have-r-and-rstudio-installed-check-to-see-if-updates-are-available.-2" id="toc-if-you-already-have-r-and-rstudio-installed-check-to-see-if-updates-are-available.-2" class="nav-link" data-scroll-target="#if-you-already-have-r-and-rstudio-installed-check-to-see-if-updates-are-available.-2"><span class="header-section-number">5.2</span> If you already have R and RStudio installed, check to see if updates are available.</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -253,7 +278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-2---install-r-packages" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="step-2---install-r-packages"><span class="header-section-number">2</span> Step 2 - install R packages</h2>
 <p>Open RStudio and <i class="fa-solid fa-paste"></i>Paste the following into your console on the left/bottom-left.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"broom"</span>, <span class="st">"cluster"</span>, <span class="st">"colorspace"</span>, <span class="st">"cowplot"</span>, <span class="st">"distill"</span>, <span class="st">"gapminder"</span>, <span class="st">"GGally"</span>, <span class="st">"gganimate"</span>, <span class="st">"ggbeeswarm"</span>, <span class="st">"ggiraph"</span>, <span class="st">"ggdendro"</span>, <span class="st">"ggdist"</span>, <span class="st">"ggforce"</span>,<span class="st">"ggplot2movies"</span>, <span class="st">"ggrepel"</span>, <span class="st">"ggridges"</span>, <span class="st">"ggthemes"</span>, <span class="st">"gifski"</span>, <span class="st">"glue"</span>,<span class="st">"knitr"</span>, <span class="st">"learnr"</span>, <span class="st">"naniar"</span>, <span class="st">"margins"</span>, <span class="st">"MASS"</span>, <span class="st">"Matrix"</span>,<span class="st">"nycflights13"</span>, <span class="st">"palmerpenguins"</span>, <span class="st">"patchwork"</span>, <span class="st">"quarto"</span>, <span class="st">"rgdal"</span>, <span class="st">"rmarkdown"</span>,<span class="st">"rnaturalearth"</span>, <span class="st">"sf"</span>, <span class="st">"shinyjs"</span>, <span class="st">"tableone"</span>, <span class="st">"tidyverse"</span>, <span class="st">"transformr"</span>, <span class="st">"umap"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"broom"</span>, <span class="st">"cluster"</span>, <span class="st">"colorspace"</span>, <span class="st">"cowplot"</span>, <span class="st">"distill"</span>, <span class="st">"gapminder"</span>, <span class="st">"GGally"</span>, <span class="st">"gganimate"</span>, <span class="st">"ggbeeswarm"</span>, <span class="st">"ggiraph"</span>, <span class="st">"ggdendro"</span>, <span class="st">"ggdist"</span>, <span class="st">"ggforce"</span>,<span class="st">"ggplot2movies"</span>, <span class="st">"ggrepel"</span>, <span class="st">"ggridges"</span>, <span class="st">"ggthemes"</span>, <span class="st">"gifski"</span>, <span class="st">"glue"</span>,<span class="st">"knitr"</span>, <span class="st">"learnr"</span>, <span class="st">"naniar"</span>, <span class="st">"margins"</span>, <span class="st">"MASS"</span>, <span class="st">"Matrix"</span>,<span class="st">"nycflights13"</span>, <span class="st">"palmerpenguins"</span>, <span class="st">"patchwork"</span>, <span class="st">"quarto"</span>, <span class="st">"rgdal"</span>, <span class="st">"rmarkdown"</span>,<span class="st">"rnaturalearth"</span>, <span class="st">"sf"</span>, <span class="st">"shinyjs"</span>, <span class="st">"tableone"</span>, <span class="st">"tidyverse"</span>, <span class="st">"transformr"</span>, <span class="st">"umap"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="sec-windows" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="sec-windows"><span class="header-section-number">3</span> Windows</h2>
@@ -265,7 +290,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="3.2" class="anchored" data-anchor-id="if-you-already-have-r-and-rstudio-installed-check-to-see-if-updates-are-available."><span class="header-section-number">3.2</span> If you already have R and RStudio installed, check to see if updates are available.</h3>
 <p>RStudio: Open RStudio and click on Help &gt; Check for updates. If a new version is available, quit RStudio, and download the latest version.</p>
 <p>R: Upon starting RStudio, the version of R you are running will appear on the console. You can also type <code>sessionInfo()</code> in the console to display the version of R you are running. The CRAN website will tell you if there is a more recent version available. You can update R using the <code>installr</code> package, by running:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># installr is for windows only!</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># installr is for windows only!</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="sc">!</span>(<span class="st">"installr"</span> <span class="sc">%in%</span> <span class="fu">installed.packages</span>()) ){<span class="fu">install.packages</span>(<span class="st">"installr"</span>)} </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>installr<span class="sc">::</span><span class="fu">updateR</span>(<span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
