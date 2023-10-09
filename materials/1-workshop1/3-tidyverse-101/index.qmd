@@ -1,5 +1,5 @@
 ---
-title: "Intro to R, RStudio, and Quarto"
+title: "Intro to data visualization with the <pre>tidyverse</pre>"
 format:
   html:
     toc: true

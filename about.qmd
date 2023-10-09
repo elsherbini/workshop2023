@@ -70,7 +70,8 @@ Institute of Statistics, Biostatistics and Actuarial Sciences
 ![](images/Lenine.png){fig-align="left"}
 :::
 ::: {.column width="70%"}
-**Lenine Liebenberg** - Keynote speaker  
+**Lenine Liebenberg**  
+*Keynote speaker*  
 Chief Researcher  
 Centre for Epidemic Response and Innovation
 :::
@@ -82,7 +83,7 @@ Centre for Epidemic Response and Innovation
 :::
 ::: {.column width="70%"}
 **Salina Hussain**  
-Research Technician
+Research Technician  
 Ragon Institute of MGH, MIT and Harvard
 :::
 :::
@@ -93,7 +94,19 @@ Ragon Institute of MGH, MIT and Harvard
 :::
 ::: {.column width="70%"}
 **Suuba Demby**  
-Research Technician
+Research Technician  
+Ragon Institute of MGH, MIT and Harvard
+:::
+:::
+
+::: columns
+::: {.column width="30%"}
+![](images/Sarah.png){fig-align="left"}
+:::
+::: {.column width="70%"}
+**Sarah Eisa**  
+*Providing support and managing logistics*  
+Program Manager  
 Ragon Institute of MGH, MIT and Harvard
 :::
 :::
