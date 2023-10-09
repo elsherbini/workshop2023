@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science for Biology Workshop Series - Intro to R, RStudio, and Quarto</title>
+<title>Data Science for Biology Workshop Series - Intro to data visualization and data wrangling with the</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -88,6 +122,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Installation</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../../../datasets.html" rel="" target="">
+ <span class="menu-text">Datasets</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../../resources.html" rel="" target="">
  <span class="menu-text">Resources</span></a>
   </li>  
@@ -116,7 +154,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/0-welcome/index.html"><b>1. Reproducible Data Analysis with R</b></a></li><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/3-tidyverse-101/index.html"><b>Module 3</b>: Intro to data visualizaion with the <code>tidyverse</code></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/0-welcome/index.html"><b>1. Reproducible Data Analysis with R</b></a></li><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/3-tidyverse-101/index.html"><b>Module 3</b>: Intro to data visualization and data wrangling with the <code>tidyverse</code></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -155,7 +193,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/1-workshop1/3-tidyverse-101/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><b>Module 3</b>: Intro to data visualizaion with the <code>tidyverse</code></span></a>
+ <span class="menu-text"><b>Module 3</b>: Intro to data visualization and data wrangling with the <code>tidyverse</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -166,6 +204,9 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item">
  <span class="menu-text"><b>Module 6</b>: Data transformations and more statistics</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Module 7</b>: Customizing data visualizations using <code>colorspace</code>, <code>ggplot2</code>, and <code>patchwork</code></span>
   </li>
       </ul>
   </li>
@@ -192,6 +233,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#genetic-profiles-of-cancer" id="toc-genetic-profiles-of-cancer" class="nav-link" data-scroll-target="#genetic-profiles-of-cancer">Genetic profiles of cancer</a></li>
   </ul></li>
+  <li><a href="#coding-exercise-3.1" id="toc-coding-exercise-3.1" class="nav-link" data-scroll-target="#coding-exercise-3.1">Coding exercise 3.1</a></li>
   </ul>
 </nav>
     </div>
@@ -200,7 +242,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Intro to R, RStudio, and Quarto</h1>
+<h1 class="title">Intro to data visualization and data wrangling with the<br>
+<pre>tidyverse</pre></h1>
 </div>
 
 
@@ -216,7 +259,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <blockquote class="blockquote">
-<p>Let’s learn how to use RStudio to run R code and render documents with Quarto.</p>
+<p>Learn the elements of scientific data visualization and how to use them with <code>ggplot2</code></p>
 </blockquote>
 <section id="slides" class="level2">
 <h2 class="anchored" data-anchor-id="slides">Slides</h2>
@@ -470,6 +513,19 @@ ul.task-list li input[type="checkbox"] {
 <p>Pop-out effects enable quick recognition. Are the most <strong>noticeable</strong> elements of your visualizations also the most <strong>relevant</strong>?</p>
 <p><img src="images/ws_salience2.png" class="img-fluid" style="width:90.0%"></p>
 </section>
+</div>
+</div>
+</section>
+<section id="coding-exercise-3.1" class="level2">
+<h2 class="anchored" data-anchor-id="coding-exercise-3.1">Coding exercise 3.1</h2>
+<p>For this exercise we’ll be using the instructional dataset. <a href="../../../datasets.html">Download the dataset here</a>.</p>
+<p>Copy the following code chunk into your quarto document. Notice the error in the <code>read_csv()</code> line - it wants you to supply the <code>file</code> name to read. Fix the error!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># load the tidyverse library</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>() <span class="co"># read in your data </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in read_csv(): argument "file" is missing, with no default</code></pre>
 </div>
 </div>
 

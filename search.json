@@ -30,23 +30,30 @@
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/index.html",
     "href": "materials/1-workshop1/3-tidyverse-101/index.html",
-    "title": "Intro to R, RStudio, and Quarto",
+    "title": "Intro to data visualization and data wrangling with the\ntidyverse",
     "section": "",
-    "text": "Let’s learn how to use RStudio to run R code and render documents with Quarto."
+    "text": "Learn the elements of scientific data visualization and how to use them with ggplot2"
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#slides",
     "href": "materials/1-workshop1/3-tidyverse-101/index.html#slides",
-    "title": "Intro to R, RStudio, and Quarto",
+    "title": "Intro to data visualization and data wrangling with the\ntidyverse",
     "section": "Slides",
     "text": "Slides\nMake slides full screen"
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#data-visualization-activity",
     "href": "materials/1-workshop1/3-tidyverse-101/index.html#data-visualization-activity",
-    "title": "Intro to R, RStudio, and Quarto",
+    "title": "Intro to data visualization and data wrangling with the\ntidyverse",
     "section": "Data Visualization Activity",
     "text": "Data Visualization Activity\nreproduced from a Schmidt Science Fellowship activity, thanks to Fatima Hussain\n\nPatterns are the essence of data exploration and our eyes’ ability to pick them out is integral to data understanding. Much of the data we work with, however, do not have a natural form and we need to make decisions about how they are to be represented. Try different ways to visualize the datasets so meaningful patterns may be found.\n\n\nGenetic profiles of cancer\nThese datasets contains 10 cancer samples. Table 1 describes the mutational status for a set of genes (A-E) and whether a mutation if absent (0) or present (1). Table 2 summarizes the expression levels of those genes, ranging from no expression (0) to high expression (3).\n\n\nTable 1: Mutational status for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n\n\nGene B\n0\n0\n0\n0\n1\n1\n1\n0\n1\n1\n\n\nGene C\n0\n0\n1\n0\n0\n0\n1\n1\n1\n1\n\n\nGene D\n1\n1\n0\n0\n1\n1\n0\n0\n0\n0\n\n\nGene E\n0\n1\n1\n0\n1\n0\n0\n0\n1\n0\n\n\n\n\n\n\nTable 2: Expression levels for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n2\n1\n1\n2\n2\n0\n2\n1\n1\n2\n\n\nGene B\n1\n1\n2\n1\n0\n0\n0\n2\n0\n0\n\n\nGene C\n1\n1\n3\n1\n2\n2\n3\n0\n3\n0\n\n\nGene D\n0\n0\n2\n1\n3\n3\n2\n1\n1\n1\n\n\nGene E\n1\n3\n3\n1\n3\n1\n2\n1\n3\n2\n\n\n\n\n\n\n          1. Think about the problem on your own for 5 minutes.\n          2. In your groups, discuss and create different visualizations to highlight underlying patterns\n          3. Summarize the group’s approach\n          4. Elect/volunteer a spokesperson to present the solution\n\n\nConsider the following concepts when creating your visualizations\n\n\n\n\nPatterns\nPatterns are the essence of data exploration. What kinds of representation will produce the most meaningful insights?\n   \n\n\nEncodings\nSome visual estimations are easier to make than others. How might you use encodings that are less accurate but otherwise better at conveying overall trends?\n  \n\n\n\n\nColor\nColor is a powerful encoding that presents several challenges. Have you chosen a color scale that is optimal for that data type?\n   \n\n\nSalience and Relevance\nPop-out effects enable quick recognition. Are the most noticeable elements of your visualizations also the most relevant?"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#coding-exercise-3.1",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#coding-exercise-3.1",
+    "title": "Intro to data visualization and data wrangling with the\ntidyverse",
+    "section": "Coding exercise 3.1",
+    "text": "Coding exercise 3.1\nFor this exercise we’ll be using the instructional dataset. Download the dataset here.\nCopy the following code chunk into your quarto document. Notice the error in the read_csv() line - it wants you to supply the file name to read. Fix the error!\n\nlibrary(tidyverse) # load the tidyverse library\n\nread_csv() # read in your data \n\nError in read_csv(): argument \"file\" is missing, with no default"
   },
   {
     "objectID": "materials/1-workshop1/2-intro-to-r/index.html",
@@ -144,21 +151,21 @@
     "href": "index.html",
     "title": "Data Science for Biology",
     "section": "",
-    "text": "Data Science for Biology\nWorkshop 1 - R, Rstudio, and Quarto for clinical research\nThis week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research.\n\n\n\n\n\nBefore the workshop: Installing R and RStudio\nPlease install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.3.1 and RStudio version 2023.09.0 Click here for instructions on installing R and RStudio\n\n\nTable 1: Schedule\n\n\n\n\n\n\n\nDate/Time\nTopic\nInstructor\n\n\n\n\nMonday, October 16th\n–\n–\n\n\nAM\nCourse Introduction & Introduction to data types\nSalina Hussain and Suuba Demby (Ragon Institute)\n\n\nPM\nIntro to R, Rstudio, and Quarto\nChandani Desai and Joseph Elsherbini (Ragon Institute)\n\n\nTuesday, October 17th\n–\n–\n\n\nAM\nIntro to data visualizaion with the tidyverse\nScott Handley (Wash U School of Medicine)\n\n\nPM\nData wrangling and more data visualization\nJoseph Elsherbini (Ragon Institute)\n\n\nWednesday, October 18th\n–\n–\n\n\nAM\ntableone and statistics for clincal data\nMarothi Letsoalo (CAPRISA)\n\n\nPM\nSmall group worktime\nParticipants\n\n\nThursday, October 19th\n–\n–\n\n\nAM\nData transformations and more statistics\nLaura Symul (UCLouvain)\n\n\nPM\nSmall group worktime\nParticipants\n\n\nEvening\nReception\n\n\n\nFriday, October 20th\n–\n–\n\n\nAM\nKeynote\nLenine Liebenberg (CERI Stellenbosch)\n\n\n\nSmall group work time\nParticipants\n\n\nPM\nSmall group presentations"
+    "text": "Data Science for Biology\nWorkshop 1 - R, RStudio, and Quarto for clinical research\nThis week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research.\n\n\n\n\n\nBefore the workshop: Installing R and RStudio\nPlease install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.3.1 and RStudio version 2023.09.0 Click here for instructions on installing R and RStudio\n\n\nTable 1: Schedule\n\n\n\n\n\n\n\nDate/Time\nTopic\nInstructor\n\n\n\n\nMonday, October 16th\n–\n–\n\n\nAM\nCourse Introduction & Introduction to data types\nSalina Hussain and Suuba Demby (Ragon Institute)\n\n\nPM\nIntro to R, Rstudio, and Quarto\nChandani Desai and Joseph Elsherbini (Ragon Institute)\n\n\nTuesday, October 17th\n–\n–\n\n\nAM\nIntro to data visualizaion with the tidyverse\nScott Handley (Wash U School of Medicine)\n\n\nPM\nData wrangling and more data visualization\nJoseph Elsherbini (Ragon Institute)\n\n\nWednesday, October 18th\n–\n–\n\n\nAM\ntableone and statistics for clincal data\nMarothi Letsoalo (CAPRISA)\n\n\nPM\nSmall group worktime\nParticipants\n\n\nThursday, October 19th\n–\n–\n\n\nAM\nData transformations and more statistics\nLaura Symul (UCLouvain)\n\n\nPM\nSmall group worktime\nParticipants\n\n\nEvening\nReception\n\n\n\nFriday, October 20th\n–\n–\n\n\nAM\nKeynote\nLenine Liebenberg (CERI Stellenbosch)\n\n\n\nSmall group work time\nParticipants\n\n\nPM\nSmall group presentations"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Location: UKZN Medical School, Durban, SA\nTime: 9:00 am - 5:00 pm October 16th through October 20th\n\n\n\n\n\n\n\n\n\nScott Handley, PhD\nAssociate Professor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\n\nJoseph Elsherbini, PhD\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\n\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\n\nMarothi Peter Letsoalo\nSenior Biostatistician\nCenter for the AIDS Programme of Research in South Africa\n\n\n\n\n\n\n\n\n\n\nLaura Symul\nAssistant Professor\nInstitute of Statistics, Biostatistics and Actuarial Sciences\n\n\n\n\n\n\n\n\n\n\nLenine Liebenberg - Keynote speaker\nChief Researcher\nCentre for Epidemic Response and Innovation\n\n\n\n\n\n\n\n\n\n\nSalina Hussain\nResearch Technician Ragon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\n\nSuuba Demby\nResearch Technician Ragon Institute of MGH, MIT and Harvard"
+    "text": "Location: UKZN Medical School, Durban, SA\nTime: 9:00 am - 5:00 pm October 16th through October 20th\n\n\n\n\n\n\n\n\n\nScott Handley, PhD\nAssociate Professor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\n\nJoseph Elsherbini, PhD\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\n\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\n\nMarothi Peter Letsoalo\nSenior Biostatistician\nCenter for the AIDS Programme of Research in South Africa\n\n\n\n\n\n\n\n\n\n\nLaura Symul\nAssistant Professor\nInstitute of Statistics, Biostatistics and Actuarial Sciences\n\n\n\n\n\n\n\n\n\n\nLenine Liebenberg\nKeynote speaker\nChief Researcher\nCentre for Epidemic Response and Innovation\n\n\n\n\n\n\n\n\n\n\nSalina Hussain\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\n\nSuuba Demby\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\n\nSarah Eisa\nProviding support and managing logistics\nProgram Manager\nRagon Institute of MGH, MIT and Harvard"
   },
   {
     "objectID": "about.html#reproducible-data-analysis-with-r-workshop",
     "href": "about.html#reproducible-data-analysis-with-r-workshop",
     "title": "About",
     "section": "",
-    "text": "Location: UKZN Medical School, Durban, SA\nTime: 9:00 am - 5:00 pm October 16th through October 20th\n\n\n\n\n\n\n\n\n\nScott Handley, PhD\nAssociate Professor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\n\nJoseph Elsherbini, PhD\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\n\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\n\nMarothi Peter Letsoalo\nSenior Biostatistician\nCenter for the AIDS Programme of Research in South Africa\n\n\n\n\n\n\n\n\n\n\nLaura Symul\nAssistant Professor\nInstitute of Statistics, Biostatistics and Actuarial Sciences\n\n\n\n\n\n\n\n\n\n\nLenine Liebenberg - Keynote speaker\nChief Researcher\nCentre for Epidemic Response and Innovation\n\n\n\n\n\n\n\n\n\n\nSalina Hussain\nResearch Technician Ragon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\n\nSuuba Demby\nResearch Technician Ragon Institute of MGH, MIT and Harvard"
+    "text": "Location: UKZN Medical School, Durban, SA\nTime: 9:00 am - 5:00 pm October 16th through October 20th\n\n\n\n\n\n\n\n\n\nScott Handley, PhD\nAssociate Professor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\n\nJoseph Elsherbini, PhD\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\n\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\n\nMarothi Peter Letsoalo\nSenior Biostatistician\nCenter for the AIDS Programme of Research in South Africa\n\n\n\n\n\n\n\n\n\n\nLaura Symul\nAssistant Professor\nInstitute of Statistics, Biostatistics and Actuarial Sciences\n\n\n\n\n\n\n\n\n\n\nLenine Liebenberg\nKeynote speaker\nChief Researcher\nCentre for Epidemic Response and Innovation\n\n\n\n\n\n\n\n\n\n\nSalina Hussain\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\n\nSuuba Demby\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\n\nSarah Eisa\nProviding support and managing logistics\nProgram Manager\nRagon Institute of MGH, MIT and Harvard"
   },
   {
     "objectID": "about.html#about-these-materials",
@@ -166,6 +173,20 @@
     "title": "About",
     "section": "About these materials",
     "text": "About these materials\nThis website started with the code from Andrew Bray’s workshop website and much of the R content has been remixed from SDS375, a course by Claus Wilke."
+  },
+  {
+    "objectID": "datasets.html",
+    "href": "datasets.html",
+    "title": "Datasets",
+    "section": "",
+    "text": "00_sample_ids_UKZN_workshop_2023.csv\n01_participant_metadata_UKZN_workshop_2023.csv\n02_visit_clinical_measurements_UKZN_workshop_2023.csv\n03_elisa_cytokines_UKZN_workshop_2023.csv\n04_flow_cytometry_UKZN_workshop_2023.csv"
+  },
+  {
+    "objectID": "datasets.html#download-the-instructional-dataset",
+    "href": "datasets.html#download-the-instructional-dataset",
+    "title": "Datasets",
+    "section": "",
+    "text": "00_sample_ids_UKZN_workshop_2023.csv\n01_participant_metadata_UKZN_workshop_2023.csv\n02_visit_clinical_measurements_UKZN_workshop_2023.csv\n03_elisa_cytokines_UKZN_workshop_2023.csv\n04_flow_cytometry_UKZN_workshop_2023.csv"
   },
   {
     "objectID": "installation-instructions.html",
@@ -527,113 +548,197 @@
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#section",
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#section",
-    "title": "tidyverse plotting and data wrangling",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "",
     "text": "Workshop materials are at:\nhttps://elsherbini.github.io/durban-data-science-for-biology/"
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#section-1",
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#section-1",
-    "title": "tidyverse plotting and data wrangling",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "",
-    "text": "Goals for this session\n\n\nGet the big picture of data visualization\nLearn how to use make plots with the tidyverse"
+    "text": "Goals for this session\n\n\nGet the big picture of data visualization\nLearn how to wrangle data and make plots with the tidyverse\n\n\n\n\ndata wrangling (n.) - the art of taking data in one format and filtering, reshaping, and deriving values to make the data format you need."
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#discussions-discord",
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#discussions-discord",
-    "title": "tidyverse plotting and data wrangling",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "Discussions: discord",
     "text": "Discussions: discord\nAsk questions at #workshop-questions on https://discord.gg/UDAsYTzZE."
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#stickies",
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#stickies",
-    "title": "tidyverse plotting and data wrangling",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "Stickies",
     "text": "Stickies\n\n\n\n\n\n\nDuring an activity, place a blue sticky on your laptop if you’re good to go and a pink sticky if you want help.\n\n\n\n\nImage by Megan Duffy"
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#practicalities",
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#practicalities",
-    "title": "tidyverse plotting and data wrangling",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "Practicalities",
     "text": "Practicalities\n\nWiFi:\nNetwork: CAPRISA-Corp\nPassword: corp@caprisa17"
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#group-pen-and-paper-exercise",
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#group-pen-and-paper-exercise",
-    "title": "tidyverse plotting and data wrangling",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "Group Pen and Paper exercise",
     "text": "Group Pen and Paper exercise\n\n\n\n−+\n10:00\n\n\n\n\n−+\n30:00\n\n\n\nGet with your group. Go to the activity\n\nFor the first 10 minutes think on your own\nFor 30 minutes discuss with your group and produce at least one plot\nSomeone post a picture on the  #pen-and-paper-activity channel.\nDecide on one member of your group to present your plot (3 minute limit per group)\n\nNote, you can press 'b' on your keyboard when the slides are full screen to bring up a blackboard. 'b' again to close. 'del' to clear your drawing."
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#presentation",
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#presentation",
-    "title": "tidyverse plotting and data wrangling",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "Presentation",
     "text": "Presentation\nHave one member from your group present the plot to everyone! 3 minute limit!\n\n\n\n−+\n03:00"
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#plots-map-data-onto-graphical-elements.",
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#plots-map-data-onto-graphical-elements.",
-    "title": "tidyverse plotting and data wrangling",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "Plots map data onto graphical elements.",
     "text": "Plots map data onto graphical elements.\n\n\n\n\nTable 1: 02_visit_clinical_measurements_UKZN_workshop_2023.csv\n\n\npid\ntime_point\narm\nnugent_score\ncrp_blood\nph\n\n\n\n\npid_01\nbaseline\nplacebo\n8\n0.44\n5.7\n\n\npid_01\nweek_1\nplacebo\n7\n1.66\n5.2\n\n\npid_01\nweek_7\nplacebo\n7\n1.44\n5.4\n\n\npid_02\nbaseline\nplacebo\n7\n1.55\n5.2\n\n\npid_02\nweek_1\nplacebo\n7\n0.75\n4.8\n\n\npid_02\nweek_7\nplacebo\n4\n1.17\n4.2"
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#ph-mapped-to-y-position",
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#ph-mapped-to-y-position",
-    "title": "tidyverse plotting and data wrangling",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "pH mapped to y position",
     "text": "pH mapped to y position"
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#ph-mapped-to-color",
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#ph-mapped-to-color",
-    "title": "tidyverse plotting and data wrangling",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "pH mapped to color",
     "text": "pH mapped to color"
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#commonly-used-aesthetics",
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#commonly-used-aesthetics",
-    "title": "tidyverse plotting and data wrangling",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "Commonly used aesthetics",
     "text": "Commonly used aesthetics\n\nFigure from  Claus O. Wilke. Fundamentals of Data Visualization. O’Reilly, 2019"
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#the-same-data-values-can-be-mapped-to-different-aesthetics",
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#the-same-data-values-can-be-mapped-to-different-aesthetics",
-    "title": "tidyverse plotting and data wrangling",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "The same data values can be mapped to different aesthetics",
     "text": "The same data values can be mapped to different aesthetics\n\nFigure from  Claus O. Wilke. Fundamentals of Data Visualization. O’Reilly, 2019"
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#we-can-use-many-different-aesthetics-at-once",
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#we-can-use-many-different-aesthetics-at-once",
-    "title": "tidyverse plotting and data wrangling",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "We can use many different aesthetics at once",
     "text": "We can use many different aesthetics at once"
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#we-define-the-mapping-with-aes",
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#we-define-the-mapping-with-aes",
-    "title": "tidyverse plotting and data wrangling",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "We define the mapping with aes()",
     "text": "We define the mapping with aes()\n\n```{r}\ntable_02 %&gt;%\n  ggplot(mapping = aes(x = time_point, y = ph, color = ph)) +\n  geom_jitter()\n```"
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#we-frequently-omit-argument-names",
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#we-frequently-omit-argument-names",
-    "title": "tidyverse plotting and data wrangling",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "We frequently omit argument names",
     "text": "We frequently omit argument names\nLong form, all arguments are named:\n\n```{r}\n#| eval: false\n\nggplot(\n  data= table_02,\n  mapping = aes(x = time_point, y = ph, color = ph)\n) +\n  geom_jitter()\n```"
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#we-frequently-omit-argument-names-1",
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#we-frequently-omit-argument-names-1",
-    "title": "tidyverse plotting and data wrangling",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "We frequently omit argument names",
     "text": "We frequently omit argument names\nAbbreviated form, common arguments remain unnamed:\n\n```{r}\n#| eval: false\n\nggplot(table_02, aes(x = time_point, y = ph, color = ph)) +\n  geom_jitter()\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#the-geom-determines-how-the-data-is-shown",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#the-geom-determines-how-the-data-is-shown",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "The geom determines how the data is shown",
+    "text": "The geom determines how the data is shown\n\n```{r}\nggplot(table_02, aes(x = time_point, y = ph, color = ph)) +\n  geom_point()\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#the-geom-determines-how-the-data-is-shown-1",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#the-geom-determines-how-the-data-is-shown-1",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "The geom determines how the data is shown",
+    "text": "The geom determines how the data is shown\n\n```{r}\nggplot(table_02, aes(x = time_point, y = ph, color = ph)) +\n  geom_boxplot()\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#the-geom-determines-how-the-data-is-shown-2",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#the-geom-determines-how-the-data-is-shown-2",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "The geom determines how the data is shown",
+    "text": "The geom determines how the data is shown\n\n```{r}\nggplot(table_02, aes(x = time_point, y = ph, color = ph)) +\n  geom_jitter()\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#different-geoms-have-parameters-for-control",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#different-geoms-have-parameters-for-control",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Different geoms have parameters for control",
+    "text": "Different geoms have parameters for control\n\n```{r}\nggplot(table_02, aes(x = time_point, y = ph, color = ph)) +\n  geom_jitter(size=3)\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#different-geoms-have-parameters-for-control-1",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#different-geoms-have-parameters-for-control-1",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Different geoms have parameters for control",
+    "text": "Different geoms have parameters for control\n\n```{r}\nggplot(table_02, aes(x = time_point, y = ph, color = ph)) +\n  geom_jitter(size=3, width = 0.2)\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#important-color-and-fill-apply-to-different-elements",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#important-color-and-fill-apply-to-different-elements",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Important: color and fill apply to different elements",
+    "text": "Important: color and fill apply to different elements\ncolor Applies color to points, lines, text, borders\nfill Applies color to any filled areas"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#many-geoms-have-both-color-and-fill-aesthetics",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#many-geoms-have-both-color-and-fill-aesthetics",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Many geoms have both color and fill aesthetics",
+    "text": "Many geoms have both color and fill aesthetics\n\n\n```{r}\n#| output-location: column\nggplot(\n  data = table_02,\n  mapping = aes(\n    x = time_point,\n    y = ph,\n    color = time_point\n  )\n) + geom_boxplot()\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#many-geoms-have-both-color-and-fill-aesthetics-1",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#many-geoms-have-both-color-and-fill-aesthetics-1",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Many geoms have both color and fill aesthetics",
+    "text": "Many geoms have both color and fill aesthetics\n\n\n```{r}\n#| output-location: column\nggplot(\n  data = table_02,\n  mapping = aes(\n    x = time_point,\n    y = ph,\n    fill = time_point\n  )\n) + geom_boxplot()\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#many-geoms-have-both-color-and-fill-aesthetics-2",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#many-geoms-have-both-color-and-fill-aesthetics-2",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Many geoms have both color and fill aesthetics",
+    "text": "Many geoms have both color and fill aesthetics\n\n\n```{r}\n#| output-location: column\nggplot(\n  data = table_02,\n  mapping = aes(\n    x = time_point,\n    y = ph,\n    fill = time_point,\n    color = time_point\n  )\n) + geom_boxplot()\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#aesthetics-can-also-be-used-as-parameters-in-geoms",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#aesthetics-can-also-be-used-as-parameters-in-geoms",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Aesthetics can also be used as parameters in geoms",
+    "text": "Aesthetics can also be used as parameters in geoms\n\n\n```{r}\n#| output-location: column\nggplot(\n  data = table_02,\n  mapping = aes(\n    x = time_point,\n    y = ph\n  )\n) + geom_boxplot()\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#aesthetics-can-also-be-used-as-parameters-in-geoms-1",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#aesthetics-can-also-be-used-as-parameters-in-geoms-1",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Aesthetics can also be used as parameters in geoms",
+    "text": "Aesthetics can also be used as parameters in geoms\n\n\n```{r}\n#| output-location: column\nggplot(\n  data = table_02,\n  mapping = aes(\n    x = time_point,\n    y = ph\n  )\n) + geom_boxplot(fill=\"orange\")\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#exercise",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#exercise",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Exercise",
+    "text": "Exercise\nTime to try it yourself. Go to the first coding exercise.\n\n\n\n\n\n\nDuring an activity, place a blue sticky on your laptop if you’re good to go and a pink sticky if you want help."
   }
 ]
