@@ -10,7 +10,7 @@ css: assets/index.css
 
 # Data Science for Biology
 
-#### Workshop 1 - R, Rstudio, and Quarto for clinical research
+#### Workshop 1 - R, RStudio, and Quarto for clinical research
 This week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research.
 :::
 

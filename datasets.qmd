@@ -1,0 +1,11 @@
+---
+title: "Datasets"
+---
+
+## Download the instructional dataset:
+
+- [`00_sample_ids_UKZN_workshop_2023.csv`](datasets/instructional_dataset/00_sample_ids_UKZN_workshop_2023.csv)
+- [`01_participant_metadata_UKZN_workshop_2023.csv`](datasets/instructional_dataset/01_participant_metadata_UKZN_workshop_2023.csv)
+- [`02_visit_clinical_measurements_UKZN_workshop_2023.csv`](datasets/instructional_dataset/02_visit_clinical_measurements_UKZN_workshop_2023.csv)
+- [`03_elisa_cytokines_UKZN_workshop_2023.csv`](datasets/instructional_dataset/03_elisa_cytokines_UKZN_workshop_2023.csv)
+- [`04_flow_cytometry_UKZN_workshop_2023.csv`](datasets/instructional_dataset/04_flow_cytometry_UKZN_workshop_2023.csv)

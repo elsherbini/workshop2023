@@ -1,5 +1,5 @@
 ---
-title: "`tidyverse` plotting and data wrangling"
+title: "Intro to data visualization and data wrangling with the `tidyverse`"
 subtitle: "<em>remixed from <a href='https://github.com/wilkelab/SDS375'>Claus O. Wilke's SDS375 course</a></em>"
 format: qmdrslides-revealjs
 editor_options: 
@@ -80,9 +80,13 @@ Workshop materials are at:
 :::{.incremental style="font-size: 1.5em"}
 1. Get the big picture of data visualization 
 
-2. Learn how to use make plots with the `tidyverse`
-
+2. Learn how to wrangle data and make plots with the `tidyverse`
 :::
+
+::: {.fragment .fade-up}
+> data wrangling (n.) - the art of taking data in one format and filtering, reshaping, and deriving values to make the data format you need.
+:::
+
 
 ## Discussions: discord
 
@@ -258,6 +262,148 @@ ggplot(table_02, aes(x = time_point, y = ph, color = ph)) +
   geom_jitter()
 
 ```
+
+
+## The geom determines how the data is shown  {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+ggplot(table_02, aes(x = time_point, y = ph, color = ph)) +
+  geom_point()
+```
+
+## The geom determines how the data is shown  {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+ggplot(table_02, aes(x = time_point, y = ph, color = ph)) +
+  geom_boxplot()
+```
+
+
+## The geom determines how the data is shown  {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+ggplot(table_02, aes(x = time_point, y = ph, color = ph)) +
+  geom_jitter()
+```
+
+## Different geoms have parameters for control  {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+ggplot(table_02, aes(x = time_point, y = ph, color = ph)) +
+  geom_jitter(size=3)
+```
+
+
+## Different geoms have parameters for control  {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+ggplot(table_02, aes(x = time_point, y = ph, color = ph)) +
+  geom_jitter(size=3, width = 0.2)
+```
+
+
+## Important: `color` and `fill` apply to different elements
+
+
+`color`<br>
+Applies color to points, lines, text, borders
+
+
+`fill`<br>
+Applies color to any filled areas 
+
+
+
+## Many geoms have both `color` and `fill` aesthetics {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+#| output-location: column
+ggplot(
+  data = table_02,
+  mapping = aes(
+    x = time_point,
+    y = ph,
+    color = time_point
+  )
+) + geom_boxplot()
+```
+
+## Many geoms have both `color` and `fill` aesthetics {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+#| output-location: column
+ggplot(
+  data = table_02,
+  mapping = aes(
+    x = time_point,
+    y = ph,
+    fill = time_point
+  )
+) + geom_boxplot()
+```
+
+## Many geoms have both `color` and `fill` aesthetics {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+#| output-location: column
+ggplot(
+  data = table_02,
+  mapping = aes(
+    x = time_point,
+    y = ph,
+    fill = time_point,
+    color = time_point
+  )
+) + geom_boxplot()
+```
+
+## Aesthetics can also be used as parameters in geoms {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+#| output-location: column
+ggplot(
+  data = table_02,
+  mapping = aes(
+    x = time_point,
+    y = ph
+  )
+) + geom_boxplot()
+```
+
+## Aesthetics can also be used as parameters in geoms {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+#| output-location: column
+ggplot(
+  data = table_02,
+  mapping = aes(
+    x = time_point,
+    y = ph
+  )
+) + geom_boxplot(fill="orange")
+```
+
+## Exercise {.your-turn}
+
+Time to try it yourself. Go to [the first coding exercise](index.html#coding-exercise-3.1).
+
+:::{layout="[[4, 5, 1]]" layout-valign=center}
+![](images/sticky.jpeg){fig-alt="Picture of a laptop with a red sticky note stuck to the top." width=540}
+
+During an activity, place a [**blue**]{style="color: DarkTurquoise"}  sticky on your laptop if you're good to go and a [**pink**]{style="color: hotpink"} sticky if you want help.
+:::
+
+---
 
 ---
 :::{style="text-align:center"}

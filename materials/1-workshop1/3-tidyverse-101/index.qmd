@@ -1,11 +1,23 @@
 ---
-title: "Intro to data visualization with the <pre>tidyverse</pre>"
+title: "Intro to data visualization and data wrangling with the <pre>tidyverse</pre>"
 format:
   html:
     toc: true
 ---
 
-> Let's learn how to use RStudio to run R code and render documents with Quarto.
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(countdown)
+library(tidyverse)
+library(cowplot)
+library(colorspace)
+library(here)
+
+```
+> Learn the elements of scientific data visualization and how to use them with `ggplot2`
 
 
 ## Slides
@@ -16,3 +28,5 @@ format:
 ```
 
 {{< include _01_pen_and_paper.qmd >}}
+
+{{< include _02_ggplot_exercise.qmd >}}
