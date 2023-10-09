@@ -8,7 +8,54 @@ editor_options:
 
 ```{r}
 #| echo: false
+#| warning: false
+#| message: false
+
 library(countdown)
+library(tidyverse)
+library(cowplot)
+library(colorspace)
+library(here)
+
+align_legend <- function(p, hjust = 0.5)
+{
+  # extract legend
+  g <- cowplot::plot_to_gtable(p)
+  grobs <- g$grobs
+  legend_index <- which(sapply(grobs, function(x) x$name) == "guide-box")
+  legend <- grobs[[legend_index]]
+
+  # extract guides table
+  guides_index <- which(sapply(legend$grobs, function(x) x$name) == "layout")
+
+  # there can be multiple guides within one legend box  
+  for (gi in guides_index) {
+    guides <- legend$grobs[[gi]]
+    
+    # add extra column for spacing
+    # guides$width[5] is the extra spacing from the end of the legend text
+    # to the end of the legend title. If we instead distribute it by `hjust:(1-hjust)` on
+    # both sides, we get an aligned legend
+    spacing <- guides$width[5]
+    guides <- gtable::gtable_add_cols(guides, hjust*spacing, 1)
+    guides$widths[6] <- (1-hjust)*spacing
+    title_index <- guides$layout$name == "title"
+    guides$layout$l[title_index] <- 2
+
+    # reconstruct guides and write back
+    legend$grobs[[gi]] <- guides
+  }
+  
+  # reconstruct legend and write back
+  g$grobs[[legend_index]] <- legend
+  g
+}
+
+
+theme_set(theme_cowplot(24) + background_grid())
+
+table_02 <- read_csv(here("datasets/instructional_dataset/02_visit_clinical_measurements_UKZN_workshop_2023.csv"))
+
 ```
 
 ## {data-menu-title="Website Link" style="text-align: center"}
@@ -73,7 +120,7 @@ countdown::countdown(30)
 ```
 
 Get with your group.
-Go to [this module](index.html/#data-visualization-activity)
+Go to [the activity](index.html#data-visualization-activity)
 
 1. For the first 10 minutes think on your own
 2. For 30 minutes discuss with your group and produce at least one plot
@@ -91,10 +138,128 @@ Have one member from your group present the plot  to everyone! 3 minute limit!
 countdown::countdown(3)
 ```
 
-## The elements of data visualization
+# Aesthetics - the elements of data visualization
 
-Plots map data onto graphical elements
+## Plots map data onto graphical elements.
 
+
+```{r}
+#| echo: false
+#| label: tbl-02
+#| tbl-cap: "`02_visit_clinical_measurements_UKZN_workshop_2023.csv`"
+knitr::kable(head(table_02))
+
+```
+
+## pH mapped to y position
+
+```{r}
+table_02 %>%
+  ggplot(aes(x = time_point, y=ph)) +
+  geom_jitter()
+
+```
+
+## pH mapped to color
+
+```{r}
+table_02 %>%
+  ggplot(aes(x = time_point, y=pid, color=ph)) +
+  geom_point(size=2) +
+  theme(axis.text.y = element_blank())
+
+```
+
+
+## Commonly used aesthetics
+
+![Figure from <a href = 'https://clauswilke.com/dataviz'> Claus O. Wilke. Fundamentals of Data Visualization. O'Reilly, 2019 </a>](images/common-aesthetics-1.png)
+
+
+## The same data values can be mapped to different aesthetics
+
+![Figure from <a href = 'https://clauswilke.com/dataviz'> Claus O. Wilke. Fundamentals of Data Visualization. O'Reilly, 2019 </a>](images/basic-scales-example-1.png)
+
+## We can use many different aesthetics at once
+
+```{r mtcars-five-scale, echo = FALSE, message = FALSE, fig.width = 5.5, fig.asp = .8, dev = "svg"}
+p_mtcars <- ggplot(mtcars, aes(disp, mpg, fill = hp, shape = factor(cyl), size = wt)) + 
+  geom_point(color = "white") +
+  scale_shape_manual(values = c(23, 24, 21), name = "cylinders") +
+  scale_fill_continuous_sequential(
+    palette = "Emrld", name = "power (hp)",
+    breaks = c(100, 200, 300),
+    rev = FALSE
+  ) +
+  xlab("displacement (cu. in.)") +
+  ylab("fuel efficiency (mpg)") +
+  guides(
+    shape = guide_legend(override.aes = list(size = 4, fill = "#329D84")),
+    size = guide_legend(override.aes = list(shape = 21, fill = "#329D84"),
+    title = "weight (1000 lbs)")
+  ) +
+  theme_half_open(14) + background_grid() +
+  theme(
+    legend.box.background = element_rect(fill = "white", color = "white"),
+    legend.position = "top",
+    legend.direction = "vertical",
+    legend.justification = "center",
+    legend.box.margin = margin(7, 7, 7, 7)
+  )
+legend <- get_legend(align_legend(p_mtcars))
+ggdraw() + 
+  draw_plot(p_mtcars + theme(legend.position = "none")) + 
+  draw_grob(
+    legend,
+    vjust = 1, hjust = 1, valign = 1, halign = 1,
+    x = 1, y = 1, width = .65, height = .3
+  )
+```
+
+
+# Creating aesthetic mappings in `ggplot`
+
+## We define the mapping with `aes()`
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  ggplot(mapping = aes(x = time_point, y = ph, color = ph)) +
+  geom_jitter()
+```
+
+
+## We frequently omit argument names {auto-animate="true"}
+
+Long form, all arguments are named:
+
+```{r}
+#| echo: fenced
+#| eval: false
+
+ggplot(
+  data= table_02,
+  mapping = aes(x = time_point, y = ph, color = ph)
+) +
+  geom_jitter()
+
+```
+
+
+## We frequently omit argument names {auto-animate="true"}
+
+Abbreviated form, common arguments remain unnamed:
+
+```{r}
+#| echo: fenced
+#| eval: false
+
+ggplot(table_02, aes(x = time_point, y = ph, color = ph)) +
+  geom_jitter()
+
+```
+
+---
 :::{style="text-align:center"}
 {{< fa clone size=5x >}}
 :::

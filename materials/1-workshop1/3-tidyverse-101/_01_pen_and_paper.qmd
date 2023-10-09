@@ -1,11 +1,11 @@
 ---
-title: "Exploring Data for Patterns"
-subtitle: "<em>reproduced from a Schmidt Science Fellowship activity, thanks to Fatima Hussain</em>"
+
 ---
 
 \
 
 ## Data Visualization Activity
+*reproduced from a Schmidt Science Fellowship activity, thanks to Fatima Hussain*
 
 > Patterns are the essence of data exploration and our eyes' ability to pick them out is integral to data understanding. Much of the data we work with, however, do not have a natural form and we need to make decisions about how they are to be represented. Try different ways to visualize the datasets so meaningful patterns may be found.  
 
