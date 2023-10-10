@@ -73,7 +73,7 @@ Ragon Institute of MGH, MIT and Harvard
 ::: {.g-col-4}
 *series organizer and instructor*  
 **Dr. Scott Handley**  
-Associate Professor  
+Professor  
 Washington University School of Medicine  
 Department of Pathology and Immunology
 :::
@@ -104,8 +104,8 @@ Ragon Institute of MGH, MIT and Harvard
 :::
 
 ::: {.g-col-4}
-*series logisitics and management*  
-**Sarah Eisa**
+*series logistics and management*  
+**Sarah Eisa**  
 Program Manager  
 Ragon Institute of MGH, MIT and Harvard
 :::
