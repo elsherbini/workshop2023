@@ -3,112 +3,113 @@ title: "About"
 sidebar: false
 ---
 
-## Reproducible Data Analysis with R Workshop
+## Reproducible Data Analysis with R - Teaching Team
 
-- Location: UKZN Medical School, Durban, SA
-- Time: 9:00 am - 5:00 pm October 16^th^ through  October 20^th^
+::: {.grid}
 
 
-::: columns
-::: {.column width="30%"}
-![](images/Scott.png){fig-align="left"}
-:::
-::: {.column width="70%"}
-**Scott Handley, PhD**  
-Associate Professor  
-Washington University School of Medicine  
-Department of Pathology and Immunology
-:::
-:::
-
-::: columns
-::: {.column width="30%"}
-![](images/Joseph.png){fig-align="left"}
-:::
-::: {.column width="70%"}
-**Joseph Elsherbini, PhD**  
-Data Scientist  
-Ragon Institute of MGH, MIT and Harvard
-:::
-:::
-
-::: columns
-::: {.column width="30%"}
-![](images/Chandani.png){fig-align="left"}
-:::
-::: {.column width="70%"}
-**Chandani Desai**  
-Project Manager  
-Ragon Institute of MGH, MIT and Harvard
-:::
-:::
-
-::: columns
-::: {.column width="30%"}
-![](images/Marothi.png){fig-align="left"}
-:::
-::: {.column width="70%"}
-**Marothi Peter Letsoalo**  
-Senior Biostatistician  
-Center for the AIDS Programme of Research in South Africa
-:::
-:::
-
-::: columns
-::: {.column width="30%"}
-![](images/Laura.png){fig-align="left"}
-:::
-::: {.column width="70%"}
-**Laura Symul**  
-Assistant Professor  
-Institute of Statistics, Biostatistics and Actuarial Sciences
-:::
-:::
-
-::: columns
-::: {.column width="30%"}
+::: {.g-col-2}
 ![](images/Lenine.png){fig-align="left"}
 :::
-::: {.column width="70%"}
-**Lenine Liebenberg**  
-*Keynote speaker*  
+
+::: {.g-col-4}
+*keynote speaker*  
+**Dr. Lenine Liebenberg**  
 Chief Researcher  
-Centre for Epidemic Response and Innovation
-:::
+Centre for Epidemic Response and Innovation (CERI)  
+Centre for the AIDS Programme of Research in South Africa (CAPRISA)
 :::
 
-::: columns
-::: {.column width="30%"}
+
+
+
+::: {.g-col-2}
+![](images/Laura.png){fig-align="left"}
+:::
+:::{.g-col-4}
+*workshop instructor*  
+**Dr. Laura Symul**  
+Assistant Professor  
+UCLouvain Institute of Statistics, Biostatistics and Actuarial Sciences
+:::
+
+
+::: {.g-col-2}
+![](images/Marothi.png){fig-align="left"}
+:::
+::: {.g-col-4}
+*workshop instructor*  
+**Marothi Peter Letsoalo**  
+Senior Biostatistician  
+Centre for the AIDS Programme of Research in South Africa (CAPRISA)
+:::
+
+
+::: {.g-col-2}
 ![](images/Salina.png){fig-align="left"}
 :::
-::: {.column width="70%"}
+::: {.g-col-4}
+*workshop instructor*  
 **Salina Hussain**  
 Research Technician  
 Ragon Institute of MGH, MIT and Harvard
 :::
-:::
 
-::: columns
-::: {.column width="30%"}
+
+
+::: {.g-col-2}
 ![](images/Suuba.png){fig-align="left"}
 :::
-::: {.column width="70%"}
+::: {.g-col-4}
+*workshop instructor*  
 **Suuba Demby**  
 Research Technician  
 Ragon Institute of MGH, MIT and Harvard
 :::
+
+::: {.g-col-2}
+![](images/Scott.png){fig-align="left"}
+:::
+::: {.g-col-4}
+*series organizer and instructor*  
+**Dr. Scott Handley**  
+Associate Professor  
+Washington University School of Medicine  
+Department of Pathology and Immunology
 :::
 
-::: columns
-::: {.column width="30%"}
+::: {.g-col-2}
+![](images/Joseph.png){fig-align="left"}
+:::
+::: {.g-col-4}
+*series organizer and instructor*  
+**Dr. Joseph Elsherbini**  
+Data Scientist  
+Ragon Institute of MGH, MIT and Harvard
+:::
+
+::: {.g-col-2}
+![](images/Chandani.png){fig-align="left"}
+:::
+::: {.g-col-4}
+*series organizer and instructor*  
+**Chandani Desai**  
+Project Manager  
+Ragon Institute of MGH, MIT and Harvard
+:::
+
+
+::: {.g-col-2}
 ![](images/Sarah.png){fig-align="left"}
 :::
-::: {.column width="70%"}
-**Sarah Eisa**  
-*Providing support and managing logistics*  
+
+::: {.g-col-4}
+*series logisitics and management*  
+**Sarah Eisa**
 Program Manager  
 Ragon Institute of MGH, MIT and Harvard
 :::
+
 :::
 
 ## About these materials

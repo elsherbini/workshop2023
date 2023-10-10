@@ -24,9 +24,6 @@ website:
         href: resources.qmd
       - text: "About"
         href: about.qmd
-      - icon: cloud-fill
-        href: https://github.com/elsherbini/durban-data-science-for-biology
-        aria-label: Posit Cloud
       - icon: github
         href: https://github.com/elsherbini/durban-data-science-for-biology
         aria-label: GitHub
