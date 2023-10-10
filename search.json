@@ -1,115 +1,66 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources",
     "section": "",
-    "text": "keynote speaker\nDr. Lenine Liebenberg\nChief Researcher\nCentre for Epidemic Response and Innovation (CERI)\nCentre for the AIDS Programme of Research in South Africa (CAPRISA)\n\n\n\n\n\n\n\n\n\nworkshop instructor\nDr. Laura Symul\nAssistant Professor\nUCLouvain Institute of Statistics, Biostatistics and Actuarial Sciences\n\n\n\n\n\n\n\n\n\nworkshop instructor\nMarothi Peter Letsoalo\nSenior Biostatistician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA)\n\n\n\n\n\n\n\n\n\nworkshop instructor\nSalina Hussain\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nworkshop instructor\nSuuba Demby\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nseries organizer and instructor\nDr. Scott Handley\nAssociate Professor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\nseries organizer and instructor\nDr. Joseph Elsherbini\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nseries organizer and instructor\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nseries logisitics and management\nSarah Eisa Program Manager\nRagon Institute of MGH, MIT and Harvard"
+    "text": "Please install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.3.1 and RStudio version 2023.09.0 Click here for instructions on installing R and RStudio"
   },
   {
-    "objectID": "about.html#reproducible-data-analysis-with-r---teaching-team",
-    "href": "about.html#reproducible-data-analysis-with-r---teaching-team",
-    "title": "About",
+    "objectID": "resources.html#before-the-workshop-installing-r-and-rstudio",
+    "href": "resources.html#before-the-workshop-installing-r-and-rstudio",
+    "title": "Resources",
     "section": "",
-    "text": "keynote speaker\nDr. Lenine Liebenberg\nChief Researcher\nCentre for Epidemic Response and Innovation (CERI)\nCentre for the AIDS Programme of Research in South Africa (CAPRISA)\n\n\n\n\n\n\n\n\n\nworkshop instructor\nDr. Laura Symul\nAssistant Professor\nUCLouvain Institute of Statistics, Biostatistics and Actuarial Sciences\n\n\n\n\n\n\n\n\n\nworkshop instructor\nMarothi Peter Letsoalo\nSenior Biostatistician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA)\n\n\n\n\n\n\n\n\n\nworkshop instructor\nSalina Hussain\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nworkshop instructor\nSuuba Demby\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nseries organizer and instructor\nDr. Scott Handley\nAssociate Professor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\nseries organizer and instructor\nDr. Joseph Elsherbini\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nseries organizer and instructor\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nseries logisitics and management\nSarah Eisa Program Manager\nRagon Institute of MGH, MIT and Harvard"
+    "text": "Please install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.3.1 and RStudio version 2023.09.0 Click here for instructions on installing R and RStudio"
   },
   {
-    "objectID": "about.html#about-these-materials",
-    "href": "about.html#about-these-materials",
-    "title": "About",
-    "section": "About these materials",
-    "text": "About these materials\nThis website started with the code from Andrew Bray’s workshop website and much of the R content has been remixed from SDS375, a course by Claus Wilke."
+    "objectID": "resources.html#textbooks",
+    "href": "resources.html#textbooks",
+    "title": "Resources",
+    "section": "Textbooks",
+    "text": "Textbooks\n\nR for Data Science: Import, Tidy, Transform, Visualize, and Model Data by Garrett Grolemund and Hadley Wickham\nLink"
   },
   {
-    "objectID": "datasets.html",
-    "href": "datasets.html",
-    "title": "Datasets",
+    "objectID": "resources.html#definitions-from-glosario",
+    "href": "resources.html#definitions-from-glosario",
+    "title": "Resources",
+    "section": "Definitions from Glosario",
+    "text": "Definitions from Glosario\nFurther definitions at Glosario\nArgument: one of possibly several expressions that are passed to a function. Oftentimes parameter and arugument are used interchangably, even though techincally parameter refers to the variable and argument refers to the value.\nAssignment operator: Symbol that assigns values on the right to an object on the left. Looks like &lt;-. Keyboard shortcut is Alt + -\nComment: Text written in a script that is not treated as code to be run, but rather as text that describes what the code is doing. These are usually short notes, beginning with a #\nComprehensive R Archive Network (CRAN): A public repository of R packages.\nData frame: A two-dimensional data structure for storing tabular data in memory. Rows represent records and columns represent variables.\nFunction: A code block which gathers a sequence of operations into a whole, preserving it for ongoing use by defining a set of tasks that takes zero or more required and optional arguments as inputs and returns expected outputs (return values), if any. Functions enable repeating these defined tasks with one command, known as a function call.\nNA: A special value used to represent data that is not available.\nPipe operator: The %&gt;% used to make the output of one function the input of the next.\nPackage: A collection of code, data, and documentation that can be distributed and re-used. Also referred to in some languages as a library or module.\nParameter: A variable specified in a function definition whose value is passed to the function when the function is called. Parameters and arguments are distinct, but related concepts. Parameters are variables and arguments are the values assigned to those variables. In practice though these terms are often used interchangeably.\nPositional argument: An argument to a function that gets its value according to its place in the function’s definition, as opposed to a named argument that is explicitly matched by name.\nReproducible research: The practice of describing and documenting research results in such a way that another researcher or person can re-run the analysis code on the same data to obtain the same result.\nTibble: A modern replacement for R’s data frame, which stores tabular data in columns and rows, defined and used in the tidyverse. Almost always when you are working with a data frame, you are actually working with a tibble.\nTidy data: Tabular data that satisfies three conditions that facilitate initial cleaning, and later exploration and analysis—(1) each variable forms a column, (2) each observation forms a row, and (3) each type of observation unit forms a table.\nTidyverse: A collection of R packages for operating on tabular data in consistent ways.\nVector: A sequence of values that have all the same type. Vectors are the fundamental data structure in R; a scalar is just a vector with exactly one element."
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html",
+    "title": "Intro to data visualization and data wrangling with the\ntidyverse",
     "section": "",
-    "text": "00_sample_ids_UKZN_workshop_2023.csv\n01_participant_metadata_UKZN_workshop_2023.csv\n02_visit_clinical_measurements_UKZN_workshop_2023.csv\n03_elisa_cytokines_UKZN_workshop_2023.csv\n04_flow_cytometry_UKZN_workshop_2023.csv"
+    "text": "Learn the elements of scientific data visualization and how to use them with ggplot2"
   },
   {
-    "objectID": "datasets.html#download-the-instructional-dataset",
-    "href": "datasets.html#download-the-instructional-dataset",
-    "title": "Datasets",
-    "section": "",
-    "text": "00_sample_ids_UKZN_workshop_2023.csv\n01_participant_metadata_UKZN_workshop_2023.csv\n02_visit_clinical_measurements_UKZN_workshop_2023.csv\n03_elisa_cytokines_UKZN_workshop_2023.csv\n04_flow_cytometry_UKZN_workshop_2023.csv"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Data Science for Biology",
-    "section": "",
-    "text": "Data Science for Biology\nWorkshop 1 - R, RStudio, and Quarto for clinical research\nThis week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research.\n\n\n\n\n\nBefore the workshop: Installing R and RStudio\nPlease install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.3.1 and RStudio version 2023.09.0 Click here for instructions on installing R and RStudio\n\n\nTable 1: Schedule\n\n\n\n\n\n\n\nDate/Time\nTopic\nInstructor\n\n\n\n\nMonday, October 16th\n–\n–\n\n\nAM\nCourse Introduction & Introduction to data types\nSalina Hussain and Suuba Demby (Ragon Institute)\n\n\nPM\nIntro to R, Rstudio, and Quarto\nChandani Desai and Joseph Elsherbini (Ragon Institute)\n\n\nTuesday, October 17th\n–\n–\n\n\nAM\nIntro to data visualizaion with the tidyverse\nScott Handley (Wash U School of Medicine)\n\n\nPM\nData wrangling and more data visualization\nJoseph Elsherbini (Ragon Institute)\n\n\nWednesday, October 18th\n–\n–\n\n\nAM\ntableone and statistics for clincal data\nMarothi Letsoalo (CAPRISA)\n\n\nPM\nSmall group worktime\nParticipants\n\n\nThursday, October 19th\n–\n–\n\n\nAM\nData transformations and more statistics\nLaura Symul (UCLouvain)\n\n\nPM\nSmall group worktime\nParticipants\n\n\nEvening\nReception\n\n\n\nFriday, October 20th\n–\n–\n\n\nAM\nKeynote\nLenine Liebenberg (CERI Stellenbosch)\n\n\n\nSmall group work time\nParticipants\n\n\nPM\nSmall group presentations"
-  },
-  {
-    "objectID": "installation-instructions.html",
-    "href": "installation-instructions.html",
-    "title": "Installing R and RStudio",
-    "section": "",
-    "text": "adapted from datacarpentry.org\nFor this workshop, we will need R as well RStudio. R and RStudio are both completely free and open source software. While R is the underlying statistical computing environment, RStudio is the graphical IDE (integrated development environment) that makes using R easier, more intuitive, and interactive. Both are separate downloads and installations, and you will need to install R first, followed by RStudio. Once both are installed, you would just open and work in RStudio, which will run R in the background. Then you will install some R packages (collections of functions you can use in your own coding) which we are using for this workshop. Please install R version 4.3.1 or later and RStudio version 2023.09.0 or later."
-  },
-  {
-    "objectID": "installation-instructions.html#step-1---follow-instructions-for-your-operating-system",
-    "href": "installation-instructions.html#step-1---follow-instructions-for-your-operating-system",
-    "title": "Installing R and RStudio",
-    "section": "1 Step 1 - follow instructions for your operating system",
-    "text": "1 Step 1 - follow instructions for your operating system\n\n1.0.1 For Windows see Section 3\n\n\n1.0.2 For MacOS see Section 4\n\n\n1.0.3 For Linux see Section 5"
-  },
-  {
-    "objectID": "installation-instructions.html#step-2---install-r-packages",
-    "href": "installation-instructions.html#step-2---install-r-packages",
-    "title": "Installing R and RStudio",
-    "section": "2 Step 2 - install R packages",
-    "text": "2 Step 2 - install R packages\nOpen RStudio and Paste the following into your console on the left/bottom-left.\ninstall.packages(c(\"broom\", \"cluster\", \"colorspace\", \"cowplot\", \"distill\", \"gapminder\", \"GGally\", \"gganimate\", \"ggbeeswarm\", \"ggiraph\", \"ggdendro\", \"ggdist\", \"ggforce\",\"ggplot2movies\", \"ggrepel\", \"ggridges\", \"ggthemes\", \"gifski\", \"glue\",\"knitr\", \"learnr\", \"naniar\", \"margins\", \"MASS\", \"Matrix\",\"nycflights13\", \"palmerpenguins\", \"patchwork\", \"quarto\", \"rgdal\", \"rmarkdown\",\"rnaturalearth\", \"sf\", \"shinyjs\", \"tableone\", \"tidyverse\", \"transformr\", \"umap\"))"
-  },
-  {
-    "objectID": "installation-instructions.html#sec-windows",
-    "href": "installation-instructions.html#sec-windows",
-    "title": "Installing R and RStudio",
-    "section": "3 Windows",
-    "text": "3 Windows\n\n3.1 If you don’t have R and RStudio installed:\nGo to https://posit.co/download/rstudio-desktop/ and follow this instruction for windows.\n\n\n3.2 If you already have R and RStudio installed, check to see if updates are available.\nRStudio: Open RStudio and click on Help &gt; Check for updates. If a new version is available, quit RStudio, and download the latest version.\nR: Upon starting RStudio, the version of R you are running will appear on the console. You can also type sessionInfo() in the console to display the version of R you are running. The CRAN website will tell you if there is a more recent version available. You can update R using the installr package, by running:\n# installr is for windows only!\nif( !(\"installr\" %in% installed.packages()) ){install.packages(\"installr\")} \n\ninstallr::updateR(TRUE)"
-  },
-  {
-    "objectID": "installation-instructions.html#sec-mac",
-    "href": "installation-instructions.html#sec-mac",
-    "title": "Installing R and RStudio",
-    "section": "4 MacOs",
-    "text": "4 MacOs\n\n4.1 Check your processor\nadapted from https://docs.cse.lehigh.edu/determine-mac-architecture/\nMake sure you are downloading and installing the right version of R and R Studio for your laptop’s CPU. Some Macs have an intel chip (also known as x64 or x86_64 architecture), while the newest macs have M1 or M2 chips (also known as ARM architecture).\nTo determine whether a Mac is running an Intel Processor or Apple ARM M1 or M2, click on the  Apple Menu and select ‘About this Mac’:\n\n\n\nclick about this mac\n\n\nFrom the ‘About this Mac’ screen, on the ‘Overview’ tab, look for a line that indicates either ‘Chip’ or ‘Processor’. If the line contains M1 or M2, the machine is running Apple Silicon. Alternatively, the word Intel indicates that the machine is running an Intel-based Core series processor.\n\n\n\nM1 or M2\n\n\n\n\n\nintel\n\n\n\n\n4.2 If you don’t have R and RStudio installed:\nGo to https://posit.co/download/rstudio-desktop/ and follow this instruction for MacOS.\n\n\n4.3 If you already have R and RStudio installed, check to see if updates are available.\nRStudio: Open RStudio and click on Help &gt; Check for updates. If a new version is available, quit RStudio, and download the latest version.\nR: Upon starting RStudio, the version of R you are running will appear on the console. You can also type sessionInfo() to display the version of R you are running. The CRAN website will tell you if there is a more recent version available. For this workshop install version 4.3.1 of R"
-  },
-  {
-    "objectID": "installation-instructions.html#sec-linux",
-    "href": "installation-instructions.html#sec-linux",
-    "title": "Installing R and RStudio",
-    "section": "5 Linux",
-    "text": "5 Linux\n\n5.1 If you don’t have R and RStudio installed:\nGo to https://posit.co/download/rstudio-desktop/ and follow this instruction for your Linux OS.\n\n\n5.2 If you already have R and RStudio installed, check to see if updates are available.\nRStudio: Open RStudio and click on Help &gt; Check for updates. If a new version is available, quit RStudio, and download the latest version.\nR: Upon starting RStudio, the version of R you are running will appear on the console. You can also type sessionInfo() to display the version of R you are running. The CRAN website will tell you if there is a more recent version available. For this workshop install version 4.3.1 of R"
-  },
-  {
-    "objectID": "materials/1-workshop1/0-welcome/exercise_1.html#activity",
-    "href": "materials/1-workshop1/0-welcome/exercise_1.html#activity",
-    "title": "Exploring Data for Patterns",
-    "section": "Activity",
-    "text": "Activity\n\nPatterns are the essence of data exploration and our eyes’ ability to pick them out is integral to data understanding. Much of the data we work with, however, do not have a natural form and we need to make decisions about how they are to be represented. Try different ways to visualize the datasets so meaningful patterns may be found.\n\n\nGenetic profiles of cancer\nThese datasets contains 10 cancer samples. Table 1 describes the mutational status for a set of genes (A-E) and whether a mutation if absent (0) or present (1). Table 2 summarizes the expression levels of those genes, ranging from no expression (0) to high expression (3).\n\n\nTable 1: Mutational status for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n\n\nGene B\n0\n0\n0\n0\n1\n1\n1\n0\n1\n1\n\n\nGene C\n0\n0\n1\n0\n0\n0\n1\n1\n1\n1\n\n\nGene D\n1\n1\n0\n0\n1\n1\n0\n0\n0\n0\n\n\nGene E\n0\n1\n1\n0\n1\n0\n0\n0\n1\n0\n\n\n\n\n\n\nTable 2: Expression levels for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n2\n1\n1\n2\n2\n0\n2\n1\n1\n2\n\n\nGene B\n1\n1\n2\n1\n0\n0\n0\n2\n0\n0\n\n\nGene C\n1\n1\n3\n1\n2\n2\n3\n0\n3\n0\n\n\nGene D\n0\n0\n2\n1\n3\n3\n2\n1\n1\n1\n\n\nGene E\n1\n3\n3\n1\n3\n1\n2\n1\n3\n2\n\n\n\n\n\n\n          1. Think about the problem on your own for 5 minutes.\n          2. In your groups, discuss and create different visualizations to highlight underlying patterns\n          3. Summarize the group’s approach\n          4. Elect/volunteer a spokesperson to present the solution\n\n\nConsider the following concepts when creating your visualizations\n\n\n\n\nPatterns\nPatterns are the essence of data exploration. What kinds of representation will produce the most meaningful insights?\n   \n\n\nEncodings\nSome visual estimations are easier to make than others. How might you use encodings that are less accurate but otherwise better at conveying overall trends?\n  \n\n\n\n\nColor\nColor is a powerful encoding that presents several challenges. Have you chosen a color scale that is optimal for that data type?\n   \n\n\nSalience and Relevance\nPop-out effects enable quick recognition. Are the most noticeable elements of your visualizations also the most relevant?"
-  },
-  {
-    "objectID": "materials/1-workshop1/0-welcome/index.html",
-    "href": "materials/1-workshop1/0-welcome/index.html",
-    "title": "Welcome to the workshop",
-    "section": "",
-    "text": "Get to know your neighbors and instructors and learn what to expect from this workshop"
-  },
-  {
-    "objectID": "materials/1-workshop1/0-welcome/index.html#slides",
-    "href": "materials/1-workshop1/0-welcome/index.html#slides",
-    "title": "Welcome to the workshop",
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#slides",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#slides",
+    "title": "Intro to data visualization and data wrangling with the\ntidyverse",
     "section": "Slides",
     "text": "Slides\nMake slides full screen"
   },
   {
-    "objectID": "materials/1-workshop1/0-welcome/index.html#before-the-workshop-installing-r-and-rstudio",
-    "href": "materials/1-workshop1/0-welcome/index.html#before-the-workshop-installing-r-and-rstudio",
-    "title": "Welcome to the workshop",
-    "section": "Before the workshop: Installing R and RStudio",
-    "text": "Before the workshop: Installing R and RStudio\nPlease install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.3.1 and RStudio version 2023.09.0 Click here for instructions on installing R and RStudio"
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#data-visualization-activity",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#data-visualization-activity",
+    "title": "Intro to data visualization and data wrangling with the\ntidyverse",
+    "section": "Data Visualization Activity",
+    "text": "Data Visualization Activity\nreproduced from a Schmidt Science Fellowship activity, thanks to Fatima Hussain\n\nPatterns are the essence of data exploration and our eyes’ ability to pick them out is integral to data understanding. Much of the data we work with, however, do not have a natural form and we need to make decisions about how they are to be represented. Try different ways to visualize the datasets so meaningful patterns may be found.\n\n\nGenetic profiles of cancer\nThese datasets contains 10 cancer samples. Table 1 describes the mutational status for a set of genes (A-E) and whether a mutation if absent (0) or present (1). Table 2 summarizes the expression levels of those genes, ranging from no expression (0) to high expression (3).\n\n\nTable 1: Mutational status for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n\n\nGene B\n0\n0\n0\n0\n1\n1\n1\n0\n1\n1\n\n\nGene C\n0\n0\n1\n0\n0\n0\n1\n1\n1\n1\n\n\nGene D\n1\n1\n0\n0\n1\n1\n0\n0\n0\n0\n\n\nGene E\n0\n1\n1\n0\n1\n0\n0\n0\n1\n0\n\n\n\n\n\n\nTable 2: Expression levels for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n2\n1\n1\n2\n2\n0\n2\n1\n1\n2\n\n\nGene B\n1\n1\n2\n1\n0\n0\n0\n2\n0\n0\n\n\nGene C\n1\n1\n3\n1\n2\n2\n3\n0\n3\n0\n\n\nGene D\n0\n0\n2\n1\n3\n3\n2\n1\n1\n1\n\n\nGene E\n1\n3\n3\n1\n3\n1\n2\n1\n3\n2\n\n\n\n\n\n\n          1. Think about the problem on your own for 5 minutes.\n          2. In your groups, discuss and create different visualizations to highlight underlying patterns\n          3. Summarize the group’s approach\n          4. Elect/volunteer a spokesperson to present the solution\n\n\nConsider the following concepts when creating your visualizations\n\n\n\n\nPatterns\nPatterns are the essence of data exploration. What kinds of representation will produce the most meaningful insights?\n   \n\n\nEncodings\nSome visual estimations are easier to make than others. How might you use encodings that are less accurate but otherwise better at conveying overall trends?\n  \n\n\n\n\nColor\nColor is a powerful encoding that presents several challenges. Have you chosen a color scale that is optimal for that data type?\n   \n\n\nSalience and Relevance\nPop-out effects enable quick recognition. Are the most noticeable elements of your visualizations also the most relevant?"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#coding-exercise-3.1",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#coding-exercise-3.1",
+    "title": "Intro to data visualization and data wrangling with the\ntidyverse",
+    "section": "Coding exercise 3.1",
+    "text": "Coding exercise 3.1\nFor this exercise we’ll be using the instructional dataset. Download the dataset here.\nCopy the following code chunk into your quarto document. Notice the error in the read_csv() line - it wants you to supply the file name to read. Fix the error!\n\nlibrary(tidyverse) # load the tidyverse library\n\nread_csv() # read in your data \n\nError in read_csv(): argument \"file\" is missing, with no default"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/index.html",
+    "href": "materials/1-workshop1/2-intro-to-r/index.html",
+    "title": "Intro to R, RStudio, and Quarto",
+    "section": "",
+    "text": "Let’s learn how to use RStudio to run R code and render documents with Quarto.\n\nMake slides full screen"
   },
   {
     "objectID": "materials/1-workshop1/0-welcome/slides.html#section",
@@ -189,18 +140,123 @@
     "text": "On your way out the door for lunch, please write on a blue sticky note one that confused or frustrated you and on a pink sticky something that you enjoyed, or got your excited.\n\n\nback to module"
   },
   {
+    "objectID": "materials/1-workshop1/0-welcome/exercise_1.html#activity",
+    "href": "materials/1-workshop1/0-welcome/exercise_1.html#activity",
+    "title": "Exploring Data for Patterns",
+    "section": "Activity",
+    "text": "Activity\n\nPatterns are the essence of data exploration and our eyes’ ability to pick them out is integral to data understanding. Much of the data we work with, however, do not have a natural form and we need to make decisions about how they are to be represented. Try different ways to visualize the datasets so meaningful patterns may be found.\n\n\nGenetic profiles of cancer\nThese datasets contains 10 cancer samples. Table 1 describes the mutational status for a set of genes (A-E) and whether a mutation if absent (0) or present (1). Table 2 summarizes the expression levels of those genes, ranging from no expression (0) to high expression (3).\n\n\nTable 1: Mutational status for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n\n\nGene B\n0\n0\n0\n0\n1\n1\n1\n0\n1\n1\n\n\nGene C\n0\n0\n1\n0\n0\n0\n1\n1\n1\n1\n\n\nGene D\n1\n1\n0\n0\n1\n1\n0\n0\n0\n0\n\n\nGene E\n0\n1\n1\n0\n1\n0\n0\n0\n1\n0\n\n\n\n\n\n\nTable 2: Expression levels for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n2\n1\n1\n2\n2\n0\n2\n1\n1\n2\n\n\nGene B\n1\n1\n2\n1\n0\n0\n0\n2\n0\n0\n\n\nGene C\n1\n1\n3\n1\n2\n2\n3\n0\n3\n0\n\n\nGene D\n0\n0\n2\n1\n3\n3\n2\n1\n1\n1\n\n\nGene E\n1\n3\n3\n1\n3\n1\n2\n1\n3\n2\n\n\n\n\n\n\n          1. Think about the problem on your own for 5 minutes.\n          2. In your groups, discuss and create different visualizations to highlight underlying patterns\n          3. Summarize the group’s approach\n          4. Elect/volunteer a spokesperson to present the solution\n\n\nConsider the following concepts when creating your visualizations\n\n\n\n\nPatterns\nPatterns are the essence of data exploration. What kinds of representation will produce the most meaningful insights?\n   \n\n\nEncodings\nSome visual estimations are easier to make than others. How might you use encodings that are less accurate but otherwise better at conveying overall trends?\n  \n\n\n\n\nColor\nColor is a powerful encoding that presents several challenges. Have you chosen a color scale that is optimal for that data type?\n   \n\n\nSalience and Relevance\nPop-out effects enable quick recognition. Are the most noticeable elements of your visualizations also the most relevant?"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Science for Biology",
+    "section": "",
+    "text": "Data Science for Biology\nWorkshop 1 - R, RStudio, and Quarto for clinical research\nThis week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research.\n\n\n\n\n\nBefore the workshop: Installing R and RStudio\nPlease install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.3.1 and RStudio version 2023.09.0 Click here for instructions on installing R and RStudio\n\n\nTable 1: Schedule\n\n\n\n\n\n\n\nDate/Time\nTopic\nInstructor\n\n\n\n\nMonday, October 16th\n–\n–\n\n\nAM\nCourse Introduction & Introduction to data types\nSalina Hussain and Suuba Demby (Ragon Institute)\n\n\nPM\nIntro to R, Rstudio, and Quarto\nChandani Desai and Joseph Elsherbini (Ragon Institute)\n\n\nTuesday, October 17th\n–\n–\n\n\nAM\nIntro to data visualizaion with the tidyverse\nScott Handley (Wash U School of Medicine)\n\n\nPM\nData wrangling and more data visualization\nJoseph Elsherbini (Ragon Institute)\n\n\nWednesday, October 18th\n–\n–\n\n\nAM\ntableone and statistics for clinical data\nMarothi Letsoalo (CAPRISA)\n\n\nPM\nSmall group worktime\nParticipants\n\n\nThursday, October 19th\n–\n–\n\n\nAM\nData transformations and more statistics\nLaura Symul (UCLouvain)\n\n\nPM\nSmall group worktime\nParticipants\n\n\nEvening\nReception\n\n\n\nFriday, October 20th\n–\n–\n\n\nAM\nKeynote\nLenine Liebenberg (CERI Stellenbosch)\n\n\n\nSmall group work time\nParticipants\n\n\nPM\nSmall group presentations"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "keynote speaker\nDr. Lenine Liebenberg\nChief Researcher\nCentre for Epidemic Response and Innovation (CERI)\nCentre for the AIDS Programme of Research in South Africa (CAPRISA)\n\n\n\n\n\n\n\n\n\nworkshop instructor\nDr. Laura Symul\nAssistant Professor\nUCLouvain Institute of Statistics, Biostatistics and Actuarial Sciences\n\n\n\n\n\n\n\n\n\nworkshop instructor\nMarothi Peter Letsoalo\nSenior Biostatistician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA)\n\n\n\n\n\n\n\n\n\nworkshop instructor\nSalina Hussain\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nworkshop instructor\nSuuba Demby\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nseries organizer and instructor\nDr. Scott Handley\nProfessor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\nseries organizer and instructor\nDr. Joseph Elsherbini\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nseries organizer and instructor\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nseries logistics and management\nSarah Eisa\nProgram Manager\nRagon Institute of MGH, MIT and Harvard"
+  },
+  {
+    "objectID": "about.html#reproducible-data-analysis-with-r---teaching-team",
+    "href": "about.html#reproducible-data-analysis-with-r---teaching-team",
+    "title": "About",
+    "section": "",
+    "text": "keynote speaker\nDr. Lenine Liebenberg\nChief Researcher\nCentre for Epidemic Response and Innovation (CERI)\nCentre for the AIDS Programme of Research in South Africa (CAPRISA)\n\n\n\n\n\n\n\n\n\nworkshop instructor\nDr. Laura Symul\nAssistant Professor\nUCLouvain Institute of Statistics, Biostatistics and Actuarial Sciences\n\n\n\n\n\n\n\n\n\nworkshop instructor\nMarothi Peter Letsoalo\nSenior Biostatistician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA)\n\n\n\n\n\n\n\n\n\nworkshop instructor\nSalina Hussain\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nworkshop instructor\nSuuba Demby\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nseries organizer and instructor\nDr. Scott Handley\nProfessor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\nseries organizer and instructor\nDr. Joseph Elsherbini\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nseries organizer and instructor\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nseries logistics and management\nSarah Eisa\nProgram Manager\nRagon Institute of MGH, MIT and Harvard"
+  },
+  {
+    "objectID": "about.html#about-these-materials",
+    "href": "about.html#about-these-materials",
+    "title": "About",
+    "section": "About these materials",
+    "text": "About these materials\nThis website started with the code from Andrew Bray’s workshop website and much of the R content has been remixed from SDS375, a course by Claus Wilke."
+  },
+  {
+    "objectID": "datasets.html",
+    "href": "datasets.html",
+    "title": "Datasets",
+    "section": "",
+    "text": "00_sample_ids_UKZN_workshop_2023.csv\n01_participant_metadata_UKZN_workshop_2023.csv\n02_visit_clinical_measurements_UKZN_workshop_2023.csv\n03_elisa_cytokines_UKZN_workshop_2023.csv\n04_flow_cytometry_UKZN_workshop_2023.csv"
+  },
+  {
+    "objectID": "datasets.html#download-the-instructional-dataset",
+    "href": "datasets.html#download-the-instructional-dataset",
+    "title": "Datasets",
+    "section": "",
+    "text": "00_sample_ids_UKZN_workshop_2023.csv\n01_participant_metadata_UKZN_workshop_2023.csv\n02_visit_clinical_measurements_UKZN_workshop_2023.csv\n03_elisa_cytokines_UKZN_workshop_2023.csv\n04_flow_cytometry_UKZN_workshop_2023.csv"
+  },
+  {
+    "objectID": "installation-instructions.html",
+    "href": "installation-instructions.html",
+    "title": "Installing R and RStudio",
+    "section": "",
+    "text": "adapted from datacarpentry.org\nFor this workshop, we will need R as well RStudio. R and RStudio are both completely free and open source software. While R is the underlying statistical computing environment, RStudio is the graphical IDE (integrated development environment) that makes using R easier, more intuitive, and interactive. Both are separate downloads and installations, and you will need to install R first, followed by RStudio. Once both are installed, you would just open and work in RStudio, which will run R in the background. Then you will install some R packages (collections of functions you can use in your own coding) which we are using for this workshop. Please install R version 4.3.1 or later and RStudio version 2023.09.0 or later."
+  },
+  {
+    "objectID": "installation-instructions.html#step-1---follow-instructions-for-your-operating-system",
+    "href": "installation-instructions.html#step-1---follow-instructions-for-your-operating-system",
+    "title": "Installing R and RStudio",
+    "section": "1 Step 1 - follow instructions for your operating system",
+    "text": "1 Step 1 - follow instructions for your operating system\n\n1.0.1 For Windows see Section 3\n\n\n1.0.2 For MacOS see Section 4\n\n\n1.0.3 For Linux see Section 5"
+  },
+  {
+    "objectID": "installation-instructions.html#step-2---install-r-packages",
+    "href": "installation-instructions.html#step-2---install-r-packages",
+    "title": "Installing R and RStudio",
+    "section": "2 Step 2 - install R packages",
+    "text": "2 Step 2 - install R packages\nOpen RStudio and Paste the following into your console on the left/bottom-left.\ninstall.packages(c(\"broom\", \"cluster\", \"colorspace\", \"cowplot\", \"distill\", \"gapminder\", \"GGally\", \"gganimate\", \"ggbeeswarm\", \"ggiraph\", \"ggdendro\", \"ggdist\", \"ggforce\",\"ggplot2movies\", \"ggrepel\", \"ggridges\", \"ggthemes\", \"gifski\", \"glue\",\"knitr\", \"learnr\", \"naniar\", \"margins\", \"MASS\", \"Matrix\",\"nycflights13\", \"palmerpenguins\", \"patchwork\", \"quarto\", \"rgdal\", \"rmarkdown\",\"rnaturalearth\", \"sf\", \"shinyjs\", \"tableone\", \"tidyverse\", \"transformr\", \"umap\"))"
+  },
+  {
+    "objectID": "installation-instructions.html#sec-windows",
+    "href": "installation-instructions.html#sec-windows",
+    "title": "Installing R and RStudio",
+    "section": "3 Windows",
+    "text": "3 Windows\n\n3.1 If you don’t have R and RStudio installed:\nGo to https://posit.co/download/rstudio-desktop/ and follow this instruction for windows.\n\n\n3.2 If you already have R and RStudio installed, check to see if updates are available.\nRStudio: Open RStudio and click on Help &gt; Check for updates. If a new version is available, quit RStudio, and download the latest version.\nR: Upon starting RStudio, the version of R you are running will appear on the console. You can also type sessionInfo() in the console to display the version of R you are running. The CRAN website will tell you if there is a more recent version available. You can update R using the installr package, by running:\n# installr is for windows only!\nif( !(\"installr\" %in% installed.packages()) ){install.packages(\"installr\")} \n\ninstallr::updateR(TRUE)"
+  },
+  {
+    "objectID": "installation-instructions.html#sec-mac",
+    "href": "installation-instructions.html#sec-mac",
+    "title": "Installing R and RStudio",
+    "section": "4 MacOs",
+    "text": "4 MacOs\n\n4.1 Check your processor\nadapted from https://docs.cse.lehigh.edu/determine-mac-architecture/\nMake sure you are downloading and installing the right version of R and R Studio for your laptop’s CPU. Some Macs have an intel chip (also known as x64 or x86_64 architecture), while the newest macs have M1 or M2 chips (also known as ARM architecture).\nTo determine whether a Mac is running an Intel Processor or Apple ARM M1 or M2, click on the  Apple Menu and select ‘About this Mac’:\n\n\n\nclick about this mac\n\n\nFrom the ‘About this Mac’ screen, on the ‘Overview’ tab, look for a line that indicates either ‘Chip’ or ‘Processor’. If the line contains M1 or M2, the machine is running Apple Silicon. Alternatively, the word Intel indicates that the machine is running an Intel-based Core series processor.\n\n\n\nM1 or M2\n\n\n\n\n\nintel\n\n\n\n\n4.2 If you don’t have R and RStudio installed:\nGo to https://posit.co/download/rstudio-desktop/ and follow this instruction for MacOS.\n\n\n4.3 If you already have R and RStudio installed, check to see if updates are available.\nRStudio: Open RStudio and click on Help &gt; Check for updates. If a new version is available, quit RStudio, and download the latest version.\nR: Upon starting RStudio, the version of R you are running will appear on the console. You can also type sessionInfo() to display the version of R you are running. The CRAN website will tell you if there is a more recent version available. For this workshop install version 4.3.1 of R"
+  },
+  {
+    "objectID": "installation-instructions.html#sec-linux",
+    "href": "installation-instructions.html#sec-linux",
+    "title": "Installing R and RStudio",
+    "section": "5 Linux",
+    "text": "5 Linux\n\n5.1 If you don’t have R and RStudio installed:\nGo to https://posit.co/download/rstudio-desktop/ and follow this instruction for your Linux OS.\n\n\n5.2 If you already have R and RStudio installed, check to see if updates are available.\nRStudio: Open RStudio and click on Help &gt; Check for updates. If a new version is available, quit RStudio, and download the latest version.\nR: Upon starting RStudio, the version of R you are running will appear on the console. You can also type sessionInfo() to display the version of R you are running. The CRAN website will tell you if there is a more recent version available. For this workshop install version 4.3.1 of R"
+  },
+  {
+    "objectID": "materials/1-workshop1/0-welcome/index.html",
+    "href": "materials/1-workshop1/0-welcome/index.html",
+    "title": "Welcome to the workshop",
+    "section": "",
+    "text": "Get to know your neighbors and instructors and learn what to expect from this workshop"
+  },
+  {
+    "objectID": "materials/1-workshop1/0-welcome/index.html#slides",
+    "href": "materials/1-workshop1/0-welcome/index.html#slides",
+    "title": "Welcome to the workshop",
+    "section": "Slides",
+    "text": "Slides\nMake slides full screen"
+  },
+  {
+    "objectID": "materials/1-workshop1/0-welcome/index.html#before-the-workshop-installing-r-and-rstudio",
+    "href": "materials/1-workshop1/0-welcome/index.html#before-the-workshop-installing-r-and-rstudio",
+    "title": "Welcome to the workshop",
+    "section": "Before the workshop: Installing R and RStudio",
+    "text": "Before the workshop: Installing R and RStudio\nPlease install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.3.1 and RStudio version 2023.09.0 Click here for instructions on installing R and RStudio"
+  },
+  {
     "objectID": "materials/1-workshop1/2-intro-to-r/images/ex-2.html",
     "href": "materials/1-workshop1/2-intro-to-r/images/ex-2.html",
     "title": "Data Science for Biology Workshop Series",
     "section": "",
     "text": "Spatial Logical Toy Inventor: Erno Rubik Assignee: Politoys Ipari Szovetkezet, Budapest, Hungary The first patent by the inventor is registered in Hungary. Appl. No.: 289,192 Filed: Aug. 3, 1981 Background of the Invention The invention relates to a spatial logical toy having a total of eighteen toy elements which form a regular or an irregular spatial body, preferably an oblong body, in the assembled state. Spatial logical toys are well known, such as that described in the HU-PS No. 170 062 of the same applicant, which relates to a spatial logical toy consisting of twenty-seven solids which form a cube in the assembled state. The toy elements, in the shape of small cubes, may be turned along the spatial axes of the cube by means of connecting elements arranged in the geometric center of the large cube. The surfaces of the small cubes forming each surface of the large cube are colored or carry numbers, figures or any other symbols which can be assembled into the predetermined logical order of sequence by simultaneously rotating the nine toy elements forming the surfaces of the large cube. Summary of the Invention The logical toy according to the present invention represents an improved form of the previously described spatial logical toy. The construction is based on the same principles, however, the internal connection is performed by means of absolutely new and particular solids. The key feature according to the invention, i.e. shape, name, sounds, mode of interconnection and central fixture will be described in detail by means of two preferred embodiments, by the aid of the accompanying drawings, wherein. Component blocks of the spatial logial toy. ex-2-figs.png What is claimed is: 1. In a spatial logical toy assembled from a plurality of toy elements, of which a predetermined number may be rotated in the direction of the spatial axes starting from the geometrical center of the logical toy, the improvement wherein the spatial logical toy is formed by a total of eighteen toy elements. Two sets of eight toy elements each comprise substantially cubiforms with integally formed cam elements and each of the sets comprise eight identical toy elements, and two connecting toy elements, and means for joining the connecting toy elements to coact with the cam elements to form an integrated toy body, the joining means comprising a single screw enclosed by a spring. The spatial logical toy as claimed in claim 1, wherein the toy has the shape of a regular geometrical body in the assembled state. The toy elements thereof belonging to one set comprise eight cubiform homologous elements each having a first cam element connected to one corner thereof. Two confining surfaces of which lie at a unit distance from two surfaces of the cube and are parallel therewith and are cut-off in the form of an ellipsis-quarter, and a third confining surface thereof is coplanar with another surface of the cube and between the two confining faces of the first cam element running parallel with the cube and the cube there is a hollow with a convex spherical surface."
-  },
-  {
-    "objectID": "materials/1-workshop1/2-intro-to-r/index.html",
-    "href": "materials/1-workshop1/2-intro-to-r/index.html",
-    "title": "Intro to R, RStudio, and Quarto",
-    "section": "",
-    "text": "Let’s learn how to use RStudio to run R code and render documents with Quarto.\n\nMake slides full screen"
   },
   {
     "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#section",
@@ -490,34 +546,6 @@
     "text": "Metadata: YAML\n“Yet Another Markup Language” or “YAML Ain’t Markup Language” is used to provide document level metadata …\n\n\n\n\n[… in key-value pairs,]\n[… that can nest,]\n[… are fussy about indentation,]\n[… and are kept between ---.]\n\n\n\n---\nformat: \n  title: \"Intro to R\"\n  author: \"Yours Truly\"\n  html:\n    toc: true\n    code-fold: true\n---\n\n\nThere are many options for front matter and configuring rendering."
   },
   {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html",
-    "title": "Intro to data visualization and data wrangling with the\ntidyverse",
-    "section": "",
-    "text": "Learn the elements of scientific data visualization and how to use them with ggplot2"
-  },
-  {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#slides",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html#slides",
-    "title": "Intro to data visualization and data wrangling with the\ntidyverse",
-    "section": "Slides",
-    "text": "Slides\nMake slides full screen"
-  },
-  {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#data-visualization-activity",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html#data-visualization-activity",
-    "title": "Intro to data visualization and data wrangling with the\ntidyverse",
-    "section": "Data Visualization Activity",
-    "text": "Data Visualization Activity\nreproduced from a Schmidt Science Fellowship activity, thanks to Fatima Hussain\n\nPatterns are the essence of data exploration and our eyes’ ability to pick them out is integral to data understanding. Much of the data we work with, however, do not have a natural form and we need to make decisions about how they are to be represented. Try different ways to visualize the datasets so meaningful patterns may be found.\n\n\nGenetic profiles of cancer\nThese datasets contains 10 cancer samples. Table 1 describes the mutational status for a set of genes (A-E) and whether a mutation if absent (0) or present (1). Table 2 summarizes the expression levels of those genes, ranging from no expression (0) to high expression (3).\n\n\nTable 1: Mutational status for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n\n\nGene B\n0\n0\n0\n0\n1\n1\n1\n0\n1\n1\n\n\nGene C\n0\n0\n1\n0\n0\n0\n1\n1\n1\n1\n\n\nGene D\n1\n1\n0\n0\n1\n1\n0\n0\n0\n0\n\n\nGene E\n0\n1\n1\n0\n1\n0\n0\n0\n1\n0\n\n\n\n\n\n\nTable 2: Expression levels for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n2\n1\n1\n2\n2\n0\n2\n1\n1\n2\n\n\nGene B\n1\n1\n2\n1\n0\n0\n0\n2\n0\n0\n\n\nGene C\n1\n1\n3\n1\n2\n2\n3\n0\n3\n0\n\n\nGene D\n0\n0\n2\n1\n3\n3\n2\n1\n1\n1\n\n\nGene E\n1\n3\n3\n1\n3\n1\n2\n1\n3\n2\n\n\n\n\n\n\n          1. Think about the problem on your own for 5 minutes.\n          2. In your groups, discuss and create different visualizations to highlight underlying patterns\n          3. Summarize the group’s approach\n          4. Elect/volunteer a spokesperson to present the solution\n\n\nConsider the following concepts when creating your visualizations\n\n\n\n\nPatterns\nPatterns are the essence of data exploration. What kinds of representation will produce the most meaningful insights?\n   \n\n\nEncodings\nSome visual estimations are easier to make than others. How might you use encodings that are less accurate but otherwise better at conveying overall trends?\n  \n\n\n\n\nColor\nColor is a powerful encoding that presents several challenges. Have you chosen a color scale that is optimal for that data type?\n   \n\n\nSalience and Relevance\nPop-out effects enable quick recognition. Are the most noticeable elements of your visualizations also the most relevant?"
-  },
-  {
-    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#coding-exercise-3.1",
-    "href": "materials/1-workshop1/3-tidyverse-101/index.html#coding-exercise-3.1",
-    "title": "Intro to data visualization and data wrangling with the\ntidyverse",
-    "section": "Coding exercise 3.1",
-    "text": "Coding exercise 3.1\nFor this exercise we’ll be using the instructional dataset. Download the dataset here.\nCopy the following code chunk into your quarto document. Notice the error in the read_csv() line - it wants you to supply the file name to read. Fix the error!\n\nlibrary(tidyverse) # load the tidyverse library\n\nread_csv() # read in your data \n\nError in read_csv(): argument \"file\" is missing, with no default"
-  },
-  {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#section",
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#section",
     "title": "Intro to data visualization and data wrangling with the tidyverse",
@@ -712,33 +740,5 @@
     "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "Exercise",
     "text": "Exercise\n\n\n\n−+\n30:00\n\n\n\nTime to try it yourself. Go to the first coding exercise.\n\nDuring an activity, place a blue sticky on your laptop if you’re good to go and a pink sticky if you want help."
-  },
-  {
-    "objectID": "resources.html",
-    "href": "resources.html",
-    "title": "Resources",
-    "section": "",
-    "text": "Please install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.3.1 and RStudio version 2023.09.0 Click here for instructions on installing R and RStudio"
-  },
-  {
-    "objectID": "resources.html#before-the-workshop-installing-r-and-rstudio",
-    "href": "resources.html#before-the-workshop-installing-r-and-rstudio",
-    "title": "Resources",
-    "section": "",
-    "text": "Please install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.3.1 and RStudio version 2023.09.0 Click here for instructions on installing R and RStudio"
-  },
-  {
-    "objectID": "resources.html#textbooks",
-    "href": "resources.html#textbooks",
-    "title": "Resources",
-    "section": "Textbooks",
-    "text": "Textbooks\n\nR for Data Science: Import, Tidy, Transform, Visualize, and Model Data by Garrett Grolemund and Hadley Wickham\nLink"
-  },
-  {
-    "objectID": "resources.html#definitions-from-glosario",
-    "href": "resources.html#definitions-from-glosario",
-    "title": "Resources",
-    "section": "Definitions from Glosario",
-    "text": "Definitions from Glosario\nFurther definitions at Glosario\nArgument: one of possibly several expressions that are passed to a function. Oftentimes parameter and arugument are used interchangably, even though techincally parameter refers to the variable and argument refers to the value.\nAssignment operator: Symbol that assigns values on the right to an object on the left. Looks like &lt;-. Keyboard shortcut is Alt + -\nComment: Text written in a script that is not treated as code to be run, but rather as text that describes what the code is doing. These are usually short notes, beginning with a #\nComprehensive R Archive Network (CRAN): A public repository of R packages.\nData frame: A two-dimensional data structure for storing tabular data in memory. Rows represent records and columns represent variables.\nFunction: A code block which gathers a sequence of operations into a whole, preserving it for ongoing use by defining a set of tasks that takes zero or more required and optional arguments as inputs and returns expected outputs (return values), if any. Functions enable repeating these defined tasks with one command, known as a function call.\nNA: A special value used to represent data that is not available.\nPipe operator: The %&gt;% used to make the output of one function the input of the next.\nPackage: A collection of code, data, and documentation that can be distributed and re-used. Also referred to in some languages as a library or module.\nParameter: A variable specified in a function definition whose value is passed to the function when the function is called. Parameters and arguments are distinct, but related concepts. Parameters are variables and arguments are the values assigned to those variables. In practice though these terms are often used interchangeably.\nPositional argument: An argument to a function that gets its value according to its place in the function’s definition, as opposed to a named argument that is explicitly matched by name.\nReproducible research: The practice of describing and documenting research results in such a way that another researcher or person can re-run the analysis code on the same data to obtain the same result.\nTibble: A modern replacement for R’s data frame, which stores tabular data in columns and rows, defined and used in the tidyverse. Almost always when you are working with a data frame, you are actually working with a tibble.\nTidy data: Tabular data that satisfies three conditions that facilitate initial cleaning, and later exploration and analysis—(1) each variable forms a column, (2) each observation forms a row, and (3) each type of observation unit forms a table.\nTidyverse: A collection of R packages for operating on tabular data in consistent ways.\nVector: A sequence of values that have all the same type. Vectors are the fundamental data structure in R; a scalar is just a vector with exactly one element."
   }
 ]
