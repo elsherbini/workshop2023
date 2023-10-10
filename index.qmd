@@ -41,7 +41,7 @@ Please install R and RStudio on your laptop. If you already have R and Rstudio i
 | AM   | Intro to data visualizaion with the <code>tidyverse</code> | Scott Handley (Wash U School of Medicine)|
 | PM | Data wrangling and more data visualization | Joseph Elsherbini  (Ragon Institute) |
 | **Wednesday, October 18^th^**  |-- | --|
-| AM   | <code>tableone</code> and statistics for clincal data  | Marothi Letsoalo (CAPRISA)|
+| AM   | <code>tableone</code> and statistics for clinical data  | Marothi Letsoalo (CAPRISA)|
 | PM | Small group worktime  | Participants |
 | **Thursday, October 19^th^**  |-- | --|
 | AM   | Data transformations and more statistics | Laura Symul (UCLouvain)|

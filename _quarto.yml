@@ -45,7 +45,7 @@ website:
               contents:
               href: materials/1-workshop1/3-tidyverse-101/index.qmd
             - text: "<b>Module 4</b>: Data wrangling and more data visualization"
-            - text: "<b>Module 5</b>: <code>tableone</code> and statistics for clincal data"
+            - text: "<b>Module 5</b>: <code>tableone</code> and statistics for clinical data"
             - text: "<b>Module 6</b>: Data transformations and more statistics"
             - text: "<b>Module 7</b>: Customizing data visualizations using <code>colorspace</code>, <code>ggplot2</code>, and <code>patchwork</code>"
           - section: "<em>2. Working with High Dimensional Data in R - human microbiome - Coming April 2024 </em>"
