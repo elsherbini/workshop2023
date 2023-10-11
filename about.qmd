@@ -13,21 +13,18 @@ sidebar: false
 :::
 
 ::: {.g-col-4}
-*keynote speaker*  
+[*Keynote Speaker*]{style="font-size: 0.8em"}  
 **Dr. Lenine Liebenberg**  
 Chief Researcher  
 Centre for Epidemic Response and Innovation (CERI)  
 Centre for the AIDS Programme of Research in South Africa (CAPRISA)
 :::
 
-
-
-
 ::: {.g-col-2}
 ![](images/Laura.png){fig-align="left"}
 :::
 :::{.g-col-4}
-*workshop instructor*  
+[*Workshop Instructor*]{style="font-size: 0.8em"}  
 **Dr. Laura Symul**  
 Assistant Professor  
 UCLouvain Institute of Statistics, Biostatistics and Actuarial Sciences
@@ -38,7 +35,7 @@ UCLouvain Institute of Statistics, Biostatistics and Actuarial Sciences
 ![](images/Marothi.png){fig-align="left"}
 :::
 ::: {.g-col-4}
-*workshop instructor*  
+[*Workshop Instructor*]{style="font-size: 0.8em"}  
 **Marothi Peter Letsoalo**  
 Senior Biostatistician  
 Centre for the AIDS Programme of Research in South Africa (CAPRISA)
@@ -49,7 +46,7 @@ Centre for the AIDS Programme of Research in South Africa (CAPRISA)
 ![](images/Salina.png){fig-align="left"}
 :::
 ::: {.g-col-4}
-*workshop instructor*  
+[*Workshop Instructor*]{style="font-size: 0.8em"}  
 **Salina Hussain**  
 Research Technician  
 Ragon Institute of MGH, MIT and Harvard
@@ -61,7 +58,7 @@ Ragon Institute of MGH, MIT and Harvard
 ![](images/Suuba.png){fig-align="left"}
 :::
 ::: {.g-col-4}
-*workshop instructor*  
+[*Workshop Instructor*]{style="font-size: 0.8em"}  
 **Suuba Demby**  
 Research Technician  
 Ragon Institute of MGH, MIT and Harvard
@@ -71,7 +68,7 @@ Ragon Institute of MGH, MIT and Harvard
 ![](images/Scott.png){fig-align="left"}
 :::
 ::: {.g-col-4}
-*series organizer and instructor*  
+[*Series Organizer and Instructor*]{style="font-size: 0.8em"}  
 **Dr. Scott Handley**  
 Professor  
 Washington University School of Medicine  
@@ -82,7 +79,7 @@ Department of Pathology and Immunology
 ![](images/Joseph.png){fig-align="left"}
 :::
 ::: {.g-col-4}
-*series organizer and instructor*  
+[*Series Organizer and Instructor*]{style="font-size: 0.8em"}  
 **Dr. Joseph Elsherbini**  
 Data Scientist  
 Ragon Institute of MGH, MIT and Harvard
@@ -92,7 +89,7 @@ Ragon Institute of MGH, MIT and Harvard
 ![](images/Chandani.png){fig-align="left"}
 :::
 ::: {.g-col-4}
-*series organizer and instructor*  
+[*Series Organizer and Instructor*]{style="font-size: 0.8em"}  
 **Chandani Desai**  
 Project Manager  
 Ragon Institute of MGH, MIT and Harvard
@@ -104,10 +101,33 @@ Ragon Institute of MGH, MIT and Harvard
 :::
 
 ::: {.g-col-4}
-*series logistics and management*  
+[*Series Logistics and Management*]{style="font-size: 0.8em"}  
 **Sarah Eisa**  
 Program Manager  
 Ragon Institute of MGH, MIT and Harvard
+:::
+
+
+::: {.g-col-2}
+![](images/Derek.png){fig-align="left"}
+:::
+
+::: {.g-col-4}
+[*Teaching Assistant*]{style="font-size: 0.8em"}  
+**Derek Tshiabuila**  
+PhD Research Fellow  
+Centre for Epidemic Response and Innovation (CERI)
+:::
+
+::: {.g-col-2}
+![](images/Asavela.png){fig-align="left"}
+:::
+
+::: {.g-col-4}
+[*Teaching Assistant*]{style="font-size: 0.8em"}  
+**Asavela Kama**  
+Bioinformatician  
+Centre for the AIDS Programme of Research in South Africa (CAPRISA)
 :::
 
 :::
