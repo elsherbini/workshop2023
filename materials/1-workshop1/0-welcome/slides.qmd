@@ -123,8 +123,11 @@ We've created a true-to-life "medium dimensional" dataset that we'll use for all
 
 We've also created group datasets so you can practice applying what you've learned on new data.
 
+## The content of this workshop
 
+We've created 7 modules as well as a group activity for this workshop. This is probably too much material to get through in this week!  
 
+As instructors we're going to be trying to teach at the right pace to keep everyone learning all week. The materials will stay on the website forever for you to work through at your own pace!
 
 ##
 :::{style="text-align:center"}
