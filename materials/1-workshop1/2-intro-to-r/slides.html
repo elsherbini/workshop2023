@@ -683,7 +683,7 @@
 <h2>Let’s use R for math</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_cf509ac4" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_565ea2da" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1095,14 +1095,174 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 </div>
 <p><span class="fragment">There are many options for <a href="https://quarto.org/docs/authoring/front-matter.html">front matter</a> and <a href="https://quarto.org/docs/reference/formats/html.html">configuring rendering</a>.</span></p>
 </section></section>
+<section>
 <section id="quarto-rstudio-analysis-code-documentation-and-interpretation-combined." class="title-slide slide level1 center">
 <h1>Quarto + RStudio =<br>analysis code, documentation, and interpretation combined.</h1>
+
+</section>
+<section id="ok-but-how-do-you-write-code" class="slide level2">
+<h2>Ok, but how do you write code?</h2>
+</section>
+<section id="assignment" class="slide level2">
+<h2>Assignment</h2>
+<p>You can use <code>&lt;-</code> or <code>=</code> to assign values to variables</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>a <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>b <span class="ot">=</span> <span class="dv">8</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>c <span class="ot">&lt;-</span> <span class="fl">5.44</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a>d <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>e <span class="ot">=</span> <span class="st">"hello world"</span> </span>
+<span id="cb16-6"><a href="#cb16-6"></a>e <span class="ot">&lt;-</span> <span class="st">'hello world'</span> <span class="co"># same as double quote</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We will use <code>&lt;-</code> for all examples going forward, but do whichever melts your brain less</p>
+</section>
+<section id="naming-variables" class="slide level2">
+<h2>Naming variables</h2>
+<p>A lot of R people use <code>.</code> inside variable names, but in most languages besides R this would be an error. It’s good practice these days to use the <code>_</code> underscore if you want separation in your variable names.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>r.people.sometimes.put.dots <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>dots.are.confusing <span class="ot">&lt;-</span> <span class="st">"maybe"</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>just_use_underscores <span class="ot">&lt;-</span> <span class="st">"please"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="functions" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Functions</h2>
+<p>Functions are named bits of code that take parameters as input and return some output</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb18-1" class="hljs-ln-code"><a href="#cb18-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb18-2" class="hljs-ln-code"><a href="#cb18-2"></a>word_1 <span class="ot">&lt;-</span> <span class="st">"hello"</span></span>
+<span id="cb18-3" class="hljs-ln-code"><a href="#cb18-3"></a>word_2 <span class="ot">&lt;-</span> <span class="st">"world"</span></span>
+<span id="cb18-4" class="hljs-ln-code"><a href="#cb18-4"></a><span class="fu">str_c</span>(word_1, word_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "helloworld"</code></pre>
+</div>
+</div>
+<p><code>str_c</code> is a function that puts <strong>c</strong>oncatenates <strong>str</strong>ings.</p>
+</section>
+<section id="functions-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Functions</h2>
+<p>Functions are named bits of code that take parameters as input and return some output</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb20-1" class="hljs-ln-code"><a href="#cb20-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb20-2" class="hljs-ln-code"><a href="#cb20-2"></a>word_1 <span class="ot">&lt;-</span> <span class="st">"hello"</span></span>
+<span id="cb20-3" class="hljs-ln-code"><a href="#cb20-3"></a>word_2 <span class="ot">&lt;-</span> <span class="st">"world"</span></span>
+<span id="cb20-4" class="hljs-ln-code"><a href="#cb20-4"></a><span class="fu">str_c</span>(word_1, word_2, <span class="at">sep =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "hello world"</code></pre>
+</div>
+</div>
+<p><code>str_c</code> is a function that puts <strong>c</strong>oncatenates <strong>str</strong>ings.</p>
+<p>functions can have <em>named parameters</em> as well as <em>positional parameters.</em></p>
+</section>
+<section id="functions-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Functions</h2>
+<p>Functions are named bits of code that take parameters as input and return some output</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb22-1" class="hljs-ln-code"><a href="#cb22-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb22-2" class="hljs-ln-code"><a href="#cb22-2"></a>word_1 <span class="ot">&lt;-</span> <span class="st">"hello"</span></span>
+<span id="cb22-3" class="hljs-ln-code"><a href="#cb22-3"></a>word_2 <span class="ot">&lt;-</span> <span class="st">"world"</span></span>
+<span id="cb22-4" class="hljs-ln-code"><a href="#cb22-4"></a><span class="fu">str_c</span>(word_1, word_2, <span class="at">sep =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "hello world"</code></pre>
+</div>
+</div>
+<p><code>str_c</code> is a function that puts <strong>c</strong>oncatenates <strong>str</strong>ings.</p>
+<p>functions can have <em>named parameters</em> as well as <em>positional parameters.</em><br>
+<em>named parameters</em> always take an <code>=</code> sign for assignment.</p>
+</section>
+<section id="everything-is-a-vector" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">“Everything is a vector”</h2>
+<p>This sounds like nonsense - let’s unpack:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb24-1" class="hljs-ln-code"><a href="#cb24-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3 4</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>A Vector is a collection of values surrounded by <code>c()</code> and separated with <code>,</code></li>
+</ol>
+</section>
+<section id="everything-is-a-vector-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">“Everything is a vector”</h2>
+<p>This sounds like nonsense - let’s unpack:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb26-1" class="hljs-ln-code"><a href="#cb26-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>) <span class="sc">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  3  6  9 12</code></pre>
+</div>
+</div>
+<ol type="1">
+<li><p>A vector is a collection of values surrounded by <code>c()</code> and separated with <code>,</code></p></li>
+<li><p>Vectors in R do smart things with most functions and operations.</p></li>
+</ol>
+</section>
+<section id="everything-is-a-vector-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">“Everything is a vector”</h2>
+<p>This sounds like nonsense - let’s unpack:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb28-1" class="hljs-ln-code"><a href="#cb28-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">"potato"</span>) <span class="sc">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in c(1, 2, 3, "potato") * 3: non-numeric argument to binary operator</code></pre>
+</div>
+</div>
+<ol type="1">
+<li><p>A vector is a collection of values surrounded by <code>c()</code> and separated with <code>,</code></p></li>
+<li><p>Vectors in R do smart things with most functions and operations.</p></li>
+<li><p>Vectors have only one type of value.</p></li>
+</ol>
+</section>
+<section id="value-types-in-r" class="slide level2">
+<h2>Value types in R</h2>
+<p>The type of the value can be</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># numeric</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) </span>
+<span id="cb30-3"><a href="#cb30-3"></a></span>
+<span id="cb30-4"><a href="#cb30-4"></a><span class="co"># character</span></span>
+<span id="cb30-5"><a href="#cb30-5"></a><span class="fu">c</span>(<span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span>,<span class="st">"d"</span>)</span>
+<span id="cb30-6"><a href="#cb30-6"></a></span>
+<span id="cb30-7"><a href="#cb30-7"></a><span class="co"># boolean</span></span>
+<span id="cb30-8"><a href="#cb30-8"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb30-9"><a href="#cb30-9"></a></span>
+<span id="cb30-10"><a href="#cb30-10"></a><span class="co"># factor</span></span>
+<span id="cb30-11"><a href="#cb30-11"></a><span class="fu">c</span>(<span class="st">"Mon"</span>, <span class="st">"Tue"</span>, <span class="st">"Wed"</span>, <span class="st">"Thu"</span>, <span class="st">"Fri"</span>, <span class="st">"Sat"</span>, <span class="st">"Sun"</span>) <span class="sc">%&gt;%</span> <span class="fu">as_factor</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="tibbles-aka-data-frames" class="slide level2">
+<h2><code>tibble</code>s (aka data frames)</h2>
+<p><code>tibble</code>s are the big reason R is great for working with tabular data.</p>
+<p>A data frame is a rectangular collection of variables (in the columns) and observations (in the rows).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>table_02</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 132 × 6
+   pid    time_point arm     nugent_score crp_blood    ph
+   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
+ 1 pid_01 baseline   placebo            8      0.44   5.7
+ 2 pid_01 week_1     placebo            7      1.66   5.2
+ 3 pid_01 week_7     placebo            7      1.44   5.4
+ 4 pid_02 baseline   placebo            7      1.55   5.2
+ 5 pid_02 week_1     placebo            7      0.75   4.8
+ 6 pid_02 week_7     placebo            4      1.17   4.2
+ 7 pid_03 baseline   placebo            6      1.78   4.8
+ 8 pid_03 week_1     placebo           10      0.57   5.3
+ 9 pid_03 week_7     placebo            7      1.79   5.2
+10 pid_04 baseline   placebo            5      1.76   4.8
+# ℹ 122 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="exercise" class="slide level2 your-turn">
+<h2>Exercise</h2>
+<p>That’s enough slides for now time to try for yourself! Go to <a href="index.html">the module</a> and go to the first exercise.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_7a4d35ca" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">30</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
 
 <div class="footer footer-default">
 <p><a href="index.html">back to module</a></p>
 </div>
-</section>
-
+</section></section>
 
     </div>
   </div>

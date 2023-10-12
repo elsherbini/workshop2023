@@ -25,7 +25,7 @@
     "href": "resources.html#definitions-from-glosario",
     "title": "Resources",
     "section": "Definitions from Glosario",
-    "text": "Definitions from Glosario\nFurther definitions at Glosario\nArgument: one of possibly several expressions that are passed to a function. Oftentimes parameter and arugument are used interchangably, even though techincally parameter refers to the variable and argument refers to the value.\nAssignment operator: Symbol that assigns values on the right to an object on the left. Looks like &lt;-. Keyboard shortcut is Alt + -\nComment: Text written in a script that is not treated as code to be run, but rather as text that describes what the code is doing. These are usually short notes, beginning with a #\nComprehensive R Archive Network (CRAN): A public repository of R packages.\nData frame: A two-dimensional data structure for storing tabular data in memory. Rows represent records and columns represent variables.\nFunction: A code block which gathers a sequence of operations into a whole, preserving it for ongoing use by defining a set of tasks that takes zero or more required and optional arguments as inputs and returns expected outputs (return values), if any. Functions enable repeating these defined tasks with one command, known as a function call.\nNA: A special value used to represent data that is not available.\nPipe operator: The %&gt;% used to make the output of one function the input of the next.\nPackage: A collection of code, data, and documentation that can be distributed and re-used. Also referred to in some languages as a library or module.\nParameter: A variable specified in a function definition whose value is passed to the function when the function is called. Parameters and arguments are distinct, but related concepts. Parameters are variables and arguments are the values assigned to those variables. In practice though these terms are often used interchangeably.\nPositional argument: An argument to a function that gets its value according to its place in the function’s definition, as opposed to a named argument that is explicitly matched by name.\nReproducible research: The practice of describing and documenting research results in such a way that another researcher or person can re-run the analysis code on the same data to obtain the same result.\nTibble: A modern replacement for R’s data frame, which stores tabular data in columns and rows, defined and used in the tidyverse. Almost always when you are working with a data frame, you are actually working with a tibble.\nTidy data: Tabular data that satisfies three conditions that facilitate initial cleaning, and later exploration and analysis—(1) each variable forms a column, (2) each observation forms a row, and (3) each type of observation unit forms a table.\nTidyverse: A collection of R packages for operating on tabular data in consistent ways.\nVector: A sequence of values that have all the same type. Vectors are the fundamental data structure in R; a scalar is just a vector with exactly one element."
+    "text": "Definitions from Glosario\nFurther definitions at Glosario\nArgument: one of possibly several expressions that are passed to a function. Oftentimes parameter and arugument are used interchangably, even though techincally parameter refers to the variable and argument refers to the value.\nAssignment operator: Symbol that assigns values on the right to an object on the left. Looks like &lt;-. Keyboard shortcut is Alt + -\nComment: Text written in a script that is not treated as code to be run, but rather as text that describes what the code is doing. These are usually short notes, beginning with a #\nComprehensive R Archive Network (CRAN): A public repository of R packages.\nData frame: A two-dimensional data structure for storing tabular data in memory. Rows represent records and columns represent variables.\nFunction: A code block which gathers a sequence of operations into a whole, preserving it for ongoing use by defining a set of tasks that takes zero or more required and optional arguments as inputs and returns expected outputs (return values), if any. Functions enable repeating these defined tasks with one command, known as a function call.\nNA: A special value used to represent data that is not available.\nPipe operator: The %&gt;% used to make the output of one function the input of the next.\nPackage: A collection of code, data, and documentation that can be distributed and re-used. Also referred to in some languages as a library or module.\nParameter: A variable specified in a function definition whose value is passed to the function when the function is called. Parameters and arguments are distinct, but related concepts. Parameters are variables and arguments are the values assigned to those variables. In practice though these terms are often used interchangeably.\nPositional argument: An argument to a function that gets its value according to its place in the function’s definition, as opposed to a named argument that is explicitly matched by name.\nReproducible research: The practice of describing and documenting research results in such a way that another researcher or person can re-run the analysis code on the same data to obtain the same result.\nTibble: A modern replacement for R’s data frame, which stores tabular data in columns and rows, defined and used in the tidyverse. Almost always when you are working with a data frame, you are actually working with a tibble.\nTidy data: Tabular data that satisfies three conditions that facilitate initial cleaning, and later exploration and analysis—(1) each variable forms a column, (2) each observation forms a row, and (3) each type of observation unit forms a table.\nTidyverse: A collection of R packages for operating on tabular data in consistent ways.\nVariable: A name in a program that has some data associated with it. A variable’s value can be changed after definition.\nVector: A sequence of values that have all the same type. Vectors are the fundamental data structure in R; a scalar is just a vector with exactly one element."
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/index.html",
@@ -60,7 +60,28 @@
     "href": "materials/1-workshop1/2-intro-to-r/index.html",
     "title": "Intro to R, RStudio, and Quarto",
     "section": "",
-    "text": "Let’s learn how to use RStudio to run R code and render documents with Quarto.\n\nMake slides full screen"
+    "text": "Let’s learn how to use RStudio to run R code and render documents with Quarto."
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/index.html#slides-intro-to-rstudio-quarto-and-r",
+    "href": "materials/1-workshop1/2-intro-to-r/index.html#slides-intro-to-rstudio-quarto-and-r",
+    "title": "Intro to R, RStudio, and Quarto",
+    "section": "Slides: Intro to RStudio, Quarto, and R",
+    "text": "Slides: Intro to RStudio, Quarto, and R\nMake slides full screen"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/index.html#exercise-1",
+    "href": "materials/1-workshop1/2-intro-to-r/index.html#exercise-1",
+    "title": "Intro to R, RStudio, and Quarto",
+    "section": "Exercise 1",
+    "text": "Exercise 1"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/index.html#slides-importing-and-manipulating-tables",
+    "href": "materials/1-workshop1/2-intro-to-r/index.html#slides-importing-and-manipulating-tables",
+    "title": "Intro to R, RStudio, and Quarto",
+    "section": "Slides: Importing and manipulating tables",
+    "text": "Slides: Importing and manipulating tables"
   },
   {
     "objectID": "materials/1-workshop1/0-welcome/slides.html#section",
@@ -133,18 +154,25 @@
     "text": "The premise of the workshop\nWe’ve created a true-to-life “medium dimensional” dataset that we’ll use for all instruction\n\nabout 40 participants split across two treatment arms\nthree time points (before treatment, after treatment, and longer follow-up)\nseveral measurements per time-point\n\nWe’ve also created group datasets so you can practice applying what you’ve learned on new data."
   },
   {
+    "objectID": "materials/1-workshop1/0-welcome/slides.html#lets-take-a-poll",
+    "href": "materials/1-workshop1/0-welcome/slides.html#lets-take-a-poll",
+    "title": "Welcome to the workshop",
+    "section": "Let’s take a poll",
+    "text": "Let’s take a poll\nGo to the event on wooclap"
+  },
+  {
     "objectID": "materials/1-workshop1/0-welcome/slides.html#the-content-of-this-workshop",
     "href": "materials/1-workshop1/0-welcome/slides.html#the-content-of-this-workshop",
     "title": "Welcome to the workshop",
     "section": "The content of this workshop",
-    "text": "The content of this workshop\nWe’ve created 7 modules as well as a group activity for this workshop. This is probably too much material to get through in this week!\nAs instructors we’re going to be trying to teach at the right pace to keep everyone learning all week. The materials will stay on the website forever for you to work through at your own pace!"
+    "text": "The content of this workshop\n\nWe’ve created 7 modules as well as a group activity for this workshop.\n\nThis is probably too much material to get through in this week!\n\nAs instructors we’re going to be trying to teach at the right pace to keep everyone learning all week.\n\nThe materials will stay on the website forever for you to work through at your own pace."
   },
   {
-    "objectID": "materials/1-workshop1/0-welcome/slides.html#section-2",
-    "href": "materials/1-workshop1/0-welcome/slides.html#section-2",
+    "objectID": "materials/1-workshop1/0-welcome/slides.html#lets-take-a-poll-1",
+    "href": "materials/1-workshop1/0-welcome/slides.html#lets-take-a-poll-1",
     "title": "Welcome to the workshop",
-    "section": "",
-    "text": "On your way out the door for lunch, please write on a blue sticky note one that confused or frustrated you and on a pink sticky something that you enjoyed, or got your excited.\n\n\nback to module"
+    "section": "Let’s take a poll",
+    "text": "Let’s take a poll\nGo to the event on wooclap\n\n\n\nback to module"
   },
   {
     "objectID": "materials/1-workshop1/0-welcome/exercise_1.html#activity",
@@ -165,21 +193,21 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Keynote Speaker\nDr. Lenine Liebenberg\nChief Researcher\nCentre for Epidemic Response and Innovation (CERI)\nCentre for the AIDS Programme of Research in South Africa (CAPRISA)\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nDr. Laura Symul\nAssistant Professor\nUCLouvain Institute of Statistics, Biostatistics and Actuarial Sciences\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nMarothi Peter Letsoalo\nSenior Biostatistician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA)\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nSalina Hussain\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nSuuba Demby\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Scott Handley\nProfessor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Joseph Elsherbini\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Logistics and Management\nSarah Eisa\nProgram Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nDerek Tshiabuila\nPhD Research Fellow\nCentre for Epidemic Response and Innovation (CERI)\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAsavela Kama\nBioinformatician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA)"
+    "text": "Keynote Speaker\nDr. Lenine Liebenberg\nChief Researcher\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nDr. Laura Symul\nAssistant Professor\nUCLouvain Institute of Statistics, Biostatistics and Actuarial Sciences\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nMarothi Peter Letsoalo\nSenior Biostatistician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nSalina Hussain\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nSuuba Demby\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Scott Handley\nProfessor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Joseph Elsherbini\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Logistics and Management\nSarah Eisa\nProgram Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nDerek Tshiabuila\nPhD Research Fellow\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAsavela Kama\nBioinformatician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAfrah Khairallah\nPostdoctoral research fellow Africa Health Research Institute (AHRI) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nKwabena Asare\nStatistician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\nTeaching Assistant\nJohan van der Molen\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\nTeaching Assistant\nWasim Abdool Karim\nGenomics Africa Fellow\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch"
   },
   {
     "objectID": "about.html#reproducible-data-analysis-with-r---teaching-team",
     "href": "about.html#reproducible-data-analysis-with-r---teaching-team",
     "title": "About",
     "section": "",
-    "text": "Keynote Speaker\nDr. Lenine Liebenberg\nChief Researcher\nCentre for Epidemic Response and Innovation (CERI)\nCentre for the AIDS Programme of Research in South Africa (CAPRISA)\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nDr. Laura Symul\nAssistant Professor\nUCLouvain Institute of Statistics, Biostatistics and Actuarial Sciences\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nMarothi Peter Letsoalo\nSenior Biostatistician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA)\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nSalina Hussain\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nSuuba Demby\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Scott Handley\nProfessor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Joseph Elsherbini\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Logistics and Management\nSarah Eisa\nProgram Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nDerek Tshiabuila\nPhD Research Fellow\nCentre for Epidemic Response and Innovation (CERI)\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAsavela Kama\nBioinformatician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA)"
+    "text": "Keynote Speaker\nDr. Lenine Liebenberg\nChief Researcher\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nDr. Laura Symul\nAssistant Professor\nUCLouvain Institute of Statistics, Biostatistics and Actuarial Sciences\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nMarothi Peter Letsoalo\nSenior Biostatistician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nSalina Hussain\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nSuuba Demby\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Scott Handley\nProfessor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Joseph Elsherbini\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Logistics and Management\nSarah Eisa\nProgram Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nDerek Tshiabuila\nPhD Research Fellow\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAsavela Kama\nBioinformatician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAfrah Khairallah\nPostdoctoral research fellow Africa Health Research Institute (AHRI) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nKwabena Asare\nStatistician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\nTeaching Assistant\nJohan van der Molen\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\nTeaching Assistant\nWasim Abdool Karim\nGenomics Africa Fellow\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch"
   },
   {
     "objectID": "about.html#about-these-materials",
     "href": "about.html#about-these-materials",
     "title": "About",
     "section": "About these materials",
-    "text": "About these materials\nThis website started with the code from Andrew Bray’s workshop website and much of the R content has been remixed from SDS375, a course by Claus Wilke."
+    "text": "About these materials\nThis website started with the code from Andrew P. Bray’s workshop website and much of the R content has been remixed and adapted from SDS375, a course by Claus O. Wilke."
   },
   {
     "objectID": "datasets.html",
@@ -551,6 +579,90 @@
     "title": "Intro to R,R Studio, and Quarto",
     "section": "Metadata: YAML",
     "text": "Metadata: YAML\n“Yet Another Markup Language” or “YAML Ain’t Markup Language” is used to provide document level metadata …\n\n\n\n\n[… in key-value pairs,]\n[… that can nest,]\n[… are fussy about indentation,]\n[… and are kept between ---.]\n\n\n\n---\nformat: \n  title: \"Intro to R\"\n  author: \"Yours Truly\"\n  html:\n    toc: true\n    code-fold: true\n---\n\n\nThere are many options for front matter and configuring rendering."
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#ok-but-how-do-you-write-code",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#ok-but-how-do-you-write-code",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Ok, but how do you write code?",
+    "text": "Ok, but how do you write code?"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#assignment",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#assignment",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Assignment",
+    "text": "Assignment\nYou can use &lt;- or = to assign values to variables\na &lt;- 6\nb = 8\nc &lt;- 5.44\nd = TRUE\ne = \"hello world\" \ne &lt;- 'hello world' # same as double quote\nWe will use &lt;- for all examples going forward, but do whichever melts your brain less"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#naming-variables",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#naming-variables",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Naming variables",
+    "text": "Naming variables\nA lot of R people use . inside variable names, but in most languages besides R this would be an error. It’s good practice these days to use the _ underscore if you want separation in your variable names.\nr.people.sometimes.put.dots &lt;- TRUE\ndots.are.confusing &lt;- \"maybe\"\njust_use_underscores &lt;- \"please\""
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#functions",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#functions",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Functions",
+    "text": "Functions\nFunctions are named bits of code that take parameters as input and return some output\n\nlibrary(tidyverse)\nword_1 &lt;- \"hello\"\nword_2 &lt;- \"world\"\nstr_c(word_1, word_2)\n\n[1] \"helloworld\"\n\n\nstr_c is a function that puts concatenates strings."
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#functions-1",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#functions-1",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Functions",
+    "text": "Functions\nFunctions are named bits of code that take parameters as input and return some output\n\nlibrary(tidyverse)\nword_1 &lt;- \"hello\"\nword_2 &lt;- \"world\"\nstr_c(word_1, word_2, sep = \" \")\n\n[1] \"hello world\"\n\n\nstr_c is a function that puts concatenates strings.\nfunctions can have named parameters as well as positional parameters."
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#functions-2",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#functions-2",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Functions",
+    "text": "Functions\nFunctions are named bits of code that take parameters as input and return some output\n\nlibrary(tidyverse)\nword_1 &lt;- \"hello\"\nword_2 &lt;- \"world\"\nstr_c(word_1, word_2, sep = \" \")\n\n[1] \"hello world\"\n\n\nstr_c is a function that puts concatenates strings.\nfunctions can have named parameters as well as positional parameters.\nnamed parameters always take an = sign for assignment."
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#everything-is-a-vector",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#everything-is-a-vector",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "“Everything is a vector”",
+    "text": "“Everything is a vector”\nThis sounds like nonsense - let’s unpack:\n\nc(1, 2, 3, 4)\n\n[1] 1 2 3 4\n\n\n\nA Vector is a collection of values surrounded by c() and separated with ,"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#everything-is-a-vector-1",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#everything-is-a-vector-1",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "“Everything is a vector”",
+    "text": "“Everything is a vector”\nThis sounds like nonsense - let’s unpack:\n\nc(1, 2, 3, 4) * 3\n\n[1]  3  6  9 12\n\n\n\nA vector is a collection of values surrounded by c() and separated with ,\nVectors in R do smart things with most functions and operations."
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#everything-is-a-vector-2",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#everything-is-a-vector-2",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "“Everything is a vector”",
+    "text": "“Everything is a vector”\nThis sounds like nonsense - let’s unpack:\n\nc(1, 2, 3, \"potato\") * 3\n\nError in c(1, 2, 3, \"potato\") * 3: non-numeric argument to binary operator\n\n\n\nA vector is a collection of values surrounded by c() and separated with ,\nVectors in R do smart things with most functions and operations.\nVectors have only one type of value."
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#value-types-in-r",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#value-types-in-r",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Value types in R",
+    "text": "Value types in R\nThe type of the value can be\n# numeric\nc(1,2,3,4) \n\n# character\nc(\"a\",\"b\",\"c\",\"d\")\n\n# boolean\nc(TRUE, FALSE)\n\n# factor\nc(\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\") %&gt;% as_factor()"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#tibbles-aka-data-frames",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#tibbles-aka-data-frames",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "tibbles (aka data frames)",
+    "text": "tibbles (aka data frames)\ntibbles are the big reason R is great for working with tabular data.\nA data frame is a rectangular collection of variables (in the columns) and observations (in the rows).\n\ntable_02\n\n# A tibble: 132 × 6\n   pid    time_point arm     nugent_score crp_blood    ph\n   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n 1 pid_01 baseline   placebo            8      0.44   5.7\n 2 pid_01 week_1     placebo            7      1.66   5.2\n 3 pid_01 week_7     placebo            7      1.44   5.4\n 4 pid_02 baseline   placebo            7      1.55   5.2\n 5 pid_02 week_1     placebo            7      0.75   4.8\n 6 pid_02 week_7     placebo            4      1.17   4.2\n 7 pid_03 baseline   placebo            6      1.78   4.8\n 8 pid_03 week_1     placebo           10      0.57   5.3\n 9 pid_03 week_7     placebo            7      1.79   5.2\n10 pid_04 baseline   placebo            5      1.76   4.8\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#exercise",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#exercise",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Exercise",
+    "text": "Exercise\nThat’s enough slides for now time to try for yourself! Go to the module and go to the first exercise.\n\n\n\n−+\n30:00\n\n\n\n\n\nback to module"
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#section",
