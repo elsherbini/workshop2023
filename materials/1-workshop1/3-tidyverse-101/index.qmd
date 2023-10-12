@@ -19,7 +19,6 @@ library(here)
 ```
 > Learn the elements of scientific data visualization and how to use them with `ggplot2`
 
-
 ## Slides
 [Make slides full screen](slides.qmd)
 
