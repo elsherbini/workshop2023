@@ -16,8 +16,8 @@ sidebar: false
 [*Keynote Speaker*]{style="font-size: 0.8em"}  
 **Dr. Lenine Liebenberg**  
 Chief Researcher  
-Centre for Epidemic Response and Innovation (CERI)  
-Centre for the AIDS Programme of Research in South Africa (CAPRISA)
+Centre for Epidemic Response and Innovation (CERI) - Stellenbosch  
+Centre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN  
 :::
 
 ::: {.g-col-2}
@@ -38,7 +38,7 @@ UCLouvain Institute of Statistics, Biostatistics and Actuarial Sciences
 [*Workshop Instructor*]{style="font-size: 0.8em"}  
 **Marothi Peter Letsoalo**  
 Senior Biostatistician  
-Centre for the AIDS Programme of Research in South Africa (CAPRISA)
+Centre for the AIDS Programme of Research in South Africa (CAPRISA) -  UKZN
 :::
 
 
@@ -116,7 +116,7 @@ Ragon Institute of MGH, MIT and Harvard
 [*Teaching Assistant*]{style="font-size: 0.8em"}  
 **Derek Tshiabuila**  
 PhD Research Fellow  
-Centre for Epidemic Response and Innovation (CERI)
+Centre for Epidemic Response and Innovation (CERI) - Stellenbosch  
 :::
 
 ::: {.g-col-2}
@@ -127,11 +127,61 @@ Centre for Epidemic Response and Innovation (CERI)
 [*Teaching Assistant*]{style="font-size: 0.8em"}  
 **Asavela Kama**  
 Bioinformatician  
-Centre for the AIDS Programme of Research in South Africa (CAPRISA)
+Centre for the AIDS Programme of Research in South Africa (CAPRISA) -  UKZN
+:::
+
+
+::: {.g-col-2}
+![](images/Afrah.png){fig-align="left"}
+:::
+
+::: {.g-col-4}
+[*Teaching Assistant*]{style="font-size: 0.8em"}  
+**Afrah Khairallah**  
+Postdoctoral research fellow
+Africa Health Research Institute (AHRI) - UKZN  
+:::
+
+
+
+::: {.g-col-2}
+![](images/Kwabena.png){fig-align="left"}
+:::
+
+::: {.g-col-4}
+[*Teaching Assistant*]{style="font-size: 0.8em"}  
+**Kwabena Asare**  
+Statistician  
+Centre for the AIDS Programme of Research in South Africa (CAPRISA) -  UKZN
+:::
+
+
+
+::: {.g-col-2}
+
+:::
+
+::: {.g-col-4}
+[*Teaching Assistant*]{style="font-size: 0.8em"}  
+**Johan van der Molen**  
+Centre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN
+:::
+
+
+
+::: {.g-col-2}
+
+:::
+
+::: {.g-col-4}
+[*Teaching Assistant*]{style="font-size: 0.8em"}  
+**Wasim Abdool Karim**  
+Genomics Africa Fellow    
+Centre for Epidemic Response and Innovation (CERI) - Stellenbosch  
 :::
 
 :::
 
 ## About these materials
 
-This website started with the code from Andrew Bray's workshop website and much of the R content has been remixed from SDS375, a course by Claus Wilke.
+This website started with the code from Andrew P. Bray's workshop website and much of the R content has been remixed and adapted from SDS375, a course by Claus O. Wilke.

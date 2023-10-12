@@ -704,3 +704,166 @@ format:
 [There are many options for [front matter](https://quarto.org/docs/authoring/front-matter.html) and [configuring rendering](https://quarto.org/docs/reference/formats/html.html).]{.fragment}
 
 # Quarto + RStudio  =<br>analysis code, documentation, and interpretation combined.
+
+## Ok, but how do you write code?
+
+## Assignment
+
+You can use `<-` or `=` to assign values to variables
+
+```r
+a <- 6
+b = 8
+c <- 5.44
+d = TRUE
+e = "hello world" 
+e <- 'hello world' # same as double quote
+```
+
+We will use `<-` for all examples going forward, but do whichever melts your brain less
+
+## Naming variables
+
+A lot of R people use `.` inside variable names, but in most languages besides R this would be an error. It's good practice these days to use the `_` underscore if you want separation in your variable names. 
+
+```r
+r.people.sometimes.put.dots <- TRUE
+dots.are.confusing <- "maybe"
+just_use_underscores <- "please"
+```
+
+## Functions {auto-animate="true"}
+
+Functions are named bits of code that take parameters as input and return some output
+
+```{r}
+#| echo: true
+library(tidyverse)
+word_1 <- "hello"
+word_2 <- "world"
+str_c(word_1, word_2)
+```
+
+`str_c` is a function that puts **c**oncatenates **str**ings. 
+
+
+## Functions {auto-animate="true"}
+
+Functions are named bits of code that take parameters as input and return some output
+
+```{r}
+#| echo: true
+library(tidyverse)
+word_1 <- "hello"
+word_2 <- "world"
+str_c(word_1, word_2, sep = " ")
+```
+
+`str_c` is a function that puts **c**oncatenates **str**ings. 
+
+functions can have *named parameters* as well as *positional parameters.*  
+
+## Functions {auto-animate="true"}
+
+Functions are named bits of code that take parameters as input and return some output
+
+```{r}
+#| echo: true
+library(tidyverse)
+word_1 <- "hello"
+word_2 <- "world"
+str_c(word_1, word_2, sep = " ")
+```
+
+`str_c` is a function that puts **c**oncatenates **str**ings. 
+
+functions can have *named parameters* as well as *positional parameters.*  
+*named parameters* always take an `=` sign for assignment.
+
+## "Everything is a vector" {auto-animate="true"}
+
+This sounds like nonsense - let's unpack:
+
+```{r}
+#| echo: true
+c(1, 2, 3, 4)
+```
+
+1. A Vector is a collection of values surrounded by `c()` and separated with `,`
+
+
+## "Everything is a vector" {auto-animate="true"}
+
+This sounds like nonsense - let's unpack:
+
+```{r}
+#| echo: true
+c(1, 2, 3, 4) * 3
+```
+
+1. A vector is a collection of values surrounded by `c()` and separated with `,`
+
+2. Vectors in R do smart things with most functions and operations.
+
+
+## "Everything is a vector" {auto-animate="true"}
+
+This sounds like nonsense - let's unpack:
+
+```{r}
+#| echo: true
+#| error: true
+c(1, 2, 3, "potato") * 3
+```
+
+1. A vector is a collection of values surrounded by `c()` and separated with `,`
+
+2. Vectors in R do smart things with most functions and operations.
+
+3. Vectors have only one type of value.
+
+## Value types in R
+
+The type of the value can be 
+
+```r
+# numeric
+c(1,2,3,4) 
+
+# character
+c("a","b","c","d")
+
+# boolean
+c(TRUE, FALSE)
+
+# factor
+c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun") %>% as_factor()
+```
+
+## `tibble`s (aka data frames)
+
+`tibble`s are the big reason R is great for working with tabular data.
+
+A data frame is a rectangular collection of variables (in the columns) and observations (in the rows). 
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+library(here)
+table_02 <- read_csv(here("datasets/instructional_dataset/02_visit_clinical_measurements_UKZN_workshop_2023.csv"))
+```
+
+```{r}
+#| echo: true 
+table_02
+```
+
+
+## Exercise {.your-turn}
+
+That's enough slides for now time to try for yourself! Go to [the module](index.html) and go to the first exercise.
+
+```{r}
+countdown::countdown(30)
+```
