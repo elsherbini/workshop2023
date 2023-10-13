@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -63,6 +97,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -191,8 +227,23 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#slides-intro-to-rstudio-quarto-and-r" id="toc-slides-intro-to-rstudio-quarto-and-r" class="nav-link active" data-scroll-target="#slides-intro-to-rstudio-quarto-and-r">Slides: Intro to RStudio, Quarto, and R</a></li>
+  <li><a href="#worksheet-introduction-to-r-and-quarto" id="toc-worksheet-introduction-to-r-and-quarto" class="nav-link" data-scroll-target="#worksheet-introduction-to-r-and-quarto">Worksheet: Introduction to R and Quarto</a>
+  <ul class="collapse">
+  <li><a href="#operators-and-functions-in-r" id="toc-operators-and-functions-in-r" class="nav-link" data-scroll-target="#operators-and-functions-in-r">1. Operators and Functions in R</a></li>
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
-  <li><a href="#slides-importing-and-manipulating-tables" id="toc-slides-importing-and-manipulating-tables" class="nav-link" data-scroll-target="#slides-importing-and-manipulating-tables">Slides: Importing and manipulating tables</a></li>
+  <li><a href="#challenge-exercise-1" id="toc-challenge-exercise-1" class="nav-link" data-scroll-target="#challenge-exercise-1">Challenge Exercise 1</a></li>
+  <li><a href="#objects-and-vectors-in-r" id="toc-objects-and-vectors-in-r" class="nav-link" data-scroll-target="#objects-and-vectors-in-r">2. Objects and Vectors in R</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
+  <li><a href="#challenge-exercise-2" id="toc-challenge-exercise-2" class="nav-link" data-scroll-target="#challenge-exercise-2">Challenge Exercise 2</a></li>
+  <li><a href="#dataframes-in-r" id="toc-dataframes-in-r" class="nav-link" data-scroll-target="#dataframes-in-r">3. Dataframes in R</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
+  <li><a href="#challenge-exercise-3" id="toc-challenge-exercise-3" class="nav-link" data-scroll-target="#challenge-exercise-3">Challenge Exercise 3</a></li>
+  </ul></li>
+  <li><a href="#end-of-session-worksheet-introduction-to-r-and-quarto" id="toc-end-of-session-worksheet-introduction-to-r-and-quarto" class="nav-link" data-scroll-target="#end-of-session-worksheet-introduction-to-r-and-quarto">End of session worksheet: Introduction to R and Quarto</a>
+  <ul class="collapse">
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
+  <li><a href="#challenge-exercise" id="toc-challenge-exercise" class="nav-link" data-scroll-target="#challenge-exercise">Challenge Exercise</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -224,13 +275,484 @@ ul.task-list li input[type="checkbox"] {
 <p><a href="../../../materials/1-workshop1/2-intro-to-r/slides.html">Make slides full screen</a></p>
 <iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 </section>
-<section id="exercise-1" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
+<section id="worksheet-introduction-to-r-and-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="worksheet-introduction-to-r-and-quarto">Worksheet: Introduction to R and Quarto</h2>
+<section id="operators-and-functions-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="operators-and-functions-in-r">1. Operators and Functions in R</h3>
+<p>In order to get familiar with the R language, we shall start by using simple operators and functions that are intuitive to us in our everyday lives.</p>
+<section id="arithmetic-operators" class="level4">
+<h4 class="anchored" data-anchor-id="arithmetic-operators">1.1 Arithmetic operators</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                addition</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span>                subtraction</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span>                multiplication</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="sc">/</span>                division</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="sc">^</span> or <span class="sc">**</span>          power</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%*%</span> y          matrix multiplication <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>) <span class="sc">%*%</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>) <span class="sc">==</span> <span class="dv">22</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%%</span> y           <span class="fu">modulo</span> (x mod y) <span class="dv">5</span> <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">1</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%/%</span> y          whole number division<span class="sc">:</span> <span class="dv">5</span> <span class="sc">%/%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that while the first half is self-explanatory, the second is more specific to programming and/or R.</p>
+<p>Let’s try a few examples in R. First, always have a code chunk at the top that loads the libraries you need:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, copy the following code chunk into your quarto document.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">99</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dv">64</span> <span class="sc">/</span> <span class="dv">4</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dv">64</span> <span class="sc">/</span> (<span class="dv">2</span><span class="sc">+</span><span class="dv">2</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="dv">64</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Notice the difference in the last two commands and it’s effect on the output.</p>
 </section>
-<section id="slides-importing-and-manipulating-tables" class="level2">
-<h2 class="anchored" data-anchor-id="slides-importing-and-manipulating-tables">Slides: Importing and manipulating tables</h2>
+<section id="logical-operators-and-functions" class="level4">
+<h4 class="anchored" data-anchor-id="logical-operators-and-functions">1.2 Logical operators and functions</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>                less than</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;=</span>               less than or equal to</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>                greater than</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;=</span>               greater than or equal to</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="sc">==</span>               equal</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="sc">!=</span>               not equal</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>x               not <span class="fu">x</span> (negation)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>x <span class="sc">|</span> y            x OR y</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&amp;</span> y            x AND y</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">xor</span>(x, y)        exclusive <span class="fu">OR</span> (either <span class="cf">in</span> x or y, but not <span class="cf">in</span> both)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">isTRUE</span>(x)        truth test <span class="cf">for</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Few examples for you to copy in your quarto document or directly on the console,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">99</span> <span class="sc">&lt;</span> <span class="dv">1</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>(<span class="dv">99</span> <span class="sc">&lt;</span> <span class="dv">1</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="dv">64</span> <span class="sc">==</span> <span class="dv">8</span><span class="sc">*</span><span class="dv">8</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>(<span class="dv">3</span> <span class="sc">&gt;</span> <span class="dv">2</span>) <span class="sc">|</span> (<span class="dv">4</span> <span class="sc">&gt;</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="numeric-functions" class="level4">
+<h4 class="anchored" data-anchor-id="numeric-functions">1.3 Numeric functions</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(x)             absolute value</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(x)            square root</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ceiling</span>(x)         round up<span class="sc">:</span> <span class="fu">ceiling</span>(<span class="fl">3.475</span>) is <span class="dv">4</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">floor</span>(x)           round down<span class="sc">:</span> <span class="fu">floor</span>(<span class="fl">3.475</span>) is <span class="dv">3</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(x, <span class="at">digits=</span>n) round<span class="sc">:</span> <span class="fu">round</span>(<span class="fl">3.475</span>, <span class="at">digits=</span><span class="dv">2</span>) is <span class="fl">3.48</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cos</span>(x), <span class="fu">sin</span>(x), <span class="fu">tan</span>(x), <span class="fu">acos</span>(x), <span class="fu">cosh</span>(x), <span class="fu">acosh</span>(x) etc.</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(x)             natural logarithm</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">10</span>, <span class="at">base =</span> n)  base n logarithm</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">log2</span>(x)            base <span class="dv">2</span> logarithm</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">log10</span>(x)           base <span class="dv">10</span> logarithm</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(x)             exponential <span class="cf">function</span><span class="sc">:</span> e<span class="sc">^</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Few examples for you to copy in your quarto document or directly on the console,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(<span class="dv">99</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(<span class="sc">-</span><span class="dv">99</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">64</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">floor</span>(<span class="fl">6.789</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="statistical-functions" class="level4">
+<h4 class="anchored" data-anchor-id="statistical-functions">1.4 Statistical functions</h4>
+<p>Below is a list of statistical functions. These functions can have the argument na.rm, which is set to FALSE by default. This will let you deal with missing values (na = not available). If set to false, these are not removed (rm = remove).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>)  mean</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)                   standard deviation</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x)                  variance</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x)               median</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, probs)      quantile of x.  probs<span class="sc">:</span> vector of probabilities</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x)                  sum</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(x)                  minimal value of <span class="fu">x</span> (x_min)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(x)                  xaximal value of <span class="fu">x</span> (x_max)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x)                x_min und x_max</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># if center  = TRUE: subtract mean</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># if scale   = TRUE: divide by sd</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">scale</span>(x, <span class="at">center =</span> <span class="cn">TRUE</span>, <span class="at">scale =</span> <span class="cn">TRUE</span>)   center and standardize</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co"># weighted sampling with argument prob:</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(x, size, <span class="at">replace =</span> <span class="cn">FALSE</span>, prob)  sampling with or without replacement. prob<span class="sc">:</span> vector of weights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="other-useful-functions" class="level4">
+<h4 class="anchored" data-anchor-id="other-useful-functions">1.5 Other useful functions</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>()                    combine<span class="sc">:</span> used to create a vector</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(from, to, by)      generates a sequence</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="sc">:</span>                      colon operator<span class="sc">:</span> generates a <span class="st">'regular'</span> sequence <span class="cf">in</span> increments of <span class="dv">1</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(x, times, each)    repeats x</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                          times<span class="sc">:</span> sequence is repeated n times</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                          each<span class="sc">:</span> each element is repeated n times</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(x, <span class="at">n =</span> <span class="dv">6</span>)         first <span class="dv">6</span> elements of x</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(x, <span class="at">n =</span> <span class="dv">6</span>)         last <span class="dv">6</span> elements of x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Few examples for you to copy in your quarto document or directly on the console,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="at">na.rm =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>))</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">6</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">6</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">times =</span> <span class="dv">2</span>, <span class="at">each =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Ready to put these new skills to use? Here’s an exercise.</p>
+</section>
+</section>
+<section id="exercise-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1">Exercise 1</h3>
+<p>Write R commands to calculate the following:</p>
+<ol type="1">
+<li>The sum of your birth day, month and year</li>
+<li>250 divided by the product of 4 and 5</li>
+<li>Half of the sum of 37.5, 51.3, and 101.7</li>
+<li><span class="math inline">\(\frac{1}{3} * { (1+3+5+7+2) \over (3+5+4)}\)</span></li>
+<li><span class="math inline">\(\sqrt[3]{8}\)</span></li>
+<li><span class="math inline">\(\sin\pi\)</span>, <span class="math inline">\(\cos\pi\)</span>, <span class="math inline">\(\tan\pi\)</span></li>
+<li>Calculate the 10-based logarithm of 100, and multiply the result with the cosine of pi. Hint: see ?log and ?pi.</li>
+<li>Calculate the mean, sd and range of the vector [1, 3, 4, 7, 11, 16]</li>
+<li>Generate the following output: 4 4 4 5 5 5 6 6 6 7 7 7</li>
+<li>Generate the following output: 2 4 6 8 10 12</li>
+</ol>
+</section>
+<section id="challenge-exercise-1" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-exercise-1">Challenge Exercise 1</h3>
+<p>Write R commands to evaluate the following:</p>
+<ol type="1">
+<li>You have 83 chocolates in a bag. You would like to divide them into smaller bags of 8.<br>
+1.1 How many small bags will you need?<br>
+1.2 After the bags are filled, how many extra chocolates will you have remaining?</li>
+<li>You are planning a research study with the following eligibility criteria:</li>
+</ol>
+<ul>
+<li>Study participant should be between 18-25 years old (variable: age)<br>
+</li>
+<li>Hemoglobin should be over 10 (variable: hgb)<br>
+</li>
+<li>Study participant should not weigh over 50 (variable: wgt)<br>
+</li>
+<li>Study location should be X or Y (variable: loc)</li>
+</ul>
+<ol start="3" type="1">
+<li>I have the following observations from a clinical parameter – x &lt;- c(23.1924, 21.4545, 24.6778) However, I would prefer to limit the values to 1 decimal point. How would you do that?</li>
+<li>Look up the rnorm() function in the Help Viewer. What arguments does this function take? Any default values?</li>
+<li>Try to nest a function within another</li>
+</ol>
+<p>Assuming you get all the information in forms of the above variables, write an R command to determine eligibility.</p>
+</section>
+<section id="objects-and-vectors-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="objects-and-vectors-in-r">2. Objects and Vectors in R</h3>
+<section id="objects-variables" class="level4">
+<h4 class="anchored" data-anchor-id="objects-variables">2.1 Objects / Variables</h4>
+<p>So far, we have been happy to run functions and read the results on the screen. What if you’d like to read results later? You will need to save them by creating Objects.</p>
+<p>Copy the following code chunk into your quarto document</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>number1 <span class="ot">&lt;-</span> <span class="dv">9</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(number1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>number2 <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>number1 <span class="sc">*</span> number2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 90</code></pre>
+</div>
+</div>
+<p>What do you think happens when you use the same object name to another value? Try it!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>newnumber <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>newnumber <span class="ot">&lt;-</span> <span class="dv">150</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#What does R pick?</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>newnumber</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Object/Variable names</p>
+<p>You can choose almost any name you like for an object, as long as the name does not begin with a number or a special character like +, -, *, /, ^, !, @, or &amp;.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># good variable names</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>x_mean</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>x_sd</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>num_people</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>age</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># not so good</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>a</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># bad variable names</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>x mean</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>sd of x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="vectors" class="level4">
+<h4 class="anchored" data-anchor-id="vectors">2.2 Vectors</h4>
+<p>Vectors are the fundamental data type in R - all other data types are composed of vectors. These can subdivided into:</p>
+<p><strong>numeric vectors</strong>: a further subdivision is into <code>integer</code> (whole numbers) and <code>double</code> (floating point numbers).</p>
+<p><strong>character vectors</strong>: these consist of characters strings and are surrounded by quotes, either single <code>'</code> or double <code>"</code>, e.g.&nbsp;<code>'word'</code> or <code>"word"</code>.</p>
+<p><strong>logical vectors</strong>: these can take three values: <code>TRUE</code>, <code>FALSE</code> or <code>NA</code>.</p>
+<p>Vectors consist of elements of the same type, i.e., we cannot combine <code>logical</code> and <code>character</code> elements in a vector. Vectors have three properties:</p>
+<p>Type: <code>typeof()</code>: what is it? Length: <code>length()</code>: how many elements? Attribute: <code>attributes()</code>: additional metadata</p>
+<p>Vectors are created using the <code>c()</code> function or by using special function, such as <code>seq()</code> or <code>rep()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numeric vectors</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>num_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.1</span>,<span class="fl">2.2</span>,<span class="fl">2.3</span>,<span class="fl">2.4</span>,<span class="fl">2.5</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(num_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Character vectors</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>char_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"hello"</span>,<span class="st">"hi"</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(char_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Logical vectors</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>log_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(log_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "logical"</code></pre>
+</div>
+</div>
+<p>Some fun with vectors</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>num_vec[<span class="dv">1</span>]</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>num_vec[<span class="dv">4</span>]</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>num_vec[<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>num_vec[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>num_vec[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Try this on your own with the character vectors. What differences and similarities do you notice?</p>
+<p>Exercise time!</p>
+</section>
+</section>
+<section id="exercise-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2">Exercise 2</h3>
+<ol type="1">
+<li>Calculate the mean and standard deviation of a numeric vector of the first 6 multiples of 5.</li>
+<li>What happens if you attempt at arithmetic function on a numeric vector? (Example: num_vec + 1)</li>
+<li>What happens if you attempt the same on a character vector?</li>
+<li>Explore the <code>str_length()</code> function on a character vector.</li>
+<li>What happens if you try to make a vector consisting of different data types?</li>
+<li>Metadata hygiene: Give examples of good and bad ways to make variable names for the following columns in the Metadata spreadsheet –
+<ul>
+<li>Participant ID</li>
+<li>Date of Sample Collection</li>
+<li>Type of Sample</li>
+<li>Mean of past 3 weights</li>
+<li>Number of people</li>
+</ul></li>
+</ol>
+</section>
+<section id="challenge-exercise-2" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-exercise-2">Challenge Exercise 2</h3>
+<ol type="1">
+<li>Calculate the mean of the sum of the first 6 even numbers - using one R command.</li>
+<li><code>first_name</code> and <code>last_name</code> are two separate variables. Make one variable with both together, calling it <code>full_name</code>. Hint: it is a function</li>
+</ol>
+</section>
+<section id="dataframes-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="dataframes-in-r">3. Dataframes in R</h3>
+<p>For data analysis and statistics, data frames are important objects of data representation. A data frame is a two dimensional structure with rows and columns, like a table. You can think of it as a collection of vectors. Let us try making one.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a vector with an ID </span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># creating another vector with names</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"PersonA"</span>, <span class="st">"PersonB"</span>, <span class="st">"PersonC"</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># creating another vector with year of birth </span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>year_of_birth <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1990</span>, <span class="dv">1995</span>, <span class="dv">2000</span>)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># creating another vector with favourite colour</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>fav_colour <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"yellow"</span>)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Make a dataframe from the above</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(id, name, year_of_birth, fav_colour)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+     id name    year_of_birth fav_colour
+  &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;     
+1     1 PersonA          1990 red       
+2     2 PersonB          1995 green     
+3     3 PersonC          2000 yellow    </code></pre>
+</div>
+</div>
+<p>You just made a dataframe!</p>
+<p>Now, normally you will be importing one and using it to get useful information. You can extract useful information like number of rows, columns, details of each, summary of values, etc</p>
+<p>Here are a few helpful functions -</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$class
+[1] "tbl_df"     "tbl"        "data.frame"
+
+$row.names
+[1] 1 2 3
+
+$names
+[1] "id"            "name"          "year_of_birth" "fav_colour"   </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1" "2" "3"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "id"            "name"          "year_of_birth" "fav_colour"   </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We didn't assign any yet! Let us try to assign column names</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ID"</span>,<span class="st">"name"</span>,<span class="st">"year_of_birth"</span>,<span class="st">"favourite_colour"</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "ID"               "name"             "year_of_birth"    "favourite_colour"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Note: When importing an existing data file, depending on your it's structure, you can ask R to import with or without row and column names)</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data frame subsetting (I want only a few columns of my interest)</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "PersonA" "PersonB" "PersonC"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, year_of_birth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 1
+  year_of_birth
+          &lt;dbl&gt;
+1          1990
+2          1995
+3          2000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#extract row 2 only</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">slice</span>(df, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+     ID name    year_of_birth favourite_colour
+  &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;           
+1     2 PersonB          1995 green           </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#extract rows 1, and 3</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">slice</span>(df, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+     ID name    year_of_birth favourite_colour
+  &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;           
+1     1 PersonA          1990 red             
+2     3 PersonC          2000 yellow          </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#extract column 3 only</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 1
+  year_of_birth
+          &lt;dbl&gt;
+1          1990
+2          1995
+3          2000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#extract rows based on one condition</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, year_of_birth <span class="sc">&gt;</span> <span class="dv">1995</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+     ID name    year_of_birth favourite_colour
+  &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;           
+1     3 PersonC          2000 yellow          </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#extract rows based on multiple conditions</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, year_of_birth <span class="sc">&gt;</span> <span class="dv">1995</span> <span class="sc">&amp;</span> df<span class="sc">$</span>favourite_colour<span class="sc">==</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 4
+# ℹ 4 variables: ID &lt;dbl&gt;, name &lt;chr&gt;, year_of_birth &lt;dbl&gt;,
+#   favourite_colour &lt;chr&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, year_of_birth <span class="sc">&gt;</span> <span class="dv">1995</span> <span class="sc">|</span> df<span class="sc">$</span>favourite_colour<span class="sc">==</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+     ID name    year_of_birth favourite_colour
+  &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;           
+1     1 PersonA          1990 red             
+2     3 PersonC          2000 yellow          </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Note the difference in output upon use of different logical operators AND and OR</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exercise-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3">Exercise 3</h3>
+<ol type="1">
+<li>Make an expression to get only rows when the name is Person C or the favorite color is green.</li>
+<li>Make a new dataframe with 6 rows and 5 columns (get creative!)</li>
+<li>Add different combinations of data to be able to use the above functions and compare output.</li>
+<li>Try above functions on your new dataframe and note any interesting observations.</li>
+<li>Try some other functions: <code>str()</code>, <code>head()</code>, <code>view()</code>.</li>
+</ol>
+</section>
+<section id="challenge-exercise-3" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-exercise-3">Challenge Exercise 3</h3>
+<ol type="1">
+<li>Can you think of other simple questions you may need to query your dataset?</li>
+<li>Try to look your query up on google and see if you can find a function that addresses your need! (add ‘in R’ at the end for relevant answers!)</li>
+</ol>
+<p>Congratulations! You have successfully reached the end of this exercise. You now possess the most important skill: google your query!</p>
+</section>
+</section>
+<section id="end-of-session-worksheet-introduction-to-r-and-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="end-of-session-worksheet-introduction-to-r-and-quarto">End of session worksheet: Introduction to R and Quarto</h2>
+<p>Now that we practiced a bit on mock and small datasets, let us try a ‘real’ one.</p>
+<p>Use the following command to read in the data from the Ice Breaker poll from this morning. Copy the code chunk into your Quarto markdown</p>
+<p>Download the icebreaker poll everyone filled out this morning. <a href="../../../datasets.html">Download the dataset here</a> and move it to your project directory.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>ice_breaker_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"ice_breaker_poll.csv"</span>) <span class="co"># make sure this file name exists in your current directory!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>View your dataset. What is your favourite way to ‘see’ your dataset? Check the first few and last few rows (Hint: Use a function)</p>
+<p>Let us find out more about the survey responses.</p>
+<section id="exercise" class="level3">
+<h3 class="anchored" data-anchor-id="exercise">Exercise</h3>
+<p>Write R commands for the following - 1. How many people took this survey? 2. How many questions did we ask? 3. What questions did we ask? 4. Give a few examples of the data types captured in the questions</p>
+</section>
+<section id="challenge-exercise" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-exercise">Challenge Exercise</h3>
+<p>Write R commands for the following - 1. Look at responses of questions 4-6 from all participants 2. Try to rename a column (question) 3. Make a new dataframe of 5 questions of your choice. 4. Can you get the height of the tallest person in this room?</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
