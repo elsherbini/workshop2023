@@ -1011,4 +1011,4 @@ ggplot(penguins) +
 
 
 # Exercise 
-Go to [(NEEDS UPDATE) https://elsherbini.github.io/AMNH_R_Workshop_2023/modules/data-wrangling-module/](https://elsherbini.github.io/AMNH_R_Workshop_2023/modules/data-wrangling-module/) and complete the Compound Figures exercise.
+Go to [https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/7-custom-data-visualizations/#coding-exercise-7.2](https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/7-custom-data-visualizations/#coding-exercise-7.2) and complete the Compound Figures exercise.

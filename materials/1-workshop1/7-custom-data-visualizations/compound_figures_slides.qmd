@@ -414,4 +414,4 @@ Titles and captions
 
 
 # Exercise 
-Go to [(NEEDS UPDATE) https://elsherbini.github.io/AMNH_R_Workshop_2023/modules/data-wrangling-module/](https://elsherbini.github.io/AMNH_R_Workshop_2023/modules/data-wrangling-module/) and complete the Figure Design exercise.
+Go to [(https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/7-custom-data-visualizations/#coding-exercise-7.3](https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/7-custom-data-visualizations/#coding-exercise-7.3) and complete the Figure Design exercise.
