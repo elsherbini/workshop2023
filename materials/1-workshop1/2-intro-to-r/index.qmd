@@ -7,7 +7,7 @@ format:
 
 > Let's learn how to use RStudio to run R code and render documents with Quarto.
 
-
+  
 ## Slides: Intro to RStudio, Quarto, and R
 [Make slides full screen](slides.qmd)
 
@@ -15,6 +15,6 @@ format:
 <iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 ```
 
-## Exercise 1
+{{< include r_midsession_exercise.Qmd >}}
 
-## Slides: Importing and manipulating tables
+{{< include r_endofsession_exercise.Qmd >}}

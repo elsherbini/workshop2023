@@ -1,0 +1,41 @@
+---
+  format:
+  html:
+  code-link: true
+  editor_options: 
+    chunk_output_type: console
+---
+
+##  End of session worksheet: Introduction to R and Quarto
+
+Now that we practiced a bit on mock and small datasets, let us try a 'real' one. 
+
+Use the following command to read in the data from the Ice Breaker poll from this morning.
+Copy the code chunk into your Quarto markdown
+
+Download the icebreaker poll everyone filled out this morning. [Download the dataset here](../../../datasets.html) and move it to your project directory.
+
+```{r echo="TRUE", eval=FALSE}
+ice_breaker_df <- read_csv("ice_breaker_poll.csv") # make sure this file name exists in your current directory!
+```
+
+View your dataset. What is your favourite way to 'see' your dataset? Check the first few and last few rows (Hint: Use a function)
+
+Let us find out more about the survey responses.
+
+### Exercise
+
+Write R commands for the following -
+1. How many people took this survey?
+2. How many questions did we ask?
+3. What questions did we ask?
+4. Give a few examples of the data types captured in the questions
+
+### Challenge Exercise
+
+Write R commands for the following -
+1. Look at responses of questions 4-6 from all participants
+2. Try to rename a column (question)
+3. Make a new dataframe of 5 questions of your choice.
+4. Can you get the height of the tallest person in this room?
+
