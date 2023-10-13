@@ -3,7 +3,7 @@ title: "About"
 sidebar: false
 ---
 
-## Reproducible Data Analysis with R - Teaching Team
+## Workshop 1 - Reproducible Data Analysis with R - Teaching Team
 
 ::: {.grid}
 
