@@ -1,0 +1,208 @@
+---
+title: "Compound Figures Exercise Solutions"
+format: 
+  html: default
+
+---
+
+
+
+```{r setup3}
+#| eval: TRUE
+#| echo: FALSE
+#| warning: FALSE
+library(purrr)
+library(tufte)
+library(tidyverse)
+library(patchwork)
+library(cowplot)
+library(lubridate)
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, warning = FALSE, message = FALSE, eval = FALSE,  echo=TRUE, comment = "", cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+
+p1 <- ggplot(mtcars) + 
+  geom_point(aes(mpg, disp))
+
+p2 <- ggplot(mtcars) + 
+  geom_boxplot(aes(gear, disp, group = gear))
+
+p3 <- ggplot(mtcars) + 
+  geom_smooth(aes(disp, qsec))
+
+p4 <- ggplot(mtcars) + 
+  geom_bar(aes(carb))
+```
+
+### Coding exercise 7.3
+
+In this worksheet, we will discuss how to combine several **ggplot2** plots into one compound figure.
+
+We will be using the R package **tidyverse**, which includes `ggplot()` and related functions. We will also be using the package **patchwork** for plot composition.
+
+```{r library-calls3}
+#| eval: TRUE
+#| echo: TRUE
+# load required library
+library(tidyverse)
+library(patchwork)
+```
+
+We will be working with the dataset `mtcars`, which contains fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).
+
+```{r mtcars}
+#| eval: TRUE
+#| echo: TRUE
+mtcars
+```
+#### Combining plots
+
+First we set up four different plots that we will subsequently combine. The plots are stored in variables `p1`, `p2`, `p3`, `p4`.
+
+```{r singlet-plot}
+#| eval: TRUE
+#| echo: TRUE
+p1 <- ggplot(mtcars) + 
+  geom_point(aes(mpg, disp))
+p1  
+
+p2 <- ggplot(mtcars) + 
+  geom_boxplot(aes(gear, disp, group = gear))
+p2
+
+p3 <- ggplot(mtcars) + 
+  geom_smooth(aes(disp, qsec))
+p3
+
+p4 <- ggplot(mtcars) + 
+  geom_bar(aes(carb))
+p4
+```
+
+
+To show plots side-by-side, we use the operator `|`, as in `p1 | p2`. Try this by making a compound plot of plots `p1`, `p2`, `p3` side-by-side.
+
+```{r plots-side-by-side}
+#| eval: TRUE
+#| echo: TRUE
+ # build all the code for this exercisew
+
+  # solution 
+ p1 | p2 | p3
+```
+
+
+To show plots on top of one-another, we use the operator `/`, as in `p1 / p2`. Try this by making a compound plot of plots `p1`, `p2`, `p3` on top of each other.
+
+```{r plots-on-top}
+#| eval: TRUE
+#| echo: TRUE
+ # build all the code for this exercise
+
+  p1 / p2 / p3
+```
+
+
+We can also use parentheses to group plots with respect to the operators `|` and `/`. For example, we can place several plots side-by-side and then place this entire row of plots on top of another plot. Try putting `p1`, `p2`, `p3`, on the top row, and `p4` on the bottom row.
+
+```{r plots-complex}
+#| eval: FALSE
+#| echo: TRUE
+
+(___) / ___
+```
+
+```{r plots-complex_solution}
+#| eval: FALSE
+#| echo: TRUE
+
+# solution
+(p1 | p2 | p3 ) / p4
+```
+
+#### Plot annotations
+
+The **patchwork** package provides a powerful annotation system via the `plot_annotation()` function that can be added to a plot assembly. For example, we can add plot tags (the labels in the upper left corner identifying the plots) via the plot annotation `tag_levels`. You can set `tag_levels = "A"` to generate tags A, B, C, etc. Try this out.
+
+```{r plots-w-tags}
+#| eval: TRUE
+#| echo: TRUE
+(p1 | p2 | p3 ) / p4
+```
+
+```{r plots-w-tags_solution}
+#| eval: TRUE
+#| echo: TRUE
+
+# solution
+(p1 | p2 | p3 ) / p4 +
+  plot_annotation(
+    tag_levels = "A"
+  )
+```
+Try also tag levels such as `"a"`, `"i"`, or `"1"`.
+
+You can also add elements such as titles, subtitles, and captions, by setting the `title`, `subtitle`, or `caption` argument in `plot_annotation()`. Try this out by adding an overall title to the figure from the previous exercise.
+
+```{r plots-w-title}
+#| eval: TRUE
+#| echo: TRUE
+ # build all the code for this exercise
+
+ # solution
+(p1 | p2 | p3 ) / p4 +
+  plot_annotation(
+    tag_levels = "A",
+    title = "Various observations about old cars"
+  )
+```
+
+
+Also set a subtitle and a caption.
+
+Finally, you can change the theme of all plots in the plot assembly via the `&` operator, as in `(p1 | p2) & theme_bw()`. Try this out.
+
+```{r themeing}
+#| eval: TRUE
+#| echo: TRUE
+ # build all the code for this exercise
+
+# solution
+(p1 | p2) & theme_bw()
+```
+
+What happens if you write this expression without parentheses? Do you understand why?
+
+
+*(Big) Challenge Problem*:
+
+If you have time this morning, or if you want to work on it this afternoon, try analyzing a new dataset to test your R skills. First, learn what the columns mean, what missing values you see, and then start to ask questions about patterns in the data by making plots.   
+You can browse the datasets at https://github.com/rfordatascience/tidytuesday/tree/master/data (click on a year folder and go to the README to read about the datasets). Or pick from one of the ones below:
+
+```{r challenge-dataset}
+#| eval: TRUE
+#| echo: TRUE
+# fish consumption in different countries 
+consumption <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-12/fish-and-seafood-consumption-per-capita.csv')
+
+# world cup Cricket matches from 1996 to 2005
+matches <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-11-30/matches.csv')
+
+# malaria deaths by age across the world and time. 
+ malaria_deaths<- readr::read_csv('https://github.com/rfordatascience/tidytuesday/blob/master/data/2018/2018-11-13/malaria_deaths_age.csv')
+
+#meteorites and/or volcanos:
+# note to plot a map, try the following:
+countries_map <- ggplot2::map_data("world")
+world_map<-ggplot() + 
+  geom_map(data = countries_map, 
+           map = countries_map,aes(x = long, y = lat, map_id = region, group = group),
+           fill = "white", color = "black", size = 0.1) # then add geom_point() to this map to add lat/long points
+
+meteorites <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-06-11/meteorites.csv")
+volcano <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-12/volcano.csv")
+
+# or pick any dataset from https://github.com/rfordatascience/tidytuesday/tree/master/data , 
+# just click on a year folder and go to the README to read about the datasets
+# if you have trouble loading a dataset there, ask for help!
+```

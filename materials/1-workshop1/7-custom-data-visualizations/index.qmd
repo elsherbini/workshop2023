@@ -27,6 +27,7 @@ library(here)
 <iframe class="slide-deck" src="color_scales_slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 ```
 {{< include _color_scales_exercise.qmd >}}
+[Color Scales Exercise Solutions](color_scales_exercise_solutions.qmd)
 
 ## Figure Design
 [Make slides full screen](figure_design_slides.qmd)
@@ -35,6 +36,7 @@ library(here)
 <iframe class="slide-deck" src="figure_design_slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 ```
 {{< include _figure_design_exercise.qmd >}}
+[Figure Design Exercise Solutions](figure_design_exercise_solutions.qmd)
 
 ## Compound Figures
 [Make slides full screen](compound_figures_slides.qmd)
@@ -44,4 +46,4 @@ library(here)
 ```
 
 {{< include _compound_figures_exercise.qmd >}}
-
+[Compound Figures Exercise Solutions](compound_figures_exercise_solutions.qmd)
