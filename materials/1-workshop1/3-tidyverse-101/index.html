@@ -228,7 +228,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#genetic-profiles-of-cancer" id="toc-genetic-profiles-of-cancer" class="nav-link" data-scroll-target="#genetic-profiles-of-cancer">Genetic profiles of cancer</a></li>
   </ul></li>
-  <li><a href="#coding-exercise-3.1" id="toc-coding-exercise-3.1" class="nav-link" data-scroll-target="#coding-exercise-3.1">Coding exercise 3.1</a></li>
+  <li><a href="#coding-exercise-3.1" id="toc-coding-exercise-3.1" class="nav-link" data-scroll-target="#coding-exercise-3.1">Coding exercise 3.1</a>
+  <ul class="collapse">
+  <li><a href="#basic-use-of-ggplot" id="toc-basic-use-of-ggplot" class="nav-link" data-scroll-target="#basic-use-of-ggplot">Basic use of ggplot</a></li>
+  <li><a href="#more-complex-geoms" id="toc-more-complex-geoms" class="nav-link" data-scroll-target="#more-complex-geoms">More complex geoms</a></li>
+  <li><a href="#adding-color" id="toc-adding-color" class="nav-link" data-scroll-target="#adding-color">Adding color</a></li>
+  <li><a href="#using-aesthetics-as-parameters" id="toc-using-aesthetics-as-parameters" class="nav-link" data-scroll-target="#using-aesthetics-as-parameters">Using aesthetics as parameters</a></li>
+  </ul></li>
+  <li><a href="#coding-exercise-3.2" id="toc-coding-exercise-3.2" class="nav-link" data-scroll-target="#coding-exercise-3.2">Coding exercise 3.2</a>
+  <ul class="collapse">
+  <li><a href="#basic-use-of-ggplot-1" id="toc-basic-use-of-ggplot-1" class="nav-link" data-scroll-target="#basic-use-of-ggplot-1">Basic use of ggplot</a></li>
+  <li><a href="#more-complex-geoms-1" id="toc-more-complex-geoms-1" class="nav-link" data-scroll-target="#more-complex-geoms-1">More complex geoms</a></li>
+  <li><a href="#adding-color-1" id="toc-adding-color-1" class="nav-link" data-scroll-target="#adding-color-1">Adding color</a></li>
+  <li><a href="#using-aesthetics-as-parameters-1" id="toc-using-aesthetics-as-parameters-1" class="nav-link" data-scroll-target="#using-aesthetics-as-parameters-1">Using aesthetics as parameters</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -512,17 +525,171 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="coding-exercise-3.1" class="level2">
 <h2 class="anchored" data-anchor-id="coding-exercise-3.1">Coding exercise 3.1</h2>
 <p>For this exercise we’ll be using the instructional dataset. <a href="../../../datasets.html">Download the dataset here</a>.</p>
+<p>In this worksheet, we will discuss a core concept of ggplot, the mapping of data values onto aesthetics.</p>
+<p>We will be using the R package <code>tidyverse</code>, which includes <code>ggplot()</code> and related functions.</p>
 <p>Copy the following code chunk into your quarto document. Notice the error in the <code>read_csv()</code> line - it wants you to supply the <code>file</code> name to read. Fix the error!</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># load the tidyverse library</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>() <span class="co"># read in your data </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># we want to use the data in the visit_clinical_measurements file</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>clinical_measurements <span class="ot">&lt;-</span> <span class="fu">read_csv</span>() <span class="co"># read in your data </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in read_csv(): argument "file" is missing, with no default</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#then show the first few rows</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clinical_measurements)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'clinical_measurements' not found</code></pre>
 </div>
+</div>
+<section id="basic-use-of-ggplot" class="level3">
+<h3 class="anchored" data-anchor-id="basic-use-of-ggplot">Basic use of ggplot</h3>
+<p>In the most basic use of ggplot, we call the <code>ggplot()</code> function with a dataset and an aesthetic mapping (created with <code>aes()</code>), and then we add a geom, such as <code>geom_line()</code> to draw lines or <code>geom_point()</code> to draw points.</p>
+<p>Try this for yourself. Map the column <code>ph</code> onto the x axis and the column <code>crp_blood</code> onto the y axis, and use <code>geom_line()</code> to display the data.</p>
+<p>Whenever you see <code>___</code> in the code below, that means you should swap it in with your own code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Try again. Now use <code>geom_point()</code> instead of <code>geom_line()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And now swap which column you map to x and which to y.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="more-complex-geoms" class="level3">
+<h3 class="anchored" data-anchor-id="more-complex-geoms">More complex geoms</h3>
+<p>You can use other geoms to make different types of plots. For example, <code>geom_boxplot()</code> will make boxplots. For boxplots, we frequently want categorical data on the x or y axis. For example, we might want a separate boxplot for each month. Try this out. Put <code>nugent_score</code> on the x axis, <code>ph</code> on the y axis, and use <code>geom_boxplot()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now try swapping the x and y axis <code>geom_jitter()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now try swapping the x and y axis</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="adding-color" class="level3">
+<h3 class="anchored" data-anchor-id="adding-color">Adding color</h3>
+<p>Try again with <code>geom_jitter()</code>, this time using <code>ph</code> as the location along the y axis and <code>arm</code> for the color. Remember to check the <code>ggplot</code> cheat sheet, or type <code>?geom_jitter()</code> in the console to and look at the “Aesthetics” section if you get stuck.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(Hint: Try adding <code>size = 3</code> as a parameter to the <code>geom_jitter()</code> to create larger points.)</p>
+</section>
+<section id="using-aesthetics-as-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="using-aesthetics-as-parameters">Using aesthetics as parameters</h3>
+<p>Many of the aesthetics (such as <code>color</code>, <code>fill</code>, and also <code>size</code> to change line size or point thickness) can be used as parameters inside a geom rather than inside an <code>aes()</code> statement. The difference is that when you use an aesthetic as a parameter, you specify a specific value, such as <code>color = "blue"</code>, rather than a mapping, such as <code>aes(color = arm)</code>. Notice the difference: Inside the <code>aes()</code> function, we don’t actually specify the specific color values, ggplot does that for us. We only say that we want the data values of the <code>arm</code> column to correspond to different colors. (We will learn later how to tell ggplot to use specific colors in this mapping.)</p>
+<p>Try this with the boxplot example from the previous section. Map <code>arm</code> onto the <code>fill</code> aesthetic but set the color of the lines to <code>"navyblue"</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now do the reverse. Map arm onto the line colors of the boxplot, but will the box with the color <code>"navyblue"</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Great, that’s all for now! If you are done, but a green sticky note on your laptop!</p>
+</section>
+</section>
+<section id="coding-exercise-3.2" class="level2">
+<h2 class="anchored" data-anchor-id="coding-exercise-3.2">Coding exercise 3.2</h2>
+<p>For this exercise we’ll be using the instructional dataset. <a href="../../../datasets.html">Download the dataset here</a>.</p>
+<p>In this worksheet, we will discuss a core concept of ggplot, the mapping of data values onto aesthetics.</p>
+<p>We will be using the R package <code>tidyverse</code>, which includes <code>ggplot()</code> and related functions.</p>
+<p>Copy the following code chunk into your quarto document. Notice the error in the <code>read_csv()</code> line - it wants you to supply the <code>file</code> name to read. Fix the error!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># load the tidyverse library</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># we want to use the data in the visit_clinical_measurements file</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>clinical_measurements <span class="ot">&lt;-</span> <span class="fu">read_csv</span>() <span class="co"># read in your data </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in read_csv(): argument "file" is missing, with no default</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#then show the first few rows</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clinical_measurements)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'clinical_measurements' not found</code></pre>
+</div>
+</div>
+<section id="basic-use-of-ggplot-1" class="level3">
+<h3 class="anchored" data-anchor-id="basic-use-of-ggplot-1">Basic use of ggplot</h3>
+<p>In the most basic use of ggplot, we call the <code>ggplot()</code> function with a dataset and an aesthetic mapping (created with <code>aes()</code>), and then we add a geom, such as <code>geom_line()</code> to draw lines or <code>geom_point()</code> to draw points.</p>
+<p>Try this for yourself. Map the column <code>ph</code> onto the x axis and the column <code>crp_blood</code> onto the y axis, and use <code>geom_line()</code> to display the data.</p>
+<p>Whenever you see <code>___</code> in the code below, that means you should swap it in with your own code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Try again. Now use <code>geom_point()</code> instead of <code>geom_line()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And now swap which column you map to x and which to y.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="more-complex-geoms-1" class="level3">
+<h3 class="anchored" data-anchor-id="more-complex-geoms-1">More complex geoms</h3>
+<p>You can use other geoms to make different types of plots. For example, <code>geom_boxplot()</code> will make boxplots. For boxplots, we frequently want categorical data on the x or y axis. For example, we might want a separate boxplot for each month. Try this out. Put <code>nugent_score</code> on the x axis, <code>ph</code> on the y axis, and use <code>geom_boxplot()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now try swapping the x and y axis <code>geom_jitter()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now try swapping the x and y axis</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="adding-color-1" class="level3">
+<h3 class="anchored" data-anchor-id="adding-color-1">Adding color</h3>
+<p>Try again with <code>geom_jitter()</code>, this time using <code>ph</code> as the location along the y axis and <code>arm</code> for the color. Remember to check the <code>ggplot</code> cheat sheet, or type <code>?geom_jitter()</code> in the console to and look at the “Aesthetics” section if you get stuck.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(Hint: Try adding <code>size = 3</code> as a parameter to the <code>geom_jitter()</code> to create larger points.)</p>
+</section>
+<section id="using-aesthetics-as-parameters-1" class="level3">
+<h3 class="anchored" data-anchor-id="using-aesthetics-as-parameters-1">Using aesthetics as parameters</h3>
+<p>Many of the aesthetics (such as <code>color</code>, <code>fill</code>, and also <code>size</code> to change line size or point thickness) can be used as parameters inside a geom rather than inside an <code>aes()</code> statement. The difference is that when you use an aesthetic as a parameter, you specify a specific value, such as <code>color = "blue"</code>, rather than a mapping, such as <code>aes(color = arm)</code>. Notice the difference: Inside the <code>aes()</code> function, we don’t actually specify the specific color values, ggplot does that for us. We only say that we want the data values of the <code>arm</code> column to correspond to different colors. (We will learn later how to tell ggplot to use specific colors in this mapping.)</p>
+<p>Try this with the boxplot example from the previous section. Map <code>arm</code> onto the <code>fill</code> aesthetic but set the color of the lines to <code>"navyblue"</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now do the reverse. Map arm onto the line colors of the boxplot, but will the box with the color <code>"navyblue"</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Great, that’s all for now! If you are done, but a green sticky note on your laptop!</p>
+<p>```</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

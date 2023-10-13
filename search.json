@@ -53,7 +53,14 @@
     "href": "materials/1-workshop1/3-tidyverse-101/index.html#coding-exercise-3.1",
     "title": "Intro to data visualization and data wrangling with the\ntidyverse",
     "section": "Coding exercise 3.1",
-    "text": "Coding exercise 3.1\nFor this exercise we’ll be using the instructional dataset. Download the dataset here.\nCopy the following code chunk into your quarto document. Notice the error in the read_csv() line - it wants you to supply the file name to read. Fix the error!\n\nlibrary(tidyverse) # load the tidyverse library\n\nread_csv() # read in your data \n\nError in read_csv(): argument \"file\" is missing, with no default"
+    "text": "Coding exercise 3.1\nFor this exercise we’ll be using the instructional dataset. Download the dataset here.\nIn this worksheet, we will discuss a core concept of ggplot, the mapping of data values onto aesthetics.\nWe will be using the R package tidyverse, which includes ggplot() and related functions.\nCopy the following code chunk into your quarto document. Notice the error in the read_csv() line - it wants you to supply the file name to read. Fix the error!\n\nlibrary(tidyverse) # load the tidyverse library\n\n# we want to use the data in the visit_clinical_measurements file\nclinical_measurements &lt;- read_csv() # read in your data \n\nError in read_csv(): argument \"file\" is missing, with no default\n\n#then show the first few rows\nhead(clinical_measurements)\n\nError in eval(expr, envir, enclos): object 'clinical_measurements' not found\n\n\n\nBasic use of ggplot\nIn the most basic use of ggplot, we call the ggplot() function with a dataset and an aesthetic mapping (created with aes()), and then we add a geom, such as geom_line() to draw lines or geom_point() to draw points.\nTry this for yourself. Map the column ph onto the x axis and the column crp_blood onto the y axis, and use geom_line() to display the data.\nWhenever you see ___ in the code below, that means you should swap it in with your own code.\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\nTry again. Now use geom_point() instead of geom_line().\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\nAnd now swap which column you map to x and which to y.\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\n\n\nMore complex geoms\nYou can use other geoms to make different types of plots. For example, geom_boxplot() will make boxplots. For boxplots, we frequently want categorical data on the x or y axis. For example, we might want a separate boxplot for each month. Try this out. Put nugent_score on the x axis, ph on the y axis, and use geom_boxplot().\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\nNow try swapping the x and y axis geom_jitter()\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\nNow try swapping the x and y axis\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\n\n\nAdding color\nTry again with geom_jitter(), this time using ph as the location along the y axis and arm for the color. Remember to check the ggplot cheat sheet, or type ?geom_jitter() in the console to and look at the “Aesthetics” section if you get stuck.\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\n(Hint: Try adding size = 3 as a parameter to the geom_jitter() to create larger points.)\n\n\nUsing aesthetics as parameters\nMany of the aesthetics (such as color, fill, and also size to change line size or point thickness) can be used as parameters inside a geom rather than inside an aes() statement. The difference is that when you use an aesthetic as a parameter, you specify a specific value, such as color = \"blue\", rather than a mapping, such as aes(color = arm). Notice the difference: Inside the aes() function, we don’t actually specify the specific color values, ggplot does that for us. We only say that we want the data values of the arm column to correspond to different colors. (We will learn later how to tell ggplot to use specific colors in this mapping.)\nTry this with the boxplot example from the previous section. Map arm onto the fill aesthetic but set the color of the lines to \"navyblue\".\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\nNow do the reverse. Map arm onto the line colors of the boxplot, but will the box with the color \"navyblue\".\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\nGreat, that’s all for now! If you are done, but a green sticky note on your laptop!"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/index.html#coding-exercise-3.2",
+    "href": "materials/1-workshop1/3-tidyverse-101/index.html#coding-exercise-3.2",
+    "title": "Intro to data visualization and data wrangling with the\ntidyverse",
+    "section": "Coding exercise 3.2",
+    "text": "Coding exercise 3.2\nFor this exercise we’ll be using the instructional dataset. Download the dataset here.\nIn this worksheet, we will discuss a core concept of ggplot, the mapping of data values onto aesthetics.\nWe will be using the R package tidyverse, which includes ggplot() and related functions.\nCopy the following code chunk into your quarto document. Notice the error in the read_csv() line - it wants you to supply the file name to read. Fix the error!\n\nlibrary(tidyverse) # load the tidyverse library\n\n# we want to use the data in the visit_clinical_measurements file\nclinical_measurements &lt;- read_csv() # read in your data \n\nError in read_csv(): argument \"file\" is missing, with no default\n\n#then show the first few rows\nhead(clinical_measurements)\n\nError in eval(expr, envir, enclos): object 'clinical_measurements' not found\n\n\n\nBasic use of ggplot\nIn the most basic use of ggplot, we call the ggplot() function with a dataset and an aesthetic mapping (created with aes()), and then we add a geom, such as geom_line() to draw lines or geom_point() to draw points.\nTry this for yourself. Map the column ph onto the x axis and the column crp_blood onto the y axis, and use geom_line() to display the data.\nWhenever you see ___ in the code below, that means you should swap it in with your own code.\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\nTry again. Now use geom_point() instead of geom_line().\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\nAnd now swap which column you map to x and which to y.\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\n\n\nMore complex geoms\nYou can use other geoms to make different types of plots. For example, geom_boxplot() will make boxplots. For boxplots, we frequently want categorical data on the x or y axis. For example, we might want a separate boxplot for each month. Try this out. Put nugent_score on the x axis, ph on the y axis, and use geom_boxplot().\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\nNow try swapping the x and y axis geom_jitter()\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\nNow try swapping the x and y axis\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\n\n\nAdding color\nTry again with geom_jitter(), this time using ph as the location along the y axis and arm for the color. Remember to check the ggplot cheat sheet, or type ?geom_jitter() in the console to and look at the “Aesthetics” section if you get stuck.\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\n(Hint: Try adding size = 3 as a parameter to the geom_jitter() to create larger points.)\n\n\nUsing aesthetics as parameters\nMany of the aesthetics (such as color, fill, and also size to change line size or point thickness) can be used as parameters inside a geom rather than inside an aes() statement. The difference is that when you use an aesthetic as a parameter, you specify a specific value, such as color = \"blue\", rather than a mapping, such as aes(color = arm). Notice the difference: Inside the aes() function, we don’t actually specify the specific color values, ggplot does that for us. We only say that we want the data values of the arm column to correspond to different colors. (We will learn later how to tell ggplot to use specific colors in this mapping.)\nTry this with the boxplot example from the previous section. Map arm onto the fill aesthetic but set the color of the lines to \"navyblue\".\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\nNow do the reverse. Map arm onto the line colors of the boxplot, but will the box with the color \"navyblue\".\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\nGreat, that’s all for now! If you are done, but a green sticky note on your laptop!\n```"
   },
   {
     "objectID": "materials/1-workshop1/2-intro-to-r/index.html",
@@ -859,5 +866,229 @@
     "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "Exercise",
     "text": "Exercise\n\n\n\n−+\n30:00\n\n\n\nTime to try it yourself. Go to the first coding exercise.\n\nDuring an activity, place a blue sticky on your laptop if you’re good to go and a pink sticky if you want help."
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#we-often-encounter-datasets-containing-simple-amounts",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#we-often-encounter-datasets-containing-simple-amounts",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "We often encounter datasets containing simple amounts",
+    "text": "We often encounter datasets containing simple amounts\nExample: Highest grossing movies 2023 to date\n\n\n\n\n\nrank\ntitle\namount\n\n\n\n\n1\nBarbie\n1437.8\n\n\n2\nThe Super Mario Bros Movie\n1361.9\n\n\n3\nOppenheimer\n939.3\n\n\n4\nGuardians of the Galaxy 3\n845.5\n\n\n5\nThe Little Mermaid\n569.6\n\n\n\n\n\n\n\nMillions USD. Data source: Box Office Mojo"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#we-can-visualize-amounts-with-bar-plots",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#we-can-visualize-amounts-with-bar-plots",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "We can visualize amounts with bar plots",
+    "text": "We can visualize amounts with bar plots"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#bars-can-also-run-horizontally",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#bars-can-also-run-horizontally",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Bars can also run horizontally",
+    "text": "Bars can also run horizontally"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#avoid-rotated-axis-labels",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#avoid-rotated-axis-labels",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Avoid rotated axis labels",
+    "text": "Avoid rotated axis labels"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#avoid-rotated-axis-labels---flip-the-axes",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#avoid-rotated-axis-labels---flip-the-axes",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Avoid rotated axis labels - flip the axes!",
+    "text": "Avoid rotated axis labels - flip the axes!"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#pay-attention-to-the-order-of-the-bars",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#pay-attention-to-the-order-of-the-bars",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Pay attention to the order of the bars",
+    "text": "Pay attention to the order of the bars"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#pay-attention-to-the-order-of-the-bars-1",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#pay-attention-to-the-order-of-the-bars-1",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Pay attention to the order of the bars",
+    "text": "Pay attention to the order of the bars"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#we-can-use-dots-instead-of-bars",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#we-can-use-dots-instead-of-bars",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "We can use dots instead of bars",
+    "text": "We can use dots instead of bars"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#dots-are-preferable-if-we-want-to-truncate-the-axes",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#dots-are-preferable-if-we-want-to-truncate-the-axes",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Dots are preferable if we want to truncate the axes",
+    "text": "Dots are preferable if we want to truncate the axes"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#dots-are-preferable-if-we-want-to-truncate-the-axes-1",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#dots-are-preferable-if-we-want-to-truncate-the-axes-1",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Dots are preferable if we want to truncate the axes",
+    "text": "Dots are preferable if we want to truncate the axes\n\nbar lengths do not accurately represent the data values"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#dots-are-preferable-if-we-want-to-truncate-the-axes-2",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#dots-are-preferable-if-we-want-to-truncate-the-axes-2",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Dots are preferable if we want to truncate the axes",
+    "text": "Dots are preferable if we want to truncate the axes\n\nkey features of the data are obscured"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#dots-are-preferable-if-we-want-to-truncate-the-axes-3",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#dots-are-preferable-if-we-want-to-truncate-the-axes-3",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Dots are preferable if we want to truncate the axes",
+    "text": "Dots are preferable if we want to truncate the axes"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#lets-take-a-poll",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#lets-take-a-poll",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Let’s take a poll",
+    "text": "Let’s take a poll\nGo to the event on wooclap\n\nM3. Do you think it makes sense to truncate the axes for the life expectancy data?"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#we-use-grouped-bars-for-higher-dimensional-datasets",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#we-use-grouped-bars-for-higher-dimensional-datasets",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "We use grouped bars for higher-dimensional datasets",
+    "text": "We use grouped bars for higher-dimensional datasets"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#we-are-free-to-choose-by-which-variable-to-group",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#we-are-free-to-choose-by-which-variable-to-group",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "We are free to choose by which variable to group",
+    "text": "We are free to choose by which variable to group"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#we-can-also-use-multiple-plot-panels-facets",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#we-can-also-use-multiple-plot-panels-facets",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "We can also use multiple plot panels (facets)",
+    "text": "We can also use multiple plot panels (facets)"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#the-simple-dataset",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#the-simple-dataset",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "The simple dataset",
+    "text": "The simple dataset\n\n# Data from Box Office Mojo for 2023. \nboxoffice &lt;- tibble(\n  rank = 1:5,\n  title = c(\"Barbie\", \"The Super Mario Bros Movie\", \"Oppenheimer\", \"Guardians of the Galaxy 3\", \"The Little Mermaid\"),\n  amount = c(1437.8, 1361.9, 939.3, 845.5, 569.6) # million USD\n)\n\n\n\n\n\n\nrank\ntitle\namount\n\n\n\n\n1\nBarbie\n1437.8\n\n\n2\nThe Super Mario Bros Movie\n1361.9\n\n\n3\nOppenheimer\n939.3\n\n\n4\nGuardians of the Galaxy 3\n845.5\n\n\n5\nThe Little Mermaid\n569.6"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#visualize-as-a-bar-plot",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#visualize-as-a-bar-plot",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Visualize as a bar plot",
+    "text": "Visualize as a bar plot\n\nggplot(boxoffice, aes(title, amount)) +\n  geom_col()  # \"col\" stands for column"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#order-by-data-value",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#order-by-data-value",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Order by data value",
+    "text": "Order by data value\n\nggplot(boxoffice, aes(fct_reorder(title, amount), amount)) +\n  geom_col()"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#order-by-data-value-descending",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#order-by-data-value-descending",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Order by data value, descending",
+    "text": "Order by data value, descending\n\nggplot(boxoffice, aes(fct_reorder(title, -amount), amount)) +\n  geom_col() + \n  xlab(NULL) # remove x axis label"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#flip-x-and-y-set-custom-x-axis-label",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#flip-x-and-y-set-custom-x-axis-label",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Flip x and y, set custom x axis label",
+    "text": "Flip x and y, set custom x axis label\n\nggplot(boxoffice, aes(amount, fct_reorder(title, amount))) +\n  geom_col() +\n  xlab(\"amount (in million USD)\") +\n  ylab(NULL)"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#sometimes-we-need-to-count-before-visualization",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#sometimes-we-need-to-count-before-visualization",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Sometimes we need to count before visualization",
+    "text": "Sometimes we need to count before visualization\n\nlibrary(here)\nlibrary(tidyverse)\n\ntable_02 &lt;- read_csv(here(\"datasets/instructional_dataset/02_visit_clinical_measurements_UKZN_workshop_2023.csv\")) %&gt;%\n  mutate(nugent_score = as_factor(nugent_score))\n\n\n\n\n\n\npid\ntime_point\narm\nnugent_score\ncrp_blood\nph\n\n\n\n\npid_01\nbaseline\nplacebo\n8\n0.44\n5.7\n\n\npid_01\nweek_1\nplacebo\n7\n1.66\n5.2\n\n\npid_01\nweek_7\nplacebo\n7\n1.44\n5.4\n\n\npid_02\nbaseline\nplacebo\n7\n1.55\n5.2\n\n\npid_02\nweek_1\nplacebo\n7\n0.75\n4.8\n\n\npid_02\nweek_7\nplacebo\n4\n1.17\n4.2\n\n\npid_03\nbaseline\nplacebo\n6\n1.78\n4.8\n\n\npid_03\nweek_1\nplacebo\n10\n0.57\n5.3\n\n\npid_03\nweek_7\nplacebo\n7\n1.79\n5.2\n\n\npid_04\nbaseline\nplacebo\n5\n1.76\n4.8\n\n\npid_04\nweek_1\nplacebo\n9\n2.58\n5.1\n\n\npid_04\nweek_7\nplacebo\n7\n5.68\n5.4\n\n\npid_05\nbaseline\ntreatment\n8\n0.95\n4.9\n\n\npid_05\nweek_1\ntreatment\n3\n0.19\n3.2\n\n\npid_05\nweek_7\ntreatment\n2\n0.45\n3.5\n\n\npid_06\nbaseline\nplacebo\n10\n4.03\n5.3\n\n\npid_06\nweek_1\nplacebo\n8\n1.72\n5.6\n\n\npid_06\nweek_7\nplacebo\n8\n3.19\n5.0\n\n\npid_07\nbaseline\nplacebo\n7\n0.10\n5.2\n\n\npid_07\nweek_1\nplacebo\n7\n1.36\n4.9\n\n\npid_07\nweek_7\nplacebo\n5\n0.38\n5.1\n\n\npid_08\nbaseline\nplacebo\n9\n3.18\n5.4\n\n\npid_08\nweek_1\nplacebo\n5\n1.55\n4.8\n\n\npid_08\nweek_7\nplacebo\n7\n1.77\n5.0\n\n\npid_09\nbaseline\ntreatment\n5\n2.13\n4.9\n\n\npid_09\nweek_1\ntreatment\n3\n0.27\n3.6\n\n\npid_09\nweek_7\ntreatment\n4\n1.04\n4.2\n\n\npid_10\nbaseline\ntreatment\n8\n0.98\n4.9\n\n\npid_10\nweek_1\ntreatment\n0\n0.01\n3.5\n\n\npid_10\nweek_7\ntreatment\n1\n2.87\n2.9\n\n\npid_11\nbaseline\ntreatment\n7\n0.31\n5.0\n\n\npid_11\nweek_1\ntreatment\n1\n0.10\n3.3\n\n\npid_11\nweek_7\ntreatment\n4\n1.15\n5.1\n\n\npid_12\nbaseline\nplacebo\n8\n2.42\n5.0\n\n\npid_12\nweek_1\nplacebo\n6\n0.64\n4.5\n\n\npid_12\nweek_7\nplacebo\n9\n4.36\n5.2\n\n\npid_13\nbaseline\nplacebo\n8\n2.69\n5.1\n\n\npid_13\nweek_1\nplacebo\n7\n2.57\n5.5\n\n\npid_13\nweek_7\nplacebo\n8\n1.98\n4.8\n\n\npid_14\nbaseline\nplacebo\n7\n0.34\n5.3\n\n\npid_14\nweek_1\nplacebo\n5\n2.07\n4.2\n\n\npid_14\nweek_7\nplacebo\n7\n5.06\n5.1\n\n\npid_15\nbaseline\ntreatment\n7\n0.29\n4.8\n\n\npid_15\nweek_1\ntreatment\n3\n0.84\n3.4\n\n\npid_15\nweek_7\ntreatment\n3\n0.68\n3.5\n\n\npid_16\nbaseline\ntreatment\n6\n1.91\n5.7\n\n\npid_16\nweek_1\ntreatment\n0\n0.03\n3.7\n\n\npid_16\nweek_7\ntreatment\n2\n0.50\n3.2\n\n\npid_17\nbaseline\ntreatment\n5\n1.39\n4.8\n\n\npid_17\nweek_1\ntreatment\n2\n0.00\n3.3\n\n\npid_17\nweek_7\ntreatment\n3\n0.90\n3.7\n\n\npid_18\nbaseline\ntreatment\n6\n0.45\n4.3\n\n\npid_18\nweek_1\ntreatment\n1\n1.81\n3.6\n\n\npid_18\nweek_7\ntreatment\n6\n0.41\n3.9\n\n\npid_19\nbaseline\nplacebo\n7\n1.34\n5.3\n\n\npid_19\nweek_1\nplacebo\n5\n2.91\n4.3\n\n\npid_19\nweek_7\nplacebo\n5\n1.27\n4.5\n\n\npid_20\nbaseline\nplacebo\n4\n0.86\n4.3\n\n\npid_20\nweek_1\nplacebo\n8\n1.45\n5.2\n\n\npid_20\nweek_7\nplacebo\n5\n3.95\n4.9\n\n\npid_21\nbaseline\ntreatment\n5\n0.50\n4.6\n\n\npid_21\nweek_1\ntreatment\n1\n1.60\n3.4\n\n\npid_21\nweek_7\ntreatment\n4\n1.23\n4.8\n\n\npid_22\nbaseline\ntreatment\n6\n1.10\n4.0\n\n\npid_22\nweek_1\ntreatment\n3\n0.58\n4.2\n\n\npid_22\nweek_7\ntreatment\n6\n1.67\n5.1\n\n\npid_23\nbaseline\nplacebo\n8\n0.99\n5.4\n\n\npid_23\nweek_1\nplacebo\n8\n0.80\n5.5\n\n\npid_23\nweek_7\nplacebo\n3\n3.67\n3.1\n\n\npid_24\nbaseline\nplacebo\n5\n4.91\n3.8\n\n\npid_24\nweek_1\nplacebo\n7\n0.94\n5.1\n\n\npid_24\nweek_7\nplacebo\n4\n1.03\n4.5\n\n\npid_25\nbaseline\ntreatment\n3\n2.84\n3.9\n\n\npid_25\nweek_1\ntreatment\n4\n3.52\n4.7\n\n\npid_25\nweek_7\ntreatment\n2\n0.49\n3.7\n\n\npid_26\nbaseline\ntreatment\n7\n0.94\n5.6\n\n\npid_26\nweek_1\ntreatment\n0\n0.11\n3.0\n\n\npid_26\nweek_7\ntreatment\n4\n0.29\n4.8\n\n\npid_27\nbaseline\nplacebo\n7\n1.17\n5.5\n\n\npid_27\nweek_1\nplacebo\n5\n1.62\n4.7\n\n\npid_27\nweek_7\nplacebo\n8\n0.76\n4.7\n\n\npid_28\nbaseline\ntreatment\n3\n0.67\n2.9\n\n\npid_28\nweek_1\ntreatment\n1\n0.05\n3.3\n\n\npid_28\nweek_7\ntreatment\n1\n0.22\n3.5\n\n\npid_29\nbaseline\nplacebo\n7\n2.39\n5.8\n\n\npid_29\nweek_1\nplacebo\n4\n4.09\n4.5\n\n\npid_29\nweek_7\nplacebo\n3\n3.13\n3.5\n\n\npid_30\nbaseline\nplacebo\n7\n0.85\n4.8\n\n\npid_30\nweek_1\nplacebo\n8\n2.56\n5.1\n\n\npid_30\nweek_7\nplacebo\n7\n1.62\n5.2\n\n\npid_31\nbaseline\ntreatment\n6\n1.78\n4.4\n\n\npid_31\nweek_1\ntreatment\n2\n0.41\n3.5\n\n\npid_31\nweek_7\ntreatment\n2\n1.36\n2.8\n\n\npid_32\nbaseline\ntreatment\n5\n4.83\n4.9\n\n\npid_32\nweek_1\ntreatment\n1\n0.03\n3.3\n\n\npid_32\nweek_7\ntreatment\n3\n0.21\n3.8\n\n\npid_33\nbaseline\ntreatment\n6\n5.26\n4.6\n\n\npid_33\nweek_1\ntreatment\n1\n0.07\n3.6\n\n\npid_33\nweek_7\ntreatment\n2\n1.92\n3.3\n\n\npid_34\nbaseline\nplacebo\n8\n3.16\n5.4\n\n\npid_34\nweek_1\nplacebo\n4\n1.12\n4.7\n\n\npid_34\nweek_7\nplacebo\n7\n2.34\n5.3\n\n\npid_35\nbaseline\nplacebo\n8\n0.74\n5.3\n\n\npid_35\nweek_1\nplacebo\n5\n0.16\n4.4\n\n\npid_35\nweek_7\nplacebo\n3\n1.97\n3.9\n\n\npid_36\nbaseline\nplacebo\n8\n1.21\n5.1\n\n\npid_36\nweek_1\nplacebo\n5\n2.28\n4.3\n\n\npid_36\nweek_7\nplacebo\n8\n1.10\n4.8\n\n\npid_37\nbaseline\ntreatment\n5\n1.16\n4.8\n\n\npid_37\nweek_1\ntreatment\n1\n0.07\n3.6\n\n\npid_37\nweek_7\ntreatment\n2\n0.70\n3.2\n\n\npid_38\nbaseline\nplacebo\n8\n0.41\n5.1\n\n\npid_38\nweek_1\nplacebo\n5\n1.55\n4.8\n\n\npid_38\nweek_7\nplacebo\n4\n3.22\n4.5\n\n\npid_39\nbaseline\ntreatment\n6\n1.61\n4.6\n\n\npid_39\nweek_1\ntreatment\n2\n0.09\n3.6\n\n\npid_39\nweek_7\ntreatment\n5\n0.77\n4.7\n\n\npid_40\nbaseline\ntreatment\n3\n1.48\n3.1\n\n\npid_40\nweek_1\ntreatment\n2\n0.17\n3.1\n\n\npid_40\nweek_7\ntreatment\n6\n0.21\n4.5\n\n\npid_41\nbaseline\ntreatment\n4\n1.51\n4.3\n\n\npid_41\nweek_1\ntreatment\n2\n0.64\n3.4\n\n\npid_41\nweek_7\ntreatment\n4\n0.78\n4.4\n\n\npid_42\nbaseline\nplacebo\n6\n0.91\n4.7\n\n\npid_42\nweek_1\nplacebo\n5\n0.88\n4.3\n\n\npid_42\nweek_7\nplacebo\n7\n3.06\n5.3\n\n\npid_43\nbaseline\nplacebo\n6\n1.08\n4.7\n\n\npid_43\nweek_1\nplacebo\n6\n0.94\n4.1\n\n\npid_43\nweek_7\nplacebo\n6\n1.79\n4.1\n\n\npid_44\nbaseline\ntreatment\n6\n0.48\n4.4\n\n\npid_44\nweek_1\ntreatment\n1\n1.67\n3.5\n\n\npid_44\nweek_7\ntreatment\n3\n0.60\n3.4"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#goal-visualize-number-of-people-with-different-nugent-scores",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#goal-visualize-number-of-people-with-different-nugent-scores",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Goal: Visualize number of people with different nugent scores",
+    "text": "Goal: Visualize number of people with different nugent scores"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#use-geom_bar-to-count-before-plotting",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#use-geom_bar-to-count-before-plotting",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Use geom_bar() to count before plotting",
+    "text": "Use geom_bar() to count before plotting\n\ntable_02 %&gt;%\n  ggplot(aes(y=nugent_score))+\n  geom_bar()"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#getting-the-bars-into-the-right-order",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#getting-the-bars-into-the-right-order",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Getting the bars into the right order",
+    "text": "Getting the bars into the right order\n\ntable_01 %&gt;%\n  ggplot(aes(y=education))+\n  geom_bar()"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#getting-the-bars-into-the-right-order-1",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#getting-the-bars-into-the-right-order-1",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Getting the bars into the right order",
+    "text": "Getting the bars into the right order\n\neducation_order &lt;- c(\"less than grade 9\",\"grade 10-12, not matriculated\",\"grade 10-12, matriculated\",\"post-secondary\")\ntable_01 %&gt;%\n  mutate(education = fct_relevel(education, education_order)) %&gt;%\n  ggplot(aes(y=education))+\n  geom_bar()"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#display-counts-by-smoking-and-education",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#display-counts-by-smoking-and-education",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Display counts by smoking and education",
+    "text": "Display counts by smoking and education\n\ntable_01 %&gt;%\n  mutate(education = fct_relevel(education, education_order)) %&gt;%\n  ggplot(aes(y=education, fill=smoker))+\n  geom_bar()"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#positions-define-how-subgroups-are-shown",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#positions-define-how-subgroups-are-shown",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Positions define how subgroups are shown",
+    "text": "Positions define how subgroups are shown\nposition = \"dodge\": Place bars for subgroups side-by-side\n\ntable_01 %&gt;%\n  mutate(education = fct_relevel(education, education_order)) %&gt;%\n  ggplot(aes(y=education, fill=smoker))+\n  geom_bar(position = \"dodge\")"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#positions-define-how-subgroups-are-shown-1",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#positions-define-how-subgroups-are-shown-1",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Positions define how subgroups are shown",
+    "text": "Positions define how subgroups are shown\nposition = \"stack\": Place bars for subgroups on top of each other\n\ntable_01 %&gt;%\n  mutate(education = fct_relevel(education, education_order)) %&gt;%\n  ggplot(aes(y=education, fill=smoker))+\n  geom_bar(position = \"stack\")"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#positions-define-how-subgroups-are-shown-2",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#positions-define-how-subgroups-are-shown-2",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Positions define how subgroups are shown",
+    "text": "Positions define how subgroups are shown\nposition = \"fill\": Like \"stack\", but scale to 100%\n\ntable_01 %&gt;%\n  mutate(education = fct_relevel(education, education_order)) %&gt;%\n  ggplot(aes(y=education, fill=smoker))+\n  geom_bar(position = \"fill\")"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#lets-take-a-poll-1",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#lets-take-a-poll-1",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Let’s take a poll",
+    "text": "Let’s take a poll\nGo to the event on wooclap\n\n2 questions: M3. What’s the difference between geom_col and geom_bar? and M3. What patterns did you see in the smoker CRP data (slide 49)?"
+  },
+  {
+    "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#exercise-1",
+    "href": "materials/1-workshop1/3-tidyverse-101/slides.html#exercise-1",
+    "title": "Intro to data visualization and data wrangling with the tidyverse",
+    "section": "Exercise",
+    "text": "Exercise\n\n\n\n−+\n30:00\n\n\n\nTime to try it yourself. Go to the second coding exercise.\n\nDuring an activity, place a blue sticky on your laptop if you’re good to go and a pink sticky if you want help.\n\n\nback to module"
   }
 ]
