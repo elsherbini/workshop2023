@@ -158,7 +158,7 @@ Centre for the AIDS Programme of Research in South Africa (CAPRISA) -  UKZN
 
 
 ::: {.g-col-2}
-
+![](images/Johan.png){fig-align="left"}
 :::
 
 ::: {.g-col-4}
@@ -176,7 +176,7 @@ Centre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN
 ::: {.g-col-4}
 [*Teaching Assistant*]{style="font-size: 0.8em"}  
 **Wasim Abdool Karim**  
-Genomics Africa Fellow    
+Bioinformatician
 Centre for Epidemic Response and Innovation (CERI) - Stellenbosch  
 :::
 
