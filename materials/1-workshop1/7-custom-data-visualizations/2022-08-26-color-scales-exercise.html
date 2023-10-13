@@ -1,0 +1,425 @@
+<!-- ---
+title: Color Scales Exercise
+author: Claus Wilke remixed by Joseph Elsherbini
+description: Color Scales Exercise
+date: '2022-08-26'
+slug: color-scales-exercise
+categories: ['exercise']
+math: true
+output:
+  tufte::tufte_html:
+    toc: true
+    fig_width: 6
+    dev: "svg"
+--- -->
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>In this worksheet, we will discuss how to change and customize color
+scales.</p>
+<p>We will be using the R package <strong>tidyverse</strong>, which
+includes <code>ggplot()</code> and related functions. We will also be
+using the R package <strong>colorspace</strong> for the scale functions
+it provides.</p>
+<pre class="r">
+<code class="language-r">
+```{r library-calls}
+# load required library
+library(tidyverse)
+library(colorspace)
+
+temperatures <- read_csv("https://wilkelab.org/SDS375/datasets/tempnormals.csv") %>%
+  mutate(
+    location = factor(
+      location, levels = c("Death Valley", "Houston", "San Diego", "Chicago")
+    )
+  ) %>%
+  select(location, day_of_year, month, temperature)
+
+temps_months <- read_csv("https://wilkelab.org/SDS375/datasets/tempnormals.csv") %>%
+  group_by(location, month_name) %>%
+  summarize(mean = mean(temperature)) %>%
+  mutate(
+    month = factor(
+      month_name,
+      levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+    ),
+    location = factor(
+      location, levels = c("Death Valley", "Houston", "San Diego", "Chicago")
+    )
+  ) %>%
+  select(-month_name)
+```</code></pre>
+We will be working with the dataset <code>temperatures</code> that we
+have used in previous worksheets. This dataset contains the average
+temperature for each day of the year for four different locations.
+<pre class="r">
+<code class="language-r">
+```{r temperatures}
+temperatures
+```</code></pre>
+<pre><code># A tibble: 1,464 × 4
+   location     day_of_year month temperature
+   &lt;fct&gt;              &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
+ 1 Death Valley           1 01           51  
+ 2 Death Valley           2 01           51.2
+ 3 Death Valley           3 01           51.3
+ 4 Death Valley           4 01           51.4
+ 5 Death Valley           5 01           51.6
+ 6 Death Valley           6 01           51.7
+ 7 Death Valley           7 01           51.9
+ 8 Death Valley           8 01           52  
+ 9 Death Valley           9 01           52.2
+10 Death Valley          10 01           52.3
+# … with 1,454 more rows</code></pre>
+We will also be working with an aggregated version of this dataset
+called <code>temps_months</code>, which contains the mean temperature
+for each month for the same locations.
+<pre class="r">
+<code class="language-r">
+```{r temps_months}
+temps_months
+```</code></pre>
+<pre><code># A tibble: 48 × 3
+# Groups:   location [4]
+   location  mean month
+   &lt;fct&gt;    &lt;dbl&gt; &lt;fct&gt;
+ 1 Chicago   50.4 Apr  
+ 2 Chicago   74.1 Aug  
+ 3 Chicago   29   Dec  
+ 4 Chicago   28.9 Feb  
+ 5 Chicago   24.8 Jan  
+ 6 Chicago   75.8 Jul  
+ 7 Chicago   71.0 Jun  
+ 8 Chicago   38.8 Mar  
+ 9 Chicago   60.9 May  
+10 Chicago   41.6 Nov  
+# … with 38 more rows</code></pre>
+<p>As a challenge, try to create this above table yourself using
+<code>group_by()</code> and <code>summarize()</code> like we learned
+about Wednesday., and then make a <code>month</code> column which is a
+factor with levels froing from “Jan” to “Dec”, and make the location
+column a factor with levels “Death Valley”, “Houston”, “San Diego”,
+“Chicago”. If you are having trouble, the solution is at the end of this
+page, make sure you copy it into your code so the rest of the exercise
+works.</p>
+<pre class="r">
+<code class="language-r">
+```{r temp_months_by_user}
+# check solution at the end before moving on!
+temps_months <- read_csv("https://wilkelab.org/SDS375/datasets/tempnormals.csv") %>%
+  group_by(___) %>%
+  summarize(___) %>%
+  mutate(
+    month = factor(
+      month_name,
+      ___
+    ),
+    location = factor(
+      location, ___
+    )
+  ) %>%
+  select(-month_name)
+```</code></pre>
+</div>
+<div id="built-in-ggplot2-color-scales" class="section level2">
+<h2>Built in <strong>ggplot2</strong> color scales</h2>
+<p>We will start with built-in <strong>ggplot2</strong> color scales,
+which require no additional packages. The scale functions are always
+named <code>scale_color_*()</code> or <code>scale_fill_*()</code>,
+depending on whether they apply to the <code>color</code> or
+<code>fill</code> aesthetic. The <code>*</code> indicates some other
+words specifying the type of the scale, for example
+<code>scale_color_brewer()</code> or
+<code>scale_color_distiller()</code> for discrete or continuous scales
+from the ColorBrewer project, respectively. You can find all available
+built-in scales here: <a
+href="https://ggplot2.tidyverse.org/reference/index.html#section-scales"
+class="uri">https://ggplot2.tidyverse.org/reference/index.html#section-scales</a></p>
+<p>Now consider the following plot.</p>
+<pre class="r">
+<code class="language-r">
+```{r temps-months-default, fig.height = 3}
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE)
+```</code></pre>
+<p><img src="/exercises/2022-08-26-color-scales-exercise_files/figure-html/temps-months-default-1.png" width="672"  /></p>
+<p>If you wanted to change the color scale to one from the ColorBrewer
+project, which scale function would you have to add?
+<code>scale_color_brewer()</code>, <code>scale_color_distiller()</code>,
+<code>scale_fill_brewer()</code>,
+<code>scale_fill_distiller()</code>?</p>
+<pre class="r"><code> # answer question above to yourself</code></pre>
+<p>Now try this out.</p>
+<pre class="r">
+<code class="language-r">
+```{r temps-months-distiller,  fig.height = 3}
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  ___
+```</code></pre>
+<p>Most color scale functions have additional customizations. How to use
+them depends on the specific scale function. For the ColorBrewer scales
+you can set <code>direction = 1</code> or <code>direction = -1</code> to
+set the direction of the scale (light to dark or dark to light). You can
+also set the palette via a numeric argument,
+e.g. <code>palette = 1</code>, <code>palette = 2</code>,
+<code>palette = 3</code> etc.</p>
+<p>Try this out by setting the direction of the scale from light to dark
+and using palette #4.</p>
+<pre class="r">
+<code class="language-r">
+```{r temps-months-distiller2,  fig.height = 3}
+ # build all the code for this exercise
+```</code></pre>
+<p>A popular set of scales are the viridis scales, which are provided by
+<code>scale_*_viridis_c()</code> for continuous data and
+<code>scale_*_viridis_d()</code> for discrete data. Change the above
+plot to use a viridis scale.</p>
+<pre class="r">
+<code class="language-r">
+```{r temps-months-viridis,  fig.height = 3}
+ # build all the code for this exercise
+```</code></pre>
+<p>The viridis scales can be customized with <code>direction</code> (as
+before), <code>option</code> (which can be <code>"A"</code>,
+<code>"B"</code>, <code>"C"</code>, <code>"D"</code>, or
+<code>"E"</code>), and <code>begin</code> and <code>end</code> which are
+numerical values between 0 and 1 indicating where in the color scale the
+data should begin or end. For example, <code>begin = 0.2</code> means
+that the lowest data value is mapped to the 20th percentile in the
+scale.</p>
+<p>Try different choices for <code>option</code>, <code>begin</code>,
+and <code>end</code> to see how they change the plot.</p>
+<pre class="r">
+<code class="language-r">
+```{r temps-months-viridis2,  fig.height = 3}
+ # build all the code for this exercise
+```</code></pre>
+</div>
+<div id="customizing-scale-title-and-labels" class="section level2">
+<h2>Customizing scale title and labels</h2>
+<p>In a previous worksheet, we used arguments such as <code>name</code>,
+<code>breaks</code>, <code>labels</code>, and <code>limits</code> to
+customize the axis. For color scales, instead of an axis we have a
+legend, and we can use the same arguments inside the scale function to
+customize how the legend looks.</p>
+<p>Try this out. Set the scale limits from 10 to 110 and set the name of
+the scale and the breaks as you wish.</p>
+<pre class="r">
+<code class="language-r">
+```{r temps-months-viridis3,  fig.height = 3}
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_viridis_c(
+    name = ___,
+    breaks = ___,
+    limits = ___
+  )
+```</code></pre>
+<p><strong>Note:</strong> Color scales ignore the <code>expand</code>
+argument, so you cannot use it to expand the scale beyond the data
+values as you can for position scales.</p>
+</div>
+<div id="binned-scales" class="section level2">
+<h2>Binned scales</h2>
+<p>Research into human perception has shown that continuous coloring can
+be difficult to interpret. Therefore, it is often preferable to use a
+small number of discrete colors to indicate ranges of data values. You
+can do this in ggplot with binned scales. For example,
+<code>scale_fill_viridis_b()</code> provides a binned version of the
+viridis scale. Try this out.</p>
+<pre class="r">
+<code class="language-r">
+```{r temps-months-viridis4,  fig.height = 3}
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  ___
+```</code></pre>
+<p>You can change the number of bins by providing the
+<code>n.breaks</code> argument or alternatively by setting breaks
+explicitly. Try this out.</p>
+<pre class="r">
+<code class="language-r">
+```{r temps-months-viridis5,  fig.height = 3}
+ # build all the code for this exercise
+```</code></pre>
+</div>
+<div id="scales-from-the-colorspace-package" class="section level2">
+<h2>Scales from the <strong>colorspace</strong> package</h2>
+<p>The color scales provided by the <strong>colorspace</strong> package
+follow a simple naming scheme of the form
+<code>scale_&lt;aesthetic&gt;_&lt;datatype&gt;_&lt;colorscale&gt;()</code>,
+where <code>&lt;aesthetic&gt;</code> is the name of the aesthetic
+(<code>fill</code>, <code>color</code>, <code>colour</code>),
+<code>&lt;datatype&gt;</code> indicates the type of variable plotted
+(<code>discrete</code>, <code>continuous</code>, <code>binned</code>),
+and <code>colorscale</code> stands for the type of the color scale
+(<code>qualitative</code>, <code>sequential</code>,
+<code>diverging</code>, <code>divergingx</code>).</p>
+<p>For the mean temperature plot we have been using throughout this
+worksheet, which 2 color scales from the <strong>colorspace</strong>
+package is/are appropriate?</p>
+<p><code>scale_fill_binned_sequential()</code>,
+<code>scale_fill_discrete_qualitative()</code>,
+<code>scale_fill_continuous_sequential()</code>,
+<code>scale_color_continuous_sequential()</code>,
+<code>scale_color_continuous_diverging()</code>&gt;</p>
+<pre class="r"><code># answer question above to yourself</code></pre>
+<p>Try both options out.</p>
+<pre class="r">
+<code class="language-r">
+```{r temps-months-colorspace,  fig.height = 3}
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  ___
+```</code></pre>
+<p>You can customize the colorspace scales with the <code>palette</code>
+argument, which takes the name of a palette (e.g.,
+<code>"Inferno"</code>, <code>"BluYl"</code>, <code>"Lajolla"</code>).
+Try this out. Also try reversing the scale direction with
+<code>rev = TRUE</code> or <code>rev = FALSE</code>. (The
+<strong>colorspace</strong> scales use <code>rev</code> instead of
+<code>direction</code>.) You can find the names of all supported scales
+<a
+href="https://colorspace.r-forge.r-project.org/articles/hcl_palettes.html">here</a>
+(consider specifically single-hue and multi-hue sequential
+palettes).</p>
+<pre class="r">
+<code class="language-r">
+```{r temps-months-colorspace2,  fig.height = 3}
+ # build all the code for this exercise
+```</code></pre>
+<p>You can also use <code>begin</code> and <code>end</code> just like in
+the viridis scales.</p>
+</div>
+<div id="manual-scales" class="section level2">
+<h2>Manual scales</h2>
+<p>For discrete data with a small number of categories, it’s usually
+best to set colors manually. This can be done with the scale functions
+<code>scale_*_manual()</code>. These functions take an argument
+<code>values</code> that specifies the color values to use.</p>
+<p>To see how this works, let’s go back to this plot of temperatures
+over time for four locations.</p>
+<pre class="r">
+<code class="language-r">
+```{r temps-locations, echo = TRUE}
+ggplot(temperatures, aes(day_of_year, temperature, color = location)) +
+  geom_line(size = 1.5)
+```</code></pre>
+<p><img src="/exercises/2022-08-26-color-scales-exercise_files/figure-html/temps-locations-1.png" width="672"  /></p>
+<p>Let’s use the following four colors: <code>"gold2"</code>,
+<code>"firebrick"</code>, <code>"blue3"</code>,
+<code>"springgreen4"</code>. We can visualize this palette using the
+function <code>swatchplot()</code> from the <strong>colorspace</strong>
+package.</p>
+<pre class="r">
+<code class="language-r">
+```{r swatchplot, fig.height = 3.5}
+colorspace::swatchplot(c("gold2", "firebrick", "blue3", "springgreen4"))
+```</code></pre>
+<p><img src="/exercises/2022-08-26-color-scales-exercise_files/figure-html/swatchplot-1.png" width="672"  /></p>
+<p>Now apply this color palette to the temperatures plot, by using the
+manual color scale. <em>Hint</em>: use the <code>values</code> argument
+to provide the colors to the manual scale.</p>
+<pre class="r">
+<code class="language-r">
+```{r temps-locations-manual, exercise = TRUE}
+ggplot(temperatures, aes(day_of_year, temperature, color = location)) +
+  geom_line(size = 1.5) +
+  ___
+```</code></pre>
+<p>One problem with this approach is that we can’t easily control which
+data value gets assigned to which color. What if we wanted San Diego to
+be shown in green and Chicago in blue? The simplest way to resolve this
+issue is to use a named vector. A named vector in R is a vector where
+each value has a name. Named vectors are created by writing
+<code>c(name1 = value1, name2 = value2, ...)</code>. See the following
+example.</p>
+<pre class="r">
+<code class="language-r">
+```{r named-vector}
+# regular vector
+c("cat", "mouse", "house")
+# named vector
+c(A = "cat", B = "mouse", C = "house")
+```</code></pre>
+<pre><code>[1] &quot;cat&quot;   &quot;mouse&quot; &quot;house&quot;</code></pre>
+<pre><code>      A       B       C 
+  &quot;cat&quot; &quot;mouse&quot; &quot;house&quot; </code></pre>
+<p>The names in the second example are <code>A</code>, <code>B</code>,
+and <code>C</code>. Notice that the names are not in quotes. However, if
+you need a name containing a space (such as <code>Death Valley</code>),
+you need to enclose the name in backticks. Thus, our named vector of
+colors could be written like so:</p>
+<pre class="r">
+<code class="language-r">
+```{r named-vector2}
+c(`Death Valley` = "gold2", Houston = "firebrick", Chicago = "blue3", `San Diego` = "springgreen4")
+```</code></pre>
+<pre><code>  Death Valley        Houston        Chicago      San Diego 
+       &quot;gold2&quot;    &quot;firebrick&quot;        &quot;blue3&quot; &quot;springgreen4&quot; </code></pre>
+<p>Now try to use this color vector in the figure showing temperatures
+over time.</p>
+<pre class="r">
+<code class="language-r">
+```{r temps-locations-manual2, exercise = TRUE}
+ # build all the code for this exercise
+```</code></pre>
+Try some other colors also. For example, you could use the Okabe-Ito
+colors:
+<pre class="r">
+<code class="language-r">
+```{r swatchplot2, fig.height = 3.5}
+# Okabe-Ito colors
+colorspace::swatchplot(c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000"))
+```</code></pre>
+<p><img src="/exercises/2022-08-26-color-scales-exercise_files/figure-html/swatchplot2-1.png" width="672"  /></p>
+<p>Alternatively, you can find a list of all named colors <a
+href="https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/">here.</a>
+You can also run the command <code>colors()</code> in your R console to
+get a list of all available color names.</p>
+<p><em>Hint:</em> It’s a good idea to never use the colors
+<code>"red"</code>, <code>"green"</code>, <code>"blue"</code>,
+<code>"cyan"</code>, <code>"magenta"</code>, <code>"yellow"</code>. They
+are extreme points in the RGB color space and tend to look unnatural and
+too crazy. Try this by making a swatch plot of these colors, and compare
+for example to the color scale containing the colors
+<code>"firebrick"</code>, <code>"springgreen4"</code>,
+<code>"blue3"</code>, <code>"turquoise3"</code>,
+<code>"darkorchid2"</code>, <code>"gold2"</code>. Do you see the
+difference?</p>
+<pre class="r">
+<code class="language-r">
+```{r swatchplot3,  fig.height = 3.5}
+ # build all the code for this exercise
+```</code></pre>
+<p><em>Solution to the challenge to make the summary table of mean
+temperature by month:</em></p>
+<pre class="r">
+<code class="language-r">
+```{r solution_to_challenge}
+# paste this below the "temperatures" code-chunk
+temps_months <- read_csv("https://wilkelab.org/SDS375/datasets/tempnormals.csv") %>%
+  group_by(location, month_name) %>%
+  summarize(mean = mean(temperature)) %>%
+  mutate(
+    month = factor(
+      month_name,
+      levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+    ),
+    location = factor(
+      location, levels = c("Death Valley", "Houston", "San Diego", "Chicago")
+    )
+  ) %>%
+  select(-month_name)
+```</code></pre>
+</div>

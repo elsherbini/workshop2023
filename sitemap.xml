@@ -1,55 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/resources.html</loc>
-    <lastmod>2023-10-13T16:26:40.510Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/resources.html</loc>
+    <lastmod>2023-10-13T18:42:24.344Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/3-tidyverse-101/index.html</loc>
-    <lastmod>2023-10-13T16:26:27.083Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html</loc>
+    <lastmod>2023-10-13T18:42:07.546Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/2-intro-to-r/index.html</loc>
-    <lastmod>2023-10-13T16:26:22.535Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html</loc>
+    <lastmod>2023-10-13T18:41:36.189Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/0-welcome/slides.html</loc>
-    <lastmod>2023-10-13T16:26:20.411Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/3-tidyverse-101/index.html</loc>
+    <lastmod>2023-10-13T18:40:59.539Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/0-welcome/exercise_1.html</loc>
-    <lastmod>2023-10-13T16:26:19.387Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/2-intro-to-r/index.html</loc>
+    <lastmod>2023-10-13T18:40:49.234Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/index.html</loc>
-    <lastmod>2023-10-13T16:26:17.823Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/0-welcome/slides.html</loc>
+    <lastmod>2023-10-13T18:40:43.911Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/about.html</loc>
-    <lastmod>2023-10-13T16:26:17.359Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/0-welcome/exercise_1.html</loc>
+    <lastmod>2023-10-13T18:40:40.769Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/datasets.html</loc>
-    <lastmod>2023-10-13T16:26:17.563Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/index.html</loc>
+    <lastmod>2023-10-13T18:40:34.195Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/installation-instructions.html</loc>
-    <lastmod>2023-10-13T16:26:18.407Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/about.html</loc>
+    <lastmod>2023-10-13T18:40:32.272Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/0-welcome/index.html</loc>
-    <lastmod>2023-10-13T16:26:19.587Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/datasets.html</loc>
+    <lastmod>2023-10-13T18:40:33.283Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/2-intro-to-r/images/ex-2.html</loc>
-    <lastmod>2023-10-13T16:26:20.667Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/installation-instructions.html</loc>
+    <lastmod>2023-10-13T18:40:37.260Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/2-intro-to-r/slides.html</loc>
-    <lastmod>2023-10-13T16:26:25.207Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/0-welcome/index.html</loc>
+    <lastmod>2023-10-13T18:40:41.563Z</lastmod>
   </url>
   <url>
-    <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/3-tidyverse-101/slides.html</loc>
-    <lastmod>2023-10-13T16:26:39.374Z</lastmod>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/2-intro-to-r/images/ex-2.html</loc>
+    <lastmod>2023-10-13T18:40:44.810Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/2-intro-to-r/slides.html</loc>
+    <lastmod>2023-10-13T18:40:54.795Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/3-tidyverse-101/slides.html</loc>
+    <lastmod>2023-10-13T18:41:18.477Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html</loc>
+    <lastmod>2023-10-13T18:41:46.042Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elsherbini.github.io/workshop2023/materials/1-workshop1/7-custom-data-visualizations/index.html</loc>
+    <lastmod>2023-10-13T18:42:22.045Z</lastmod>
   </url>
 </urlset>

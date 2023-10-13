@@ -28,6 +28,636 @@
     "text": "Definitions from Glosario\nFurther definitions at Glosario\nArgument: one of possibly several expressions that are passed to a function. Oftentimes parameter and arugument are used interchangably, even though techincally parameter refers to the variable and argument refers to the value.\nAssignment operator: Symbol that assigns values on the right to an object on the left. Looks like &lt;-. Keyboard shortcut is Alt + -\nComment: Text written in a script that is not treated as code to be run, but rather as text that describes what the code is doing. These are usually short notes, beginning with a #\nComprehensive R Archive Network (CRAN): A public repository of R packages.\nData frame: A two-dimensional data structure for storing tabular data in memory. Rows represent records and columns represent variables.\nFunction: A code block which gathers a sequence of operations into a whole, preserving it for ongoing use by defining a set of tasks that takes zero or more required and optional arguments as inputs and returns expected outputs (return values), if any. Functions enable repeating these defined tasks with one command, known as a function call.\nNA: A special value used to represent data that is not available.\nPipe operator: The %&gt;% used to make the output of one function the input of the next.\nPackage: A collection of code, data, and documentation that can be distributed and re-used. Also referred to in some languages as a library or module.\nParameter: A variable specified in a function definition whose value is passed to the function when the function is called. Parameters and arguments are distinct, but related concepts. Parameters are variables and arguments are the values assigned to those variables. In practice though these terms are often used interchangeably.\nPositional argument: An argument to a function that gets its value according to its place in the function’s definition, as opposed to a named argument that is explicitly matched by name.\nReproducible research: The practice of describing and documenting research results in such a way that another researcher or person can re-run the analysis code on the same data to obtain the same result.\nTibble: A modern replacement for R’s data frame, which stores tabular data in columns and rows, defined and used in the tidyverse. Almost always when you are working with a data frame, you are actually working with a tibble.\nTidy data: Tabular data that satisfies three conditions that facilitate initial cleaning, and later exploration and analysis—(1) each variable forms a column, (2) each observation forms a row, and (3) each type of observation unit forms a table.\nTidyverse: A collection of R packages for operating on tabular data in consistent ways.\nVariable: A name in a program that has some data associated with it. A variable’s value can be changed after definition.\nVector: A sequence of values that have all the same type. Vectors are the fundamental data structure in R; a scalar is just a vector with exactly one element."
   },
   {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#section",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#section",
+    "title": "Figure Design",
+    "section": "",
+    "text": "How to go from this …\n\n\n… to this?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRequires coordinated modification of multiple elements:\n- geoms (via arguments to geoms)\n- scales (via scale_*() functions)\n- plot appearance (via themes)"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#the-starting-point-a-rough-draft",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#the-starting-point-a-rough-draft",
+    "title": "Figure Design",
+    "section": "The starting point, a rough draft",
+    "text": "The starting point, a rough draft\n\n\n\n\n\nggplot(lincoln_temps) +\n  aes(x = mean_temp, y = month_long) +\n  geom_density_ridges()\n\n\n\n\n\n\n\n\n\nYou can download the dataset using this code:\n\n\n\n\n\n\n\n\nlincoln_temps &lt;- readRDS(\n  url(\"https://wilkelab.org/DSC385/datasets/lincoln_temps.rds\")\n)"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#set-scale-and-bandwidth-to-shape-ridgelines",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#set-scale-and-bandwidth-to-shape-ridgelines",
+    "title": "Figure Design",
+    "section": "Set scale and bandwidth to shape ridgelines",
+    "text": "Set scale and bandwidth to shape ridgelines\n\n\n\n\n\nggplot(lincoln_temps) +\n  aes(x = mean_temp, y = month_long) +\n  geom_density_ridges(\n    scale = 3, bandwidth = 3.4\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#set-rel_min_height-to-cut-ridgelines-near-zero",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#set-rel_min_height-to-cut-ridgelines-near-zero",
+    "title": "Figure Design",
+    "section": "Set rel_min_height to cut ridgelines near zero",
+    "text": "Set rel_min_height to cut ridgelines near zero\n\n\n\n\n\nggplot(lincoln_temps) +\n  aes(x = mean_temp, y = month_long) +\n  geom_density_ridges(\n    scale = 3, bandwidth = 3.4,\n    rel_min_height = 0.01\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#use-scale_-functions-to-specify-axis-labels",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#use-scale_-functions-to-specify-axis-labels",
+    "title": "Figure Design",
+    "section": "Use scale_*() functions to specify axis labels",
+    "text": "Use scale_*() functions to specify axis labels\n\n\n\n\n\nggplot(lincoln_temps) +\n  aes(x = mean_temp, y = month_long) +\n  geom_density_ridges(\n    scale = 3, bandwidth = 3.4,\n    rel_min_height = 0.01,\n  ) +\n  scale_x_continuous(\n    name = \"mean temperature (°F)\"\n  ) +\n  scale_y_discrete(\n    name = NULL  # NULL means no label\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#specify-scale-expansion",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#specify-scale-expansion",
+    "title": "Figure Design",
+    "section": "Specify scale expansion",
+    "text": "Specify scale expansion\n\n\n\n\n\nggplot(lincoln_temps) +\n  aes(x = mean_temp, y = month_long) +\n  geom_density_ridges(\n    scale = 3, bandwidth = 3.4,\n    rel_min_height = 0.01\n  ) +\n  scale_x_continuous(\n    name = \"mean temperature (°F)\",\n    expand = c(0, 0)\n  ) +\n  scale_y_discrete(\n    name = NULL,\n    expand = expansion(add = c(0.2, 2.6))\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#set-overall-plot-theme",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#set-overall-plot-theme",
+    "title": "Figure Design",
+    "section": "Set overall plot theme",
+    "text": "Set overall plot theme\n\n\n\n\n\nggplot(lincoln_temps) +\n  aes(x = mean_temp, y = month_long) +\n  geom_density_ridges(\n    scale = 3, bandwidth = 3.4,\n    rel_min_height = 0.01\n  ) +\n  scale_x_continuous(\n    name = \"mean temperature (°F)\",\n    expand = c(0, 0)\n  ) +\n  scale_y_discrete(\n    name = NULL,\n    expand = expansion(add = c(0.2, 2.6))\n  ) +\n  theme_minimal_grid()  # from cowplot"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#align-y-axis-labels-to-grid-lines",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#align-y-axis-labels-to-grid-lines",
+    "title": "Figure Design",
+    "section": "Align y axis labels to grid lines",
+    "text": "Align y axis labels to grid lines\n\n\n\n\n\nggplot(lincoln_temps) +\n  aes(x = mean_temp, y = month_long) +\n  geom_density_ridges(\n    scale = 3, bandwidth = 3.4,\n    rel_min_height = 0.01\n  ) +\n  scale_x_continuous(\n    name = \"mean temperature (°F)\",\n    expand = c(0, 0)\n  ) +\n  scale_y_discrete(\n    name = NULL,\n    expand = expansion(add = c(0.2, 2.6))\n  ) +\n  theme_minimal_grid() +\n  theme(\n    axis.text.y = element_text(vjust = 0)\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#change-fill-color-from-default-gray-to-blue",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#change-fill-color-from-default-gray-to-blue",
+    "title": "Figure Design",
+    "section": "Change fill color from default gray to blue",
+    "text": "Change fill color from default gray to blue\n\n\n\n\n\nggplot(lincoln_temps) +\n  aes(x = mean_temp, y = month_long) +\n  geom_density_ridges(\n    scale = 3, bandwidth = 3.4,\n    rel_min_height = 0.01,\n    fill = \"#7DCCFF\"\n  ) +\n  scale_x_continuous(\n    name = \"mean temperature (°F)\",\n    expand = c(0, 0)\n  ) +\n  scale_y_discrete(\n    name = NULL,\n    expand = expansion(add = c(0.2, 2.6))\n  ) +\n  theme_minimal_grid() +\n  theme(\n    axis.text.y = element_text(vjust = 0)\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#draw-lines-in-white-instead-of-black",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#draw-lines-in-white-instead-of-black",
+    "title": "Figure Design",
+    "section": "Draw lines in white instead of black",
+    "text": "Draw lines in white instead of black\n\n\n\n\n\nggplot(lincoln_temps) +\n  aes(x = mean_temp, y = month_long) +\n  geom_density_ridges(\n    scale = 3, bandwidth = 3.4,\n    rel_min_height = 0.01,\n    fill = \"#7DCCFF\",\n    color = \"white\"\n  ) +\n  scale_x_continuous(\n    name = \"mean temperature (°F)\",\n    expand = c(0, 0)\n  ) +\n  scale_y_discrete(\n    name = NULL,\n    expand = expansion(add = c(0.2, 2.6))\n  ) +\n  theme_minimal_grid() +\n  theme(\n    axis.text.y = element_text(vjust = 0)\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes",
+    "title": "Figure Design",
+    "section": "Using ready-made themes",
+    "text": "Using ready-made themes\n\n\n\n\nggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +\n  geom_point()\n# default theme is theme_gray()"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-1",
+    "title": "Figure Design",
+    "section": "Using ready-made themes",
+    "text": "Using ready-made themes\n\n\n\n\nggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +\n  geom_point() + \n  theme_gray()"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-2",
+    "title": "Figure Design",
+    "section": "Using ready-made themes",
+    "text": "Using ready-made themes\n\n\n\n\nggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +\n  geom_point() + \n  theme_gray(14) # most themes take a font-size argument to scale text size"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-3",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-3",
+    "title": "Figure Design",
+    "section": "Using ready-made themes",
+    "text": "Using ready-made themes\n\n\n\n\nggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +\n  geom_point() + \n  theme_bw(14)"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-4",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-4",
+    "title": "Figure Design",
+    "section": "Using ready-made themes",
+    "text": "Using ready-made themes\n\n\n\n\nggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +\n  geom_point() + \n  theme_minimal(14)"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-5",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-5",
+    "title": "Figure Design",
+    "section": "Using ready-made themes",
+    "text": "Using ready-made themes\n\n\n\n\nggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +\n  geom_point() + \n  theme_classic(14)"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-6",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-6",
+    "title": "Figure Design",
+    "section": "Using ready-made themes",
+    "text": "Using ready-made themes\n\n\n\n\nggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +\n  geom_point() + \n  theme_half_open()  # from package cowplot"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-7",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-7",
+    "title": "Figure Design",
+    "section": "Using ready-made themes",
+    "text": "Using ready-made themes\n\n\n\n\nggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +\n  geom_point() + \n  theme_minimal_grid()  # from package cowplot"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-8",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-8",
+    "title": "Figure Design",
+    "section": "Using ready-made themes",
+    "text": "Using ready-made themes\n\n\n\n\nggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +\n  geom_point() + \n  theme_minimal_hgrid()  # from package cowplot"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-9",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-9",
+    "title": "Figure Design",
+    "section": "Using ready-made themes",
+    "text": "Using ready-made themes\n\n\n\n\nggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +\n  geom_point() + \n  theme_minimal_vgrid()  # from package cowplot"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-10",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-10",
+    "title": "Figure Design",
+    "section": "Using ready-made themes",
+    "text": "Using ready-made themes\n\n\n\n\nggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +\n  geom_point() + \n  theme_economist(14)       # from package ggthemes"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-11",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-11",
+    "title": "Figure Design",
+    "section": "Using ready-made themes",
+    "text": "Using ready-made themes\n\n\n\n\nggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +\n  geom_point() + \n  theme_economist(14) + scale_color_economist() # from package ggthemes"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-12",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#using-ready-made-themes-12",
+    "title": "Figure Design",
+    "section": "Using ready-made themes",
+    "text": "Using ready-made themes\n\n\n\n\nggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +\n  geom_point() + \n  theme_fivethirtyeight(14) + scale_color_fivethirtyeight() # from package ggthemes"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#customizing-theme-elements",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#customizing-theme-elements",
+    "title": "Figure Design",
+    "section": "Customizing theme elements",
+    "text": "Customizing theme elements\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid()"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#customizing-theme-elements-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#customizing-theme-elements-1",
+    "title": "Figure Design",
+    "section": "Customizing theme elements",
+    "text": "Customizing theme elements\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    # change overall font family\n    # (requires font to be available)\n    text = element_text(\n      family = \"Comic Sans MS\"\n    )\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#customizing-theme-elements-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#customizing-theme-elements-2",
+    "title": "Figure Design",
+    "section": "Customizing theme elements",
+    "text": "Customizing theme elements\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    # change color of axis titles\n    axis.title = element_text(\n      color = \"royalblue2\"\n    )\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#customizing-theme-elements-3",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#customizing-theme-elements-3",
+    "title": "Figure Design",
+    "section": "Customizing theme elements",
+    "text": "Customizing theme elements\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    # change color of only the x axis title\n    axis.title.x = element_text(\n      color = \"royalblue2\"\n    )\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#customizing-theme-elements-4",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#customizing-theme-elements-4",
+    "title": "Figure Design",
+    "section": "Customizing theme elements",
+    "text": "Customizing theme elements\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    # change all text colors?\n    # why does it not work?\n    text = element_text(color = \"royalblue2\")\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#customizing-theme-elements-5",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#customizing-theme-elements-5",
+    "title": "Figure Design",
+    "section": "Customizing theme elements",
+    "text": "Customizing theme elements\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    text = element_text(color = \"royalblue2\"),\n    axis.text = element_text(\n      color = \"royalblue2\"\n    )\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#customizing-theme-elements-6",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#customizing-theme-elements-6",
+    "title": "Figure Design",
+    "section": "Customizing theme elements",
+    "text": "Customizing theme elements\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    text = element_text(color = \"royalblue2\"),\n    axis.text = element_text(\n      color = \"royalblue2\"\n    )\n  )\n\n\n\n\n\n\n\n\nThe element axis.text has its own color set in the theme. Therefore it doesn’t inherit from text."
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#horizontal-and-vertical-alignment",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#horizontal-and-vertical-alignment",
+    "title": "Figure Design",
+    "section": "Horizontal and vertical alignment",
+    "text": "Horizontal and vertical alignment\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    axis.title.x = element_text(\n      # horizontal justification\n      # (0 = left)\n      hjust = 0\n    )\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#horizontal-and-vertical-alignment-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#horizontal-and-vertical-alignment-1",
+    "title": "Figure Design",
+    "section": "Horizontal and vertical alignment",
+    "text": "Horizontal and vertical alignment\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    axis.title.x = element_text(\n      # horizontal justification\n      # (0.5 = center)\n      hjust = 0.5\n    )\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#horizontal-and-vertical-alignment-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#horizontal-and-vertical-alignment-2",
+    "title": "Figure Design",
+    "section": "Horizontal and vertical alignment",
+    "text": "Horizontal and vertical alignment\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    axis.title.x = element_text(\n      # horizontal justification\n      # (1 = right)\n      hjust = 1\n    )\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#horizontal-and-vertical-alignment-3",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#horizontal-and-vertical-alignment-3",
+    "title": "Figure Design",
+    "section": "Horizontal and vertical alignment",
+    "text": "Horizontal and vertical alignment\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    axis.text.y = element_text(\n      # vertical justification\n      # (0 = bottom)\n      vjust = 0\n    )\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#horizontal-and-vertical-alignment-4",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#horizontal-and-vertical-alignment-4",
+    "title": "Figure Design",
+    "section": "Horizontal and vertical alignment",
+    "text": "Horizontal and vertical alignment\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    axis.text.y = element_text(\n      # vertical justification\n      # (0.5 = center)\n      vjust = 0.5\n    )\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#horizontal-and-vertical-alignment-5",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#horizontal-and-vertical-alignment-5",
+    "title": "Figure Design",
+    "section": "Horizontal and vertical alignment",
+    "text": "Horizontal and vertical alignment\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    axis.text.y = element_text(\n      # vertical justification\n      # (1 = top)\n      vjust = 1\n    )\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#remove-elements-entirely-element_blank",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#remove-elements-entirely-element_blank",
+    "title": "Figure Design",
+    "section": "Remove elements entirely: element_blank()",
+    "text": "Remove elements entirely: element_blank()\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    # all text gone\n    text = element_blank()\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#remove-elements-entirely-element_blank-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#remove-elements-entirely-element_blank-1",
+    "title": "Figure Design",
+    "section": "Remove elements entirely: element_blank()",
+    "text": "Remove elements entirely: element_blank()\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    # no axis titles\n    axis.title = element_blank()\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#set-background-color-element_rect",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#set-background-color-element_rect",
+    "title": "Figure Design",
+    "section": "Set background color: element_rect()",
+    "text": "Set background color: element_rect()\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    plot.background = element_rect(\n      fill = \"aliceblue\"\n    )\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#set-background-color-element_rect-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#set-background-color-element_rect-1",
+    "title": "Figure Design",
+    "section": "Set background color: element_rect()",
+    "text": "Set background color: element_rect()\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    panel.background = element_rect(\n      fill = \"aliceblue\"\n    )\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#set-background-color-element_rect-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#set-background-color-element_rect-2",
+    "title": "Figure Design",
+    "section": "Set background color: element_rect()",
+    "text": "Set background color: element_rect()\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    legend.box.background = element_rect(\n      fill = \"aliceblue\",\n      color = \"steelblue4\" # line color\n    )\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#set-background-color-element_rect-3",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#set-background-color-element_rect-3",
+    "title": "Figure Design",
+    "section": "Set background color: element_rect()",
+    "text": "Set background color: element_rect()\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    legend.box.background = element_rect(\n      fill = \"aliceblue\",\n      color = \"steelblue4\" # line color\n    ),\n    legend.box.margin = margin(7, 7, 7, 7)\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#move-the-legend-legend.position",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html#move-the-legend-legend.position",
+    "title": "Figure Design",
+    "section": "Move the legend: legend.position",
+    "text": "Move the legend: legend.position\n\n\n\n\n\nggplot(penguins) +\n  aes(flipper_length_mm, body_mass_g) +\n  geom_point(aes(color = species)) +\n  theme_minimal_grid() +\n  theme(\n    legend.box.background = element_rect(\n      fill = \"aliceblue\", \n      color = \"steelblue4\" # line color\n    ),\n    legend.box.margin = margin(7, 7, 7, 7),\n    # relative position inside plot panel\n    legend.position = c(1, 0),\n    # justification relative to position\n    legend.justification = c(1, 0)\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#uses-of-color-in-data-visualization",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#uses-of-color-in-data-visualization",
+    "title": "Color Scales",
+    "section": "Uses of color in data visualization",
+    "text": "Uses of color in data visualization\n\nDistinguish categories (qualitative)"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#qualitative-scale-example",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#qualitative-scale-example",
+    "title": "Color Scales",
+    "section": "Qualitative scale example",
+    "text": "Qualitative scale example\n\nHumans can only distinguish 7 or 8 colors."
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#qualitative-scale-example-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#qualitative-scale-example-1",
+    "title": "Color Scales",
+    "section": "Qualitative scale example",
+    "text": "Qualitative scale example\n\nPalette name: Okabe-Ito"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#qualitative-scale-example-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#qualitative-scale-example-2",
+    "title": "Color Scales",
+    "section": "Qualitative scale example",
+    "text": "Qualitative scale example\n\nPalette name: ColorBrewer Set1"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#qualitative-scale-example-3",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#qualitative-scale-example-3",
+    "title": "Color Scales",
+    "section": "Qualitative scale example",
+    "text": "Qualitative scale example\n\nPalette name: ColorBrewer Set3"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#uses-of-color-in-data-visualization-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#uses-of-color-in-data-visualization-1",
+    "title": "Color Scales",
+    "section": "Uses of color in data visualization",
+    "text": "Uses of color in data visualization\n\n\nDistinguish categories (qualitative)\n\n\n\n\n\n\n\nRepresent numeric values (sequential)"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#sequential-scale-example",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#sequential-scale-example",
+    "title": "Color Scales",
+    "section": "Sequential scale example",
+    "text": "Sequential scale example\n\nPalette name: Viridis"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#sequential-scale-example-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#sequential-scale-example-1",
+    "title": "Color Scales",
+    "section": "Sequential scale example",
+    "text": "Sequential scale example\n\nPalette name: Inferno"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#sequential-scale-example-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#sequential-scale-example-2",
+    "title": "Color Scales",
+    "section": "Sequential scale example",
+    "text": "Sequential scale example\n\nPalette name: Cividis"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#uses-of-color-in-data-visualization-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#uses-of-color-in-data-visualization-2",
+    "title": "Color Scales",
+    "section": "Uses of color in data visualization",
+    "text": "Uses of color in data visualization\n\n\nDistinguish categories (qualitative)\n\n\n\n\n\n\n\nRepresent numeric values (sequential)\n\n\n\n\n\n\n\nRepresent numeric values (diverging)"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#diverging-scale-example",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#diverging-scale-example",
+    "title": "Color Scales",
+    "section": "Diverging scale example",
+    "text": "Diverging scale example\n\nPalette name: ColorBrewer PiYG"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#diverging-scale-example-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#diverging-scale-example-1",
+    "title": "Color Scales",
+    "section": "Diverging scale example",
+    "text": "Diverging scale example\n\nPalette name: Carto Earth"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#diverging-scale-example-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#diverging-scale-example-2",
+    "title": "Color Scales",
+    "section": "Diverging scale example",
+    "text": "Diverging scale example\n\nPalette name: Blue-Red"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#uses-of-color-in-data-visualization-3",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#uses-of-color-in-data-visualization-3",
+    "title": "Color Scales",
+    "section": "Uses of color in data visualization",
+    "text": "Uses of color in data visualization\n\n\nDistinguish categories (qualitative)\n\n\n\n\n\n\n\nRepresent numeric values (sequential)\n\n\n\n\n\n\n\nRepresent numeric values (diverging)\n\n\n\n\n\n\n\nHighlight"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#highlight-example",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#highlight-example",
+    "title": "Color Scales",
+    "section": "Highlight example",
+    "text": "Highlight example\n\nPalette name: Grays with accents"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#highlight-example-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#highlight-example-1",
+    "title": "Color Scales",
+    "section": "Highlight example",
+    "text": "Highlight example\n\nPalette name: Okabe-Ito accent"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#highlight-example-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#highlight-example-2",
+    "title": "Color Scales",
+    "section": "Highlight example",
+    "text": "Highlight example\n\nPalette name: ColorBrewer accent"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#uses-of-color-in-data-visualization-4",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#uses-of-color-in-data-visualization-4",
+    "title": "Color Scales",
+    "section": "Uses of color in data visualization",
+    "text": "Uses of color in data visualization\n\n\nDistinguish categories (qualitative)\n\n\n\n\n\n\n\nRepresent numeric values (sequential)\n\n\n\n\n\n\n\nRepresent numeric values (diverging)\n\n\n\n\n\n\n\nHighlight"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#ggplot2-color-scale-functions-are-a-bit-of-a-mess",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#ggplot2-color-scale-functions-are-a-bit-of-a-mess",
+    "title": "Color Scales",
+    "section": "ggplot2 color scale functions are a bit of a mess",
+    "text": "ggplot2 color scale functions are a bit of a mess\n\n\n\n\n\n\n\n\n\nScale function\nAesthetic    \nData type\nPalette type\n\n\n\n\nscale_color_hue()\ncolor\ndiscrete\nqualitative"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#ggplot2-color-scale-functions-are-a-bit-of-a-mess-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#ggplot2-color-scale-functions-are-a-bit-of-a-mess-1",
+    "title": "Color Scales",
+    "section": "ggplot2 color scale functions are a bit of a mess",
+    "text": "ggplot2 color scale functions are a bit of a mess\n\n\n\n\n\n\n\n\n\nScale function\nAesthetic    \nData type\nPalette type\n\n\n\n\nscale_color_hue()\ncolor\ndiscrete\nqualitative\n\n\nscale_fill_hue()\nfill\ndiscrete\nqualitative"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#ggplot2-color-scale-functions-are-a-bit-of-a-mess-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#ggplot2-color-scale-functions-are-a-bit-of-a-mess-2",
+    "title": "Color Scales",
+    "section": "ggplot2 color scale functions are a bit of a mess",
+    "text": "ggplot2 color scale functions are a bit of a mess\n\n\n\n\n\n\n\n\n\nScale function\nAesthetic    \nData type\nPalette type\n\n\n\n\nscale_color_hue()\ncolor\ndiscrete\nqualitative\n\n\nscale_fill_hue()\nfill\ndiscrete\nqualitative\n\n\nscale_color_gradient()\ncolor\ncontinuous\nsequential"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#ggplot2-color-scale-functions-are-a-bit-of-a-mess-3",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#ggplot2-color-scale-functions-are-a-bit-of-a-mess-3",
+    "title": "Color Scales",
+    "section": "ggplot2 color scale functions are a bit of a mess",
+    "text": "ggplot2 color scale functions are a bit of a mess\n\n\n\n\n\n\n\n\n\nScale function\nAesthetic    \nData type\nPalette type\n\n\n\n\nscale_color_hue()\ncolor\ndiscrete\nqualitative\n\n\nscale_fill_hue()\nfill\ndiscrete\nqualitative\n\n\nscale_color_gradient()\ncolor\ncontinuous\nsequential\n\n\nscale_color_gradient2()\ncolor\ncontinuous\ndiverging"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#ggplot2-color-scale-functions-are-a-bit-of-a-mess-4",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#ggplot2-color-scale-functions-are-a-bit-of-a-mess-4",
+    "title": "Color Scales",
+    "section": "ggplot2 color scale functions are a bit of a mess",
+    "text": "ggplot2 color scale functions are a bit of a mess\n\n\n\n\n\n\n\n\n\nScale function\nAesthetic    \nData type\nPalette type\n\n\n\n\nscale_color_hue()\ncolor\ndiscrete\nqualitative\n\n\nscale_fill_hue()\nfill\ndiscrete\nqualitative\n\n\nscale_color_gradient()\ncolor\ncontinuous\nsequential\n\n\nscale_color_gradient2()\ncolor\ncontinuous\ndiverging\n\n\nscale_fill_viridis_c()\ncolor\ncontinuous\nsequential\n\n\nscale_fill_viridis_d()\nfill\ndiscrete\nsequential\n\n\nscale_color_brewer()\ncolor\ndiscrete\nqualitative, diverging, sequential\n\n\nscale_fill_brewer()\nfill\ndiscrete\nqualitative, diverging, sequential\n\n\nscale_color_distiller()\ncolor\ncontinuous\nqualitative, diverging, sequential\n\n\n\n… and there are many many more"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#examples",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#examples",
+    "title": "Color Scales",
+    "section": "Examples",
+    "text": "Examples\n\nggplot(temps_months, aes(x = month, y = location, fill = mean)) + \n  geom_tile(width = 0.95, height = 0.95) + \n  coord_fixed(expand = FALSE) +\n  theme_classic()\n\n  # no fill scale defined, default is scale_fill_gradient()"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#examples-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#examples-1",
+    "title": "Color Scales",
+    "section": "Examples",
+    "text": "Examples\n\nggplot(temps_months, aes(x = month, y = location, fill = mean)) + \n  geom_tile(width = 0.95, height = 0.95) + \n  coord_fixed(expand = FALSE) +\n  theme_classic() +\n  scale_fill_gradient()"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#examples-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#examples-2",
+    "title": "Color Scales",
+    "section": "Examples",
+    "text": "Examples\n\nggplot(temps_months, aes(x = month, y = location, fill = mean)) + \n  geom_tile(width = 0.95, height = 0.95) + \n  coord_fixed(expand = FALSE) +\n  theme_classic() +\n  scale_fill_viridis_c()"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#examples-3",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#examples-3",
+    "title": "Color Scales",
+    "section": "Examples",
+    "text": "Examples\n\nggplot(temps_months, aes(x = month, y = location, fill = mean)) + \n  geom_tile(width = 0.95, height = 0.95) + \n  coord_fixed(expand = FALSE) +\n  theme_classic() +\n  scale_fill_viridis_c(option = \"B\", begin = 0.15)"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#examples-4",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#examples-4",
+    "title": "Color Scales",
+    "section": "Examples",
+    "text": "Examples\n\nggplot(temps_months, aes(x = month, y = location, fill = mean)) + \n  geom_tile(width = 0.95, height = 0.95) + \n  coord_fixed(expand = FALSE) +\n  theme_classic() +\n  scale_fill_distiller(palette = \"YlGnBu\")"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#the-colorspace-package-creates-some-order",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#the-colorspace-package-creates-some-order",
+    "title": "Color Scales",
+    "section": "The colorspace package creates some order",
+    "text": "The colorspace package creates some order\nScale name: scale_&lt;aesthetic&gt;_&lt;datatype&gt;_&lt;colorscale&gt;()\n\n&lt;aesthetic&gt;: name of the aesthetic (fill, color, colour)\n&lt;datatype&gt;: type of variable plotted (discrete, continuous, binned)\n&lt;colorscale&gt;: type of the color scale (qualitative, sequential, diverging, divergingx)\n\n\n\n\n\n\n\n\n\n\nScale function\nAesthetic    \nData type\nPalette type    \n\n\n\n\nscale_color_discrete_qualitative()\ncolor\ndiscrete\nqualitative\n\n\nscale_fill_continuous_sequential()\nfill\ncontinuous\nsequential\n\n\nscale_colour_continous_divergingx()\ncolour\ncontinuous\ndiverging"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#examples-5",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#examples-5",
+    "title": "Color Scales",
+    "section": "Examples",
+    "text": "Examples\n\nggplot(temps_months, aes(x = month, y = location, fill = mean)) + \n  geom_tile(width = 0.95, height = 0.95) + \n  coord_fixed(expand = FALSE) +\n  theme_classic() +\n  scale_fill_continuous_sequential(palette = \"YlGnBu\", rev = FALSE)"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#examples-6",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#examples-6",
+    "title": "Color Scales",
+    "section": "Examples",
+    "text": "Examples\n\nggplot(temps_months, aes(x = month, y = location, fill = mean)) + \n  geom_tile(width = 0.95, height = 0.95) + \n  coord_fixed(expand = FALSE) +\n  theme_classic() +\n  scale_fill_continuous_sequential(palette = \"Viridis\", rev = FALSE)"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#examples-7",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#examples-7",
+    "title": "Color Scales",
+    "section": "Examples",
+    "text": "Examples\n\nggplot(temps_months, aes(x = month, y = location, fill = mean)) + \n  geom_tile(width = 0.95, height = 0.95) + \n  coord_fixed(expand = FALSE) +\n  theme_classic() +\n  scale_fill_continuous_sequential(palette = \"Inferno\", begin = 0.15, rev = FALSE)"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#section",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#section",
+    "title": "Color Scales",
+    "section": "",
+    "text": "colorspace::hcl_palettes(type = \"sequential\", plot = TRUE) # all sequential palettes"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#section-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#section-1",
+    "title": "Color Scales",
+    "section": "",
+    "text": "colorspace::hcl_palettes(type = \"diverging\", plot = TRUE, n = 9) # all diverging palettes"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#section-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#section-2",
+    "title": "Color Scales",
+    "section": "",
+    "text": "colorspace::divergingx_palettes(plot = TRUE, n = 9) # all divergingx palettes"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#discrete-qualitative-scales-are-best-set-manually",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#discrete-qualitative-scales-are-best-set-manually",
+    "title": "Color Scales",
+    "section": "Discrete, qualitative scales are best set manually",
+    "text": "Discrete, qualitative scales are best set manually\n\nggplot(popgrowth, aes(x = pop2000, y = popgrowth, color = region)) +\n  geom_point() +\n  scale_x_log10()\n\n  # no color scale defined, default is scale_color_hue()"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#discrete-qualitative-scales-are-best-set-manually-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#discrete-qualitative-scales-are-best-set-manually-1",
+    "title": "Color Scales",
+    "section": "Discrete, qualitative scales are best set manually",
+    "text": "Discrete, qualitative scales are best set manually\n\nggplot(popgrowth, aes(x = pop2000, y = popgrowth, color = region)) +\n  geom_point() +\n  scale_x_log10() +\n  scale_color_hue()"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#discrete-qualitative-scales-are-best-set-manually-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#discrete-qualitative-scales-are-best-set-manually-2",
+    "title": "Color Scales",
+    "section": "Discrete, qualitative scales are best set manually",
+    "text": "Discrete, qualitative scales are best set manually\n\nlibrary(ggthemes)  # for scale_color_colorblind()\n\nggplot(popgrowth, aes(x = pop2000, y = popgrowth, color = region)) +\n  geom_point() +\n  scale_x_log10() +\n  scale_color_colorblind()  # uses Okabe-Ito colors"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#discrete-qualitative-scales-are-best-set-manually-3",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#discrete-qualitative-scales-are-best-set-manually-3",
+    "title": "Color Scales",
+    "section": "Discrete, qualitative scales are best set manually",
+    "text": "Discrete, qualitative scales are best set manually\n\nggplot(popgrowth, aes(x = pop2000, y = popgrowth, color = region)) +\n  geom_point() +\n  scale_x_log10() +\n  scale_color_manual(\n    values = c(West = \"#E69F00\", South = \"#56B4E9\", Midwest = \"#009E73\", Northeast = \"#F0E442\")\n  )"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#okabe-ito-rgb-codes",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#okabe-ito-rgb-codes",
+    "title": "Color Scales",
+    "section": "Okabe-Ito RGB codes",
+    "text": "Okabe-Ito RGB codes\n\n\n\n\nName\nHex code   \nR, G, B (0-255)\n\n\n\n\norange\n#E69F00\n230, 159, 0\n\n\nsky blue\n#56B4E9\n86, 180, 233\n\n\nbluish green\n#009E73\n0, 158, 115\n\n\nyellow\n#F0E442\n240, 228, 66\n\n\nblue\n#0072B2\n0, 114, 178\n\n\nvermilion\n#D55E00\n213, 94, 0\n\n\nreddish purple\n#CC79A7\n204, 121, 167\n\n\nblack\n#000000\n0, 0, 0"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#be-aware-of-color-vision-deficiency",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#be-aware-of-color-vision-deficiency",
+    "title": "Color Scales",
+    "section": "Be aware of color-vision deficiency",
+    "text": "Be aware of color-vision deficiency\n5%–8% of men are color blind!\n\nRed-green color-vision deficiency is the most common"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#be-aware-of-color-vision-deficiency-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#be-aware-of-color-vision-deficiency-1",
+    "title": "Color Scales",
+    "section": "Be aware of color-vision deficiency",
+    "text": "Be aware of color-vision deficiency\n5%–8% of men are color blind!\n\nBlue-green color-vision deficiency is rare but does occur"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#be-aware-of-color-vision-deficiency-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#be-aware-of-color-vision-deficiency-2",
+    "title": "Color Scales",
+    "section": "Be aware of color-vision deficiency",
+    "text": "Be aware of color-vision deficiency\nChoose colors that can be distinguished with CVD"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#consider-using-the-okabe-ito-scale-as-your-default",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#consider-using-the-okabe-ito-scale-as-your-default",
+    "title": "Color Scales",
+    "section": "Consider using the Okabe-Ito scale as your default",
+    "text": "Consider using the Okabe-Ito scale as your default\n\n\n\n\nName\nHex code   \nR, G, B (0-255)\n\n\n\n\norange\n#E69F00\n230, 159, 0\n\n\nsky blue\n#56B4E9\n86, 180, 233\n\n\nbluish green\n#009E73\n0, 158, 115\n\n\nyellow\n#F0E442\n240, 228, 66\n\n\nblue\n#0072B2\n0, 114, 178\n\n\nvermilion\n#D55E00\n213, 94, 0\n\n\nreddish purple\n#CC79A7\n204, 121, 167\n\n\nblack\n#000000\n0, 0, 0"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#cvd-is-worse-for-thin-lines-and-tiny-dots",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#cvd-is-worse-for-thin-lines-and-tiny-dots",
+    "title": "Color Scales",
+    "section": "CVD is worse for thin lines and tiny dots",
+    "text": "CVD is worse for thin lines and tiny dots"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#when-in-doubt-run-cvd-simulations",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#when-in-doubt-run-cvd-simulations",
+    "title": "Color Scales",
+    "section": "When in doubt, run CVD simulations",
+    "text": "When in doubt, run CVD simulations"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#when-in-doubt-run-cvd-simulations-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html#when-in-doubt-run-cvd-simulations-1",
+    "title": "Color Scales",
+    "section": "When in doubt, run CVD simulations",
+    "text": "When in doubt, run CVD simulations\n\n\n\n\n\n\n\n\n\n\n\nthe colorspace\npackage can\nhelp"
+  },
+  {
     "objectID": "materials/1-workshop1/3-tidyverse-101/index.html",
     "href": "materials/1-workshop1/3-tidyverse-101/index.html",
     "title": "Intro to data visualization and data wrangling with the\ntidyverse",
@@ -1090,5 +1720,257 @@
     "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "Exercise",
     "text": "Exercise\n\n\n\n−+\n30:00\n\n\n\nTime to try it yourself. Go to the second coding exercise.\n\nDuring an activity, place a blue sticky on your laptop if you’re good to go and a pink sticky if you want help.\n\n\nback to module"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#compound-figures",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#compound-figures",
+    "title": "Compound Figures",
+    "section": "Compound figures",
+    "text": "Compound figures\nTwo common scenarios:"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#compound-figures-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#compound-figures-1",
+    "title": "Compound Figures",
+    "section": "Compound figures",
+    "text": "Compound figures\nTwo common scenarios:\n\nThe same type of plot is replicated many times (small multiples)"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#compound-figures-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#compound-figures-2",
+    "title": "Compound Figures",
+    "section": "Compound figures",
+    "text": "Compound figures\nTwo common scenarios:\n\nThe same type of plot is replicated many times (small multiples)\nSeveral disparate plots are combined into one display"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#small-multiples-facets",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#small-multiples-facets",
+    "title": "Compound Figures",
+    "section": "1. Small multiples (facets)",
+    "text": "1. Small multiples (facets)"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#small-multiples-facets-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#small-multiples-facets-1",
+    "title": "Compound Figures",
+    "section": "1. Small multiples (facets)",
+    "text": "1. Small multiples (facets)"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#small-multiples-facets-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#small-multiples-facets-2",
+    "title": "Compound Figures",
+    "section": "1. Small multiples (facets)",
+    "text": "1. Small multiples (facets)\n\nAvoid bars or other elements that are floating in space"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#small-multiples-facets-3",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#small-multiples-facets-3",
+    "title": "Compound Figures",
+    "section": "1. Small multiples (facets)",
+    "text": "1. Small multiples (facets)"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#y-axis-ranges-should-be-consistent-among-panels",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#y-axis-ranges-should-be-consistent-among-panels",
+    "title": "Compound Figures",
+    "section": "y-axis ranges should be consistent among panels",
+    "text": "y-axis ranges should be consistent among panels"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#y-axis-ranges-should-be-consistent-among-panels-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#y-axis-ranges-should-be-consistent-among-panels-1",
+    "title": "Compound Figures",
+    "section": "y-axis ranges should be consistent among panels",
+    "text": "y-axis ranges should be consistent among panels"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#combining-disparate-figures-into-one-display",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#combining-disparate-figures-into-one-display",
+    "title": "Compound Figures",
+    "section": "2. Combining disparate figures into one display",
+    "text": "2. Combining disparate figures into one display"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#dont-use-overly-large-or-otherwise-prominent-labels",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#dont-use-overly-large-or-otherwise-prominent-labels",
+    "title": "Compound Figures",
+    "section": "Don’t use overly large or otherwise prominent labels",
+    "text": "Don’t use overly large or otherwise prominent labels"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#use-a-consistent-color-language-among-sub-plots",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#use-a-consistent-color-language-among-sub-plots",
+    "title": "Compound Figures",
+    "section": "Use a consistent color language among sub-plots",
+    "text": "Use a consistent color language among sub-plots"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#use-a-consistent-color-language-among-sub-plots-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#use-a-consistent-color-language-among-sub-plots-1",
+    "title": "Compound Figures",
+    "section": "Use a consistent color language among sub-plots",
+    "text": "Use a consistent color language among sub-plots"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#pay-attention-to-sub-plot-alignment",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#pay-attention-to-sub-plot-alignment",
+    "title": "Compound Figures",
+    "section": "Pay attention to sub-plot alignment",
+    "text": "Pay attention to sub-plot alignment"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#pay-attention-to-sub-plot-alignment-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#pay-attention-to-sub-plot-alignment-1",
+    "title": "Compound Figures",
+    "section": "Pay attention to sub-plot alignment",
+    "text": "Pay attention to sub-plot alignment"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#combine-plots-of-different-types",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#combine-plots-of-different-types",
+    "title": "Compound Figures",
+    "section": "Combine plots of different types",
+    "text": "Combine plots of different types\n\nThis helps your readers to distinguish different parts of the analysis"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#combine-plots-of-different-types-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#combine-plots-of-different-types-1",
+    "title": "Compound Figures",
+    "section": "Combine plots of different types",
+    "text": "Combine plots of different types\n\nThis helps your readers to distinguish different parts of the analysis"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#combine-plots-of-different-types-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#combine-plots-of-different-types-2",
+    "title": "Compound Figures",
+    "section": "Combine plots of different types",
+    "text": "Combine plots of different types\n\nThis helps your readers to distinguish different parts of the analysis"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#distinguish-infographics-from-figures-in-articlebook",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#distinguish-infographics-from-figures-in-articlebook",
+    "title": "Compound Figures",
+    "section": "Distinguish infographics from figures in article/book",
+    "text": "Distinguish infographics from figures in article/book\n\nThere are two distinct use cases:"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#distinguish-infographics-from-figures-in-articlebook-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#distinguish-infographics-from-figures-in-articlebook-1",
+    "title": "Compound Figures",
+    "section": "Distinguish infographics from figures in article/book",
+    "text": "Distinguish infographics from figures in article/book\n\nThere are two distinct use cases:\n\nInfographic: Standalone, has title/subtitle/caption"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#distinguish-infographics-from-figures-in-articlebook-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#distinguish-infographics-from-figures-in-articlebook-2",
+    "title": "Compound Figures",
+    "section": "Distinguish infographics from figures in article/book",
+    "text": "Distinguish infographics from figures in article/book\n\nThere are two distinct use cases:\n\nInfographic: Standalone, has title/subtitle/caption\n\nFigure in article/book: Caption contains title, not part of figure"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#section-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#section-1",
+    "title": "Compound Figures",
+    "section": "",
+    "text": "Example of infographic"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#section-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#section-2",
+    "title": "Compound Figures",
+    "section": "",
+    "text": "Figure 1. Corruption and human development. The most developed countries experience the least corruption. Inspired by a posting in The Economist online (2011). Data sources: Transparency International & UN Human Development Report.\n\n\n\n\nExample of figure in article or book"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#the-patchwork-package",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#the-patchwork-package",
+    "title": "Compound Figures",
+    "section": "The patchwork package",
+    "text": "The patchwork package\n\n\n\n\n\nlibrary(patchwork)\n\n# make first plot\np1 &lt;- ggplot(mtcars) + \n  geom_point(aes(mpg, disp))\n\np1"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#the-patchwork-package-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#the-patchwork-package-1",
+    "title": "Compound Figures",
+    "section": "The patchwork package",
+    "text": "The patchwork package\n\n\n\n\n\nlibrary(patchwork)\n\n# make first plot\np1 &lt;- ggplot(mtcars) + \n  geom_point(aes(mpg, disp))\n\n# make second plot\np2 &lt;- ggplot(mtcars) + \n  aes(gear, disp, group = gear) +\n  geom_boxplot()\n\np2"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#the-patchwork-package-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#the-patchwork-package-2",
+    "title": "Compound Figures",
+    "section": "The patchwork package",
+    "text": "The patchwork package\n\n\n\n\n\nlibrary(patchwork)\n\n# make first plot\np1 &lt;- ggplot(mtcars) + \n  geom_point(aes(mpg, disp))\n\n# make second plot\np2 &lt;- ggplot(mtcars) + \n  aes(gear, disp, group = gear) +\n  geom_boxplot()\n\n# place plots side-by-side \np1 | p2"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#the-patchwork-package-3",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#the-patchwork-package-3",
+    "title": "Compound Figures",
+    "section": "The patchwork package",
+    "text": "The patchwork package\n\n\n\n\n\nlibrary(patchwork)\n\n# make first plot\np1 &lt;- ggplot(mtcars) + \n  geom_point(aes(mpg, disp))\n\n# make second plot\np2 &lt;- ggplot(mtcars) + \n  aes(gear, disp, group = gear) +\n  geom_boxplot()\n\n# place plots on top of one-another \np1 / p2"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#the-patchwork-package-4",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#the-patchwork-package-4",
+    "title": "Compound Figures",
+    "section": "The patchwork package",
+    "text": "The patchwork package\n\n\n\n\n\n# add a few more plots\np3 &lt;- ggplot(mtcars) + \n  geom_smooth(aes(disp, qsec))\n\np4 &lt;- ggplot(mtcars) + \n  geom_bar(aes(carb))\n\n# make complex arrangement \n(p1 | p2 | p3) / p4"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#plot-annotations-and-themes",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#plot-annotations-and-themes",
+    "title": "Compound Figures",
+    "section": "Plot annotations and themes",
+    "text": "Plot annotations and themes\n\n\n\n\n\n(p1 | p2 | p3) / p4 +\n   plot_annotation( \n     tag_levels = \"A\" \n   ) \n\n\n\n\n\n\n\n\n\nAutomatic labeling of plots"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#plot-annotations-and-themes-1",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#plot-annotations-and-themes-1",
+    "title": "Compound Figures",
+    "section": "Plot annotations and themes",
+    "text": "Plot annotations and themes\n\n\n\n\n\n(p1 | p2 | p3) / p4 +\n   plot_annotation( \n     tag_levels = \"a\" \n   ) \n\n\n\n\n\n\n\n\n\nAutomatic labeling of plots"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#plot-annotations-and-themes-2",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#plot-annotations-and-themes-2",
+    "title": "Compound Figures",
+    "section": "Plot annotations and themes",
+    "text": "Plot annotations and themes\n\n\n\n\n\n(p1 | p2 | p3) / p4 +\n  plot_annotation(\n   tag_levels = \"a\"\n  ) & \n  theme_minimal_grid() \n\n\n\n\n\n\n\n\n\nApplying one theme to all plots"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#plot-annotations-and-themes-3",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html#plot-annotations-and-themes-3",
+    "title": "Compound Figures",
+    "section": "Plot annotations and themes",
+    "text": "Plot annotations and themes\n\n\n\n\n\n(p1 | p2 | p3) / p4 +\n  plot_annotation(\n   tag_levels = \"a\",\n   title = \"A plot about mtcars\", \n   subtitle = \"With subtitle...\", \n   caption = \"...and caption\" \n  ) &\n  theme_minimal_grid()\n\n\n\n\n\n\n\n\n\nTitles and captions"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/index.html",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/index.html",
+    "title": "Customizing data visualizations using colorspace, ggplot2, and patchwork",
+    "section": "",
+    "text": "Learn how to change ggplot’s default choices for color and style and take control of final figure presentation."
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/index.html#color-scales",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/index.html#color-scales",
+    "title": "Customizing data visualizations using colorspace, ggplot2, and patchwork",
+    "section": "Color Scales",
+    "text": "Color Scales\nMake slides full screen\n\n\nCoding exercise 7.1\nIn this worksheet, we will discuss how to change and customize color scales.\nWe will be using the R package tidyverse, which includes ggplot() and related functions. We will also be using the R package colorspace for the scale functions it provides.\n\n# load required library\nlibrary(tidyverse)\nlibrary(colorspace)\n\ntemperatures &lt;- read_csv(\"https://wilkelab.org/SDS375/datasets/tempnormals.csv\") %&gt;%\n  mutate(\n    location = factor(\n      location, levels = c(\"Death Valley\", \"Houston\", \"San Diego\", \"Chicago\")\n    )\n  ) %&gt;%\n  select(location, day_of_year, month, temperature)\n\ntemps_months &lt;- read_csv(\"https://wilkelab.org/SDS375/datasets/tempnormals.csv\") %&gt;%\n  group_by(location, month_name) %&gt;%\n  summarize(mean = mean(temperature)) %&gt;%\n  mutate(\n    month = factor(\n      month_name,\n      levels = c(\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\")\n    ),\n    location = factor(\n      location, levels = c(\"Death Valley\", \"Houston\", \"San Diego\", \"Chicago\")\n    )\n  ) %&gt;%\n  select(-month_name)\n\nWe will be working with the dataset temperatures that we have used in previous worksheets. This dataset contains the average temperature for each day of the year for four different locations.\n\ntemperatures\n\n# A tibble: 1,464 × 4\n   location     day_of_year month temperature\n   &lt;fct&gt;              &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;\n 1 Death Valley           1 01           51  \n 2 Death Valley           2 01           51.2\n 3 Death Valley           3 01           51.3\n 4 Death Valley           4 01           51.4\n 5 Death Valley           5 01           51.6\n 6 Death Valley           6 01           51.7\n 7 Death Valley           7 01           51.9\n 8 Death Valley           8 01           52  \n 9 Death Valley           9 01           52.2\n10 Death Valley          10 01           52.3\n# ℹ 1,454 more rows\n\n\nWe will also be working with an aggregated version of this dataset called temps_months, which contains the mean temperature for each month for the same locations.\n\ntemps_months\n\n# A tibble: 48 × 3\n# Groups:   location [4]\n   location  mean month\n   &lt;fct&gt;    &lt;dbl&gt; &lt;fct&gt;\n 1 Chicago   50.4 Apr  \n 2 Chicago   74.1 Aug  \n 3 Chicago   29   Dec  \n 4 Chicago   28.9 Feb  \n 5 Chicago   24.8 Jan  \n 6 Chicago   75.8 Jul  \n 7 Chicago   71.0 Jun  \n 8 Chicago   38.8 Mar  \n 9 Chicago   60.9 May  \n10 Chicago   41.6 Nov  \n# ℹ 38 more rows\n\n\nAs a challenge, try to create this above table yourself using group_by() and summarize() like we learned about Wednesday., and then make a month column which is a factor with levels froing from “Jan” to “Dec”, and make the location column a factor with levels “Death Valley”, “Houston”, “San Diego”, “Chicago”. If you are having trouble, the solution is at the end of this page, make sure you copy it into your code so the rest of the exercise works.\n\n# check solution at the end before moving on!\ntemps_months &lt;- read_csv(\"https://wilkelab.org/SDS375/datasets/tempnormals.csv\") %&gt;%\n  group_by(___) %&gt;%\n  summarize(___) %&gt;%\n  mutate(\n    month = factor(\n      month_name,\n      ___\n    ),\n    location = factor(\n      location, ___\n    )\n  ) %&gt;%\n  select(-month_name)\n\n\nBuilt in ggplot2 color scales\nWe will start with built-in ggplot2 color scales, which require no additional packages. The scale functions are always named scale_color_*() or scale_fill_*(), depending on whether they apply to the color or fill aesthetic. The * indicates some other words specifying the type of the scale, for example scale_color_brewer() or scale_color_distiller() for discrete or continuous scales from the ColorBrewer project, respectively. You can find all available built-in scales here: https://ggplot2.tidyverse.org/reference/index.html#section-scales\nNow consider the following plot.\n\nggplot(temps_months, aes(x = month, y = location, fill = mean)) + \n  geom_tile() + \n  coord_fixed(expand = FALSE)\n\n\n\n\nIf you wanted to change the color scale to one from the ColorBrewer project, which scale function would you have to add? scale_color_brewer(), scale_color_distiller(), scale_fill_brewer(), scale_fill_distiller()?\n\n # answer the question above to yourself\n\nNow try this out.\n\nggplot(temps_months, aes(x = month, y = location, fill = mean)) + \n  geom_tile() + \n  coord_fixed(expand = FALSE) +\n  ___\n\nMost color scale functions have additional customizations. How to use them depends on the specific scale function. For the ColorBrewer scales you can set direction = 1 or direction = -1 to set the direction of the scale (light to dark or dark to light). You can also set the palette via a numeric argument, e.g. palette = 1, palette = 2, palette = 3 etc.\nTry this out by setting the direction of the scale from light to dark and using palette #4.\n\n # build all the code for this exercise\n\nA popular set of scales are the viridis scales, which are provided by scale_*_viridis_c() for continuous data and scale_*_viridis_d() for discrete data. Change the above plot to use a viridis scale.\n\n # build all the code for this exercise\n\nThe viridis scales can be customized with direction (as before), option (which can be \"A\", \"B\", \"C\", \"D\", or \"E\"), and begin and end which are numerical values between 0 and 1 indicating where in the color scale the data should begin or end. For example, begin = 0.2 means that the lowest data value is mapped to the 20th percentile in the scale.\nTry different choices for option, begin, and end to see how they change the plot.\n\n # build all the code for this exercise\n\n\n\nCustomizing scale title and labels\nIn a previous worksheet, we used arguments such as name, breaks, labels, and limits to customize the axis. For color scales, instead of an axis we have a legend, and we can use the same arguments inside the scale function to customize how the legend looks.\nTry this out. Set the scale limits from 10 to 110 and set the name of the scale and the breaks as you wish.\n\nggplot(temps_months, aes(x = month, y = location, fill = mean)) + \n  geom_tile() + \n  coord_fixed(expand = FALSE) +\n  scale_fill_viridis_c(\n    name = ___,\n    breaks = ___,\n    limits = ___\n  )\n\nNote: Color scales ignore the expand argument, so you cannot use it to expand the scale beyond the data values as you can for position scales.\n\n\nBinned scales\nResearch into human perception has shown that continuous coloring can be difficult to interpret. Therefore, it is often preferable to use a small number of discrete colors to indicate ranges of data values. You can do this in ggplot with binned scales. For example, scale_fill_viridis_b() provides a binned version of the viridis scale. Try this out.\n\nggplot(temps_months, aes(x = month, y = location, fill = mean)) + \n  geom_tile() + \n  coord_fixed(expand = FALSE) +\n  ___\n\nYou can change the number of bins by providing the n.breaks argument or alternatively by setting breaks explicitly. Try this out.\n\n # build all the code for this exercise\n\n\n\nScales from the colorspace package\nThe color scales provided by the colorspace package follow a simple naming scheme of the form scale_&lt;aesthetic&gt;_&lt;datatype&gt;_&lt;colorscale&gt;(), where &lt;aesthetic&gt; is the name of the aesthetic (fill, color, colour), &lt;datatype&gt; indicates the type of variable plotted (discrete, continuous, binned), and colorscale stands for the type of the color scale (qualitative, sequential, diverging, divergingx).\nFor the mean temperature plot we have been using throughout this worksheet, which 2 color scales from the colorspace package is/are appropriate?\nscale_fill_binned_sequential(), scale_fill_discrete_qualitative(), scale_fill_continuous_sequential(), scale_color_continuous_sequential(), scale_color_continuous_diverging()&gt;\n\nggplot(temps_months, aes(x = month, y = location, fill = mean)) + \n  geom_tile() + \n  coord_fixed(expand = FALSE) +\n  ___\n\nYou can customize the colorspace scales with the palette argument, which takes the name of a palette (e.g., \"Inferno\", \"BluYl\", \"Lajolla\"). Try this out. Also try reversing the scale direction with rev = TRUE or rev = FALSE. (The colorspace scales use rev instead of direction.) You can find the names of all supported scales here (consider specifically single-hue and multi-hue sequential palettes).\n\n # build all the code for this exercise\n\nYou can also use begin and end just like in the viridis scales.\n\n\nManual scales\nFor discrete data with a small number of categories, it’s usually best to set colors manually. This can be done with the scale functions scale_*_manual(). These functions take an argument values that specifies the color values to use.\nTo see how this works, let’s go back to this plot of temperatures over time for four locations.\n\nggplot(temperatures, aes(day_of_year, temperature, color = location)) +\n  geom_line(size = 1.5)\n\n\n\n\nLet’s use the following four colors: \"gold2\", \"firebrick\", \"blue3\", \"springgreen4\". We can visualize this palette using the function swatchplot() from the colorspace package.\n\ncolorspace::swatchplot(c(\"gold2\", \"firebrick\", \"blue3\", \"springgreen4\"))\n\n\n\n\nNow apply this color palette to the temperatures plot, by using the manual color scale. Hint: use the values argument to provide the colors to the manual scale.\n\nggplot(temperatures, aes(day_of_year, temperature, color = location)) +\n  geom_line(size = 1.5) +\n  ___\n\nOne problem with this approach is that we can’t easily control which data value gets assigned to which color. What if we wanted San Diego to be shown in green and Chicago in blue? The simplest way to resolve this issue is to use a named vector. A named vector in R is a vector where each value has a name. Named vectors are created by writing c(name1 = value1, name2 = value2, ...). See the following example.\n\n# regular vector\nc(\"cat\", \"mouse\", \"house\")\n\n[1] \"cat\"   \"mouse\" \"house\"\n\n# named vector\nc(A = \"cat\", B = \"mouse\", C = \"house\")\n\n      A       B       C \n  \"cat\" \"mouse\" \"house\" \n\n\nThe names in the second example are A, B, and C. Notice that the names are not in quotes. However, if you need a name containing a space (such as Death Valley), you need to enclose the name in backticks. Thus, our named vector of colors could be written like so:\n\nc(`Death Valley` = \"gold2\", Houston = \"firebrick\", Chicago = \"blue3\", `San Diego` = \"springgreen4\")\n\n  Death Valley        Houston        Chicago      San Diego \n       \"gold2\"    \"firebrick\"        \"blue3\" \"springgreen4\" \n\n\nNow try to use this color vector in the figure showing temperatures over time.\n\n # build all the code for this exercise\n\nTry some other colors also. For example, you could use the Okabe-Ito colors:\n\n# Okabe-Ito colors\ncolorspace::swatchplot(c(\"#E69F00\", \"#56B4E9\", \"#009E73\", \"#F0E442\", \"#0072B2\", \"#D55E00\", \"#CC79A7\", \"#000000\"))\n\n\n\n\nAlternatively, you can find a list of all named colors here. You can also run the command colors() in your R console to get a list of all available color names.\nHint: It’s a good idea to never use the colors \"red\", \"green\", \"blue\", \"cyan\", \"magenta\", \"yellow\". They are extreme points in the RGB color space and tend to look unnatural and too crazy. Try this by making a swatch plot of these colors, and compare for example to the color scale containing the colors \"firebrick\", \"springgreen4\", \"blue3\", \"turquoise3\", \"darkorchid2\", \"gold2\". Do you see the difference?\n\n # build all the code for this exercise\n\nSolution to the challenge to make the summary table of mean temperature by month:\n\n# paste this below the \"temperatures\" code-chunk\ntemps_months &lt;- read_csv(\"https://wilkelab.org/SDS375/datasets/tempnormals.csv\") %&gt;%\n  group_by(location, month_name) %&gt;%\n  summarize(mean = mean(temperature)) %&gt;%\n  mutate(\n    month = factor(\n      month_name,\n      levels = c(\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\")\n    ),\n    location = factor(\n      location, levels = c(\"Death Valley\", \"Houston\", \"San Diego\", \"Chicago\")\n    )\n  ) %&gt;%\n  select(-month_name)"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/index.html#figure-design",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/index.html#figure-design",
+    "title": "Customizing data visualizations using colorspace, ggplot2, and patchwork",
+    "section": "Figure Design",
+    "text": "Figure Design\nMake slides full screen\n\n\nCoding exercise 7.2\nIn this worksheet, we will discuss how to change and customize themes.\nWe will be using the R package tidyverse, which includes ggplot() and related functions. We will also be using the packages cowplot for themes and the package palmerpenguins for the penguins dataset.\n\n# load required library\nlibrary(tidyverse)\nlibrary(cowplot)\nlibrary(palmerpenguins)\n\nWe will be working with the dataset penguins containing data on individual penguins on Antarctica.\n\npenguins\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\nReady-made themes\nLet’s start with this simple plot with no specific styling.\n\nggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +\n  geom_point(na.rm = TRUE)  # na.rm = TRUE prevents warning about missing values\n\n\n\n\nThe default ggplot theme is theme_gray(). Verify that adding this theme to the plot makes no difference in the output. Then change the overall font size by providing the theme function with a numeric font size argument, e.g. theme_gray(16).\n\nggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +\n  geom_point(na.rm = TRUE) +\n  ___\n\nThe ggplot2 package has many built-in themes, including theme_minimal(), theme_bw(), theme_void(), theme_dark(). Try these different themes on the above plot. Also try again changing the font size. You can see all themes provided by ggplot2 here: https://ggplot2.tidyverse.org/reference/ggtheme.html\n\n # build all the code for this exercise\n\nMany other packages also provide themes. For example, the cowplot package provides themes theme_half_open(), theme_minimal_grid(), theme_minimal_hgrid(), and theme_minimal_vgrid(). You can see all cowplot themes here: https://wilkelab.org/cowplot/articles/themes.html\n\n # build all the code for this exercise\n\nCompare the visual appearance of theme_minimal() from ggplot2 to theme_minimal_grid() from cowplot. What similarities and differences to you notice? Which do you prefer? (There is no correct answer here, just be aware of the differences and of your preferences.)\n\n # build all the code for this exercise\n\n\n\nModifying theme elements\nYou can modify theme elements by adding a theme() call to the plot. Inside the theme() call you specify which theme element you want to modify (e.g., axis.title, axis.text.x, panel.background, etc) and what changes you want to make. For example, to make axis titles blue, you would write:\n\ntheme(\n  axis.title = element_text(color = \"blue\")\n)\n\nThere are many theme settings, and for each one you need to know what type of an element it is (element_text(), element_line(), element_rect() for text, lines, or rectangles, respectively). A complete description of the available options is available at the ggplot2 website: https://ggplot2.tidyverse.org/reference/theme.html\nHere, we will only try a few simple things. For example, see if you can make the legend title blue and the legend text red.\n\n# make the legend title blue and the legend text red\nggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +\n  geom_point(na.rm = TRUE)\n\n\n\n\nNow color the area behind the legend in \"aliceblue\". Hint: The theme element you need to change is called legend.background. There is also an element legend.box.background but it is only visible if legend.background is not shown, and in the default ggplot2 themes that is not the case.\n\n # build all the code for this exercise\n\nAnother commonly used feature in themes are margins. Many parts of the plot theme can understand customized margins, which control how much spacing there is between different parts of a plot. Margins are typically specified with the function margin(), which takes four numbers specifying the margins in points, in the order top, right, bottom, left. So, margin(10, 5, 5, 10) would specify a top margin of 10pt, a right margin of 5pt, a bottom margin of 5pt, and a left margin of 10pt.\nTry this out by setting the legend margin (element legend.margin) such that there is no top and no bottom margin but 10pt left and right margin.\n\n # build all the code for this exercise\n\nThere are many other things you can do. Try at least some of the following:\n\nChange the horizontal or vertical justification of text with hjust and vjust.\nChange the font family with family.1\nChange the panel grid. For example, create only horizontal lines, or only vertical lines.\nChange the overall margin of the plot with plot.margin.\nMove the position of the legend with legend.position and legend.justification.\nTurn off some elements by setting them to element_blank().\n\n1 Getting fonts to work well can be tricky in R. Which specific fonts work depends on the graphics device and the operating system. You can try some of the following fonts and see if they work on app.terra.bio: \"Palatino\", \"Times\", \"Helvetica\", \"Courier\", \"ITC Bookman\", \"ITC Avant Garde Gothic\", \"ITC Zapf Chancery\".\n\n\nWriting your own theme\nYou can write a theme by\n\ntheme_colorful &lt;-\n  theme_bw() +\n  theme(\n    text = element_text(color = \"mediumblue\"),\n    axis.text = element_text(color = \"springgreen4\"),\n    legend.text = element_text(color = \"firebrick4\")\n  )\n\nHint: Do you have to add theme_colorful or theme_colorful()? Do you understand which option is correct and why? If you are unsure, try both and see what happens.\n\n # build all the code for this exercise\n\nNow write your own theme and then add it to the penguing plot.\n\n # build all the code for this exercise"
+  },
+  {
+    "objectID": "materials/1-workshop1/7-custom-data-visualizations/index.html#compound-figures",
+    "href": "materials/1-workshop1/7-custom-data-visualizations/index.html#compound-figures",
+    "title": "Customizing data visualizations using colorspace, ggplot2, and patchwork",
+    "section": "Compound Figures",
+    "text": "Compound Figures\nMake slides full screen\n\n\nCoding exercise 7.3\nIn this worksheet, we will discuss how to combine several ggplot2 plots into one compound figure.\nWe will be using the R package tidyverse, which includes ggplot() and related functions. We will also be using the package patchwork for plot composition.\n\n# load required library\nlibrary(tidyverse)\nlibrary(patchwork)\n\nWe will be working with the dataset mtcars, which contains fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).\n\nmtcars\n\n                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb\nMazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2\nValiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1\nDuster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4\nMerc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2\nMerc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2\nMerc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4\nMerc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4\nMerc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3\nMerc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3\nMerc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3\nCadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4\nLincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4\nChrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4\nFiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1\nHonda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2\nToyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1\nToyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1\nDodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2\nAMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2\nCamaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4\nPontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2\nFiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1\nPorsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2\nLotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2\nFord Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4\nFerrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6\nMaserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8\nVolvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2\n\n\n\nCombining plots\nFirst we set up four different plots that we will subsequently combine. The plots are stored in variables p1, p2, p3, p4.\n\np1 &lt;- ggplot(mtcars) + \n  geom_point(aes(mpg, disp))\np1  \n\n\n\np2 &lt;- ggplot(mtcars) + \n  geom_boxplot(aes(gear, disp, group = gear))\np2\n\n\n\np3 &lt;- ggplot(mtcars) + \n  geom_smooth(aes(disp, qsec))\np3\n\n\n\np4 &lt;- ggplot(mtcars) + \n  geom_bar(aes(carb))\np4\n\n\n\n\nTo show plots side-by-side, we use the operator |, as in p1 | p2. Try this by making a compound plot of plots p1, p2, p3 side-by-side.\n\n # build all the code for this exercise\n\nTo show plots on top of one-another, we use the operator /, as in p1 / p2. Try this by making a compound plot of plots p1, p2, p3 on top of each other.\n\n # build all the code for this exercise\n\nWe can also use parentheses to group plots with respect to the operators | and /. For example, we can place several plots side-by-side and then place this entire row of plots on top of another plot. Try putting p1, p2, p3, on the top row, and p4 on the bottom row.\n\n(___) / ___\n\n\n\nPlot annotations\nThe patchwork package provides a powerful annotation system via the plot_annotation() function that can be added to a plot assembly. For example, we can add plot tags (the labels in the upper left corner identifying the plots) via the plot annotation tag_levels. You can set tag_levels = \"A\" to generate tags A, B, C, etc. Try this out.\n\n(p1 | p2 | p3 ) / p4\n\n\n\n\nTry also tag levels such as \"a\", \"i\", or \"1\".\nYou can also add elements such as titles, subtitles, and captions, by setting the title, subtitle, or caption argument in plot_annotation(). Try this out by adding an overall title to the figure from the previous exercise.\n\n # build all the code for this exercise\n\nAlso set a subtitle and a caption.\nFinally, you can change the theme of all plots in the plot assembly via the & operator, as in (p1 | p2) & theme_bw(). Try this out.\n\n # build all the code for this exercise\n\nWhat happens if you write this expression without parentheses? Do you understand why?\n(Big) Challenge Problem:\nIf you have time this morning, or if you want to work on it this afternoon, try analyzing a new dataset to test your R skills. First, learn what the columns mean, what missing values you see, and then start to ask questions about patterns in the data by making plots.\nYou can browse the datasets at https://github.com/rfordatascience/tidytuesday/tree/master/data (click on a year folder and go to the README to read about the datasets). Or pick from one of the ones below:\n\n# fish consumption in different countries \nconsumption &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-12/fish-and-seafood-consumption-per-capita.csv')\n\n# world cup Cricket matches from 1996 to 2005\nmatches &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-11-30/matches.csv')\n\n# malaria deaths by age across the world and time. \n malaria_deaths&lt;- readr::read_csv('https://github.com/rfordatascience/tidytuesday/blob/master/data/2018/2018-11-13/malaria_deaths_age.csv')\n\n#meteorites and/or volcanos:\n# note to plot a map, try the following:\ncountries_map &lt;- ggplot2::map_data(\"world\")\nworld_map&lt;-ggplot() + \n  geom_map(data = countries_map, \n           map = countries_map,aes(x = long, y = lat, map_id = region, group = group),\n           fill = \"white\", color = \"black\", size = 0.1) # then add geom_point() to this map to add lat/long points\n\nmeteorites &lt;- readr::read_csv(\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-06-11/meteorites.csv\")\nvolcano &lt;- readr::read_csv(\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-12/volcano.csv\")\n\n# or pick any dataset from https://github.com/rfordatascience/tidytuesday/tree/master/data , \n# just click on a year folder and go to the README to read about the datasets\n# if you have trouble loading a dataset there, ask for help!"
   }
 ]
