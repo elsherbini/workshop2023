@@ -17,7 +17,7 @@ library(here)
 
 ```
 
-## Coding exercise 3.1
+## Coding exercise 3.2
 
 For this exercise we'll be using the instructional dataset. [Download the dataset here](../../../datasets.html).
 
@@ -144,3 +144,5 @@ ggplot(clinical_measurements, aes(x = ___, y = ___)) +
 ```
 
 Great, that's all for now! If you are done, but a green sticky note on your laptop!
+
+```

@@ -416,6 +416,525 @@ During an activity, place a [**blue**]{style="color: DarkTurquoise"}  sticky on 
 {{< fa clone size=5x >}}
 :::
 
-\
+# Visualizing amounts
 
-On your way out the door for lunch, please write on a [**blue**]{style="color: DarkTurquoise"} sticky note one that confused or frustrated you and on a [**pink**]{style="color: HotPink"} sticky something that you enjoyed, or got your excited.
+## We often encounter datasets containing simple amounts
+
+Example: Highest grossing movies 2023 to date
+
+
+
+
+```{r}
+#|echo: false
+# Data from Box Office Mojo for 2023. 
+boxoffice <- tibble(
+  rank = 1:5,
+  title = c("Barbie", "The Super Mario Bros Movie", "Oppenheimer", "Guardians of the Galaxy 3", "The Little Mermaid"),
+  amount = c(1437.8, 1361.9, 939.3, 845.5, 569.6) # million USD
+)
+
+boxoffice %>%
+  knitr::kable("html")
+```
+
+
+[Millions USD. Data source: [Box Office Mojo](https://www.boxofficemojo.com/year/world/)]{style="font-size: 0.5em"}
+
+
+
+## We can visualize amounts with bar plots
+
+
+```{r boxoffice-horizontal}
+#| echo: false
+boxoffice %>%
+  ggplot(aes(x = fct_reorder(title, rank), y = amount)) +
+    geom_col(fill = "#56B4E9", width = 0.6, alpha = 0.9) +
+    scale_y_continuous(
+      expand = c(0, 0),
+      breaks = c(0, 250, 500, 750, 1000, 1250),
+      name = "YTD gross (million USD)"
+    ) +
+    scale_x_discrete(
+      name = NULL,
+      expand = c(0, 0.4)
+    ) +
+    coord_cartesian(clip = "off") +
+    theme_minimal_hgrid(12, rel_small = 1) +
+    theme(
+      axis.line.x = element_blank(),
+      axis.ticks.x = element_blank()
+    )
+
+```
+
+
+## Bars can also run horizontally
+
+```{r}
+#| echo: false
+
+ggplot(boxoffice, aes(x = fct_reorder(title, desc(rank)), y = amount)) +
+  geom_col(fill = "#56B4E9", alpha = 0.9) +
+  scale_y_continuous(
+    limits = c(0, 1750),
+    expand = c(0, 0),
+      breaks = c(0, 250, 500, 750, 1000, 1250),
+    name = "YTD gross (million USD)"
+  ) +
+  scale_x_discrete(
+    name = NULL,
+    expand = c(0, 0.5)
+  ) +
+  coord_flip(clip = "off") +
+  theme_minimal_vgrid(rel_small = 1) +
+  theme(
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+
+```
+
+## Avoid rotated axis labels
+
+
+```{r}
+#| echo: false
+
+p_box_axrot <- boxoffice %>%
+  ggplot(aes(x = fct_reorder(title, rank), y = amount)) +
+    geom_col(fill = "#56B4E9", width = 0.6, alpha = 0.9) +
+    scale_y_continuous(
+      expand = c(0, 0),
+      breaks = c(0, 250, 500, 750, 1000, 1250),
+      name = "YTD gross (million USD)"
+    ) +
+    scale_x_discrete(
+      name = NULL,
+      expand = c(0, 0.4)
+    ) +
+    coord_cartesian(clip = "off") +
+    theme_minimal_hgrid(12, rel_small = 1) +
+    theme(
+      axis.line.x = element_blank(),
+      axis.ticks.x = element_blank(),
+      axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+      plot.margin = margin(3, 7, 3, 1.5)
+    )
+
+stamp_bad(p_box_axrot)
+```
+
+## Avoid rotated axis labels - flip the axes!
+
+
+```{r}
+#| echo: false
+
+ggplot(boxoffice, aes(x = fct_reorder(title, desc(rank)), y = amount)) +
+  geom_col(fill = "#56B4E9", alpha = 0.9) +
+  scale_y_continuous(
+    limits = c(0, 1750),
+    expand = c(0, 0),
+      breaks = c(0, 250, 500, 750, 1000, 1250),
+    name = "YTD gross (million USD)"
+  ) +
+  scale_x_discrete(
+    name = NULL,
+    expand = c(0, 0.5)
+  ) +
+  coord_flip(clip = "off") +
+  theme_minimal_vgrid(rel_small = 1) +
+  theme(
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+
+```
+
+## Pay attention to the order of the bars
+
+```{r}
+#| echo: false
+
+p_box_noorder <- ggplot(boxoffice, aes(x = factor(title, levels = title[c(2, 1, 5, 3, 4)]), y = amount)) +
+  geom_col(fill = "#56B4E9", alpha = 0.9) +
+  scale_y_continuous(
+    limits = c(0, 1750),
+    expand = c(0, 0),
+      breaks = c(0, 250, 500, 750, 1000, 1250),
+    name = "YTD gross (million USD)"
+  ) +
+  scale_x_discrete(
+    name = NULL,
+    expand = c(0, 0.5)
+  ) +
+  coord_flip(clip = "off") +
+  theme_minimal_vgrid(rel_small = 1) +
+  theme(
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+
+stamp_bad(p_box_noorder)
+```
+
+
+## Pay attention to the order of the bars
+
+```{r}
+ggplot(boxoffice, aes(x = fct_reorder(title, desc(rank)), y = amount)) +
+  geom_col(fill = "#56B4E9", alpha = 0.9) +
+  scale_y_continuous(
+    limits = c(0, 1750),
+    expand = c(0, 0),
+      breaks = c(0, 250, 500, 750, 1000, 1250),
+    name = "YTD gross (million USD)"
+  ) +
+  scale_x_discrete(
+    name = NULL,
+    expand = c(0, 0.5)
+  ) +
+  coord_flip(clip = "off") +
+  theme_minimal_vgrid(rel_small = 1) +
+  theme(
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+```
+## We can use dots instead of bars
+
+```{r}
+ggplot(boxoffice, aes(x = fct_reorder(title, desc(rank)), y = amount)) +
+  geom_point(color = "#0072B2", size = 4) +
+  scale_y_continuous(
+    limits = c(0, 1750),
+    expand = c(0, 0),
+      breaks = c(0, 250, 500, 750, 1000, 1250),
+    name = "YTD gross (million USD)"
+  ) +
+  scale_x_discrete(
+    name = NULL,
+    expand = c(0, 0.5)
+  ) +
+  coord_flip(clip = "off") +
+  theme_minimal_vgrid(rel_small = 1) +
+  theme(
+    axis.line.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+```
+
+
+## Dots are preferable if we want to truncate the axes
+
+```{r Americas-life-expect, echo = FALSE, fig.width = 6., fig.asp = .9, dev = "svg"}
+library(gapminder)
+
+df_Americas <- gapminder %>% filter(year == 2007, continent == "Americas")
+
+ggplot(df_Americas, aes(x = lifeExp, y = fct_reorder(country, lifeExp))) +
+  geom_point(color = "#0072B2", size = 3) +
+  scale_x_continuous(
+    name = "life expectancy (years)",
+    limits = c(59.7, 81.5),
+    expand = c(0, 0)
+  ) +
+  scale_y_discrete(name = NULL, expand = c(0, 0.5)) +
+  theme_minimal_grid(12, rel_small = 1) +
+  theme(
+    plot.margin = margin(18, 6, 3, 1.5)
+  )
+```
+
+## Dots are preferable if we want to truncate the axes
+
+```{r Americas-life-expect-bad1, echo = FALSE, fig.width = 6., fig.asp = .9, dev = "svg"}
+p <- ggplot(df_Americas, aes(x = lifeExp, y = fct_reorder(country, lifeExp))) +
+  geom_col(fill = "#56B4E9", alpha = 0.9) +
+  scale_x_continuous(
+    name = "life expectancy (years)",
+    expand = c(0, 0)
+  ) +
+  scale_y_discrete(name = NULL, expand = c(0, 0.5)) +
+  coord_cartesian(xlim = c(59.7, 81.5)) +
+  theme_minimal_grid(12, rel_small = 1) +
+  theme(
+    plot.margin = margin(18, 6, 3, 1.5)
+  )
+
+stamp_bad(p)
+```
+
+[bar lengths do not accurately represent the data values]{style="font-size: 0.5em"}
+
+## Dots are preferable if we want to truncate the axes
+
+```{r Americas-life-expect-bad2, echo = FALSE, fig.width = 6., fig.asp = .9, dev = "svg"}
+p <- ggplot(df_Americas, aes(x = lifeExp, y = fct_reorder(country, lifeExp))) +
+  geom_col(fill = "#56B4E9", alpha = 0.9) +
+  scale_x_continuous(
+    name = "life expectancy (years)",
+    expand = c(0, 0)
+  ) +
+  scale_y_discrete(name = NULL, expand = c(0, 0.5)) +
+  coord_cartesian(xlim = c(0, 85)) +
+  theme_minimal_grid(12, rel_small = 1) +
+  theme(
+    plot.margin = margin(18, 6, 3, 1.5)
+  )
+
+stamp_bad(p)
+```
+
+[key features of the data are obscured]{style="font-size: 0.5em"}
+
+## Dots are preferable if we want to truncate the axes
+
+
+```{r Americas-life-expect2, echo = FALSE, fig.width = 6., fig.asp = .9, dev = "svg"}
+library(gapminder)
+
+df_Americas <- gapminder %>% filter(year == 2007, continent == "Americas")
+
+ggplot(df_Americas, aes(x = lifeExp, y = fct_reorder(country, lifeExp))) +
+  geom_point(color = "#0072B2", size = 3) +
+  scale_x_continuous(
+    name = "life expectancy (years)",
+    limits = c(59.7, 81.5),
+    expand = c(0, 0)
+  ) +
+  scale_y_discrete(name = NULL, expand = c(0, 0.5)) +
+  theme_minimal_grid(12, rel_small = 1) +
+  theme(
+    plot.margin = margin(18, 6, 3, 1.5)
+  )
+```
+
+## Let's take a poll {.your-turn}
+
+Go to [the event on wooclap](https://app.wooclap.com/DURBAN?from=event-page)  
+
+![](../../../images/wooclap_info.png)
+
+[M3. Do you think it makes sense to truncate the axes for the life expectancy data?]{style="font-size: 0.9em"}
+
+# Grouped bars
+
+## We use grouped bars for higher-dimensional datasets
+
+```{r}
+#| echo: false
+table_01 <- read_csv(here("datasets/instructional_dataset/01_participant_metadata_UKZN_workshop_2023.csv"))
+
+table_02 <- read_csv(here("datasets/instructional_dataset/02_visit_clinical_measurements_UKZN_workshop_2023.csv"))
+
+left_join(table_01, table_02) %>%
+  group_by(time_point, smoker) %>%
+  summarise(crp_blood = median(crp_blood)) %>%
+  ggplot(aes(x=time_point, y=crp_blood, fill=smoker)) +
+  geom_col(position = "dodge", alpha=0.9) +
+  scale_y_continuous(expand=c(0,0), name = "C-reactive protein (median)")
+```
+
+## We are free to choose by which variable to group
+```{r}
+left_join(table_01, table_02) %>%
+  group_by(time_point, smoker) %>%
+  summarise(crp_blood = median(crp_blood)) %>%
+  ggplot(aes(x=smoker, y=crp_blood, fill=time_point)) +
+  geom_col(position = "dodge", alpha=0.9) +
+  scale_y_continuous(expand=c(0,0), name = "C-reactive protein (median)")
+```
+
+
+## We can also use multiple plot panels (facets)
+
+```{r}
+left_join(table_01, table_02) %>%
+  group_by(time_point, smoker) %>%
+  summarise(crp_blood = median(crp_blood)) %>%
+  ggplot(aes(x=time_point, y=crp_blood,)) +
+  geom_col(position = "dodge", alpha=0.9, fill = "#0072B2") +
+  scale_y_continuous(name = "C-reactive protein (median)") + 
+  facet_wrap(~smoker)
+```
+
+# Making bar plots using `ggplot2`
+
+## The simple dataset
+
+```{r}
+#| echo: true
+# Data from Box Office Mojo for 2023. 
+boxoffice <- tibble(
+  rank = 1:5,
+  title = c("Barbie", "The Super Mario Bros Movie", "Oppenheimer", "Guardians of the Galaxy 3", "The Little Mermaid"),
+  amount = c(1437.8, 1361.9, 939.3, 845.5, 569.6) # million USD
+)
+```
+
+```{r}
+#| echo: false
+boxoffice %>%
+  knitr::kable("html")
+```
+
+## Visualize as a bar plot {auto-animate="true"}
+
+```{r}
+#| echo: true
+ggplot(boxoffice, aes(title, amount)) +
+  geom_col()  # "col" stands for column
+```
+
+## Order by data value {auto-animate="true"}
+
+```{r}
+#| echo: true
+ggplot(boxoffice, aes(fct_reorder(title, amount), amount)) +
+  geom_col()
+```
+
+
+## Order by data value, descending {auto-animate="true"}
+
+```{r}
+#| echo: true
+ggplot(boxoffice, aes(fct_reorder(title, -amount), amount)) +
+  geom_col() + 
+  xlab(NULL) # remove x axis label
+```
+
+## Flip x and y, set custom x axis label
+
+```{r}
+#| echo: true
+ggplot(boxoffice, aes(amount, fct_reorder(title, amount))) +
+  geom_col() +
+  xlab("amount (in million USD)") +
+  ylab(NULL)
+```
+
+
+## Sometimes we need to count before visualization
+
+```{r}
+#| echo: true
+library(here)
+library(tidyverse)
+
+table_02 <- read_csv(here("datasets/instructional_dataset/02_visit_clinical_measurements_UKZN_workshop_2023.csv")) %>%
+  mutate(nugent_score = as_factor(nugent_score))
+
+```
+
+```{r}
+#| echo: false
+table_02 %>%
+  knitr::kable("html")
+```
+
+## Goal: Visualize number of people with different nugent scores
+
+## Use `geom_bar()` to count before plotting {auto-animate="true"}
+
+```{r}
+#| echo: true
+table_02 %>%
+  ggplot(aes(y=nugent_score))+
+  geom_bar()
+```
+
+## Getting the bars into the right order {auto-animate="true"}
+
+```{r}
+#| echo: true
+table_01 %>%
+  ggplot(aes(y=education))+
+  geom_bar()
+```
+
+## Getting the bars into the right order {auto-animate="true"}
+
+```{r}
+#| echo: true
+education_order <- c("less than grade 9","grade 10-12, not matriculated","grade 10-12, matriculated","post-secondary")
+table_01 %>%
+  mutate(education = fct_relevel(education, education_order)) %>%
+  ggplot(aes(y=education))+
+  geom_bar()
+```
+
+## Display counts by smoking and education {auto-animate="true"}
+
+```{r}
+#| echo: true
+table_01 %>%
+  mutate(education = fct_relevel(education, education_order)) %>%
+  ggplot(aes(y=education, fill=smoker))+
+  geom_bar()
+```
+
+
+## Positions define how subgroups are shown {auto-animate="true"}
+
+`position = "dodge"`: Place bars for subgroups side-by-side
+
+```{r}
+#| echo: true
+table_01 %>%
+  mutate(education = fct_relevel(education, education_order)) %>%
+  ggplot(aes(y=education, fill=smoker))+
+  geom_bar(position = "dodge")
+```
+
+## Positions define how subgroups are shown {auto-animate="true"}
+
+`position = "stack"`: Place bars for subgroups on top of each other
+
+```{r}
+#| echo: true
+table_01 %>%
+  mutate(education = fct_relevel(education, education_order)) %>%
+  ggplot(aes(y=education, fill=smoker))+
+  geom_bar(position = "stack")
+```
+
+## Positions define how subgroups are shown {auto-animate="true"}
+
+`position = "fill"`: Like `"stack"`, but scale to 100%
+
+```{r}
+#| echo: true
+table_01 %>%
+  mutate(education = fct_relevel(education, education_order)) %>%
+  ggplot(aes(y=education, fill=smoker))+
+  geom_bar(position = "fill")
+```
+
+
+## Let's take a poll {.your-turn}
+
+Go to [the event on wooclap](https://app.wooclap.com/DURBAN?from=event-page)  
+
+![](../../../images/wooclap_info.png)
+
+[2 questions: M3. What's the difference between geom_col and geom_bar? and M3. What patterns did you see in the smoker CRP data (slide 49)?]{style="font-size: 0.9em"}
+
+
+## Exercise {.your-turn}
+
+```{r}
+#| echo: false
+
+countdown(30)
+
+```
+
+Time to try it yourself. Go to [the second coding exercise](index.html#coding-exercise-3.2).
+
+![](images/sticky.jpeg){fig-alt="Picture of a laptop with a red sticky note stuck to the top." width=540}
+
+During an activity, place a [**blue**]{style="color: DarkTurquoise"}  sticky on your laptop if you're good to go and a [**pink**]{style="color: hotpink"} sticky if you want help.
