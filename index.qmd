@@ -21,7 +21,6 @@ This week of content will prepare you to use R, RStudio, and Quarto for data ana
 :::
 
 
-
 :::
 
 

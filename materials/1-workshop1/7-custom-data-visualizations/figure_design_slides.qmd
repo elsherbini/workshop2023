@@ -1,0 +1,1014 @@
+---
+title: "Figure Design"
+subtitle: "<em>remixed from <a href='https://github.com/wilkelab/SDS375'>Claus O. Wilke's SDS375 course</a></em>"
+format: qmdrslides-revealjs
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+```{r}
+#| echo: FALSE
+
+library(tidyverse)
+library(cowplot)
+library(ggthemes)
+library(colorspace)
+library(ggridges)
+library(palmerpenguins)
+library(here)
+# ggplot2 settings so plots scale well for slide size 
+#theme_set(theme_gray(16)) # 16 for full width, 18 for half width 
+update_geom_defaults("point", list(size = 2)) # 2 for full width, 2.5 for half width
+
+lincoln_temps <- readRDS(here("materials/1-workshop1/7-custom-data-visualizations/slides_files/datasets", "lincoln_temps.rds"))
+```
+
+## 
+::: {style="font-size: 80%;" layout-ncol=2}
+
+**How to go from this ...**
+
+**... to this?**
+```{r}
+#| echo: FALSE
+ggplot(lincoln_temps, aes(x = mean_temp, y = month_long)) +
+  geom_density_ridges()
+```
+
+
+
+
+```{r}
+#| echo: FALSE
+ggplot(lincoln_temps, aes(x = mean_temp, y = month_long)) +
+  geom_density_ridges(
+    scale = 3,
+    rel_min_height = 0.01,
+    bandwidth = 3.4,
+    fill = lighten("#56B4E9", .3),
+    color = "white"
+  ) +
+  scale_x_continuous(
+    name = "mean temperature (°F)",
+    expand = c(0, 0)#, breaks = c(0, 25, 50, 75)
+  ) +
+  scale_y_discrete(name = NULL, expand = expansion(add = c(0.2, 2.6))) +
+  theme_minimal_grid() +
+  theme( 
+    axis.text.y = element_text(vjust = 0)
+  )
+```
+
+Requires coordinated modification of multiple elements:
+\
+- geoms (via arguments to geoms)  
+- scales (via `scale_*()` functions)  
+- plot appearance (via themes)  
+
+:::
+
+
+
+## The starting point, a rough draft
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+
+```{r lincoln-ridgeline-progression1}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(lincoln_temps) +
+  aes(x = mean_temp, y = month_long) +
+  geom_density_ridges()
+```
+
+```{r lincoln-ridgeline-progression1}
+#| eval: TRUE
+#| echo: FALSE
+
+```
+
+You can download the dataset using this code:
+
+\
+
+```{r}
+#| eval: FALSE
+#| echo: TRUE
+lincoln_temps <- readRDS(
+  url("https://wilkelab.org/DSC385/datasets/lincoln_temps.rds")
+)
+```
+:::
+
+
+## Set `scale` and `bandwidth` to shape ridgelines
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+
+```{r lincoln-ridgeline-progression2}
+#| eval: FALSE
+#| echo: TRUE
+
+ggplot(lincoln_temps) +
+  aes(x = mean_temp, y = month_long) +
+  geom_density_ridges(
+    scale = 3, bandwidth = 3.4
+  )
+```
+
+
+```{r lincoln-ridgeline-progression2}
+#| eval: TRUE
+#| echo: FALSE
+```
+:::
+
+
+## Set `rel_min_height` to cut ridgelines near zero
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r lincoln-ridgeline-progression3}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(lincoln_temps) +
+  aes(x = mean_temp, y = month_long) +
+  geom_density_ridges(
+    scale = 3, bandwidth = 3.4,
+    rel_min_height = 0.01
+  )
+```
+
+```{r lincoln-ridgeline-progression3}
+#| eval: TRUE
+#| echo: FALSE
+
+```
+:::
+
+## Use `scale_*()` functions to specify axis labels
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r lincoln-ridgeline-progression4}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(lincoln_temps) +
+  aes(x = mean_temp, y = month_long) +
+  geom_density_ridges(
+    scale = 3, bandwidth = 3.4,
+    rel_min_height = 0.01,
+  ) +
+  scale_x_continuous(
+    name = "mean temperature (°F)"
+  ) +
+  scale_y_discrete(
+    name = NULL  # NULL means no label
+  )
+```
+
+
+```{r lincoln-ridgeline-progression4}
+#| eval: TRUE
+#| echo: FALSE
+
+```
+:::
+
+## Specify scale expansion
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r lincoln-ridgeline-progression5}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(lincoln_temps) +
+  aes(x = mean_temp, y = month_long) +
+  geom_density_ridges(
+    scale = 3, bandwidth = 3.4,
+    rel_min_height = 0.01
+  ) +
+  scale_x_continuous(
+    name = "mean temperature (°F)",
+    expand = c(0, 0)
+  ) +
+  scale_y_discrete(
+    name = NULL,
+    expand = expansion(add = c(0.2, 2.6))
+  )
+```
+```{r lincoln-ridgeline-progression5}
+#| eval: TRUE
+#| echo: FALSE
+
+```
+
+:::
+
+## Set overall plot theme
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r lincoln-ridgeline-progression6}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(lincoln_temps) +
+  aes(x = mean_temp, y = month_long) +
+  geom_density_ridges(
+    scale = 3, bandwidth = 3.4,
+    rel_min_height = 0.01
+  ) +
+  scale_x_continuous(
+    name = "mean temperature (°F)",
+    expand = c(0, 0)
+  ) +
+  scale_y_discrete(
+    name = NULL,
+    expand = expansion(add = c(0.2, 2.6))
+  ) +
+  theme_minimal_grid()  # from cowplot
+```
+
+```{r lincoln-ridgeline-progression6}
+#| eval: TRUE
+#| echo: FALSE
+
+```
+
+
+:::
+
+## Align y axis labels to grid lines
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r lincoln-ridgeline-progression7}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(lincoln_temps) +
+  aes(x = mean_temp, y = month_long) +
+  geom_density_ridges(
+    scale = 3, bandwidth = 3.4,
+    rel_min_height = 0.01
+  ) +
+  scale_x_continuous(
+    name = "mean temperature (°F)",
+    expand = c(0, 0)
+  ) +
+  scale_y_discrete(
+    name = NULL,
+    expand = expansion(add = c(0.2, 2.6))
+  ) +
+  theme_minimal_grid() +
+  theme(
+    axis.text.y = element_text(vjust = 0)
+  )
+```
+
+```{r lincoln-ridgeline-progression7}
+#| eval: TRUE
+#| echo: FALSE
+
+```
+:::
+
+## Change fill color from default gray to blue
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r lincoln-ridgeline-progression8}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(lincoln_temps) +
+  aes(x = mean_temp, y = month_long) +
+  geom_density_ridges(
+    scale = 3, bandwidth = 3.4,
+    rel_min_height = 0.01,
+    fill = "#7DCCFF"
+  ) +
+  scale_x_continuous(
+    name = "mean temperature (°F)",
+    expand = c(0, 0)
+  ) +
+  scale_y_discrete(
+    name = NULL,
+    expand = expansion(add = c(0.2, 2.6))
+  ) +
+  theme_minimal_grid() +
+  theme(
+    axis.text.y = element_text(vjust = 0)
+  )
+```
+```{r lincoln-ridgeline-progression8}
+#| eval: TRUE
+#| echo: FALSE
+
+```
+:::
+
+
+
+## Draw lines in white instead of black
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+
+```{r lincoln-ridgeline-final}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(lincoln_temps) +
+  aes(x = mean_temp, y = month_long) +
+  geom_density_ridges(
+    scale = 3, bandwidth = 3.4,
+    rel_min_height = 0.01,
+    fill = "#7DCCFF",
+    color = "white"
+  ) +
+  scale_x_continuous(
+    name = "mean temperature (°F)",
+    expand = c(0, 0)
+  ) +
+  scale_y_discrete(
+    name = NULL,
+    expand = expansion(add = c(0.2, 2.6))
+  ) +
+  theme_minimal_grid() +
+  theme(
+    axis.text.y = element_text(vjust = 0)
+  )
+```
+
+```{r lincoln-ridgeline-final}
+#| eval: TRUE
+#| echo: FALSE
+```
+
+:::
+
+
+
+# Working with ggplot themes
+\
+
+
+## Using ready-made themes
+\
+
+::: {style="font-size: 70%;"}
+```{r penguins-complete-themes}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
+  geom_point()
+# default theme is theme_gray()
+```
+```{r penguins-complete-themes}
+#| eval: TRUE
+#| echo: FALSE
+
+```
+:::
+
+## Using ready-made themes
+\
+
+::: {style="font-size: 70%;"}
+```{r}
+#| eval: TRUE
+#| echo: TRUE
+ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
+  geom_point() + 
+  theme_gray()
+```
+:::
+
+## Using ready-made themes
+\
+
+::: {style="font-size: 70%;"}
+```{r}
+#| eval: TRUE
+#| echo: TRUE
+ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
+  geom_point() + 
+  theme_gray(14) # most themes take a font-size argument to scale text size
+```
+:::
+
+## Using ready-made themes
+\
+
+::: {style="font-size: 70%;"}
+```{r}
+#| eval: TRUE
+#| echo: TRUE
+ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
+  geom_point() + 
+  theme_bw(14)
+```
+:::
+
+## Using ready-made themes
+\
+
+::: {style="font-size: 70%;"}
+```{r}
+#| eval: TRUE
+#| echo: TRUE
+ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
+  geom_point() + 
+  theme_minimal(14)
+```
+:::
+
+## Using ready-made themes
+\
+
+::: {style="font-size: 70%;"}
+```{r}
+#| eval: TRUE
+#| echo: TRUE
+ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
+  geom_point() + 
+  theme_classic(14)
+```
+:::
+
+## Using ready-made themes
+\
+
+::: {style="font-size: 70%;"}
+```{r}
+#| eval: TRUE
+#| echo: TRUE
+ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
+  geom_point() + 
+  theme_half_open()  # from package cowplot
+```
+:::
+
+## Using ready-made themes
+\
+
+::: {style="font-size: 70%;"}
+```{r}
+#| eval: TRUE
+#| echo: TRUE
+ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
+  geom_point() + 
+  theme_minimal_grid()  # from package cowplot
+```
+:::
+
+## Using ready-made themes
+\
+
+::: {style="font-size: 70%;"}
+```{r}
+#| eval: TRUE
+#| echo: TRUE
+ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
+  geom_point() + 
+  theme_minimal_hgrid()  # from package cowplot
+```
+:::
+
+## Using ready-made themes
+\
+
+::: {style="font-size: 70%;"}
+```{r}
+#| eval: TRUE
+#| echo: TRUE
+ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
+  geom_point() + 
+  theme_minimal_vgrid()  # from package cowplot
+```
+:::
+
+## Using ready-made themes
+\
+
+::: {style="font-size: 70%;"}
+```{r}
+#| eval: TRUE
+#| echo: TRUE
+ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
+  geom_point() + 
+  theme_economist(14)       # from package ggthemes
+```
+:::
+
+## Using ready-made themes
+\
+
+::: {style="font-size: 70%;"}
+```{r}
+#| eval: TRUE
+#| echo: TRUE
+ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
+  geom_point() + 
+  theme_economist(14) + scale_color_economist() # from package ggthemes
+```
+:::
+
+## Using ready-made themes
+\
+
+::: {style="font-size: 70%;"}
+```{r}
+#| eval: TRUE
+#| echo: TRUE
+ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
+  geom_point() + 
+  theme_fivethirtyeight(14) + scale_color_fivethirtyeight() # from package ggthemes
+```
+:::
+
+
+## Customizing theme elements
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements1}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid()
+```
+```{r penguins-theme-elements1}
+#| eval: TRUE
+#| echo: FALSE
+
+```
+:::
+
+## Customizing theme elements
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements2}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    # change overall font family
+    # (requires font to be available)
+    text = element_text(
+      family = "Comic Sans MS"
+    )
+  )
+```
+```{r penguins-theme-elements2}
+#| eval: TRUE
+#| echo: FALSE
+
+```
+:::
+
+## Customizing theme elements
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements3}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    # change color of axis titles
+    axis.title = element_text(
+      color = "royalblue2"
+    )
+  )
+```
+```{r penguins-theme-elements3}
+#| eval: TRUE
+#| echo: FALSE
+
+```
+:::
+
+## Customizing theme elements
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements4}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    # change color of only the x axis title
+    axis.title.x = element_text(
+      color = "royalblue2"
+    )
+  )
+```
+```{r penguins-theme-elements4}
+#| eval: TRUE
+#| echo: FALSE
+
+```
+:::
+
+## Customizing theme elements
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements5}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    # change all text colors?
+    # why does it not work?
+    text = element_text(color = "royalblue2")
+  )
+```
+```{r penguins-theme-elements5}
+#| eval: TRUE
+#| echo: FALSE
+
+```
+:::
+
+## Customizing theme elements
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements6}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    text = element_text(color = "royalblue2"),
+    axis.text = element_text(
+      color = "royalblue2"
+    )
+  )
+```
+```{r penguins-theme-elements6}
+#| eval: TRUE
+#| echo: FALSE
+
+```
+:::
+
+## Customizing theme elements
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements6}
+#| eval: FALSE
+#| echo: TRUE
+```
+```{r penguins-theme-elements6}
+#| eval: TRUE
+#| echo: FALSE
+
+```
+:::
+
+The element `axis.text` has its own color set in the theme. Therefore it doesn't inherit from `text`.
+
+
+## Horizontal and vertical alignment
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements7}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    axis.title.x = element_text(
+      # horizontal justification
+      # (0 = left)
+      hjust = 0
+    )
+  )
+```
+```{r penguins-theme-elements7}
+#| eval: TRUE
+#| echo: FALSE
+```
+:::
+
+## Horizontal and vertical alignment
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements8}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    axis.title.x = element_text(
+      # horizontal justification
+      # (0.5 = center)
+      hjust = 0.5
+    )
+  )
+```
+```{r penguins-theme-elements8}
+#| eval: TRUE
+#| echo: FALSE
+```
+:::
+
+## Horizontal and vertical alignment
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements9}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    axis.title.x = element_text(
+      # horizontal justification
+      # (1 = right)
+      hjust = 1
+    )
+  )
+```
+```{r penguins-theme-elements9}
+#| eval: TRUE
+#| echo: FALSE
+```
+:::
+
+## Horizontal and vertical alignment
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements10}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    axis.text.y = element_text(
+      # vertical justification
+      # (0 = bottom)
+      vjust = 0
+    )
+  )
+```
+```{r penguins-theme-elements10}
+#| eval: TRUE
+#| echo: FALSE
+```
+:::
+
+## Horizontal and vertical alignment
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements11}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    axis.text.y = element_text(
+      # vertical justification
+      # (0.5 = center)
+      vjust = 0.5
+    )
+  )
+```
+```{r penguins-theme-elements11}
+#| eval: TRUE
+#| echo: FALSE
+```
+:::
+
+## Horizontal and vertical alignment
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements12}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    axis.text.y = element_text(
+      # vertical justification
+      # (1 = top)
+      vjust = 1
+    )
+  )
+```
+```{r penguins-theme-elements12}
+#| eval: TRUE
+#| echo: FALSE
+```
+:::
+
+## Remove elements entirely: `element_blank()`
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements13}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    # all text gone
+    text = element_blank()
+  )
+```
+```{r penguins-theme-elements13}
+#| eval: TRUE
+#| echo: FALSE
+```
+:::
+
+## Remove elements entirely: `element_blank()`
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements14}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    # no axis titles
+    axis.title = element_blank()
+  )
+```
+```{r penguins-theme-elements14}
+#| eval: TRUE
+#| echo: FALSE
+```
+:::
+
+## Set background color: `element_rect()`
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements15}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    plot.background = element_rect(
+      fill = "aliceblue"
+    )
+  )
+```
+```{r penguins-theme-elements15}
+#| eval: TRUE
+#| echo: FALSE
+```
+:::
+
+## Set background color: `element_rect()`
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements16}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    panel.background = element_rect(
+      fill = "aliceblue"
+    )
+  )
+```
+```{r penguins-theme-elements16}
+#| eval: TRUE
+#| echo: FALSE
+```
+:::
+
+## Set background color: `element_rect()`
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements17}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    legend.box.background = element_rect(
+      fill = "aliceblue",
+      color = "steelblue4" # line color
+    )
+  )
+```
+```{r penguins-theme-elements17}
+#| eval: TRUE
+#| echo: FALSE
+```
+:::
+
+## Set background color: `element_rect()`
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements18}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    legend.box.background = element_rect(
+      fill = "aliceblue",
+      color = "steelblue4" # line color
+    ),
+    legend.box.margin = margin(7, 7, 7, 7)
+  )
+```
+```{r penguins-theme-elements18}
+#| eval: TRUE
+#| echo: FALSE
+```
+:::
+
+## Move the legend: `legend.position`
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r penguins-theme-elements19}
+#| eval: FALSE
+#| echo: TRUE
+ggplot(penguins) +
+  aes(flipper_length_mm, body_mass_g) +
+  geom_point(aes(color = species)) +
+  theme_minimal_grid() +
+  theme(
+    legend.box.background = element_rect(
+      fill = "aliceblue", 
+      color = "steelblue4" # line color
+    ),
+    legend.box.margin = margin(7, 7, 7, 7),
+    # relative position inside plot panel
+    legend.position = c(1, 0),
+    # justification relative to position
+    legend.justification = c(1, 0)
+  )
+```
+```{r penguins-theme-elements19}
+#| eval: TRUE
+#| echo: FALSE
+```
+:::
+
+
+# Exercise 
+Go to [(NEEDS UPDATE) https://elsherbini.github.io/AMNH_R_Workshop_2023/modules/data-wrangling-module/](https://elsherbini.github.io/AMNH_R_Workshop_2023/modules/data-wrangling-module/) and complete the Compound Figures exercise.

@@ -1,0 +1,31 @@
+---
+format:
+  html:
+    code-link: true
+---
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(countdown)
+library(tidyverse)
+library(cowplot)
+library(colorspace)
+library(here)
+
+```
+
+## Coding exercise 3.1
+
+For this exercise we'll be using the instructional dataset. [Download the dataset here](../../../datasets.html).
+
+Copy the following code chunk into your quarto document. Notice the error in the `read_csv()` line - it wants you to supply the `file` name to read. Fix the error!
+
+```{r}
+#| error: true
+library(tidyverse) # load the tidyverse library
+
+read_csv() # read in your data 
+```

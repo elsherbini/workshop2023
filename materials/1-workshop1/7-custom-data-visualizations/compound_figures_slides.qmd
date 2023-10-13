@@ -1,0 +1,417 @@
+---
+title: "Compound Figures"
+subtitle: "<em>remixed from <a href='https://github.com/wilkelab/SDS375'>Claus O. Wilke's SDS375 course</a></em>"
+format: qmdrslides-revealjs
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup}
+#| eval: TRUE
+#| echo: FALSE
+#| 
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(comment = "")
+
+library(tidyverse)
+library(cowplot)
+library(patchwork)
+library(here)
+
+# ggplot2 settings so plots scale well for slide size 
+theme_set(theme_gray(16)) # 16 for full width, 18 for half width 
+update_geom_defaults("point", list(size = 2.0)) # 2 for full width, 2.5 for half width
+```
+
+## Compound figures
+
+Two common scenarios:
+
+## Compound figures
+
+Two common scenarios:
+
+1. The same type of plot is replicated many times (small multiples)
+
+## Compound figures
+
+Two common scenarios:
+
+1. The same type of plot is replicated many times (small multiples)
+
+
+2. Several disparate plots are combined into one display
+
+
+
+## 1. Small multiples (facets)
+
+
+![](slides_files/compound-figures_files/figure-html/titanic-passenger-breakdown-1.png){fig-align="center" width="100"}
+
+
+## 1. Small multiples (facets)
+
+![](https://clauswilke.com/dataviz/balance_data_context_files/figure-html/titanic-survival-by-gender-class-bad-1.png){fig-align="center" width="100"}
+
+## 1. Small multiples (facets)
+
+
+![](https://clauswilke.com/dataviz/balance_data_context_files/figure-html/titanic-survival-by-gender-class-bad-1.png){fig-align="center" width="100"}
+
+Avoid bars or other elements that are floating in space
+
+## 1. Small multiples (facets)
+
+![](https://clauswilke.com/dataviz/balance_data_context_files/figure-html/titanic-survival-by-gender-class-1.png){fig-align="center" width="100"}
+
+# Small multiples work even for massive amounts of data
+
+#
+
+![](slides_files/compound-figures_files/figure-html/movie-rankings-1.png){fig-align="center" width="100"}
+
+
+## y-axis ranges should be consistent among panels
+
+![](slides_files/compound-figures_files/figure-html/BA-degrees-variable-y-lims-1.png){fig-align="center"width="100"}
+
+## y-axis ranges should be consistent among panels
+
+![](slides_files/compound-figures_files/figure-html/BA-degrees-fixed-y-lims-1.png){fig-align="center"width="100"}
+
+## 2. Combining disparate figures into one display
+
+![](slides_files/compound-figures_files/figure-html/BA-degrees-compound-1.png){fig-align="center" width="100"}
+
+## Don't use overly large or otherwise prominent labels
+
+![](slides_files/compound-figures_files/figure-html/BA-degrees-compound-bad-1.png){fig-align="center" width="100"}
+
+## Use a consistent color language among sub-plots
+
+![](slides_files/compound-figures_files/figure-html/athletes-composite-good-1.png){fig-align="center" width="100"}
+
+## Use a consistent color language among sub-plots
+
+![](slides_files/compound-figures_files/figure-html/athletes-composite-inconsistent-1.png){fig-align="center" width="100"}
+
+## Pay attention to sub-plot alignment
+
+![](slides_files/compound-figures_files/figure-html/athletes-composite-good-1.png){fig-align="center" width="100"}
+
+## Pay attention to sub-plot alignment
+
+![](slides_files/compound-figures_files/figure-html/athletes-composite-misaligned-1.png){fig-align="center" width="100"}
+
+## Combine plots of different types
+
+![](slides_files/compound-figures_files/figure-html/athletes-composite-good-1.png){fig-align="center" width="100"}
+
+This helps your readers to distinguish different parts of the analysis 
+
+## Combine plots of different types
+
+![](slides_files/compound-figures_files/figure-html/athletes-composite-repetitive-1.png){fig-align="center" width="100"}
+
+This helps your readers to distinguish different parts of the analysis 
+
+## Combine plots of different types
+
+![](slides_files/compound-figures_files/figure-html/athletes-composite-good-1.png){fig-align="center" width="100"}
+
+This helps your readers to distinguish different parts of the analysis 
+
+
+## Distinguish infographics from figures in article/book
+
+\
+There are two distinct use cases:
+
+## Distinguish infographics from figures in article/book
+
+\
+There are two distinct use cases:
+
+\
+**Infographic:** Standalone, has title/subtitle/caption
+
+## Distinguish infographics from figures in article/book
+
+\
+There are two distinct use cases:
+
+\
+**Infographic:** Standalone, has title/subtitle/caption
+
+\
+**Figure in article/book:** Caption contains title, not part of figure
+
+##
+
+![](https://clauswilke.com/dataviz/figure_titles_captions_files/figure-html/corruption-development-infographic-1.png){fig-align="center" width="100"}
+
+Example of infographic
+
+##
+::: {style="font-size: 70%;" layout-ncol=2}
+![](https://clauswilke.com/dataviz/figure_titles_captions_files/figure-html/corruption-development-1.png){fig-align="center" width="1000"}
+
+Figure 1. **Corruption and human development.** The most developed countries experience the least corruption. Inspired by a posting in [The Economist online (2011)](https://www.economist.com/graphic-detail/2011/12/02/corrosive-corruption). Data sources: Transparency International & UN Human Development Report.
+
+Example of figure in article or book
+:::
+
+# Making compound plots in R
+
+## The **patchwork** package
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r patchwork-demo1}
+#| eval: FALSE
+#| echo: TRUE
+library(patchwork)
+
+# make first plot
+p1 <- ggplot(mtcars) + 
+  geom_point(aes(mpg, disp))
+
+p1
+```
+```{r patchwork-demo1}
+#| eval: TRUE
+#| echo: FALSE
+```
+:::
+
+
+## The **patchwork** package
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+```{r patchwork-demo2}
+#| eval: FALSE
+#| echo: TRUE
+library(patchwork)
+
+# make first plot
+p1 <- ggplot(mtcars) + 
+  geom_point(aes(mpg, disp))
+
+# make second plot
+p2 <- ggplot(mtcars) + 
+  aes(gear, disp, group = gear) +
+  geom_boxplot()
+
+p2
+```
+
+
+```{r patchwork-demo2}
+#| eval: TRUE
+#| echo: FALSE
+```
+
+:::
+
+
+## The **patchwork** package
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+
+```{r patchwork-demo3}
+#| eval: FALSE
+#| echo: TRUE
+library(patchwork)
+
+# make first plot
+p1 <- ggplot(mtcars) + 
+  geom_point(aes(mpg, disp))
+
+# make second plot
+p2 <- ggplot(mtcars) + 
+  aes(gear, disp, group = gear) +
+  geom_boxplot()
+
+# place plots side-by-side 
+p1 | p2   
+```
+
+```{r patchwork-demo3}
+#| eval: TRUE
+#| echo: FALSE
+```
+
+
+:::
+
+## The **patchwork** package
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+
+```{r patchwork-demo4}
+#| eval: FALSE
+#| echo: TRUE
+library(patchwork)
+
+# make first plot
+p1 <- ggplot(mtcars) + 
+  geom_point(aes(mpg, disp))
+
+# make second plot
+p2 <- ggplot(mtcars) + 
+  aes(gear, disp, group = gear) +
+  geom_boxplot()
+
+# place plots on top of one-another 
+p1 / p2  
+```
+
+
+```{r patchwork-demo4}
+#| eval: TRUE
+#| echo: FALSE
+```
+
+:::
+
+
+## The **patchwork** package
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+
+```{r patchwork-demo5}
+#| eval: FALSE
+#| echo: TRUE
+# add a few more plots
+p3 <- ggplot(mtcars) + 
+  geom_smooth(aes(disp, qsec))
+
+p4 <- ggplot(mtcars) + 
+  geom_bar(aes(carb))
+
+# make complex arrangement 
+(p1 | p2 | p3) / p4  
+```
+
+
+```{r patchwork-demo5}
+#| eval: TRUE
+#| echo: FALSE
+```
+
+:::
+
+
+## Plot annotations and themes
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+
+```{r patchwork-demo6}
+#| eval: FALSE
+#| echo: TRUE
+(p1 | p2 | p3) / p4 +
+   plot_annotation( 
+     tag_levels = "A" 
+   ) 
+```
+
+
+```{r patchwork-demo6}
+#| eval: TRUE
+#| echo: FALSE
+```
+
+Automatic labeling of plots
+
+:::
+
+
+## Plot annotations and themes
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+
+```{r patchwork-demo7}
+#| eval: FALSE
+#| echo: TRUE
+(p1 | p2 | p3) / p4 +
+   plot_annotation( 
+     tag_levels = "a" 
+   ) 
+```
+
+
+```{r patchwork-demo7}
+#| eval: TRUE
+#| echo: FALSE
+```
+
+Automatic labeling of plots
+:::
+
+
+## Plot annotations and themes
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+
+```{r patchwork-demo8}
+#| eval: FALSE
+#| echo: TRUE
+(p1 | p2 | p3) / p4 +
+  plot_annotation(
+   tag_levels = "a"
+  ) & 
+  theme_minimal_grid() 
+```
+
+
+```{r patchwork-demo8}
+#| eval: TRUE
+#| echo: FALSE
+```
+
+Applying one theme to all plots
+
+:::
+
+
+
+## Plot annotations and themes
+\
+
+::: {style="font-size: 70%;" layout-ncol=2}
+
+```{r patchwork-demo9}
+#| eval: FALSE
+#| echo: TRUE
+(p1 | p2 | p3) / p4 +
+  plot_annotation(
+   tag_levels = "a",
+   title = "A plot about mtcars", 
+   subtitle = "With subtitle...", 
+   caption = "...and caption" 
+  ) &
+  theme_minimal_grid()
+```
+
+
+
+```{r patchwork-demo9}
+#| eval: TRUE
+#| echo: FALSE
+```
+
+
+Titles and captions
+:::
+
+
+# Exercise 
+Go to [(NEEDS UPDATE) https://elsherbini.github.io/AMNH_R_Workshop_2023/modules/data-wrangling-module/](https://elsherbini.github.io/AMNH_R_Workshop_2023/modules/data-wrangling-module/) and complete the Figure Design exercise.
