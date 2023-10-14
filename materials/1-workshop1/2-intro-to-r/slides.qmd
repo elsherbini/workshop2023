@@ -9,6 +9,9 @@ editor_options:
 ```{r}
 #| echo: false
 library(countdown)
+library(tidyverse)
+library(here)
+table_01 <- read_csv(here("datasets/instructional_dataset/01_participant_metadata_UKZN_workshop_2023.csv"))
 ```
 
 ## {data-menu-title="Website Link" style="text-align: center"}
@@ -241,9 +244,27 @@ Windows, Mac or Linux OS: https://www.r-project.org
 
 ## The text editor
 
+![](images/rstudio-text-editor.png)
+
 ## The console
 
+
+![](images/rstudio-text-console-image.png)
+
 ## The right panes
+
+
+![](images/rstudio-text-right_panes.png)
+
+
+## Let's take a poll {.your-turn}
+
+Go to [the event on wooclap](https://app.wooclap.com/DURBAN?from=event-page)  
+
+![](../../../images/wooclap_info.png)
+
+[M2. Match the areas with the right functionality]{style="font-size: 0.9em"}
+
 
 # Let's start programming
 
@@ -299,7 +320,7 @@ So why bother at all? Because if you can tell a computer how to do it once, it i
 
 ```{r}
 #| echo: false
-countdown::countdown(3)
+countdown::countdown(8)
 ```
 
 In the console, try typing some commands:
@@ -867,3 +888,317 @@ That's enough slides for now time to try for yourself! Go to [the module](index.
 ```{r}
 countdown::countdown(30)
 ```
+
+
+
+# Elementary data manipulations
+
+:::{.incremental style="font-size: 1.5em"}
+
+- Pick rows: `filter()`
+
+- Pick columns: `select()`
+
+- Sort rows: `arrange()`
+
+- Count things: `count()`
+
+- Make new columns: `mutate()`
+
+:::
+
+## But first: the pipe operator `%>%`
+
+## But first: the pipe operator `%>%`
+
+:::{.r-fit-text}
+
+`%>%` is pronounced "and then"
+
+:::
+
+## The pipe `%>%` feeds data into functions {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+head(table_02)
+```
+
+## The pipe `%>%` feeds data into functions {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+# head(table_02)
+table_02 %>%
+  head()
+```
+
+
+## The pipe `%>%` feeds data into functions {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+ggplot(table_02, aes(crp_blood, ph, color = arm)) + geom_point()
+```
+
+---
+
+## The pipe `%>%` feeds data into functions {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  ggplot(aes(crp_blood, ph, color = arm)) + geom_point()
+```
+
+
+## Since R 4.1: Native pipe `|>`  {auto-animate=true}
+
+```{r}
+#| echo: fenced
+table_02 |>
+  ggplot(aes(crp_blood, ph, color = arm)) + geom_point()
+```
+
+---
+
+## Which to use? Native pipe or old-school pipe?
+
+
+:::{.incremental style="font-size: 1.5em"}
+
+- `|>` is the future. If you can, use it.
+
+- `%>%` works on older installations. It's the safe choice for now.
+
+We use `%>%` here because many people still run older R versions. Also, we're old school.
+
+:::
+
+
+
+# Picking rows or columns, and sorting
+
+## Pick rows from a table: `filter()`
+
+
+![](images/filter.svg)
+
+
+## Filter only placebo {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  filter(arm == "placebo")
+```
+
+
+## Filter out samples with ph < 4 {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  filter(ph < 4)
+```
+
+
+## Pick columns from a table: `select()`
+
+
+![](images/select.svg)
+
+
+## Pick columns `pid`, `ph`, and `nugent` {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  select(pid, ph, nugent_score)
+```
+
+
+## Rename columns and subset with select {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  select(participant_id = pid, ph, nugent_score)
+```
+
+
+
+---
+
+## Sort the rows in a table: `arrange()`
+
+![](images/arrange.svg)
+
+---
+
+## Sort samples by ph ascending {auto-animate=true}
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  arrange(ph)
+```
+
+
+---
+
+## Sort samples by ph, descending {auto-animate=true}
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  arrange(desc(ph))
+```
+
+
+## Counting things
+
+To demonstrate counting, let's switch to `table_01`
+
+```{r}
+#| echo: fenced
+table_01
+```
+
+---
+
+## Counting things  {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  count(smoker)
+```
+
+
+## Counting things {auto-animate=true}
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  count(arm, smoker)
+```
+
+
+## Let's take a poll {.your-turn}
+
+Go to [the event on wooclap](https://app.wooclap.com/DURBAN?from=event-page)  
+
+![](../../../images/wooclap_info.png)
+
+[M2. Does filter get rid of rows that match TRUE, or keep rows that match TRUE? ]{style="font-size: 0.9em"}
+
+
+
+## Use the pipe to build analysis pipelines {auto-animate=true}
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  filter(arm == "placebo")
+```
+
+
+## Use the pipe to build analysis pipelines {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  filter(age < 30) %>%
+  select(pid, arm, smoker)
+```
+
+## Use the pipe to build analysis pipelines {auto-animate=true}
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  filter(age < 30) %>%
+  select(pid, arm, smoker) %>%
+  count(arm, smoker)
+```
+
+
+## Adding new columns to a table
+
+## Make a new table column: `mutate()`
+
+![](images/mutate.svg)
+
+
+## Example: C-reactive protein {auto-animate=TRUE}
+
+The `crp_blood` column is in units of mg/L. What if you needed it in ug/ul? What's the calculation?
+
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  select(pid, time_point, crp_blood)
+```
+
+
+## Example: C-reactive protein {auto-animate=TRUE}
+
+The `crp_blood` column is in units of mg/L. What if you needed it in ug/ul? What's the calculation?
+
+To get ug/L you would multiply by 1000. To get ug/ul you need to then divide by 1000000
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  select(pid, time_point, crp_blood)
+```
+
+
+
+## Example: C-reactive protein {auto-animate=TRUE}
+
+The `crp_blood` column is in units of mg/L. What if you needed it in ug/ul? What's the calculation?
+
+To get ug/L you would multiply by 1000. To get ug/ul you need to then divide by 1000000
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  select(pid, time_point, crp_blood) %>%
+  mutate(crp_blood_ugul = crp_blood / 1000)
+```
+
+
+
+## Make multiple columns at once
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  select(pid, time_point, crp_blood) %>%
+  mutate(crp_blood_ugul = crp_blood / 1000,
+         crp_blood_ugl = crp_blood * 1000)
+```
+
+
+
+## Exercise {.your-turn}
+
+That's enough slides for now time to try for yourself! Go to [the module](index.html) and go to the second exercise.
+
+```{r}
+countdown::countdown(30)
+```
+
