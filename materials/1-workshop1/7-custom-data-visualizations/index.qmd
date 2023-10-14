@@ -1,0 +1,49 @@
+---
+title: "Customizing data visualizations using <code>colorspace</code>, <code>ggplot2</code>, and <code>patchwork</code>"
+format:
+  html:
+    toc: true
+---
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(countdown)
+library(tidyverse)
+library(cowplot)
+library(colorspace)
+library(here)
+
+```
+> Learn how to change ggplot’s default choices for color and style and take control of final figure presentation.
+
+
+## Color Scales
+[Make slides full screen](color_scales_slides.qmd)
+
+```{=html}
+<iframe class="slide-deck" src="color_scales_slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
+{{< include _color_scales_exercise.qmd >}}
+[Color Scales Exercise Solutions](color_scales_exercise_solutions.qmd)
+
+## Figure Design
+[Make slides full screen](figure_design_slides.qmd)
+
+```{=html}
+<iframe class="slide-deck" src="figure_design_slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
+{{< include _figure_design_exercise.qmd >}}
+[Figure Design Exercise Solutions](figure_design_exercise_solutions.qmd)
+
+## Compound Figures
+[Make slides full screen](compound_figures_slides.qmd)
+
+```{=html}
+<iframe class="slide-deck" src="compound_figures_slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
+
+{{< include _compound_figures_exercise.qmd >}}
+[Compound Figures Exercise Solutions](compound_figures_exercise_solutions.qmd)

@@ -385,6 +385,13 @@
     "text": "The right panes"
   },
   {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#lets-take-a-poll",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#lets-take-a-poll",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Let’s take a poll",
+    "text": "Let’s take a poll\nGo to the event on wooclap\n\nM2. Match the areas with the right functionality"
+  },
+  {
     "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#what-is-programming",
     "href": "materials/1-workshop1/2-intro-to-r/slides.html#what-is-programming",
     "title": "Intro to R,R Studio, and Quarto",
@@ -403,7 +410,7 @@
     "href": "materials/1-workshop1/2-intro-to-r/slides.html#lets-use-r-for-math",
     "title": "Intro to R,R Studio, and Quarto",
     "section": "Let’s use R for math",
-    "text": "Let’s use R for math\n\n\n\n−+\n03:00\n\n\n\nIn the console, try typing some commands:\n\n# arithmetic\n3 + 5 + 10\n10 * (5 + 1)\n3**2 # what does the ** operator do in R?\n# check inequalities and equalities\n4 &gt;= 1 # what does this mean?\n5 + 4 == 9\n# make some errors\n\"3\" + 5 # why is this an error?\nmy_age + 5  # why is this an error?\n\n# write a math expression to calculate what percentage\n# of your life has been in post-secondary school/training\n# (university, training programs, masters, PhD)"
+    "text": "Let’s use R for math\n\n\n\n−+\n08:00\n\n\n\nIn the console, try typing some commands:\n\n# arithmetic\n3 + 5 + 10\n10 * (5 + 1)\n3**2 # what does the ** operator do in R?\n# check inequalities and equalities\n4 &gt;= 1 # what does this mean?\n5 + 4 == 9\n# make some errors\n\"3\" + 5 # why is this an error?\nmy_age + 5  # why is this an error?\n\n# write a math expression to calculate what percentage\n# of your life has been in post-secondary school/training\n# (university, training programs, masters, PhD)"
   },
   {
     "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#say-hello-to-the-text-editor",
@@ -606,7 +613,224 @@
     "href": "materials/1-workshop1/2-intro-to-r/slides.html#exercise",
     "title": "Intro to R,R Studio, and Quarto",
     "section": "Exercise",
-    "text": "Exercise\nThat’s enough slides for now time to try for yourself! Go to the module and go to the first exercise.\n\n\n\n−+\n30:00\n\n\n\n\n\nback to module"
+    "text": "Exercise\nThat’s enough slides for now time to try for yourself! Go to the module and go to the first exercise.\n\n\n\n−+\n30:00"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#but-first-the-pipe-operator",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#but-first-the-pipe-operator",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "But first: the pipe operator %>%",
+    "text": "But first: the pipe operator %&gt;%"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#but-first-the-pipe-operator-1",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#but-first-the-pipe-operator-1",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "But first: the pipe operator %>%",
+    "text": "But first: the pipe operator %&gt;%\n\n%&gt;% is pronounced “and then”"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#the-pipe-feeds-data-into-functions",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#the-pipe-feeds-data-into-functions",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "The pipe %>% feeds data into functions",
+    "text": "The pipe %&gt;% feeds data into functions\n\n```{r}\nhead(table_02)\n```\n\n# A tibble: 6 × 6\n  pid    time_point arm     nugent_score crp_blood    ph\n  &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 pid_01 baseline   placebo            8      0.44   5.7\n2 pid_01 week_1     placebo            7      1.66   5.2\n3 pid_01 week_7     placebo            7      1.44   5.4\n4 pid_02 baseline   placebo            7      1.55   5.2\n5 pid_02 week_1     placebo            7      0.75   4.8\n6 pid_02 week_7     placebo            4      1.17   4.2"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#the-pipe-feeds-data-into-functions-1",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#the-pipe-feeds-data-into-functions-1",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "The pipe %>% feeds data into functions",
+    "text": "The pipe %&gt;% feeds data into functions\n\n```{r}\n# head(table_02)\ntable_02 %&gt;%\n  head()\n```\n\n# A tibble: 6 × 6\n  pid    time_point arm     nugent_score crp_blood    ph\n  &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 pid_01 baseline   placebo            8      0.44   5.7\n2 pid_01 week_1     placebo            7      1.66   5.2\n3 pid_01 week_7     placebo            7      1.44   5.4\n4 pid_02 baseline   placebo            7      1.55   5.2\n5 pid_02 week_1     placebo            7      0.75   4.8\n6 pid_02 week_7     placebo            4      1.17   4.2"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#the-pipe-feeds-data-into-functions-2",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#the-pipe-feeds-data-into-functions-2",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "The pipe %>% feeds data into functions",
+    "text": "The pipe %&gt;% feeds data into functions\n\n```{r}\nggplot(table_02, aes(crp_blood, ph, color = arm)) + geom_point()\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#the-pipe-feeds-data-into-functions-3",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#the-pipe-feeds-data-into-functions-3",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "The pipe %>% feeds data into functions",
+    "text": "The pipe %&gt;% feeds data into functions\n\n```{r}\ntable_02 %&gt;%\n  ggplot(aes(crp_blood, ph, color = arm)) + geom_point()\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#since-r-4.1-native-pipe",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#since-r-4.1-native-pipe",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Since R 4.1: Native pipe |>",
+    "text": "Since R 4.1: Native pipe |&gt;\n\n```{r}\ntable_02 |&gt;\n  ggplot(aes(crp_blood, ph, color = arm)) + geom_point()\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#which-to-use-native-pipe-or-old-school-pipe",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#which-to-use-native-pipe-or-old-school-pipe",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Which to use? Native pipe or old-school pipe?",
+    "text": "Which to use? Native pipe or old-school pipe?\n\n\n|&gt; is the future. If you can, use it.\n%&gt;% works on older installations. It’s the safe choice for now.\n\nWe use %&gt;% here because many people still run older R versions. Also, we’re old school."
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#pick-rows-from-a-table-filter",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#pick-rows-from-a-table-filter",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Pick rows from a table: filter()",
+    "text": "Pick rows from a table: filter()"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#filter-only-placebo",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#filter-only-placebo",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Filter only placebo",
+    "text": "Filter only placebo\n\n```{r}\ntable_02 %&gt;%\n  filter(arm == \"placebo\")\n```\n\n# A tibble: 69 × 6\n   pid    time_point arm     nugent_score crp_blood    ph\n   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n 1 pid_01 baseline   placebo            8      0.44   5.7\n 2 pid_01 week_1     placebo            7      1.66   5.2\n 3 pid_01 week_7     placebo            7      1.44   5.4\n 4 pid_02 baseline   placebo            7      1.55   5.2\n 5 pid_02 week_1     placebo            7      0.75   4.8\n 6 pid_02 week_7     placebo            4      1.17   4.2\n 7 pid_03 baseline   placebo            6      1.78   4.8\n 8 pid_03 week_1     placebo           10      0.57   5.3\n 9 pid_03 week_7     placebo            7      1.79   5.2\n10 pid_04 baseline   placebo            5      1.76   4.8\n# ℹ 59 more rows"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#filter-out-samples-with-ph-4",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#filter-out-samples-with-ph-4",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Filter out samples with ph < 4",
+    "text": "Filter out samples with ph &lt; 4\n\n```{r}\ntable_02 %&gt;%\n  filter(ph &lt; 4)\n```\n\n# A tibble: 39 × 6\n   pid    time_point arm       nugent_score crp_blood    ph\n   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n 1 pid_05 week_1     treatment            3      0.19   3.2\n 2 pid_05 week_7     treatment            2      0.45   3.5\n 3 pid_09 week_1     treatment            3      0.27   3.6\n 4 pid_10 week_1     treatment            0      0.01   3.5\n 5 pid_10 week_7     treatment            1      2.87   2.9\n 6 pid_11 week_1     treatment            1      0.1    3.3\n 7 pid_15 week_1     treatment            3      0.84   3.4\n 8 pid_15 week_7     treatment            3      0.68   3.5\n 9 pid_16 week_1     treatment            0      0.03   3.7\n10 pid_16 week_7     treatment            2      0.5    3.2\n# ℹ 29 more rows"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#pick-columns-from-a-table-select",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#pick-columns-from-a-table-select",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Pick columns from a table: select()",
+    "text": "Pick columns from a table: select()"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#pick-columns-pid-ph-and-nugent",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#pick-columns-pid-ph-and-nugent",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Pick columns pid, ph, and nugent",
+    "text": "Pick columns pid, ph, and nugent\n\n```{r}\ntable_02 %&gt;%\n  select(pid, ph, nugent_score)\n```\n\n# A tibble: 132 × 3\n   pid       ph nugent_score\n   &lt;chr&gt;  &lt;dbl&gt;        &lt;dbl&gt;\n 1 pid_01   5.7            8\n 2 pid_01   5.2            7\n 3 pid_01   5.4            7\n 4 pid_02   5.2            7\n 5 pid_02   4.8            7\n 6 pid_02   4.2            4\n 7 pid_03   4.8            6\n 8 pid_03   5.3           10\n 9 pid_03   5.2            7\n10 pid_04   4.8            5\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#rename-columns-and-subset-with-select",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#rename-columns-and-subset-with-select",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Rename columns and subset with select",
+    "text": "Rename columns and subset with select\n\n```{r}\ntable_02 %&gt;%\n  select(participant_id = pid, ph, nugent_score)\n```\n\n# A tibble: 132 × 3\n   participant_id    ph nugent_score\n   &lt;chr&gt;          &lt;dbl&gt;        &lt;dbl&gt;\n 1 pid_01           5.7            8\n 2 pid_01           5.2            7\n 3 pid_01           5.4            7\n 4 pid_02           5.2            7\n 5 pid_02           4.8            7\n 6 pid_02           4.2            4\n 7 pid_03           4.8            6\n 8 pid_03           5.3           10\n 9 pid_03           5.2            7\n10 pid_04           4.8            5\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#sort-the-rows-in-a-table-arrange",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#sort-the-rows-in-a-table-arrange",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Sort the rows in a table: arrange()",
+    "text": "Sort the rows in a table: arrange()"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#sort-samples-by-ph-ascending",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#sort-samples-by-ph-ascending",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Sort samples by ph ascending",
+    "text": "Sort samples by ph ascending\n\n```{r}\ntable_02 %&gt;%\n  arrange(ph)\n```\n\n# A tibble: 132 × 6\n   pid    time_point arm       nugent_score crp_blood    ph\n   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n 1 pid_31 week_7     treatment            2      1.36   2.8\n 2 pid_10 week_7     treatment            1      2.87   2.9\n 3 pid_28 baseline   treatment            3      0.67   2.9\n 4 pid_26 week_1     treatment            0      0.11   3  \n 5 pid_23 week_7     placebo              3      3.67   3.1\n 6 pid_40 baseline   treatment            3      1.48   3.1\n 7 pid_40 week_1     treatment            2      0.17   3.1\n 8 pid_05 week_1     treatment            3      0.19   3.2\n 9 pid_16 week_7     treatment            2      0.5    3.2\n10 pid_37 week_7     treatment            2      0.7    3.2\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#sort-samples-by-ph-descending",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#sort-samples-by-ph-descending",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Sort samples by ph, descending",
+    "text": "Sort samples by ph, descending\n\n```{r}\ntable_02 %&gt;%\n  arrange(desc(ph))\n```\n\n# A tibble: 132 × 6\n   pid    time_point arm       nugent_score crp_blood    ph\n   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n 1 pid_29 baseline   placebo              7      2.39   5.8\n 2 pid_01 baseline   placebo              8      0.44   5.7\n 3 pid_16 baseline   treatment            6      1.91   5.7\n 4 pid_06 week_1     placebo              8      1.72   5.6\n 5 pid_26 baseline   treatment            7      0.94   5.6\n 6 pid_13 week_1     placebo              7      2.57   5.5\n 7 pid_23 week_1     placebo              8      0.8    5.5\n 8 pid_27 baseline   placebo              7      1.17   5.5\n 9 pid_01 week_7     placebo              7      1.44   5.4\n10 pid_04 week_7     placebo              7      5.68   5.4\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#counting-things",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#counting-things",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Counting things",
+    "text": "Counting things\nTo demonstrate counting, let’s switch to table_01\n\n```{r}\ntable_01\n```\n\n# A tibble: 44 × 6\n   pid    arm       smoker       age education                     sex  \n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                         &lt;lgl&gt;\n 1 pid_01 placebo   non-smoker    26 grade 10-12, matriculated     FALSE\n 2 pid_02 placebo   smoker        33 grade 10-12, matriculated     FALSE\n 3 pid_03 placebo   smoker        30 post-secondary                FALSE\n 4 pid_04 placebo   non-smoker    34 grade 10-12, not matriculated FALSE\n 5 pid_05 treatment non-smoker    29 grade 10-12, matriculated     FALSE\n 6 pid_06 placebo   smoker        34 post-secondary                FALSE\n 7 pid_07 placebo   non-smoker    31 grade 10-12, not matriculated FALSE\n 8 pid_08 placebo   smoker        30 grade 10-12, not matriculated FALSE\n 9 pid_09 treatment non-smoker    35 grade 10-12, not matriculated FALSE\n10 pid_10 treatment non-smoker    32 less than grade 9             FALSE\n# ℹ 34 more rows"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#counting-things-1",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#counting-things-1",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Counting things",
+    "text": "Counting things\n\n```{r}\ntable_01 %&gt;%\n  count(smoker)\n```\n\n# A tibble: 2 × 2\n  smoker         n\n  &lt;chr&gt;      &lt;int&gt;\n1 non-smoker    27\n2 smoker        17"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#counting-things-2",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#counting-things-2",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Counting things",
+    "text": "Counting things\n\n```{r}\ntable_01 %&gt;%\n  count(arm, smoker)\n```\n\n# A tibble: 4 × 3\n  arm       smoker         n\n  &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt;\n1 placebo   non-smoker    12\n2 placebo   smoker        11\n3 treatment non-smoker    15\n4 treatment smoker         6"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#lets-take-a-poll-1",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#lets-take-a-poll-1",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Let’s take a poll",
+    "text": "Let’s take a poll\nGo to the event on wooclap\n\nM2. Does filter get rid of rows that match TRUE, or keep rows that match TRUE?"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#use-the-pipe-to-build-analysis-pipelines",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#use-the-pipe-to-build-analysis-pipelines",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Use the pipe to build analysis pipelines",
+    "text": "Use the pipe to build analysis pipelines\n\n```{r}\ntable_01 %&gt;%\n  filter(arm == \"placebo\")\n```\n\n# A tibble: 23 × 6\n   pid    arm     smoker       age education                     sex  \n   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                         &lt;lgl&gt;\n 1 pid_01 placebo non-smoker    26 grade 10-12, matriculated     FALSE\n 2 pid_02 placebo smoker        33 grade 10-12, matriculated     FALSE\n 3 pid_03 placebo smoker        30 post-secondary                FALSE\n 4 pid_04 placebo non-smoker    34 grade 10-12, not matriculated FALSE\n 5 pid_06 placebo smoker        34 post-secondary                FALSE\n 6 pid_07 placebo non-smoker    31 grade 10-12, not matriculated FALSE\n 7 pid_08 placebo smoker        30 grade 10-12, not matriculated FALSE\n 8 pid_12 placebo non-smoker    31 grade 10-12, matriculated     FALSE\n 9 pid_13 placebo non-smoker    32 post-secondary                FALSE\n10 pid_14 placebo smoker        32 grade 10-12, matriculated     FALSE\n# ℹ 13 more rows"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#use-the-pipe-to-build-analysis-pipelines-1",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#use-the-pipe-to-build-analysis-pipelines-1",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Use the pipe to build analysis pipelines",
+    "text": "Use the pipe to build analysis pipelines\n\n```{r}\ntable_01 %&gt;%\n  filter(age &lt; 30) %&gt;%\n  select(pid, arm, smoker)\n```\n\n# A tibble: 12 × 3\n   pid    arm       smoker    \n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     \n 1 pid_01 placebo   non-smoker\n 2 pid_05 treatment non-smoker\n 3 pid_15 treatment non-smoker\n 4 pid_17 treatment non-smoker\n 5 pid_21 treatment non-smoker\n 6 pid_27 placebo   smoker    \n 7 pid_30 placebo   non-smoker\n 8 pid_31 treatment non-smoker\n 9 pid_35 placebo   non-smoker\n10 pid_36 placebo   non-smoker\n11 pid_41 treatment smoker    \n12 pid_44 treatment non-smoker"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#use-the-pipe-to-build-analysis-pipelines-2",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#use-the-pipe-to-build-analysis-pipelines-2",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Use the pipe to build analysis pipelines",
+    "text": "Use the pipe to build analysis pipelines\n\n```{r}\ntable_01 %&gt;%\n  filter(age &lt; 30) %&gt;%\n  select(pid, arm, smoker) %&gt;%\n  count(arm, smoker)\n```\n\n# A tibble: 4 × 3\n  arm       smoker         n\n  &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt;\n1 placebo   non-smoker     4\n2 placebo   smoker         1\n3 treatment non-smoker     6\n4 treatment smoker         1"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#adding-new-columns-to-a-table",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#adding-new-columns-to-a-table",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Adding new columns to a table",
+    "text": "Adding new columns to a table"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#make-a-new-table-column-mutate",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#make-a-new-table-column-mutate",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Make a new table column: mutate()",
+    "text": "Make a new table column: mutate()"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#example-c-reactive-protein",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#example-c-reactive-protein",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Example: C-reactive protein",
+    "text": "Example: C-reactive protein\nThe crp_blood column is in units of mg/L. What if you needed it in ug/ul? What’s the calculation?\n\n```{r}\ntable_02 %&gt;%\n  select(pid, time_point, crp_blood)\n```\n\n# A tibble: 132 × 3\n   pid    time_point crp_blood\n   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;\n 1 pid_01 baseline        0.44\n 2 pid_01 week_1          1.66\n 3 pid_01 week_7          1.44\n 4 pid_02 baseline        1.55\n 5 pid_02 week_1          0.75\n 6 pid_02 week_7          1.17\n 7 pid_03 baseline        1.78\n 8 pid_03 week_1          0.57\n 9 pid_03 week_7          1.79\n10 pid_04 baseline        1.76\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#example-c-reactive-protein-1",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#example-c-reactive-protein-1",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Example: C-reactive protein",
+    "text": "Example: C-reactive protein\nThe crp_blood column is in units of mg/L. What if you needed it in ug/ul? What’s the calculation?\nTo get ug/L you would multiply by 1000. To get ug/ul you need to then divide by 1000000\n\n```{r}\ntable_02 %&gt;%\n  select(pid, time_point, crp_blood)\n```\n\n# A tibble: 132 × 3\n   pid    time_point crp_blood\n   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;\n 1 pid_01 baseline        0.44\n 2 pid_01 week_1          1.66\n 3 pid_01 week_7          1.44\n 4 pid_02 baseline        1.55\n 5 pid_02 week_1          0.75\n 6 pid_02 week_7          1.17\n 7 pid_03 baseline        1.78\n 8 pid_03 week_1          0.57\n 9 pid_03 week_7          1.79\n10 pid_04 baseline        1.76\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#example-c-reactive-protein-2",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#example-c-reactive-protein-2",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Example: C-reactive protein",
+    "text": "Example: C-reactive protein\nThe crp_blood column is in units of mg/L. What if you needed it in ug/ul? What’s the calculation?\nTo get ug/L you would multiply by 1000. To get ug/ul you need to then divide by 1000000\n\n```{r}\ntable_02 %&gt;%\n  select(pid, time_point, crp_blood) %&gt;%\n  mutate(crp_blood_ugul = crp_blood / 1000)\n```\n\n# A tibble: 132 × 4\n   pid    time_point crp_blood crp_blood_ugul\n   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;          &lt;dbl&gt;\n 1 pid_01 baseline        0.44        0.00044\n 2 pid_01 week_1          1.66        0.00166\n 3 pid_01 week_7          1.44        0.00144\n 4 pid_02 baseline        1.55        0.00155\n 5 pid_02 week_1          0.75        0.00075\n 6 pid_02 week_7          1.17        0.00117\n 7 pid_03 baseline        1.78        0.00178\n 8 pid_03 week_1          0.57        0.00057\n 9 pid_03 week_7          1.79        0.00179\n10 pid_04 baseline        1.76        0.00176\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#make-multiple-columns-at-once",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#make-multiple-columns-at-once",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Make multiple columns at once",
+    "text": "Make multiple columns at once\n\n```{r}\ntable_02 %&gt;%\n  select(pid, time_point, crp_blood) %&gt;%\n  mutate(crp_blood_ugul = crp_blood / 1000,\n         crp_blood_ugl = crp_blood * 1000)\n```\n\n# A tibble: 132 × 5\n   pid    time_point crp_blood crp_blood_ugul crp_blood_ugl\n   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;          &lt;dbl&gt;         &lt;dbl&gt;\n 1 pid_01 baseline        0.44        0.00044           440\n 2 pid_01 week_1          1.66        0.00166          1660\n 3 pid_01 week_7          1.44        0.00144          1440\n 4 pid_02 baseline        1.55        0.00155          1550\n 5 pid_02 week_1          0.75        0.00075           750\n 6 pid_02 week_7          1.17        0.00117          1170\n 7 pid_03 baseline        1.78        0.00178          1780\n 8 pid_03 week_1          0.57        0.00057           570\n 9 pid_03 week_7          1.79        0.00179          1790\n10 pid_04 baseline        1.76        0.00176          1760\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#exercise-1",
+    "href": "materials/1-workshop1/2-intro-to-r/slides.html#exercise-1",
+    "title": "Intro to R,R Studio, and Quarto",
+    "section": "Exercise",
+    "text": "Exercise\nThat’s enough slides for now time to try for yourself! Go to the module and go to the second exercise.\n\n\n\n−+\n30:00\n\n\n\n\n\nback to module"
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/index.html",

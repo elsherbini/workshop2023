@@ -609,12 +609,21 @@
 </section>
 <section id="the-text-editor" class="slide level2">
 <h2>The text editor</h2>
-</section>
+
+<img data-src="images/rstudio-text-editor.png" class="r-stretch"></section>
 <section id="the-console" class="slide level2">
 <h2>The console</h2>
-</section>
+
+<img data-src="images/rstudio-text-console-image.png" class="r-stretch"></section>
 <section id="the-right-panes" class="slide level2">
 <h2>The right panes</h2>
+
+<img data-src="images/rstudio-text-right_panes.png" class="r-stretch"></section>
+<section id="lets-take-a-poll" class="slide level2 your-turn">
+<h2>Let’s take a poll</h2>
+<p>Go to <a href="https://app.wooclap.com/DURBAN?from=event-page">the event on wooclap</a></p>
+
+<img data-src="../../../images/wooclap_info.png" class="r-stretch"><p><span style="font-size: 0.9em">M2. Match the areas with the right functionality</span></p>
 </section></section>
 <section>
 <section id="lets-start-programming" class="title-slide slide level1 center">
@@ -683,9 +692,9 @@
 <h2>Let’s use R for math</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_c2273774" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_7b30d9f0" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
@@ -1252,7 +1261,539 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <p>That’s enough slides for now time to try for yourself! Go to <a href="index.html">the module</a> and go to the first exercise.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_bb4f2ef4" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_06bd0161" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">30</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="elementary-data-manipulations" class="title-slide slide level1 center">
+<h1>Elementary data manipulations</h1>
+<div style="font-size: 1.5em">
+<ul>
+<li class="fragment"><p>Pick rows: <code>filter()</code></p></li>
+<li class="fragment"><p>Pick columns: <code>select()</code></p></li>
+<li class="fragment"><p>Sort rows: <code>arrange()</code></p></li>
+<li class="fragment"><p>Count things: <code>count()</code></p></li>
+<li class="fragment"><p>Make new columns: <code>mutate()</code></p></li>
+</ul>
+</div>
+</section>
+<section id="but-first-the-pipe-operator" class="slide level2">
+<h2>But first: the pipe operator <code>%&gt;%</code></h2>
+</section>
+<section id="but-first-the-pipe-operator-1" class="slide level2">
+<h2>But first: the pipe operator <code>%&gt;%</code></h2>
+<div class="r-fit-text">
+<p><code>%&gt;%</code> is pronounced “and then”</p>
+</div>
+</section>
+<section id="the-pipe-feeds-data-into-functions" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">The pipe <code>%&gt;%</code> feeds data into functions</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb33-1" class="hljs-ln-code"><a href="#cb33-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-2" class="hljs-ln-code"><a href="#cb33-2"></a><span class="fu">head</span>(table_02)</span>
+<span id="cb33-3" class="hljs-ln-code"><a href="#cb33-3"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 6
+  pid    time_point arm     nugent_score crp_blood    ph
+  &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
+1 pid_01 baseline   placebo            8      0.44   5.7
+2 pid_01 week_1     placebo            7      1.66   5.2
+3 pid_01 week_7     placebo            7      1.44   5.4
+4 pid_02 baseline   placebo            7      1.55   5.2
+5 pid_02 week_1     placebo            7      0.75   4.8
+6 pid_02 week_7     placebo            4      1.17   4.2</code></pre>
+</div>
+</div>
+</section>
+<section id="the-pipe-feeds-data-into-functions-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">The pipe <code>%&gt;%</code> feeds data into functions</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb35-1" class="hljs-ln-code"><a href="#cb35-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-2" class="hljs-ln-code"><a href="#cb35-2"></a><span class="co"># head(table_02)</span></span>
+<span id="cb35-3" class="hljs-ln-code"><a href="#cb35-3"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb35-4" class="hljs-ln-code"><a href="#cb35-4"></a>  <span class="fu">head</span>()</span>
+<span id="cb35-5" class="hljs-ln-code"><a href="#cb35-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 6
+  pid    time_point arm     nugent_score crp_blood    ph
+  &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
+1 pid_01 baseline   placebo            8      0.44   5.7
+2 pid_01 week_1     placebo            7      1.66   5.2
+3 pid_01 week_7     placebo            7      1.44   5.4
+4 pid_02 baseline   placebo            7      1.55   5.2
+5 pid_02 week_1     placebo            7      0.75   4.8
+6 pid_02 week_7     placebo            4      1.17   4.2</code></pre>
+</div>
+</div>
+</section>
+<section id="the-pipe-feeds-data-into-functions-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">The pipe <code>%&gt;%</code> feeds data into functions</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb37-1" class="hljs-ln-code"><a href="#cb37-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-2" class="hljs-ln-code"><a href="#cb37-2"></a><span class="fu">ggplot</span>(table_02, <span class="fu">aes</span>(crp_blood, ph, <span class="at">color =</span> arm)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb37-3" class="hljs-ln-code"><a href="#cb37-3"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
+<section id="the-pipe-feeds-data-into-functions-3" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">The pipe <code>%&gt;%</code> feeds data into functions</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb38-1" class="hljs-ln-code"><a href="#cb38-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-2" class="hljs-ln-code"><a href="#cb38-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb38-3" class="hljs-ln-code"><a href="#cb38-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(crp_blood, ph, <span class="at">color =</span> arm)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb38-4" class="hljs-ln-code"><a href="#cb38-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section>
+<section id="since-r-4.1-native-pipe" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Since R 4.1: Native pipe <code>|&gt;</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb39-1" class="hljs-ln-code"><a href="#cb39-1"></a><span class="in">```{r}</span></span>
+<span id="cb39-2" class="hljs-ln-code"><a href="#cb39-2"></a>table_02 <span class="sc">|&gt;</span></span>
+<span id="cb39-3" class="hljs-ln-code"><a href="#cb39-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(crp_blood, ph, <span class="at">color =</span> arm)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb39-4" class="hljs-ln-code"><a href="#cb39-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
+<section id="which-to-use-native-pipe-or-old-school-pipe" class="slide level2">
+<h2>Which to use? Native pipe or old-school pipe?</h2>
+<div style="font-size: 1.5em">
+<ul>
+<li class="fragment"><p><code>|&gt;</code> is the future. If you can, use it.</p></li>
+<li class="fragment"><p><code>%&gt;%</code> works on older installations. It’s the safe choice for now.</p></li>
+</ul>
+<p>We use <code>%&gt;%</code> here because many people still run older R versions. Also, we’re old school.</p>
+</div>
+</section></section>
+<section>
+<section id="picking-rows-or-columns-and-sorting" class="title-slide slide level1 center">
+<h1>Picking rows or columns, and sorting</h1>
+
+</section>
+<section id="pick-rows-from-a-table-filter" class="slide level2">
+<h2>Pick rows from a table: <code>filter()</code></h2>
+
+<img data-src="images/filter.svg" class="r-stretch"></section>
+<section id="filter-only-placebo" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Filter only placebo</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb40-1" class="hljs-ln-code"><a href="#cb40-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-2" class="hljs-ln-code"><a href="#cb40-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb40-3" class="hljs-ln-code"><a href="#cb40-3"></a>  <span class="fu">filter</span>(arm <span class="sc">==</span> <span class="st">"placebo"</span>)</span>
+<span id="cb40-4" class="hljs-ln-code"><a href="#cb40-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 69 × 6
+   pid    time_point arm     nugent_score crp_blood    ph
+   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
+ 1 pid_01 baseline   placebo            8      0.44   5.7
+ 2 pid_01 week_1     placebo            7      1.66   5.2
+ 3 pid_01 week_7     placebo            7      1.44   5.4
+ 4 pid_02 baseline   placebo            7      1.55   5.2
+ 5 pid_02 week_1     placebo            7      0.75   4.8
+ 6 pid_02 week_7     placebo            4      1.17   4.2
+ 7 pid_03 baseline   placebo            6      1.78   4.8
+ 8 pid_03 week_1     placebo           10      0.57   5.3
+ 9 pid_03 week_7     placebo            7      1.79   5.2
+10 pid_04 baseline   placebo            5      1.76   4.8
+# ℹ 59 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="filter-out-samples-with-ph-4" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Filter out samples with ph &lt; 4</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb42-1" class="hljs-ln-code"><a href="#cb42-1"></a><span class="in">```{r}</span></span>
+<span id="cb42-2" class="hljs-ln-code"><a href="#cb42-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb42-3" class="hljs-ln-code"><a href="#cb42-3"></a>  <span class="fu">filter</span>(ph <span class="sc">&lt;</span> <span class="dv">4</span>)</span>
+<span id="cb42-4" class="hljs-ln-code"><a href="#cb42-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 39 × 6
+   pid    time_point arm       nugent_score crp_blood    ph
+   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
+ 1 pid_05 week_1     treatment            3      0.19   3.2
+ 2 pid_05 week_7     treatment            2      0.45   3.5
+ 3 pid_09 week_1     treatment            3      0.27   3.6
+ 4 pid_10 week_1     treatment            0      0.01   3.5
+ 5 pid_10 week_7     treatment            1      2.87   2.9
+ 6 pid_11 week_1     treatment            1      0.1    3.3
+ 7 pid_15 week_1     treatment            3      0.84   3.4
+ 8 pid_15 week_7     treatment            3      0.68   3.5
+ 9 pid_16 week_1     treatment            0      0.03   3.7
+10 pid_16 week_7     treatment            2      0.5    3.2
+# ℹ 29 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="pick-columns-from-a-table-select" class="slide level2">
+<h2>Pick columns from a table: <code>select()</code></h2>
+
+<img data-src="images/select.svg" class="r-stretch"></section>
+<section id="pick-columns-pid-ph-and-nugent" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Pick columns <code>pid</code>, <code>ph</code>, and <code>nugent</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb44-1" class="hljs-ln-code"><a href="#cb44-1"></a><span class="in">```{r}</span></span>
+<span id="cb44-2" class="hljs-ln-code"><a href="#cb44-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb44-3" class="hljs-ln-code"><a href="#cb44-3"></a>  <span class="fu">select</span>(pid, ph, nugent_score)</span>
+<span id="cb44-4" class="hljs-ln-code"><a href="#cb44-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 132 × 3
+   pid       ph nugent_score
+   &lt;chr&gt;  &lt;dbl&gt;        &lt;dbl&gt;
+ 1 pid_01   5.7            8
+ 2 pid_01   5.2            7
+ 3 pid_01   5.4            7
+ 4 pid_02   5.2            7
+ 5 pid_02   4.8            7
+ 6 pid_02   4.2            4
+ 7 pid_03   4.8            6
+ 8 pid_03   5.3           10
+ 9 pid_03   5.2            7
+10 pid_04   4.8            5
+# ℹ 122 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="rename-columns-and-subset-with-select" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Rename columns and subset with select</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb46-1" class="hljs-ln-code"><a href="#cb46-1"></a><span class="in">```{r}</span></span>
+<span id="cb46-2" class="hljs-ln-code"><a href="#cb46-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb46-3" class="hljs-ln-code"><a href="#cb46-3"></a>  <span class="fu">select</span>(<span class="at">participant_id =</span> pid, ph, nugent_score)</span>
+<span id="cb46-4" class="hljs-ln-code"><a href="#cb46-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 132 × 3
+   participant_id    ph nugent_score
+   &lt;chr&gt;          &lt;dbl&gt;        &lt;dbl&gt;
+ 1 pid_01           5.7            8
+ 2 pid_01           5.2            7
+ 3 pid_01           5.4            7
+ 4 pid_02           5.2            7
+ 5 pid_02           4.8            7
+ 6 pid_02           4.2            4
+ 7 pid_03           4.8            6
+ 8 pid_03           5.3           10
+ 9 pid_03           5.2            7
+10 pid_04           4.8            5
+# ℹ 122 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="sort-the-rows-in-a-table-arrange" class="slide level2">
+<h2>Sort the rows in a table: <code>arrange()</code></h2>
+
+<img data-src="images/arrange.svg" class="r-stretch"></section>
+<section id="sort-samples-by-ph-ascending" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Sort samples by ph ascending</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb48-1" class="hljs-ln-code"><a href="#cb48-1"></a><span class="in">```{r}</span></span>
+<span id="cb48-2" class="hljs-ln-code"><a href="#cb48-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb48-3" class="hljs-ln-code"><a href="#cb48-3"></a>  <span class="fu">arrange</span>(ph)</span>
+<span id="cb48-4" class="hljs-ln-code"><a href="#cb48-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 132 × 6
+   pid    time_point arm       nugent_score crp_blood    ph
+   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
+ 1 pid_31 week_7     treatment            2      1.36   2.8
+ 2 pid_10 week_7     treatment            1      2.87   2.9
+ 3 pid_28 baseline   treatment            3      0.67   2.9
+ 4 pid_26 week_1     treatment            0      0.11   3  
+ 5 pid_23 week_7     placebo              3      3.67   3.1
+ 6 pid_40 baseline   treatment            3      1.48   3.1
+ 7 pid_40 week_1     treatment            2      0.17   3.1
+ 8 pid_05 week_1     treatment            3      0.19   3.2
+ 9 pid_16 week_7     treatment            2      0.5    3.2
+10 pid_37 week_7     treatment            2      0.7    3.2
+# ℹ 122 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="sort-samples-by-ph-descending" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Sort samples by ph, descending</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb50-1" class="hljs-ln-code"><a href="#cb50-1"></a><span class="in">```{r}</span></span>
+<span id="cb50-2" class="hljs-ln-code"><a href="#cb50-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb50-3" class="hljs-ln-code"><a href="#cb50-3"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ph))</span>
+<span id="cb50-4" class="hljs-ln-code"><a href="#cb50-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 132 × 6
+   pid    time_point arm       nugent_score crp_blood    ph
+   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
+ 1 pid_29 baseline   placebo              7      2.39   5.8
+ 2 pid_01 baseline   placebo              8      0.44   5.7
+ 3 pid_16 baseline   treatment            6      1.91   5.7
+ 4 pid_06 week_1     placebo              8      1.72   5.6
+ 5 pid_26 baseline   treatment            7      0.94   5.6
+ 6 pid_13 week_1     placebo              7      2.57   5.5
+ 7 pid_23 week_1     placebo              8      0.8    5.5
+ 8 pid_27 baseline   placebo              7      1.17   5.5
+ 9 pid_01 week_7     placebo              7      1.44   5.4
+10 pid_04 week_7     placebo              7      5.68   5.4
+# ℹ 122 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="counting-things" class="slide level2">
+<h2>Counting things</h2>
+<p>To demonstrate counting, let’s switch to <code>table_01</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb52-1"><a href="#cb52-1"></a><span class="in">```{r}</span></span>
+<span id="cb52-2"><a href="#cb52-2"></a>table_01</span>
+<span id="cb52-3"><a href="#cb52-3"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 44 × 6
+   pid    arm       smoker       age education                     sex  
+   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                         &lt;lgl&gt;
+ 1 pid_01 placebo   non-smoker    26 grade 10-12, matriculated     FALSE
+ 2 pid_02 placebo   smoker        33 grade 10-12, matriculated     FALSE
+ 3 pid_03 placebo   smoker        30 post-secondary                FALSE
+ 4 pid_04 placebo   non-smoker    34 grade 10-12, not matriculated FALSE
+ 5 pid_05 treatment non-smoker    29 grade 10-12, matriculated     FALSE
+ 6 pid_06 placebo   smoker        34 post-secondary                FALSE
+ 7 pid_07 placebo   non-smoker    31 grade 10-12, not matriculated FALSE
+ 8 pid_08 placebo   smoker        30 grade 10-12, not matriculated FALSE
+ 9 pid_09 treatment non-smoker    35 grade 10-12, not matriculated FALSE
+10 pid_10 treatment non-smoker    32 less than grade 9             FALSE
+# ℹ 34 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="counting-things-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Counting things</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb54-1" class="hljs-ln-code"><a href="#cb54-1"></a><span class="in">```{r}</span></span>
+<span id="cb54-2" class="hljs-ln-code"><a href="#cb54-2"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb54-3" class="hljs-ln-code"><a href="#cb54-3"></a>  <span class="fu">count</span>(smoker)</span>
+<span id="cb54-4" class="hljs-ln-code"><a href="#cb54-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  smoker         n
+  &lt;chr&gt;      &lt;int&gt;
+1 non-smoker    27
+2 smoker        17</code></pre>
+</div>
+</div>
+</section>
+<section id="counting-things-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Counting things</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb56-1" class="hljs-ln-code"><a href="#cb56-1"></a><span class="in">```{r}</span></span>
+<span id="cb56-2" class="hljs-ln-code"><a href="#cb56-2"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb56-3" class="hljs-ln-code"><a href="#cb56-3"></a>  <span class="fu">count</span>(arm, smoker)</span>
+<span id="cb56-4" class="hljs-ln-code"><a href="#cb56-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  arm       smoker         n
+  &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt;
+1 placebo   non-smoker    12
+2 placebo   smoker        11
+3 treatment non-smoker    15
+4 treatment smoker         6</code></pre>
+</div>
+</div>
+</section>
+<section id="lets-take-a-poll-1" class="slide level2 your-turn">
+<h2>Let’s take a poll</h2>
+<p>Go to <a href="https://app.wooclap.com/DURBAN?from=event-page">the event on wooclap</a></p>
+
+<img data-src="../../../images/wooclap_info.png" class="r-stretch"><p><span style="font-size: 0.9em">M2. Does filter get rid of rows that match TRUE, or keep rows that match TRUE?</span></p>
+</section>
+<section id="use-the-pipe-to-build-analysis-pipelines" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Use the pipe to build analysis pipelines</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb58-1" class="hljs-ln-code"><a href="#cb58-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-2" class="hljs-ln-code"><a href="#cb58-2"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb58-3" class="hljs-ln-code"><a href="#cb58-3"></a>  <span class="fu">filter</span>(arm <span class="sc">==</span> <span class="st">"placebo"</span>)</span>
+<span id="cb58-4" class="hljs-ln-code"><a href="#cb58-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 23 × 6
+   pid    arm     smoker       age education                     sex  
+   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                         &lt;lgl&gt;
+ 1 pid_01 placebo non-smoker    26 grade 10-12, matriculated     FALSE
+ 2 pid_02 placebo smoker        33 grade 10-12, matriculated     FALSE
+ 3 pid_03 placebo smoker        30 post-secondary                FALSE
+ 4 pid_04 placebo non-smoker    34 grade 10-12, not matriculated FALSE
+ 5 pid_06 placebo smoker        34 post-secondary                FALSE
+ 6 pid_07 placebo non-smoker    31 grade 10-12, not matriculated FALSE
+ 7 pid_08 placebo smoker        30 grade 10-12, not matriculated FALSE
+ 8 pid_12 placebo non-smoker    31 grade 10-12, matriculated     FALSE
+ 9 pid_13 placebo non-smoker    32 post-secondary                FALSE
+10 pid_14 placebo smoker        32 grade 10-12, matriculated     FALSE
+# ℹ 13 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="use-the-pipe-to-build-analysis-pipelines-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Use the pipe to build analysis pipelines</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb60-1" class="hljs-ln-code"><a href="#cb60-1"></a><span class="in">```{r}</span></span>
+<span id="cb60-2" class="hljs-ln-code"><a href="#cb60-2"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb60-3" class="hljs-ln-code"><a href="#cb60-3"></a>  <span class="fu">filter</span>(age <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb60-4" class="hljs-ln-code"><a href="#cb60-4"></a>  <span class="fu">select</span>(pid, arm, smoker)</span>
+<span id="cb60-5" class="hljs-ln-code"><a href="#cb60-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 3
+   pid    arm       smoker    
+   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     
+ 1 pid_01 placebo   non-smoker
+ 2 pid_05 treatment non-smoker
+ 3 pid_15 treatment non-smoker
+ 4 pid_17 treatment non-smoker
+ 5 pid_21 treatment non-smoker
+ 6 pid_27 placebo   smoker    
+ 7 pid_30 placebo   non-smoker
+ 8 pid_31 treatment non-smoker
+ 9 pid_35 placebo   non-smoker
+10 pid_36 placebo   non-smoker
+11 pid_41 treatment smoker    
+12 pid_44 treatment non-smoker</code></pre>
+</div>
+</div>
+</section>
+<section id="use-the-pipe-to-build-analysis-pipelines-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Use the pipe to build analysis pipelines</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb62-1" class="hljs-ln-code"><a href="#cb62-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-2" class="hljs-ln-code"><a href="#cb62-2"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb62-3" class="hljs-ln-code"><a href="#cb62-3"></a>  <span class="fu">filter</span>(age <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb62-4" class="hljs-ln-code"><a href="#cb62-4"></a>  <span class="fu">select</span>(pid, arm, smoker) <span class="sc">%&gt;%</span></span>
+<span id="cb62-5" class="hljs-ln-code"><a href="#cb62-5"></a>  <span class="fu">count</span>(arm, smoker)</span>
+<span id="cb62-6" class="hljs-ln-code"><a href="#cb62-6"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  arm       smoker         n
+  &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt;
+1 placebo   non-smoker     4
+2 placebo   smoker         1
+3 treatment non-smoker     6
+4 treatment smoker         1</code></pre>
+</div>
+</div>
+</section>
+<section id="adding-new-columns-to-a-table" class="slide level2">
+<h2>Adding new columns to a table</h2>
+</section>
+<section id="make-a-new-table-column-mutate" class="slide level2">
+<h2>Make a new table column: <code>mutate()</code></h2>
+
+<img data-src="images/mutate.svg" class="r-stretch"></section>
+<section id="example-c-reactive-protein" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Example: C-reactive protein</h2>
+<p>The <code>crp_blood</code> column is in units of mg/L. What if you needed it in ug/ul? What’s the calculation?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb64-1" class="hljs-ln-code"><a href="#cb64-1"></a><span class="in">```{r}</span></span>
+<span id="cb64-2" class="hljs-ln-code"><a href="#cb64-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb64-3" class="hljs-ln-code"><a href="#cb64-3"></a>  <span class="fu">select</span>(pid, time_point, crp_blood)</span>
+<span id="cb64-4" class="hljs-ln-code"><a href="#cb64-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 132 × 3
+   pid    time_point crp_blood
+   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;
+ 1 pid_01 baseline        0.44
+ 2 pid_01 week_1          1.66
+ 3 pid_01 week_7          1.44
+ 4 pid_02 baseline        1.55
+ 5 pid_02 week_1          0.75
+ 6 pid_02 week_7          1.17
+ 7 pid_03 baseline        1.78
+ 8 pid_03 week_1          0.57
+ 9 pid_03 week_7          1.79
+10 pid_04 baseline        1.76
+# ℹ 122 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="example-c-reactive-protein-1" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Example: C-reactive protein</h2>
+<p>The <code>crp_blood</code> column is in units of mg/L. What if you needed it in ug/ul? What’s the calculation?</p>
+<p>To get ug/L you would multiply by 1000. To get ug/ul you need to then divide by 1000000</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb66-1" class="hljs-ln-code"><a href="#cb66-1"></a><span class="in">```{r}</span></span>
+<span id="cb66-2" class="hljs-ln-code"><a href="#cb66-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb66-3" class="hljs-ln-code"><a href="#cb66-3"></a>  <span class="fu">select</span>(pid, time_point, crp_blood)</span>
+<span id="cb66-4" class="hljs-ln-code"><a href="#cb66-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 132 × 3
+   pid    time_point crp_blood
+   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;
+ 1 pid_01 baseline        0.44
+ 2 pid_01 week_1          1.66
+ 3 pid_01 week_7          1.44
+ 4 pid_02 baseline        1.55
+ 5 pid_02 week_1          0.75
+ 6 pid_02 week_7          1.17
+ 7 pid_03 baseline        1.78
+ 8 pid_03 week_1          0.57
+ 9 pid_03 week_7          1.79
+10 pid_04 baseline        1.76
+# ℹ 122 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="example-c-reactive-protein-2" class="slide level2" data-auto-animate="TRUE">
+<h2 data-id="quarto-animate-title">Example: C-reactive protein</h2>
+<p>The <code>crp_blood</code> column is in units of mg/L. What if you needed it in ug/ul? What’s the calculation?</p>
+<p>To get ug/L you would multiply by 1000. To get ug/ul you need to then divide by 1000000</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb68-1" class="hljs-ln-code"><a href="#cb68-1"></a><span class="in">```{r}</span></span>
+<span id="cb68-2" class="hljs-ln-code"><a href="#cb68-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb68-3" class="hljs-ln-code"><a href="#cb68-3"></a>  <span class="fu">select</span>(pid, time_point, crp_blood) <span class="sc">%&gt;%</span></span>
+<span id="cb68-4" class="hljs-ln-code"><a href="#cb68-4"></a>  <span class="fu">mutate</span>(<span class="at">crp_blood_ugul =</span> crp_blood <span class="sc">/</span> <span class="dv">1000</span>)</span>
+<span id="cb68-5" class="hljs-ln-code"><a href="#cb68-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 132 × 4
+   pid    time_point crp_blood crp_blood_ugul
+   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;          &lt;dbl&gt;
+ 1 pid_01 baseline        0.44        0.00044
+ 2 pid_01 week_1          1.66        0.00166
+ 3 pid_01 week_7          1.44        0.00144
+ 4 pid_02 baseline        1.55        0.00155
+ 5 pid_02 week_1          0.75        0.00075
+ 6 pid_02 week_7          1.17        0.00117
+ 7 pid_03 baseline        1.78        0.00178
+ 8 pid_03 week_1          0.57        0.00057
+ 9 pid_03 week_7          1.79        0.00179
+10 pid_04 baseline        1.76        0.00176
+# ℹ 122 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="make-multiple-columns-at-once" class="slide level2">
+<h2>Make multiple columns at once</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb70-1"><a href="#cb70-1"></a><span class="in">```{r}</span></span>
+<span id="cb70-2"><a href="#cb70-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb70-3"><a href="#cb70-3"></a>  <span class="fu">select</span>(pid, time_point, crp_blood) <span class="sc">%&gt;%</span></span>
+<span id="cb70-4"><a href="#cb70-4"></a>  <span class="fu">mutate</span>(<span class="at">crp_blood_ugul =</span> crp_blood <span class="sc">/</span> <span class="dv">1000</span>,</span>
+<span id="cb70-5"><a href="#cb70-5"></a>         <span class="at">crp_blood_ugl =</span> crp_blood <span class="sc">*</span> <span class="dv">1000</span>)</span>
+<span id="cb70-6"><a href="#cb70-6"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 132 × 5
+   pid    time_point crp_blood crp_blood_ugul crp_blood_ugl
+   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;          &lt;dbl&gt;         &lt;dbl&gt;
+ 1 pid_01 baseline        0.44        0.00044           440
+ 2 pid_01 week_1          1.66        0.00166          1660
+ 3 pid_01 week_7          1.44        0.00144          1440
+ 4 pid_02 baseline        1.55        0.00155          1550
+ 5 pid_02 week_1          0.75        0.00075           750
+ 6 pid_02 week_7          1.17        0.00117          1170
+ 7 pid_03 baseline        1.78        0.00178          1780
+ 8 pid_03 week_1          0.57        0.00057           570
+ 9 pid_03 week_7          1.79        0.00179          1790
+10 pid_04 baseline        1.76        0.00176          1760
+# ℹ 122 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="exercise-1" class="slide level2 your-turn">
+<h2>Exercise</h2>
+<p>That’s enough slides for now time to try for yourself! Go to <a href="index.html">the module</a> and go to the second exercise.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_192c691b" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">30</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
