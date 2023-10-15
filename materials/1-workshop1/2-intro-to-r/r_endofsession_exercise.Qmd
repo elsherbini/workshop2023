@@ -1,41 +1,223 @@
 ---
-  format:
+format:
   html:
-  code-link: true
-  editor_options: 
-    chunk_output_type: console
+    code-link: true
+editor_options: 
+  chunk_output_type: console
 ---
 
 ##  End of session worksheet: Introduction to R and Quarto
 
-Now that we practiced a bit on mock and small datasets, let us try a 'real' one. 
-
-Use the following command to read in the data from the Ice Breaker poll from this morning.
-Copy the code chunk into your Quarto markdown
-
-Download the icebreaker poll everyone filled out this morning. [Download the dataset here](../../../datasets.html) and move it to your project directory.
-
-```{r echo="TRUE", eval=FALSE}
-ice_breaker_df <- read_csv("ice_breaker_poll.csv") # make sure this file name exists in your current directory!
+```{r setup, include=FALSE}
+library(tidyverse)
 ```
 
-View your dataset. What is your favourite way to 'see' your dataset? Check the first few and last few rows (Hint: Use a function)
+## Introduction
 
-Let us find out more about the survey responses.
+Now that we practiced a bit on mock and small datasets, let us try a 'real' one. In this worksheet, we will look at the Ice Breaker Poll from this morning and learn how to perform basic data manipulations, such as filtering data rows that meet certain conditions, choosing data columns, and arranging data in ascending or descending order.
+
+First, download the icebreaker poll file containing the dataset. [Download the dataset here](https://docs.google.com/spreadsheets/d/e/2PACX-1vRD_PMPFbTkZmIhXcc0y70IEznxMDpaw8tvsD64JvWLT-aogEnMoVjAWTlvLtHiLCUyTRbsA6ePgQnN/pub?gid=1324386097&single=true&output=csv) and move it to your project directory.
+
+Use the following command to read in the data from the Ice Breaker poll.
+```{r}
+ice_breaker_df <- read_csv("Ice Breaker Survey (Responses) - Form Responses 1.csv") # make sure this file name exists in your current directory!
+```
+
+We will be using the R package **tidyverse** for the data manipulation functions `%>%`, `filter()`, `select()`, `arrange()`, `count()`, and `mutate()`.
+
+```{r echo=TRUE, eval=FALSE}
+library(tidyverse)
+```
+
+## The pipe (`%>%`, read: "and then")
+
+When writing complex data analysis pipelines, we frequently use the pipe operator `%>%` to move data from one analysis step to the next. The pipe is pronounced "and then", and it takes the data on its left and uses it as the first argument for the function on its right.
+
+For example, to see the first few lines of a dataset, we often write `head(dataframe)`. Instead, we can write `dataframe %>% head()`.
+
+Try this yourself. Write code that displays the first few lines of the `ice_breaker_df` dataset, using `%>%` and `head()`:
+
+```{r}
+ # build all the code for this exercise
+```
+
+Now get all the column names using the `colnames()` function on the `ice_breaker_df`.
+
+
+```{r}
+ # build all the code for this exercise
+```
+
+## Choosing data rows
+
+The function `filter()` allows you to find rows in a dataset that meet one or more specific conditions. The syntax is `dataframe %>% filter(condition)`, where condition is a logical condition. For example, `filter(x > 5)` would pick all rows for which the value in column `x` is greater than 5.
+
+As an example, the following code picks all survey responses where people prefer chocolate over vanilla ice cream:
+
+```{r}
+ice_breaker_df %>%
+  filter(vanilla_chocolate == "Chocolate")
+```
+Can you tell how many people that is from looking at the size of the tibble?
+
+Now it's your turn to try one. Pick all responses where people would like to try Skydiving.
+
+```{r echo=TRUE, eval=FALSE}
+ice_breaker_df %>%
+  filter(___)
+```
+
+
+### Filtering for multiple conditions
+
+You can also state multiple conditions, separated by a comma. For example, `filter(x > 5, y < 2)` would pick all rows for which the value in the column `x` is greater than 5 and the value in the column `y` is less than 2. Note that the conditions are combined via logical and, both need to be satisfied for the row to be picked.
+
+To try this out, pick all survey responses where people taller than XXX cm would like to retain their Facebook.
+
+```{r}
+ # build all the code for this exercise
+```
+
+## Choosing data columns
+
+The function `select()` allows you to pick specific data columns by name. This is frequently useful when a dataset has many more columns than we are interested in at the time. For example, if we are only interested in the responses regarding what people do first thing in the morning, what superpower they would like, and how they procrastinate, we could select just those three columns:
+
+```{r}
+#| echo: true
+ice_breaker_df %>%
+  select(first_thing_in_morning, superpower, procrastinate)
+```
+
+Try this yourself, picking the columns representing responses to how many browser tabs people have open right now and what social media they would like to keep.
+
+```{r}
+ # build all the code for this exercise
+```
+
+### Choosing columns for removal
+
+Another situation that arises frequently is one where we want to remove specific columns. We can also do this with `select()`, but now write `select(-column)` to remove one or more columns.
+
+Try this. Remove the column `num_browser_tabs`.
+
+```{r}
+ # build all the code for this exercise
+```
+
+And now try removing both `num_browser_tabs` and `procrastinate`.
+
+## Sorting data
+
+The function `arrange()` allows you to sort data by one or more columns. For example, `dataframe %>% arrange(x)` would sort the data by increasing values of `x`, and `dataframe %>% arrange(x, y)` would sort the data first by `x` and then, for ties in `x`, by `y`.
+
+As an example, the following code sorts responses by the person's height:
+
+```{r}
+ice_breaker_df %>%
+  arrange(height_cm)
+```
+
+Now it's your turn. Sort responses by the number of languages people can speak:
+
+```{r}
+ # build all the code for this exercise
+```
+
+### Arranging in descending order
+
+To arrange data in descending order, enclose the data column in `desc()`. For example, `dataframe %>% arrange(desc(x))` would sort the data by decreasing values of `x`. (`desc` stands for "descending".)
+
+Try this out. Sort the responses by height again, this time from largest to smallest:
+
+```{r}
+ # build all the code for this exercise
+```
+
+## Counting
+
+We frequently want to count how many times a particular value or combination of values occurs in a dataset. We do this using the `count()` function. For example, the following code counts how many of each number we got for the number of languages people can speak.
+
+```{r count-demo, echo=FALSE, eval=TRUE}
+ice_breaker_df %>%
+  count(num_languages)
+```
+
+Now try this yourself. Count how many prefer vanilla ice cream and how many chocolate.
+
+```{r}
+ # build all the code for this exercise
+```
+
+### Chaining analysis steps into pipelines
+
+We can chain multiple analysis steps into a pipeline by continuing to add "and then" statements. For example, `dataframe %>% count(...) %>% arrange(...)` would first count and then sort the data.
+
+Try this out by counting the number of responses of languages spoken and and then sorting by the number.
+
+```{r}
+ # build all the code for this exercise
+```
+
+## Creating new data columns
+
+The function `mutate()` allows you to add new columns to a data table. For example, `dataframe %>% mutate(sum = x + y)` would create a new column `sum` that is the sum of the columns `x` and `y`:
+
+```{r}
+data <- tibble(x = 1:3, y = c(10, 20, 30))
+print(data)
+```
+
+```{r}
+data %>%
+  mutate(
+    sum = x + y
+  ) %>%
+  print()
+```
+
+Note that the part to the left of the equals sign (here, `sum`) is the name of the new column, and the part to the right of the equals sign (here, `x + y`) is an R expression that evaluates to the values in the new column.
+
+Now apply this concept to the `ice_breaker_df` dataset. Add a new column `browsing by language` that is the ratio of number of browser tabs currently open and number of languages spoken:
+
+```{r}
+ # build all the code for this exercise
+```
+
+### Counting with custom conditions
+
+It is quite common that we want to count items that meet a specific condition. For example, let's say we want to count how many people are taller than 155 cm. To do this efficiently, we first create a new column that indicates whether the condition is met or not, and we then use count with that indicator column.
+
+The easiest way to create indicator columns is via the function `if_else()`, which takes three arguments: a condition, a result if the condition is met, and a result if the condition is not met. The following example shows how to create an indicator column showing whether a variable is positive or negative:
+
+```{r}
+data <- tibble(x = c(-0.5, 2.3, 50, -1.4))
+data
+```
+
+```{r}
+data %>%
+  mutate(
+    sign_of_x = if_else(x >= 0, "positive", "negative")
+  ) %>%
+  count(sign_of_x)
+```
+
+Now try this yourself. Count how many people are taller than 155 cm. Then sort your results.
+
+Here are a few additional exercises that you can work on to practice and learn more about survey responses from everyone in this room!
 
 ### Exercise
 
-Write R commands for the following -
-1. How many people took this survey?
-2. How many questions did we ask?
-3. What questions did we ask?
-4. Give a few examples of the data types captured in the questions
-
-### Challenge Exercise
-
-Write R commands for the following -
-1. Look at responses of questions 4-6 from all participants
-2. Try to rename a column (question)
-3. Make a new dataframe of 5 questions of your choice.
-4. Can you get the height of the tallest person in this room?
+Write R commands for the following -  
+1. How many people took this survey?  
+2. How many questions did we ask?  
+3. What questions did we ask?  
+4. Give a few examples of the data types captured in the questions  
+5. Look at responses of questions 4-6 from all participants  
+6. Try to rename a column (question)  
+7. Make a new dataframe of 5 questions of your choice.  
+8. Can you get the height of the tallest person in this room?  
+9. How many people speak more than 2 languages?  
+10. Select the question about R experience and sort by the kind of R background and experience in this room.  
+12. What is the ratio of people who took a plane to this workshop vs those who walked?  
 

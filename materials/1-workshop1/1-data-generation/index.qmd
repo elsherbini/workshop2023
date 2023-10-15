@@ -1,0 +1,14 @@
+---
+title: "How data analysis is informed by data generation"
+format:
+  html:
+    toc: true
+---
+
+> Let's learn about the types of data we'll use for this workshop
+  
+## Slides
+
+```{=html}
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRtYNFPfpmO8sCkNKcNFG608ijHDbWI04_An9b9Woeu9YWhspCP_BWVxG3gwR7aBSuzyl0sn7WnLWiZ/embed?start=false&loop=false&delayms=60000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+```

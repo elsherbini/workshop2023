@@ -801,6 +801,14 @@ str_c(word_1, word_2, sep = " ")
 functions can have *named parameters* as well as *positional parameters.*  
 *named parameters* always take an `=` sign for assignment.
 
+## Getting help with functions {auto-animate="true"}
+
+Type ?str_c in the console to get a help page. check out [this guide](https://socviz.co/appendix.html?s=09#a-little-more-about-r) on how to read the R help pages.
+
+also try googling str_c R tidyverse to get help.
+
+chatGPT and phind.com are really good at answering specific questions about R functions - not always correct but most of the time.
+
 ## "Everything is a vector" {auto-animate="true"}
 
 This sounds like nonsense - let's unpack:
@@ -880,7 +888,6 @@ table_02 <- read_csv(here("datasets/instructional_dataset/02_visit_clinical_meas
 table_02
 ```
 
-
 ## Exercise {.your-turn}
 
 That's enough slides for now time to try for yourself! Go to [the module](index.html) and go to the first exercise.
@@ -906,6 +913,19 @@ countdown::countdown(30)
 - Make new columns: `mutate()`
 
 :::
+
+## How to read in data?
+
+Data is often in tables, and the easiest way to store tabular data is in `csv` or `tsv` format. 
+
+`csv` - comma separated values    
+`tsv` - tab separated values  
+
+to read in data stored this way use `read_csv(filename)` or `read_tsv(filename)`
+
+```r
+table_02 <- read_csv("02_visit_clinical_measurements_UKZN_workshop_2023.csv")
+```
 
 ## But first: the pipe operator `%>%`
 

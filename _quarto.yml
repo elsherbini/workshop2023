@@ -38,6 +38,8 @@ website:
               contents:
               href: materials/1-workshop1/0-welcome/index.qmd
             - text: "<b>Module 1</b>: How data analysis is informed by data generation"
+              contents:
+              href: materials/1-workshop1/1-data-generation/index.qmd
             - text: "<b>Module 2</b>: Intro to R, Rstudio, and Quarto"
               contents:
               href: materials/1-workshop1/2-intro-to-r/index.qmd

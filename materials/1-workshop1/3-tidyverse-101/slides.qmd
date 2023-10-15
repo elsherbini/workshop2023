@@ -131,8 +131,6 @@ Go to [the activity](index.html#data-visualization-activity)
 3. Someone post a picture on the [{{< fa brands discord >}} #pen-and-paper-activity](https://discord.com/channels/1158136582201692202/1160951454417301585) channel.
 4. Decide on one member of your group to present your plot (3 minute limit per group)
 
-*Note, you can press `'b'` on your keyboard when the slides are full screen to bring up a blackboard. `'b'` again to close. `'del'` to clear your drawing.*
-
 ## Presentation {.your-turn}
 
 Have one member from your group present the plot  to everyone! 3 minute limit!

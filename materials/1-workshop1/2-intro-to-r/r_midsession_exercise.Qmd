@@ -301,11 +301,11 @@ typeof(log_vec)
 Some fun with vectors
 
 ```{r eval=FALSE}
-num_vec[1]
+num_vec[1] # what's the first element of num_vec?
 
-num_vec[4]
+num_vec[4] # 4th?
 
-num_vec[-1]
+num_vec[-1] # what does -1 do?
 
 num_vec[1:3]
 
@@ -355,6 +355,8 @@ year_of_birth <- c(1990, 1995, 2000)
 fav_colour <- c("red", "green", "yellow")
 
 #Make a dataframe from the above
+# note, make sure you've added the tidyverse library
+library(tidyverse)
 df <- tibble(id, name, year_of_birth, fav_colour)
 
 df
@@ -381,7 +383,7 @@ nrow(df)
 ncol(df)
 
 # Data frame subsetting (I want only a few columns of my interest)
-df$name
+select(df, name)
 select(df, year_of_birth)
 
 #extract row 2 only
@@ -398,8 +400,8 @@ filter(df, year_of_birth > 1995)
 
 
 #extract rows based on multiple conditions
-filter(df, year_of_birth > 1995 & df$favourite_colour=="red")
-filter(df, year_of_birth > 1995 | df$favourite_colour=="red")
+filter(df, year_of_birth > 1995 & favourite_colour=="red")
+filter(df, year_of_birth > 1995 | favourite_colour=="red")
 
 #Note the difference in output upon use of different logical operators AND and OR
 

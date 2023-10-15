@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>r_endofsession_exercise</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="r_endofsession_exercise_files/libs/clipboard/clipboard.min.js"></script>
+<script src="r_endofsession_exercise_files/libs/quarto-html/quarto.js"></script>
+<script src="r_endofsession_exercise_files/libs/quarto-html/popper.min.js"></script>
+<script src="r_endofsession_exercise_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="r_endofsession_exercise_files/libs/quarto-html/anchor.min.js"></script>
+<link href="r_endofsession_exercise_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="r_endofsession_exercise_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="r_endofsession_exercise_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="r_endofsession_exercise_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="r_endofsession_exercise_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="end-of-session-worksheet-introduction-to-r-and-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="end-of-session-worksheet-introduction-to-r-and-quarto">End of session worksheet: Introduction to R and Quarto</h2>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Now that we practiced a bit on mock and small datasets, let us try a ‘real’ one. In this worksheet, we will look at the Ice Breaker Poll from this morning and learn how to perform basic data manipulations, such as filtering data rows that meet certain conditions, choosing data columns, and arranging data in ascending or descending order.</p>
+<p>First, download the icebreaker poll file containing the dataset. <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRD_PMPFbTkZmIhXcc0y70IEznxMDpaw8tvsD64JvWLT-aogEnMoVjAWTlvLtHiLCUyTRbsA6ePgQnN/pub?gid=1324386097&amp;single=true&amp;output=csv">Download the dataset here</a> and move it to your project directory.</p>
+<p>Use the following command to read in the data from the Ice Breaker poll.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ice_breaker_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Ice Breaker Survey (Responses) - Form Responses 1.csv"</span>) <span class="co"># make sure this file name exists in your current directory!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 5 Columns: 13
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (9): Timestamp, first_thing_in_morning, vanilla_chocolate, superpower, s...
+dbl (3): num_languages, num_browser_tabs, height_cm
+lgl (1): years_current_country
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>We will be using the R package <strong>tidyverse</strong> for the data manipulation functions <code>%&gt;%</code>, <code>filter()</code>, <code>select()</code>, <code>arrange()</code>, <code>count()</code>, and <code>mutate()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-pipe-read-and-then" class="level2">
+<h2 class="anchored" data-anchor-id="the-pipe-read-and-then">The pipe (<code>%&gt;%</code>, read: “and then”)</h2>
+<p>When writing complex data analysis pipelines, we frequently use the pipe operator <code>%&gt;%</code> to move data from one analysis step to the next. The pipe is pronounced “and then”, and it takes the data on its left and uses it as the first argument for the function on its right.</p>
+<p>For example, to see the first few lines of a dataset, we often write <code>head(dataframe)</code>. Instead, we can write <code>dataframe %&gt;% head()</code>.</p>
+<p>Try this yourself. Write code that displays the first few lines of the <code>ice_breaker_df</code> dataset, using <code>%&gt;%</code> and <code>head()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="choosing-data-rows" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-data-rows">Choosing data rows</h2>
+<p>The function <code>filter()</code> allows you to find rows in a dataset that meet one or more specific conditions. The syntax is <code>dataframe %&gt;% filter(condition)</code>, where condition is a logical condition. For example, <code>filter(x &gt; 5)</code> would pick all rows for which the value in column <code>x</code> is greater than 5.</p>
+<p>As an example, the following code picks all survey responses where people prefer chocolate over vanilla ice cream:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ice_breaker_df <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(vanilla_chocolate <span class="sc">==</span> <span class="st">"Chocolate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 13
+  Timestamp    first_thing_in_morning num_languages vanilla_chocolate superpower
+  &lt;chr&gt;        &lt;chr&gt;                          &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;     
+1 10/5/2023 1… Go back to sleep                3.25 Chocolate         Shape shi…
+2 10/5/2023 1… Go back to sleep                2.5  Chocolate         Flight    
+# ℹ 8 more variables: social_media &lt;chr&gt;, num_browser_tabs &lt;dbl&gt;,
+#   height_cm &lt;dbl&gt;, procrastinate &lt;chr&gt;, extreme_sport &lt;chr&gt;,
+#   r_experience &lt;chr&gt;, travel_to_workshop &lt;chr&gt;, years_current_country &lt;lgl&gt;</code></pre>
+</div>
+</div>
+<p>Can you tell how many people that is from looking at the size of the tibble?</p>
+<p>Now it’s your turn to try one. Pick all responses where people would like to try Skydiving.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ice_breaker_df <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="filtering-for-multiple-conditions" class="level3">
+<h3 class="anchored" data-anchor-id="filtering-for-multiple-conditions">Filtering for multiple conditions</h3>
+<p>You can also state multiple conditions, separated by a comma. For example, <code>filter(x &gt; 5, y &lt; 2)</code> would pick all rows for which the value in the column <code>x</code> is greater than 5 and the value in the column <code>y</code> is less than 2. Note that the conditions are combined via logical and, both need to be satisfied for the row to be picked.</p>
+<p>To try this out, pick all survey responses where people taller than XXX cm would like to retain their Facebook.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="choosing-data-columns" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-data-columns">Choosing data columns</h2>
+<p>The function <code>select()</code> allows you to pick specific data columns by name. This is frequently useful when a dataset has many more columns than we are interested in at the time. For example, if we are only interested in the responses regarding what people do first thing in the morning, what superpower they would like, and how they procrastinate, we could select just those three columns:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ice_breaker_df <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(first_thing_in_morning, superpower, procrastinate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  first_thing_in_morning superpower     procrastinate        
+  &lt;chr&gt;                  &lt;chr&gt;          &lt;chr&gt;                
+1 Check text messages    Flight         Watching TV          
+2 Go back to sleep       Shape shifting Eating snacks        
+3 Go back to sleep       Flight         Watching TV          
+4 Turn off the alarm     Flight         Browsing the internet
+5 Turn off the alarm     &lt;NA&gt;           &lt;NA&gt;                 </code></pre>
+</div>
+</div>
+<p>Try this yourself, picking the columns representing responses to how many browser tabs people have open right now and what social media they would like to keep.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="choosing-columns-for-removal" class="level3">
+<h3 class="anchored" data-anchor-id="choosing-columns-for-removal">Choosing columns for removal</h3>
+<p>Another situation that arises frequently is one where we want to remove specific columns. We can also do this with <code>select()</code>, but now write <code>select(-column)</code> to remove one or more columns.</p>
+<p>Try this. Remove the column <code>num_browser_tabs</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And now try removing both <code>num_browser_tabs</code> and <code>procrastinate</code>.</p>
+</section>
+</section>
+<section id="sorting-data" class="level2">
+<h2 class="anchored" data-anchor-id="sorting-data">Sorting data</h2>
+<p>The function <code>arrange()</code> allows you to sort data by one or more columns. For example, <code>dataframe %&gt;% arrange(x)</code> would sort the data by increasing values of <code>x</code>, and <code>dataframe %&gt;% arrange(x, y)</code> would sort the data first by <code>x</code> and then, for ties in <code>x</code>, by <code>y</code>.</p>
+<p>As an example, the following code sorts responses by the person’s height:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ice_breaker_df <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(height_cm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 13
+  Timestamp    first_thing_in_morning num_languages vanilla_chocolate superpower
+  &lt;chr&gt;        &lt;chr&gt;                          &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;     
+1 10/5/2023 1… Go back to sleep                2.5  Chocolate         Flight    
+2 10/5/2023 1… Go back to sleep                3.25 Chocolate         Shape shi…
+3 10/5/2023 1… Turn off the alarm              2    Vanilla           Flight    
+4 10/5/2023 1… Check text messages             1    Vanilla           Flight    
+5 10/15/2023 … Turn off the alarm             NA    &lt;NA&gt;              &lt;NA&gt;      
+# ℹ 8 more variables: social_media &lt;chr&gt;, num_browser_tabs &lt;dbl&gt;,
+#   height_cm &lt;dbl&gt;, procrastinate &lt;chr&gt;, extreme_sport &lt;chr&gt;,
+#   r_experience &lt;chr&gt;, travel_to_workshop &lt;chr&gt;, years_current_country &lt;lgl&gt;</code></pre>
+</div>
+</div>
+<p>Now it’s your turn. Sort responses by the number of languages people can speak:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="arranging-in-descending-order" class="level3">
+<h3 class="anchored" data-anchor-id="arranging-in-descending-order">Arranging in descending order</h3>
+<p>To arrange data in descending order, enclose the data column in <code>desc()</code>. For example, <code>dataframe %&gt;% arrange(desc(x))</code> would sort the data by decreasing values of <code>x</code>. (<code>desc</code> stands for “descending”.)</p>
+<p>Try this out. Sort the responses by height again, this time from largest to smallest:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="counting" class="level2">
+<h2 class="anchored" data-anchor-id="counting">Counting</h2>
+<p>We frequently want to count how many times a particular value or combination of values occurs in a dataset. We do this using the <code>count()</code> function. For example, the following code counts how many of each number we got for the number of languages people can speak.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  num_languages     n
+          &lt;dbl&gt; &lt;int&gt;
+1          1        1
+2          2        1
+3          2.5      1
+4          3.25     1
+5         NA        1</code></pre>
+</div>
+</div>
+<p>Now try this yourself. Count how many prefer vanilla ice cream and how many chocolate.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="chaining-analysis-steps-into-pipelines" class="level3">
+<h3 class="anchored" data-anchor-id="chaining-analysis-steps-into-pipelines">Chaining analysis steps into pipelines</h3>
+<p>We can chain multiple analysis steps into a pipeline by continuing to add “and then” statements. For example, <code>dataframe %&gt;% count(...) %&gt;% arrange(...)</code> would first count and then sort the data.</p>
+<p>Try this out by counting the number of responses of languages spoken and and then sorting by the number.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="creating-new-data-columns" class="level2">
+<h2 class="anchored" data-anchor-id="creating-new-data-columns">Creating new data columns</h2>
+<p>The function <code>mutate()</code> allows you to add new columns to a data table. For example, <code>dataframe %&gt;% mutate(sum = x + y)</code> would create a new column <code>sum</code> that is the sum of the columns <code>x</code> and <code>y</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+      x     y
+  &lt;int&gt; &lt;dbl&gt;
+1     1    10
+2     2    20
+3     3    30</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sum =</span> x <span class="sc">+</span> y</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+      x     y   sum
+  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     1    10    11
+2     2    20    22
+3     3    30    33</code></pre>
+</div>
+</div>
+<p>Note that the part to the left of the equals sign (here, <code>sum</code>) is the name of the new column, and the part to the right of the equals sign (here, <code>x + y</code>) is an R expression that evaluates to the values in the new column.</p>
+<p>Now apply this concept to the <code>ice_breaker_df</code> dataset. Add a new column <code>browsing by language</code> that is the ratio of number of browser tabs currently open and number of languages spoken:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="counting-with-custom-conditions" class="level3">
+<h3 class="anchored" data-anchor-id="counting-with-custom-conditions">Counting with custom conditions</h3>
+<p>It is quite common that we want to count items that meet a specific condition. For example, let’s say we want to count how many people are taller than 155 cm. To do this efficiently, we first create a new column that indicates whether the condition is met or not, and we then use count with that indicator column.</p>
+<p>The easiest way to create indicator columns is via the function <code>if_else()</code>, which takes three arguments: a condition, a result if the condition is met, and a result if the condition is not met. The following example shows how to create an indicator column showing whether a variable is positive or negative:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">2.3</span>, <span class="dv">50</span>, <span class="sc">-</span><span class="fl">1.4</span>))</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 1
+      x
+  &lt;dbl&gt;
+1  -0.5
+2   2.3
+3  50  
+4  -1.4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sign_of_x =</span> <span class="fu">if_else</span>(x <span class="sc">&gt;=</span> <span class="dv">0</span>, <span class="st">"positive"</span>, <span class="st">"negative"</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sign_of_x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  sign_of_x     n
+  &lt;chr&gt;     &lt;int&gt;
+1 negative      2
+2 positive      2</code></pre>
+</div>
+</div>
+<p>Now try this yourself. Count how many people are taller than 155 cm. Then sort your results.</p>
+<p>Here are a few additional exercises that you can work on to practice and learn more about survey responses from everyone in this room!</p>
+</section>
+<section id="exercise" class="level3">
+<h3 class="anchored" data-anchor-id="exercise">Exercise</h3>
+<p>Write R commands for the following -<br>
+1. How many people took this survey?<br>
+2. How many questions did we ask?<br>
+3. What questions did we ask?<br>
+4. Give a few examples of the data types captured in the questions<br>
+5. Look at responses of questions 4-6 from all participants<br>
+6. Try to rename a column (question)<br>
+7. Make a new dataframe of 5 questions of your choice.<br>
+8. Can you get the height of the tallest person in this room?<br>
+9. How many people speak more than 2 languages?<br>
+10. Select the question about R experience and sort by the kind of R background and experience in this room.<br>
+12. What is the ratio of people who took a plane to this workshop vs those who walked?</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

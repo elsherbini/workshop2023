@@ -1,11 +1,54 @@
 ---
 title: "Datasets"
+format: 
+  html:
+    toc: true
+
 ---
+
+## Icebreaker survey
+
+[Download here](https://docs.google.com/spreadsheets/d/e/2PACX-1vRD_PMPFbTkZmIhXcc0y70IEznxMDpaw8tvsD64JvWLT-aogEnMoVjAWTlvLtHiLCUyTRbsA6ePgQnN/pub?gid=1324386097&single=true&output=csv)
 
 ## Download the instructional dataset:
 
+The main data set for use in lectures is split into 5 tables. The idea of this dataset is that there is a randomized controlled trial of a drug aimed at reducing HIV risk by reducing inflammation. There were 23 participants in the placebo arm and 21 in the treatment arm. There were 3 visits for the trial – baseline (before any treatment occurred), week_1 (1 week after treatment) and week_7 (7 weeks after treatment). At each time point inflammation was measured using luminex (elisa_cytokines table) and immune cells counts were measured from a pap-smear (flow_cytometry table).  
+
 - [`00_sample_ids_UKZN_workshop_2023.csv`](datasets/instructional_dataset/00_sample_ids_UKZN_workshop_2023.csv)
+
+`pid` – participant id  
+`time_point` – “baseline”, “week_1”, or “week_7” 
+`arm` – “treatment” or “placebo"  
+`sample_id` – the “wet-lab” sample id associated with this timepoint  
+
 - [`01_participant_metadata_UKZN_workshop_2023.csv`](datasets/instructional_dataset/01_participant_metadata_UKZN_workshop_2023.csv)
+
+`pid` - participant id  
+`arm` - “treatment” or “placebo”  
+`smoker` - “yes” or “no”  
+`age` – integer age in years  
+`education` – 4 options (“less than grade 9”, "grade 10-12, not matriculated", "grade 10-12, matriculated", "post-secondary")  
+`sex` – all participants are “F”  
+
 - [`02_visit_clinical_measurements_UKZN_workshop_2023.csv`](datasets/instructional_dataset/02_visit_clinical_measurements_UKZN_workshop_2023.csv)
+
+pid – particpant id  
+time_point – “baseline”, “week_1”, or “week_7”  
+arm – “treatment” or “placebo”  
+nugent_score – [Nugent Score](https://en.wikipedia.org/wiki/Nugent_score), a number from 0-10. 0-3 is no BV, 4-6 is intermediate BV, and 7-10 is BV  .
+crp_blood – decimal number representing C-reactive protein blood test (CRP) 
+ph – vaginal pH  
+
 - [`03_elisa_cytokines_UKZN_workshop_2023.csv`](datasets/instructional_dataset/03_elisa_cytokines_UKZN_workshop_2023.csv)
+
+`sample_id` - the “wet-lab” sample id associated with this timepoint  
+`cytokine` - "IL-1a", "IL-10", "IL-1b", "IL-8", "IL-6", "TNFa", "IP-10", "MIG", "IFN-Y", "MIP-3a"  
+`conc` – decimal number representing concentration   
+`limits` – either “within limits” or “out of range” 
+
 - [`04_flow_cytometry_UKZN_workshop_2023.csv`](datasets/instructional_dataset/04_flow_cytometry_UKZN_workshop_2023.csv)
+
+`sample_id` - the “wet-lab” sample id associated with this timepoint  
+All other columns – the integer count of this type of cell in this sample
+
+`cd4_t_cells` might best be analyzed as a proportion of `cd3_t_cells`...
