@@ -137,6 +137,11 @@ scale(x, center = TRUE, scale = TRUE)   center and standardize
 sample(x, size, replace = FALSE, prob)  sampling with or without replacement. prob: vector of weights
 ```
 
+
+To get help with a function, type `?function_name` in the console.
+
+For example, try typing `?mean` into the console. Check out [this guide](https://socviz.co/appendix.html?s=09#a-little-more-about-r) on how to read the help page.
+
 #### 1.5 Other useful functions
 
 ```{r echo=TRUE, eval=FALSE}
@@ -260,8 +265,8 @@ p
 a
 
 # bad variable names
-x mean
-sd of x
+x.mean
+sd.of-x
 
 ```
 
