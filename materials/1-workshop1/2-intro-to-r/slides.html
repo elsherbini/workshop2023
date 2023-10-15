@@ -692,7 +692,7 @@
 <h2>Let’s use R for math</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_7b30d9f0" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_74dfcbc6" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1175,6 +1175,12 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <p>functions can have <em>named parameters</em> as well as <em>positional parameters.</em><br>
 <em>named parameters</em> always take an <code>=</code> sign for assignment.</p>
 </section>
+<section id="getting-help-with-functions" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Getting help with functions</h2>
+<p>Type ?str_c in the console to get a help page. check out <a href="https://socviz.co/appendix.html?s=09#a-little-more-about-r">this guide</a> on how to read the R help pages.</p>
+<p>also try googling str_c R tidyverse to get help.</p>
+<p>chatGPT and phind.com are really good at answering specific questions about R functions - not always correct but most of the time.</p>
+</section>
 <section id="everything-is-a-vector" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">“Everything is a vector”</h2>
 <p>This sounds like nonsense - let’s unpack:</p>
@@ -1261,7 +1267,7 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <p>That’s enough slides for now time to try for yourself! Go to <a href="index.html">the module</a> and go to the first exercise.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_06bd0161" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_4690b9b0" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">30</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1281,6 +1287,14 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 </ul>
 </div>
 </section>
+<section id="how-to-read-in-data" class="slide level2">
+<h2>How to read in data?</h2>
+<p>Data is often in tables, and the easiest way to store tabular data is in <code>csv</code> or <code>tsv</code> format.</p>
+<p><code>csv</code> - comma separated values<br>
+<code>tsv</code> - tab separated values</p>
+<p>to read in data stored this way use <code>read_csv(filename)</code> or <code>read_tsv(filename)</code></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>table_02 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"02_visit_clinical_measurements_UKZN_workshop_2023.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="but-first-the-pipe-operator" class="slide level2">
 <h2>But first: the pipe operator <code>%&gt;%</code></h2>
 </section>
@@ -1293,9 +1307,9 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <section id="the-pipe-feeds-data-into-functions" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">The pipe <code>%&gt;%</code> feeds data into functions</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb33-1" class="hljs-ln-code"><a href="#cb33-1"></a><span class="in">```{r}</span></span>
-<span id="cb33-2" class="hljs-ln-code"><a href="#cb33-2"></a><span class="fu">head</span>(table_02)</span>
-<span id="cb33-3" class="hljs-ln-code"><a href="#cb33-3"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb34-1" class="hljs-ln-code"><a href="#cb34-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-2" class="hljs-ln-code"><a href="#cb34-2"></a><span class="fu">head</span>(table_02)</span>
+<span id="cb34-3" class="hljs-ln-code"><a href="#cb34-3"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 6
   pid    time_point arm     nugent_score crp_blood    ph
@@ -1312,11 +1326,11 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <section id="the-pipe-feeds-data-into-functions-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">The pipe <code>%&gt;%</code> feeds data into functions</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb35-1" class="hljs-ln-code"><a href="#cb35-1"></a><span class="in">```{r}</span></span>
-<span id="cb35-2" class="hljs-ln-code"><a href="#cb35-2"></a><span class="co"># head(table_02)</span></span>
-<span id="cb35-3" class="hljs-ln-code"><a href="#cb35-3"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb35-4" class="hljs-ln-code"><a href="#cb35-4"></a>  <span class="fu">head</span>()</span>
-<span id="cb35-5" class="hljs-ln-code"><a href="#cb35-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb36-1" class="hljs-ln-code"><a href="#cb36-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-2" class="hljs-ln-code"><a href="#cb36-2"></a><span class="co"># head(table_02)</span></span>
+<span id="cb36-3" class="hljs-ln-code"><a href="#cb36-3"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb36-4" class="hljs-ln-code"><a href="#cb36-4"></a>  <span class="fu">head</span>()</span>
+<span id="cb36-5" class="hljs-ln-code"><a href="#cb36-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 6
   pid    time_point arm     nugent_score crp_blood    ph
@@ -1333,29 +1347,29 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <section id="the-pipe-feeds-data-into-functions-2" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">The pipe <code>%&gt;%</code> feeds data into functions</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb37-1" class="hljs-ln-code"><a href="#cb37-1"></a><span class="in">```{r}</span></span>
-<span id="cb37-2" class="hljs-ln-code"><a href="#cb37-2"></a><span class="fu">ggplot</span>(table_02, <span class="fu">aes</span>(crp_blood, ph, <span class="at">color =</span> arm)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb37-3" class="hljs-ln-code"><a href="#cb37-3"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb38-1" class="hljs-ln-code"><a href="#cb38-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-2" class="hljs-ln-code"><a href="#cb38-2"></a><span class="fu">ggplot</span>(table_02, <span class="fu">aes</span>(crp_blood, ph, <span class="at">color =</span> arm)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb38-3" class="hljs-ln-code"><a href="#cb38-3"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
 <section id="the-pipe-feeds-data-into-functions-3" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">The pipe <code>%&gt;%</code> feeds data into functions</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb38-1" class="hljs-ln-code"><a href="#cb38-1"></a><span class="in">```{r}</span></span>
-<span id="cb38-2" class="hljs-ln-code"><a href="#cb38-2"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb38-3" class="hljs-ln-code"><a href="#cb38-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(crp_blood, ph, <span class="at">color =</span> arm)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb38-4" class="hljs-ln-code"><a href="#cb38-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb39-1" class="hljs-ln-code"><a href="#cb39-1"></a><span class="in">```{r}</span></span>
+<span id="cb39-2" class="hljs-ln-code"><a href="#cb39-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb39-3" class="hljs-ln-code"><a href="#cb39-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(crp_blood, ph, <span class="at">color =</span> arm)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb39-4" class="hljs-ln-code"><a href="#cb39-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section>
 <section id="since-r-4.1-native-pipe" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Since R 4.1: Native pipe <code>|&gt;</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb39-1" class="hljs-ln-code"><a href="#cb39-1"></a><span class="in">```{r}</span></span>
-<span id="cb39-2" class="hljs-ln-code"><a href="#cb39-2"></a>table_02 <span class="sc">|&gt;</span></span>
-<span id="cb39-3" class="hljs-ln-code"><a href="#cb39-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(crp_blood, ph, <span class="at">color =</span> arm)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb39-4" class="hljs-ln-code"><a href="#cb39-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb40-1" class="hljs-ln-code"><a href="#cb40-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-2" class="hljs-ln-code"><a href="#cb40-2"></a>table_02 <span class="sc">|&gt;</span></span>
+<span id="cb40-3" class="hljs-ln-code"><a href="#cb40-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(crp_blood, ph, <span class="at">color =</span> arm)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb40-4" class="hljs-ln-code"><a href="#cb40-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
@@ -1381,10 +1395,10 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <section id="filter-only-placebo" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Filter only placebo</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb40-1" class="hljs-ln-code"><a href="#cb40-1"></a><span class="in">```{r}</span></span>
-<span id="cb40-2" class="hljs-ln-code"><a href="#cb40-2"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb40-3" class="hljs-ln-code"><a href="#cb40-3"></a>  <span class="fu">filter</span>(arm <span class="sc">==</span> <span class="st">"placebo"</span>)</span>
-<span id="cb40-4" class="hljs-ln-code"><a href="#cb40-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb41-1" class="hljs-ln-code"><a href="#cb41-1"></a><span class="in">```{r}</span></span>
+<span id="cb41-2" class="hljs-ln-code"><a href="#cb41-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb41-3" class="hljs-ln-code"><a href="#cb41-3"></a>  <span class="fu">filter</span>(arm <span class="sc">==</span> <span class="st">"placebo"</span>)</span>
+<span id="cb41-4" class="hljs-ln-code"><a href="#cb41-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 69 × 6
    pid    time_point arm     nugent_score crp_blood    ph
@@ -1406,10 +1420,10 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <section id="filter-out-samples-with-ph-4" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Filter out samples with ph &lt; 4</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb42-1" class="hljs-ln-code"><a href="#cb42-1"></a><span class="in">```{r}</span></span>
-<span id="cb42-2" class="hljs-ln-code"><a href="#cb42-2"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb42-3" class="hljs-ln-code"><a href="#cb42-3"></a>  <span class="fu">filter</span>(ph <span class="sc">&lt;</span> <span class="dv">4</span>)</span>
-<span id="cb42-4" class="hljs-ln-code"><a href="#cb42-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb43-1" class="hljs-ln-code"><a href="#cb43-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-2" class="hljs-ln-code"><a href="#cb43-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb43-3" class="hljs-ln-code"><a href="#cb43-3"></a>  <span class="fu">filter</span>(ph <span class="sc">&lt;</span> <span class="dv">4</span>)</span>
+<span id="cb43-4" class="hljs-ln-code"><a href="#cb43-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 39 × 6
    pid    time_point arm       nugent_score crp_blood    ph
@@ -1435,10 +1449,10 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <section id="pick-columns-pid-ph-and-nugent" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Pick columns <code>pid</code>, <code>ph</code>, and <code>nugent</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb44-1" class="hljs-ln-code"><a href="#cb44-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-2" class="hljs-ln-code"><a href="#cb44-2"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb44-3" class="hljs-ln-code"><a href="#cb44-3"></a>  <span class="fu">select</span>(pid, ph, nugent_score)</span>
-<span id="cb44-4" class="hljs-ln-code"><a href="#cb44-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb45-1" class="hljs-ln-code"><a href="#cb45-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-2" class="hljs-ln-code"><a href="#cb45-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb45-3" class="hljs-ln-code"><a href="#cb45-3"></a>  <span class="fu">select</span>(pid, ph, nugent_score)</span>
+<span id="cb45-4" class="hljs-ln-code"><a href="#cb45-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 132 × 3
    pid       ph nugent_score
@@ -1460,10 +1474,10 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <section id="rename-columns-and-subset-with-select" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Rename columns and subset with select</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb46-1" class="hljs-ln-code"><a href="#cb46-1"></a><span class="in">```{r}</span></span>
-<span id="cb46-2" class="hljs-ln-code"><a href="#cb46-2"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb46-3" class="hljs-ln-code"><a href="#cb46-3"></a>  <span class="fu">select</span>(<span class="at">participant_id =</span> pid, ph, nugent_score)</span>
-<span id="cb46-4" class="hljs-ln-code"><a href="#cb46-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb47-1" class="hljs-ln-code"><a href="#cb47-1"></a><span class="in">```{r}</span></span>
+<span id="cb47-2" class="hljs-ln-code"><a href="#cb47-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb47-3" class="hljs-ln-code"><a href="#cb47-3"></a>  <span class="fu">select</span>(<span class="at">participant_id =</span> pid, ph, nugent_score)</span>
+<span id="cb47-4" class="hljs-ln-code"><a href="#cb47-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 132 × 3
    participant_id    ph nugent_score
@@ -1489,10 +1503,10 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <section id="sort-samples-by-ph-ascending" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Sort samples by ph ascending</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb48-1" class="hljs-ln-code"><a href="#cb48-1"></a><span class="in">```{r}</span></span>
-<span id="cb48-2" class="hljs-ln-code"><a href="#cb48-2"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb48-3" class="hljs-ln-code"><a href="#cb48-3"></a>  <span class="fu">arrange</span>(ph)</span>
-<span id="cb48-4" class="hljs-ln-code"><a href="#cb48-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb49-1" class="hljs-ln-code"><a href="#cb49-1"></a><span class="in">```{r}</span></span>
+<span id="cb49-2" class="hljs-ln-code"><a href="#cb49-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb49-3" class="hljs-ln-code"><a href="#cb49-3"></a>  <span class="fu">arrange</span>(ph)</span>
+<span id="cb49-4" class="hljs-ln-code"><a href="#cb49-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 132 × 6
    pid    time_point arm       nugent_score crp_blood    ph
@@ -1514,10 +1528,10 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <section id="sort-samples-by-ph-descending" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Sort samples by ph, descending</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb50-1" class="hljs-ln-code"><a href="#cb50-1"></a><span class="in">```{r}</span></span>
-<span id="cb50-2" class="hljs-ln-code"><a href="#cb50-2"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb50-3" class="hljs-ln-code"><a href="#cb50-3"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ph))</span>
-<span id="cb50-4" class="hljs-ln-code"><a href="#cb50-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb51-1" class="hljs-ln-code"><a href="#cb51-1"></a><span class="in">```{r}</span></span>
+<span id="cb51-2" class="hljs-ln-code"><a href="#cb51-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb51-3" class="hljs-ln-code"><a href="#cb51-3"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ph))</span>
+<span id="cb51-4" class="hljs-ln-code"><a href="#cb51-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 132 × 6
    pid    time_point arm       nugent_score crp_blood    ph
@@ -1540,9 +1554,9 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <h2>Counting things</h2>
 <p>To demonstrate counting, let’s switch to <code>table_01</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb52-1"><a href="#cb52-1"></a><span class="in">```{r}</span></span>
-<span id="cb52-2"><a href="#cb52-2"></a>table_01</span>
-<span id="cb52-3"><a href="#cb52-3"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb53-1"><a href="#cb53-1"></a><span class="in">```{r}</span></span>
+<span id="cb53-2"><a href="#cb53-2"></a>table_01</span>
+<span id="cb53-3"><a href="#cb53-3"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 44 × 6
    pid    arm       smoker       age education                     sex  
@@ -1564,10 +1578,10 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <section id="counting-things-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Counting things</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb54-1" class="hljs-ln-code"><a href="#cb54-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-2" class="hljs-ln-code"><a href="#cb54-2"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb54-3" class="hljs-ln-code"><a href="#cb54-3"></a>  <span class="fu">count</span>(smoker)</span>
-<span id="cb54-4" class="hljs-ln-code"><a href="#cb54-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb55-1" class="hljs-ln-code"><a href="#cb55-1"></a><span class="in">```{r}</span></span>
+<span id="cb55-2" class="hljs-ln-code"><a href="#cb55-2"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb55-3" class="hljs-ln-code"><a href="#cb55-3"></a>  <span class="fu">count</span>(smoker)</span>
+<span id="cb55-4" class="hljs-ln-code"><a href="#cb55-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   smoker         n
@@ -1580,10 +1594,10 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <section id="counting-things-2" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Counting things</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb56-1" class="hljs-ln-code"><a href="#cb56-1"></a><span class="in">```{r}</span></span>
-<span id="cb56-2" class="hljs-ln-code"><a href="#cb56-2"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb56-3" class="hljs-ln-code"><a href="#cb56-3"></a>  <span class="fu">count</span>(arm, smoker)</span>
-<span id="cb56-4" class="hljs-ln-code"><a href="#cb56-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb57-1" class="hljs-ln-code"><a href="#cb57-1"></a><span class="in">```{r}</span></span>
+<span id="cb57-2" class="hljs-ln-code"><a href="#cb57-2"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb57-3" class="hljs-ln-code"><a href="#cb57-3"></a>  <span class="fu">count</span>(arm, smoker)</span>
+<span id="cb57-4" class="hljs-ln-code"><a href="#cb57-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
   arm       smoker         n
@@ -1604,10 +1618,10 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <section id="use-the-pipe-to-build-analysis-pipelines" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Use the pipe to build analysis pipelines</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb58-1" class="hljs-ln-code"><a href="#cb58-1"></a><span class="in">```{r}</span></span>
-<span id="cb58-2" class="hljs-ln-code"><a href="#cb58-2"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb58-3" class="hljs-ln-code"><a href="#cb58-3"></a>  <span class="fu">filter</span>(arm <span class="sc">==</span> <span class="st">"placebo"</span>)</span>
-<span id="cb58-4" class="hljs-ln-code"><a href="#cb58-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb59-1" class="hljs-ln-code"><a href="#cb59-1"></a><span class="in">```{r}</span></span>
+<span id="cb59-2" class="hljs-ln-code"><a href="#cb59-2"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb59-3" class="hljs-ln-code"><a href="#cb59-3"></a>  <span class="fu">filter</span>(arm <span class="sc">==</span> <span class="st">"placebo"</span>)</span>
+<span id="cb59-4" class="hljs-ln-code"><a href="#cb59-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 23 × 6
    pid    arm     smoker       age education                     sex  
@@ -1629,11 +1643,11 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <section id="use-the-pipe-to-build-analysis-pipelines-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Use the pipe to build analysis pipelines</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb60-1" class="hljs-ln-code"><a href="#cb60-1"></a><span class="in">```{r}</span></span>
-<span id="cb60-2" class="hljs-ln-code"><a href="#cb60-2"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb60-3" class="hljs-ln-code"><a href="#cb60-3"></a>  <span class="fu">filter</span>(age <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb60-4" class="hljs-ln-code"><a href="#cb60-4"></a>  <span class="fu">select</span>(pid, arm, smoker)</span>
-<span id="cb60-5" class="hljs-ln-code"><a href="#cb60-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb61-1" class="hljs-ln-code"><a href="#cb61-1"></a><span class="in">```{r}</span></span>
+<span id="cb61-2" class="hljs-ln-code"><a href="#cb61-2"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb61-3" class="hljs-ln-code"><a href="#cb61-3"></a>  <span class="fu">filter</span>(age <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb61-4" class="hljs-ln-code"><a href="#cb61-4"></a>  <span class="fu">select</span>(pid, arm, smoker)</span>
+<span id="cb61-5" class="hljs-ln-code"><a href="#cb61-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 3
    pid    arm       smoker    
@@ -1656,12 +1670,12 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <section id="use-the-pipe-to-build-analysis-pipelines-2" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Use the pipe to build analysis pipelines</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb62-1" class="hljs-ln-code"><a href="#cb62-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-2" class="hljs-ln-code"><a href="#cb62-2"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb62-3" class="hljs-ln-code"><a href="#cb62-3"></a>  <span class="fu">filter</span>(age <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb62-4" class="hljs-ln-code"><a href="#cb62-4"></a>  <span class="fu">select</span>(pid, arm, smoker) <span class="sc">%&gt;%</span></span>
-<span id="cb62-5" class="hljs-ln-code"><a href="#cb62-5"></a>  <span class="fu">count</span>(arm, smoker)</span>
-<span id="cb62-6" class="hljs-ln-code"><a href="#cb62-6"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb63-1" class="hljs-ln-code"><a href="#cb63-1"></a><span class="in">```{r}</span></span>
+<span id="cb63-2" class="hljs-ln-code"><a href="#cb63-2"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb63-3" class="hljs-ln-code"><a href="#cb63-3"></a>  <span class="fu">filter</span>(age <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb63-4" class="hljs-ln-code"><a href="#cb63-4"></a>  <span class="fu">select</span>(pid, arm, smoker) <span class="sc">%&gt;%</span></span>
+<span id="cb63-5" class="hljs-ln-code"><a href="#cb63-5"></a>  <span class="fu">count</span>(arm, smoker)</span>
+<span id="cb63-6" class="hljs-ln-code"><a href="#cb63-6"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
   arm       smoker         n
@@ -1684,10 +1698,10 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <h2 data-id="quarto-animate-title">Example: C-reactive protein</h2>
 <p>The <code>crp_blood</code> column is in units of mg/L. What if you needed it in ug/ul? What’s the calculation?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb64-1" class="hljs-ln-code"><a href="#cb64-1"></a><span class="in">```{r}</span></span>
-<span id="cb64-2" class="hljs-ln-code"><a href="#cb64-2"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb64-3" class="hljs-ln-code"><a href="#cb64-3"></a>  <span class="fu">select</span>(pid, time_point, crp_blood)</span>
-<span id="cb64-4" class="hljs-ln-code"><a href="#cb64-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb65-1" class="hljs-ln-code"><a href="#cb65-1"></a><span class="in">```{r}</span></span>
+<span id="cb65-2" class="hljs-ln-code"><a href="#cb65-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb65-3" class="hljs-ln-code"><a href="#cb65-3"></a>  <span class="fu">select</span>(pid, time_point, crp_blood)</span>
+<span id="cb65-4" class="hljs-ln-code"><a href="#cb65-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 132 × 3
    pid    time_point crp_blood
@@ -1711,10 +1725,10 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <p>The <code>crp_blood</code> column is in units of mg/L. What if you needed it in ug/ul? What’s the calculation?</p>
 <p>To get ug/L you would multiply by 1000. To get ug/ul you need to then divide by 1000000</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb66-1" class="hljs-ln-code"><a href="#cb66-1"></a><span class="in">```{r}</span></span>
-<span id="cb66-2" class="hljs-ln-code"><a href="#cb66-2"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb66-3" class="hljs-ln-code"><a href="#cb66-3"></a>  <span class="fu">select</span>(pid, time_point, crp_blood)</span>
-<span id="cb66-4" class="hljs-ln-code"><a href="#cb66-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb67-1" class="hljs-ln-code"><a href="#cb67-1"></a><span class="in">```{r}</span></span>
+<span id="cb67-2" class="hljs-ln-code"><a href="#cb67-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb67-3" class="hljs-ln-code"><a href="#cb67-3"></a>  <span class="fu">select</span>(pid, time_point, crp_blood)</span>
+<span id="cb67-4" class="hljs-ln-code"><a href="#cb67-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 132 × 3
    pid    time_point crp_blood
@@ -1738,11 +1752,11 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <p>The <code>crp_blood</code> column is in units of mg/L. What if you needed it in ug/ul? What’s the calculation?</p>
 <p>To get ug/L you would multiply by 1000. To get ug/ul you need to then divide by 1000000</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb68-1" class="hljs-ln-code"><a href="#cb68-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-2" class="hljs-ln-code"><a href="#cb68-2"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb68-3" class="hljs-ln-code"><a href="#cb68-3"></a>  <span class="fu">select</span>(pid, time_point, crp_blood) <span class="sc">%&gt;%</span></span>
-<span id="cb68-4" class="hljs-ln-code"><a href="#cb68-4"></a>  <span class="fu">mutate</span>(<span class="at">crp_blood_ugul =</span> crp_blood <span class="sc">/</span> <span class="dv">1000</span>)</span>
-<span id="cb68-5" class="hljs-ln-code"><a href="#cb68-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb69-1" class="hljs-ln-code"><a href="#cb69-1"></a><span class="in">```{r}</span></span>
+<span id="cb69-2" class="hljs-ln-code"><a href="#cb69-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb69-3" class="hljs-ln-code"><a href="#cb69-3"></a>  <span class="fu">select</span>(pid, time_point, crp_blood) <span class="sc">%&gt;%</span></span>
+<span id="cb69-4" class="hljs-ln-code"><a href="#cb69-4"></a>  <span class="fu">mutate</span>(<span class="at">crp_blood_ugul =</span> crp_blood <span class="sc">/</span> <span class="dv">1000</span>)</span>
+<span id="cb69-5" class="hljs-ln-code"><a href="#cb69-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 132 × 4
    pid    time_point crp_blood crp_blood_ugul
@@ -1764,12 +1778,12 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <section id="make-multiple-columns-at-once" class="slide level2">
 <h2>Make multiple columns at once</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb70-1"><a href="#cb70-1"></a><span class="in">```{r}</span></span>
-<span id="cb70-2"><a href="#cb70-2"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb70-3"><a href="#cb70-3"></a>  <span class="fu">select</span>(pid, time_point, crp_blood) <span class="sc">%&gt;%</span></span>
-<span id="cb70-4"><a href="#cb70-4"></a>  <span class="fu">mutate</span>(<span class="at">crp_blood_ugul =</span> crp_blood <span class="sc">/</span> <span class="dv">1000</span>,</span>
-<span id="cb70-5"><a href="#cb70-5"></a>         <span class="at">crp_blood_ugl =</span> crp_blood <span class="sc">*</span> <span class="dv">1000</span>)</span>
-<span id="cb70-6"><a href="#cb70-6"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb71-1"><a href="#cb71-1"></a><span class="in">```{r}</span></span>
+<span id="cb71-2"><a href="#cb71-2"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb71-3"><a href="#cb71-3"></a>  <span class="fu">select</span>(pid, time_point, crp_blood) <span class="sc">%&gt;%</span></span>
+<span id="cb71-4"><a href="#cb71-4"></a>  <span class="fu">mutate</span>(<span class="at">crp_blood_ugul =</span> crp_blood <span class="sc">/</span> <span class="dv">1000</span>,</span>
+<span id="cb71-5"><a href="#cb71-5"></a>         <span class="at">crp_blood_ugl =</span> crp_blood <span class="sc">*</span> <span class="dv">1000</span>)</span>
+<span id="cb71-6"><a href="#cb71-6"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 132 × 5
    pid    time_point crp_blood crp_blood_ugul crp_blood_ugl
@@ -1793,7 +1807,7 @@ f(x)=\sqrt{\frac{\tau}{2\pi}}
 <p>That’s enough slides for now time to try for yourself! Go to <a href="index.html">the module</a> and go to the second exercise.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_192c691b" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_58f7c642" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">30</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>

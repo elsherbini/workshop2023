@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science for Biology Workshop Series - Datasets</title>
+<title>Data Science for Biology Workshop Series - How data analysis is informed by data generation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,23 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../materials/1-workshop1/2-intro-to-r/index.html" rel="next">
+<link href="../../../materials/1-workshop1/0-welcome/index.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Data Science for Biology Workshop Series</span>
     </a>
   </div>
@@ -82,19 +84,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./installation-instructions.html" rel="" target="">
+    <a class="nav-link" href="../../../installation-instructions.html" rel="" target="">
  <span class="menu-text">Installation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./datasets.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../../../datasets.html" rel="" target="">
  <span class="menu-text">Datasets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resources.html" rel="" target="">
+    <a class="nav-link" href="../../../resources.html" rel="" target="">
  <span class="menu-text">Resources</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
+    <a class="nav-link" href="../../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -113,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Datasets</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/0-welcome/index.html"><b>1. Reproducible Data Analysis with R</b></a></li><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/1-data-generation/index.html"><b>Module 1</b>: How data analysis is informed by data generation</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -136,25 +138,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/1-workshop1/0-welcome/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/1-workshop1/0-welcome/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 0:</b> Welcome to the workshop</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/1-workshop1/1-data-generation/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/1-workshop1/1-data-generation/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><b>Module 1</b>: How data analysis is informed by data generation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/1-workshop1/2-intro-to-r/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/1-workshop1/2-intro-to-r/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 2</b>: Intro to R, Rstudio, and Quarto</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/1-workshop1/3-tidyverse-101/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/1-workshop1/3-tidyverse-101/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 3</b>: Intro to data visualization and data wrangling with the <code>tidyverse</code></span></a>
   </div>
 </li>
@@ -169,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/1-workshop1/7-custom-data-visualizations/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/1-workshop1/7-custom-data-visualizations/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 7</b>: Customizing data visualizations using <code>colorspace</code>, <code>ggplot2</code>, and <code>patchwork</code></span></a>
   </div>
 </li>
@@ -193,8 +195,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#icebreaker-survey" id="toc-icebreaker-survey" class="nav-link active" data-scroll-target="#icebreaker-survey">Icebreaker survey</a></li>
-  <li><a href="#download-the-instructional-dataset" id="toc-download-the-instructional-dataset" class="nav-link" data-scroll-target="#download-the-instructional-dataset">Download the instructional dataset:</a></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
   </ul>
 </nav>
     </div>
@@ -203,7 +204,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Datasets</h1>
+<h1 class="title">How data analysis is informed by data generation</h1>
 </div>
 
 
@@ -218,48 +219,12 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="icebreaker-survey" class="level2">
-<h2 class="anchored" data-anchor-id="icebreaker-survey">Icebreaker survey</h2>
-<p><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRD_PMPFbTkZmIhXcc0y70IEznxMDpaw8tvsD64JvWLT-aogEnMoVjAWTlvLtHiLCUyTRbsA6ePgQnN/pub?gid=1324386097&amp;single=true&amp;output=csv">Download here</a></p>
-</section>
-<section id="download-the-instructional-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="download-the-instructional-dataset">Download the instructional dataset:</h2>
-<p>The main data set for use in lectures is split into 5 tables. The idea of this dataset is that there is a randomized controlled trial of a drug aimed at reducing HIV risk by reducing inflammation. There were 23 participants in the placebo arm and 21 in the treatment arm. There were 3 visits for the trial – baseline (before any treatment occurred), week_1 (1 week after treatment) and week_7 (7 weeks after treatment). At each time point inflammation was measured using luminex (elisa_cytokines table) and immune cells counts were measured from a pap-smear (flow_cytometry table).</p>
-<ul>
-<li><a href="datasets/instructional_dataset/00_sample_ids_UKZN_workshop_2023.csv"><code>00_sample_ids_UKZN_workshop_2023.csv</code></a></li>
-</ul>
-<p><code>pid</code> – participant id<br>
-<code>time_point</code> – “baseline”, “week_1”, or “week_7” <code>arm</code> – “treatment” or “placebo”<br>
-<code>sample_id</code> – the “wet-lab” sample id associated with this timepoint</p>
-<ul>
-<li><a href="datasets/instructional_dataset/01_participant_metadata_UKZN_workshop_2023.csv"><code>01_participant_metadata_UKZN_workshop_2023.csv</code></a></li>
-</ul>
-<p><code>pid</code> - participant id<br>
-<code>arm</code> - “treatment” or “placebo”<br>
-<code>smoker</code> - “yes” or “no”<br>
-<code>age</code> – integer age in years<br>
-<code>education</code> – 4 options (“less than grade 9”, “grade 10-12, not matriculated”, “grade 10-12, matriculated”, “post-secondary”)<br>
-<code>sex</code> – all participants are “F”</p>
-<ul>
-<li><a href="datasets/instructional_dataset/02_visit_clinical_measurements_UKZN_workshop_2023.csv"><code>02_visit_clinical_measurements_UKZN_workshop_2023.csv</code></a></li>
-</ul>
-<p>pid – particpant id<br>
-time_point – “baseline”, “week_1”, or “week_7”<br>
-arm – “treatment” or “placebo”<br>
-nugent_score – <a href="https://en.wikipedia.org/wiki/Nugent_score">Nugent Score</a>, a number from 0-10. 0-3 is no BV, 4-6 is intermediate BV, and 7-10 is BV . crp_blood – decimal number representing C-reactive protein blood test (CRP) ph – vaginal pH</p>
-<ul>
-<li><a href="datasets/instructional_dataset/03_elisa_cytokines_UKZN_workshop_2023.csv"><code>03_elisa_cytokines_UKZN_workshop_2023.csv</code></a></li>
-</ul>
-<p><code>sample_id</code> - the “wet-lab” sample id associated with this timepoint<br>
-<code>cytokine</code> - “IL-1a”, “IL-10”, “IL-1b”, “IL-8”, “IL-6”, “TNFa”, “IP-10”, “MIG”, “IFN-Y”, “MIP-3a”<br>
-<code>conc</code> – decimal number representing concentration<br>
-<code>limits</code> – either “within limits” or “out of range”</p>
-<ul>
-<li><a href="datasets/instructional_dataset/04_flow_cytometry_UKZN_workshop_2023.csv"><code>04_flow_cytometry_UKZN_workshop_2023.csv</code></a></li>
-</ul>
-<p><code>sample_id</code> - the “wet-lab” sample id associated with this timepoint<br>
-All other columns – the integer count of this type of cell in this sample</p>
-<p><code>cd4_t_cells</code> might best be analyzed as a proportion of <code>cd3_t_cells</code>…</p>
+<blockquote class="blockquote">
+<p>Let’s learn about the types of data we’ll use for this workshop</p>
+</blockquote>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRtYNFPfpmO8sCkNKcNFG608ijHDbWI04_An9b9Woeu9YWhspCP_BWVxG3gwR7aBSuzyl0sn7WnLWiZ/embed?start=false&amp;loop=false&amp;delayms=60000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 
 </section>
@@ -498,6 +463,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../materials/1-workshop1/0-welcome/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><b>Module 0:</b> Welcome to the workshop</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../materials/1-workshop1/2-intro-to-r/index.html" class="pagination-link">
+        <span class="nav-page-text"><b>Module 2</b>: Intro to R, Rstudio, and Quarto</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

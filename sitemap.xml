@@ -2,82 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/about.html</loc>
-    <lastmod>2023-10-14T21:28:02.659Z</lastmod>
+    <lastmod>2023-10-15T22:48:07.080Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/datasets.html</loc>
-    <lastmod>2023-10-14T21:28:03.615Z</lastmod>
+    <lastmod>2023-10-15T22:48:07.998Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/index.html</loc>
-    <lastmod>2023-10-14T21:28:04.552Z</lastmod>
+    <lastmod>2023-10-15T22:48:09.018Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/installation-instructions.html</loc>
-    <lastmod>2023-10-14T21:28:06.955Z</lastmod>
+    <lastmod>2023-10-15T22:48:11.125Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/0-welcome/exercise_1.html</loc>
-    <lastmod>2023-10-14T21:28:09.951Z</lastmod>
+    <lastmod>2023-10-15T22:48:14.249Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/0-welcome/index.html</loc>
-    <lastmod>2023-10-14T21:28:10.840Z</lastmod>
+    <lastmod>2023-10-15T22:48:15.119Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/0-welcome/slides.html</loc>
-    <lastmod>2023-10-14T21:28:13.291Z</lastmod>
+    <lastmod>2023-10-15T22:48:17.684Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/1-data-generation/index.html</loc>
+    <lastmod>2023-10-15T22:48:18.724Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/2-intro-to-r/images/ex-2.html</loc>
-    <lastmod>2023-10-14T21:28:14.407Z</lastmod>
+    <lastmod>2023-10-15T22:48:19.688Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/2-intro-to-r/index.html</loc>
-    <lastmod>2023-10-14T21:28:19.268Z</lastmod>
+    <lastmod>2023-10-15T22:48:26.366Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/2-intro-to-r/slides.html</loc>
-    <lastmod>2023-10-14T21:28:30.068Z</lastmod>
+    <lastmod>2023-10-15T22:48:36.935Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/3-tidyverse-101/index.html</loc>
-    <lastmod>2023-10-14T21:28:34.948Z</lastmod>
+    <lastmod>2023-10-15T22:48:41.961Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/3-tidyverse-101/slides.html</loc>
-    <lastmod>2023-10-14T21:29:01.477Z</lastmod>
+    <lastmod>2023-10-15T22:49:09.155Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/7-custom-data-visualizations/color_scales_exercise_solutions.html</loc>
-    <lastmod>2023-10-14T21:29:14.844Z</lastmod>
+    <lastmod>2023-10-15T22:49:22.844Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/7-custom-data-visualizations/color_scales_slides.html</loc>
-    <lastmod>2023-10-14T21:29:40.665Z</lastmod>
+    <lastmod>2023-10-15T22:49:49.722Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/7-custom-data-visualizations/compound_figures_exercise_solutions.html</loc>
-    <lastmod>2023-10-14T21:30:01.147Z</lastmod>
+    <lastmod>2023-10-15T22:50:12.095Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/7-custom-data-visualizations/compound_figures_slides.html</loc>
-    <lastmod>2023-10-14T21:30:14.256Z</lastmod>
+    <lastmod>2023-10-15T22:50:25.577Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/7-custom-data-visualizations/figure_design_exercise_solutions.html</loc>
-    <lastmod>2023-10-14T21:30:25.401Z</lastmod>
+    <lastmod>2023-10-15T22:50:36.372Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/7-custom-data-visualizations/figure_design_slides.html</loc>
-    <lastmod>2023-10-14T21:30:58.847Z</lastmod>
+    <lastmod>2023-10-15T22:51:11.009Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/7-custom-data-visualizations/index.html</loc>
-    <lastmod>2023-10-14T21:31:21.950Z</lastmod>
+    <lastmod>2023-10-15T22:51:32.131Z</lastmod>
   </url>
   <url>
     <loc>https://elsherbini.github.io/durban-data-science-for-biology/resources.html</loc>
-    <lastmod>2023-10-14T21:31:25.471Z</lastmod>
+    <lastmod>2023-10-15T22:51:35.517Z</lastmod>
   </url>
 </urlset>

@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
 <link href="../../../materials/1-workshop1/3-tidyverse-101/index.html" rel="next">
-<link href="../../../materials/1-workshop1/0-welcome/index.html" rel="prev">
+<link href="../../../materials/1-workshop1/1-data-generation/index.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -179,8 +179,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text"><b>Module 1</b>: How data analysis is informed by data generation</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/1-data-generation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 1</b>: How data analysis is informed by data generation</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/1-workshop1/2-intro-to-r/index.html" class="sidebar-item-text sidebar-link active">
@@ -241,10 +244,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
   <li><a href="#challenge-exercise-3" id="toc-challenge-exercise-3" class="nav-link" data-scroll-target="#challenge-exercise-3">Challenge Exercise 3</a></li>
   </ul></li>
-  <li><a href="#end-of-session-worksheet-introduction-to-r-and-quarto" id="toc-end-of-session-worksheet-introduction-to-r-and-quarto" class="nav-link" data-scroll-target="#end-of-session-worksheet-introduction-to-r-and-quarto">End of session worksheet: Introduction to R and Quarto</a>
+  <li><a href="#end-of-session-worksheet-introduction-to-r-and-quarto" id="toc-end-of-session-worksheet-introduction-to-r-and-quarto" class="nav-link" data-scroll-target="#end-of-session-worksheet-introduction-to-r-and-quarto">End of session worksheet: Introduction to R and Quarto</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#the-pipe-read-and-then" id="toc-the-pipe-read-and-then" class="nav-link" data-scroll-target="#the-pipe-read-and-then">The pipe (<code>%&gt;%</code>, read: “and then”)</a></li>
+  <li><a href="#choosing-data-rows" id="toc-choosing-data-rows" class="nav-link" data-scroll-target="#choosing-data-rows">Choosing data rows</a>
   <ul class="collapse">
+  <li><a href="#filtering-for-multiple-conditions" id="toc-filtering-for-multiple-conditions" class="nav-link" data-scroll-target="#filtering-for-multiple-conditions">Filtering for multiple conditions</a></li>
+  </ul></li>
+  <li><a href="#choosing-data-columns" id="toc-choosing-data-columns" class="nav-link" data-scroll-target="#choosing-data-columns">Choosing data columns</a>
+  <ul class="collapse">
+  <li><a href="#choosing-columns-for-removal" id="toc-choosing-columns-for-removal" class="nav-link" data-scroll-target="#choosing-columns-for-removal">Choosing columns for removal</a></li>
+  </ul></li>
+  <li><a href="#sorting-data" id="toc-sorting-data" class="nav-link" data-scroll-target="#sorting-data">Sorting data</a>
+  <ul class="collapse">
+  <li><a href="#arranging-in-descending-order" id="toc-arranging-in-descending-order" class="nav-link" data-scroll-target="#arranging-in-descending-order">Arranging in descending order</a></li>
+  </ul></li>
+  <li><a href="#counting" id="toc-counting" class="nav-link" data-scroll-target="#counting">Counting</a>
+  <ul class="collapse">
+  <li><a href="#chaining-analysis-steps-into-pipelines" id="toc-chaining-analysis-steps-into-pipelines" class="nav-link" data-scroll-target="#chaining-analysis-steps-into-pipelines">Chaining analysis steps into pipelines</a></li>
+  </ul></li>
+  <li><a href="#creating-new-data-columns" id="toc-creating-new-data-columns" class="nav-link" data-scroll-target="#creating-new-data-columns">Creating new data columns</a>
+  <ul class="collapse">
+  <li><a href="#counting-with-custom-conditions" id="toc-counting-with-custom-conditions" class="nav-link" data-scroll-target="#counting-with-custom-conditions">Counting with custom conditions</a></li>
   <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
-  <li><a href="#challenge-exercise" id="toc-challenge-exercise" class="nav-link" data-scroll-target="#challenge-exercise">Challenge Exercise</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -542,11 +564,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Some fun with vectors</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>num_vec[<span class="dv">1</span>]</span>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>num_vec[<span class="dv">1</span>] <span class="co"># what's the first element of num_vec?</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>num_vec[<span class="dv">4</span>]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>num_vec[<span class="dv">4</span>] <span class="co"># 4th?</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>num_vec[<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>num_vec[<span class="sc">-</span><span class="dv">1</span>] <span class="co"># what does -1 do?</span></span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>num_vec[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
@@ -598,9 +620,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>fav_colour <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"yellow"</span>)</span>
 <span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Make a dataframe from the above</span></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(id, name, year_of_birth, fav_colour)</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co"># note, make sure you've added the tidyverse library</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(id, name, year_of_birth, fav_colour)</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
      id name    year_of_birth fav_colour
@@ -650,9 +674,14 @@ $names
 <pre><code>[1] 4</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data frame subsetting (I want only a few columns of my interest)</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "PersonA" "PersonB" "PersonC"</code></pre>
+<pre><code># A tibble: 3 × 1
+  name   
+  &lt;chr&gt;  
+1 PersonA
+2 PersonB
+3 PersonC</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, year_of_birth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -699,13 +728,13 @@ $names
 1     3 PersonC          2000 yellow          </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#extract rows based on multiple conditions</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, year_of_birth <span class="sc">&gt;</span> <span class="dv">1995</span> <span class="sc">&amp;</span> df<span class="sc">$</span>favourite_colour<span class="sc">==</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, year_of_birth <span class="sc">&gt;</span> <span class="dv">1995</span> <span class="sc">&amp;</span> favourite_colour<span class="sc">==</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 0 × 4
 # ℹ 4 variables: ID &lt;dbl&gt;, name &lt;chr&gt;, year_of_birth &lt;dbl&gt;,
 #   favourite_colour &lt;chr&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, year_of_birth <span class="sc">&gt;</span> <span class="dv">1995</span> <span class="sc">|</span> df<span class="sc">$</span>favourite_colour<span class="sc">==</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(df, year_of_birth <span class="sc">&gt;</span> <span class="dv">1995</span> <span class="sc">|</span> favourite_colour<span class="sc">==</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
      ID name    year_of_birth favourite_colour
@@ -737,21 +766,252 @@ $names
 </section>
 <section id="end-of-session-worksheet-introduction-to-r-and-quarto" class="level2">
 <h2 class="anchored" data-anchor-id="end-of-session-worksheet-introduction-to-r-and-quarto">End of session worksheet: Introduction to R and Quarto</h2>
-<p>Now that we practiced a bit on mock and small datasets, let us try a ‘real’ one.</p>
-<p>Use the following command to read in the data from the Ice Breaker poll from this morning. Copy the code chunk into your Quarto markdown</p>
-<p>Download the icebreaker poll everyone filled out this morning. <a href="../../../datasets.html">Download the dataset here</a> and move it to your project directory.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>ice_breaker_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"ice_breaker_poll.csv"</span>) <span class="co"># make sure this file name exists in your current directory!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Now that we practiced a bit on mock and small datasets, let us try a ‘real’ one. In this worksheet, we will look at the Ice Breaker Poll from this morning and learn how to perform basic data manipulations, such as filtering data rows that meet certain conditions, choosing data columns, and arranging data in ascending or descending order.</p>
+<p>First, download the icebreaker poll file containing the dataset. <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRD_PMPFbTkZmIhXcc0y70IEznxMDpaw8tvsD64JvWLT-aogEnMoVjAWTlvLtHiLCUyTRbsA6ePgQnN/pub?gid=1324386097&amp;single=true&amp;output=csv">Download the dataset here</a> and move it to your project directory.</p>
+<p>Use the following command to read in the data from the Ice Breaker poll. ::: {.cell}</p>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>ice_breaker_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Ice Breaker Survey (Responses) - Form Responses 1.csv"</span>) <span class="co"># make sure this file name exists in your current directory!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 5 Columns: 13
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (9): Timestamp, first_thing_in_morning, vanilla_chocolate, superpower, s...
+dbl (3): num_languages, num_browser_tabs, height_cm
+lgl (1): years_current_country
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<p>View your dataset. What is your favourite way to ‘see’ your dataset? Check the first few and last few rows (Hint: Use a function)</p>
-<p>Let us find out more about the survey responses.</p>
+<p>:::</p>
+<p>We will be using the R package <strong>tidyverse</strong> for the data manipulation functions <code>%&gt;%</code>, <code>filter()</code>, <code>select()</code>, <code>arrange()</code>, <code>count()</code>, and <code>mutate()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-pipe-read-and-then" class="level2">
+<h2 class="anchored" data-anchor-id="the-pipe-read-and-then">The pipe (<code>%&gt;%</code>, read: “and then”)</h2>
+<p>When writing complex data analysis pipelines, we frequently use the pipe operator <code>%&gt;%</code> to move data from one analysis step to the next. The pipe is pronounced “and then”, and it takes the data on its left and uses it as the first argument for the function on its right.</p>
+<p>For example, to see the first few lines of a dataset, we often write <code>head(dataframe)</code>. Instead, we can write <code>dataframe %&gt;% head()</code>.</p>
+<p>Try this yourself. Write code that displays the first few lines of the <code>ice_breaker_df</code> dataset, using <code>%&gt;%</code> and <code>head()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now get all the column names using the <code>colnames()</code> function on the <code>ice_breaker_df</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="choosing-data-rows" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-data-rows">Choosing data rows</h2>
+<p>The function <code>filter()</code> allows you to find rows in a dataset that meet one or more specific conditions. The syntax is <code>dataframe %&gt;% filter(condition)</code>, where condition is a logical condition. For example, <code>filter(x &gt; 5)</code> would pick all rows for which the value in column <code>x</code> is greater than 5.</p>
+<p>As an example, the following code picks all survey responses where people prefer chocolate over vanilla ice cream:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>ice_breaker_df <span class="sc">%&gt;%</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(vanilla_chocolate <span class="sc">==</span> <span class="st">"Chocolate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 13
+  Timestamp    first_thing_in_morning num_languages vanilla_chocolate superpower
+  &lt;chr&gt;        &lt;chr&gt;                          &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;     
+1 10/5/2023 1… Go back to sleep                3.25 Chocolate         Shape shi…
+2 10/5/2023 1… Go back to sleep                2.5  Chocolate         Flight    
+# ℹ 8 more variables: social_media &lt;chr&gt;, num_browser_tabs &lt;dbl&gt;,
+#   height_cm &lt;dbl&gt;, procrastinate &lt;chr&gt;, extreme_sport &lt;chr&gt;,
+#   r_experience &lt;chr&gt;, travel_to_workshop &lt;chr&gt;, years_current_country &lt;lgl&gt;</code></pre>
+</div>
+</div>
+<p>Can you tell how many people that is from looking at the size of the tibble?</p>
+<p>Now it’s your turn to try one. Pick all responses where people would like to try Skydiving.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>ice_breaker_df <span class="sc">%&gt;%</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="filtering-for-multiple-conditions" class="level3">
+<h3 class="anchored" data-anchor-id="filtering-for-multiple-conditions">Filtering for multiple conditions</h3>
+<p>You can also state multiple conditions, separated by a comma. For example, <code>filter(x &gt; 5, y &lt; 2)</code> would pick all rows for which the value in the column <code>x</code> is greater than 5 and the value in the column <code>y</code> is less than 2. Note that the conditions are combined via logical and, both need to be satisfied for the row to be picked.</p>
+<p>To try this out, pick all survey responses where people taller than XXX cm would like to retain their Facebook.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="choosing-data-columns" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-data-columns">Choosing data columns</h2>
+<p>The function <code>select()</code> allows you to pick specific data columns by name. This is frequently useful when a dataset has many more columns than we are interested in at the time. For example, if we are only interested in the responses regarding what people do first thing in the morning, what superpower they would like, and how they procrastinate, we could select just those three columns:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>ice_breaker_df <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(first_thing_in_morning, superpower, procrastinate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  first_thing_in_morning superpower     procrastinate        
+  &lt;chr&gt;                  &lt;chr&gt;          &lt;chr&gt;                
+1 Check text messages    Flight         Watching TV          
+2 Go back to sleep       Shape shifting Eating snacks        
+3 Go back to sleep       Flight         Watching TV          
+4 Turn off the alarm     Flight         Browsing the internet
+5 Turn off the alarm     &lt;NA&gt;           &lt;NA&gt;                 </code></pre>
+</div>
+</div>
+<p>Try this yourself, picking the columns representing responses to how many browser tabs people have open right now and what social media they would like to keep.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="choosing-columns-for-removal" class="level3">
+<h3 class="anchored" data-anchor-id="choosing-columns-for-removal">Choosing columns for removal</h3>
+<p>Another situation that arises frequently is one where we want to remove specific columns. We can also do this with <code>select()</code>, but now write <code>select(-column)</code> to remove one or more columns.</p>
+<p>Try this. Remove the column <code>num_browser_tabs</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And now try removing both <code>num_browser_tabs</code> and <code>procrastinate</code>.</p>
+</section>
+</section>
+<section id="sorting-data" class="level2">
+<h2 class="anchored" data-anchor-id="sorting-data">Sorting data</h2>
+<p>The function <code>arrange()</code> allows you to sort data by one or more columns. For example, <code>dataframe %&gt;% arrange(x)</code> would sort the data by increasing values of <code>x</code>, and <code>dataframe %&gt;% arrange(x, y)</code> would sort the data first by <code>x</code> and then, for ties in <code>x</code>, by <code>y</code>.</p>
+<p>As an example, the following code sorts responses by the person’s height:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>ice_breaker_df <span class="sc">%&gt;%</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(height_cm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 13
+  Timestamp    first_thing_in_morning num_languages vanilla_chocolate superpower
+  &lt;chr&gt;        &lt;chr&gt;                          &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;     
+1 10/5/2023 1… Go back to sleep                2.5  Chocolate         Flight    
+2 10/5/2023 1… Go back to sleep                3.25 Chocolate         Shape shi…
+3 10/5/2023 1… Turn off the alarm              2    Vanilla           Flight    
+4 10/5/2023 1… Check text messages             1    Vanilla           Flight    
+5 10/15/2023 … Turn off the alarm             NA    &lt;NA&gt;              &lt;NA&gt;      
+# ℹ 8 more variables: social_media &lt;chr&gt;, num_browser_tabs &lt;dbl&gt;,
+#   height_cm &lt;dbl&gt;, procrastinate &lt;chr&gt;, extreme_sport &lt;chr&gt;,
+#   r_experience &lt;chr&gt;, travel_to_workshop &lt;chr&gt;, years_current_country &lt;lgl&gt;</code></pre>
+</div>
+</div>
+<p>Now it’s your turn. Sort responses by the number of languages people can speak:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="arranging-in-descending-order" class="level3">
+<h3 class="anchored" data-anchor-id="arranging-in-descending-order">Arranging in descending order</h3>
+<p>To arrange data in descending order, enclose the data column in <code>desc()</code>. For example, <code>dataframe %&gt;% arrange(desc(x))</code> would sort the data by decreasing values of <code>x</code>. (<code>desc</code> stands for “descending”.)</p>
+<p>Try this out. Sort the responses by height again, this time from largest to smallest:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="counting" class="level2">
+<h2 class="anchored" data-anchor-id="counting">Counting</h2>
+<p>We frequently want to count how many times a particular value or combination of values occurs in a dataset. We do this using the <code>count()</code> function. For example, the following code counts how many of each number we got for the number of languages people can speak.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  num_languages     n
+          &lt;dbl&gt; &lt;int&gt;
+1          1        1
+2          2        1
+3          2.5      1
+4          3.25     1
+5         NA        1</code></pre>
+</div>
+</div>
+<p>Now try this yourself. Count how many prefer vanilla ice cream and how many chocolate.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="chaining-analysis-steps-into-pipelines" class="level3">
+<h3 class="anchored" data-anchor-id="chaining-analysis-steps-into-pipelines">Chaining analysis steps into pipelines</h3>
+<p>We can chain multiple analysis steps into a pipeline by continuing to add “and then” statements. For example, <code>dataframe %&gt;% count(...) %&gt;% arrange(...)</code> would first count and then sort the data.</p>
+<p>Try this out by counting the number of responses of languages spoken and and then sorting by the number.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="creating-new-data-columns" class="level2">
+<h2 class="anchored" data-anchor-id="creating-new-data-columns">Creating new data columns</h2>
+<p>The function <code>mutate()</code> allows you to add new columns to a data table. For example, <code>dataframe %&gt;% mutate(sum = x + y)</code> would create a new column <code>sum</code> that is the sum of the columns <code>x</code> and <code>y</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>))</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+      x     y
+  &lt;int&gt; &lt;dbl&gt;
+1     1    10
+2     2    20
+3     3    30</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sum =</span> x <span class="sc">+</span> y</span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+      x     y   sum
+  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     1    10    11
+2     2    20    22
+3     3    30    33</code></pre>
+</div>
+</div>
+<p>Note that the part to the left of the equals sign (here, <code>sum</code>) is the name of the new column, and the part to the right of the equals sign (here, <code>x + y</code>) is an R expression that evaluates to the values in the new column.</p>
+<p>Now apply this concept to the <code>ice_breaker_df</code> dataset. Add a new column <code>browsing by language</code> that is the ratio of number of browser tabs currently open and number of languages spoken:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="counting-with-custom-conditions" class="level3">
+<h3 class="anchored" data-anchor-id="counting-with-custom-conditions">Counting with custom conditions</h3>
+<p>It is quite common that we want to count items that meet a specific condition. For example, let’s say we want to count how many people are taller than 155 cm. To do this efficiently, we first create a new column that indicates whether the condition is met or not, and we then use count with that indicator column.</p>
+<p>The easiest way to create indicator columns is via the function <code>if_else()</code>, which takes three arguments: a condition, a result if the condition is met, and a result if the condition is not met. The following example shows how to create an indicator column showing whether a variable is positive or negative:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">2.3</span>, <span class="dv">50</span>, <span class="sc">-</span><span class="fl">1.4</span>))</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 1
+      x
+  &lt;dbl&gt;
+1  -0.5
+2   2.3
+3  50  
+4  -1.4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sign_of_x =</span> <span class="fu">if_else</span>(x <span class="sc">&gt;=</span> <span class="dv">0</span>, <span class="st">"positive"</span>, <span class="st">"negative"</span>)</span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sign_of_x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  sign_of_x     n
+  &lt;chr&gt;     &lt;int&gt;
+1 negative      2
+2 positive      2</code></pre>
+</div>
+</div>
+<p>Now try this yourself. Count how many people are taller than 155 cm. Then sort your results.</p>
+<p>Here are a few additional exercises that you can work on to practice and learn more about survey responses from everyone in this room!</p>
+</section>
 <section id="exercise" class="level3">
 <h3 class="anchored" data-anchor-id="exercise">Exercise</h3>
-<p>Write R commands for the following - 1. How many people took this survey? 2. How many questions did we ask? 3. What questions did we ask? 4. Give a few examples of the data types captured in the questions</p>
-</section>
-<section id="challenge-exercise" class="level3">
-<h3 class="anchored" data-anchor-id="challenge-exercise">Challenge Exercise</h3>
-<p>Write R commands for the following - 1. Look at responses of questions 4-6 from all participants 2. Try to rename a column (question) 3. Make a new dataframe of 5 questions of your choice. 4. Can you get the height of the tallest person in this room?</p>
+<p>Write R commands for the following -<br>
+1. How many people took this survey?<br>
+2. How many questions did we ask?<br>
+3. What questions did we ask?<br>
+4. Give a few examples of the data types captured in the questions<br>
+5. Look at responses of questions 4-6 from all participants<br>
+6. Try to rename a column (question)<br>
+7. Make a new dataframe of 5 questions of your choice.<br>
+8. Can you get the height of the tallest person in this room?<br>
+9. How many people speak more than 2 languages?<br>
+10. Select the question about R experience and sort by the kind of R background and experience in this room.<br>
+12. What is the ratio of people who took a plane to this workshop vs those who walked?</p>
 
 
 </section>
@@ -993,8 +1253,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../materials/1-workshop1/0-welcome/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><b>Module 0:</b> Welcome to the workshop</span>
+      <a href="../../../materials/1-workshop1/1-data-generation/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><b>Module 1</b>: How data analysis is informed by data generation</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
