@@ -109,13 +109,19 @@ Image by [Megan Duffy](https://dynamicecology.wordpress.com/2015/01/13/sticky-no
 
 ## Practicalities
 :::{.r-fit-text}
+
 WiFi:
 
 Network: KTB Free Wifi (no password needed)
 
+Network AHRI Password: `@hR1W1F1!17`
+
+Network CAPRISA-Corp Password: `corp@caprisa17`
+
 Bathrooms are out the lobby to your left
 
 :::
+
 
 ## Group Pen and Paper exercise {.your-turn}
 
