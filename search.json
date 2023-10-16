@@ -46,7 +46,7 @@
     "href": "index.html",
     "title": "Data Science for Biology",
     "section": "",
-    "text": "Data Science for Biology\nWorkshop 1 - R, RStudio, and Quarto for clinical research\nThis week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research.\n\n\n\n\n\nWelcome to the workshop!\n\nFill out the pre-workshop survey here\n\nFill out the icebreaker survey here\n\nJoin the discord here (once you’ve joined, you can bookmark https://discord.com/channels/1158136582201692202/ to go straight to the channel.)\n\nGet your RStudio and R installation checked by an instructor or TA\n\nBefore the workshop: Installing R and RStudio\nPlease install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.3.1 and RStudio version 2023.09.0 Click here for instructions on installing R and RStudio\n\n\nTable 1: Schedule\n\n\n\n\n\n\n\nDate/Time\nTopic\nInstructor\n\n\n\n\nMonday, October 16th\n–\n–\n\n\nAM\nCourse Introduction & Introduction to data types\nSalina Hussain and Suuba Demby (Ragon Institute)\n\n\nPM\nIntro to R, Rstudio, and Quarto\nChandani Desai and Joseph Elsherbini (Ragon Institute)\n\n\nTuesday, October 17th\n–\n–\n\n\nAM\nIntro to data visualizaion with the tidyverse\nScott Handley (Wash U School of Medicine)\n\n\nPM\nData wrangling and more data visualization\nJoseph Elsherbini (Ragon Institute)\n\n\nWednesday, October 18th\n–\n–\n\n\nAM\ntableone and statistics for clinical data\nMarothi Letsoalo (CAPRISA)\n\n\nPM\nSmall group worktime\nParticipants\n\n\nThursday, October 19th\n–\n–\n\n\nAM\nData transformations and more statistics\nLaura Symul (UCLouvain)\n\n\nPM\nSmall group worktime\nParticipants\n\n\nEvening\nReception\n\n\n\nFriday, October 20th\n–\n–\n\n\nAM\nKeynote\nLenine Liebenberg (CERI Stellenbosch)\n\n\n\nSmall group work time\nParticipants\n\n\nPM\nSmall group presentations"
+    "text": "Data Science for Biology\nWorkshop 1 - R, RStudio, and Quarto for clinical research\nThis week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research.\n\n\n\n\n\nWelcome to the workshop!\nNetwork: KTB Free Wifi (no password needed)\n\nFill out the pre-workshop survey here\n\nFill out the icebreaker survey here\n\nJoin the discord here (once you’ve joined, you can bookmark https://discord.com/channels/1158136582201692202/ to go straight to the channel.)\n\nGet your RStudio and R installation checked by an instructor or TA\n\nBefore the workshop: Installing R and RStudio\nPlease install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install R version 4.3.1 and RStudio version 2023.09.0 Click here for instructions on installing R and RStudio\n\n\nTable 1: Schedule\n\n\n\n\n\n\n\nDate/Time\nTopic\nInstructor\n\n\n\n\nMonday, October 16th\n–\n–\n\n\nAM\nCourse Introduction & Introduction to data types\nSalina Hussain and Suuba Demby (Ragon Institute)\n\n\nPM\nIntro to R, Rstudio, and Quarto\nChandani Desai and Joseph Elsherbini (Ragon Institute)\n\n\nTuesday, October 17th\n–\n–\n\n\nAM\nIntro to data visualizaion with the tidyverse\nScott Handley (Wash U School of Medicine)\n\n\nPM\nData wrangling and more data visualization\nJoseph Elsherbini (Ragon Institute)\n\n\nWednesday, October 18th\n–\n–\n\n\nAM\ntableone and statistics for clinical data\nMarothi Letsoalo (CAPRISA)\n\n\nPM\nSmall group worktime\nParticipants\n\n\nThursday, October 19th\n–\n–\n\n\nAM\nData transformations and more statistics\nLaura Symul (UCLouvain)\n\n\nPM\nSmall group worktime\nParticipants\n\n\nEvening\nReception\n\n\n\nFriday, October 20th\n–\n–\n\n\nAM\nKeynote\nLenine Liebenberg (CERI Stellenbosch)\n\n\n\nSmall group work time\nParticipants\n\n\nPM\nSmall group presentations"
   },
   {
     "objectID": "installation-instructions.html",
@@ -151,7 +151,7 @@
     "href": "materials/1-workshop1/0-welcome/slides.html#practicalities",
     "title": "Welcome to the workshop",
     "section": "Practicalities",
-    "text": "Practicalities\n\nWiFi:\nNetwork: CAPRISA-Corp\nPassword: corp@caprisa17"
+    "text": "Practicalities\n\nWiFi:\nNetwork: KTB Free Wifi (no password needed)\nBathrooms are out the lobby to your left"
   },
   {
     "objectID": "materials/1-workshop1/0-welcome/slides.html#introductions",
@@ -298,7 +298,7 @@
     "href": "materials/1-workshop1/2-intro-to-r/slides.html#practicalities",
     "title": "Intro to R,R Studio, and Quarto",
     "section": "Practicalities",
-    "text": "Practicalities\n\nWiFi:\nNetwork: CAPRISA-Corp\nPassword: corp@caprisa17"
+    "text": "Practicalities\n\nWiFi:\nNetwork: KTB Free Wifi (no password needed)\nBathrooms are out the lobby to your left"
   },
   {
     "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#what-is-r",
@@ -942,7 +942,7 @@
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#practicalities",
     "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "Practicalities",
-    "text": "Practicalities\n\nWiFi:\nNetwork: CAPRISA-Corp\nPassword: corp@caprisa17"
+    "text": "Practicalities\n\nWiFi:\nNetwork: KTB Free Wifi (no password needed)\nBathrooms are out the lobby to your left"
   },
   {
     "objectID": "materials/1-workshop1/3-tidyverse-101/slides.html#group-pen-and-paper-exercise",
