@@ -245,28 +245,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#challenge-exercise-3" id="toc-challenge-exercise-3" class="nav-link" data-scroll-target="#challenge-exercise-3">Challenge Exercise 3</a></li>
   </ul></li>
   <li><a href="#end-of-session-worksheet-introduction-to-r-and-quarto" id="toc-end-of-session-worksheet-introduction-to-r-and-quarto" class="nav-link" data-scroll-target="#end-of-session-worksheet-introduction-to-r-and-quarto">End of session worksheet: Introduction to R and Quarto</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
   <li><a href="#the-pipe-read-and-then" id="toc-the-pipe-read-and-then" class="nav-link" data-scroll-target="#the-pipe-read-and-then">The pipe (<code>%&gt;%</code>, read: “and then”)</a></li>
-  <li><a href="#choosing-data-rows" id="toc-choosing-data-rows" class="nav-link" data-scroll-target="#choosing-data-rows">Choosing data rows</a>
-  <ul class="collapse">
-  <li><a href="#filtering-for-multiple-conditions" id="toc-filtering-for-multiple-conditions" class="nav-link" data-scroll-target="#filtering-for-multiple-conditions">Filtering for multiple conditions</a></li>
-  </ul></li>
-  <li><a href="#choosing-data-columns" id="toc-choosing-data-columns" class="nav-link" data-scroll-target="#choosing-data-columns">Choosing data columns</a>
-  <ul class="collapse">
+  <li><a href="#choosing-data-rows" id="toc-choosing-data-rows" class="nav-link" data-scroll-target="#choosing-data-rows">Choosing data rows</a></li>
+  <li><a href="#choosing-data-columns" id="toc-choosing-data-columns" class="nav-link" data-scroll-target="#choosing-data-columns">Choosing data columns</a></li>
   <li><a href="#choosing-columns-for-removal" id="toc-choosing-columns-for-removal" class="nav-link" data-scroll-target="#choosing-columns-for-removal">Choosing columns for removal</a></li>
-  </ul></li>
-  <li><a href="#sorting-data" id="toc-sorting-data" class="nav-link" data-scroll-target="#sorting-data">Sorting data</a>
-  <ul class="collapse">
-  <li><a href="#arranging-in-descending-order" id="toc-arranging-in-descending-order" class="nav-link" data-scroll-target="#arranging-in-descending-order">Arranging in descending order</a></li>
-  </ul></li>
-  <li><a href="#counting" id="toc-counting" class="nav-link" data-scroll-target="#counting">Counting</a>
-  <ul class="collapse">
+  <li><a href="#sorting-data" id="toc-sorting-data" class="nav-link" data-scroll-target="#sorting-data">Sorting data</a></li>
+  <li><a href="#counting" id="toc-counting" class="nav-link" data-scroll-target="#counting">Counting</a></li>
   <li><a href="#chaining-analysis-steps-into-pipelines" id="toc-chaining-analysis-steps-into-pipelines" class="nav-link" data-scroll-target="#chaining-analysis-steps-into-pipelines">Chaining analysis steps into pipelines</a></li>
-  </ul></li>
-  <li><a href="#creating-new-data-columns" id="toc-creating-new-data-columns" class="nav-link" data-scroll-target="#creating-new-data-columns">Creating new data columns</a>
-  <ul class="collapse">
-  <li><a href="#counting-with-custom-conditions" id="toc-counting-with-custom-conditions" class="nav-link" data-scroll-target="#counting-with-custom-conditions">Counting with custom conditions</a></li>
-  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
+  <li><a href="#creating-new-data-columns" id="toc-creating-new-data-columns" class="nav-link" data-scroll-target="#creating-new-data-columns">Creating new data columns</a></li>
+  <li><a href="#exercise---fun-with-the-survey" id="toc-exercise---fun-with-the-survey" class="nav-link" data-scroll-target="#exercise---fun-with-the-survey">Exercise - fun with the survey</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -791,9 +780,8 @@ lgl (1): years_current_country
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="the-pipe-read-and-then" class="level2">
-<h2 class="anchored" data-anchor-id="the-pipe-read-and-then">The pipe (<code>%&gt;%</code>, read: “and then”)</h2>
+<section id="the-pipe-read-and-then" class="level3">
+<h3 class="anchored" data-anchor-id="the-pipe-read-and-then">The pipe (<code>%&gt;%</code>, read: “and then”)</h3>
 <p>When writing complex data analysis pipelines, we frequently use the pipe operator <code>%&gt;%</code> to move data from one analysis step to the next. The pipe is pronounced “and then”, and it takes the data on its left and uses it as the first argument for the function on its right.</p>
 <p>For example, to see the first few lines of a dataset, we often write <code>head(dataframe)</code>. Instead, we can write <code>dataframe %&gt;% head()</code>.</p>
 <p>Try this yourself. Write code that displays the first few lines of the <code>ice_breaker_df</code> dataset, using <code>%&gt;%</code> and <code>head()</code>:</p>
@@ -805,8 +793,8 @@ lgl (1): years_current_country
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="choosing-data-rows" class="level2">
-<h2 class="anchored" data-anchor-id="choosing-data-rows">Choosing data rows</h2>
+<section id="choosing-data-rows" class="level3">
+<h3 class="anchored" data-anchor-id="choosing-data-rows">Choosing data rows</h3>
 <p>The function <code>filter()</code> allows you to find rows in a dataset that meet one or more specific conditions. The syntax is <code>dataframe %&gt;% filter(condition)</code>, where condition is a logical condition. For example, <code>filter(x &gt; 5)</code> would pick all rows for which the value in column <code>x</code> is greater than 5.</p>
 <p>As an example, the following code picks all survey responses where people prefer chocolate over vanilla ice cream:</p>
 <div class="cell">
@@ -829,8 +817,8 @@ lgl (1): years_current_country
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>ice_breaker_df <span class="sc">%&gt;%</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="filtering-for-multiple-conditions" class="level3">
-<h3 class="anchored" data-anchor-id="filtering-for-multiple-conditions">Filtering for multiple conditions</h3>
+<section id="filtering-for-multiple-conditions" class="level4">
+<h4 class="anchored" data-anchor-id="filtering-for-multiple-conditions">Filtering for multiple conditions</h4>
 <p>You can also state multiple conditions, separated by a comma. For example, <code>filter(x &gt; 5, y &lt; 2)</code> would pick all rows for which the value in the column <code>x</code> is greater than 5 and the value in the column <code>y</code> is less than 2. Note that the conditions are combined via logical and, both need to be satisfied for the row to be picked.</p>
 <p>To try this out, pick all survey responses where people taller than XXX cm would like to retain their Facebook.</p>
 <div class="cell">
@@ -838,8 +826,8 @@ lgl (1): years_current_country
 </div>
 </section>
 </section>
-<section id="choosing-data-columns" class="level2">
-<h2 class="anchored" data-anchor-id="choosing-data-columns">Choosing data columns</h2>
+<section id="choosing-data-columns" class="level3">
+<h3 class="anchored" data-anchor-id="choosing-data-columns">Choosing data columns</h3>
 <p>The function <code>select()</code> allows you to pick specific data columns by name. This is frequently useful when a dataset has many more columns than we are interested in at the time. For example, if we are only interested in the responses regarding what people do first thing in the morning, what superpower they would like, and how they procrastinate, we could select just those three columns:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>ice_breaker_df <span class="sc">%&gt;%</span></span>
@@ -859,6 +847,7 @@ lgl (1): years_current_country
 <div class="cell">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
 <section id="choosing-columns-for-removal" class="level3">
 <h3 class="anchored" data-anchor-id="choosing-columns-for-removal">Choosing columns for removal</h3>
 <p>Another situation that arises frequently is one where we want to remove specific columns. We can also do this with <code>select()</code>, but now write <code>select(-column)</code> to remove one or more columns.</p>
@@ -868,9 +857,8 @@ lgl (1): years_current_country
 </div>
 <p>And now try removing both <code>num_browser_tabs</code> and <code>procrastinate</code>.</p>
 </section>
-</section>
-<section id="sorting-data" class="level2">
-<h2 class="anchored" data-anchor-id="sorting-data">Sorting data</h2>
+<section id="sorting-data" class="level3">
+<h3 class="anchored" data-anchor-id="sorting-data">Sorting data</h3>
 <p>The function <code>arrange()</code> allows you to sort data by one or more columns. For example, <code>dataframe %&gt;% arrange(x)</code> would sort the data by increasing values of <code>x</code>, and <code>dataframe %&gt;% arrange(x, y)</code> would sort the data first by <code>x</code> and then, for ties in <code>x</code>, by <code>y</code>.</p>
 <p>As an example, the following code sorts responses by the person’s height:</p>
 <div class="cell">
@@ -894,8 +882,8 @@ lgl (1): years_current_country
 <div class="cell">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="arranging-in-descending-order" class="level3">
-<h3 class="anchored" data-anchor-id="arranging-in-descending-order">Arranging in descending order</h3>
+<section id="arranging-in-descending-order" class="level4">
+<h4 class="anchored" data-anchor-id="arranging-in-descending-order">Arranging in descending order</h4>
 <p>To arrange data in descending order, enclose the data column in <code>desc()</code>. For example, <code>dataframe %&gt;% arrange(desc(x))</code> would sort the data by decreasing values of <code>x</code>. (<code>desc</code> stands for “descending”.)</p>
 <p>Try this out. Sort the responses by height again, this time from largest to smallest:</p>
 <div class="cell">
@@ -903,8 +891,8 @@ lgl (1): years_current_country
 </div>
 </section>
 </section>
-<section id="counting" class="level2">
-<h2 class="anchored" data-anchor-id="counting">Counting</h2>
+<section id="counting" class="level3">
+<h3 class="anchored" data-anchor-id="counting">Counting</h3>
 <p>We frequently want to count how many times a particular value or combination of values occurs in a dataset. We do this using the <code>count()</code> function. For example, the following code counts how many of each number we got for the number of languages people can speak.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -922,6 +910,7 @@ lgl (1): years_current_country
 <div class="cell">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
 <section id="chaining-analysis-steps-into-pipelines" class="level3">
 <h3 class="anchored" data-anchor-id="chaining-analysis-steps-into-pipelines">Chaining analysis steps into pipelines</h3>
 <p>We can chain multiple analysis steps into a pipeline by continuing to add “and then” statements. For example, <code>dataframe %&gt;% count(...) %&gt;% arrange(...)</code> would first count and then sort the data.</p>
@@ -930,13 +919,12 @@ lgl (1): years_current_country
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-</section>
-<section id="creating-new-data-columns" class="level2">
-<h2 class="anchored" data-anchor-id="creating-new-data-columns">Creating new data columns</h2>
+<section id="creating-new-data-columns" class="level3">
+<h3 class="anchored" data-anchor-id="creating-new-data-columns">Creating new data columns</h3>
 <p>The function <code>mutate()</code> allows you to add new columns to a data table. For example, <code>dataframe %&gt;% mutate(sum = x + y)</code> would create a new column <code>sum</code> that is the sum of the columns <code>x</code> and <code>y</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>))</span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
       x     y
@@ -948,10 +936,7 @@ lgl (1): years_current_country
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sum =</span> x <span class="sc">+</span> y</span>
-<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sum =</span> x <span class="sc">+</span> y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
       x     y   sum
@@ -966,8 +951,8 @@ lgl (1): years_current_country
 <div class="cell">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="counting-with-custom-conditions" class="level3">
-<h3 class="anchored" data-anchor-id="counting-with-custom-conditions">Counting with custom conditions</h3>
+<section id="counting-with-custom-conditions" class="level4">
+<h4 class="anchored" data-anchor-id="counting-with-custom-conditions">Counting with custom conditions</h4>
 <p>It is quite common that we want to count items that meet a specific condition. For example, let’s say we want to count how many people are taller than 155 cm. To do this efficiently, we first create a new column that indicates whether the condition is met or not, and we then use count with that indicator column.</p>
 <p>The easiest way to create indicator columns is via the function <code>if_else()</code>, which takes three arguments: a condition, a result if the condition is met, and a result if the condition is not met. The following example shows how to create an indicator column showing whether a variable is positive or negative:</p>
 <div class="cell">
@@ -1000,8 +985,9 @@ lgl (1): years_current_country
 <p>Now try this yourself. Count how many people are taller than 155 cm. Then sort your results.</p>
 <p>Here are a few additional exercises that you can work on to practice and learn more about survey responses from everyone in this room!</p>
 </section>
-<section id="exercise" class="level3">
-<h3 class="anchored" data-anchor-id="exercise">Exercise</h3>
+</section>
+<section id="exercise---fun-with-the-survey" class="level3">
+<h3 class="anchored" data-anchor-id="exercise---fun-with-the-survey">Exercise - fun with the survey</h3>
 <p>Write R commands for the following -<br>
 1. How many people took this survey?<br>
 2. How many questions did we ask?<br>
