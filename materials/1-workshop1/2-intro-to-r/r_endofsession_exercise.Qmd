@@ -29,7 +29,7 @@ We will be using the R package **tidyverse** for the data manipulation functions
 library(tidyverse)
 ```
 
-## The pipe (`%>%`, read: "and then")
+### The pipe (`%>%`, read: "and then")
 
 When writing complex data analysis pipelines, we frequently use the pipe operator `%>%` to move data from one analysis step to the next. The pipe is pronounced "and then", and it takes the data on its left and uses it as the first argument for the function on its right.
 
@@ -48,7 +48,7 @@ Now get all the column names using the `colnames()` function on the `ice_breaker
  # build all the code for this exercise
 ```
 
-## Choosing data rows
+### Choosing data rows
 
 The function `filter()` allows you to find rows in a dataset that meet one or more specific conditions. The syntax is `dataframe %>% filter(condition)`, where condition is a logical condition. For example, `filter(x > 5)` would pick all rows for which the value in column `x` is greater than 5.
 
@@ -68,7 +68,7 @@ ice_breaker_df %>%
 ```
 
 
-### Filtering for multiple conditions
+#### Filtering for multiple conditions
 
 You can also state multiple conditions, separated by a comma. For example, `filter(x > 5, y < 2)` would pick all rows for which the value in the column `x` is greater than 5 and the value in the column `y` is less than 2. Note that the conditions are combined via logical and, both need to be satisfied for the row to be picked.
 
@@ -78,7 +78,7 @@ To try this out, pick all survey responses where people taller than XXX cm would
  # build all the code for this exercise
 ```
 
-## Choosing data columns
+### Choosing data columns
 
 The function `select()` allows you to pick specific data columns by name. This is frequently useful when a dataset has many more columns than we are interested in at the time. For example, if we are only interested in the responses regarding what people do first thing in the morning, what superpower they would like, and how they procrastinate, we could select just those three columns:
 
@@ -106,7 +106,7 @@ Try this. Remove the column `num_browser_tabs`.
 
 And now try removing both `num_browser_tabs` and `procrastinate`.
 
-## Sorting data
+### Sorting data
 
 The function `arrange()` allows you to sort data by one or more columns. For example, `dataframe %>% arrange(x)` would sort the data by increasing values of `x`, and `dataframe %>% arrange(x, y)` would sort the data first by `x` and then, for ties in `x`, by `y`.
 
@@ -123,7 +123,7 @@ Now it's your turn. Sort responses by the number of languages people can speak:
  # build all the code for this exercise
 ```
 
-### Arranging in descending order
+#### Arranging in descending order
 
 To arrange data in descending order, enclose the data column in `desc()`. For example, `dataframe %>% arrange(desc(x))` would sort the data by decreasing values of `x`. (`desc` stands for "descending".)
 
@@ -133,7 +133,7 @@ Try this out. Sort the responses by height again, this time from largest to smal
  # build all the code for this exercise
 ```
 
-## Counting
+### Counting
 
 We frequently want to count how many times a particular value or combination of values occurs in a dataset. We do this using the `count()` function. For example, the following code counts how many of each number we got for the number of languages people can speak.
 
@@ -158,21 +158,18 @@ Try this out by counting the number of responses of languages spoken and and the
  # build all the code for this exercise
 ```
 
-## Creating new data columns
+### Creating new data columns
 
 The function `mutate()` allows you to add new columns to a data table. For example, `dataframe %>% mutate(sum = x + y)` would create a new column `sum` that is the sum of the columns `x` and `y`:
 
 ```{r}
 data <- tibble(x = 1:3, y = c(10, 20, 30))
-print(data)
+data
 ```
 
 ```{r}
 data %>%
-  mutate(
-    sum = x + y
-  ) %>%
-  print()
+  mutate(sum = x + y)
 ```
 
 Note that the part to the left of the equals sign (here, `sum`) is the name of the new column, and the part to the right of the equals sign (here, `x + y`) is an R expression that evaluates to the values in the new column.
@@ -183,7 +180,7 @@ Now apply this concept to the `ice_breaker_df` dataset. Add a new column `browsi
  # build all the code for this exercise
 ```
 
-### Counting with custom conditions
+#### Counting with custom conditions
 
 It is quite common that we want to count items that meet a specific condition. For example, let's say we want to count how many people are taller than 155 cm. To do this efficiently, we first create a new column that indicates whether the condition is met or not, and we then use count with that indicator column.
 
@@ -206,7 +203,7 @@ Now try this yourself. Count how many people are taller than 155 cm. Then sort y
 
 Here are a few additional exercises that you can work on to practice and learn more about survey responses from everyone in this room!
 
-### Exercise
+### Exercise - fun with the survey
 
 Write R commands for the following -  
 1. How many people took this survey?  
