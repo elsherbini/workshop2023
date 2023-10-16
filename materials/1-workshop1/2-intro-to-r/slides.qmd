@@ -63,9 +63,10 @@ Image by [Megan Duffy](https://dynamicecology.wordpress.com/2015/01/13/sticky-no
 :::{.r-fit-text}
 WiFi:
 
-Network: CAPRISA-Corp
+Network: KTB Free Wifi (no password needed)
 
-Password: corp@caprisa17
+Bathrooms are out the lobby to your left
+
 :::
 
 ---

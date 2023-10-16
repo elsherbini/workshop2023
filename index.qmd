@@ -26,6 +26,8 @@ This week of content will prepare you to use R, RStudio, and Quarto for data ana
 
 ## Welcome to the workshop!
 
+Network: KTB Free Wifi (no password needed)
+
 1. [Fill out the pre-workshop survey here](https://forms.gle/7sdT7YRJerdgFJcc7)  
 2. [Fill out the icebreaker survey here](https://forms.gle/6FAJ5Qa78qUkwvdu8)  
 3. [Join the discord here](https://discord.gg/UDAsYTzZE) (once you've joined, you can bookmark [https://discord.com/channels/1158136582201692202/](https://discord.com/channels/1158136582201692202/) to go straight to the channel.)  

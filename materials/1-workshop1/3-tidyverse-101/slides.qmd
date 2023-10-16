@@ -99,20 +99,22 @@ Ask questions at **#workshop-questions** on [https://discord.gg/UDAsYTzZE](https
 :::{layout="[[4, 5, 1]]" layout-valign=center}
 ![](images/sticky.jpeg){fig-alt="Picture of a laptop with a red sticky note stuck to the top." width=540}
 
-During an activity, place a [**blue**]{style="color: DarkTurquoise"}  sticky on your laptop if you're good to go and a [**pink**]{style="color: hotpink"} sticky if you want help.
+During an activity, place a [**yellow**]{style="color: Gold"}  sticky on your laptop if you're good to go and a [**pink**]{style="color: hotpink"} sticky if you want help.
 :::
 
 :::footer
 Image by [Megan Duffy](https://dynamicecology.wordpress.com/2015/01/13/sticky-notes-as-a-teaching-and-lab-meeting-tool/)
 :::
 
+
 ## Practicalities
 :::{.r-fit-text}
 WiFi:
 
-Network: CAPRISA-Corp
+Network: KTB Free Wifi (no password needed)
 
-Password: corp@caprisa17
+Bathrooms are out the lobby to your left
+
 :::
 
 ## Group Pen and Paper exercise {.your-turn}
