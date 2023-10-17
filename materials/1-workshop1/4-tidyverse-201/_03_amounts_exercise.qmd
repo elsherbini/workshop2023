@@ -1,0 +1,148 @@
+---
+format:
+  html:
+    code-link: true
+---
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(countdown)
+library(tidyverse)
+library(cowplot)
+library(colorspace)
+library(here)
+
+```
+
+## Coding exercise 3.2
+
+For this exercise we'll be using the instructional dataset. [Download the dataset here](../../../datasets.html).
+
+In this worksheet, we will discuss a core concept of ggplot, the mapping of data values onto aesthetics.
+
+We will be using the R package `tidyverse`, which includes `ggplot()` and related functions.
+
+Copy the following code chunk into your quarto document. Notice the error in the `read_csv()` line - it wants you to supply the `file` name to read. Fix the error!
+
+```{r}
+#| error: true
+library(tidyverse) # load the tidyverse library
+
+# we want to use the data in the visit_clinical_measurements file
+clinical_measurements <- read_csv() # read in your data 
+
+#then show the first few rows
+head(clinical_measurements)
+```
+
+### Basic use of ggplot
+
+In the most basic use of ggplot, we call the `ggplot()` function with a dataset and an aesthetic mapping (created with `aes()`), and then we add a geom, such as `geom_line()` to draw lines or `geom_point()` to draw points.
+
+Try this for yourself. Map the column `ph` onto the x axis and the column `crp_blood` onto the y axis, and use `geom_line()` to display the data.
+
+Whenever you see `___` in the code below, that means you should swap it in with your own code.
+
+
+```{r}
+#| eval: false
+ggplot(clinical_measurements, aes(x = ___, y = ___)) +
+  ___()
+```
+
+
+Try again. Now use `geom_point()` instead of `geom_line()`.
+
+```{r}
+#| eval: false
+ggplot(clinical_measurements, aes(x = ___, y = ___)) +
+  ___()
+
+```
+
+
+And now swap which column you map to x and which to y.
+
+```{r}
+#| eval: false
+ggplot(clinical_measurements, aes(x = ___, y = ___)) +
+  ___()
+
+```
+
+
+### More complex geoms
+
+You can use other geoms to make different types of plots. For example, `geom_boxplot()` will make boxplots. For boxplots, we frequently want categorical data on the x or y axis. For example, we might want a separate boxplot for each month. Try this out. Put `nugent_score` on the x axis, `ph` on the y axis, and use `geom_boxplot()`.
+
+```{r}
+#| eval: false
+ggplot(clinical_measurements, aes(x = ___, y = ___)) +
+  ___()
+
+```
+
+
+Now try swapping the x and y axis `geom_jitter()`
+
+
+```{r}
+#| eval: false
+ggplot(clinical_measurements, aes(x = ___, y = ___)) +
+  ___()
+
+```
+
+
+Now try swapping the x and y axis
+
+
+```{r}
+#| eval: false
+ggplot(clinical_measurements, aes(x = ___, y = ___)) +
+  ___()
+
+```
+
+
+### Adding color
+
+Try again with `geom_jitter()`, this time using `ph` as the location along the y axis and `arm` for the color. Remember to check the `ggplot` cheat sheet, or type `?geom_jitter()` in the console to and look at the "Aesthetics" section if you get stuck.
+
+```{r}
+#| eval: false
+ggplot(clinical_measurements, aes(x = ___, y = ___)) +
+  ___()
+```
+
+(Hint: Try adding `size = 3` as a parameter to the `geom_jitter()` to create larger points.)
+
+### Using aesthetics as parameters
+
+Many of the aesthetics (such as `color`, `fill`, and also `size` to change line size or point thickness) can be used as parameters inside a geom rather than inside an `aes()` statement. The difference is that when you use an aesthetic as a parameter, you specify a specific value, such as `color = "blue"`, rather than a mapping, such as `aes(color = arm)`. Notice the difference: Inside the `aes()` function, we don't actually specify the specific color values, ggplot does that for us. We only say that we want the data values of the `arm` column to correspond to different colors. (We will learn later how to tell ggplot to use specific colors in this mapping.)
+
+Try this with the boxplot example from the previous section. Map `arm` onto the `fill` aesthetic but set the color of the lines to `"navyblue"`.
+
+```{r}
+#| eval: false
+ggplot(clinical_measurements, aes(x = ___, y = ___)) +
+  ___()
+
+```
+
+
+Now do the reverse. Map arm onto the line colors of the boxplot, but will the box with the color `"navyblue"`.
+
+```{r}
+#| eval: false
+ggplot(clinical_measurements, aes(x = ___, y = ___)) +
+  ___()
+
+```
+
+Great, that's all for now! If you are done, but a green sticky note on your laptop!
+
+```

@@ -1,0 +1,435 @@
+---
+title: "More data wrangling and data visualization with the <code>tidyverse</code>"
+subtitle: "<em>remixed from <a href='https://github.com/wilkelab/SDS375'>Claus O. Wilke's SDS375 course</a></em>"
+format: qmdrslides-revealjs
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(countdown)
+library(tidyverse)
+library(cowplot)
+library(colorspace)
+library(here)
+
+align_legend <- function(p, hjust = 0.5)
+{
+  # extract legend
+  g <- cowplot::plot_to_gtable(p)
+  grobs <- g$grobs
+  legend_index <- which(sapply(grobs, function(x) x$name) == "guide-box")
+  legend <- grobs[[legend_index]]
+
+  # extract guides table
+  guides_index <- which(sapply(legend$grobs, function(x) x$name) == "layout")
+
+  # there can be multiple guides within one legend box  
+  for (gi in guides_index) {
+    guides <- legend$grobs[[gi]]
+    
+    # add extra column for spacing
+    # guides$width[5] is the extra spacing from the end of the legend text
+    # to the end of the legend title. If we instead distribute it by `hjust:(1-hjust)` on
+    # both sides, we get an aligned legend
+    spacing <- guides$width[5]
+    guides <- gtable::gtable_add_cols(guides, hjust*spacing, 1)
+    guides$widths[6] <- (1-hjust)*spacing
+    title_index <- guides$layout$name == "title"
+    guides$layout$l[title_index] <- 2
+
+    # reconstruct guides and write back
+    legend$grobs[[gi]] <- guides
+  }
+  
+  # reconstruct legend and write back
+  g$grobs[[legend_index]] <- legend
+  g
+}
+
+
+theme_set(theme_cowplot(24) + background_grid())
+
+table_01 <- read_csv(here("datasets/instructional_dataset/01_participant_metadata_UKZN_workshop_2023.csv"))
+
+table_02 <- read_csv(here("datasets/instructional_dataset/02_visit_clinical_measurements_UKZN_workshop_2023.csv"))
+
+```
+
+## {data-menu-title="Website Link" style="text-align: center"}
+
+\
+\
+\
+
+:::{.r-fit-text}
+Workshop materials are at:
+
+[https://elsherbini.github.io/durban-data-science-for-biology/](https://elsherbini.github.io/durban-data-science-for-biology/)
+:::
+
+## {data-menu-item="Workshop Goals"}
+
+\
+\
+
+### Goals for this session {style="font-size: 2.5em; text-align: center"}
+
+:::{.incremental style="font-size: 1.5em"}
+1. Learn more advanced table commands 
+
+2. Learn about plotting distributions with the `tidyverse`
+:::
+
+::: {.fragment .fade-up}
+> data wrangling (n.) - the art of taking data in one format and filtering, reshaping, and deriving values to make the data format you need.
+:::
+
+
+## Discussions: discord
+
+Ask questions at **#workshop-questions** on [https://discord.gg/UDAsYTzZE](https://discord.gg/UDAsYTzZE).
+
+![](images/discord_durban.png){fig-alt="Screenshot of the discord server app that serves as the forum for the workshop." fig-align="center" width="546"}
+
+## Stickies
+
+:::{layout="[[4, 5, 1]]" layout-valign=center}
+![](images/sticky.jpeg){fig-alt="Picture of a laptop with a red sticky note stuck to the top." width=540}
+
+During an activity, place a [**yellow**]{style="color: Gold"}  sticky on your laptop if you're good to go and a [**pink**]{style="color: hotpink"} sticky if you want help.
+:::
+
+:::footer
+Image by [Megan Duffy](https://dynamicecology.wordpress.com/2015/01/13/sticky-notes-as-a-teaching-and-lab-meeting-tool/)
+:::
+
+
+## Practicalities
+:::{.r-fit-text}
+
+WiFi:
+
+Network: KTB Free Wifi (no password needed)
+
+Network AHRI Password: `@hR1W1F1!17`
+
+Network CAPRISA-Corp Password: `corp@caprisa17`
+
+Bathrooms are out the lobby to your left
+
+:::
+
+
+## Elementary data manipulations
+
+::::: {.columns .incremental}
+
+::: {.column width=50% }
+Yesterday:
+
+- Pick rows: `filter()`
+- Pick columns: `select()`
+- Sort rows: `arrange()`
+- Count things: `count()`
+- Make new columns: `mutate()`
+:::
+
+::: {.column width=50% .incremental}
+Today:
+
+- Analyze subsets:<br>`group_by()` and `summarize()`
+- Reshape:<br>`pivot_wider()`, `pivot_longer()`
+- Combine datasets:<br>`left_join()`, `inner_join()`, `...`
+:::
+
+:::::
+
+
+## Analyze subsets: `group_by()` and `summarize()`
+
+![](images/summarize.svg)
+
+## Example application of grouping: Counting {auto-animate=true}
+
+Previously, we counted like so:
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  count(smoker)
+```
+
+. . .
+
+Now let's do it the hard way
+
+## Example application of grouping: Counting {auto-animate=true}
+
+Let's go back to the original table
+
+```{r}
+#| echo: fenced
+table_01
+```
+
+
+## Example application of grouping: Counting {auto-animate=true}
+
+Then we `group` the data
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  group_by(smoker)
+```
+
+
+## Example application of grouping: Counting {auto-animate=true}
+
+Then we `group` the data, and then summarise
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  group_by(smoker) %>%
+  summarise(
+    n = n() # n() returns the number of observations per group
+    )
+```
+
+## Example application of grouping: Counting {auto-animate=true}
+
+Now let's group by multiple variables
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  group_by(smoker, arm)
+```
+
+
+## Example application of grouping: Counting {auto-animate=true}
+
+Now let's group by multiple variables, and summarise
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  group_by(smoker, arm) %>%
+    summarise(
+    n = n() # n() returns the number of observations per group
+    )
+```
+
+## Example application of grouping: Counting {auto-animate=true}
+
+`count(...)` is a short-cut for `group_by(...) %>% summarize(n = n())`
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  count(smoker, arm)
+```
+
+## `group_by()` and `summarise()`is the general method {auto-animate=true}
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  group_by(smoker, arm) %>%
+  summarise(median_age = median(age))
+```
+
+
+## You can make multiple summarise at once
+
+```{r}
+#| echo: fenced
+
+table_01 %>%
+  group_by(smoker, arm) %>%
+  summarise(
+    n = n(),
+    median_age = median(age)
+    )
+```
+
+
+## Let's take a poll {.your-turn}
+
+Go to [the event on wooclap](https://app.wooclap.com/DURBAN?from=event-page)  
+
+![](../../../images/wooclap_info.png){width="500px"}
+
+What 4 columns do you expect in the output of this code? 
+
+```{r}
+#| eval: false
+#| echo: true
+
+table_01 %>%
+  group_by(education_level, smoker) %>%
+  summarise(n = n(), average_age = mean(age))
+```
+
+
+## Reshape: `pivot_wider()` and `pivot_longer()`
+
+![](images/pivot.svg)
+
+## Reshaping example: Making a wide summary table {auto-animate=true}
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  count(education, arm)
+```
+
+## Reshaping example: Making a wide summary table {auto-animate=true}
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  count(education, arm) %>%
+  pivot_wider(names_from = arm, values_from = n)
+```
+
+
+## Reshaping example: Making a wide summary table {auto-animate=true}
+
+```{r}
+#| echo: fenced
+education_wide <- table_01 %>%
+  count(education, arm) %>%
+  pivot_wider(names_from = arm, values_from = n)
+
+education_wide %>%
+  pivot_longer(-education, names_to = "arm", values_to = "n")
+```
+
+# combining datasets: joins
+
+
+## We use joins to add columns from one table into another
+
+![](images/join.svg)
+
+## Joins turn two tables into one
+
+![](images/horizontal_join.png)
+
+## There are different types of joins
+
+The differences are all about how to handle when the two tables have different **key values** 
+
+![](images/joins-venn.svg)
+
+. . .
+
+::: {.incremental style="font-size: 0.7em"}
+`left_join()` - the resulting table always has the same **key_values** as the "left" table
+
+`right_join()` - the resulting table always has the same **key_values** as the "right" table
+
+`inner_join()` - the resulting table always only keeps the  **key_values** that are in both tables
+
+`full_join()` - the resulting table always has all **key_values** found in both tables
+:::
+
+## Left Join
+
+`left_join()` - the resulting table always has the same **key_values** as the "left" table
+
+![](images/left_join.png)
+
+```{r}
+#| eval: false
+#| echo: true
+table_a %>% left_join(table_b)
+```
+
+## Right Join
+
+`right_join()` - the resulting table always has the same **key_values** as the "right" table
+
+
+![](images/right_join.png)
+
+```{r}
+#| eval: false
+#| echo: true
+table_a %>% right_join(table_b)
+```
+
+## inner_join
+
+`inner_join()` - the resulting table always only keeps the  **key_values** that are in both tables
+
+![](images/inner_join.png)
+
+```{r}
+#| eval: false
+#| echo: true
+table_a %>% inner_join(table_b)
+```
+
+## Full join
+
+`full_join()` - the resulting table always has all **key_values** found in both tables
+
+![](images/full_join.png)
+
+```{r}
+#| eval: false
+#| echo: true
+table_a %>% full_join(table_b)
+```
+. . .
+
+But what are those NAs?
+
+## Aside: `NA` is how R denotes missing data
+
+. . .
+
+Check out the `naniar` package for help seeing the missing data in your datasets
+ 
+[https://naniar.njtierney.com/index.html](https://naniar.njtierney.com/index.html)
+
+## In case of doubt, use `left_join()`
+
+![](images/joins-venn2.svg)
+
+## Note, merging tables vertically is bind_rows(), not a join
+
+![](images/vertical_join.png)
+
+```{r}
+#| eval: false
+#| echo: true
+table_a %>% bind_rows(table_b)
+```
+
+## by default, joins will match all column names in common
+
+```{r}
+#| echo: fenced
+#| message: true
+table_01 %>% left_join(table_02)
+```
+
+
+## Exercise {.your-turn}
+
+That's enough slides for now time to try for yourself! Go to [the module](index.html) and go to the first exercise.
+
+```{r}
+countdown::countdown(30)
+```
+
+
