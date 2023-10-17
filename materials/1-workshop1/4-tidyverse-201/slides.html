@@ -386,8 +386,8 @@
       margin-right: 0; 
     }
   </style>
-  <link href="../../../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
-  <script src="../../../site_libs/countdown-0.4.0/countdown.js"></script>
+  <link href="../../../site_libs/countdown/countdown.css" rel="stylesheet">
+  <script src="../../../site_libs/countdown/countdown.js"></script>
 </head>
 <body class="quarto-light">
 <div style="display:none;"></div>
@@ -887,12 +887,884 @@
 <p>That’s enough slides for now time to try for yourself! Go to <a href="index.html">the module</a> and go to the first exercise.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_ce32d685" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_9f169248" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">30</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
+</section></section>
+<section>
+<section id="visualizing-distributions" class="title-slide slide level1 center">
+<h1>Visualizing distributions</h1>
+
+</section>
+<section id="histograms-and-density-plots" class="slide level2">
+<h2>Histograms and density plots</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div class="cell">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">age</th>
+<th style="text-align: left;">sex</th>
+<th style="text-align: left;">class</th>
+<th style="text-align: left;">survived</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.17</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.33</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">died</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.80</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">2nd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.83</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">2nd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.83</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.92</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">1st</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">2nd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">2nd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">2nd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.50</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">died</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="cell">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">age</th>
+<th style="text-align: left;">sex</th>
+<th style="text-align: left;">class</th>
+<th style="text-align: left;">survived</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1.5</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">died</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.0</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">1st</td>
+<td style="text-align: left;">died</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.0</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">2nd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.0</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">died</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.0</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">died</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.0</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">2nd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.0</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">2nd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.0</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">2nd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.0</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">2nd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.0</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.0</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">2nd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3.0</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">2nd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="cell">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">age</th>
+<th style="text-align: left;">sex</th>
+<th style="text-align: left;">class</th>
+<th style="text-align: left;">survived</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">2nd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">2nd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">1st</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">died</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">survived</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">3rd</td>
+<td style="text-align: left;">died</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-bins-and-count-classes" class="slide level2">
+<h2>Define bins and count classes</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
+<div class="cell">
+<div class="cell-output-display">
+<table data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">age range</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0–5</td>
+<td style="text-align: right;">36</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6–10</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11–15</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16–20</td>
+<td style="text-align: right;">99</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">21–25</td>
+<td style="text-align: right;">139</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">26–30</td>
+<td style="text-align: right;">121</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31–35</td>
+<td style="text-align: right;">76</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">36–40</td>
+<td style="text-align: right;">74</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="cell">
+<div class="cell-output-display">
+<table data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">age range</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">41–45</td>
+<td style="text-align: right;">54</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">46–50</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">51–55</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">56–60</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">61–65</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">66–70</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">71–75</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">76–80</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+
+</div>
+</div>
+</section>
+<section id="define-bins-and-count-classes-1" class="slide level2">
+<h2>Define bins and count classes</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
+<div class="cell">
+<div class="cell-output-display">
+<table data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">age range</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0–5</td>
+<td style="text-align: right;">36</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6–10</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11–15</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16–20</td>
+<td style="text-align: right;">99</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">21–25</td>
+<td style="text-align: right;">139</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">26–30</td>
+<td style="text-align: right;">121</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31–35</td>
+<td style="text-align: right;">76</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">36–40</td>
+<td style="text-align: right;">74</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="cell">
+<div class="cell-output-display">
+<table data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">age range</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">41–45</td>
+<td style="text-align: right;">54</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">46–50</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">51–55</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">56–60</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">61–65</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">66–70</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">71–75</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">76–80</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="histograms-depend-on-the-chosen-bin-width" class="slide level2">
+<h2>Histograms depend on the chosen bin width</h2>
+
+<img data-src="slides_files/figure-revealjs/titanic-age-hist-binwidth-1.svg" width="768" class="r-stretch"></section>
+<section id="alternative-to-histogram-kernel-density-estimate-kde" class="slide level2">
+<h2>Alternative to histogram: Kernel density estimate (KDE)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Histograms show raw counts, KDEs show proportions. (Total area = 1)</p>
+</div>
+</section>
+<section id="kdes-also-depend-on-parameter-settings" class="slide level2">
+<h2>KDEs also depend on parameter settings</h2>
+
+<img data-src="slides_files/figure-revealjs/titanic-age-kde-grid-1.svg" width="768" class="r-stretch"></section>
+<section id="careful-kdes-can-show-non-sensical-data" class="slide level2">
+<h2>Careful: KDEs can show non-sensical data</h2>
+
+<img data-src="slides_files/figure-revealjs/titanic-age-kde-wrong-1.svg" width="672" class="r-stretch"></section>
+<section id="careful-are-bars-stacked-or-overlapping" class="slide level2">
+<h2>Careful, are bars stacked or overlapping?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-fig.asp="0.618">
+<div class="cell-output-display">
+<p><img data-src="slides_files/figure-revealjs/titanic-age-hist-stacked-1.svg" width="672"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-fig.asp="0.618">
+<div class="cell-output-display">
+<p><img data-src="slides_files/figure-revealjs/titanic-age-hist-overlap-1.svg" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="alternatively-age-pyramid" class="slide level2">
+<h2>Alternatively: Age pyramid</h2>
+
+<img data-src="slides_files/figure-revealjs/titanic-age-pyramid-1.svg" width="672" class="r-stretch"></section>
+<section id="alternatively-kdes-showing-proportions-of-total" class="slide level2">
+<h2>Alternatively: KDEs showing proportions of total</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-34-1.png" width="960" class="r-stretch"></section></section>
+<section>
+<section id="histograms-and-density-plots-in-ggplot2" class="title-slide slide level1 center">
+<h1>Histograms and density plots in <strong>ggplot2</strong></h1>
+
+</section>
+<section id="making-histograms-with-ggplot-geom_histogram" class="slide level2">
+<h2>Making histograms with ggplot: <code>geom_histogram()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb34-1"><a href="#cb34-1"></a><span class="in">```{r}</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">ggplot</span>(titanic, <span class="fu">aes</span>(age)) <span class="sc">+</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb34-4"><a href="#cb34-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-35-1.png" width="960" class="r-stretch"></section>
+<section id="setting-the-bin-width" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Setting the bin width</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb35-1" class="hljs-ln-code"><a href="#cb35-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-2" class="hljs-ln-code"><a href="#cb35-2"></a><span class="fu">ggplot</span>(titanic, <span class="fu">aes</span>(age)) <span class="sc">+</span></span>
+<span id="cb35-3" class="hljs-ln-code"><a href="#cb35-3"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span>
+<span id="cb35-4" class="hljs-ln-code"><a href="#cb35-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-36-1.png" width="960" class="r-stretch"><div class="fragment">
+<p>Do you like where there bins are? What does the first bin say?</p>
+</div>
+</section>
+<section id="always-set-the-center-as-well-to-half-the-bin_width" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Always set the <code>center</code> as well, to half the <code>bin_width</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb36-1" class="hljs-ln-code"><a href="#cb36-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-2" class="hljs-ln-code"><a href="#cb36-2"></a><span class="fu">ggplot</span>(titanic, <span class="fu">aes</span>(age)) <span class="sc">+</span></span>
+<span id="cb36-3" class="hljs-ln-code"><a href="#cb36-3"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">center=</span><span class="fl">2.5</span>)</span>
+<span id="cb36-4" class="hljs-ln-code"><a href="#cb36-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-37-1.png" width="960" class="r-stretch"><div class="fragment">
+<p>Setting center 2.5 makes the bars start 0-5, 5-10, etc. instead of 2.5-7.5, etc. You could instead use the argument <code>boundary=5</code> to accomplish the same behavior.</p>
+</div>
+</section>
+<section id="making-density-plots-with-ggplot-geom_density-auto-animatetrue" class="slide level2">
+<h2>Making density plots with ggplot: <code>geom_density()</code> {auto-animate:true}</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb37-1"><a href="#cb37-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="fu">ggplot</span>(titanic, <span class="fu">aes</span>(age)) <span class="sc">+</span></span>
+<span id="cb37-3"><a href="#cb37-3"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"skyblue"</span>)</span>
+<span id="cb37-4"><a href="#cb37-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-38-1.png" width="960" class="r-stretch"></section>
+<section id="making-density-plots-with-ggplot-geom_density-auto-animatetrue-1" class="slide level2">
+<h2>Making density plots with ggplot: <code>geom_density()</code> {auto-animate:true}</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb38-1"><a href="#cb38-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="fu">ggplot</span>(titanic, <span class="fu">aes</span>(age)) <span class="sc">+</span></span>
+<span id="cb38-3"><a href="#cb38-3"></a>  <span class="fu">geom_density</span>()</span>
+<span id="cb38-4"><a href="#cb38-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-39-1.png" width="960" class="r-stretch"><p>without <code>fill</code></p>
+</section>
+<section id="modifying-bandwidth-bw-and-kernel-parameters-auto-animatetrue" class="slide level2">
+<h2>Modifying bandwidth (<code>bw</code>) and kernel parameters {auto-animate:true}</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb39-1"><a href="#cb39-1"></a><span class="in">```{r}</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a><span class="fu">ggplot</span>(titanic, <span class="fu">aes</span>(age)) <span class="sc">+</span></span>
+<span id="cb39-3"><a href="#cb39-3"></a>  <span class="fu">geom_density</span>(</span>
+<span id="cb39-4"><a href="#cb39-4"></a>    <span class="at">fill =</span> <span class="st">"skyblue"</span>,</span>
+<span id="cb39-5"><a href="#cb39-5"></a>    <span class="at">bw =</span> <span class="fl">0.5</span>,               <span class="co"># a small bandwidth</span></span>
+<span id="cb39-6"><a href="#cb39-6"></a>    <span class="at">kernel =</span> <span class="st">"gaussian"</span>     <span class="co"># Gaussian kernel (the default)</span></span>
+<span id="cb39-7"><a href="#cb39-7"></a>  )</span>
+<span id="cb39-8"><a href="#cb39-8"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-40-1.png" width="960" class="r-stretch"></section>
+<section id="modifying-bandwidth-bw-and-kernel-parameters-auto-animatetrue-1" class="slide level2">
+<h2>Modifying bandwidth (<code>bw</code>) and kernel parameters {auto-animate:true}</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb40-1"><a href="#cb40-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">ggplot</span>(titanic, <span class="fu">aes</span>(age)) <span class="sc">+</span></span>
+<span id="cb40-3"><a href="#cb40-3"></a>  <span class="fu">geom_density</span>(</span>
+<span id="cb40-4"><a href="#cb40-4"></a>    <span class="at">fill =</span> <span class="st">"skyblue"</span>,</span>
+<span id="cb40-5"><a href="#cb40-5"></a>    <span class="at">bw =</span> <span class="dv">2</span>,                 <span class="co"># a moderate bandwidth</span></span>
+<span id="cb40-6"><a href="#cb40-6"></a>    <span class="at">kernel =</span> <span class="st">"rectangular"</span>  <span class="co"># rectangular kernel</span></span>
+<span id="cb40-7"><a href="#cb40-7"></a>  )</span>
+<span id="cb40-8"><a href="#cb40-8"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-41-1.png" width="960" class="r-stretch"></section>
+<section id="density-estimates-visualize-distributions" class="slide level2">
+<h2>Density estimates visualize distributions</h2>
+<p>Mean temperatures in Lincoln, NE, in January 2016:</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="cell">
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">date</th>
+<th style="text-align: right;">mean temp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2016-01-01</td>
+<td style="text-align: right;">-4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2016-01-02</td>
+<td style="text-align: right;">-5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2016-01-03</td>
+<td style="text-align: right;">-5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2016-01-04</td>
+<td style="text-align: right;">-8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2016-01-05</td>
+<td style="text-align: right;">-2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2016-01-06</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2016-01-07</td>
+<td style="text-align: right;">-1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2016-01-08</td>
+<td style="text-align: right;">-4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2016-01-09</td>
+<td style="text-align: right;">-13</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2016-01-10</td>
+<td style="text-align: right;">-12</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><div class="column" style="width:70%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-42-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>How can we compare distributions across months?</p>
+</div>
+</section>
+<section id="a-bad-idea-many-overlapping-density-plots" class="slide level2">
+<h2>A bad idea: Many overlapping density plots</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-43-1.png" width="960" class="r-stretch"></section>
+<section id="another-bad-idea-stacked-density-plots" class="slide level2">
+<h2>Another bad idea: Stacked density plots</h2>
+
+<img data-src="slides_files/figure-revealjs/temps_densities_stacked-1.png" width="960" class="r-stretch"></section>
+<section id="somewhat-better-small-multiples" class="slide level2">
+<h2>Somewhat better: Small multiples</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-44-1.png" width="960" class="r-stretch"></section>
+<section id="instead-show-values-along-y-conditions-along-x" class="slide level2">
+<h2>Instead: Show values along y, conditions along x</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-45-1.png" width="960" class="r-stretch"><p>A boxplot is a crude way of visualizing a distribution.</p>
+</section>
+<section id="how-to-read-a-boxplot" class="slide level2">
+<h2>How to read a boxplot</h2>
+
+<img data-src="slides_files/figure-revealjs/boxplot-schematic-1.svg" width="768" class="r-stretch"></section>
+<section id="if-you-like-density-plots-consider-violins" class="slide level2">
+<h2>If you like density plots, consider violins</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-46-1.png" width="960" class="r-stretch"><div class="fragment">
+<p>A violin plot is a density plot rotated 90 degrees and then mirrored.</p>
+</div>
+</section>
+<section id="how-to-read-a-violin-plot" class="slide level2">
+<h2>How to read a violin plot</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-47-1.png" width="960" class="r-stretch"></section>
+<section id="for-small-datasets-you-can-also-use-a-strip-chart" class="slide level2">
+<h2>For small datasets, you can also use a strip chart</h2>
+<p>Advantage: Can see raw data points instead of abstract representation.</p>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-48-1.png" width="960" class="r-stretch"><div class="fragment">
+<p>Horizontal jittering may be necessary to avoid overlapping points.</p>
+</div>
+</section>
+<section id="another-option-is-a-scatter-density-plot" class="slide level2">
+<h2>Another option is a scatter-density plot</h2>
+<p>Advantage: Best of both worlds for violin and jitter plot, see the raw data but also see the shape of the density</p>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-49-1.png" width="960" class="r-stretch"></section>
+<section id="advice---always-show-the-finest-granularity-of-data-that-is-practical." class="slide level2">
+<h2>Advice - always show the finest granularity of data that is practical.</h2>
+<p>If you don’t have too many points, show them! It makes it much easier to interpret the data. Especially when you are exploring new datasets.</p>
+<p>Favor showing distributions over just a mean with error bars.</p>
+</section></section>
+<section>
+<section id="making-boxplots-violins-etc.-in-ggplot2" class="title-slide slide level1 center">
+<h1>Making boxplots, violins, etc. in <code>ggplot2</code></h1>
+
+</section>
+<section id="making-boxplots-violins-etc.-in-ggplot2-1" class="slide level2">
+<h2>Making boxplots, violins, etc. in <strong>ggplot2</strong></h2>
+<table>
+<colgroup>
+<col style="width: 21%">
+<col style="width: 32%">
+<col style="width: 46%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Plot type</th>
+<th style="text-align: left;">Geom</th>
+<th style="text-align: left;">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">boxplot</td>
+<td style="text-align: left;"><code>geom_boxplot()</code></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">violin plot</td>
+<td style="text-align: left;"><code>geom_violin()</code></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">strip chart</td>
+<td style="text-align: left;"><code>geom_point()</code></td>
+<td style="text-align: left;">Jittering requires <code>position_jitter()</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sina plot</td>
+<td style="text-align: left;"><code>geom_sina()</code></td>
+<td style="text-align: left;">From package <strong>ggforce</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">scatter-density plot</td>
+<td style="text-align: left;"><code>geom_quasirandom()</code></td>
+<td style="text-align: left;">From package <strong>ggbeeswarm</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ridgeline</td>
+<td style="text-align: left;"><code>geom_density_ridges()</code></td>
+<td style="text-align: left;">From package <strong>ggridges</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="examples-boxplot-auto-animate-true" class="slide level2">
+<h2>Examples: Boxplot {auto-animate: true}</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb41-1"><a href="#cb41-1"></a><span class="in">```{r}</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a><span class="fu">ggplot</span>(lincoln_temps, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> mean_temp)) <span class="sc">+</span></span>
+<span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"skyblue"</span>) </span>
+<span id="cb41-4"><a href="#cb41-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-50-1.png" width="960" class="r-stretch"></section>
+<section id="examples-violins-auto-animate-true" class="slide level2">
+<h2>Examples: Violins {auto-animate: true}</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb42-1"><a href="#cb42-1"></a><span class="in">```{r}</span></span>
+<span id="cb42-2"><a href="#cb42-2"></a><span class="fu">ggplot</span>(lincoln_temps, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> mean_temp)) <span class="sc">+</span></span>
+<span id="cb42-3"><a href="#cb42-3"></a>  <span class="fu">geom_violin</span>(<span class="at">fill =</span> <span class="st">"skyblue"</span>) </span>
+<span id="cb42-4"><a href="#cb42-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-51-1.png" width="960" class="r-stretch"></section>
+<section id="examples-strip-chart-no-jitter-auto-animate-true" class="slide level2">
+<h2>Examples: Strip chart (no jitter) {auto-animate: true}</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb43-1"><a href="#cb43-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a><span class="fu">ggplot</span>(lincoln_temps, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> mean_temp)) <span class="sc">+</span></span>
+<span id="cb43-3"><a href="#cb43-3"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"skyblue"</span>) </span>
+<span id="cb43-4"><a href="#cb43-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-52-1.png" width="960" class="r-stretch"></section>
+<section id="examples-strip-chart-w-jitter-auto-animate-true" class="slide level2">
+<h2>Examples: Strip chart (w/ jitter) {auto-animate: true}</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb44-1"><a href="#cb44-1"></a><span class="in">```{r}</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="fu">ggplot</span>(lincoln_temps, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> mean_temp)) <span class="sc">+</span></span>
+<span id="cb44-3"><a href="#cb44-3"></a>  <span class="fu">geom_jitter</span>(<span class="at">color =</span> <span class="st">"skyblue"</span>) </span>
+<span id="cb44-4"><a href="#cb44-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-53-1.png" width="960" class="r-stretch"></section>
+<section id="examples-scatter-density-plot-auto-animate-true" class="slide level2">
+<h2>Examples: Scatter density plot {auto-animate: true}</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb45-1"><a href="#cb45-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-2"><a href="#cb45-2"></a><span class="fu">ggplot</span>(lincoln_temps, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> mean_temp)) <span class="sc">+</span></span>
+<span id="cb45-3"><a href="#cb45-3"></a>  <span class="fu">geom_quasirandom</span>(<span class="at">color =</span> <span class="st">"skyblue"</span>) </span>
+<span id="cb45-4"><a href="#cb45-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-54-1.png" width="960" class="r-stretch"></section>
+<section id="exercise-1" class="slide level2 your-turn">
+<h2>Exercise</h2>
+<p>Try exploring different continuous variables in table 01, table 02, and table_03 using these density visualization strategies.</p>
 
 <div class="footer footer-default">
 <p><a href="index.html">back to module</a></p>

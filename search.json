@@ -1579,7 +1579,252 @@
     "href": "materials/1-workshop1/4-tidyverse-201/slides.html#exercise",
     "title": "More data wrangling and data visualization with the tidyverse",
     "section": "Exercise",
-    "text": "Exercise\nThat’s enough slides for now time to try for yourself! Go to the module and go to the first exercise.\n\n\n\n−+\n30:00\n\n\n\n\n\nback to module"
+    "text": "Exercise\nThat’s enough slides for now time to try for yourself! Go to the module and go to the first exercise.\n\n\n\n−+\n30:00"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#histograms-and-density-plots",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#histograms-and-density-plots",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Histograms and density plots",
+    "text": "Histograms and density plots\n\n\n\n\n\n\n\nage\nsex\nclass\nsurvived\n\n\n\n\n0.17\nfemale\n3rd\nsurvived\n\n\n0.33\nmale\n3rd\ndied\n\n\n0.80\nmale\n2nd\nsurvived\n\n\n0.83\nmale\n2nd\nsurvived\n\n\n0.83\nmale\n3rd\nsurvived\n\n\n0.92\nmale\n1st\nsurvived\n\n\n1.00\nfemale\n2nd\nsurvived\n\n\n1.00\nfemale\n3rd\nsurvived\n\n\n1.00\nmale\n2nd\nsurvived\n\n\n1.00\nmale\n2nd\nsurvived\n\n\n1.00\nmale\n3rd\nsurvived\n\n\n1.50\nfemale\n3rd\ndied\n\n\n\n\n\n\n\n\n\n\n\nage\nsex\nclass\nsurvived\n\n\n\n\n1.5\nfemale\n3rd\ndied\n\n\n2.0\nfemale\n1st\ndied\n\n\n2.0\nfemale\n2nd\nsurvived\n\n\n2.0\nfemale\n3rd\ndied\n\n\n2.0\nfemale\n3rd\ndied\n\n\n2.0\nmale\n2nd\nsurvived\n\n\n2.0\nmale\n2nd\nsurvived\n\n\n2.0\nmale\n2nd\nsurvived\n\n\n3.0\nfemale\n2nd\nsurvived\n\n\n3.0\nfemale\n3rd\nsurvived\n\n\n3.0\nmale\n2nd\nsurvived\n\n\n3.0\nmale\n2nd\nsurvived\n\n\n\n\n\n\n\n\n\n\n\nage\nsex\nclass\nsurvived\n\n\n\n\n3\nmale\n3rd\nsurvived\n\n\n3\nmale\n3rd\nsurvived\n\n\n4\nfemale\n2nd\nsurvived\n\n\n4\nfemale\n2nd\nsurvived\n\n\n4\nfemale\n3rd\nsurvived\n\n\n4\nfemale\n3rd\nsurvived\n\n\n4\nmale\n1st\nsurvived\n\n\n4\nmale\n3rd\ndied\n\n\n4\nmale\n3rd\nsurvived\n\n\n5\nfemale\n3rd\nsurvived\n\n\n5\nfemale\n3rd\nsurvived\n\n\n5\nmale\n3rd\ndied"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#define-bins-and-count-classes",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#define-bins-and-count-classes",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Define bins and count classes",
+    "text": "Define bins and count classes\n\n\n\n\n\n\n\nage range\ncount\n\n\n\n\n0–5\n36\n\n\n6–10\n19\n\n\n11–15\n18\n\n\n16–20\n99\n\n\n21–25\n139\n\n\n26–30\n121\n\n\n31–35\n76\n\n\n36–40\n74\n\n\n\n\n\n\n\n\n\n\n\n\n\nage range\ncount\n\n\n\n\n41–45\n54\n\n\n46–50\n50\n\n\n51–55\n26\n\n\n56–60\n22\n\n\n61–65\n16\n\n\n66–70\n3\n\n\n71–75\n3\n\n\n76–80\n0"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#define-bins-and-count-classes-1",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#define-bins-and-count-classes-1",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Define bins and count classes",
+    "text": "Define bins and count classes\n\n\n\n\n\n\n\nage range\ncount\n\n\n\n\n0–5\n36\n\n\n6–10\n19\n\n\n11–15\n18\n\n\n16–20\n99\n\n\n21–25\n139\n\n\n26–30\n121\n\n\n31–35\n76\n\n\n36–40\n74\n\n\n\n\n\n\n\n\n\n\n\n\n\nage range\ncount\n\n\n\n\n41–45\n54\n\n\n46–50\n50\n\n\n51–55\n26\n\n\n56–60\n22\n\n\n61–65\n16\n\n\n66–70\n3\n\n\n71–75\n3\n\n\n76–80\n0"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#histograms-depend-on-the-chosen-bin-width",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#histograms-depend-on-the-chosen-bin-width",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Histograms depend on the chosen bin width",
+    "text": "Histograms depend on the chosen bin width"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#alternative-to-histogram-kernel-density-estimate-kde",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#alternative-to-histogram-kernel-density-estimate-kde",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Alternative to histogram: Kernel density estimate (KDE)",
+    "text": "Alternative to histogram: Kernel density estimate (KDE)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHistograms show raw counts, KDEs show proportions. (Total area = 1)"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#kdes-also-depend-on-parameter-settings",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#kdes-also-depend-on-parameter-settings",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "KDEs also depend on parameter settings",
+    "text": "KDEs also depend on parameter settings"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#careful-kdes-can-show-non-sensical-data",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#careful-kdes-can-show-non-sensical-data",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Careful: KDEs can show non-sensical data",
+    "text": "Careful: KDEs can show non-sensical data"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#careful-are-bars-stacked-or-overlapping",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#careful-are-bars-stacked-or-overlapping",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Careful, are bars stacked or overlapping?",
+    "text": "Careful, are bars stacked or overlapping?"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#alternatively-age-pyramid",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#alternatively-age-pyramid",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Alternatively: Age pyramid",
+    "text": "Alternatively: Age pyramid"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#alternatively-kdes-showing-proportions-of-total",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#alternatively-kdes-showing-proportions-of-total",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Alternatively: KDEs showing proportions of total",
+    "text": "Alternatively: KDEs showing proportions of total"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#making-histograms-with-ggplot-geom_histogram",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#making-histograms-with-ggplot-geom_histogram",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Making histograms with ggplot: geom_histogram()",
+    "text": "Making histograms with ggplot: geom_histogram()\n\n```{r}\nggplot(titanic, aes(age)) +\n  geom_histogram()\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#setting-the-bin-width",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#setting-the-bin-width",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Setting the bin width",
+    "text": "Setting the bin width\n\n```{r}\nggplot(titanic, aes(age)) +\n  geom_histogram(binwidth = 5)\n```\n\n\n\nDo you like where there bins are? What does the first bin say?"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#always-set-the-center-as-well-to-half-the-bin_width",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#always-set-the-center-as-well-to-half-the-bin_width",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Always set the center as well, to half the bin_width",
+    "text": "Always set the center as well, to half the bin_width\n\n```{r}\nggplot(titanic, aes(age)) +\n  geom_histogram(binwidth = 5, center=2.5)\n```\n\n\n\nSetting center 2.5 makes the bars start 0-5, 5-10, etc. instead of 2.5-7.5, etc. You could instead use the argument boundary=5 to accomplish the same behavior."
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#making-density-plots-with-ggplot-geom_density-auto-animatetrue",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#making-density-plots-with-ggplot-geom_density-auto-animatetrue",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Making density plots with ggplot: geom_density() {auto-animate:true}",
+    "text": "Making density plots with ggplot: geom_density() {auto-animate:true}\n\n```{r}\nggplot(titanic, aes(age)) +\n  geom_density(fill = \"skyblue\")\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#making-density-plots-with-ggplot-geom_density-auto-animatetrue-1",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#making-density-plots-with-ggplot-geom_density-auto-animatetrue-1",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Making density plots with ggplot: geom_density() {auto-animate:true}",
+    "text": "Making density plots with ggplot: geom_density() {auto-animate:true}\n\n```{r}\nggplot(titanic, aes(age)) +\n  geom_density()\n```\n\n\nwithout fill"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#modifying-bandwidth-bw-and-kernel-parameters-auto-animatetrue",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#modifying-bandwidth-bw-and-kernel-parameters-auto-animatetrue",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Modifying bandwidth (bw) and kernel parameters {auto-animate:true}",
+    "text": "Modifying bandwidth (bw) and kernel parameters {auto-animate:true}\n\n```{r}\nggplot(titanic, aes(age)) +\n  geom_density(\n    fill = \"skyblue\",\n    bw = 0.5,               # a small bandwidth\n    kernel = \"gaussian\"     # Gaussian kernel (the default)\n  )\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#modifying-bandwidth-bw-and-kernel-parameters-auto-animatetrue-1",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#modifying-bandwidth-bw-and-kernel-parameters-auto-animatetrue-1",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Modifying bandwidth (bw) and kernel parameters {auto-animate:true}",
+    "text": "Modifying bandwidth (bw) and kernel parameters {auto-animate:true}\n\n```{r}\nggplot(titanic, aes(age)) +\n  geom_density(\n    fill = \"skyblue\",\n    bw = 2,                 # a moderate bandwidth\n    kernel = \"rectangular\"  # rectangular kernel\n  )\n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#density-estimates-visualize-distributions",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#density-estimates-visualize-distributions",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Density estimates visualize distributions",
+    "text": "Density estimates visualize distributions\nMean temperatures in Lincoln, NE, in January 2016:\n\n\n\n\n\n\n\ndate\nmean temp\n\n\n\n\n2016-01-01\n-4\n\n\n2016-01-02\n-5\n\n\n2016-01-03\n-5\n\n\n2016-01-04\n-8\n\n\n2016-01-05\n-2\n\n\n2016-01-06\n1\n\n\n2016-01-07\n-1\n\n\n2016-01-08\n-4\n\n\n2016-01-09\n-13\n\n\n2016-01-10\n-12\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow can we compare distributions across months?"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#a-bad-idea-many-overlapping-density-plots",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#a-bad-idea-many-overlapping-density-plots",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "A bad idea: Many overlapping density plots",
+    "text": "A bad idea: Many overlapping density plots"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#another-bad-idea-stacked-density-plots",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#another-bad-idea-stacked-density-plots",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Another bad idea: Stacked density plots",
+    "text": "Another bad idea: Stacked density plots"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#somewhat-better-small-multiples",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#somewhat-better-small-multiples",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Somewhat better: Small multiples",
+    "text": "Somewhat better: Small multiples"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#instead-show-values-along-y-conditions-along-x",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#instead-show-values-along-y-conditions-along-x",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Instead: Show values along y, conditions along x",
+    "text": "Instead: Show values along y, conditions along x\n\nA boxplot is a crude way of visualizing a distribution."
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#how-to-read-a-boxplot",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#how-to-read-a-boxplot",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "How to read a boxplot",
+    "text": "How to read a boxplot"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#if-you-like-density-plots-consider-violins",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#if-you-like-density-plots-consider-violins",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "If you like density plots, consider violins",
+    "text": "If you like density plots, consider violins\n\n\nA violin plot is a density plot rotated 90 degrees and then mirrored."
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#how-to-read-a-violin-plot",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#how-to-read-a-violin-plot",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "How to read a violin plot",
+    "text": "How to read a violin plot"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#for-small-datasets-you-can-also-use-a-strip-chart",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#for-small-datasets-you-can-also-use-a-strip-chart",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "For small datasets, you can also use a strip chart",
+    "text": "For small datasets, you can also use a strip chart\nAdvantage: Can see raw data points instead of abstract representation.\n\n\nHorizontal jittering may be necessary to avoid overlapping points."
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#another-option-is-a-scatter-density-plot",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#another-option-is-a-scatter-density-plot",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Another option is a scatter-density plot",
+    "text": "Another option is a scatter-density plot\nAdvantage: Best of both worlds for violin and jitter plot, see the raw data but also see the shape of the density"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#advice---always-show-the-finest-granularity-of-data-that-is-practical.",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#advice---always-show-the-finest-granularity-of-data-that-is-practical.",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Advice - always show the finest granularity of data that is practical.",
+    "text": "Advice - always show the finest granularity of data that is practical.\nIf you don’t have too many points, show them! It makes it much easier to interpret the data. Especially when you are exploring new datasets.\nFavor showing distributions over just a mean with error bars."
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#making-boxplots-violins-etc.-in-ggplot2-1",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#making-boxplots-violins-etc.-in-ggplot2-1",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Making boxplots, violins, etc. in ggplot2",
+    "text": "Making boxplots, violins, etc. in ggplot2\n\n\n\n\n\n\n\n\nPlot type\nGeom\nNotes\n\n\n\n\nboxplot\ngeom_boxplot()\n\n\n\nviolin plot\ngeom_violin()\n\n\n\nstrip chart\ngeom_point()\nJittering requires position_jitter()\n\n\nsina plot\ngeom_sina()\nFrom package ggforce\n\n\nscatter-density plot\ngeom_quasirandom()\nFrom package ggbeeswarm\n\n\nridgeline\ngeom_density_ridges()\nFrom package ggridges"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#examples-boxplot-auto-animate-true",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#examples-boxplot-auto-animate-true",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Examples: Boxplot {auto-animate: true}",
+    "text": "Examples: Boxplot {auto-animate: true}\n\n```{r}\nggplot(lincoln_temps, aes(x = month, y = mean_temp)) +\n  geom_boxplot(fill = \"skyblue\") \n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#examples-violins-auto-animate-true",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#examples-violins-auto-animate-true",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Examples: Violins {auto-animate: true}",
+    "text": "Examples: Violins {auto-animate: true}\n\n```{r}\nggplot(lincoln_temps, aes(x = month, y = mean_temp)) +\n  geom_violin(fill = \"skyblue\") \n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#examples-strip-chart-no-jitter-auto-animate-true",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#examples-strip-chart-no-jitter-auto-animate-true",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Examples: Strip chart (no jitter) {auto-animate: true}",
+    "text": "Examples: Strip chart (no jitter) {auto-animate: true}\n\n```{r}\nggplot(lincoln_temps, aes(x = month, y = mean_temp)) +\n  geom_point(color = \"skyblue\") \n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#examples-strip-chart-w-jitter-auto-animate-true",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#examples-strip-chart-w-jitter-auto-animate-true",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Examples: Strip chart (w/ jitter) {auto-animate: true}",
+    "text": "Examples: Strip chart (w/ jitter) {auto-animate: true}\n\n```{r}\nggplot(lincoln_temps, aes(x = month, y = mean_temp)) +\n  geom_jitter(color = \"skyblue\") \n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#examples-scatter-density-plot-auto-animate-true",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#examples-scatter-density-plot-auto-animate-true",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Examples: Scatter density plot {auto-animate: true}",
+    "text": "Examples: Scatter density plot {auto-animate: true}\n\n```{r}\nggplot(lincoln_temps, aes(x = month, y = mean_temp)) +\n  geom_quasirandom(color = \"skyblue\") \n```"
+  },
+  {
+    "objectID": "materials/1-workshop1/4-tidyverse-201/slides.html#exercise-1",
+    "href": "materials/1-workshop1/4-tidyverse-201/slides.html#exercise-1",
+    "title": "More data wrangling and data visualization with the tidyverse",
+    "section": "Exercise",
+    "text": "Exercise\nTry exploring different continuous variables in table 01, table 02, and table_03 using these density visualization strategies.\n\n\nback to module"
   },
   {
     "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_exercise_solutions.html",
