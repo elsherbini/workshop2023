@@ -432,4 +432,861 @@ That's enough slides for now time to try for yourself! Go to [the module](index.
 countdown::countdown(30)
 ```
 
+```{r setup, include=FALSE, echo=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(comment = "")
+
+library(tidyverse)
+library(lubridate)
+library(cowplot)
+library(colorspace)
+library(here)
+library(ggridges)
+library(ggforce)
+library(ggbeeswarm)
+# ggplot2 settings so plots scale well for slide size 
+theme_set(theme_gray(16)) # 16 for full width, 18 for half width 
+update_geom_defaults("point", list(size = 2)) # 2 for full width, 2.5 for half width
+
+# this function should be added to cowplot
+align_legend <- function(p, hjust = 0.5)
+{
+  # extract legend
+  g <- cowplot::plot_to_gtable(p)
+  grobs <- g$grobs
+  legend_index <- which(sapply(grobs, function(x) x$name) == "guide-box")
+  legend <- grobs[[legend_index]]
+
+  # extract guides table
+  guides_index <- which(sapply(legend$grobs, function(x) x$name) == "layout")
+
+  # there can be multiple guides within one legend box  
+  for (gi in guides_index) {
+    guides <- legend$grobs[[gi]]
+    
+    # add extra column for spacing
+    # guides$width[5] is the extra spacing from the end of the legend text
+    # to the end of the legend title. If we instead distribute it by `hjust:(1-hjust)` on
+    # both sides, we get an aligned legend
+    spacing <- guides$width[5]
+    guides <- gtable::gtable_add_cols(guides, hjust*spacing, 1)
+    guides$widths[6] <- (1-hjust)*spacing
+    title_index <- guides$layout$name == "title"
+    guides$layout$l[title_index] <- 2
+
+    # reconstruct guides and write back
+    legend$grobs[[gi]] <- guides
+  }
+  
+  # reconstruct legend and write back
+  g$grobs[[legend_index]] <- legend
+  g
+}
+
+income_by_age <- readRDS(here("datasets", "income_by_age.rds"))
+
+titanic <- read_csv(here("datasets", "titanic.csv")) %>%
+  select(age, sex, class, survived) %>%
+  arrange(age, sex, class)
+
+lincoln_temps <- readRDS(here("datasets", "lincoln_temps.rds")) %>% mutate(mean_temp = ((mean_temp - 32)*5/9) %>% round())
+```
+
+# Visualizing distributions
+
+## Histograms and density plots
+
+::: {.columns}
+
+:::{.column width=33%}
+
+```{r}
+#| echo: false
+titanic %>% slice(1:12) %>% knitr::kable()
+
+```
+
+:::
+
+:::{.column width=33%}
+
+```{r}
+#| echo: false
+titanic %>% slice(13:24) %>% knitr::kable()
+
+```
+
+:::
+
+:::{.column width=33%}
+
+```{r}
+#| echo: false
+titanic  %>% slice(25:36) %>% knitr::kable()
+
+```
+
+:::
+
+:::
+
+## Define bins and count classes
+
+```{r}
+#| echo: false
+age_counts <- hist(titanic$age, breaks = (0:15) * 5 + .01, plot = FALSE)$counts
+age_hist <- tibble(
+  `age range` = c("0–5", "6–10", "11–15", "16–20", "21–25", "26–30", "31–35", "36–40", "41–45", "46–50", "51–55", "56–60", "61–65", "66–70", "71–75", "76–80"),
+  count = c(age_counts, 0)
+)
+
+```
+::: {.columns .incremental}
+
+:::{.column width=25%}
+```{r echo = FALSE}
+knitr::kable(age_hist[1:8,], "html")
+```
+:::
+
+:::{.column width=25%}
+
+```{r echo = FALSE}
+knitr::kable(age_hist[9:16,], "html")
+```
+:::
+
+:::{.column width=50%}
+
+
+:::
+
+:::
+
+
+## Define bins and count classes
+
+```{r}
+#| echo: false
+age_counts <- hist(titanic$age, breaks = (0:15) * 5 + .01, plot = FALSE)$counts
+age_hist <- tibble(
+  `age range` = c("0–5", "6–10", "11–15", "16–20", "21–25", "26–30", "31–35", "36–40", "41–45", "46–50", "51–55", "56–60", "61–65", "66–70", "71–75", "76–80"),
+  count = c(age_counts, 0)
+)
+
+```
+::: {.columns .incremental}
+
+:::{.column width=25%}
+```{r echo = FALSE}
+knitr::kable(age_hist[1:8,], "html")
+```
+:::
+
+:::{.column width=25%}
+
+```{r echo = FALSE}
+knitr::kable(age_hist[9:16,], "html")
+```
+:::
+
+:::{.column width=50%}
+```{r}
+#| echo: false
+age_hist5 <- age_hist %>%
+  mutate(age = (1:16) * 5 - 2.5) %>%
+  filter(count > 0)
+
+h1 <- ggplot(age_hist5, aes(x = age, y = count)) + 
+  geom_col(width = 4.7, fill = "#56B4E9", na.rm = TRUE)  + 
+  scale_y_continuous(expand = c(0, 0), breaks = 25 * (0:5)) +
+  scale_x_continuous(name = "age (years)", limits = c(0, 75), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_minimal_hgrid(18) +
+  theme(
+    axis.line.x = element_blank()
+  )
+
+h1
+```
+
+:::
+
+:::
+
+
+
+## Histograms depend on the chosen bin width
+
+```{r titanic-age-hist-binwidth, echo = FALSE, fig.width = 8, fig.asp = 0.618, dev = "svg"}
+age_hist_1 <- tibble(
+  age = (1:75) - 0.5, 
+  count = hist(titanic$age, breaks = (0:75) + .01, plot = FALSE)$counts
+)
+age_hist_3 <- tibble(
+  age = (1:25) * 3 - 1.5, 
+  count = hist(titanic$age, breaks = (0:25) * 3 + .01, plot = FALSE)$counts
+)
+age_hist_15 <- tibble(
+  age = (1:5) * 15 - 7.5, 
+  count = hist(titanic$age, breaks = (0:5) * 15 + .01, plot = FALSE)$counts
+)
+
+
+h2 <- ggplot(age_hist_1, aes(x = age, y = count)) + 
+  geom_col(width = .85, fill = "#56B4E9")  + 
+  scale_y_continuous(expand = c(0, 0), breaks = 10 * (0:5)) +
+  scale_x_continuous(name = "age (years)", limits = c(0, 75), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_minimal_hgrid(14) +
+  theme(
+    axis.line.x = element_blank()
+  )
+
+h3 <- ggplot(age_hist_3, aes(x = age, y = count)) + 
+  geom_col(width = 2.75, fill = "#56B4E9")  + 
+  scale_y_continuous(expand = c(0, 0), breaks = 25 * (0:5)) +
+  scale_x_continuous(name = "age (years)", limits = c(0, 75), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_minimal_hgrid(14) +
+  theme(
+    axis.line.x = element_blank()
+  )
+
+h4 <- ggplot(age_hist_15, aes(x = age, y = count)) + 
+  geom_col(width = 14.5, fill = "#56B4E9")  + 
+  scale_y_continuous(expand = c(0, 0), breaks = 100 * (0:4)) +
+  scale_x_continuous(name = "age (years)", limits = c(0, 75), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_minimal_hgrid(14) +
+  theme(
+    axis.line.x = element_blank()
+  )
+
+h1 <- h1 + theme_minimal_hgrid(16) +
+  theme(
+    axis.line.x = element_blank()
+  )
+
+plot_grid(
+  h2, NULL, h3,
+  NULL, NULL, NULL,
+  h1, NULL, h4,
+  align = 'hv',
+  rel_widths = c(1, .04, 1),
+  rel_heights = c(1, .04, 1)
+)
+```
+
+## Alternative to histogram: Kernel density estimate (KDE)
+
+
+::: {.columns}
+::: {.column width=50%}
+```{r}
+#| echo: false
+h1 + ggtitle("Histogram") + theme(plot.title.position = "plot")
+```
+:::
+
+:::{.column width=50%}
+
+```{r}
+#| echo: false
+ggplot(titanic, aes(x = age)) + 
+  geom_density(fill = "#56B4E9", color = darken("#56B4E9", 0.5), bw = 2, kernel = "gaussian") + 
+  scale_y_continuous(limits = c(0, 0.046), expand = c(0, 0), name = "density") +
+  scale_x_continuous(name = "age (years)", limits = c(0, 75), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  ggtitle("Kernel density estimate") +
+  theme_minimal_hgrid(18) +
+  theme(
+    axis.line.x = element_blank(),
+    plot.title.position = "plot"
+  )
+```
+:::
+:::
+
+. . .
+
+
+Histograms show raw counts, KDEs show proportions. (Total area = 1)
+
+
+## KDEs also depend on parameter settings
+
+```{r titanic-age-kde-grid, echo = FALSE, fig.width = 8, fig.asp = 0.618, dev = "svg"}
+pdens1 <- ggplot(titanic, aes(x = age)) + 
+  geom_density(fill = "#56B4E9", color = darken("#56B4E9", 0.5), bw = .5, kernel = "gaussian") + 
+  scale_y_continuous(limits = c(0, 0.046), expand = c(0, 0), name = "density") +
+  scale_x_continuous(name = "age (years)", limits = c(0, 75), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_minimal_hgrid(14) +
+  theme(axis.line.x = element_blank())
+
+pdens2 <- ggplot(titanic, aes(x = age)) + 
+  geom_density(fill = "#56B4E9", color = darken("#56B4E9", 0.5), bw = 2, kernel = "gaussian") + 
+  scale_y_continuous(limits = c(0, 0.046), expand = c(0, 0), name = "density") +
+  scale_x_continuous(name = "age (years)", limits = c(0, 75), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_minimal_hgrid(14) +
+  theme(axis.line.x = element_blank())
+
+pdens3 <- ggplot(titanic, aes(x = age)) + 
+  geom_density(fill = "#56B4E9", color = darken("#56B4E9", 0.5), bw = 5, kernel = "gaussian") + 
+  scale_y_continuous(limits = c(0, 0.046), expand = c(0, 0), name = "density") +
+  scale_x_continuous(name = "age (years)", limits = c(0, 75), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_minimal_hgrid(14) +
+  theme(axis.line.x = element_blank())
+
+pdens4 <- ggplot(titanic, aes(x = age)) + 
+  geom_density(fill = "#56B4E9", color = darken("#56B4E9", 0.5), bw = 2, kernel = "rectangular") + 
+  scale_y_continuous(limits = c(0, 0.046), expand = c(0, 0), name = "density") +
+  scale_x_continuous(name = "age (years)", limits = c(0, 75), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_minimal_hgrid(14) +
+  theme(axis.line.x = element_blank())
+
+plot_grid(
+  pdens1, NULL, pdens2, 
+  NULL, NULL, NULL,
+  pdens3, NULL, pdens4,
+  align = 'hv',
+  rel_widths = c(1, .04, 1),
+  rel_heights = c(1, .04, 1)
+)
+```
+
+## Careful: KDEs can show non-sensical data
+
+```{r titanic-age-kde-wrong, echo = FALSE, fig.width = 7, fig.asp = 0.618, dev = "svg"}
+pdens_neg <- ggplot(titanic, aes(x = age)) + 
+  geom_density(fill = "#56B4E9", color = darken("#56B4E9", 0.5)) + 
+  scale_y_continuous(limits = c(0, 0.046), expand = c(0, 0), name = "density") +
+  scale_x_continuous(name = "age (years)", limits = c(-10, 79), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_minimal_hgrid(16) +
+  theme(
+    axis.line.x = element_blank()
+  )
+stamp_wrong(pdens_neg)
+```
+
+## Careful, are bars stacked or overlapping?
+
+:::{.columns}
+
+:::{.column width=50%}
+```{r titanic-age-hist-stacked, echo = FALSE, fig.width = 7, fig.asp = 0.618, dev = "svg"}
+gender_counts <- tibble(
+  age = (1:25)*3 - 1.5, 
+  male = hist(filter(titanic, sex == "male")$age, breaks = (0:25)*3 + .01, plot = FALSE)$counts,
+  female = hist(filter(titanic, sex == "female")$age, breaks = (0:25)*3 + .01, plot = FALSE)$counts
+) %>%
+  pivot_longer(-age, names_to = "gender", values_to = "count")
+
+gender_counts$gender <- factor(gender_counts$gender, levels = c("female", "male"))
+
+ggplot(gender_counts, aes(x = age, y = count, fill = gender)) + 
+  geom_col(position = "stack") +
+  scale_x_continuous(name = "age (years)", limits = c(0, 75), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(0, 89), expand = c(0, 0), name = "count") +
+  scale_fill_manual(values = c("#D55E00", "#0072B2")) +
+  coord_cartesian(clip = "off") +
+  theme_minimal_hgrid(18) +
+  theme(
+    axis.line.x = element_blank(),
+    legend.position = c(.9, .87),
+    legend.justification = c("right", "top"),
+    legend.box.background = element_rect(fill = "white", color = "white")
+  )
+```
+:::
+
+::: {.column width=50%}
+
+```{r titanic-age-hist-overlap, echo = FALSE, fig.width = 7, fig.asp = 0.618, dev = "svg"}
+ggplot(gender_counts, aes(x = age, y = count, fill = gender)) + 
+  geom_col(position = "identity", alpha = 0.7) +
+  scale_x_continuous(name = "age (years)", limits = c(0, 75), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(0, 56), expand = c(0, 0), name = "count") +
+  scale_fill_manual(
+    values = c("#D55E00", "#0072B2"),
+    guide = guide_legend(reverse = TRUE)
+  ) +
+  coord_cartesian(clip = "off") +
+  theme_minimal_hgrid(18) +
+  theme(
+    axis.line.x = element_blank(),
+    legend.position = c(.9, .87),
+    legend.justification = c("right", "top"),
+    legend.box.background = element_rect(fill = "white", color = "white")
+  )
+```
+
+:::
+
+:::
+
+## Alternatively: Age pyramid
+
+```{r titanic-age-pyramid, echo = FALSE, fig.width = 7, fig.asp = 0.618, dev = "svg"}
+ggplot(gender_counts, aes(x = age, y = ifelse(gender == "male", -1, 1)*count, fill = gender)) + 
+  geom_col() +
+  scale_x_continuous(name = "age (years)", limits = c(0, 75), expand = c(0, 0)) +
+  scale_y_continuous(name = "count", breaks = 20*(-2:1), labels = c("40", "20", "0", "20")) +
+  scale_fill_manual(values = c("#D55E00", "#0072B2"), guide = "none") +
+  draw_text(x = 70, y = -39, "male", hjust = 0) +
+  draw_text(x = 70, y = 21, "female", hjust = 0) +
+  coord_flip() +
+  theme_minimal_grid(16) +
+  theme(axis.title.x = element_text(hjust = 0.61))
+```
+
+## Alternatively: KDEs showing proportions of total
+
+```{r}
+#| echo: false
+titanic %>%
+  mutate(sex = factor(sex, levels = c("male", "female"))) %>%
+  ggplot(aes(x = age, y = after_stat(count))) +
+  geom_density(
+    data = select(titanic, -sex), aes(fill = "all passengers"),
+    color = "transparent"
+  ) + 
+  geom_density(aes(fill = sex), bw = 2, color = "transparent") +
+  scale_x_continuous(limits = c(0, 75), name = "passenger age (years)", expand = c(0, 0)) +
+  scale_y_continuous(limits = c(0, 26), name = "scaled density", expand = c(0, 0)) +
+  scale_fill_manual(
+    values = c("#b3b3b3a0", "#0072B2", "#D55E00"), 
+    breaks = c("all passengers", "male", "female"),
+    labels = c("all passengers  ", "males  ", "females"),
+    name = NULL,
+    guide = guide_legend(direction = "horizontal")
+  ) +
+  coord_cartesian(clip = "off") +
+  facet_wrap(vars(sex), labeller = labeller(sex = function(sex) paste(sex, "passengers"))) +
+  theme_minimal_hgrid(16) +
+  theme(
+    axis.line.x = element_blank(),
+    strip.text = element_text(size = 14, margin = margin(0, 0, 0.2, 0, "cm")),
+    legend.position = "bottom",
+    legend.justification = "right",
+    legend.margin = margin(4.5, 0, 1.5, 0, "pt"),
+    legend.spacing.x = grid::unit(4.5, "pt"),
+    legend.spacing.y = grid::unit(0, "pt"),
+    legend.box.spacing = grid::unit(0, "cm")
+  )
+```
+
+
+# Histograms and density plots in **ggplot2**
+
+## Making histograms with ggplot: `geom_histogram()`
+
+```{r}
+#| echo: fenced
+ggplot(titanic, aes(age)) +
+  geom_histogram()
+```
+
+## Setting the bin width {auto-animate=true}
+
+```{r}
+#| echo: fenced
+ggplot(titanic, aes(age)) +
+  geom_histogram(binwidth = 5)
+```
+
+. . .
+
+Do you like where there bins are? What does the first bin say?
+
+## Always set the `center` as well, to half the `bin_width` {auto-animate=true}
+
+```{r}
+#| echo: fenced
+ggplot(titanic, aes(age)) +
+  geom_histogram(binwidth = 5, center=2.5)
+```
+
+. . .
+
+
+Setting center 2.5 makes the bars start 0-5, 5-10, etc. instead of 2.5-7.5, etc. You could instead use the argument  `boundary=5` to accomplish the same behavior.
+
+## Making density plots with ggplot: `geom_density()` {auto-animate:true}
+
+```{r}
+#| echo: fenced
+ggplot(titanic, aes(age)) +
+  geom_density(fill = "skyblue")
+```
+
+
+## Making density plots with ggplot: `geom_density()` {auto-animate:true}
+
+```{r}
+#| echo: fenced
+ggplot(titanic, aes(age)) +
+  geom_density()
+```
+
+without `fill`
+
+
+## Modifying bandwidth (`bw`) and kernel parameters {auto-animate:true}
+
+
+```{r}
+#| echo: fenced
+ggplot(titanic, aes(age)) +
+  geom_density(
+    fill = "skyblue",
+    bw = 0.5,               # a small bandwidth
+    kernel = "gaussian"     # Gaussian kernel (the default)
+  )
+```
+
+
+## Modifying bandwidth (`bw`) and kernel parameters {auto-animate:true}
+
+
+```{r}
+#| echo: fenced
+ggplot(titanic, aes(age)) +
+  geom_density(
+    fill = "skyblue",
+    bw = 2,                 # a moderate bandwidth
+    kernel = "rectangular"  # rectangular kernel
+  )
+```
+
+
+## Density estimates visualize distributions
+
+Mean temperatures in Lincoln, NE, in January 2016:
+
+:::{.columns}
+:::{.column width=30%}
+```{r temps_table, echo = FALSE}
+lincoln_temps %>%
+  filter(month == "Jan") %>%
+  select(date, `mean temp` = mean_temp) %>%
+  slice(1:10) %>%
+  knitr::kable()
+```
+:::
+:::{.column width=70%}
+```{r}
+lincoln_temps %>%
+  filter(month == "Jan") %>%
+  ggplot(aes(mean_temp)) +
+  geom_density(fill = "#56B4E9", alpha = 0.7) +
+  scale_x_continuous(
+    name = "mean temperature (°C)",
+    expand = c(0, 0)
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.06))) +
+  ggtitle("Temperature distribution") +
+  theme_minimal_grid(18) +
+  theme(
+    plot.title.position = "plot",
+    plot.title = element_text(face = "plain")
+  )
+```
+:::
+:::
+
+. . .
+
+How can we compare distributions across months?
+
+## A bad idea: Many overlapping density plots
+
+
+```{r}
+#|echo:false
+p <- lincoln_temps %>%
+  mutate(
+    month_long = fct_rev(month_long)
+  ) %>%
+  ggplot(aes(mean_temp, fill = month)) +
+  geom_density(alpha = 0.5) +
+  scale_x_continuous(
+    name = "mean temperature (°C)",
+    expand = c(0, 0)
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.06))) +
+  scale_fill_viridis_d(option = "D") +
+  labs(subtitle = "") + # empty subtitle for some vertical space
+  theme_minimal_grid(16)
+
+stamp_bad(p)
+```
+
+## Another bad idea: Stacked density plots
+
+```{r temps_densities_stacked, echo = FALSE}
+p <- lincoln_temps %>%
+  mutate(
+    month_long = fct_rev(month_long)
+  ) %>%
+  ggplot(aes(mean_temp, fill = month)) +
+  geom_density(alpha = 0.7, position = "stack") +
+  scale_x_continuous(
+    name = "mean temperature (°C)",
+    expand = c(0, 0)
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.06))) +
+  scale_fill_viridis_d(option = "D") +
+  labs(subtitle = "") + # empty subtitle for some vertical space
+  theme_minimal_grid(16)
+
+stamp_bad(p)
+```
+
+## Somewhat better: Small multiples
+
+
+```{r}
+#| echo: false
+lincoln_temps %>%
+  mutate(
+    month_long = fct_rev(month_long)
+  ) %>%
+  ggplot(aes(mean_temp)) +
+  geom_density(fill = "#56B4E9") +
+  scale_x_continuous(
+    name = "mean temperature (°C)",
+    expand = c(0, 0)
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.06))) +
+  facet_wrap(vars(month_long)) +
+  theme_minimal_grid(16, color = "gray65") +
+  theme(
+    panel.background = element_rect(fill = "gray95")
+  )
+```
+
+
+## Instead: Show values along y, conditions along x
+
+```{r}
+#| echo: false
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  geom_boxplot(fill = "gray90") + 
+  xlab("month") + 
+  ylab("mean temperature (°C)") +
+  theme_half_open()
+```
+
+A boxplot is a crude way of visualizing a distribution.
+
+
+## How to read a boxplot
+
+
+```{r boxplot-schematic, echo = FALSE, fig.width = 8, fig.asp = 0.618, dev = "svg"}
+set.seed(3423)
+
+y <- c(rnorm(100), 3.4)
+s <- boxplot.stats(y)
+df <- tibble(
+  y = c(s$stats, max(y)),
+  x = c(1.03, 1.405, 1.405, 1.405, 1.03, 1.04),
+  label = c("minimum", "first quartile", "median", "third quartile", "maximum within upper fence", "outlier")
+)
+
+p_points <- ggplot(tibble(y), aes(x = 0, y = y)) + 
+  geom_point(position = position_jitter(width = .4, height = 0, seed = 320)) +
+  annotate("text", label = "data", x = 0, y = 4, hjust = 0.5, vjust = 1, size = 20/.pt) +
+  scale_x_continuous(limits = c(-1.8, .4), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(-2.55, 4), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_nothing()
+
+p_boxplot <- ggplot(tibble(y), aes(x = 1, y = y)) + 
+  geom_boxplot(fill = "gray90", outlier.size = 2) +
+  annotate("text", label = "boxplot", x = 1, y = 4, hjust = 0.5, vjust = 1, size = 20/.pt) +
+  geom_text(
+    data = df, aes(x, y, label = label), hjust = 0,
+    size = 16/.pt
+  ) +
+  scale_x_continuous(limits = c(0, 3.5), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(-2.55, 4), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_nothing()
+
+plot_grid(p_points, p_boxplot, rel_widths = c(.65, 1), nrow = 1)
+```
+
+## If you like density plots, consider violins
+   
+```{r}
+#| echo: false
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  geom_violin(fill = "gray90") + 
+  xlab("month") + 
+  ylab("mean temperature (°C)") +
+  theme_half_open()
+
+```
+
+. . .
+
+A violin plot is a density plot rotated 90 degrees and then mirrored.
+
+## How to read a violin plot
+
+```{r}
+#| echo: false
+set.seed(3423)
+
+y <- c(rnorm(100), 3.4)
+d <- density(y)
+df <- tibble(
+  y = c(min(y), d$x[which(d$y == max(d$y))], max(y)),
+  x = c(1.1, 1.5, 1.08),
+  label = c("minimum data value", "maximum point density", "maximum data value")
+)
+
+p_points <- ggplot(tibble(y), aes(x = 0, y = y)) + 
+  geom_point(position = position_jitter(width = .4, height = 0, seed = 320)) +
+  annotate("text", label = "data", x = 0, y = 4, hjust = 0.5, vjust = 1, size = 20/.pt) +
+  scale_x_continuous(limits = c(-1.8, .4), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(-2.55, 4), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_nothing()
+
+p_violin <- ggplot(tibble(y), aes(x = 1, y = y)) + 
+  geom_violin(fill = "gray90") +
+  annotate("text", label = "violin plot", x = 1, y = 4, hjust = 0.5, vjust = 1, size = 20/.pt) +
+  geom_text(
+    data = df, aes(x, y, label = label), hjust = 0,
+    size = 16/.pt
+  ) +
+  scale_x_continuous(limits = c(0, 3.5), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(-2.55, 4), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_nothing()
+
+plot_grid(p_points, p_violin, rel_widths = c(.65, 1), nrow = 1)
+```
+
+
+
+## For small datasets, you can also use a strip chart
+
+Advantage: Can see raw data points instead of abstract representation.
+
+
+```{r}
+#| echo: false
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  geom_point(
+    position = position_jitter(width = .15, height = 0, seed = 320),
+    size = 0.75
+  ) +
+  xlab("month") + 
+  ylab("mean temperature (°C)") +
+  theme_half_open()
+```
+
+. . .
+
+Horizontal jittering may be necessary to avoid overlapping points.
+
+
+## Another option is a scatter-density plot
+
+Advantage: Best of both worlds for violin and jitter plot, see the raw data but also see the shape of the density
+
+
+```{r}
+#| echo: false
+library(ggbeeswarm)
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  geom_quasirandom(
+    size=1.5,
+    color="skyblue"
+  ) +
+  xlab("month") + 
+  ylab("mean temperature (°C)") +
+  theme_half_open()
+```
+
+
+## Advice - always show the finest granularity of data that is practical. 
+
+If you don't have too many points, show them! It makes it much easier to interpret the data. Especially when you are exploring new datasets.
+
+Favor showing distributions over just a mean with error bars.
+
+# Making boxplots, violins, etc. in `ggplot2`
+
+## Making boxplots, violins, etc. in **ggplot2**
+
+Plot type    | Geom                    | Notes
+:----------- | :-----------------      | :-------------------------
+boxplot      | `geom_boxplot()`        |
+violin plot  | `geom_violin()`         |
+strip chart  | `geom_point()`          | Jittering requires `position_jitter()`
+sina plot    | `geom_sina()`           | From package **ggforce**
+scatter-density plot    | `geom_quasirandom()`           | From package **ggbeeswarm**
+ridgeline    | `geom_density_ridges()` | From package **ggridges**
+
+## Examples: Boxplot {auto-animate: true}
+
+```{r}
+#| echo: fenced
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  geom_boxplot(fill = "skyblue") 
+
+```
+
+## Examples: Violins {auto-animate: true}
+
+```{r}
+#| echo: fenced
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  geom_violin(fill = "skyblue") 
+
+```
+
+
+## Examples: Strip chart (no jitter) {auto-animate: true}
+
+```{r}
+#| echo: fenced
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  geom_point(color = "skyblue") 
+
+```
+
+
+## Examples: Strip chart (w/ jitter) {auto-animate: true}
+
+```{r}
+#| echo: fenced
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  geom_jitter(color = "skyblue") 
+```
+
+
+
+## Examples: Scatter density plot {auto-animate: true}
+
+```{r}
+#| echo: fenced
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  geom_quasirandom(color = "skyblue") 
+```
+
+## Exercise {.your-turn}
+
+Try exploring different continuous variables in table 01, table 02, and table_03 using these density visualization strategies.
+
 
