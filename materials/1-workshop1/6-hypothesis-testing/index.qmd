@@ -1,0 +1,22 @@
+---
+title: "Hypothesis testing, data transformation, longitudinal displays"
+format:
+  html:
+    toc: true
+---
+
+
+## Slides
+[Make slides full screen](slides.qmd)
+
+```{=html}
+<iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
+
+```{=html}
+<h2><a href="https://raw.githubusercontent.com/elsherbini/durban-data-science-for-biology/main/materials/1-workshop1/6-hypothesis-testing/hands-on.qmd" download>Download the `.qmd` to do the exercise</a></h2>
+```
+
+<a href="hands-on.qmd"> View the html output here </a>
+
+{{< include hands-on.qmd >}}
