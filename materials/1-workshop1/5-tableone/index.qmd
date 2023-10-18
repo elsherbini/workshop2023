@@ -1,0 +1,17 @@
+---
+title: "`tableone` and its Basic **Statistics**"
+subtitle: "**Baseline Characteristics in Biomedical Research**"
+format:
+  html:
+    toc: true
+---
+
+
+## Slides
+[Make slides full screen](slides.qmd)
+
+```{=html}
+<iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
+
+{{< include _01_notes.qmd >}}

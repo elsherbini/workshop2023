@@ -1,0 +1,1021 @@
+sample_id,cytokine,conc,limits
+UNCH092,IL-1a,5.85,within limits
+UNCH092,IL-10,0.767,out of range
+UNCH092,IL-1b,0.2505,out of range
+UNCH092,IL-8,7.92,within limits
+UNCH092,IL-6,0.0935,out of range
+UNCH092,TNFa,0.471,out of range
+UNCH092,IP-10,177.38,within limits
+UNCH092,MIG,369.78,within limits
+UNCH092,IFN-Y,0.3435,out of range
+UNCH092,MIP-3a,32.79,within limits
+UNCH042,IL-1a,5.71,within limits
+UNCH042,IL-10,0.767,out of range
+UNCH042,IL-1b,0.2505,out of range
+UNCH042,IL-8,4.61,within limits
+UNCH042,IL-6,0.0935,out of range
+UNCH042,TNFa,0.471,out of range
+UNCH042,IP-10,118.86,within limits
+UNCH042,MIG,427.43,within limits
+UNCH042,IFN-Y,0.3435,out of range
+UNCH042,MIP-3a,38.43,within limits
+UNCH015,IL-1a,22.81,within limits
+UNCH015,IL-10,0.767,out of range
+UNCH015,IL-1b,1.21,within limits
+UNCH015,IL-8,239.02,within limits
+UNCH015,IL-6,0.44,within limits
+UNCH015,TNFa,0.471,out of range
+UNCH015,IP-10,24.36,within limits
+UNCH015,MIG,69.24,within limits
+UNCH015,IFN-Y,0.3435,out of range
+UNCH015,MIP-3a,5.1725,out of range
+UNCH035,IL-1a,16.28,within limits
+UNCH035,IL-10,0.767,out of range
+UNCH035,IL-1b,0.72,within limits
+UNCH035,IL-8,137.39,within limits
+UNCH035,IL-6,0.23,within limits
+UNCH035,TNFa,0.471,out of range
+UNCH035,IP-10,29.84,within limits
+UNCH035,MIG,125,within limits
+UNCH035,IFN-Y,0.3435,out of range
+UNCH035,MIP-3a,5.1725,out of range
+UNCH019,IL-1a,6.14,within limits
+UNCH019,IL-10,0.767,out of range
+UNCH019,IL-1b,0.2505,out of range
+UNCH019,IL-8,17.38,within limits
+UNCH019,IL-6,0.0935,out of range
+UNCH019,TNFa,0.471,out of range
+UNCH019,IP-10,124.11,within limits
+UNCH019,MIG,673.86,within limits
+UNCH019,IFN-Y,0.3435,out of range
+UNCH019,MIP-3a,32.79,within limits
+UNCH040,IL-1a,20.45,within limits
+UNCH040,IL-10,0.767,out of range
+UNCH040,IL-1b,1.21,within limits
+UNCH040,IL-8,240.74,within limits
+UNCH040,IL-6,0.34,within limits
+UNCH040,TNFa,0.471,out of range
+UNCH040,IP-10,19,within limits
+UNCH040,MIG,86.94,within limits
+UNCH040,IFN-Y,0.3435,out of range
+UNCH040,MIP-3a,5.1725,out of range
+YOG083,IL-1a,8.37,within limits
+YOG083,IL-10,0.767,out of range
+YOG083,IL-1b,0.2505,out of range
+YOG083,IL-8,11.87,within limits
+YOG083,IL-6,0.0935,out of range
+YOG083,TNFa,0.471,out of range
+YOG083,IP-10,139.71,within limits
+YOG083,MIG,571.71,within limits
+YOG083,IFN-Y,0.3435,out of range
+YOG083,MIP-3a,29.41,within limits
+YOG030,IL-1a,4.76,within limits
+YOG030,IL-10,0.767,out of range
+YOG030,IL-1b,0.2505,out of range
+YOG030,IL-8,0.75,within limits
+YOG030,IL-6,0.0935,out of range
+YOG030,TNFa,0.471,out of range
+YOG030,IP-10,1379.79,within limits
+YOG030,MIG,25000,out of range
+YOG030,IFN-Y,0.3435,out of range
+YOG030,MIP-3a,158.24,within limits
+YOG059,IL-1a,12.38,within limits
+YOG059,IL-10,0.767,out of range
+YOG059,IL-1b,0.2505,out of range
+YOG059,IL-8,69.15,within limits
+YOG059,IL-6,0.0935,out of range
+YOG059,TNFa,0.471,out of range
+YOG059,IP-10,90.39,within limits
+YOG059,MIG,362.78,within limits
+YOG059,IFN-Y,0.3435,out of range
+YOG059,MIP-3a,21.05,within limits
+YOG050,IL-1a,7.76,within limits
+YOG050,IL-10,0.767,out of range
+YOG050,IL-1b,0.2505,out of range
+YOG050,IL-8,25.33,within limits
+YOG050,IL-6,0.0935,out of range
+YOG050,TNFa,0.471,out of range
+YOG050,IP-10,101.44,within limits
+YOG050,MIG,536.22,within limits
+YOG050,IFN-Y,0.3435,out of range
+YOG050,MIP-3a,41.3,within limits
+UNCH098,IL-1a,8.07,within limits
+UNCH098,IL-10,0.767,out of range
+UNCH098,IL-1b,0.2505,out of range
+UNCH098,IL-8,16.87,within limits
+UNCH098,IL-6,0.0935,out of range
+UNCH098,TNFa,0.471,out of range
+UNCH098,IP-10,115.85,within limits
+UNCH098,MIG,809.6,within limits
+UNCH098,IFN-Y,0.3435,out of range
+UNCH098,MIP-3a,38.43,within limits
+UNCH061,IL-1a,6.14,within limits
+UNCH061,IL-10,0.767,out of range
+UNCH061,IL-1b,0.2505,out of range
+UNCH061,IL-8,4.31,within limits
+UNCH061,IL-6,0.0935,out of range
+UNCH061,TNFa,0.471,out of range
+UNCH061,IP-10,181.9,within limits
+UNCH061,MIG,517.53,within limits
+UNCH061,IFN-Y,0.3435,out of range
+UNCH061,MIP-3a,44.73,within limits
+YOG086,IL-1a,26.66,within limits
+YOG086,IL-10,0.767,out of range
+YOG086,IL-1b,1.19,within limits
+YOG086,IL-8,250.67,within limits
+YOG086,IL-6,0.34,within limits
+YOG086,TNFa,0.471,out of range
+YOG086,IP-10,23.03,within limits
+YOG086,MIG,88.25,within limits
+YOG086,IFN-Y,0.3435,out of range
+YOG086,MIP-3a,5.1725,out of range
+YOG076,IL-1a,14.42,within limits
+YOG076,IL-10,0.767,out of range
+YOG076,IL-1b,0.2505,out of range
+YOG076,IL-8,44.69,within limits
+YOG076,IL-6,0.0935,out of range
+YOG076,TNFa,0.471,out of range
+YOG076,IP-10,75.7,within limits
+YOG076,MIG,316.84,within limits
+YOG076,IFN-Y,0.3435,out of range
+YOG076,MIP-3a,22.04,within limits
+YOG027,IL-1a,24.57,within limits
+YOG027,IL-10,0.767,out of range
+YOG027,IL-1b,1.15,within limits
+YOG027,IL-8,250.67,within limits
+YOG027,IL-6,0.35,within limits
+YOG027,TNFa,0.471,out of range
+YOG027,IP-10,24.36,within limits
+YOG027,MIG,88.15,within limits
+YOG027,IFN-Y,0.3435,out of range
+YOG027,MIP-3a,5.1725,out of range
+YOG066,IL-1a,2.61,within limits
+YOG066,IL-10,0.767,out of range
+YOG066,IL-1b,0.2505,out of range
+YOG066,IL-8,0.89,within limits
+YOG066,IL-6,0.0935,out of range
+YOG066,TNFa,0.471,out of range
+YOG066,IP-10,1555.2,within limits
+YOG066,MIG,25000,out of range
+YOG066,IFN-Y,0.3435,out of range
+YOG066,MIP-3a,343.09,within limits
+UNCH073,IL-1a,11.45,within limits
+UNCH073,IL-10,0.767,out of range
+UNCH073,IL-1b,0.2505,out of range
+UNCH073,IL-8,40.35,within limits
+UNCH073,IL-6,0.0935,out of range
+UNCH073,TNFa,0.471,out of range
+UNCH073,IP-10,49.8,within limits
+UNCH073,MIG,233.33,within limits
+UNCH073,IFN-Y,0.3435,out of range
+UNCH073,MIP-3a,22.04,within limits
+UNCH006,IL-1a,11.17,within limits
+UNCH006,IL-10,0.767,out of range
+UNCH006,IL-1b,0.2505,out of range
+UNCH006,IL-8,35.35,within limits
+UNCH006,IL-6,0.0935,out of range
+UNCH006,TNFa,0.471,out of range
+UNCH006,IP-10,66.76,within limits
+UNCH006,MIG,262.98,within limits
+UNCH006,IFN-Y,0.3435,out of range
+UNCH006,MIP-3a,26.56,within limits
+YOG094,IL-1a,19.71,within limits
+YOG094,IL-10,0.767,out of range
+YOG094,IL-1b,0.62,within limits
+YOG094,IL-8,137.39,within limits
+YOG094,IL-6,0.0935,out of range
+YOG094,TNFa,0.471,out of range
+YOG094,IP-10,25.68,within limits
+YOG094,MIG,102.48,within limits
+YOG094,IFN-Y,0.3435,out of range
+YOG094,MIP-3a,5.1725,out of range
+YOG013,IL-1a,9.12,within limits
+YOG013,IL-10,0.767,out of range
+YOG013,IL-1b,0.2505,out of range
+YOG013,IL-8,11.87,within limits
+YOG013,IL-6,0.0935,out of range
+YOG013,TNFa,0.471,out of range
+YOG013,IP-10,118.86,within limits
+YOG013,MIG,607.06,within limits
+YOG013,IFN-Y,0.3435,out of range
+YOG013,MIP-3a,29.41,within limits
+UNCH046,IL-1a,77.6,within limits
+UNCH046,IL-10,0.767,out of range
+UNCH046,IL-1b,10.43,within limits
+UNCH046,IL-8,754.71,within limits
+UNCH046,IL-6,2.3,within limits
+UNCH046,TNFa,1.07,within limits
+UNCH046,IP-10,1.16,within limits
+UNCH046,MIG,6.08,within limits
+UNCH046,IFN-Y,0.3435,out of range
+UNCH046,MIP-3a,5.1725,out of range
+UNCH028,IL-1a,9.05,within limits
+UNCH028,IL-10,0.767,out of range
+UNCH028,IL-1b,0.2505,out of range
+UNCH028,IL-8,25.12,within limits
+UNCH028,IL-6,0.0935,out of range
+UNCH028,TNFa,0.471,out of range
+UNCH028,IP-10,113.64,within limits
+UNCH028,MIG,573.89,within limits
+UNCH028,IFN-Y,0.3435,out of range
+UNCH028,MIP-3a,32.79,within limits
+YOG078,IL-1a,40.95,within limits
+YOG078,IL-10,0.767,out of range
+YOG078,IL-1b,3.73,within limits
+YOG078,IL-8,541.63,within limits
+YOG078,IL-6,1.43,within limits
+YOG078,TNFa,0.471,out of range
+YOG078,IP-10,4.69,within limits
+YOG078,MIG,25.7,within limits
+YOG078,IFN-Y,0.3435,out of range
+YOG078,MIP-3a,5.1725,out of range
+YOG009,IL-1a,8.37,within limits
+YOG009,IL-10,0.767,out of range
+YOG009,IL-1b,0.2505,out of range
+YOG009,IL-8,20.81,within limits
+YOG009,IL-6,0.0935,out of range
+YOG009,TNFa,0.471,out of range
+YOG009,IP-10,181.9,within limits
+YOG009,MIG,536.22,within limits
+YOG009,IFN-Y,0.3435,out of range
+YOG009,MIP-3a,36.56,within limits
+YOG004,IL-1a,16.28,within limits
+YOG004,IL-10,0.767,out of range
+YOG004,IL-1b,0.57,within limits
+YOG004,IL-8,91.51,within limits
+YOG004,IL-6,0.21,within limits
+YOG004,TNFa,0.471,out of range
+YOG004,IP-10,43.65,within limits
+YOG004,MIG,101.37,within limits
+YOG004,IFN-Y,0.3435,out of range
+YOG004,MIP-3a,13.79,within limits
+YOG014,IL-1a,2,within limits
+YOG014,IL-10,0.767,out of range
+YOG014,IL-1b,0.2505,out of range
+YOG014,IL-8,1.39,within limits
+YOG014,IL-6,0.0935,out of range
+YOG014,TNFa,0.471,out of range
+YOG014,IP-10,235.54,within limits
+YOG014,MIG,1085.07,within limits
+YOG014,IFN-Y,0.3435,out of range
+YOG014,MIP-3a,77.69,within limits
+UNCH017,IL-1a,80.38,within limits
+UNCH017,IL-10,0.767,out of range
+UNCH017,IL-1b,14.35,within limits
+UNCH017,IL-8,2500,out of range
+UNCH017,IL-6,5.43,within limits
+UNCH017,TNFa,1.89,within limits
+UNCH017,IP-10,0.305,out of range
+UNCH017,MIG,1.539,out of range
+UNCH017,IFN-Y,0.93,within limits
+UNCH017,MIP-3a,5.1725,out of range
+UNCH067,IL-1a,10.32,within limits
+UNCH067,IL-10,0.767,out of range
+UNCH067,IL-1b,0.2505,out of range
+UNCH067,IL-8,49.67,within limits
+UNCH067,IL-6,0.0935,out of range
+UNCH067,TNFa,0.471,out of range
+UNCH067,IP-10,75.7,within limits
+UNCH067,MIG,224.74,within limits
+UNCH067,IFN-Y,0.3435,out of range
+UNCH067,MIP-3a,24.61,within limits
+UNCH060,IL-1a,4.81,within limits
+UNCH060,IL-10,0.767,out of range
+UNCH060,IL-1b,0.2505,out of range
+UNCH060,IL-8,0.6,within limits
+UNCH060,IL-6,0.0935,out of range
+UNCH060,TNFa,0.471,out of range
+UNCH060,IP-10,302.05,within limits
+UNCH060,MIG,1085.07,within limits
+UNCH060,IFN-Y,0.3435,out of range
+UNCH060,MIP-3a,220.18,within limits
+UNCH025,IL-1a,3.76,within limits
+UNCH025,IL-10,0.767,out of range
+UNCH025,IL-1b,0.2505,out of range
+UNCH025,IL-8,0.1575,out of range
+UNCH025,IL-6,0.0935,out of range
+UNCH025,TNFa,0.471,out of range
+UNCH025,IP-10,249.76,within limits
+UNCH025,MIG,2864.09,within limits
+UNCH025,IFN-Y,0.3435,out of range
+UNCH025,MIP-3a,328.1,within limits
+UNCH100,IL-1a,17.74,within limits
+UNCH100,IL-10,0.767,out of range
+UNCH100,IL-1b,0.72,within limits
+UNCH100,IL-8,100.26,within limits
+UNCH100,IL-6,0.29,within limits
+UNCH100,TNFa,0.471,out of range
+UNCH100,IP-10,25.68,within limits
+UNCH100,MIG,89.76,within limits
+UNCH100,IFN-Y,0.3435,out of range
+UNCH100,MIP-3a,5.1725,out of range
+UNCH074,IL-1a,9.12,within limits
+UNCH074,IL-10,0.767,out of range
+UNCH074,IL-1b,0.2505,out of range
+UNCH074,IL-8,8.16,within limits
+UNCH074,IL-6,0.0935,out of range
+UNCH074,TNFa,0.471,out of range
+UNCH074,IP-10,157.45,within limits
+UNCH074,MIG,573.89,within limits
+UNCH074,IFN-Y,0.3435,out of range
+UNCH074,MIP-3a,52.31,within limits
+YOG053,IL-1a,11.45,within limits
+YOG053,IL-10,0.767,out of range
+YOG053,IL-1b,0.2505,out of range
+YOG053,IL-8,41,within limits
+YOG053,IL-6,0.0935,out of range
+YOG053,TNFa,0.471,out of range
+YOG053,IP-10,66.76,within limits
+YOG053,MIG,224.74,within limits
+YOG053,IFN-Y,0.3435,out of range
+YOG053,MIP-3a,21.2,within limits
+YOG020,IL-1a,5.84,within limits
+YOG020,IL-10,0.767,out of range
+YOG020,IL-1b,0.2505,out of range
+YOG020,IL-8,25.33,within limits
+YOG020,IL-6,0.0935,out of range
+YOG020,TNFa,0.471,out of range
+YOG020,IP-10,115.85,within limits
+YOG020,MIG,436,within limits
+YOG020,IFN-Y,0.3435,out of range
+YOG020,MIP-3a,30.45,within limits
+YOG064,IL-1a,16.14,within limits
+YOG064,IL-10,0.767,out of range
+YOG064,IL-1b,0.68,within limits
+YOG064,IL-8,76.24,within limits
+YOG064,IL-6,0.2,within limits
+YOG064,TNFa,0.471,out of range
+YOG064,IP-10,33.02,within limits
+YOG064,MIG,125,within limits
+YOG064,IFN-Y,0.3435,out of range
+YOG064,MIP-3a,11.85,within limits
+YOG018,IL-1a,10.17,within limits
+YOG018,IL-10,0.767,out of range
+YOG018,IL-1b,0.2505,out of range
+YOG018,IL-8,37.6,within limits
+YOG018,IL-6,0.0935,out of range
+YOG018,TNFa,0.471,out of range
+YOG018,IP-10,54.58,within limits
+YOG018,MIG,192.52,within limits
+YOG018,IFN-Y,0.3435,out of range
+YOG018,MIP-3a,20.04,within limits
+UNCH012,IL-1a,11.39,within limits
+UNCH012,IL-10,0.767,out of range
+UNCH012,IL-1b,0.2505,out of range
+UNCH012,IL-8,64.71,within limits
+UNCH012,IL-6,0.0935,out of range
+UNCH012,TNFa,0.471,out of range
+UNCH012,IP-10,92.08,within limits
+UNCH012,MIG,191.4,within limits
+UNCH012,IFN-Y,0.3435,out of range
+UNCH012,MIP-3a,22.54,within limits
+UNCH049,IL-1a,1.93,within limits
+UNCH049,IL-10,0.767,out of range
+UNCH049,IL-1b,0.2505,out of range
+UNCH049,IL-8,2.14,within limits
+UNCH049,IL-6,0.0935,out of range
+UNCH049,TNFa,0.471,out of range
+UNCH049,IP-10,302.05,within limits
+UNCH049,MIG,979.42,within limits
+UNCH049,IFN-Y,0.3435,out of range
+UNCH049,MIP-3a,77.69,within limits
+UNCH055,IL-1a,20.19,within limits
+UNCH055,IL-10,0.767,out of range
+UNCH055,IL-1b,0.72,within limits
+UNCH055,IL-8,146.19,within limits
+UNCH055,IL-6,0.25,within limits
+UNCH055,TNFa,0.471,out of range
+UNCH055,IP-10,45.55,within limits
+UNCH055,MIG,128.47,within limits
+UNCH055,IFN-Y,0.3435,out of range
+UNCH055,MIP-3a,5.1725,out of range
+UNCH051,IL-1a,6.14,within limits
+UNCH051,IL-10,0.767,out of range
+UNCH051,IL-1b,0.2505,out of range
+UNCH051,IL-8,17.38,within limits
+UNCH051,IL-6,0.0935,out of range
+UNCH051,TNFa,0.471,out of range
+UNCH051,IP-10,101.44,within limits
+UNCH051,MIG,673.86,within limits
+UNCH051,IFN-Y,0.3435,out of range
+UNCH051,MIP-3a,44.73,within limits
+YOG016,IL-1a,27.16,within limits
+YOG016,IL-10,0.767,out of range
+YOG016,IL-1b,2.4,within limits
+YOG016,IL-8,310.01,within limits
+YOG016,IL-6,0.75,within limits
+YOG016,TNFa,0.471,out of range
+YOG016,IP-10,14.2,within limits
+YOG016,MIG,30.88,within limits
+YOG016,IFN-Y,0.3435,out of range
+YOG016,MIP-3a,5.1725,out of range
+YOG023,IL-1a,8.07,within limits
+YOG023,IL-10,0.767,out of range
+YOG023,IL-1b,0.2505,out of range
+YOG023,IL-8,12.62,within limits
+YOG023,IL-6,0.0935,out of range
+YOG023,TNFa,0.471,out of range
+YOG023,IP-10,166.64,within limits
+YOG023,MIG,431.96,within limits
+YOG023,IFN-Y,0.3435,out of range
+YOG023,MIP-3a,34.43,within limits
+UNCH026,IL-1a,30.61,within limits
+UNCH026,IL-10,0.767,out of range
+UNCH026,IL-1b,2,within limits
+UNCH026,IL-8,296.78,within limits
+UNCH026,IL-6,0.97,within limits
+UNCH026,TNFa,0.471,out of range
+UNCH026,IP-10,12.45,within limits
+UNCH026,MIG,44.93,within limits
+UNCH026,IFN-Y,0.3435,out of range
+UNCH026,MIP-3a,5.1725,out of range
+UNCH063,IL-1a,2.34,within limits
+UNCH063,IL-10,0.767,out of range
+UNCH063,IL-1b,0.2505,out of range
+UNCH063,IL-8,0.92,within limits
+UNCH063,IL-6,0.0935,out of range
+UNCH063,TNFa,0.471,out of range
+UNCH063,IP-10,388.26,within limits
+UNCH063,MIG,25000,out of range
+UNCH063,IFN-Y,0.3435,out of range
+UNCH063,MIP-3a,112.15,within limits
+UNCH057,IL-1a,3.01,within limits
+UNCH057,IL-10,0.767,out of range
+UNCH057,IL-1b,0.2505,out of range
+UNCH057,IL-8,0.96,within limits
+UNCH057,IL-6,0.0935,out of range
+UNCH057,TNFa,0.471,out of range
+UNCH057,IP-10,202.61,within limits
+UNCH057,MIG,25000,out of range
+UNCH057,IFN-Y,0.3435,out of range
+UNCH057,MIP-3a,128.94,within limits
+UNCH091,IL-1a,19.69,within limits
+UNCH091,IL-10,0.767,out of range
+UNCH091,IL-1b,0.72,within limits
+UNCH091,IL-8,100.26,within limits
+UNCH091,IL-6,0.25,within limits
+UNCH091,TNFa,0.471,out of range
+UNCH091,IP-10,46.04,within limits
+UNCH091,MIG,102.48,within limits
+UNCH091,IFN-Y,0.3435,out of range
+UNCH091,MIP-3a,5.1725,out of range
+UNCH008,IL-1a,9.12,within limits
+UNCH008,IL-10,0.767,out of range
+UNCH008,IL-1b,0.2505,out of range
+UNCH008,IL-8,5.1,within limits
+UNCH008,IL-6,0.0935,out of range
+UNCH008,TNFa,0.471,out of range
+UNCH008,IP-10,166.64,within limits
+UNCH008,MIG,372.81,within limits
+UNCH008,IFN-Y,0.3435,out of range
+UNCH008,MIP-3a,58.21,within limits
+UNCH075,IL-1a,2,within limits
+UNCH075,IL-10,0.767,out of range
+UNCH075,IL-1b,0.2505,out of range
+UNCH075,IL-8,1.39,within limits
+UNCH075,IL-6,0.0935,out of range
+UNCH075,TNFa,0.471,out of range
+UNCH075,IP-10,257.61,within limits
+UNCH075,MIG,979.42,within limits
+UNCH075,IFN-Y,0.3435,out of range
+UNCH075,MIP-3a,65.87,within limits
+UNCH001,IL-1a,24.55,within limits
+UNCH001,IL-10,0.767,out of range
+UNCH001,IL-1b,1.28,within limits
+UNCH001,IL-8,225.61,within limits
+UNCH001,IL-6,0.35,within limits
+UNCH001,TNFa,0.471,out of range
+UNCH001,IP-10,20.43,within limits
+UNCH001,MIG,60.4,within limits
+UNCH001,IFN-Y,0.3435,out of range
+UNCH001,MIP-3a,5.1725,out of range
+UNCH036,IL-1a,7.05,within limits
+UNCH036,IL-10,0.767,out of range
+UNCH036,IL-1b,0.2505,out of range
+UNCH036,IL-8,14.33,within limits
+UNCH036,IL-6,0.0935,out of range
+UNCH036,TNFa,0.471,out of range
+UNCH036,IP-10,124.11,within limits
+UNCH036,MIG,550.38,within limits
+UNCH036,IFN-Y,0.3435,out of range
+UNCH036,MIP-3a,58.21,within limits
+UNCH068,IL-1a,8.07,within limits
+UNCH068,IL-10,0.767,out of range
+UNCH068,IL-1b,0.2505,out of range
+UNCH068,IL-8,8.16,within limits
+UNCH068,IL-6,0.0935,out of range
+UNCH068,TNFa,0.471,out of range
+UNCH068,IP-10,96.9,within limits
+UNCH068,MIG,431.96,within limits
+UNCH068,IFN-Y,0.3435,out of range
+UNCH068,MIP-3a,38.43,within limits
+UNCH043,IL-1a,6.14,within limits
+UNCH043,IL-10,0.767,out of range
+UNCH043,IL-1b,0.2505,out of range
+UNCH043,IL-8,5.73,within limits
+UNCH043,IL-6,0.0935,out of range
+UNCH043,TNFa,0.471,out of range
+UNCH043,IP-10,157.45,within limits
+UNCH043,MIG,573.89,within limits
+UNCH043,IFN-Y,0.3435,out of range
+UNCH043,MIP-3a,35.19,within limits
+YOG084,IL-1a,27.16,within limits
+YOG084,IL-10,0.767,out of range
+YOG084,IL-1b,1.59,within limits
+YOG084,IL-8,395.08,within limits
+YOG084,IL-6,0.55,within limits
+YOG084,TNFa,0.471,out of range
+YOG084,IP-10,17.24,within limits
+YOG084,MIG,40.63,within limits
+YOG084,IFN-Y,0.3435,out of range
+YOG084,MIP-3a,5.1725,out of range
+YOG045,IL-1a,8.07,within limits
+YOG045,IL-10,0.767,out of range
+YOG045,IL-1b,0.2505,out of range
+YOG045,IL-8,13.03,within limits
+YOG045,IL-6,0.0935,out of range
+YOG045,TNFa,0.471,out of range
+YOG045,IP-10,101.44,within limits
+YOG045,MIG,809.6,within limits
+YOG045,IFN-Y,0.3435,out of range
+YOG045,MIP-3a,32.79,within limits
+UNCH048,IL-1a,25.33,within limits
+UNCH048,IL-10,0.767,out of range
+UNCH048,IL-1b,1.28,within limits
+UNCH048,IL-8,206.93,within limits
+UNCH048,IL-6,0.3,within limits
+UNCH048,TNFa,0.471,out of range
+UNCH048,IP-10,19,within limits
+UNCH048,MIG,89.2,within limits
+UNCH048,IFN-Y,0.3435,out of range
+UNCH048,MIP-3a,5.1725,out of range
+UNCH070,IL-1a,9.12,within limits
+UNCH070,IL-10,0.767,out of range
+UNCH070,IL-1b,0.2505,out of range
+UNCH070,IL-8,16.87,within limits
+UNCH070,IL-6,0.0935,out of range
+UNCH070,TNFa,0.471,out of range
+UNCH070,IP-10,139.71,within limits
+UNCH070,MIG,427.43,within limits
+UNCH070,IFN-Y,0.3435,out of range
+UNCH070,MIP-3a,29.41,within limits
+YOG080,IL-1a,14.2,within limits
+YOG080,IL-10,0.767,out of range
+YOG080,IL-1b,0.2505,out of range
+YOG080,IL-8,40.35,within limits
+YOG080,IL-6,0.0935,out of range
+YOG080,TNFa,0.471,out of range
+YOG080,IP-10,70.41,within limits
+YOG080,MIG,235.7,within limits
+YOG080,IFN-Y,0.3435,out of range
+YOG080,MIP-3a,21.05,within limits
+YOG022,IL-1a,14.85,within limits
+YOG022,IL-10,0.767,out of range
+YOG022,IL-1b,0.57,within limits
+YOG022,IL-8,146.19,within limits
+YOG022,IL-6,0.0935,out of range
+YOG022,TNFa,0.471,out of range
+YOG022,IP-10,43.65,within limits
+YOG022,MIG,107.5,within limits
+YOG022,IFN-Y,0.3435,out of range
+YOG022,MIP-3a,10.74,within limits
+YOG089,IL-1a,12.84,within limits
+YOG089,IL-10,0.767,out of range
+YOG089,IL-1b,0.2505,out of range
+YOG089,IL-8,40.35,within limits
+YOG089,IL-6,0.0935,out of range
+YOG089,TNFa,0.471,out of range
+YOG089,IP-10,74.03,within limits
+YOG089,MIG,208.8,within limits
+YOG089,IFN-Y,0.3435,out of range
+YOG089,MIP-3a,14.91,within limits
+YOG093,IL-1a,5.3,within limits
+YOG093,IL-10,0.767,out of range
+YOG093,IL-1b,0.2505,out of range
+YOG093,IL-8,0.75,within limits
+YOG093,IL-6,0.0935,out of range
+YOG093,TNFa,0.471,out of range
+YOG093,IP-10,5000,out of range
+YOG093,MIG,25000,out of range
+YOG093,IFN-Y,0.3435,out of range
+YOG093,MIP-3a,76.01,within limits
+UNCH047,IL-1a,8.37,within limits
+UNCH047,IL-10,0.767,out of range
+UNCH047,IL-1b,0.2505,out of range
+UNCH047,IL-8,20.81,within limits
+UNCH047,IL-6,0.0935,out of range
+UNCH047,TNFa,0.471,out of range
+UNCH047,IP-10,158.46,within limits
+UNCH047,MIG,517.53,within limits
+UNCH047,IFN-Y,0.3435,out of range
+UNCH047,MIP-3a,36.56,within limits
+UNCH088,IL-1a,6.91,within limits
+UNCH088,IL-10,0.767,out of range
+UNCH088,IL-1b,0.2505,out of range
+UNCH088,IL-8,7.92,within limits
+UNCH088,IL-6,0.0935,out of range
+UNCH088,TNFa,0.471,out of range
+UNCH088,IP-10,115.85,within limits
+UNCH088,MIG,847.35,within limits
+UNCH088,IFN-Y,0.3435,out of range
+UNCH088,MIP-3a,32.31,within limits
+UNCH041,IL-1a,26.13,within limits
+UNCH041,IL-10,0.767,out of range
+UNCH041,IL-1b,1.19,within limits
+UNCH041,IL-8,240.74,within limits
+UNCH041,IL-6,0.44,within limits
+UNCH041,TNFa,0.471,out of range
+UNCH041,IP-10,23.94,within limits
+UNCH041,MIG,88.25,within limits
+UNCH041,IFN-Y,0.3435,out of range
+UNCH041,MIP-3a,5.1725,out of range
+UNCH099,IL-1a,8.07,within limits
+UNCH099,IL-10,0.767,out of range
+UNCH099,IL-1b,0.2505,out of range
+UNCH099,IL-8,29.01,within limits
+UNCH099,IL-6,0.0935,out of range
+UNCH099,TNFa,0.471,out of range
+UNCH099,IP-10,166.64,within limits
+UNCH099,MIG,550.38,within limits
+UNCH099,IFN-Y,0.3435,out of range
+UNCH099,MIP-3a,30.45,within limits
+YOG003,IL-1a,11.45,within limits
+YOG003,IL-10,0.767,out of range
+YOG003,IL-1b,0.2505,out of range
+YOG003,IL-8,48.29,within limits
+YOG003,IL-6,0.0935,out of range
+YOG003,TNFa,0.471,out of range
+YOG003,IP-10,69.95,within limits
+YOG003,MIG,252.56,within limits
+YOG003,IFN-Y,0.3435,out of range
+YOG003,MIP-3a,26.4,within limits
+YOG054,IL-1a,14.56,within limits
+YOG054,IL-10,0.767,out of range
+YOG054,IL-1b,0.68,within limits
+YOG054,IL-8,130.5,within limits
+YOG054,IL-6,0.3,within limits
+YOG054,TNFa,0.471,out of range
+YOG054,IP-10,46.1,within limits
+YOG054,MIG,141.08,within limits
+YOG054,IFN-Y,0.3435,out of range
+YOG054,MIP-3a,10.95,within limits
+UNCH039,IL-1a,10.44,within limits
+UNCH039,IL-10,0.767,out of range
+UNCH039,IL-1b,0.2505,out of range
+UNCH039,IL-8,32.62,within limits
+UNCH039,IL-6,0.0935,out of range
+UNCH039,TNFa,0.471,out of range
+UNCH039,IP-10,81.43,within limits
+UNCH039,MIG,203.83,within limits
+UNCH039,IFN-Y,0.3435,out of range
+UNCH039,MIP-3a,14.91,within limits
+UNCH032,IL-1a,9.35,within limits
+UNCH032,IL-10,0.767,out of range
+UNCH032,IL-1b,0.2505,out of range
+UNCH032,IL-8,5.42,within limits
+UNCH032,IL-6,0.0935,out of range
+UNCH032,TNFa,0.471,out of range
+UNCH032,IP-10,118.86,within limits
+UNCH032,MIG,431.96,within limits
+UNCH032,IFN-Y,0.3435,out of range
+UNCH032,MIP-3a,34.43,within limits
+YOG034,IL-1a,6.84,within limits
+YOG034,IL-10,0.767,out of range
+YOG034,IL-1b,0.2505,out of range
+YOG034,IL-8,5.1,within limits
+YOG034,IL-6,0.0935,out of range
+YOG034,TNFa,0.471,out of range
+YOG034,IP-10,181.9,within limits
+YOG034,MIG,550.38,within limits
+YOG034,IFN-Y,0.3435,out of range
+YOG034,MIP-3a,32.31,within limits
+YOG071,IL-1a,5.84,within limits
+YOG071,IL-10,0.767,out of range
+YOG071,IL-1b,0.2505,out of range
+YOG071,IL-8,4.78,within limits
+YOG071,IL-6,0.0935,out of range
+YOG071,TNFa,0.471,out of range
+YOG071,IP-10,147.13,within limits
+YOG071,MIG,526.37,within limits
+YOG071,IFN-Y,0.3435,out of range
+YOG071,MIP-3a,34.43,within limits
+UNCH010,IL-1a,36.52,within limits
+UNCH010,IL-10,0.767,out of range
+UNCH010,IL-1b,3.9,within limits
+UNCH010,IL-8,435.92,within limits
+UNCH010,IL-6,1.33,within limits
+UNCH010,TNFa,0.471,out of range
+UNCH010,IP-10,3.04,within limits
+UNCH010,MIG,23.8,within limits
+UNCH010,IFN-Y,0.3435,out of range
+UNCH010,MIP-3a,5.1725,out of range
+UNCH056,IL-1a,11.45,within limits
+UNCH056,IL-10,0.767,out of range
+UNCH056,IL-1b,0.2505,out of range
+UNCH056,IL-8,37.59,within limits
+UNCH056,IL-6,0.0935,out of range
+UNCH056,TNFa,0.471,out of range
+UNCH056,IP-10,69.95,within limits
+UNCH056,MIG,233.33,within limits
+UNCH056,IFN-Y,0.3435,out of range
+UNCH056,MIP-3a,22.04,within limits
+UNCH077,IL-1a,9.37,within limits
+UNCH077,IL-10,0.767,out of range
+UNCH077,IL-1b,0.2505,out of range
+UNCH077,IL-8,49.01,within limits
+UNCH077,IL-6,0.0935,out of range
+UNCH077,TNFa,0.471,out of range
+UNCH077,IP-10,69.95,within limits
+UNCH077,MIG,141.45,within limits
+UNCH077,IFN-Y,0.3435,out of range
+UNCH077,MIP-3a,21.05,within limits
+UNCH005,IL-1a,9.59,within limits
+UNCH005,IL-10,0.767,out of range
+UNCH005,IL-1b,0.2505,out of range
+UNCH005,IL-8,49.01,within limits
+UNCH005,IL-6,0.0935,out of range
+UNCH005,TNFa,0.471,out of range
+UNCH005,IP-10,89.86,within limits
+UNCH005,MIG,141.45,within limits
+UNCH005,IFN-Y,0.3435,out of range
+UNCH005,MIP-3a,26.4,within limits
+UNCH082,IL-1a,3.01,within limits
+UNCH082,IL-10,0.767,out of range
+UNCH082,IL-1b,0.2505,out of range
+UNCH082,IL-8,2.53,within limits
+UNCH082,IL-6,0.0935,out of range
+UNCH082,TNFa,0.471,out of range
+UNCH082,IP-10,5000,out of range
+UNCH082,MIG,25000,out of range
+UNCH082,IFN-Y,0.3435,out of range
+UNCH082,MIP-3a,70.29,within limits
+UNCH090,IL-1a,20.98,within limits
+UNCH090,IL-10,0.767,out of range
+UNCH090,IL-1b,1.24,within limits
+UNCH090,IL-8,203.68,within limits
+UNCH090,IL-6,0.35,within limits
+UNCH090,TNFa,0.471,out of range
+UNCH090,IP-10,22.37,within limits
+UNCH090,MIG,71.85,within limits
+UNCH090,IFN-Y,0.3435,out of range
+UNCH090,MIP-3a,5.1725,out of range
+YOG065,IL-1a,6.84,within limits
+YOG065,IL-10,0.767,out of range
+YOG065,IL-1b,0.2505,out of range
+YOG065,IL-8,12.62,within limits
+YOG065,IL-6,0.0935,out of range
+YOG065,TNFa,0.471,out of range
+YOG065,IP-10,100.09,within limits
+YOG065,MIG,571.71,within limits
+YOG065,IFN-Y,0.3435,out of range
+YOG065,MIP-3a,36.56,within limits
+YOG096,IL-1a,1.93,within limits
+YOG096,IL-10,0.767,out of range
+YOG096,IL-1b,0.2505,out of range
+YOG096,IL-8,0.1575,out of range
+YOG096,IL-6,0.0935,out of range
+YOG096,TNFa,0.471,out of range
+YOG096,IP-10,845.17,within limits
+YOG096,MIG,25000,out of range
+YOG096,IFN-Y,0.3435,out of range
+YOG096,MIP-3a,328.1,within limits
+UNCH072,IL-1a,46.04,within limits
+UNCH072,IL-10,0.767,out of range
+UNCH072,IL-1b,2.69,within limits
+UNCH072,IL-8,502.33,within limits
+UNCH072,IL-6,0.97,within limits
+UNCH072,TNFa,0.471,out of range
+UNCH072,IP-10,5.3,within limits
+UNCH072,MIG,23.8,within limits
+UNCH072,IFN-Y,0.3435,out of range
+UNCH072,MIP-3a,5.1725,out of range
+UNCH058,IL-1a,2.61,within limits
+UNCH058,IL-10,0.767,out of range
+UNCH058,IL-1b,0.2505,out of range
+UNCH058,IL-8,0.89,within limits
+UNCH058,IL-6,0.0935,out of range
+UNCH058,TNFa,0.471,out of range
+UNCH058,IP-10,204.06,within limits
+UNCH058,MIG,25000,out of range
+UNCH058,IFN-Y,0.3435,out of range
+UNCH058,MIP-3a,63.27,within limits
+YOG029,IL-1a,11.17,within limits
+YOG029,IL-10,0.767,out of range
+YOG029,IL-1b,0.2505,out of range
+YOG029,IL-8,67.89,within limits
+YOG029,IL-6,0.0935,out of range
+YOG029,TNFa,0.471,out of range
+YOG029,IP-10,81.43,within limits
+YOG029,MIG,181.4,within limits
+YOG029,IFN-Y,0.3435,out of range
+YOG029,MIP-3a,15.1,within limits
+YOG044,IL-1a,4.49,within limits
+YOG044,IL-10,0.767,out of range
+YOG044,IL-1b,0.2505,out of range
+YOG044,IL-8,0.89,within limits
+YOG044,IL-6,0.0935,out of range
+YOG044,TNFa,0.471,out of range
+YOG044,IP-10,1828.78,within limits
+YOG044,MIG,25000,out of range
+YOG044,IFN-Y,0.3435,out of range
+YOG044,MIP-3a,165.15,within limits
+YOG087,IL-1a,2.43,within limits
+YOG087,IL-10,0.767,out of range
+YOG087,IL-1b,0.2505,out of range
+YOG087,IL-8,0.1575,out of range
+YOG087,IL-6,0.0935,out of range
+YOG087,TNFa,0.471,out of range
+YOG087,IP-10,1144.74,within limits
+YOG087,MIG,25000,out of range
+YOG087,IFN-Y,0.3435,out of range
+YOG087,MIP-3a,80.91,within limits
+YOG052,IL-1a,6.91,within limits
+YOG052,IL-10,0.767,out of range
+YOG052,IL-1b,0.2505,out of range
+YOG052,IL-8,9.68,within limits
+YOG052,IL-6,0.0935,out of range
+YOG052,TNFa,0.471,out of range
+YOG052,IP-10,158.46,within limits
+YOG052,MIG,673.86,within limits
+YOG052,IFN-Y,0.3435,out of range
+YOG052,MIP-3a,32.03,within limits
+YOG031,IL-1a,28.97,within limits
+YOG031,IL-10,0.767,out of range
+YOG031,IL-1b,2.36,within limits
+YOG031,IL-8,412.56,within limits
+YOG031,IL-6,0.72,within limits
+YOG031,TNFa,0.471,out of range
+YOG031,IP-10,9.55,within limits
+YOG031,MIG,38.92,within limits
+YOG031,IFN-Y,0.3435,out of range
+YOG031,MIP-3a,5.1725,out of range
+YOG097,IL-1a,5.57,within limits
+YOG097,IL-10,0.767,out of range
+YOG097,IL-1b,0.2505,out of range
+YOG097,IL-8,1.39,within limits
+YOG097,IL-6,0.0935,out of range
+YOG097,TNFa,0.471,out of range
+YOG097,IP-10,1555.2,within limits
+YOG097,MIG,979.42,within limits
+YOG097,IFN-Y,0.3435,out of range
+YOG097,MIP-3a,112.15,within limits
+UNCH101,IL-1a,6.84,within limits
+UNCH101,IL-10,0.767,out of range
+UNCH101,IL-1b,0.2505,out of range
+UNCH101,IL-8,20.81,within limits
+UNCH101,IL-6,0.0935,out of range
+UNCH101,TNFa,0.471,out of range
+UNCH101,IP-10,128.41,within limits
+UNCH101,MIG,427.43,within limits
+UNCH101,IFN-Y,0.3435,out of range
+UNCH101,MIP-3a,30.45,within limits
+UNCH021,IL-1a,7.05,within limits
+UNCH021,IL-10,0.767,out of range
+UNCH021,IL-1b,0.2505,out of range
+UNCH021,IL-8,4.78,within limits
+UNCH021,IL-6,0.0935,out of range
+UNCH021,TNFa,0.471,out of range
+UNCH021,IP-10,157.45,within limits
+UNCH021,MIG,517.53,within limits
+UNCH021,IFN-Y,0.3435,out of range
+UNCH021,MIP-3a,32.12,within limits
+YOG011,IL-1a,18.75,within limits
+YOG011,IL-10,0.767,out of range
+YOG011,IL-1b,0.72,within limits
+YOG011,IL-8,77.98,within limits
+YOG011,IL-6,0.0935,out of range
+YOG011,TNFa,0.471,out of range
+YOG011,IP-10,33.02,within limits
+YOG011,MIG,99.56,within limits
+YOG011,IFN-Y,0.3435,out of range
+YOG011,MIP-3a,5.1725,out of range
+YOG062,IL-1a,7.05,within limits
+YOG062,IL-10,0.767,out of range
+YOG062,IL-1b,0.2505,out of range
+YOG062,IL-8,16.79,within limits
+YOG062,IL-6,0.0935,out of range
+YOG062,TNFa,0.471,out of range
+YOG062,IP-10,96.9,within limits
+YOG062,MIG,571.71,within limits
+YOG062,IFN-Y,0.3435,out of range
+YOG062,MIP-3a,32.31,within limits
+YOG095,IL-1a,14.2,within limits
+YOG095,IL-10,0.767,out of range
+YOG095,IL-1b,0.2505,out of range
+YOG095,IL-8,54.88,within limits
+YOG095,IL-6,0.0935,out of range
+YOG095,TNFa,0.471,out of range
+YOG095,IP-10,54.58,within limits
+YOG095,MIG,273.97,within limits
+YOG095,IFN-Y,0.3435,out of range
+YOG095,MIP-3a,21.05,within limits
+YOG038,IL-1a,4.97,within limits
+YOG038,IL-10,0.767,out of range
+YOG038,IL-1b,0.2505,out of range
+YOG038,IL-8,0.75,within limits
+YOG038,IL-6,0.0935,out of range
+YOG038,TNFa,0.471,out of range
+YOG038,IP-10,1828.78,within limits
+YOG038,MIG,25000,out of range
+YOG038,IFN-Y,0.3435,out of range
+YOG038,MIP-3a,63.27,within limits
+YOG081,IL-1a,22.96,within limits
+YOG081,IL-10,0.767,out of range
+YOG081,IL-1b,1.25,within limits
+YOG081,IL-8,174.27,within limits
+YOG081,IL-6,0.39,within limits
+YOG081,TNFa,0.471,out of range
+YOG081,IP-10,21.62,within limits
+YOG081,MIG,82.41,within limits
+YOG081,IFN-Y,0.3435,out of range
+YOG081,MIP-3a,5.1725,out of range
+YOG024,IL-1a,12.67,within limits
+YOG024,IL-10,0.767,out of range
+YOG024,IL-1b,0.2505,out of range
+YOG024,IL-8,54.88,within limits
+YOG024,IL-6,0.0935,out of range
+YOG024,TNFa,0.471,out of range
+YOG024,IP-10,92.99,within limits
+YOG024,MIG,208.22,within limits
+YOG024,IFN-Y,0.3435,out of range
+YOG024,MIP-3a,14.91,within limits
+YOG069,IL-1a,12.67,within limits
+YOG069,IL-10,0.767,out of range
+YOG069,IL-1b,0.2505,out of range
+YOG069,IL-8,35.35,within limits
+YOG069,IL-6,0.0935,out of range
+YOG069,TNFa,0.471,out of range
+YOG069,IP-10,66.02,within limits
+YOG069,MIG,243.45,within limits
+YOG069,IFN-Y,0.3435,out of range
+YOG069,MIP-3a,21.54,within limits
+YOG037,IL-1a,10.32,within limits
+YOG037,IL-10,0.767,out of range
+YOG037,IL-1b,0.2505,out of range
+YOG037,IL-8,49.67,within limits
+YOG037,IL-6,0.0935,out of range
+YOG037,TNFa,0.471,out of range
+YOG037,IP-10,92.08,within limits
+YOG037,MIG,252.56,within limits
+YOG037,IFN-Y,0.3435,out of range
+YOG037,MIP-3a,14.91,within limits
+YOG033,IL-1a,5.71,within limits
+YOG033,IL-10,0.767,out of range
+YOG033,IL-1b,0.2505,out of range
+YOG033,IL-8,8.16,within limits
+YOG033,IL-6,0.0935,out of range
+YOG033,TNFa,0.471,out of range
+YOG033,IP-10,166.64,within limits
+YOG033,MIG,673.86,within limits
+YOG033,IFN-Y,0.3435,out of range
+YOG033,MIP-3a,31.57,within limits
+YOG085,IL-1a,7.91,within limits
+YOG085,IL-10,0.767,out of range
+YOG085,IL-1b,0.2505,out of range
+YOG085,IL-8,12.62,within limits
+YOG085,IL-6,0.0935,out of range
+YOG085,TNFa,0.471,out of range
+YOG085,IP-10,177.38,within limits
+YOG085,MIG,363.92,within limits
+YOG085,IFN-Y,0.3435,out of range
+YOG085,MIP-3a,29.41,within limits
+YOG102,IL-1a,6.14,within limits
+YOG102,IL-10,0.767,out of range
+YOG102,IL-1b,0.2505,out of range
+YOG102,IL-8,7.92,within limits
+YOG102,IL-6,0.0935,out of range
+YOG102,TNFa,0.471,out of range
+YOG102,IP-10,100.09,within limits
+YOG102,MIG,372.81,within limits
+YOG102,IFN-Y,0.3435,out of range
+YOG102,MIP-3a,29.41,within limits
+YOG079,IL-1a,2.74,within limits
+YOG079,IL-10,0.767,out of range
+YOG079,IL-1b,0.2505,out of range
+YOG079,IL-8,2.14,within limits
+YOG079,IL-6,0.0935,out of range
+YOG079,TNFa,0.471,out of range
+YOG079,IP-10,1666.12,within limits
+YOG079,MIG,2864.09,within limits
+YOG079,IFN-Y,0.3435,out of range
+YOG079,MIP-3a,112.15,within limits
+YOG002,IL-1a,9.35,within limits
+YOG002,IL-10,0.767,out of range
+YOG002,IL-1b,0.2505,out of range
+YOG002,IL-8,5.1,within limits
+YOG002,IL-6,0.0935,out of range
+YOG002,TNFa,0.471,out of range
+YOG002,IP-10,106.05,within limits
+YOG002,MIG,673.86,within limits
+YOG002,IFN-Y,0.3435,out of range
+YOG002,MIP-3a,51.82,within limits
+YOG007,IL-1a,2.74,within limits
+YOG007,IL-10,0.767,out of range
+YOG007,IL-1b,0.2505,out of range
+YOG007,IL-8,1.92,within limits
+YOG007,IL-6,0.0935,out of range
+YOG007,TNFa,0.471,out of range
+YOG007,IP-10,1144.74,within limits
+YOG007,MIG,25000,out of range
+YOG007,IFN-Y,0.3435,out of range
+YOG007,MIP-3a,336.01,within limits
