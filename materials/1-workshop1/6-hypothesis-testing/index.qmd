@@ -14,9 +14,9 @@ format:
 ```
 
 ```{=html}
-<h2><a href="https://raw.githubusercontent.com/elsherbini/durban-data-science-for-biology/main/materials/1-workshop1/6-hypothesis-testing/hands-on.qmd" download>Download the `.qmd` to do the exercise</a></h2>
+<h2><a href="https://raw.githubusercontent.com/elsherbini/durban-data-science-for-biology/main/materials/1-workshop1/6-hypothesis-testing/module-6-hands-on.qmd" download>Download the `.qmd` to do the exercise</a></h2>
 ```
 
-<a href="hands-on.qmd"> View the html output here </a>
+---
 
-{{< include hands-on.qmd >}}
+{{< include module-6-hands-on.qmd >}}
