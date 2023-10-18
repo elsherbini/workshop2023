@@ -58,9 +58,12 @@ Ask questions at **#workshop-questions** on <https://discord.gg/UDAsYTzZE>.
 
 ![](images/0_discord_durban.png){fig-alt="Screenshot of the discord server app that serves as the forum for the workshop." fig-align="center" width="546"}
 
-## 👏 Wooclap
 
-> TODO: insert wooclap code here
+## Wooclap {.your-turn}
+
+Go to [the event on wooclap](https://app.wooclap.com/DURBAN?from=event-page)  
+
+![](../../../images/wooclap_info.png)
 
 ## Malva pudding
 
