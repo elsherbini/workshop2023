@@ -939,7 +939,7 @@ countdown(30)
 
 ```
 
-Time to try it yourself. Go to [the second coding exercise](index.html#coding-exercise-3.2).
+Time to try it yourself. Go to [back to the module](index.html).
 
 ![](images/sticky.jpeg){fig-alt="Picture of a laptop with a red sticky note stuck to the top." width=540}
 

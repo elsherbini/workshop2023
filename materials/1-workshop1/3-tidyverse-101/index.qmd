@@ -29,5 +29,3 @@ library(here)
 {{< include _01_pen_and_paper.qmd >}}
 
 {{< include _02_ggplot_exercise.qmd >}}
-
-{{< include _03_amounts_exercise.qmd >}}
