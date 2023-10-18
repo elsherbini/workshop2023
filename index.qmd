@@ -30,10 +30,10 @@ This week of content will prepare you to use R, RStudio, and Quarto for data ana
 ## Wednesday PM Session
 
 Session Structure  
-- 1:30-2:00:  
-  - Read Research Project description below for your
-  - Download project data files and put them in your folder
-  - Make a new .qmd file for this project.
+- 1:30-2:00:   
+  - Read Research Project description below for your project  
+  - Download project data files and put them in your folder  
+  - Make a new .qmd file for this project.  
 - 2:00-3:00  
   - Load the demographic table into an R tibble.  
   - Make notes about what each column name is and what it means.  
