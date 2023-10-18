@@ -1327,7 +1327,7 @@
     "href": "materials/1-workshop1/3-tidyverse-101/slides.html#exercise-1",
     "title": "Intro to data visualization and data wrangling with the tidyverse",
     "section": "Exercise",
-    "text": "Exercise\n\n\n\n−+\n30:00\n\n\n\nTime to try it yourself. Go to the second coding exercise.\n\nDuring an activity, place a blue sticky on your laptop if you’re good to go and a pink sticky if you want help.\n\n\nback to module"
+    "text": "Exercise\n\n\n\n−+\n30:00\n\n\n\nTime to try it yourself. Go to the second coding exercise.\n\nDuring an activity, place a yellow sticky on your laptop if you’re good to go and a pink sticky if you want help.\n\n\nback to module"
   },
   {
     "objectID": "materials/1-workshop1/4-tidyverse-201/index.html",
@@ -1825,6 +1825,125 @@
     "title": "More data wrangling and data visualization with the tidyverse",
     "section": "Exercise",
     "text": "Exercise\nTry exploring different continuous variables in table 01, table 02, and table_03 using these density visualization strategies.\n\n\nback to module"
+  },
+  {
+    "objectID": "materials/1-workshop1/5-tableone/index.html",
+    "href": "materials/1-workshop1/5-tableone/index.html",
+    "title": "tableone and its Basic Statistics",
+    "section": "",
+    "text": "Make slides full screen"
+  },
+  {
+    "objectID": "materials/1-workshop1/5-tableone/index.html#slides",
+    "href": "materials/1-workshop1/5-tableone/index.html#slides",
+    "title": "tableone and its Basic Statistics",
+    "section": "",
+    "text": "Make slides full screen"
+  },
+  {
+    "objectID": "materials/1-workshop1/5-tableone/index.html#introduction",
+    "href": "materials/1-workshop1/5-tableone/index.html#introduction",
+    "title": "tableone and its Basic Statistics",
+    "section": "Introduction",
+    "text": "Introduction\nIn biomedical research, it is often necessary to compare the effects of different interventions or exposures on the health outcomes of interest. However, before making any causal inference, it is important to evaluate the baseline characteristics of the patients who participate in the study. Baseline characteristics are the demographic and clinical features of the participants at the start of a trial or a study, such as age, sex, disease severity, comorbidities, etc. They provide information about the population that is being studied and the context of the research question (Schulz, Altman, & Moher, 2010).\nEvaluating baseline characteristics of patients in different treatment groups is important for several reasons:\n\nIt allows readers to assess the external validity of the trial results, which is the extent to which the results can be generalised to other settings and populations. For example, if the trial participants are very different from the target population in terms of age, sex, or other factors that may affect the outcome, then the results may not be applicable to the target population (Altman, 1990).\nIt allows researchers to check the internal validity of the trial results, which is the extent to which the results are free from bias and confounding. Bias is a systematic error that leads to a deviation from the true effect of the intervention or exposure. Confounding is a situation where a third variable is associated with both the intervention or exposure and the outcome, and may distort the true effect of the intervention or exposure. For example, if the treatment groups are not balanced in terms of baseline characteristics that may influence the outcome, then there may be a bias or a confounding effect that needs to be adjusted for in the statistical analysis (Matthews, 2006).\nIt allows researchers to explore the heterogeneity of the treatment effect, which is the variation in the effect across different subgroups of participants. Heterogeneity can be due to biological, clinical, or methodological factors that may modify or interact with the intervention or exposure. For example, if the treatment effect differs by age, sex, or disease severity, then it may be useful to perform subgroup analyses to identify which subgroups benefit more or less from the intervention or exposure (Matthews, 2006).\n\nTo evaluate baseline characteristics, researchers need to use appropriate methods of summarisation, comparison, and adjustment, depending on the type and distribution of the variables. Summarisation involves describing the distribution and characteristics of the variables using descriptive statistics such as means, standard deviations, medians, interquartile ranges, counts, and percentages. Comparison involves testing whether there are significant differences or associations between the groups or variables using statistical tests such as t-tests, chi-squared tests, Fisher’s exact tests, and rank sum tests. Adjustment involves controlling for the potential confounding factors using methods such as stratification, matching, covariate adjustment, or weighting (Altman, 1990)."
+  },
+  {
+    "objectID": "materials/1-workshop1/5-tableone/index.html#types-of-variables",
+    "href": "materials/1-workshop1/5-tableone/index.html#types-of-variables",
+    "title": "tableone and its Basic Statistics",
+    "section": "Types of variables",
+    "text": "Types of variables\n\nContinuous\nContinuous variables are variables that can take any numeric value within a range, such as age, weight, height, blood pressure, etc. They are usually measured or calculated using a scale or a device.\n\n\nCategorical\nCategorical variables are variables that can take only a limited number of values, such as sex, race, diagnosis, treatment group, etc. They are usually assigned or observed based on some criteria or classification."
+  },
+  {
+    "objectID": "materials/1-workshop1/5-tableone/index.html#descriptive-statistics",
+    "href": "materials/1-workshop1/5-tableone/index.html#descriptive-statistics",
+    "title": "tableone and its Basic Statistics",
+    "section": "Descriptive statistics",
+    "text": "Descriptive statistics\nDescriptive statistics are numerical summaries that describe the distribution and characteristics of a variable. They include measures of central tendency (such as mean, median, mode), measures of variability (such as standard deviation, interquartile range, range), and measures of frequency (such as count, percentage, proportion).\n\nMean\nThe mean is the sum of all the values in a data set divided by the number of values. The formula is:\n\\[\\bar{x} = \\frac{\\sum x}{n}\\]\nwhere \\(\\bar{x}\\) is the mean, \\(\\sum x\\) is the sum of all the values, and \\(n\\) is the number of values.\n\n\nMedian\nThe median is the middle value in an ordered data set. To find the median, arrange the values from smallest to largest and then locate the middle one. If there are an even number of values, the median is the average of the two middle ones. The formula is:\n\\[\\tilde{x} = \\begin{cases}\nx_{(n+1)/2}, & \\text{if } n \\text{ is odd} \\\\\n\\frac{x_{n/2} + x_{(n/2)+1}}{2}, & \\text{if } n \\text{ is even}\n\\end{cases}\\]\nwhere\n\n\\(\\tilde{x}\\) is the median,\n\\(x_i\\) is the \\(i\\)th value in the ordered data set, and\n\\(n\\) is the number of values.\n\n\n\nMode\nThe mode is the most frequent value in a data set. There can be more than one mode if there are multiple values with the same frequency. There is no formula for the mode, but it can be found by counting how many times each value or category occurs and then selecting the one(s) with the highest frequency.\n\n\nStandard deviation:\nThe variance is a measure of how much the values vary from the mean while the standard deviation is a measure of how spread out the values are from the mean. It is calculated by taking the square root of the variance. The formula is:\n\\[s = \\sqrt{\\frac{\\sum (x - \\bar{x})^2}{n-1}}\\]\nwhere\n\n\\(s\\) is the standard deviation,\n\\(x\\) is a value in the data set,\n\\(\\bar{x}\\) is the mean, and\n\\(n\\) is the number of values.\n\n\n\nCount\nThe count is the number of times a value or a category occurs in a data set. There is no formula for the count, but it can be found by counting how many times each value or category appears in the data set.\n\n\nPercentage\nThe proportion is the ratio of a part to the whole expressed as a fraction between 0 and 1 whereas the percentage is the ratio of a part to the whole expressed as a fraction of 100. The formula is:\n\\[p = \\frac{n}{N} \\times 100\\]\nwhere\n\n\\(p\\) is the percentage,\n\\(n\\) is the count of a value or a category, and\n\\(N\\) is the total count of all values or categories.\n\nThese are some of the basic formulas for descriptive statistics. You can find more information and examples on this website."
+  },
+  {
+    "objectID": "materials/1-workshop1/5-tableone/index.html#types-of-statistical-tests",
+    "href": "materials/1-workshop1/5-tableone/index.html#types-of-statistical-tests",
+    "title": "tableone and its Basic Statistics",
+    "section": "Types of statistical tests",
+    "text": "Types of statistical tests\nOne way to expand the sentence on baseline characteristics of patients in biomedical research papers is:\nStatistical tests are methods to evaluate whether there is a significant difference or association between two or more groups or variables. They are often used to compare the baseline characteristics of patients in different treatment groups, such as intervention and control groups, in biomedical research papers (Altman, 1990). They usually involve calculating a test statistic, which is a numerical value that summarizes the strength and direction of the relationship between the groups or variables. Then they compare the test statistic with a critical value or a p-value, which are thresholds that indicate the level of significance of the test. The level of significance is the probability of obtaining a test statistic as extreme or more extreme than the observed one, if the null hypothesis of no difference or no association is true. If the test statistic exceeds the critical value or is lower than the p-value, then the null hypothesis can be rejected and the alternative hypothesis of a difference or an association can be accepted. Otherwise, the null hypothesis cannot be rejected and the alternative hypothesis cannot be accepted.\nDepending on the type and distribution of the variables, different statistical tests can be performed. For continuous variables, such as age, weight, height, blood pressure, etc., t-tests (for normally distributed data) or rank sum tests (for non-normally distributed data) can be performed. T-tests compare the means of two groups and assume that the data are normally distributed and have equal variances. Rank sum tests compare the medians of two groups and do not assume any distribution or variance equality (Altman, 1990). For categorical variables, such as sex, race, diagnosis, treatment group, etc., chi-squared tests (for large sample sizes) or Fisher’s exact tests (for small sample sizes) can be performed. Chi-squared tests compare the frequencies or proportions of two or more groups and assume that the expected frequencies are sufficiently large. Fisher’s exact tests compare the frequencies or proportions of two groups and do not assume any frequency requirement (Altman, 1990).\nAnother aspect that can be considered when comparing baseline characteristics is the standardized mean difference (SMD), It is a unitless measure that can be used to compare the magnitude of group differences across different variables. It can also be used to combine results from different studies that measure the same outcome but use different scales (Schulz, Altman, & Moher, 2010)."
+  },
+  {
+    "objectID": "materials/1-workshop1/5-tableone/index.html#tableone-package",
+    "href": "materials/1-workshop1/5-tableone/index.html#tableone-package",
+    "title": "tableone and its Basic Statistics",
+    "section": "tableone package",
+    "text": "tableone package\n\nIntroduction\nR package tableone is a package by Yoshida & Victorina (2021) that eases the construction of “Table 1: Baseline demographics and clinical characteristics”. The package can handle both continuous and categorical variables, and provide descriptive statistics such as means, standard deviations, medians, interquartile ranges, counts, and percentages. It can also perform statistical tests to compare groups, such as t-tests, chi-squared tests, Fisher’s exact tests, and rank sum tests. It can also calculate standardized mean differences to measure the effect size of group differences. tableone can handle weighted data using the survey package, which allows researchers to account for complex sampling designs and adjust for confounding factors. tableone has a simple and flexible syntax, and can produce nice-looking tables using the kableone function.\n\n\nHow tableone works\n\nTo use tableone, you need to install it from CRAN or GitHub (Yoshida & Victorina, 2021).\nYou need to load the package using library(tableone).\nYou need to specify the variables you want to summarize using the vars argument. You can also specify which variables are categorical using the factorVars argument.\nYou need to provide the data frame that contains the variables using the data argument. You can also provide a grouping variable using the strata argument.\nYou need to create a tableone object using the Createtableone`` function. This object contains all the summary statistics and test results for each variable and group.\nYou can print or export the tableone object using the print or kableone functions.\n\n\n\nOther packages for creating tables\nBesides tableone, there are many other R packages that can be used to create tables in various output formats, such as PDF, HTML and Word. Some of them are: flextable (Gohel & Skintzos, 2023) and huxtable (Hugh-Jones, 2022)."
+  },
+  {
+    "objectID": "materials/1-workshop1/5-tableone/index.html#references",
+    "href": "materials/1-workshop1/5-tableone/index.html#references",
+    "title": "tableone and its Basic Statistics",
+    "section": "References",
+    "text": "References\nAltman, D. G. (1990). Practical statistics for medical research. Chapman & Hall/CRC.\nMatthews, J. N. (2006). Introduction to randomized controlled clinical trials. CRC Press.\nSchulz, K. F., Altman, D. G., & Moher, D.; CONSORT Group. (2010). CONSORT 2010 statement: updated guidelines for reporting parallel group randomised trials. BMJ, 340, c332.\nTherneau, T. M., & Grambsch, P. M. (2000). Modeling survival data: Extending the Cox model. Springer.\nYoshida, K., & Victorina, L. K. (2021). tableone: An R package for creating ‘Table 1’. R package version 0.12.0."
+  },
+  {
+    "objectID": "materials/1-workshop1/5-tableone/slides.html#learning-outcomes",
+    "href": "materials/1-workshop1/5-tableone/slides.html#learning-outcomes",
+    "title": "tableone and its Basic Statistics",
+    "section": "Learning outcomes",
+    "text": "Learning outcomes\n\n\nRefresh on what baseline characteristics are and why they are important.\n\n\n\n\nKnow which descriptive statistics and statistical tests are used to evaluate baseline characteristic.\n\n\n\n\nKnow what is tableone package and how it works.\n\n\n\n\nKnow how to use tableone package with a real data set."
+  },
+  {
+    "objectID": "materials/1-workshop1/5-tableone/slides.html#learning-outcomes-1",
+    "href": "materials/1-workshop1/5-tableone/slides.html#learning-outcomes-1",
+    "title": "tableone and its Basic Statistics",
+    "section": "Learning outcomes",
+    "text": "Learning outcomes\n\n\n\nVariablePlaceboTreatmentOverallPn232144Smoker = smoker (%)11 (47.8)6 (28.6)17 (38.6)0.317Age (years); median (IQR)31.0 (30.0, 33.0)31.0 (29.0, 34.0)31.0 (29.0, 33.2)0.897Education (%)0.437   grade 10-12, matriculated7 (30.4)9 (42.9)16 (36.4)   grade 10-12, not matriculated11 (47.8)7 (33.3)18 (40.9)   less than grade 92 (8.7)4 (19.0)6 (13.6)   post-secondary3 (13.0)1 (4.8)4 (9.1)Sex = Female (%)23 (100.0)21 (100.0)44 (100.0)-Nugent Score; median (IQR)7.0 (6.5, 8.0)6.0 (5.0, 6.0)6.5 (5.0, 8.0)0.001CRP Blood; median (IQR)1.2 (0.9, 2.4)1.2 (0.7, 1.8)1.2 (0.8, 2.0)0.724pH; median (IQR)5.2 (4.8, 5.3)4.6 (4.3, 4.9)4.9 (4.6, 5.3)0.002IFN-Y; median (IQR)0.3 (0.3, 0.8)0.3 (0.3, 0.3)0.3 (0.3, 0.5)0.159IL-10; median (IQR)0.8 (0.8, 2.0)0.8 (0.8, 1.8)0.8 (0.8, 1.9)0.820"
+  },
+  {
+    "objectID": "materials/1-workshop1/5-tableone/slides.html#introduction",
+    "href": "materials/1-workshop1/5-tableone/slides.html#introduction",
+    "title": "tableone and its Basic Statistics",
+    "section": "Introduction",
+    "text": "Introduction\nWhat are baseline characteristics and why are they important?\n\n\nBaseline characteristics describe the participants at the start of a study, for example\n\n\n\nage, sex, disease severity, etc.*\n\n\n\nThey help readers assess the validity and applicability of the study results (Schulz, Altman, and Moher 2010; Altman 1985).\n\n\n\n\nThey allow researchers to explore the treatment effect across different subgroups (Matthews 2006).\n\n\n\n\nExplain what validity and applicability mean in the context of research.\nGive examples of subgroups and how they can influence the treatment effect."
+  },
+  {
+    "objectID": "materials/1-workshop1/5-tableone/slides.html#methods",
+    "href": "materials/1-workshop1/5-tableone/slides.html#methods",
+    "title": "tableone and its Basic Statistics",
+    "section": "Methods",
+    "text": "Methods\nWhich descriptive statistics and statistical tests?\n\n\nDescriptive statistics summarize the distribution and characteristics of a variable, such as\n\n\n\nmeans (standard deviations), medians (interquartile range), count (percentage)\n\n\n\nStatistical tests evaluate whether there is a significant difference or association between groups or variables, such as\n\n\n\nt-tests, anova, rank sum tests, chi-squared tests\n\n\n\nStandardized mean difference (SMD) is a measure of the effect size that can compare different variables or combine results from different studies (Schulz, Altman, and Moher 2010).\n\n\n\n\nExplain what distribution and characteristics mean in the context of statistics.\nGive examples of when to use different statistical tests and how to interpret them.\nExplain what effect size means and why it is important."
+  },
+  {
+    "objectID": "materials/1-workshop1/5-tableone/slides.html#r-package-tableone",
+    "href": "materials/1-workshop1/5-tableone/slides.html#r-package-tableone",
+    "title": "tableone and its Basic Statistics",
+    "section": "R package tableone",
+    "text": "R package tableone\nWhat is tableone package and how does it work?\n\n\ntableone is a package that simplifies the creation of “Table 1: Baseline demographics and clinical characteristics” (Yoshida and Bartel 2022).\n\n\n\n\nIt can handle both continuous and categorical variables, and provide descriptive statistics, statistical tests, and SMDs.\n\n\n\n\nIt can handle weighted data using the survey package, which allows researchers to account for complex sampling designs and adjust for confounding factors.\n\n\n\n\nIt has a simple and flexible syntax, and can produce nice-looking tables using the print or kableone function (together with flextable you get nice tables).\n\n\n\n\nExplain what Table 1 is and why it is important in research reports.\nExplain what continuous and categorical variables are and how to handle them differently.\nExplain what weighted data, complex sampling designs, and confounding factors are and how they affect the analysis.\nShow an example of the syntax and output of tableone."
+  },
+  {
+    "objectID": "materials/1-workshop1/5-tableone/slides.html#load-tableone-package",
+    "href": "materials/1-workshop1/5-tableone/slides.html#load-tableone-package",
+    "title": "tableone and its Basic Statistics",
+    "section": "Load tableone package",
+    "text": "Load tableone package\ntableone Github Site\n\nlibrary(tableone) # Loading/Attaching and Listing of Packages\n\n\nCreateTableOne function\nsvyCreateTableOne function (not in the scope)\n\n\n?CreateTableOne"
+  },
+  {
+    "objectID": "materials/1-workshop1/5-tableone/slides.html#createtableone-function",
+    "href": "materials/1-workshop1/5-tableone/slides.html#createtableone-function",
+    "title": "tableone and its Basic Statistics",
+    "section": "CreateTableOne Function",
+    "text": "CreateTableOne Function\n\nDataTesting…category vars…continuous varsTotal\n\n\n\n\ndata: A data frame in which these variables exist. All variables (both vars and strata) must be in this data frame.\nvars: Variables to be summarized given as a character vector. Factors are handled as categorical variables, whereas numeric variables are handled as continuous variables. If empty, all variables in the data frame specified in the data argument are used.\nstrata: Stratifying (grouping) variable name(s) given as a character vector. If omitted, the overall results are returned.\nfactorVars: Numerically coded variables that should be handled as categorical variables given as a character vector. Do not include factors, unless you need to relevel them by removing empty levels. If omitted, only factors are considered categorical variables. The variables specified here must also be specified in the vars argument.\nincludeNA = FALSE: If TRUE, NA is handled as a regular factor level rather than missing. NA is shown as the last factor level in the table. Only effective for categorical variables.\n\n\n\n\n\n\ntest = TRUE: If TRUE, as in the default and there are more than two groups, groupwise comparisons are performed.\n\n\n\n\n\n\ntestApprox = chisq.test: A function used to perform the large sample approximation based tests. The default is chisq.test. This is not recommended when some of the cell have small counts like fewer than 5.\nargsApprox = list(correct = TRUE): A named list of arguments passed to the function specified in testApprox. The default is list (correct = TRUE), which turns on the continuity correction for chisq.test.\ntestExact = fisher.test: A function used to perform the exact tests. The default is fisher.test. If the cells have large numbers, it will fail because of memory limitation. In this situation, the large sample approximation based should suffice.\n\n\n\n\n\n\ntestNormal = oneway.test: A function used to perform the normal assumption based tests. The default is oneway.test. This is equivalent of the t-test when there are only two groups.\nargsNormal = list(var.equal = TRUE): A named list of arguments passed to the function specified in testNormal.\ntestNonNormal = kruskal.test: A function used to perform non-normal assumption based tests.\nargsNonNormal = list(NULL): A named list of arguments passed to the function specified in testNonNormal.\nsmd = TRUE: If set to TRUE, standardized mean differences are calculated.\n\n\n\n\n\n\naddOverall = FALSE: If set to TRUE, an overall column is added to the table."
+  },
+  {
+    "objectID": "materials/1-workshop1/5-tableone/slides.html#print-function-for-createtableone-object",
+    "href": "materials/1-workshop1/5-tableone/slides.html#print-function-for-createtableone-object",
+    "title": "tableone and its Basic Statistics",
+    "section": "print function for CreateTableOne object",
+    "text": "print function for CreateTableOne object\n\nObjectSimple lookDecimalsVariablesTest\n\n\n\n\nx: object that you want to print.\n\n\n\n\n\n\nprintToggle = TRUE: If set to TRUE, the function will print the table.\nquote = FALSE: If set to FALSE, the function will not quote character strings.\nvarLabels = FALSE: If set to TRUE, variable labels (if available) are used instead of variable names.\nexplain = TRUE: If set to TRUE, explanations for the statistics are printed.\nnoSpaces = FALSE: If set to TRUE, spaces are removed from variable names.\npadColnames = FALSE: If set to TRUE, column names are padded with spaces for alignment.\ndropEqual = FALSE: If set to TRUE, the equal sign is dropped from p-values.\nshowAllLevels = FALSE: If set to TRUE, all levels of factors are shown even if some levels have zero count.\n\n\n\n\n\n\ncatDigits = 1: The number of digits after the decimal point for categorical variables.\ncontDigits = 2: The number of digits after the decimal point for continuous variables.\npDigits = 3: The number of digits after the decimal point for p-values.\nformatOptions = list(scientific = FALSE): A list of options for formatting numbers.\n\n\n\n\n\n\nmissing = FALSE: If set to TRUE, missing values are included in the table.\nminMax = FALSE: If set to TRUE, minimum and maximum values are included in the table for continuous variables.\nformat = c(\"fp\", \"f\", \"p\", \"pf\")[1]: The format of the table. Options include “fp” (frequency and percentage), “f” (frequency only), “p” (percentage only), and “pf” (percentage and frequency).\nnonnormal = NULL: A character vector of non-normal variables. For these variables, median and IQR are reported instead of mean and SD.\ncramVars = NULL: A character vector of variables for which Cramér’s V is calculated.\n\n\n\n\n\n\ntest = TRUE: If set to TRUE, tests are performed for differences across strata.\nexact = NULL: A character vector of variables for which exact tests are performed instead of chi-squared tests.\nsmd = FALSE: If set to TRUE, standardized mean differences are calculated."
+  },
+  {
+    "objectID": "materials/1-workshop1/5-tableone/slides.html#references",
+    "href": "materials/1-workshop1/5-tableone/slides.html#references",
+    "title": "tableone and its Basic Statistics",
+    "section": "References",
+    "text": "References\n\n\nback to module\n\n\n\nAltman, Douglas G. 1985. “Comparability of Randomised Groups.” The Statistician 34 (1): 125. https://doi.org/10.2307/2987510.\n\n\nMatthews, John N. S. 2006. Introduction to Randomized Controlled Clinical Trials. Chapman; Hall/CRC. https://doi.org/10.1201/9781420011302.\n\n\nSchulz, K. F, D. G Altman, and D. Moher. 2010. “CONSORT 2010 Statement: Updated Guidelines for Reporting Parallel Group Randomised Trials.” BMJ 340 (mar23 1): c332–32. https://doi.org/10.1136/bmj.c332.\n\n\nYoshida, Kazuki, and Alexander Bartel. 2022. “Tableone: Create ’Table 1’ to Describe Baseline Characteristics with or Without Propensity Score Weights.” https://CRAN.R-project.org/package=tableone."
   },
   {
     "objectID": "materials/1-workshop1/7-custom-data-visualizations/color_scales_exercise_solutions.html",

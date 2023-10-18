@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science for Biology Workshop Series - Welcome to the workshop</title>
+<title>Data Science for Biology Workshop Series - tableone and its Basic Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../materials/1-workshop1/1-data-generation/index.html" rel="next">
+<link href="../../../materials/1-workshop1/7-custom-data-visualizations/index.html" rel="next">
+<link href="../../../materials/1-workshop1/4-tidyverse-201/index.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -61,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -114,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/0-welcome/index.html"><b>1. Reproducible Data Analysis with R</b></a></li><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/0-welcome/index.html"><b>Module 0:</b> Welcome to the workshop</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/0-welcome/index.html"><b>1. Reproducible Data Analysis with R</b></a></li><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/5-tableone/index.html"><b>Module 5</b>: <code>tableone</code> and its Basic Statistics</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -137,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../materials/1-workshop1/0-welcome/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../materials/1-workshop1/0-welcome/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 0:</b> Welcome to the workshop</span></a>
   </div>
 </li>
@@ -167,7 +170,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../materials/1-workshop1/5-tableone/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/1-workshop1/5-tableone/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><b>Module 5</b>: <code>tableone</code> and its Basic Statistics</span></a>
   </div>
 </li>
@@ -201,7 +204,29 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
-  <li><a href="#before-the-workshop-installing-r-and-rstudio" id="toc-before-the-workshop-installing-r-and-rstudio" class="nav-link" data-scroll-target="#before-the-workshop-installing-r-and-rstudio">Before the workshop: Installing R and RStudio</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#types-of-variables" id="toc-types-of-variables" class="nav-link" data-scroll-target="#types-of-variables">Types of variables</a>
+  <ul class="collapse">
+  <li><a href="#continuous" id="toc-continuous" class="nav-link" data-scroll-target="#continuous">Continuous</a></li>
+  <li><a href="#categorical" id="toc-categorical" class="nav-link" data-scroll-target="#categorical">Categorical</a></li>
+  </ul></li>
+  <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics">Descriptive statistics</a>
+  <ul class="collapse">
+  <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean">Mean</a></li>
+  <li><a href="#median" id="toc-median" class="nav-link" data-scroll-target="#median">Median</a></li>
+  <li><a href="#mode" id="toc-mode" class="nav-link" data-scroll-target="#mode">Mode</a></li>
+  <li><a href="#standard-deviation" id="toc-standard-deviation" class="nav-link" data-scroll-target="#standard-deviation">Standard deviation:</a></li>
+  <li><a href="#count" id="toc-count" class="nav-link" data-scroll-target="#count">Count</a></li>
+  <li><a href="#percentage" id="toc-percentage" class="nav-link" data-scroll-target="#percentage">Percentage</a></li>
+  </ul></li>
+  <li><a href="#types-of-statistical-tests" id="toc-types-of-statistical-tests" class="nav-link" data-scroll-target="#types-of-statistical-tests">Types of statistical tests</a></li>
+  <li><a href="#tableone-package" id="toc-tableone-package" class="nav-link" data-scroll-target="#tableone-package"><code>tableone</code> package</a>
+  <ul class="collapse">
+  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1">Introduction</a></li>
+  <li><a href="#how-tableone-works" id="toc-how-tableone-works" class="nav-link" data-scroll-target="#how-tableone-works">How <code>tableone</code> works</a></li>
+  <li><a href="#other-packages-for-creating-tables" id="toc-other-packages-for-creating-tables" class="nav-link" data-scroll-target="#other-packages-for-creating-tables">Other packages for creating tables</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -210,7 +235,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome to the workshop</h1>
+<h1 class="title"><code>tableone</code> and its Basic <strong>Statistics</strong></h1>
+<p class="subtitle lead"><strong>Baseline Characteristics in Biomedical Research</strong></p>
 </div>
 
 
@@ -225,17 +251,127 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<blockquote class="blockquote">
-<p>Get to know your neighbors and instructors and learn what to expect from this workshop</p>
-</blockquote>
 <section id="slides" class="level2">
 <h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<p><a href="../../../materials/1-workshop1/0-welcome/slides.html">Make slides full screen</a></p>
+<p><a href="../../../materials/1-workshop1/5-tableone/slides.html">Make slides full screen</a></p>
 <iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+<p><br>
+</p>
 </section>
-<section id="before-the-workshop-installing-r-and-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="before-the-workshop-installing-r-and-rstudio">Before the workshop: Installing R and RStudio</h2>
-<p>Please install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install <code>R version 4.3.1</code> and <code>RStudio version 2023.09.0</code> <a href="../../../installation-instructions.html">Click here for instructions on installing R and RStudio</a></p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In biomedical research, it is often necessary to compare the effects of different interventions or exposures on the health outcomes of interest. However, before making any causal inference, it is important to evaluate the baseline characteristics of the patients who participate in the study. Baseline characteristics are the demographic and clinical features of the participants at the start of a trial or a study, such as age, sex, disease severity, comorbidities, etc. They provide information about the population that is being studied and the context of the research question (Schulz, Altman, &amp; Moher, 2010).</p>
+<p>Evaluating baseline characteristics of patients in different treatment groups is important for several reasons:</p>
+<ul>
+<li>It allows readers to assess the external validity of the trial results, which is the extent to which the results can be generalised to other settings and populations. For example, if the trial participants are very different from the target population in terms of age, sex, or other factors that may affect the outcome, then the results may not be applicable to the target population (Altman, 1990).</li>
+<li>It allows researchers to check the internal validity of the trial results, which is the extent to which the results are free from bias and confounding. Bias is a systematic error that leads to a deviation from the true effect of the intervention or exposure. Confounding is a situation where a third variable is associated with both the intervention or exposure and the outcome, and may distort the true effect of the intervention or exposure. For example, if the treatment groups are not balanced in terms of baseline characteristics that may influence the outcome, then there may be a bias or a confounding effect that needs to be adjusted for in the statistical analysis (Matthews, 2006).</li>
+<li>It allows researchers to explore the heterogeneity of the treatment effect, which is the variation in the effect across different subgroups of participants. Heterogeneity can be due to biological, clinical, or methodological factors that may modify or interact with the intervention or exposure. For example, if the treatment effect differs by age, sex, or disease severity, then it may be useful to perform subgroup analyses to identify which subgroups benefit more or less from the intervention or exposure (Matthews, 2006).</li>
+</ul>
+<p>To evaluate baseline characteristics, researchers need to use appropriate methods of summarisation, comparison, and adjustment, depending on the type and distribution of the variables. Summarisation involves describing the distribution and characteristics of the variables using descriptive statistics such as means, standard deviations, medians, interquartile ranges, counts, and percentages. Comparison involves testing whether there are significant differences or associations between the groups or variables using statistical tests such as t-tests, chi-squared tests, Fisher’s exact tests, and rank sum tests. Adjustment involves controlling for the potential confounding factors using methods such as stratification, matching, covariate adjustment, or weighting (Altman, 1990).</p>
+</section>
+<section id="types-of-variables" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-variables">Types of variables</h2>
+<section id="continuous" class="level3">
+<h3 class="anchored" data-anchor-id="continuous">Continuous</h3>
+<p>Continuous variables are variables that can take any numeric value within a range, such as age, weight, height, blood pressure, etc. They are usually measured or calculated using a scale or a device.</p>
+</section>
+<section id="categorical" class="level3">
+<h3 class="anchored" data-anchor-id="categorical">Categorical</h3>
+<p>Categorical variables are variables that can take only a limited number of values, such as sex, race, diagnosis, treatment group, etc. They are usually assigned or observed based on some criteria or classification.</p>
+</section>
+</section>
+<section id="descriptive-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-statistics">Descriptive statistics</h2>
+<p>Descriptive statistics are numerical summaries that describe the distribution and characteristics of a variable. They include measures of central tendency (such as mean, median, mode), measures of variability (such as standard deviation, interquartile range, range), and measures of frequency (such as count, percentage, proportion).</p>
+<section id="mean" class="level3">
+<h3 class="anchored" data-anchor-id="mean">Mean</h3>
+<p>The mean is the sum of all the values in a data set divided by the number of values. The formula is:</p>
+<p><span class="math display">\[\bar{x} = \frac{\sum x}{n}\]</span></p>
+<p>where <span class="math inline">\(\bar{x}\)</span> is the mean, <span class="math inline">\(\sum x\)</span> is the sum of all the values, and <span class="math inline">\(n\)</span> is the number of values.</p>
+</section>
+<section id="median" class="level3">
+<h3 class="anchored" data-anchor-id="median">Median</h3>
+<p>The median is the middle value in an ordered data set. To find the median, arrange the values from smallest to largest and then locate the middle one. If there are an even number of values, the median is the average of the two middle ones. The formula is:</p>
+<p><span class="math display">\[\tilde{x} = \begin{cases}
+x_{(n+1)/2}, &amp; \text{if } n \text{ is odd} \\
+\frac{x_{n/2} + x_{(n/2)+1}}{2}, &amp; \text{if } n \text{ is even}
+\end{cases}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(\tilde{x}\)</span> is the median,</li>
+<li><span class="math inline">\(x_i\)</span> is the <span class="math inline">\(i\)</span>th value in the ordered data set, and</li>
+<li><span class="math inline">\(n\)</span> is the number of values.</li>
+</ul>
+</section>
+<section id="mode" class="level3">
+<h3 class="anchored" data-anchor-id="mode">Mode</h3>
+<p>The mode is the most frequent value in a data set. There can be more than one mode if there are multiple values with the same frequency. There is no formula for the mode, but it can be found by counting how many times each value or category occurs and then selecting the one(s) with the highest frequency.</p>
+</section>
+<section id="standard-deviation" class="level3">
+<h3 class="anchored" data-anchor-id="standard-deviation">Standard deviation:</h3>
+<p>The variance is a measure of how much the values vary from the mean while the standard deviation is a measure of how spread out the values are from the mean. It is calculated by taking the square root of the variance. The formula is:</p>
+<p><span class="math display">\[s = \sqrt{\frac{\sum (x - \bar{x})^2}{n-1}}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(s\)</span> is the standard deviation,</li>
+<li><span class="math inline">\(x\)</span> is a value in the data set,</li>
+<li><span class="math inline">\(\bar{x}\)</span> is the mean, and</li>
+<li><span class="math inline">\(n\)</span> is the number of values.</li>
+</ul>
+</section>
+<section id="count" class="level3">
+<h3 class="anchored" data-anchor-id="count">Count</h3>
+<p>The count is the number of times a value or a category occurs in a data set. There is no formula for the count, but it can be found by counting how many times each value or category appears in the data set.</p>
+</section>
+<section id="percentage" class="level3">
+<h3 class="anchored" data-anchor-id="percentage">Percentage</h3>
+<p>The proportion is the ratio of a part to the whole expressed as a fraction between 0 and 1 whereas the percentage is the ratio of a part to the whole expressed as a fraction of 100. The formula is:</p>
+<p><span class="math display">\[p = \frac{n}{N} \times 100\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(p\)</span> is the percentage,</li>
+<li><span class="math inline">\(n\)</span> is the count of a value or a category, and</li>
+<li><span class="math inline">\(N\)</span> is the total count of all values or categories.</li>
+</ul>
+<p>These are some of the basic formulas for descriptive statistics. You can find more information and examples on <a href="https://www.statisticshowto.com/probability-and-statistics/descriptive-statistics/">this website</a>.</p>
+</section>
+</section>
+<section id="types-of-statistical-tests" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-statistical-tests">Types of statistical tests</h2>
+<p>One way to expand the sentence on baseline characteristics of patients in biomedical research papers is:</p>
+<p>Statistical tests are methods to evaluate whether there is a significant difference or association between two or more groups or variables. They are often used to compare the baseline characteristics of patients in different treatment groups, such as intervention and control groups, in biomedical research papers (Altman, 1990). They usually involve calculating a test statistic, which is a numerical value that summarizes the strength and direction of the relationship between the groups or variables. Then they compare the test statistic with a critical value or a p-value, which are thresholds that indicate the level of significance of the test. The level of significance is the probability of obtaining a test statistic as extreme or more extreme than the observed one, if the null hypothesis of no difference or no association is true. If the test statistic exceeds the critical value or is lower than the p-value, then the null hypothesis can be rejected and the alternative hypothesis of a difference or an association can be accepted. Otherwise, the null hypothesis cannot be rejected and the alternative hypothesis cannot be accepted.</p>
+<p>Depending on the type and distribution of the variables, different statistical tests can be performed. For continuous variables, such as age, weight, height, blood pressure, etc., t-tests (for normally distributed data) or rank sum tests (for non-normally distributed data) can be performed. T-tests compare the means of two groups and assume that the data are normally distributed and have equal variances. Rank sum tests compare the medians of two groups and do not assume any distribution or variance equality (Altman, 1990). For categorical variables, such as sex, race, diagnosis, treatment group, etc., chi-squared tests (for large sample sizes) or Fisher’s exact tests (for small sample sizes) can be performed. Chi-squared tests compare the frequencies or proportions of two or more groups and assume that the expected frequencies are sufficiently large. Fisher’s exact tests compare the frequencies or proportions of two groups and do not assume any frequency requirement (Altman, 1990).</p>
+<p>Another aspect that can be considered when comparing baseline characteristics is the standardized mean difference (SMD), It is a unitless measure that can be used to compare the magnitude of group differences across different variables. It can also be used to combine results from different studies that measure the same outcome but use different scales (Schulz, Altman, &amp; Moher, 2010).</p>
+</section>
+<section id="tableone-package" class="level2">
+<h2 class="anchored" data-anchor-id="tableone-package"><code>tableone</code> package</h2>
+<section id="introduction-1" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-1">Introduction</h3>
+<p>R package <code>tableone</code> is a package by Yoshida &amp; Victorina (2021) that eases the construction of “Table 1: Baseline demographics and clinical characteristics”. The package can handle both continuous and categorical variables, and provide descriptive statistics such as means, standard deviations, medians, interquartile ranges, counts, and percentages. It can also perform statistical tests to compare groups, such as t-tests, chi-squared tests, Fisher’s exact tests, and rank sum tests. It can also calculate standardized mean differences to measure the effect size of group differences. <code>tableone</code> can handle weighted data using the survey package, which allows researchers to account for complex sampling designs and adjust for confounding factors. <code>tableone</code> has a simple and flexible syntax, and can produce nice-looking tables using the kableone function.</p>
+</section>
+<section id="how-tableone-works" class="level3">
+<h3 class="anchored" data-anchor-id="how-tableone-works">How <code>tableone</code> works</h3>
+<ul>
+<li>To use <code>tableone</code>, you need to install it from CRAN or GitHub (Yoshida &amp; Victorina, 2021).</li>
+<li>You need to load the package using <code>library(</code>tableone<code>)</code>.</li>
+<li>You need to specify the variables you want to summarize using the <code>vars</code> argument. You can also specify which variables are categorical using the <code>factorVars</code> argument.</li>
+<li>You need to provide the data frame that contains the variables using the <code>data</code> argument. You can also provide a grouping variable using the <code>strata</code> argument.</li>
+<li>You need to create a <code>tableone</code> object using the <code>Create</code>tableone`` function. This object contains all the summary statistics and test results for each variable and group.</li>
+<li>You can print or export the <code>tableone</code> object using the <code>print</code> or <code>kableone</code> functions.</li>
+</ul>
+</section>
+<section id="other-packages-for-creating-tables" class="level3">
+<h3 class="anchored" data-anchor-id="other-packages-for-creating-tables">Other packages for creating tables</h3>
+<p>Besides <code>tableone</code>, there are many other R packages that can be used to create tables in various output formats, such as PDF, HTML and Word. Some of them are: flextable (Gohel &amp; Skintzos, 2023) and huxtable (Hugh-Jones, 2022).</p>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Altman, D. G. (1990). Practical statistics for medical research. Chapman &amp; Hall/CRC.</p>
+<p>Matthews, J. N. (2006). Introduction to randomized controlled clinical trials. CRC Press.</p>
+<p>Schulz, K. F., Altman, D. G., &amp; Moher, D.; CONSORT Group. (2010). CONSORT 2010 statement: updated guidelines for reporting parallel group randomised trials. BMJ, 340, c332.</p>
+<p>Therneau, T. M., &amp; Grambsch, P. M. (2000). Modeling survival data: Extending the Cox model. Springer.</p>
+<p>Yoshida, K., &amp; Victorina, L. K. (2021). <code>tableone</code>: An R package for creating ‘Table 1’. R package version 0.12.0.</p>
 
 
 </section>
@@ -476,10 +612,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../../../materials/1-workshop1/4-tidyverse-201/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><b>Module 4</b>: Data wrangling and more data visualization</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../materials/1-workshop1/1-data-generation/index.html" class="pagination-link">
-        <span class="nav-page-text"><b>Module 1</b>: How data analysis is informed by data generation</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../materials/1-workshop1/7-custom-data-visualizations/index.html" class="pagination-link">
+        <span class="nav-page-text"><b>Module 7</b>: Customizing data visualizations using <code>colorspace</code>, <code>ggplot2</code>, and <code>patchwork</code></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
