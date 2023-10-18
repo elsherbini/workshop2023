@@ -183,6 +183,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><b>Module 7</b>: Customizing data visualizations using <code>colorspace</code>, <code>ggplot2</code>, and <code>patchwork</code></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/group_projects/index.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Group Project</b> -Applying what you’ve learned to new data</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -204,6 +210,11 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#research-questions" id="toc-research-questions" class="nav-link" data-scroll-target="#research-questions">Research Questions</a></li>
+  <li><a href="#potential-outcomes-could-include" id="toc-potential-outcomes-could-include" class="nav-link" data-scroll-target="#potential-outcomes-could-include">Potential outcomes could include</a></li>
+  <li><a href="#potential-research-question-objective-and-statistical-approach" id="toc-potential-research-question-objective-and-statistical-approach" class="nav-link" data-scroll-target="#potential-research-question-objective-and-statistical-approach">Potential Research Question, Objective and Statistical Approach</a></li>
+  <li><a href="#refresher" id="toc-refresher" class="nav-link" data-scroll-target="#refresher">Refresher</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#types-of-variables" id="toc-types-of-variables" class="nav-link" data-scroll-target="#types-of-variables">Types of variables</a>
   <ul class="collapse">
@@ -215,7 +226,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean">Mean</a></li>
   <li><a href="#median" id="toc-median" class="nav-link" data-scroll-target="#median">Median</a></li>
   <li><a href="#mode" id="toc-mode" class="nav-link" data-scroll-target="#mode">Mode</a></li>
-  <li><a href="#standard-deviation" id="toc-standard-deviation" class="nav-link" data-scroll-target="#standard-deviation">Standard deviation:</a></li>
+  <li><a href="#standard-deviation" id="toc-standard-deviation" class="nav-link" data-scroll-target="#standard-deviation">Standard deviation</a></li>
   <li><a href="#count" id="toc-count" class="nav-link" data-scroll-target="#count">Count</a></li>
   <li><a href="#percentage" id="toc-percentage" class="nav-link" data-scroll-target="#percentage">Percentage</a></li>
   </ul></li>
@@ -255,6 +266,69 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="slides">Slides</h2>
 <p><a href="../../../materials/1-workshop1/5-tableone/slides.html">Make slides full screen</a></p>
 <iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+</section>
+<section id="research-questions" class="level2">
+<h2 class="anchored" data-anchor-id="research-questions">Research Questions</h2>
+<p><br>
+</p>
+</section>
+<section id="potential-outcomes-could-include" class="level2">
+<h2 class="anchored" data-anchor-id="potential-outcomes-could-include">Potential outcomes could include</h2>
+<p>Changes in inflammation levels, as measured by the elisa_cytokines and flow_cytometry tables. Changes in clinical measurements such as Nugent Score, C-reactive protein blood test (CRP), and vaginal pH, as recorded in the visit_clinical_measurements table.</p>
+</section>
+<section id="potential-research-question-objective-and-statistical-approach" class="level2">
+<h2 class="anchored" data-anchor-id="potential-research-question-objective-and-statistical-approach">Potential Research Question, Objective and Statistical Approach</h2>
+<p><strong>Efficacy of the Treatment</strong></p>
+<ul>
+<li>Question: How effective is the drug in reducing inflammation at different time points (week 1 and week 7) compared to the baseline? Is there a significant difference between the treatment and placebo groups?</li>
+<li>Objective: Determine the effectiveness of the drug in reducing inflammation.</li>
+<li>Statistical Analysis: Use a repeated measures ANOVA or mixed-effects model to compare inflammation levels at different time points between the treatment and placebo groups.</li>
+</ul>
+<p><strong>Impact of Smoking</strong></p>
+<ul>
+<li>Question: Does smoking status affect the efficacy of the drug? Is there a significant difference in outcomes between smokers and non-smokers?</li>
+<li>Objective: Investigate the influence of smoking on the efficacy of the drug.</li>
+<li>Statistical Analysis: Perform subgroup analysis or interaction analysis to compare outcomes between smokers and non-smokers.</li>
+</ul>
+<p><strong>Age and Drug Efficacy</strong></p>
+<ul>
+<li>Question: Does age influence the effectiveness of the drug? Are there differences in outcomes among different age groups?</li>
+<li>Objective: Explore the influence of age on the effectiveness of the drug.</li>
+<li>Statistical Analysis: Use regression analysis to examine the relationship between age and treatment outcomes.</li>
+</ul>
+<p><strong>Education Level and Treatment Outcome</strong></p>
+<ul>
+<li>Question: Is there a correlation between the level of education and the treatment outcome? Do individuals with higher education levels have better outcomes?</li>
+<li>Objective: Investigate whether education level correlates with treatment outcomes.</li>
+<li>Statistical Analysis: Perform a chi-square test or Fisher’s exact test to examine the association between education level and treatment outcomes.</li>
+</ul>
+<p><strong>Cytokine Concentration Analysis</strong></p>
+<ul>
+<li>Question: How do cytokine concentrations change over time in response to the treatment? Are certain cytokines more responsive to the treatment than others?</li>
+<li>Objective: Analyze changes in cytokine concentrations over time in response to treatment.</li>
+<li>Statistical Analysis: Use a repeated measures ANOVA or mixed-effects model to compare cytokine concentrations at different time points.</li>
+</ul>
+<p><strong>Cell Count Analysis</strong></p>
+<ul>
+<li>Question: How do cell counts (from flow cytometry data) change over time in response to the treatment? Are certain cell types more affected by the treatment than others?</li>
+<li>Objective: Analyze changes in cell counts over time in response to treatment.</li>
+<li>Statistical Analysis: Use a repeated measures ANOVA or mixed-effects model to compare cell counts at different time points.</li>
+</ul>
+<p><strong>Correlation between Clinical Measurements and Outcomes</strong></p>
+<ul>
+<li>Question: Is there a correlation between Nugent Score, C-reactive protein blood test (CRP), vaginal pH, and treatment outcomes?</li>
+<li>Objective: Examine correlations between clinical measurements (Nugent Score, CRP, vaginal pH) and treatment outcomes.</li>
+<li>Statistical Analysis: Use correlation analysis or multiple regression analysis to examine these relationships.</li>
+</ul>
+<p><strong>Long-term Efficacy of the Drug</strong></p>
+<p>Question: Does the drug’s efficacy persist over time (from week 1 to week 7), or does it diminish? Objective: Assess whether the drug’s efficacy persists over time. Statistical Analysis: Use a repeated measures ANOVA or mixed-effects model to compare treatment outcomes at week 1 and week 7.</p>
+</section>
+<section id="refresher" class="level2">
+<h2 class="anchored" data-anchor-id="refresher">Refresher</h2>
+<iframe allowfullscreen="" frameborder="0" height="420" width="747" mozallowfullscreen="" src="https://app.wooclap.com/DURBAN/questionnaires/652f77f770a3432315b34c75" style="border: 1px solid #2e3846;"></iframe>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <p><br>
 </p>
 </section>
@@ -308,7 +382,7 @@ x_{(n+1)/2}, &amp; \text{if } n \text{ is odd} \\
 <p>The mode is the most frequent value in a data set. There can be more than one mode if there are multiple values with the same frequency. There is no formula for the mode, but it can be found by counting how many times each value or category occurs and then selecting the one(s) with the highest frequency.</p>
 </section>
 <section id="standard-deviation" class="level3">
-<h3 class="anchored" data-anchor-id="standard-deviation">Standard deviation:</h3>
+<h3 class="anchored" data-anchor-id="standard-deviation">Standard deviation</h3>
 <p>The variance is a measure of how much the values vary from the mean while the standard deviation is a measure of how spread out the values are from the mean. It is calculated by taking the square root of the variance. The formula is:</p>
 <p><span class="math display">\[s = \sqrt{\frac{\sum (x - \bar{x})^2}{n-1}}\]</span></p>
 <p>where</p>
