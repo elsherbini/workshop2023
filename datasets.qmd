@@ -32,12 +32,12 @@ The main data set for use in lectures is split into 5 tables. The idea of this d
 
 - [`02_visit_clinical_measurements_UKZN_workshop_2023.csv`](datasets/instructional_dataset/02_visit_clinical_measurements_UKZN_workshop_2023.csv)
 
-pid – particpant id  
-time_point – “baseline”, “week_1”, or “week_7”  
-arm – “treatment” or “placebo”  
-nugent_score – [Nugent Score](https://en.wikipedia.org/wiki/Nugent_score), a number from 0-10. 0-3 is no BV, 4-6 is intermediate BV, and 7-10 is BV  .
-crp_blood – decimal number representing C-reactive protein blood test (CRP) 
-ph – vaginal pH  
+`pid` – particpant id  
+`time_point` – “baseline”, “week_1”, or “week_7”  
+`arm` – “treatment” or “placebo”  
+`nugent_score` – [Nugent Score](https://en.wikipedia.org/wiki/Nugent_score), a number from 0-10. 0-3 is no BV, 4-6 is intermediate BV, and 7-10 is BV  .
+`crp_blood` – decimal number representing C-reactive protein blood test (CRP) 
+`ph` – vaginal pH  
 
 - [`03_elisa_cytokines_UKZN_workshop_2023.csv`](datasets/instructional_dataset/03_elisa_cytokines_UKZN_workshop_2023.csv)
 
@@ -52,3 +52,17 @@ ph – vaginal pH
 All other columns – the integer count of this type of cell in this sample
 
 `cd4_t_cells` might best be analyzed as a proportion of `cd3_t_cells`...
+
+## Download the yogurt dataset (Odd number groups)
+
+- [`00_sample_ids_yogurt.csv`](datasets/group_dataset_a/00_sample_ids_yogurt.csv)
+- [`01_participant_metadata_yogurt.csv`](datasets/group_dataset_a/01_participant_metadata_yogurt.csv)
+- [`02_qpcr_results_yogurt.csv`](datasets/group_dataset_a/02_qpcr_results_yogurt.csv)
+- [`03_luminex_results_yogurt.csv`](datasets/group_dataset_a/03_luminex_results_yogurt.csv)
+
+## Download the birth control dataset (Even number groups)
+
+- [`00_sample_ids_period.csv`](datasets/group_dataset_b/00_sample_ids_period.csv)
+- [`01_participant_metadata_period.csv`](datasets/group_dataset_b/01_participant_metadata_period.csv)
+- [`02_luminex_period.csv`](datasets/group_dataset_b/02_luminex_period.csv)
+- [`03_flow_cytometry_period.csv`](datasets/group_dataset_b/03_flow_cytometry_period.csv)

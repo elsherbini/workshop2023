@@ -1,0 +1,16 @@
+---
+title: "Welcome to the workshop"
+format: qmdrslides-revealjs
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r}
+#| echo: false
+library(countdown)
+```
+
+
+## Even Numbered Groups:
+
+

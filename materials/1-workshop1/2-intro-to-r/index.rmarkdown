@@ -1,0 +1,670 @@
+---
+title: "Intro to R, RStudio, and Quarto"
+format:
+  html:
+    toc: true
+---
+
+
+> Let's learn how to use RStudio to run R code and render documents with Quarto.
+
+  
+## Slides: Intro to RStudio, Quarto, and R
+[Make slides full screen](slides.qmd)
+
+
+```{=html}
+<iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
+---
+format:
+  html:
+    code-link: true
+  editor_options: 
+    chunk_output_type: console
+---
+
+##  Worksheet: Introduction to R and Quarto
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, eval=TRUE}
+library(tidyverse)
+```
+
+### 1. Operators and Functions in R
+
+In order to get familiar with the R language, we shall start by using simple operators and functions that are intuitive to us in our everyday lives.
+
+#### 1.1 Arithmetic operators
+
+```{r echo=TRUE, eval=FALSE}
++                addition
+-                subtraction
+*                multiplication
+/                division
+^ or **          power
+
+x %*% y          matrix multiplication c(5, 3) %*% c(2, 4) == 22
+x %% y           modulo (x mod y) 5 %% 2 == 1
+x %/% y          whole number division: 5 %/% 2 == 2
+```
+
+Note that while the first half is self-explanatory, the second is more specific to programming and/or R.
+
+
+Let's try a few examples in R. First, always have a code chunk at the top that loads the libraries you need:
+
+```{r}
+#| echo: fenced
+library(tidyverse)
+```
+
+
+Then, copy the following code chunk into your quarto document. 
+
+```{r}
+#| eval: false
+99 + 1 + -1
+
+64 / 4
+
+64 / (2+2)
+
+64 / 2 + 2
+```
+
+Notice the difference in the last two commands and it's effect on the output.
+
+#### 1.2 Logical operators and functions
+```{r echo=TRUE, eval=FALSE}
+<                less than
+<=               less than or equal to
+>                greater than
+>=               greater than or equal to
+==               equal
+!=               not equal
+!x               not x (negation)
+x | y            x OR y
+x & y            x AND y
+xor(x, y)        exclusive OR (either in x or y, but not in both)
+isTRUE(x)        truth test for x
+```
+
+
+Few examples for you to copy in your quarto document or directly on the console,
+
+```{r}
+#| eval: false
+99 < 1
+
+!(99 < 1)
+
+64 == 8*8
+
+(3 > 2) | (4 > 5)
+```
+
+#### 1.3 Numeric functions
+```{r echo=TRUE, eval=FALSE}
+abs(x)             absolute value
+sqrt(x)            square root
+ceiling(x)         round up: ceiling(3.475) is 4
+floor(x)           round down: floor(3.475) is 3
+round(x, digits=n) round: round(3.475, digits=2) is 3.48
+cos(x), sin(x), tan(x), acos(x), cosh(x), acosh(x) etc.
+log(x)             natural logarithm
+log(10, base = n)  base n logarithm
+log2(x)            base 2 logarithm
+log10(x)           base 10 logarithm
+exp(x)             exponential function: e^x
+```
+
+Few examples for you to copy in your quarto document or directly on the console,
+
+```{r}
+#| eval: false
+abs(99)
+
+abs(-99)
+
+sqrt(64)
+
+floor(6.789)
+```
+
+#### 1.4 Statistical functions
+Below is a list of statistical functions. These functions can have the argument na.rm, which is set to FALSE by default. This will let you deal with missing values (na = not available). If set to false, these are not removed (rm = remove).
+
+```{r echo=TRUE, eval=FALSE}
+mean(x, na.rm = FALSE)  mean
+sd(x)                   standard deviation
+var(x)                  variance
+
+median(x)               median
+quantile(x, probs)      quantile of x.  probs: vector of probabilities
+
+sum(x)                  sum
+min(x)                  minimal value of x (x_min)
+max(x)                  xaximal value of x (x_max)
+range(x)                x_min und x_max
+
+# if center  = TRUE: subtract mean
+# if scale   = TRUE: divide by sd
+scale(x, center = TRUE, scale = TRUE)   center and standardize
+
+# weighted sampling with argument prob:
+sample(x, size, replace = FALSE, prob)  sampling with or without replacement. prob: vector of weights
+```
+
+
+To get help with a function, type `?function_name` in the console.
+
+For example, try typing `?mean` into the console. Check out [this guide](https://socviz.co/appendix.html?s=09#a-little-more-about-r) on how to read the help page.
+
+#### 1.5 Other useful functions
+
+```{r echo=TRUE, eval=FALSE}
+c()                    combine: used to create a vector
+seq(from, to, by)      generates a sequence
+:                      colon operator: generates a 'regular' sequence in increments of 1
+rep(x, times, each)    repeats x
+                          times: sequence is repeated n times
+                          each: each element is repeated n times
+
+head(x, n = 6)         first 6 elements of x
+tail(x, n = 6)         last 6 elements of x
+```
+
+Few examples for you to copy in your quarto document or directly on the console,
+
+```{r}
+#| eval: false
+c(1, 2, 3, 4, 5, 6)
+
+mean(c(1, 2, 3, 4, 5, 6))
+
+mean(c(1, NA, 3, 4, 5, 6), na.rm = TRUE)
+
+mean(c(1, NA, 3, 4, 5, 6), na.rm = FALSE)
+
+sum(c(1, 2, 3, 4, 5, 6))
+
+seq(from = 1, to = 6, by = 1)
+
+seq(from = 1, to = 6, by = 2)
+
+rep(1:6, times = 2, each = 2)
+```
+
+
+Ready to put these new skills to use? Here's an exercise.
+
+### Exercise 1
+
+Write R commands to calculate the following:
+
+1. The sum of your birth day, month and year
+2. 250 divided by the product of 4 and 5
+3. Half of the sum of 37.5, 51.3, and 101.7
+4. $\frac{1}{3} * { (1+3+5+7+2) \over (3+5+4)}$
+5. $\sqrt[3]{8}$
+6. $\sin\pi$, $\cos\pi$, $\tan\pi$
+7. Calculate the 10-based logarithm of 100, and multiply the result with the cosine of pi. Hint: see ?log and ?pi.
+8. Calculate the mean, sd and range of the vector [1, 3, 4, 7, 11, 16]
+9. Generate the following output: 4 4 4 5 5 5 6 6 6 7 7 7
+10. Generate the following output: 2 4 6 8 10 12
+
+
+
+### Challenge Exercise 1
+
+Write R commands to evaluate the following:
+
+1. You have 83 chocolates in a bag. You would like to divide them into smaller bags of 8.\
+  1.1 How many small bags will you need? \
+  1.2 After the bags are filled, how many extra chocolates will you have remaining?
+2. You are planning a research study with the following eligibility criteria:
+ - Study participant should be between 18-25 years old (variable: age)\
+ - Hemoglobin should be over 10 (variable: hgb) \
+ - Study participant should not weigh over 50 (variable: wgt) \
+ - Study location should be X or Y (variable: loc)
+ 3. I have the following observations from a clinical parameter –
+x <- c(23.1924, 21.4545, 24.6778)
+However, I would prefer to limit the values to 1 decimal point. How would you do that?
+4. Look up the rnorm() function in the Help Viewer. What arguments does this function take? Any default values?
+5. Try to nest a function within another
+
+Assuming you get all the information in forms of the above variables, write an R command to determine eligibility.
+
+
+### 2. Objects and Vectors in R
+
+
+#### 2.1 Objects / Variables
+
+So far, we have been happy to run functions and read the results on the screen. What if you'd like to read results later? You will need to save them by creating Objects.
+
+Copy the following code chunk into your quarto document
+
+```{r}
+number1 <- 9
+sqrt(number1)
+
+number2 <- 10
+
+number1 * number2
+```
+
+What do you think happens when you use the same object name to another value? Try it!
+
+```{r echo=TRUE, eval=FALSE}
+
+newnumber <- 100
+newnumber <- 150
+
+#What does R pick?
+newnumber
+```
+
+
+Object/Variable names
+
+You can choose almost any name you like for an object, as long as the name does not begin with a number or a special character like +, -, *, /, ^, !, @, or &.
+
+```{r echo=TRUE, eval=FALSE}
+# good variable names
+x_mean
+x_sd
+
+num_people
+age
+
+# not so good
+p
+a
+
+# bad variable names
+x.mean
+sd.of-x
+
+```
+
+#### 2.2 Vectors
+
+Vectors are the fundamental data type in R - all other data types are composed of vectors. 
+These can subdivided into:
+
+**numeric vectors**: a further subdivision is into ```integer``` (whole numbers) and ```double``` (floating point numbers).
+
+**character vectors**: these consist of characters strings and are surrounded by quotes, either single ```'``` or double ```"```, e.g. ```'word'``` or ```"word"```.
+
+**logical vectors**: these can take three values: ```TRUE```, ```FALSE``` or ```NA```.
+
+Vectors consist of elements of the same type, i.e., we cannot combine ```logical``` and ```character``` elements in a vector. Vectors have three properties:
+
+Type: ```typeof()```: what is it?
+Length: ```length()```: how many elements?
+Attribute: ```attributes()```: additional metadata
+
+Vectors are created using the ```c()``` function or by using special function, such as ```seq()``` or ```rep()```.
+
+```{r}
+# Numeric vectors
+num_vec <- c(2.1,2.2,2.3,2.4,2.5)
+length(num_vec)
+
+# Character vectors
+char_vec <- c("hello","hi")
+length(char_vec)
+
+# Logical vectors
+log_vec <- c(TRUE,FALSE,TRUE)
+typeof(log_vec)
+```
+
+Some fun with vectors
+
+```{r eval=FALSE}
+num_vec[1] # what's the first element of num_vec?
+
+num_vec[4] # 4th?
+
+num_vec[-1] # what does -1 do?
+
+num_vec[1:3]
+
+num_vec[-c(1, 3)]
+```
+
+Try this on your own with the character vectors. What differences and similarities do you notice?
+
+Exercise time!
+
+### Exercise 2
+1. Calculate the mean and standard deviation of a numeric vector of the first 6 multiples of 5.
+2. What happens if you attempt at arithmetic function on a numeric vector? (Example: num_vec + 1)
+3. What happens if you attempt the same on a character vector?
+4. Explore the `str_length()` function on a character vector.
+5. What happens if you try to make a vector consisting of different data types?
+6. Metadata hygiene: Give examples of good and bad ways to make variable names for the following columns in the Metadata spreadsheet –
+    - Participant ID
+    - Date of Sample Collection
+    - Type of Sample
+    - Mean of past 3 weights
+    - Number of people
+
+
+### Challenge Exercise 2
+
+1. Calculate the mean of the sum of the first 6 even numbers - using one R command.
+2. ```first_name``` and ```last_name``` are two separate variables. Make one variable with both together, calling it ```full_name```. Hint: it is a function 
+
+
+### 3. Dataframes in R
+
+For data analysis and statistics, data frames are important objects of data representation. A data frame is a two dimensional structure with rows and columns, like a table. You can think of it as a collection of vectors. Let us try making one.
+
+```{r}
+
+# creating a vector with an ID 
+id <- c(1, 2, 3)
+
+# creating another vector with names
+name <- c("PersonA", "PersonB", "PersonC")
+
+# creating another vector with year of birth 
+year_of_birth <- c(1990, 1995, 2000)
+
+# creating another vector with favourite colour
+fav_colour <- c("red", "green", "yellow")
+
+#Make a dataframe from the above
+# note, make sure you've added the tidyverse library
+library(tidyverse)
+df <- tibble(id, name, year_of_birth, fav_colour)
+
+df
+```
+
+You just made a dataframe! 
+
+Now, normally you will be importing one and using it to get useful information. You can extract useful information like number of rows, columns, details of each, summary of values, etc
+
+Here are a few helpful functions -
+
+```{r}
+attributes(df)
+rownames(df)
+colnames(df)
+
+# We didn't assign any yet! Let us try to assign column names
+colnames(df) <- c("ID","name","year_of_birth","favourite_colour")
+colnames(df)
+
+## Note: When importing an existing data file, depending on your it's structure, you can ask R to import with or without row and column names)
+
+nrow(df)
+ncol(df)
+
+# Data frame subsetting (I want only a few columns of my interest)
+select(df, name)
+select(df, year_of_birth)
+
+#extract row 2 only
+slice(df, 2)
+
+#extract rows 1, and 3
+slice(df, c(1,3))
+
+#extract column 3 only
+select(df, 3)
+
+#extract rows based on one condition
+filter(df, year_of_birth > 1995)
+
+
+#extract rows based on multiple conditions
+filter(df, year_of_birth > 1995 & favourite_colour=="red")
+filter(df, year_of_birth > 1995 | favourite_colour=="red")
+
+#Note the difference in output upon use of different logical operators AND and OR
+
+```
+
+### Exercise 3
+
+1. Make an expression to get only rows when the name is Person C or the favorite color is green.
+2. Make a new dataframe with 6 rows and 5 columns (get creative!)
+3. Add different combinations of data to be able to use the above functions and compare output.
+4. Try above functions on your new dataframe and note any interesting observations.
+5. Try some other functions: ```str()```, ```head()```, ```view()```.
+
+### Challenge Exercise 3
+
+1. Can you think of other simple questions you may need to query your dataset?
+2. Try to look your query up on google and see if you can find a function that addresses your need! (add 'in R' at the end for relevant answers!)
+
+Congratulations!
+You have successfully reached the end of this exercise. You now possess the most important skill: google your query!
+
+---
+format:
+  html:
+    code-link: true
+editor_options: 
+  chunk_output_type: console
+---
+
+##  End of session worksheet: Introduction to R and Quarto
+
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+
+## Introduction
+
+Now that we practiced a bit on mock and small datasets, let us try a 'real' one. In this worksheet, we will look at the Ice Breaker Poll from this morning and learn how to perform basic data manipulations, such as filtering data rows that meet certain conditions, choosing data columns, and arranging data in ascending or descending order.
+
+First, download the icebreaker poll file containing the dataset. [Download the dataset here](https://docs.google.com/spreadsheets/d/e/2PACX-1vRD_PMPFbTkZmIhXcc0y70IEznxMDpaw8tvsD64JvWLT-aogEnMoVjAWTlvLtHiLCUyTRbsA6ePgQnN/pub?gid=1324386097&single=true&output=csv) and move it to your project directory.
+
+Use the following command to read in the data from the Ice Breaker poll.
+```{r}
+ice_breaker_df <- read_csv("Ice Breaker Survey (Responses) - Form Responses 1.csv") # make sure this file name exists in your current directory!
+```
+
+We will be using the R package **tidyverse** for the data manipulation functions `%>%`, `filter()`, `select()`, `arrange()`, `count()`, and `mutate()`.
+
+```{r echo=TRUE, eval=FALSE}
+library(tidyverse)
+```
+
+### The pipe (`%>%`, read: "and then")
+
+When writing complex data analysis pipelines, we frequently use the pipe operator `%>%` to move data from one analysis step to the next. The pipe is pronounced "and then", and it takes the data on its left and uses it as the first argument for the function on its right.
+
+For example, to see the first few lines of a dataset, we often write `head(dataframe)`. Instead, we can write `dataframe %>% head()`.
+
+Try this yourself. Write code that displays the first few lines of the `ice_breaker_df` dataset, using `%>%` and `head()`:
+
+```{r}
+ # build all the code for this exercise
+```
+
+Now get all the column names using the `colnames()` function on the `ice_breaker_df`.
+
+
+```{r}
+ # build all the code for this exercise
+```
+
+### Choosing data rows
+
+The function `filter()` allows you to find rows in a dataset that meet one or more specific conditions. The syntax is `dataframe %>% filter(condition)`, where condition is a logical condition. For example, `filter(x > 5)` would pick all rows for which the value in column `x` is greater than 5.
+
+As an example, the following code picks all survey responses where people prefer chocolate over vanilla ice cream:
+
+```{r}
+ice_breaker_df %>%
+  filter(vanilla_chocolate == "Chocolate")
+```
+Can you tell how many people that is from looking at the size of the tibble?
+
+Now it's your turn to try one. Pick all responses where people would like to try Skydiving.
+
+```{r echo=TRUE, eval=FALSE}
+ice_breaker_df %>%
+  filter(___)
+```
+
+
+#### Filtering for multiple conditions
+
+You can also state multiple conditions, separated by a comma. For example, `filter(x > 5, y < 2)` would pick all rows for which the value in the column `x` is greater than 5 and the value in the column `y` is less than 2. Note that the conditions are combined via logical and, both need to be satisfied for the row to be picked.
+
+To try this out, pick all survey responses where people taller than XXX cm would like to retain their Facebook.
+
+```{r}
+ # build all the code for this exercise
+```
+
+### Choosing data columns
+
+The function `select()` allows you to pick specific data columns by name. This is frequently useful when a dataset has many more columns than we are interested in at the time. For example, if we are only interested in the responses regarding what people do first thing in the morning, what superpower they would like, and how they procrastinate, we could select just those three columns:
+
+```{r}
+#| echo: true
+ice_breaker_df %>%
+  select(first_thing_in_morning, superpower, procrastinate)
+```
+
+Try this yourself, picking the columns representing responses to how many browser tabs people have open right now and what social media they would like to keep.
+
+```{r}
+ # build all the code for this exercise
+```
+
+### Choosing columns for removal
+
+Another situation that arises frequently is one where we want to remove specific columns. We can also do this with `select()`, but now write `select(-column)` to remove one or more columns.
+
+Try this. Remove the column `num_browser_tabs`.
+
+```{r}
+ # build all the code for this exercise
+```
+
+And now try removing both `num_browser_tabs` and `procrastinate`.
+
+### Sorting data
+
+The function `arrange()` allows you to sort data by one or more columns. For example, `dataframe %>% arrange(x)` would sort the data by increasing values of `x`, and `dataframe %>% arrange(x, y)` would sort the data first by `x` and then, for ties in `x`, by `y`.
+
+As an example, the following code sorts responses by the person's height:
+
+```{r}
+ice_breaker_df %>%
+  arrange(height_cm)
+```
+
+Now it's your turn. Sort responses by the number of languages people can speak:
+
+```{r}
+ # build all the code for this exercise
+```
+
+#### Arranging in descending order
+
+To arrange data in descending order, enclose the data column in `desc()`. For example, `dataframe %>% arrange(desc(x))` would sort the data by decreasing values of `x`. (`desc` stands for "descending".)
+
+Try this out. Sort the responses by height again, this time from largest to smallest:
+
+```{r}
+ # build all the code for this exercise
+```
+
+### Counting
+
+We frequently want to count how many times a particular value or combination of values occurs in a dataset. We do this using the `count()` function. For example, the following code counts how many of each number we got for the number of languages people can speak.
+
+```{r count-demo, echo=FALSE, eval=TRUE}
+ice_breaker_df %>%
+  count(num_languages)
+```
+
+Now try this yourself. Count how many prefer vanilla ice cream and how many chocolate.
+
+```{r}
+ # build all the code for this exercise
+```
+
+### Chaining analysis steps into pipelines
+
+We can chain multiple analysis steps into a pipeline by continuing to add "and then" statements. For example, `dataframe %>% count(...) %>% arrange(...)` would first count and then sort the data.
+
+Try this out by counting the number of responses of languages spoken and and then sorting by the number.
+
+```{r}
+ # build all the code for this exercise
+```
+
+### Creating new data columns
+
+The function `mutate()` allows you to add new columns to a data table. For example, `dataframe %>% mutate(sum = x + y)` would create a new column `sum` that is the sum of the columns `x` and `y`:
+
+```{r}
+data <- tibble(x = 1:3, y = c(10, 20, 30))
+data
+```
+
+```{r}
+data %>%
+  mutate(sum = x + y)
+```
+
+Note that the part to the left of the equals sign (here, `sum`) is the name of the new column, and the part to the right of the equals sign (here, `x + y`) is an R expression that evaluates to the values in the new column.
+
+Now apply this concept to the `ice_breaker_df` dataset. Add a new column `browsing by language` that is the ratio of number of browser tabs currently open and number of languages spoken:
+
+```{r}
+ # build all the code for this exercise
+```
+
+#### Counting with custom conditions
+
+It is quite common that we want to count items that meet a specific condition. For example, let's say we want to count how many people are taller than 155 cm. To do this efficiently, we first create a new column that indicates whether the condition is met or not, and we then use count with that indicator column.
+
+The easiest way to create indicator columns is via the function `if_else()`, which takes three arguments: a condition, a result if the condition is met, and a result if the condition is not met. The following example shows how to create an indicator column showing whether a variable is positive or negative:
+
+```{r}
+data <- tibble(x = c(-0.5, 2.3, 50, -1.4))
+data
+```
+
+```{r}
+data %>%
+  mutate(
+    sign_of_x = if_else(x >= 0, "positive", "negative")
+  ) %>%
+  count(sign_of_x)
+```
+
+Now try this yourself. Count how many people are taller than 155 cm. Then sort your results.
+
+Here are a few additional exercises that you can work on to practice and learn more about survey responses from everyone in this room!
+
+### Exercise - fun with the survey
+
+Write R commands for the following -  
+1. How many people took this survey?  
+2. How many questions did we ask?  
+3. What questions did we ask?  
+4. Give a few examples of the data types captured in the questions  
+5. Look at responses of questions 4-6 from all participants  
+6. Try to rename a column (question)  
+7. Make a new dataframe of 5 questions of your choice.  
+8. Can you get the height of the tallest person in this room?  
+9. How many people speak more than 2 languages?  
+10. Select the question about R experience and sort by the kind of R background and experience in this room.  
+12. What is the ratio of people who took a plane to this workshop vs those who walked?  
+
+
+
