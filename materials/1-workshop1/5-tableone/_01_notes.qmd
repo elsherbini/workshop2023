@@ -57,7 +57,7 @@ where
 The mode is the most frequent value in a data set. There can be more than one mode if there are multiple values with the same frequency.
 There is no formula for the mode, but it can be found by counting how many times each value or category occurs and then selecting the one(s) with the highest frequency.
 
-### Standard deviation: 
+### Standard deviation  
 
 The variance is a measure of how much the values vary from the mean while the standard deviation is a measure of how spread out the values are from the mean. 
 It is calculated by taking the square root of the variance. The formula is:

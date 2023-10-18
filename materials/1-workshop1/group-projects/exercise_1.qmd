@@ -48,10 +48,6 @@ These datasets contains 10 cancer samples. @tbl-1 describes the mutational statu
 \
 
 
-
-
-
-
 **Consider the following concepts when creating your visualizations**
 
 ::: {.grid}
