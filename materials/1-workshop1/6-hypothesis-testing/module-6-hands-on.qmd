@@ -1,8 +1,10 @@
 ---
+title: "Hypothesis testing, data transformation, compositional data"
 format:
  html:
     code-fold: true
     toc: true
+    toc-location: left
 editor: visual
 ---
 
@@ -17,7 +19,7 @@ set.seed(123) # set the "random seed" for reproducibility
 
 ```
 
-## Hypothesis testing
+# Hypothesis testing
 
 Before testing hypotheses on real data, let's develop our intuition on data we simulate ourselves.
 
@@ -100,7 +102,7 @@ This what statistical tests help us do. Feel free to review the workshop slides 
 
 Here, we want to do a test on the **means** of the datasets and test if the means of datasets 2 or 3 are different from the mean of dataset 1.
 
-### $t$-tests
+## $t$-tests
 
 Because we have more than 40 samples in each dataset, we can use a $t$-test.
 
@@ -174,7 +176,7 @@ t.test(value ~ dataset, data = X |> filter(dataset %in% c(1,3)),
 How do the $t$ and $p$ values compare in the two-sided *vs* one-sided test?\
 Why?
 
-#### QQ-plots: checking compatibility with a (normal) distribution
+### QQ-plots: checking compatibility with a (normal) distribution
 
 Remember that the $t$-test requires, for small sample sizes, for the data to be drawn from a normal distribution. Usually, with real data, we don't always know what distribution the data are samples from.
 
@@ -185,7 +187,7 @@ We can always check that our data is *compatible* with a normal distribution by 
 example_data <- 
   tibble(norm = rnorm(20), lnorm = rlnorm(20))
 # just like `rnorm` samples from a normal distribution, 
-# `runif` samples from a uniform distribution
+# `rlnorm` samples from a log-normal distribution
 
 g_norm <- 
   ggplot(example_data, aes(sample = norm)) +
@@ -207,9 +209,9 @@ g_norm + g_lnorm
 
 We see that, on the left plot, the dots are close to the line, and on the right plot, some dots are very far from the line. These dots far from the line are a warning that the distribution is probably not normal.
 
-### Impact of sample size on p-values
+## Impact of sample size on p-values
 
-#### Small dataset
+### Small dataset
 
 Let's re-do our analysis but decrease the sample size to 10 samples per dataset.
 
@@ -260,7 +262,7 @@ t.test(value ~ dataset,
 
 We see that the $p$-value is now much larger because, with the small datasets, we have a lot more uncertainty on the true means of the populations.
 
-#### Large datasets
+### Large datasets
 
 Let's now redo the same again but with a very large sample size for each dataset. For example N = 1000.
 
@@ -317,7 +319,7 @@ t.test(value ~ dataset,
 
 We still don't reject the null hypothesis, which is what we expect.
 
-#### Clinical *vs* Statistical significance
+### Clinical *vs* Statistical significance
 
 However, sometimes, we need to be careful with large sample sizes because tiny effects can still lead to very small p-values. However, these tiny effects don't have much but these do not have much *clinical* relevance.
 
@@ -337,11 +339,11 @@ The $p$-value is lower than 1/20, but the effect (*i.e.*, the mean in difference
 
 This is what we are talking about when discussing the "clinical" *vs* "statistical" significance.
 
-## Data transformation
+# Data transformation
 
 Now, let's play with the datasets provided on the workshop website. Specifically, we are interested in analyzing the cytokines data.
 
-### Cytokine data exploration
+## Cytokine data exploration
 
 Our first task will be to display the distribution of the "IL-1$\beta$" cytokine.
 
@@ -397,7 +399,7 @@ ggplot(
 
 Look back at the QQ-plots we did earlier on simulated data. Does this QQ-plot look like one of the simulated one?
 
-### Log-transformation
+## Log-transformation
 
 Let's now repeat the last two displays, using the log of the concentration instead of the concentration itself. Remember, we can use the `mutate` function to add a new variable to our `data.frame`.
 
@@ -435,7 +437,7 @@ ggplot(
 
 It is not perfect, but it is much better.
 
-### Association with BV
+## Association with BV
 
 Now, we are interested in testing whether a BV (Bacterial Vaginosis) diagnosis is associated with different mean concentrations of IL-1$\beta$.
 
@@ -547,7 +549,7 @@ t.test(logconc ~ BV, data = IL1b)
 
 What do you conclude?
 
-## Non-parametric tests
+# Non-parametric tests
 
 So far, we could use the $t$-test to make inference on the means of different populations because we either had more than 40 samples in each group or we observed or *knew* that the samples were drawn from a normal distribution.
 
@@ -557,7 +559,7 @@ The $t$-test is part of the family of *parametric* tests because they assume tha
 
 There are also *non-parametric* tests which makes no assumption on the distribution of the data.
 
-### The Wilcoxon rank-sum test
+## The Wilcoxon rank-sum test
 
 The Wilcoxon rank-sum test is a non-parametric test to compare two independent datasets. The null hypothesis is that, for randomly selected values $X$ and $Y$ from two populations, the probability of $X$ being greater than $Y$ is equal to the probability of $Y$ being greater than $X$ (see [Wikipedia](https://en.wikipedia.org/wiki/Mann–Whitney_U_test)), regardless of the distribution $X$ and $Y$ are drawn from.
 
@@ -606,15 +608,20 @@ simulate_and_run_both_test <- function(){
 
 simulation_results <- replicate(1000, simulate_and_run_both_test())
 
-apply(simulation_results <= 0.05, 2, mean)
+
+apply(simulation_results <= 0.05, MARGIN = 2, FUN = mean)
+
+# apply is a function that allows to "apply" a given function (here the function "mean") to all rows or columns of a table.
+# To chose if to apply to rows or to columns, we use 1 (rows) or 2 (columns) in the 2nd argument of the apply function. The first argument is the table we apply the function to.
+
 
 ```
 
 We see that the $t$-test more frequently detected that the two samples were drawn from distribution with different means/locations.
 
-## Multiple testing
+# Multiple testing
 
-### Simulations
+## Simulations
 
 As we discussed above, the $p$-value of a test is the probability, under the null hypothesis, to observe a value of the test statistics as extreme as the one we observe. Usually, if that probability is less than 0.05 (we have less than one/20 chances to observe that value), we reject the null hypothesis.
 
@@ -714,7 +721,7 @@ ggplot(null_p.values_tbl, aes(x = q_values)) +
 
 ```
 
-### Cytokines
+## Cytokines
 
 Let's now test which cytokines have different means in BV and non-BV study participants.
 
@@ -885,7 +892,7 @@ What do you conclude from this analysis?
 
 As an exercise, you can also re-do the analyses using a non-parametric test and discuss the differences in the results.
 
-## Displaying longitudinal data
+# Displaying longitudinal data
 
 So far, we have ignore the fact that we have longitudinal data.
 
@@ -974,7 +981,7 @@ elisa |>
 
 ```
 
-### Paired tests
+## Paired tests
 
 One question that this study may have aimed to answer is whether treatment altered how the cytokine concentrations changed over time.
 
@@ -1032,7 +1039,7 @@ We see that the two tests agree in this case (as they should because the effects
 
 Exercise: repeat the same visualization and analysis for IL-6 and IL-8. Do you need to adjust for multiple testing?
 
-## Compositional data
+# Compositional data
 
 Multivariate data are said to be "compositional" when they are expressed in terms of *proportion* of a sample.
 
@@ -1087,7 +1094,7 @@ prop_2 |> round(digits = 2)
 
 We see that the proportion of C has increased (because there are more cells) and consequently, the proportions of A and B have decreased (even though there were the same number of cells).
 
-### Flow cytometry data
+## Flow cytometry data
 
 For now, let's explore the flow cytometry data.
 
