@@ -490,7 +490,7 @@ t.test(sugar ~ town, data = malva, alternative = "greater")
 
 ```
 
-## 🫵 Hands-on exercises
+## 🫵 Hands-on exercises {.your-turn}
 
 Read the Module 6 Quarto document and execute all chunks until the "data transformation" section.
 
@@ -640,7 +640,7 @@ t.test(logconc ~ BV, data = IL1b)
 
 ```
 
-## 🫵 Hands-on exercises
+## 🫵 Hands-on exercises {.your-turn}
 
 Continue on the Module 6 Quarto document and execute all chunks until the "Non-parametric tests" section.
 
@@ -690,7 +690,7 @@ The **power** of a test is the *probability* of rejecting the Null hypothesis wh
 
 It is the ability of a test to detect small but real effects.
 
-## 🫵 Hands-on exercises
+## 🫵 Hands-on exercises {.your-turn}
 
 Continue on the Module 6 Quarto document and execute all chunks until the "Multiple testing" section.
 
@@ -732,7 +732,7 @@ If this probability is smaller than, let's say 1/20 (0.05), we reject the Null h
 
 So, as we perform many tests, we are more likely to obtain small $p$-values by chance.
 
-## 🫵 Hands-on exercises
+## 🫵 Hands-on exercises {.your-turn}
 
 Explore the effects of multiple testing using simulations and check the `p.adjust` function and the `p.adjust.methods`.
 
@@ -834,7 +834,7 @@ elisa |>
 
 ```
 
-## 🫵 Hands-on exercises
+## 🫵 Hands-on exercises {.your-turn}
 
 Continue on the Module 6 Quarto document and execute all chunks until the "Compositional data" section.
 
