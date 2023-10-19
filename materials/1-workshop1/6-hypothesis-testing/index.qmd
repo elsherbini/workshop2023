@@ -17,6 +17,11 @@ format:
 <h2><a href="https://raw.githubusercontent.com/elsherbini/durban-data-science-for-biology/main/materials/1-workshop1/6-hypothesis-testing/_module-6-hands-on-with-errors.qmd" download>Download the `.qmd` to do the exercise. Select all and copy into a .qmd file in RStudio</a></h2>
 ```
 
+```{=html}
+<h2><a href="https://raw.githubusercontent.com/elsherbini/durban-data-science-for-biology/main/materials/1-workshop1/6-hypothesis-testing/_module-6-hands-on.qmd" download>Corrected version of the Quarto document here</a></h2>
+```
+
+
 ---
 
 ## [For Reference - Link to html output - please don't use during the teahcing portion](module-6-hands-on.qmd)
