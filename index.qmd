@@ -29,27 +29,27 @@ This week of content will prepare you to use R, RStudio, and Quarto for data ana
 
 ### Yogurt Groups
 
-Tomorrow after lunch, you will present some results to a neighboring group. 
+Tomorrow after lunch, you will present some results to a neighboring group. The presentation will be ~30 minutes long, and at least 3 people from your group should speak on a section.
 
 You want to present to them table 1, explain the study, explain your research question, and show visualizations and/or stats to explain your findings. The format will be a rendered qmd document (which will be an html file). You can use the module 6 corrected qmd as a template (now available from module 6).
 
 In this session: 
 
-- Load all 4 tables and familiarize yourself with the dataset, especially in the context of the research aim  
+- Load all 4 tables and familiarize yourself with the dataset, especially in the context of the research aim   
 - Translate the research aim into a statistical hypothesis. Justify the choice.  
-- Join qPCR with demographic data (wide/long)  
+- Join qPCR with demographic data (wide/long)   
 - visualization (boxplot) of qPCR variable levels by study arm  
-- do you need to transform this data in any way? Justify the choice.    
-- define a metric to characterize (justify choice).  
-- Specify lower and upper limits of detection by looking at the highest and lowest values of each qPCR value  
-- longitudinal visualization of chosen cytokine for all participants.  
-- **Extra Challenge** - try incorporating the data from the luminex data table. Pick 1-3 cytokines that seem to be detected in many samples to analyze in combinatino with the qPCR and demographic variables.
+- do you need to transform this data in any way? Justify the choice.     
+- define a metric to characterize (justify choice).   
+- Specify lower and upper limits of detection by looking at the highest and lowest values of each qPCR value   
+- longitudinal visualization of chosen cytokine for all participants.    
+- **Extra Challenge** - try incorporating the data from the luminex data table. Pick 1-3 cytokines that seem to be detected in many samples to analyze in combinatino with the qPCR and demographic variables.  
 
-Overall, come up with and answer two main questions, one comparing one arm vs the other, and one comparing a demographic factor, looking at the qPCR variables. For extra challenge, also describe some relationships between the qPCR variables and cytokines. 
+Overall, come up with and answer two main questions, one comparing one arm vs the other, and one comparing a demographic factor, looking at the qPCR variables. For extra challenge, also describe some relationships between the qPCR variables and cytokines.  
 
 ### Birth Control Groups
 
-Tomorrow after lunch, you will present some results to a neighboring group. 
+Tomorrow after lunch, you will present some results to a neighboring group. The presentation will be ~30 minutes long, and at least 3 people from your group should speak on a section.
 
 You want to present to them table 1, explain the study, explain your research question, and show visualizations and/or stats to explain your findings. The format will be a rendered qmd document (which will be an html file). You can use the module 6 corrected qmd as a template  You can use the module 6 corrected qmd as a template (now available from module 6).
 
@@ -57,11 +57,11 @@ In this session:
 
 - Load all 4 tables and familiarize yourself with the dataset, especially in the context of the research aim  
 - Translate the research aim into a statistical hypothesis. Justify the choice  
-- Join cytokine with demographic data (wide/long)  
+- Join cytokine with demographic data  
 visualization (boxplot) of cytokine levels by study arm  
 - Pick one to three cytokines (justify choice). Specify lower and upper limits of detection  
 - Longitudinal visualization of chosen cytokines for all participants  
-- **Extra Challenge** - try incorporating the data from the flow_cytometry data table. Pick a population  (or a ratio of two populations, such as CD4+/CD3+) of immune cells that seem to be associated with some cytokine and demographic variables.
+- **Extra Challenge** - try incorporating the data from the flow_cytometry data table. Pick a population  (or a ratio of two populations, such as CD4+/CD3+) of immune cells that seem to be associated with some cytokine and demographic variables.  
 
 Overall, come up with and answer two main questions, one comparing one arm vs the other, and one comparing a demographic factor, looking at the cytokine variables.  For extra challenge, also describe some relationships between the flow cytometry variables, and cytokines, and longitudinal patterns. 
 
