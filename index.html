@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -55,7 +55,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -184,7 +185,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./#group-projects" class="sidebar-item-text sidebar-link">
+  <a href="./materials/1-workshop1/8-group-projects/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Group Project</b> -Applying what you’ve learned to new data</span></a>
   </div>
 </li>
@@ -210,91 +211,33 @@ ul.task-list li input[type="checkbox"] {
 
 
 <div class="grid">
-<section id="data-science-for-biology" class="g-col-6">
-<h1>Data Science for Biology</h1>
-<h4 id="workshop-1---r-rstudio-and-quarto-for-clinical-research">Workshop 1 - R, RStudio, and Quarto for clinical research</h4>
+<section id="data-science-for-biology-workshop-series" class="g-col-12">
+<h1>Data Science for Biology Workshop Series</h1>
+</section>
+<div class="g-col-10 g-start-1">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/group_photo.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Workshop 1: October 16th-20th 2023 at UKZN School of Medicine in Durban, SA</figcaption>
+</figure>
+</div>
+</div>
+<section id="workshop-1---r-rstudio-and-quarto-for-clinical-research" class="g-col-6">
+<h4>Workshop 1 - R, RStudio, and Quarto for clinical research</h4>
 <p>This week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research.</p>
 </section>
 <div class="g-col-6 text-start">
 <p><img src="assets/images/durban_workshop_stickers_front_page.png" class="img-fluid" style="width:50.0%"></p>
 </div>
 </div>
-<h1 id="group-projects">Group Projects</h1>
-<h2 id="thursday-pm-session">Thursday PM Session</h2>
-<h3 id="yogurt-groups">Yogurt Groups</h3>
-<p>Tomorrow after lunch, you will present some results to a neighboring group. The presentation will be ~30 minutes long, and at least 3 people from your group should speak on a section.</p>
-<p>You want to present to them table 1, explain the study, explain your research question, and show visualizations and/or stats to explain your findings. The format will be a rendered qmd document (which will be an html file). You can use the module 6 corrected qmd as a template (now available from module 6).</p>
-<p>In this session:</p>
-<ul>
-<li>Load all 4 tables and familiarize yourself with the dataset, especially in the context of the research aim<br>
-</li>
-<li>Translate the research aim into a statistical hypothesis. Justify the choice.<br>
-</li>
-<li>Join qPCR with demographic data (wide/long)<br>
-</li>
-<li>visualization (boxplot) of qPCR variable levels by study arm<br>
-</li>
-<li>do you need to transform this data in any way? Justify the choice.<br>
-</li>
-<li>define a metric to characterize (justify choice).<br>
-</li>
-<li>Specify lower and upper limits of detection by looking at the highest and lowest values of each qPCR value<br>
-</li>
-<li>longitudinal visualization of chosen cytokine for all participants.<br>
-</li>
-<li><strong>Extra Challenge</strong> - try incorporating the data from the luminex data table. Pick 1-3 cytokines that seem to be detected in many samples to analyze in combinatino with the qPCR and demographic variables.</li>
-</ul>
-<p>Overall, come up with and answer two main questions, one comparing one arm vs the other, and one comparing a demographic factor, looking at the qPCR variables. For extra challenge, also describe some relationships between the qPCR variables and cytokines.</p>
-<h3 id="birth-control-groups">Birth Control Groups</h3>
-<p>Tomorrow after lunch, you will present some results to a neighboring group. The presentation will be ~30 minutes long, and at least 3 people from your group should speak on a section.</p>
-<p>You want to present to them table 1, explain the study, explain your research question, and show visualizations and/or stats to explain your findings. The format will be a rendered qmd document (which will be an html file). You can use the module 6 corrected qmd as a template You can use the module 6 corrected qmd as a template (now available from module 6).</p>
-<p>In this session:</p>
-<ul>
-<li>Load all 4 tables and familiarize yourself with the dataset, especially in the context of the research aim<br>
-</li>
-<li>Translate the research aim into a statistical hypothesis. Justify the choice<br>
-</li>
-<li>Join cytokine with demographic data<br>
-visualization (boxplot) of cytokine levels by study arm<br>
-</li>
-<li>Pick one to three cytokines (justify choice). Specify lower and upper limits of detection<br>
-</li>
-<li>Longitudinal visualization of chosen cytokines for all participants<br>
-</li>
-<li><strong>Extra Challenge</strong> - try incorporating the data from the flow_cytometry data table. Pick a population (or a ratio of two populations, such as CD4+/CD3+) of immune cells that seem to be associated with some cytokine and demographic variables.</li>
-</ul>
-<p>Overall, come up with and answer two main questions, one comparing one arm vs the other, and one comparing a demographic factor, looking at the cytokine variables. For extra challenge, also describe some relationships between the flow cytometry variables, and cytokines, and longitudinal patterns.</p>
-<hr>
-<h2 id="wednesday-pm-session">Wednesday PM Session</h2>
-<p>Session Structure<br>
-- 1:30-2:00:<br>
-- Read Research Project description below for your project<br>
-- Download project data files and put them in your folder<br>
-- Make a new .qmd file for this project.<br>
-- 2:00-3:00<br>
-- Load the demographic table into an R tibble.<br>
-- Make notes about what each column name is and what it means.<br>
-- Examine and note basic parameters (using R commands) - number of participants, visit structure, number of features measured for each, type of data measured (binary, categorical)<br>
-- Plot a histogram of all numeric features (eg, distribution of age) and bar plots for counts of categorical variables (eg. how many female).<br>
-- <strong>3:00 - 3:30 - Break</strong><br>
-- 3:30 - 5:00<br>
-- Preproccessing the data to prepare for <code>tableone</code><br>
-- Use <code>tableone</code> for the dataset</p>
-<h2 id="research-project-a---does-eating-yogurt-change-the-vaginal-microbiome">Research Project A - Does eating yogurt change the vaginal microbiome?</h2>
-<h3 id="study-description">Study Description</h3>
-<p>This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. Absolute abundance of bacteria was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in copies/ml of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment.</p>
-<h3 id="primary-aim">Primary Aim</h3>
-<p>To investigate whether the consumption of yogurt influences microbiome composition after antibiotics treatment.</p>
-<h2 id="research-project-b---does-birth-control-change-inflammation-during-menses">Research Project B - Does birth control change inflammation during menses?</h2>
-<h3 id="study-description-1">Study Description</h3>
-<p>This is an observational study to evaluate the relationship between birth control and vaginal inflammation In response to menstruation. Absolute abundance of bacteria was measured by 3 qPCR assays (for total Bacteria, L. crispatus, L. iners). Cytokine levels (in copies/ml of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation.</p>
-<h3 id="primary-aim-1">Primary Aim</h3>
-<p>To investigate whether taking birth control is associated with vaginal inflammation throughout the menstrual cycle.</p>
-<hr>
+<h2 id="thank-you-for-participating-in-the-workshop">Thank you for participating in the workshop!</h2>
+<p>Our week together was amazing, thank you so much for making the workshop a success by participating all week long.</p>
+<ol type="1">
+<li>If you haven’t already, <a href="https://docs.google.com/forms/d/e/1FAIpQLSffVuXEzVfK8xb0vzA-WGyBzhnJ3fvpJ_HflAVRum4mHuXQCg/viewform">please fill out this survey</a></li>
+<li>If you have any photos of the workshop you’d like to share, go to <a href="https://discord.com/channels/1158136582201692202/1164886636878889071">#photos on the workshop discord</a></li>
+<li>Please post on Discord or email us if you have any questions or comments!</li>
+</ol>
 <h2 id="welcome-to-the-workshop">Welcome to the workshop!</h2>
-<p>Network: KTB Free Wifi (no password needed)</p>
-<p>Network AHRI Password: <code>@hR1W1F1!17</code></p>
-<p>Network CAPRISA-Corp Password: <code>corp@caprisa17</code></p>
 <ol type="1">
 <li><a href="https://forms.gle/7sdT7YRJerdgFJcc7">Fill out the pre-workshop survey here</a><br>
 </li>
@@ -374,7 +317,7 @@ visualization (boxplot) of cytokine levels by study arm<br>
 </tr>
 <tr class="odd">
 <td>AM</td>
-<td>Data transformations and more statistics</td>
+<td>Hypothesis testing and data transformations</td>
 <td>Laura Symul (UCLouvain)</td>
 </tr>
 <tr class="even">

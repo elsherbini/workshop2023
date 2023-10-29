@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data Science for Biology Workshop Series - Group Projects</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../materials/1-workshop1/7-custom-data-visualizations/index.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Data Science for Biology Workshop Series</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../installation-instructions.html" rel="" target="">
+ <span class="menu-text">Installation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../datasets.html" rel="" target="">
+ <span class="menu-text">Datasets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../resources.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/elsherbini/durban-data-science-for-biology" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/0-welcome/index.html"><b>1. Reproducible Data Analysis with R</b></a></li><li class="breadcrumb-item"><a href="../../../materials/1-workshop1/8-group-projects/index.html"><b>Group Project</b> -Applying what you've learned to new data</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text"><b>1. Reproducible Data Analysis with R</b></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/0-welcome/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 0:</b> Welcome to the workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/1-data-generation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 1</b>: How data analysis is informed by data generation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/2-intro-to-r/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 2</b>: Intro to R, Rstudio, and Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/3-tidyverse-101/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 3</b>: Intro to data visualization and data wrangling with the <code>tidyverse</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/4-tidyverse-201/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 4</b>: Data wrangling and more data visualization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/5-tableone/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 5</b>: <code>tableone</code> and its Basic Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/6-hypothesis-testing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 6</b>: Data transformations and more statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/7-custom-data-visualizations/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 7</b>: Customizing data visualizations using <code>colorspace</code>, <code>ggplot2</code>, and <code>patchwork</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/8-group-projects/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><b>Group Project</b> -Applying what you’ve learned to new data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text"><em>2. Working with High Dimensional Data in R - human microbiome - Coming April 2024 </em></span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text"><em>3. Bioinformatics and Transcriptomics Data Analysis - Coming October 2024</em></span></span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#example-notebooks" id="toc-example-notebooks" class="nav-link active" data-scroll-target="#example-notebooks">Example notebooks</a>
+  <ul class="collapse">
+  <li><a href="#link-to-yogurt-dataset-example-notebook" id="toc-link-to-yogurt-dataset-example-notebook" class="nav-link" data-scroll-target="#link-to-yogurt-dataset-example-notebook">Link to yogurt dataset example notebook</a></li>
+  <li><a href="#link-to-birth-control-dataset-example-notebook" id="toc-link-to-birth-control-dataset-example-notebook" class="nav-link" data-scroll-target="#link-to-birth-control-dataset-example-notebook">Link to birth control dataset example notebook</a></li>
+  </ul></li>
+  <li><a href="#research-project-a---does-eating-yogurt-change-the-vaginal-microbiome" id="toc-research-project-a---does-eating-yogurt-change-the-vaginal-microbiome" class="nav-link" data-scroll-target="#research-project-a---does-eating-yogurt-change-the-vaginal-microbiome">Research Project A - Does eating yogurt change the vaginal microbiome?</a>
+  <ul class="collapse">
+  <li><a href="#study-description" id="toc-study-description" class="nav-link" data-scroll-target="#study-description">Study Description</a></li>
+  <li><a href="#primary-aim" id="toc-primary-aim" class="nav-link" data-scroll-target="#primary-aim">Primary Aim</a></li>
+  </ul></li>
+  <li><a href="#research-project-b---does-birth-control-change-inflammation-during-menses" id="toc-research-project-b---does-birth-control-change-inflammation-during-menses" class="nav-link" data-scroll-target="#research-project-b---does-birth-control-change-inflammation-during-menses">Research Project B - Does birth control change inflammation during menses?</a>
+  <ul class="collapse">
+  <li><a href="#study-description-1" id="toc-study-description-1" class="nav-link" data-scroll-target="#study-description-1">Study Description</a></li>
+  <li><a href="#primary-aim-1" id="toc-primary-aim-1" class="nav-link" data-scroll-target="#primary-aim-1">Primary Aim</a></li>
+  </ul></li>
+  <li><a href="#wednesday-pm-session" id="toc-wednesday-pm-session" class="nav-link" data-scroll-target="#wednesday-pm-session">Wednesday PM Session</a></li>
+  <li><a href="#thursday-pm-session" id="toc-thursday-pm-session" class="nav-link" data-scroll-target="#thursday-pm-session">Thursday PM Session</a>
+  <ul class="collapse">
+  <li><a href="#yogurt-groups" id="toc-yogurt-groups" class="nav-link" data-scroll-target="#yogurt-groups">Yogurt Groups</a></li>
+  <li><a href="#birth-control-groups" id="toc-birth-control-groups" class="nav-link" data-scroll-target="#birth-control-groups">Birth Control Groups</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Group Projects</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>For this group activity, the odd-numbered groups will be analyzing the data from Research Project A, and the even numbered groups from Research Project B.</p>
+<section id="example-notebooks" class="level2">
+<h2 class="anchored" data-anchor-id="example-notebooks">Example notebooks</h2>
+<p>Joseph and Laura tried their hands at the group projects as well. Take a look at the notebooks below and see what you think of their attempts.</p>
+<section id="link-to-yogurt-dataset-example-notebook" class="level3">
+<h3 class="anchored" data-anchor-id="link-to-yogurt-dataset-example-notebook"><a href="https://raw.githubusercontent.com/elsherbini/durban-data-science-for-biology/main/materials/1-workshop1/8-group-projects/project_a_yogurt_example_notebook.qmd">Link to yogurt dataset example notebook</a></h3>
+<p><a href="../../../materials/1-workshop1/8-group-projects/project_a_yogurt_example_notebook.html">link to rendered html</a></p>
+</section>
+<section id="link-to-birth-control-dataset-example-notebook" class="level3">
+<h3 class="anchored" data-anchor-id="link-to-birth-control-dataset-example-notebook"><a href="https://raw.githubusercontent.com/elsherbini/durban-data-science-for-biology/main/materials/1-workshop1/8-group-projects/project_b_birthcontrol_example_notebook.qmd">Link to birth control dataset example notebook</a></h3>
+<p><a href="../../../materials/1-workshop1/8-group-projects/project_b_birthcontrol_example_notebook.html">link to rendered html</a></p>
+</section>
+</section>
+<section id="research-project-a---does-eating-yogurt-change-the-vaginal-microbiome" class="level2">
+<h2 class="anchored" data-anchor-id="research-project-a---does-eating-yogurt-change-the-vaginal-microbiome">Research Project A - Does eating yogurt change the vaginal microbiome?</h2>
+<section id="study-description" class="level3">
+<h3 class="anchored" data-anchor-id="study-description">Study Description</h3>
+<p>This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment.</p>
+</section>
+<section id="primary-aim" class="level3">
+<h3 class="anchored" data-anchor-id="primary-aim">Primary Aim</h3>
+<p>To investigate whether the consumption of yogurt influences microbiome composition after antibiotics treatment.</p>
+</section>
+</section>
+<section id="research-project-b---does-birth-control-change-inflammation-during-menses" class="level2">
+<h2 class="anchored" data-anchor-id="research-project-b---does-birth-control-change-inflammation-during-menses">Research Project B - Does birth control change inflammation during menses?</h2>
+<section id="study-description-1" class="level3">
+<h3 class="anchored" data-anchor-id="study-description-1">Study Description</h3>
+<p>This is an observational study to evaluate the relationship between birth control and vaginal inflammation In response to menstruation. Absolute abundance of bacteria was measured by 3 qPCR assays (for total Bacteria, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation.</p>
+</section>
+<section id="primary-aim-1" class="level3">
+<h3 class="anchored" data-anchor-id="primary-aim-1">Primary Aim</h3>
+<p>To investigate whether taking birth control is associated with vaginal inflammation throughout the menstrual cycle.</p>
+</section>
+</section>
+<section id="wednesday-pm-session" class="level2">
+<h2 class="anchored" data-anchor-id="wednesday-pm-session">Wednesday PM Session</h2>
+<p>Session Structure<br>
+- 1:30-2:00:<br>
+- Read Research Project description below for your project<br>
+- Download project data files and put them in your folder<br>
+- Make a new .qmd file for this project.<br>
+- 2:00-3:00<br>
+- Load the demographic table into an R tibble.<br>
+- Make notes about what each column name is and what it means.<br>
+- Examine and note basic parameters (using R commands) - number of participants, visit structure, number of features measured for each, type of data measured (binary, categorical)<br>
+- Plot a histogram of all numeric features (eg, distribution of age) and bar plots for counts of categorical variables (eg. how many female).<br>
+- <strong>3:00 - 3:30 - Break</strong><br>
+- 3:30 - 5:00<br>
+- Preproccessing the data to prepare for <code>tableone</code><br>
+- Use <code>tableone</code> for the dataset</p>
+</section>
+<section id="thursday-pm-session" class="level2">
+<h2 class="anchored" data-anchor-id="thursday-pm-session">Thursday PM Session</h2>
+<section id="yogurt-groups" class="level3">
+<h3 class="anchored" data-anchor-id="yogurt-groups">Yogurt Groups</h3>
+<p>Tomorrow after lunch, you will present some results to a neighboring group. The presentation will be ~30 minutes long, and at least 3 people from your group should speak on a section.</p>
+<p>You want to present to them table 1, explain the study, explain your research question, and show visualizations and/or stats to explain your findings. The format will be a rendered qmd document (which will be an html file). You can use the module 6 corrected qmd as a template (now available from module 6).</p>
+<p>In this session:</p>
+<ul>
+<li>Load all 4 tables and familiarize yourself with the dataset, especially in the context of the research aim<br>
+</li>
+<li>Translate the research aim into a statistical hypothesis. Justify the choice.<br>
+</li>
+<li>Join qPCR with demographic data (wide/long)<br>
+</li>
+<li>visualization (boxplot) of qPCR variable levels by study arm<br>
+</li>
+<li>do you need to transform this data in any way? Justify the choice.<br>
+</li>
+<li>define a metric to characterize (justify choice).<br>
+</li>
+<li>Specify lower and upper limits of detection by looking at the highest and lowest values of each qPCR value<br>
+</li>
+<li>longitudinal visualization of chosen cytokine for all participants.<br>
+</li>
+<li><strong>Extra Challenge</strong> - try incorporating the data from the luminex data table. Pick 1-3 cytokines that seem to be detected in many samples to analyze in combinatino with the qPCR and demographic variables.</li>
+</ul>
+<p>Overall, come up with and answer two main questions, one comparing one arm vs the other, and one comparing a demographic factor, looking at the qPCR variables. For extra challenge, also describe some relationships between the qPCR variables and cytokines.</p>
+</section>
+<section id="birth-control-groups" class="level3">
+<h3 class="anchored" data-anchor-id="birth-control-groups">Birth Control Groups</h3>
+<p>Tomorrow after lunch, you will present some results to a neighboring group. The presentation will be ~30 minutes long, and at least 3 people from your group should speak on a section.</p>
+<p>You want to present to them table 1, explain the study, explain your research question, and show visualizations and/or stats to explain your findings. The format will be a rendered qmd document (which will be an html file). You can use the module 6 corrected qmd as a template You can use the module 6 corrected qmd as a template (now available from module 6).</p>
+<p>In this session:</p>
+<ul>
+<li>Load all 4 tables and familiarize yourself with the dataset, especially in the context of the research aim<br>
+</li>
+<li>Translate the research aim into a statistical hypothesis. Justify the choice<br>
+</li>
+<li>Join cytokine with demographic data<br>
+visualization (boxplot) of cytokine levels by study arm<br>
+</li>
+<li>Pick one to three cytokines (justify choice). Specify lower and upper limits of detection<br>
+</li>
+<li>Longitudinal visualization of chosen cytokines for all participants<br>
+</li>
+<li><strong>Extra Challenge</strong> - try incorporating the data from the flow_cytometry data table. Pick a population (or a ratio of two populations, such as CD4+/CD3+) of immune cells that seem to be associated with some cytokine and demographic variables.</li>
+</ul>
+<p>Overall, come up with and answer two main questions, one comparing one arm vs the other, and one comparing a demographic factor, looking at the cytokine variables. For extra challenge, also describe some relationships between the flow cytometry variables, and cytokines, and longitudinal patterns.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../materials/1-workshop1/7-custom-data-visualizations/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><b>Module 7</b>: Customizing data visualizations using <code>colorspace</code>, <code>ggplot2</code>, and <code>patchwork</code></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© 2023. Huge thanks to <a href="https://github.com/andrewpbray">Andrew P. Bray</a> and <a href="https://github.com/clauswilke">Claus O. Wilke</a> for open source code and sharing content.</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">This page is built with <i class="fa-solid fa-heart"></i> and <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>
