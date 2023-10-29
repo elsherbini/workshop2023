@@ -1,0 +1,486 @@
+---
+title: "Yogurt study data analysis"
+format: 
+  html:
+    code-fold: false
+    code-summary: "Show code"
+---
+
+## 
+
+```{r}
+#| include: false
+library(tidyverse)
+library(tableone)
+library(patchwork)
+library(pander)
+theme_set(theme_light())
+
+```
+
+This document presents an example of analysis of the Group 1 dataset.
+
+## Study description
+
+This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. Absolute abundance of bacteria was measured by 3 qPCR assays (for total, *L. crispatus*, *L. iners*). Cytokine levels (in copies/ml of vaginal fluid) were also measured by Luminex. Data was collected at two timepoints, pre and post antibiotic treatment.
+
+## Checking if arms are balanced in terms of demographic variables
+
+We first check if the randomization of participant didn't lead to any unfortunate differences in terms of demographic/clinical variables between the two groups.
+
+To do so, we load the demographic data table (\`01_participant_metadata_yogurt.csv\`), display the distribution of these variables per arm and create "Table 1".
+
+### Demographic data table
+
+```{r}
+
+demographic_data <- 
+  read_csv("group1_dataset/01_participant_metadata_yogurt.csv")
+
+```
+
+First 6 rows of the table:
+
+```{r}
+demographic_data |> head() |> pander()
+```
+
+Number of participants per arm:
+
+```{r}
+demographic_data |> count(arm) |> pander()
+```
+
+### Visualization of the demographic variables of interest by study arm
+
+There are 4 variables that we are interested in comparing: `age`, `days_since_last_sex`, `birth_control`, and `education`.
+
+```{r}
+
+arm_colors <-
+  c("unchanged_diet" = "darkseagreen3", yogurt = "slateblue")
+
+```
+
+```{r}
+
+g_age <- 
+ggplot(demographic_data,
+       aes(x = age, fill = arm)) +
+  geom_histogram(binwidth = 1) + 
+  facet_grid(arm ~ .) + 
+  guides(fill = "none") +
+  scale_fill_manual(values = arm_colors)
+  
+```
+
+```{r}
+
+g_birth_control <- 
+  ggplot(demographic_data,
+       aes(x = birth_control, fill = arm)) +
+  geom_bar()  + 
+  facet_grid(arm ~ .) + 
+  guides(fill = "none") +
+  scale_fill_manual(values = arm_colors) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r}
+
+g_days_since_last_sex <- 
+ggplot(demographic_data,
+       aes(x = days_since_last_sex, fill = arm)) +
+  geom_histogram(binwidth = 1)  + 
+  facet_grid(arm ~ .) + 
+  guides(fill = "none") +
+  scale_fill_manual(values = arm_colors)
+```
+
+```{r}
+
+g_education <- 
+  ggplot(demographic_data,
+       aes(x = education, fill = arm)) +
+  geom_bar() +
+  facet_grid(arm ~ .) + 
+  guides(fill = "none") +
+  scale_fill_manual(values = arm_colors) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r}
+#| fig-height: 7
+#| fig-width: 8
+
+g_age + g_days_since_last_sex + g_birth_control + g_education
+```
+
+### Table 1
+
+We can now build "Table 1" using the `tableone` package and its function `CreateTableOne`.
+
+```{r}
+
+table_one <- 
+  CreateTableOne(
+    data = demographic_data,
+    strata = "arm",
+    vars = c("age", "days_since_last_sex","birth_control", "education")
+  ) 
+
+table_one |> print(printToggle = FALSE) |> as.data.frame() |> select(-test) |> pander() 
+
+```
+
+Note: an alternative way, is to use the `gtsummary` package
+
+```{r}
+
+library(gtsummary) # type install.packages("gtsummary") in the console if you get an error 
+
+```
+
+```{r}
+
+demographic_data |> 
+  select(-pid, -sex) |> 
+  tbl_summary(by = arm) |> 
+  add_p()
+
+```
+
+The p-values are slightly different because, by default, the two packages use different tests. We note that in both cases, `birth_control` is flagged as unbalanced between the two groups. We may thus evaluate if this unbalance might explain any of the differences in the outcomes.
+
+## Research aim: Evaluating the influence of eating yogurt on the vaginal microbiota composition
+
+### Data exploration
+
+The microbiota composition data is in `02_qpcr_results_yogurt.csv` file.
+
+Let's open it to see how the microbiota composition has been characterized:
+
+```{r}
+
+qpcr <- 
+  read_csv(
+    "group1_dataset/02_qpcr_results_yogurt.csv"
+  )
+
+```
+
+```{r}
+qpcr |> head() |> pander()
+```
+
+We see that we have qPCR data for total bacterial load, *Lactobacillus crispatus*, and *Lactobacillus iners*.
+
+Let's display the general distribution of these three quantities. To be able to display the data on the same graph, we can `pivot_longer`:
+
+```{r}
+
+qpcr_long <- 
+  qpcr |> 
+  pivot_longer(
+    cols = -sample_id,
+    names_to = "variable",
+    values_to = "qpcr_value" ,
+    names_pattern = "qpcr_(.*)"
+  )
+
+ggplot(qpcr_long, aes(x = qpcr_value)) +
+  geom_histogram(bins = 30) +
+  facet_grid(variable ~ .)
+
+```
+
+We see that we may have to transform our data. We can try to see what a log transformation would do:
+
+```{r}
+
+ggplot(qpcr_long, aes(x = qpcr_value)) +
+  geom_histogram(bins = 30) +
+  facet_grid(variable ~ .) +
+  scale_x_log10()
+
+```
+
+Notice that we got a warning that the log transformation introduced infinite values. That's because some values in *L. crispatus* and *L. iners* are 0 and log(0) = -$\infty$.
+
+These 0s might be a problem for the downstream analyses. There are different ways to deal with these 0s. Here, we'll use a simple little trick: we replace the 0s by a value that is half of the smaller value otherwise observed.
+
+That value is:
+
+```{r}
+smallest_non_zero <- qpcr_long$qpcr_value |> unique() |> sort() |> magrittr::extract(2)
+smallest_non_zero
+```
+
+```{r}
+
+qpcr_long <- 
+  qpcr_long |> 
+  mutate(
+    qpcr_value_b = 
+      case_when(
+        qpcr_value == 0 ~ smallest_non_zero/2,
+        TRUE ~ qpcr_value
+      ),
+    was_zero = (qpcr_value == 0)
+  )
+
+```
+
+We can now redo the histogram with this modified variable:
+
+```{r}
+
+ggplot(qpcr_long, aes(x = qpcr_value_b, fill = was_zero)) +
+  geom_histogram(bins = 30) +
+  facet_grid(variable ~ ., scales = "free_y") +
+  scale_x_log10() +
+  scale_fill_manual("was zero", values = c("gray40", "gray60"), labels = c("no","yes"))
+
+```
+
+This gives us a better idea of the overall distributions of the variables describing the microbiota.
+
+### Research question
+
+We can now define research questions associated with our research aim.
+
+For example, we can ask the three following questions:
+
+1.  Does eating yogurt affect the total bacterial load?
+2.  Does eating yogurt affect the *L. crispatus* amounts?
+3.  Does eating yogurt affect the *L. iners* amounts?
+
+For each of them, our Null hypothesis is that there are no differences between the arms and the Alternative is that there is a difference.
+
+### Outcome variables at baseline
+
+Before answering these questions, we may want to verify that the distributions of these three variables are similar at baseline.
+
+To be able to check that we need to join by the sample information table (`00_sample_ids_yogurt.csv`) so we have the visit info
+
+```{r}
+
+sample_info <- 
+  read_csv("group1_dataset/00_sample_ids_yogurt.csv")
+
+```
+
+```{r}
+
+sample_info |> head() |> pander()
+```
+
+We transform the categorical variables into factors, and, when relevant, we define the order of the categories (it is relevant for `time_point` for example).
+
+```{r}
+
+sample_info <- 
+  sample_info |> 
+  mutate(time_point = time_point |> factor(levels = c("baseline", "after_antibiotic")))
+
+```
+
+```{r}
+
+qpcr_long_si <-
+  qpcr_long |> 
+  left_join(sample_info)
+```
+
+```{r}
+
+qpcr_long_si |> 
+  filter(time_point == "baseline") |> 
+  ggplot(aes(x = arm, y = qpcr_value_b |> log10(), fill = arm)) +
+  geom_boxplot(outlier.shape = NA, alpha = 0.75) + 
+  # setting "outlier.shape" to NA does not show the outliers. 
+  # we don't need to show them because with the geom_jitter below, we'll still see them.
+  geom_jitter(width = 0.2, height = 0, size = 0.75) +
+  facet_grid(. ~ variable) +
+  scale_fill_manual(values = arm_colors) +
+  ggtitle("Distribution of qPCR values at BASELINE by arm") +
+  guides(fill = "none")
+
+```
+
+It looks like almost no one had *L. crispatus* before intervention but that there might be a small difference in the *L. iners* amounts.
+
+Let's see if that difference is statistically significant. We use a non-parametric test to do that.
+
+```{r}
+
+qpcr_long_si |> 
+  filter(time_point == "baseline") |> 
+  group_by(variable) |> 
+  summarize(
+    wtest = wilcox.test(log10(qpcr_value_b) ~ arm)$p.value
+  )
+
+```
+
+None of these differences are statistically significant: we do not reject the Null hypothesis that the microbiota composition (i.e., our outcomes of interest) at baseline is similar between the two groups.
+
+(This is an equivalent of Table 1 but for the outcome of interest at baseline).
+
+### Results
+
+We can now answer our questions.
+
+Let's first display our data to highlight the answers to our results.
+
+We are interested in these changes at the `"after_antibiotic"` visit since that is after participants had both took the antibiotic and eaten the yogurt.
+
+```{r}
+
+qpcr_long_si |> 
+  filter(time_point == "after_antibiotic") |> 
+  ggplot(aes(x = arm, y = qpcr_value_b |> log10(), fill = arm)) +
+  geom_boxplot(outlier.shape = NA, alpha = 0.75) + 
+  geom_jitter(width = 0.2, height = 0, size = 0.75) +
+  facet_grid(. ~ variable) +
+  scale_fill_manual(values = arm_colors) +
+  guides(fill = "none") +
+  ggtitle("Distribution of qPCR values AFTER INTERVENTION by arm")
+
+```
+
+Visually, it looks like the yogurt might have had an effect on *L. crispatus.*
+
+!!! NOTE !!! If we had ignored the zeros and done the same visualization using the original data, we would have seen something quite different:
+
+```{r}
+
+qpcr_long_si |> 
+  filter(time_point == "after_antibiotic") |> 
+  ggplot(aes(x = arm, y = qpcr_value |> log10(), fill = arm)) +
+  geom_boxplot(outlier.shape = NA, alpha = 0.75) +
+  # geom_jitter(width = 0.2, height = 0, size = 0.75) + 
+  # (you'll see that geom_jitter will still display the -infinite values at the very bottom of the plot) 
+  # but geom_boxplot is not able to show include them to the distribution.
+  facet_grid(. ~ variable) +
+  scale_fill_manual(values = arm_colors) +
+  guides(fill = "none") +
+  ggtitle("Distribution of qPCR values AFTER INTERVENTION by arm\nzeros EXCLUDED from the plot")
+```
+
+Let's now compute the median values in both arms and test our hypotheses:
+
+```{r}
+
+
+medians <- 
+qpcr_long_si |> 
+  filter(time_point == "after_antibiotic") |> 
+  group_by(arm, variable) |> 
+  summarize(median_log = median(log10(qpcr_value_b)), .groups = "drop") |> 
+  pivot_wider(
+    id_cols = variable, names_from = arm, names_prefix = "median_log_",
+    values_from = median_log) 
+
+test_res <- 
+qpcr_long_si |> 
+  filter(time_point == "after_antibiotic") |> 
+  group_by(variable) |> 
+  summarize(
+    wtest_p = wilcox.test(log10(qpcr_value) ~ arm)$p.value
+  ) |> 
+  mutate(qval = p.adjust(wtest_p, method = "BH"))
+
+medians |> left_join(test_res) |> pander()
+
+
+```
+
+We see that, although there is a large difference between the two medians in the two arms for *L. crispatus*, none of these p-values are smaller than 1/20. So we do not reject any of the null hypotheses.
+
+But because of this large difference in medians for *L. crispatus*, it might be interesting to examine the before/after *L. crispatus* values in a high resolution (*i.e.,* visualize them for each participants).
+
+```{r}
+
+qpcr_long_si |> 
+  filter(variable == "crispatus") |> 
+  arrange(time_point |> fct_rev(), -qpcr_value) |> 
+  # the fct_rev() function allows to sort factor variables in reverse order than the order of the levels
+  # this is because I want to order participant IDs by the qpcr values at the post-intervention visit
+  mutate(pid = pid |> factor(levels = unique(pid))) |> 
+  ggplot(
+    aes(x = time_point, y = pid, fill = log10(qpcr_value_b))
+  ) +
+  geom_tile() + 
+  geom_text(aes(label = qpcr_value |> round()), size = 3) + 
+  # geom text allows to print text in the viz
+  facet_wrap(arm ~ ., scales = "free") +
+  scale_fill_gradient(low = "white", high = "steelblue2") +
+  guides(fill = "none") +
+  labs(title = "L. crispatus qPCR values at both visits in both arms")
+
+
+```
+
+So, we see, comparing the yogurt and the control group, that, in the yogurt arm, there are more people who ended up having at least *some* *L. crispatus*. Whether that's enough to restore a healthy vaginal microbiota is something to discuss with microbiota experts so one could decide whether it would be worth designing a new, better powered, study to refine our understanding of the effects of eating yogurt.
+
+## Longitudinal visualization
+
+So far, this analysis ignored the longitudinal nature of the data.
+
+Let's fix that and display the baseline - post-antibiotic trajectories for these three variables in both arms.
+
+```{r}
+
+qpcr_long_si <- 
+  qpcr_long_si |> 
+  mutate(
+    time_point = time_point |> fct_relevel("baseline")
+  )
+
+qpcr_long_si  |> 
+  ggplot(aes(x = time_point, y = qpcr_value_b |> log10(), col = arm)) +
+  geom_line(aes(group = pid), alpha = 0.5) +
+  geom_point() +
+  scale_color_manual(values = arm_colors) +
+  facet_grid(variable ~ ., scales = "free")
+
+
+```
+
+We see huge difference between the visits, but not so much between the arms. We might conclude that the antibiotic drove most of these effects.
+
+## What about birth control?
+
+Remember that the two arms were not balanced with respect to birth control? (Results from Table 1)
+
+Let's do a few visualization to check if the birth control of participant may be related to the outcomes.
+
+```{r}
+
+
+qpcr_long_si  |> 
+  left_join(demographic_data) |> 
+  ggplot(aes(x = time_point, y = qpcr_value_b |> log10(), col = birth_control)) +
+  geom_line(aes(group = pid), alpha = 0.5) +
+  geom_point(alpha = 0.5) +
+  scale_color_manual(values = c("deeppink2","green4")) +
+  facet_grid(variable ~ arm, scales = "free")
+```
+
+```{r}
+
+
+qpcr_long_si  |> 
+  left_join(demographic_data) |> 
+  ggplot(aes(x = arm, y = qpcr_value_b |> log10(), fill = birth_control)) +
+  geom_boxplot(varwidth = TRUE) +
+  scale_fill_manual(values = c("deeppink2","green4")) +
+  facet_grid(variable ~ time_point, scales = "free")
+```
+
+Visually, we don't see consistent effects of the birth control on the outcomes.
+
+## Additional analyses
+
+There are many additional analyses that could be performed on this data. For example, one could continue this analysis by looking at the impact of the intervention on the cytokines (in the fourth table).

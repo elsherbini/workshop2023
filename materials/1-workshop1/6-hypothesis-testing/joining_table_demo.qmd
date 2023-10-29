@@ -1,0 +1,170 @@
+---
+title: "joining table"
+format: html
+---
+
+In this document, we'll explore with very simple and small tables how to use the different `join` functions to merge tables together.
+
+### Packages
+
+First, as usual, we need to load the `tidyverse` package.
+
+```{r}
+library(tidyverse)
+```
+
+We also load the `tidylog` package which is very useful for beginners as, for most `dplyr` and `tidyr` functions, it adds a message to the console explaining in plain English what the function did.
+
+```{r}
+library(tidylog)
+```
+
+We also load the `pander` package to print the tables in a pretty way:
+
+```{r}
+library(pander)
+```
+
+### Joining two tables
+
+We create two simple tables that contain two columns: a `sample` column providing the sample ID, and a `value` column that contains the corresponding values.
+
+```{r}
+
+A <- tibble(sample = c("a","b","c"), value_A = c(1,2,3))
+A |> pander()
+
+B <- tibble(sample = c("a","b"), value_B = c(4,5))
+B |> pander()
+```
+
+```{r}
+
+A |> left_join(B) |> pander()
+B |> left_join(A) |> pander()
+
+```
+
+```{r}
+
+A |> full_join(B) |> pander()
+
+```
+
+We see that, automatically, `left_join` and `full_join` identify the column that exist in both tables and join using that column.
+
+### Joining when no common column
+
+If we do not have any column in common, we get an error. Let's try introducing another small table:
+
+```{r}
+
+C <- tibble(sid = c("a","b","c"), value_C = c(7,8,9))
+C |> pander()
+
+```
+
+```{r}
+#| error: true
+A |> left_join(C) |> pander()
+
+```
+
+If we know that these two tables are, in fact, reporting values for the same samples, we can rename the `sid` column so that it matches the name in table A
+
+```{r}
+
+C2 <- C |> rename(sample = sid)
+C2  |> pander()
+
+A |> left_join(C2) |> pander()
+
+```
+
+### Joining when no samples in common
+
+Now, let's try to join with a table that does not have any sample in common with A:
+
+```{r}
+
+D <- tibble(sample = c("d","e","f"), value_D = c(1, 11, 111))
+D |> pander()
+
+```
+
+```{r}
+
+A |> left_join(D) |> pander()
+
+A |> full_join(D) |> pander()
+
+A |> inner_join(D) |> pander()
+
+```
+
+### How do we reorder the columns from the joined table?
+
+For example, if we want to see the `value_B` column first after joining A and B, we can do:
+
+```{r}
+
+A |>
+  left_join(B) |> 
+  select(value_B, everything()) |> pander()
+
+```
+
+What if there are **several rows** for each sample in a table we want to join with?
+
+```{r}
+
+G <- tibble(sample = rep(c("a","b","c"), each = 2), timepoint = rep(c("1","2"),3), value_G = 1:6)
+G |> pander()
+
+```
+
+```{r}
+
+A |> left_join(G) |> pander()
+G |> left_join(A) |> pander()
+
+
+A |> full_join(G) |> pander()
+
+A |> inner_join(G) |> pander()
+
+```
+
+### Pivots
+
+How do we transform table G so that we have only one row per sample and two columns: one for each time-point?
+
+```{r}
+
+G_wide <- 
+G |> 
+  pivot_wider(
+   id_cols = sample,
+   names_from = timepoint,
+   names_prefix = "time_point",
+   values_from = value_G
+  ) 
+
+G_wide |> pander()
+
+
+
+```
+
+And we can go back to the table in long format by calling the `pivot_longer` function:
+
+```{r}
+
+G_wide |> 
+  pivot_longer(
+    cols = starts_with("time_point"),
+    names_to = "timepoint",
+    names_pattern = "time_point(.)",
+    values_to = "x_g"
+  ) |> pander()
+```

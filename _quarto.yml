@@ -61,7 +61,7 @@ website:
               href: materials/1-workshop1/7-custom-data-visualizations/index.qmd
             - text: "<b>Group Project</b> -Applying what you've learned to new data"
               contents:
-              href: /#group-projects
+              href: materials/1-workshop1/8-group-projects/index.qmd
           - section: "<em>2. Working with High Dimensional Data in R - human microbiome - Coming April 2024 </em>"
           - section: "<em>3. Bioinformatics and Transcriptomics Data Analysis - Coming October 2024</em>"
   page-footer:
