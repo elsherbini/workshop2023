@@ -30,7 +30,13 @@ This week of content will prepare you to use R, RStudio, and Quarto for data ana
 
 :::
 
+## Thank you for participating in the workshop!
 
+Our week together was amazing, thank you so much for making the workshop a success by participating all week long.
+
+1. If you haven't already, [please fill out this survey](https://docs.google.com/forms/d/e/1FAIpQLSffVuXEzVfK8xb0vzA-WGyBzhnJ3fvpJ_HflAVRum4mHuXQCg/viewform)
+2. If you have any photos of the workshop you'd like to share, go to [#photos on the workshop discord](https://discord.com/channels/1158136582201692202/1164886636878889071)
+3. Please post on Discord or email us if you have any questions or comments!
 
 ## Welcome to the workshop!
 
