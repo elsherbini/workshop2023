@@ -1008,7 +1008,7 @@ How can we compare distributions across months?
 
 
 ```{r}
-#|echo:false
+#| echo: false
 p <- lincoln_temps %>%
   mutate(
     month_long = fct_rev(month_long)

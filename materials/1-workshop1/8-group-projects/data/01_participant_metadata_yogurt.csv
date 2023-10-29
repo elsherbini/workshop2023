@@ -1,0 +1,52 @@
+pid,arm,days_since_last_sex,birth_control,age,education,sex
+pid_01,unchanged_diet,2,no hormonal birth control,28,"grade 10-12, not matriculated",female
+pid_02,unchanged_diet,4,Depoprovera,34,less than grade 9,female
+pid_03,unchanged_diet,3,no hormonal birth control,32,"grade 10-12, matriculated",female
+pid_04,yogurt,1,Depoprovera,30,"grade 10-12, not matriculated",female
+pid_05,yogurt,5,Depoprovera,34,less than grade 9,female
+pid_06,unchanged_diet,9,no hormonal birth control,27,"grade 10-12, matriculated",female
+pid_07,yogurt,3,no hormonal birth control,25,less than grade 9,female
+pid_08,yogurt,4,no hormonal birth control,26,"grade 10-12, not matriculated",female
+pid_09,unchanged_diet,10,Depoprovera,34,"grade 10-12, not matriculated",female
+pid_10,yogurt,7,Depoprovera,32,post-secondary,female
+pid_11,unchanged_diet,9,Depoprovera,32,"grade 10-12, not matriculated",female
+pid_12,yogurt,20,Depoprovera,32,"grade 10-12, not matriculated",female
+pid_13,yogurt,1,no hormonal birth control,30,post-secondary,female
+pid_14,unchanged_diet,1,no hormonal birth control,28,less than grade 9,female
+pid_15,unchanged_diet,11,no hormonal birth control,31,post-secondary,female
+pid_16,unchanged_diet,3,no hormonal birth control,25,"grade 10-12, matriculated",female
+pid_17,yogurt,3,Depoprovera,35,post-secondary,female
+pid_18,yogurt,5,Depoprovera,31,"grade 10-12, not matriculated",female
+pid_19,unchanged_diet,10,Depoprovera,36,"grade 10-12, not matriculated",female
+pid_20,unchanged_diet,3,no hormonal birth control,27,post-secondary,female
+pid_21,yogurt,39,Depoprovera,37,"grade 10-12, matriculated",female
+pid_22,unchanged_diet,6,no hormonal birth control,33,"grade 10-12, matriculated",female
+pid_23,unchanged_diet,30,Depoprovera,29,less than grade 9,female
+pid_24,unchanged_diet,2,no hormonal birth control,28,"grade 10-12, not matriculated",female
+pid_25,unchanged_diet,8,no hormonal birth control,27,"grade 10-12, not matriculated",female
+pid_26,unchanged_diet,7,no hormonal birth control,24,"grade 10-12, not matriculated",female
+pid_27,yogurt,11,no hormonal birth control,33,"grade 10-12, not matriculated",female
+pid_28,unchanged_diet,3,Depoprovera,35,less than grade 9,female
+pid_29,yogurt,1,Depoprovera,31,"grade 10-12, not matriculated",female
+pid_30,yogurt,12,Depoprovera,32,"grade 10-12, not matriculated",female
+pid_31,unchanged_diet,6,no hormonal birth control,28,post-secondary,female
+pid_32,unchanged_diet,22,no hormonal birth control,30,"grade 10-12, matriculated",female
+pid_33,yogurt,3,no hormonal birth control,27,"grade 10-12, not matriculated",female
+pid_34,unchanged_diet,3,no hormonal birth control,35,"grade 10-12, not matriculated",female
+pid_35,yogurt,13,Depoprovera,29,post-secondary,female
+pid_36,unchanged_diet,5,Depoprovera,32,"grade 10-12, not matriculated",female
+pid_37,unchanged_diet,1,no hormonal birth control,33,"grade 10-12, matriculated",female
+pid_38,unchanged_diet,4,no hormonal birth control,30,post-secondary,female
+pid_39,yogurt,4,Depoprovera,33,"grade 10-12, matriculated",female
+pid_40,unchanged_diet,14,Depoprovera,29,post-secondary,female
+pid_41,yogurt,7,Depoprovera,37,"grade 10-12, not matriculated",female
+pid_42,yogurt,6,Depoprovera,29,"grade 10-12, not matriculated",female
+pid_43,yogurt,4,no hormonal birth control,28,less than grade 9,female
+pid_44,unchanged_diet,10,no hormonal birth control,34,post-secondary,female
+pid_45,yogurt,11,no hormonal birth control,32,less than grade 9,female
+pid_46,yogurt,4,Depoprovera,29,"grade 10-12, matriculated",female
+pid_47,yogurt,21,Depoprovera,31,"grade 10-12, not matriculated",female
+pid_48,yogurt,11,Depoprovera,31,"grade 10-12, not matriculated",female
+pid_49,yogurt,1,Depoprovera,31,"grade 10-12, matriculated",female
+pid_50,yogurt,48,no hormonal birth control,25,post-secondary,female
+pid_51,yogurt,2,no hormonal birth control,36,less than grade 9,female

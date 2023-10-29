@@ -1,0 +1,28 @@
+pid,arm,age,pcos_status,period_product,sex
+pid_01,birth_control,34,no disease,tampon,female
+pid_02,birth_control,30,pcos,menstrual_cup,female
+pid_03,no_birth_control,29,pcos,tampon,female
+pid_04,birth_control,31,pcos,pad,female
+pid_05,no_birth_control,30,pcos,tampon,female
+pid_06,no_birth_control,41,pcos,tampon,female
+pid_07,no_birth_control,30,pcos,tampon,female
+pid_08,no_birth_control,30,no disease,menstrual_cup,female
+pid_09,no_birth_control,30,no disease,tampon,female
+pid_10,birth_control,27,no disease,tampon,female
+pid_11,birth_control,35,pcos,tampon,female
+pid_12,birth_control,30,no disease,tampon,female
+pid_13,birth_control,29,no disease,tampon,female
+pid_14,birth_control,30,pcos,pad,female
+pid_15,birth_control,26,no disease,tampon,female
+pid_16,birth_control,31,pcos,pad,female
+pid_17,no_birth_control,32,pcos,menstrual_cup,female
+pid_18,no_birth_control,31,no disease,tampon,female
+pid_19,no_birth_control,33,no disease,tampon,female
+pid_20,birth_control,32,pcos,tampon,female
+pid_21,birth_control,31,no disease,tampon,female
+pid_22,no_birth_control,32,pcos,tampon,female
+pid_23,no_birth_control,34,pcos,tampon,female
+pid_24,birth_control,34,no disease,tampon,female
+pid_25,no_birth_control,33,pcos,pad,female
+pid_26,birth_control,29,no disease,tampon,female
+pid_27,birth_control,33,no disease,menstrual_cup,female

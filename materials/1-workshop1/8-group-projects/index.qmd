@@ -5,22 +5,59 @@ format:
     toc: true
 ---
 
-
-# Group Projects
-
-## [Link to yogurt dataset example notebook](https://raw.githubusercontent.com/elsherbini/durban-data-science-for-biology/main/materials/1-workshop1/8-group-projects/project_a_yogurt_example_notebook.qmd)
+For this group activity, the odd-numbered groups will be analyzing the data from Research Project A, and the even numbered groups from Research Project B.
 
 
-```{=html}
-<h2><a href="https://raw.githubusercontent.com/elsherbini/durban-data-science-for-biology/main/materials/1-workshop1/6-hypothesis-testing/_module-6-hands-on-with-errors.qmd" download>Download the `.qmd` to do the exercise. Select all and copy into a .qmd file in RStudio</a></h2>
-```
+## Example notebooks
+
+Joseph and Laura tried their hands at the group projects as well. Take a look at the notebooks below and see what you think of their attempts.
+
+### [Link to yogurt dataset example notebook](https://raw.githubusercontent.com/elsherbini/durban-data-science-for-biology/main/materials/1-workshop1/8-group-projects/project_a_yogurt_example_notebook.qmd)
 
 [link to rendered html](project_a_yogurt_example_notebook.qmd)
 
-## Link to birth control dataset example notebook(https://raw.githubusercontent.com/elsherbini/durban-data-science-for-biology/main/materials/1-workshop1/8-group-projects/project_b_birthcontrol_example_notebook.qmd)
+### [Link to birth control dataset example notebook](https://raw.githubusercontent.com/elsherbini/durban-data-science-for-biology/main/materials/1-workshop1/8-group-projects/project_b_birthcontrol_example_notebook.qmd)
 
 [link to rendered html](project_b_birthcontrol_example_notebook.qmd)
 
+
+## Research Project A - Does eating yogurt change the vaginal microbiome? 
+
+### Study Description
+
+This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment.
+
+### Primary Aim
+
+To investigate whether the consumption of yogurt influences microbiome composition after antibiotics treatment.
+
+## Research Project B - Does birth control change inflammation during menses?
+
+### Study Description
+
+This is an observational study to evaluate the relationship between birth control and vaginal inflammation In response to menstruation. Absolute abundance of bacteria was measured by 3 qPCR assays (for total Bacteria, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation.  
+
+### Primary Aim
+
+To investigate whether taking birth control is associated with vaginal inflammation throughout the menstrual cycle.
+
+## Wednesday PM Session
+
+Session Structure  
+- 1:30-2:00:   
+  - Read Research Project description below for your project  
+  - Download project data files and put them in your folder  
+  - Make a new .qmd file for this project.  
+- 2:00-3:00  
+  - Load the demographic table into an R tibble.  
+  - Make notes about what each column name is and what it means.  
+  - Examine and note basic parameters (using R commands) - number of participants, visit structure, number of features measured for each, type of data measured (binary, categorical)  
+  - Plot a histogram of all numeric features (eg, distribution of age) and bar plots for counts of categorical variables (eg. how many female).  
+- **3:00 - 3:30 - Break**  
+- 3:30 - 5:00  
+    - Preproccessing the data to prepare for `tableone`  
+    - Use `tableone` for the dataset
+    
 
 ## Thursday PM Session
 
@@ -61,43 +98,3 @@ visualization (boxplot) of cytokine levels by study arm
 - **Extra Challenge** - try incorporating the data from the flow_cytometry data table. Pick a population  (or a ratio of two populations, such as CD4+/CD3+) of immune cells that seem to be associated with some cytokine and demographic variables.  
 
 Overall, come up with and answer two main questions, one comparing one arm vs the other, and one comparing a demographic factor, looking at the cytokine variables.  For extra challenge, also describe some relationships between the flow cytometry variables, and cytokines, and longitudinal patterns. 
-
---- 
-
-## Wednesday PM Session
-
-Session Structure  
-- 1:30-2:00:   
-  - Read Research Project description below for your project  
-  - Download project data files and put them in your folder  
-  - Make a new .qmd file for this project.  
-- 2:00-3:00  
-  - Load the demographic table into an R tibble.  
-  - Make notes about what each column name is and what it means.  
-  - Examine and note basic parameters (using R commands) - number of participants, visit structure, number of features measured for each, type of data measured (binary, categorical)  
-  - Plot a histogram of all numeric features (eg, distribution of age) and bar plots for counts of categorical variables (eg. how many female).  
-- **3:00 - 3:30 - Break**  
-- 3:30 - 5:00  
-    - Preproccessing the data to prepare for `tableone`  
-    - Use `tableone` for the dataset  
-
-## Research Project A - Does eating yogurt change the vaginal microbiome? 
-
-### Study Description
-
-This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. Absolute abundance of bacteria was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in copies/ml of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment.
-
-### Primary Aim
-
-To investigate whether the consumption of yogurt influences microbiome composition after antibiotics treatment.
-
-## Research Project B - Does birth control change inflammation during menses?
-
-### Study Description
-
-This is an observational study to evaluate the relationship between birth control and vaginal inflammation In response to menstruation. Absolute abundance of bacteria was measured by 3 qPCR assays (for total Bacteria, L. crispatus, L. iners). Cytokine levels (in copies/ml of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation.  
-
-### Primary Aim
-
-To investigate whether taking birth control is associated with vaginal inflammation throughout the menstrual cycle.
-

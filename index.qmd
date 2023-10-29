@@ -6,10 +6,17 @@ css: assets/index.css
 
 ::: {.grid}
 
+::: {.g-col-12}
+
+# Data Science for Biology Workshop Series
+:::
+
+::: {.g-col-10  .g-start-1}
+
+![Workshop 1: October 16th-20th 2023 at UKZN School of Medicine in Durban, SA](images/group_photo.png)
+:::
+
 ::: {.g-col-6}
-
-# Data Science for Biology
-
 #### Workshop 1 - R, RStudio, and Quarto for clinical research
 This week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research.
 :::
@@ -22,15 +29,10 @@ This week of content will prepare you to use R, RStudio, and Quarto for data ana
 
 
 :::
----
+
+
 
 ## Welcome to the workshop!
-
-Network: KTB Free Wifi (no password needed)
-
-Network AHRI Password: `@hR1W1F1!17`
-
-Network CAPRISA-Corp Password: `corp@caprisa17`
 
 1. [Fill out the pre-workshop survey here](https://forms.gle/7sdT7YRJerdgFJcc7)  
 2. [Fill out the icebreaker survey here](https://forms.gle/6FAJ5Qa78qUkwvdu8)  
@@ -54,7 +56,7 @@ Please install R and RStudio on your laptop. If you already have R and Rstudio i
 | AM   | <code>tableone</code> and statistics for clinical data  | Marothi Letsoalo (CAPRISA)|
 | PM | Small group worktime  | Participants |
 | **Thursday, October 19^th^**  |-- | --|
-| AM   | Data transformations and more statistics | Laura Symul (UCLouvain)|
+| AM   | Hypothesis testing and data transformations | Laura Symul (UCLouvain)|
 | PM | Small group worktime  | Participants |
 |Evening|Reception||
 | **Friday, October 20^th^**  |-- | --|

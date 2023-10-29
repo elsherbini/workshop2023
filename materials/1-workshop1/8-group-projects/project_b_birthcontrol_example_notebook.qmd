@@ -25,10 +25,10 @@ library(tableone)
 library(cowplot) # load for the theme
 theme_set(theme_cowplot(16) + background_grid()) # set cowplot theme
 
-sample_map <- read_csv("./00_sample_ids_period.csv")
-metadata <- read_csv("./01_participant_metadata_period.csv")
-luminex <- read_csv("./02_luminex_period.csv")
-flow_cytometry <- read_csv("./03_flow_cytometry_period.csv")
+sample_map <- read_csv("data/00_sample_ids_period.csv")
+metadata <- read_csv("data/01_participant_metadata_period.csv")
+luminex <- read_csv("data/02_luminex_period.csv")
+flow_cytometry <- read_csv("data/03_flow_cytometry_period.csv")
 ```
 
 ## Merging the dataset

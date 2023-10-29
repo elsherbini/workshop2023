@@ -35,7 +35,7 @@ To do so, we load the demographic data table (\`01_participant_metadata_yogurt.c
 ```{r}
 
 demographic_data <- 
-  read_csv("group1_dataset/01_participant_metadata_yogurt.csv")
+  read_csv("data/01_participant_metadata_yogurt.csv")
 
 ```
 
@@ -164,7 +164,7 @@ Let's open it to see how the microbiota composition has been characterized:
 
 qpcr <- 
   read_csv(
-    "group1_dataset/02_qpcr_results_yogurt.csv"
+    "data/02_qpcr_results_yogurt.csv"
   )
 
 ```
@@ -266,7 +266,7 @@ To be able to check that we need to join by the sample information table (`00_sa
 ```{r}
 
 sample_info <- 
-  read_csv("group1_dataset/00_sample_ids_yogurt.csv")
+  read_csv("data/00_sample_ids_yogurt.csv")
 
 ```
 
