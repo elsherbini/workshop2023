@@ -23,17 +23,20 @@ website:
         href: datasets.qmd
       - text: "Resources"
         href: resources.qmd
+      - text: "Past Workshops"
+        href: past_workshops.qmd
       - text: "About"
         href: about.qmd
       - icon: github
         href: https://github.com/elsherbini/durban-data-science-for-biology
         aria-label: GitHub
   sidebar:
-    - title: "Materials"
+      collapse-level: 1
+    # - title: Materials
       style: docked
       align: left
       contents:
-          - section: "<b>1. Reproducible Data Analysis with R</b>"
+          - section: "<em>1. Reproducible Data Analysis with R</em>"
             contents:
             - text: "<b>Module 0:</b> Welcome to the workshop"
               contents:
@@ -62,7 +65,34 @@ website:
             - text: "<b>Group Project</b> -Applying what you've learned to new data"
               contents:
               href: materials/1-workshop1/8-group-projects/index.qmd
-          - section: "<em>2. Working with High Dimensional Data in R - human microbiome - Coming April 2024 </em>"
+
+          - section: "<b>2. Working with High Dimensional Data in R - The Human Microbiome</b>"
+            contents:
+            - text: "<b>Module 0:</b> Welcome and Course Introduction"
+              contents:
+              href: materials/2-workshop2/1-introduction/index.qmd
+            - text: "<b>Module 1</b>: R Refresher"
+              contents:
+              href: materials/2-workshop2/2-r-refresher/index.qmd
+            - text: "<b>Module 2</b>: Dada2 "
+              contents:
+              href: materials/2-workshop2/3-dada2/index.qmd
+            - text: "<b>Module 3</b>: 16S analysis pt.1"
+              contents:
+              href: materials/2-workshop2/4-16s-pt1/index.qmd
+            - text: "<b>Module 4</b>: 16S analysis pt.2"
+              contents:
+              href: materials/2-workshop2/5-16s-pt2/index.qmd
+            - text: "<b>Module 5</b>: VIRGO"
+              contents:
+              href: materials/2-workshop2/6-virgo/index.qmd
+            - text: "<b>Module 6</b>: Keynote "
+              contents:
+              href: materials/2-workshop2/7-keynote/index.qmd
+            - text: "<b>Group Project</b> Applying what you've learned to new data"
+              contents:
+              href: materials/2-workshop2/8-group-project/index.qmd
+
           - section: "<em>3. Bioinformatics and Transcriptomics Data Analysis - Coming October 2024</em>"
   page-footer:
     right: "This page is built with {{< fa heart >}} and [Quarto](https://quarto.org/)."

@@ -824,7 +824,7 @@ ggplot(penguins) +
 #| eval: FALSE
 #| echo: TRUE
 ggplot(penguins) +
-  aes(flipper_length_mm, body_mass_g) +
+  aes(flipper_length_mm, body_mass_g) + 
   geom_point(aes(color = species)) +
   theme_minimal_grid() +
   theme(
@@ -854,12 +854,13 @@ ggplot(penguins) +
   theme_minimal_grid() +
   theme(
     # all text gone
-    text = element_blank()
+    axis.text = element_blank()
   )
 ```
 ```{r penguins-theme-elements13}
 #| eval: TRUE
 #| echo: FALSE
+#| 
 ```
 :::
 
