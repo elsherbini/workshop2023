@@ -39,7 +39,7 @@ toc: false
 |--------|--------|--------|
 | **Monday, April 22^nd^**  | | |
 | AM   | Course Introduction | Scott Handley (Wash U School of Medicine)|
-|    | Keynote | Sinaye Ngcapu |
+|    | Keynote | Sinaye Ngcapu (CAPRISA_|
 |  | Microbiome Sample Processing and Library prep  | Lindsay Droit (Wash U School of Medicine)|
 | PM   | R Refresher (<code> tidyverse</code> /summary tables/data visualization) | Scott Handley (Wash U School of Medicine)|
 | **Tuesday, April 23^th^**  |____________________________________________ |____________________________________________ |
@@ -53,7 +53,7 @@ toc: false
 | PM   | Group Activity session II  | Johnathan Shih (Ragon Institute)|
 |Evening|Reception||
 | **Friday, April 26^th^**  |____________________________________________ | ____________________________________________|
-| AM   | Keynote | Jacques Ravel (UMD Scool of Medicine)|  
+| AM   | Keynote | Jacques Ravel (UMD School of Medicine)|  
 | | Group Activity review |  |  
 | PM | Group Presentations | Participants |
 |  | Dataset Demo |  |
