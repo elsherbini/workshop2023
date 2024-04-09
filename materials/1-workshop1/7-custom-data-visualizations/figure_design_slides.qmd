@@ -843,8 +843,7 @@ ggplot(penguins) +
 
 ## Remove elements entirely: `element_blank()`
 
-<<<<<<< HEAD
-=======
+
 ::: {style="font-size: 70%;" layout-ncol=2}
 ```{r penguins-theme-elements13}
 #| eval: FALSE
@@ -864,7 +863,7 @@ ggplot(penguins) +
 #| 
 ```
 :::
->>>>>>> origin/main
+
 
 ## Remove elements entirely: `element_blank()`
 \
