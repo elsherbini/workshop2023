@@ -30,11 +30,7 @@ toc: false
 
 1. [Fill out the pre-workshop survey here](https://forms.gle/7sdT7YRJerdgFJcc7)  
 2. [Join the discord here](https://discord.gg/Mb7pRTptqm) (once you've joined, you can bookmark [https://discord.com/channels/1158136582201692202/](https://discord.com/channels/1227264067899621427) to go straight to the channel.)  
-3. Get the AWS instance running and open RStudio
-
-## Before the workshop: Logging onto the AWS instance
-
-Please install..
+3. Await instructions on logging into your AWS instance.
 
 <!-- Please install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install `R version 4.3.1` and `RStudio version 2023.09.0` [Click here for instructions on installing R and RStudio](installation-instructions.qmd) -->
 
