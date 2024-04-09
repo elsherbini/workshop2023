@@ -10,7 +10,7 @@
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.551">
+  <meta name="generator" content="quarto-1.3.450">
 
   <title>Data Science for Biology Workshop Series - Figure Design</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -224,8 +224,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -404,37 +403,29 @@
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
-<div class="quarto-layout-panel" style="font-size: 80%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-layout-panel" style="font-size: 80%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><strong>How to go from this …</strong></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><strong>… to this?</strong></p>
 </div>
 </div>
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
-</figure>
 </div>
 </div>
-</div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
-</figure>
 </div>
 </div>
 </div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p>Requires coordinated modification of multiple elements:<br>
 - geoms (via arguments to geoms)<br>
 - scales (via <code>scale_*()</code> functions)<br>
@@ -447,39 +438,33 @@
 <h2>The starting point, a rough draft</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
-<span id="cb1-2"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
-<span id="cb1-3"><a></a>  <span class="fu">geom_density_ridges</span>()</span>
-<span id="cb1-4"><a></a>lincoln_temps <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(</span>
-<span id="cb1-5"><a></a>  <span class="fu">url</span>(<span class="st">"https://wilkelab.org/DSC385/datasets/lincoln_temps.rds"</span>)</span>
-<span id="cb1-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">geom_density_ridges</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/lincoln-ridgeline-progression1-1.png" width="960"></p>
-</figure>
 </div>
 </div>
 </div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p>You can download the dataset using this code:</p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><br>
 </p>
 </div>
 </div>
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>lincoln_temps <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(</span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">url</span>(<span class="st">"https://wilkelab.org/DSC385/datasets/lincoln_temps.rds"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -488,23 +473,18 @@
 <h2>Set <code>scale</code> and <code>bandwidth</code> to shape ridgelines</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
-<span id="cb2-2"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
-<span id="cb2-3"><a></a>  <span class="fu">geom_density_ridges</span>(</span>
-<span id="cb2-4"><a></a>    <span class="at">scale =</span> <span class="dv">3</span>, <span class="at">bandwidth =</span> <span class="fl">3.4</span></span>
-<span id="cb2-5"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">geom_density_ridges</span>(</span>
+<span id="cb3-4"><a href="#cb3-4"></a>    <span class="at">scale =</span> <span class="dv">3</span>, <span class="at">bandwidth =</span> <span class="fl">3.4</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/lincoln-ridgeline-progression2-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -514,24 +494,19 @@
 <h2>Set <code>rel_min_height</code> to cut ridgelines near zero</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
-<span id="cb3-2"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
-<span id="cb3-3"><a></a>  <span class="fu">geom_density_ridges</span>(</span>
-<span id="cb3-4"><a></a>    <span class="at">scale =</span> <span class="dv">3</span>, <span class="at">bandwidth =</span> <span class="fl">3.4</span>,</span>
-<span id="cb3-5"><a></a>    <span class="at">rel_min_height =</span> <span class="fl">0.01</span></span>
-<span id="cb3-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">geom_density_ridges</span>(</span>
+<span id="cb4-4"><a href="#cb4-4"></a>    <span class="at">scale =</span> <span class="dv">3</span>, <span class="at">bandwidth =</span> <span class="fl">3.4</span>,</span>
+<span id="cb4-5"><a href="#cb4-5"></a>    <span class="at">rel_min_height =</span> <span class="fl">0.01</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/lincoln-ridgeline-progression3-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -541,30 +516,25 @@
 <h2>Use <code>scale_*()</code> functions to specify axis labels</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
-<span id="cb4-2"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
-<span id="cb4-3"><a></a>  <span class="fu">geom_density_ridges</span>(</span>
-<span id="cb4-4"><a></a>    <span class="at">scale =</span> <span class="dv">3</span>, <span class="at">bandwidth =</span> <span class="fl">3.4</span>,</span>
-<span id="cb4-5"><a></a>    <span class="at">rel_min_height =</span> <span class="fl">0.01</span>,</span>
-<span id="cb4-6"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb4-7"><a></a>  <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb4-8"><a></a>    <span class="at">name =</span> <span class="st">"mean temperature (°F)"</span></span>
-<span id="cb4-9"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb4-10"><a></a>  <span class="fu">scale_y_discrete</span>(</span>
-<span id="cb4-11"><a></a>    <span class="at">name =</span> <span class="cn">NULL</span>  <span class="co"># NULL means no label</span></span>
-<span id="cb4-12"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">geom_density_ridges</span>(</span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="at">scale =</span> <span class="dv">3</span>, <span class="at">bandwidth =</span> <span class="fl">3.4</span>,</span>
+<span id="cb5-5"><a href="#cb5-5"></a>    <span class="at">rel_min_height =</span> <span class="fl">0.01</span>,</span>
+<span id="cb5-6"><a href="#cb5-6"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb5-8"><a href="#cb5-8"></a>    <span class="at">name =</span> <span class="st">"mean temperature (°F)"</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>  <span class="fu">scale_y_discrete</span>(</span>
+<span id="cb5-11"><a href="#cb5-11"></a>    <span class="at">name =</span> <span class="cn">NULL</span>  <span class="co"># NULL means no label</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/lincoln-ridgeline-progression4-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -574,32 +544,27 @@
 <h2>Specify scale expansion</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
-<span id="cb5-3"><a></a>  <span class="fu">geom_density_ridges</span>(</span>
-<span id="cb5-4"><a></a>    <span class="at">scale =</span> <span class="dv">3</span>, <span class="at">bandwidth =</span> <span class="fl">3.4</span>,</span>
-<span id="cb5-5"><a></a>    <span class="at">rel_min_height =</span> <span class="fl">0.01</span></span>
-<span id="cb5-6"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb5-7"><a></a>  <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb5-8"><a></a>    <span class="at">name =</span> <span class="st">"mean temperature (°F)"</span>,</span>
-<span id="cb5-9"><a></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb5-10"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb5-11"><a></a>  <span class="fu">scale_y_discrete</span>(</span>
-<span id="cb5-12"><a></a>    <span class="at">name =</span> <span class="cn">NULL</span>,</span>
-<span id="cb5-13"><a></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">2.6</span>))</span>
-<span id="cb5-14"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">geom_density_ridges</span>(</span>
+<span id="cb6-4"><a href="#cb6-4"></a>    <span class="at">scale =</span> <span class="dv">3</span>, <span class="at">bandwidth =</span> <span class="fl">3.4</span>,</span>
+<span id="cb6-5"><a href="#cb6-5"></a>    <span class="at">rel_min_height =</span> <span class="fl">0.01</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb6-8"><a href="#cb6-8"></a>    <span class="at">name =</span> <span class="st">"mean temperature (°F)"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9"></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb6-10"><a href="#cb6-10"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>  <span class="fu">scale_y_discrete</span>(</span>
+<span id="cb6-12"><a href="#cb6-12"></a>    <span class="at">name =</span> <span class="cn">NULL</span>,</span>
+<span id="cb6-13"><a href="#cb6-13"></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">2.6</span>))</span>
+<span id="cb6-14"><a href="#cb6-14"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/lincoln-ridgeline-progression5-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -609,33 +574,28 @@
 <h2>Set overall plot theme</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
-<span id="cb6-2"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
-<span id="cb6-3"><a></a>  <span class="fu">geom_density_ridges</span>(</span>
-<span id="cb6-4"><a></a>    <span class="at">scale =</span> <span class="dv">3</span>, <span class="at">bandwidth =</span> <span class="fl">3.4</span>,</span>
-<span id="cb6-5"><a></a>    <span class="at">rel_min_height =</span> <span class="fl">0.01</span></span>
-<span id="cb6-6"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb6-7"><a></a>  <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb6-8"><a></a>    <span class="at">name =</span> <span class="st">"mean temperature (°F)"</span>,</span>
-<span id="cb6-9"><a></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb6-10"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb6-11"><a></a>  <span class="fu">scale_y_discrete</span>(</span>
-<span id="cb6-12"><a></a>    <span class="at">name =</span> <span class="cn">NULL</span>,</span>
-<span id="cb6-13"><a></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">2.6</span>))</span>
-<span id="cb6-14"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb6-15"><a></a>  <span class="fu">theme_minimal_grid</span>()  <span class="co"># from cowplot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">geom_density_ridges</span>(</span>
+<span id="cb7-4"><a href="#cb7-4"></a>    <span class="at">scale =</span> <span class="dv">3</span>, <span class="at">bandwidth =</span> <span class="fl">3.4</span>,</span>
+<span id="cb7-5"><a href="#cb7-5"></a>    <span class="at">rel_min_height =</span> <span class="fl">0.01</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb7-8"><a href="#cb7-8"></a>    <span class="at">name =</span> <span class="st">"mean temperature (°F)"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9"></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb7-10"><a href="#cb7-10"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a>  <span class="fu">scale_y_discrete</span>(</span>
+<span id="cb7-12"><a href="#cb7-12"></a>    <span class="at">name =</span> <span class="cn">NULL</span>,</span>
+<span id="cb7-13"><a href="#cb7-13"></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">2.6</span>))</span>
+<span id="cb7-14"><a href="#cb7-14"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a>  <span class="fu">theme_minimal_grid</span>()  <span class="co"># from cowplot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/lincoln-ridgeline-progression6-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -645,36 +605,31 @@
 <h2>Align y axis labels to grid lines</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
-<span id="cb7-2"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">geom_density_ridges</span>(</span>
-<span id="cb7-4"><a></a>    <span class="at">scale =</span> <span class="dv">3</span>, <span class="at">bandwidth =</span> <span class="fl">3.4</span>,</span>
-<span id="cb7-5"><a></a>    <span class="at">rel_min_height =</span> <span class="fl">0.01</span></span>
-<span id="cb7-6"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb7-7"><a></a>  <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb7-8"><a></a>    <span class="at">name =</span> <span class="st">"mean temperature (°F)"</span>,</span>
-<span id="cb7-9"><a></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb7-10"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb7-11"><a></a>  <span class="fu">scale_y_discrete</span>(</span>
-<span id="cb7-12"><a></a>    <span class="at">name =</span> <span class="cn">NULL</span>,</span>
-<span id="cb7-13"><a></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">2.6</span>))</span>
-<span id="cb7-14"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb7-15"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb7-16"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb7-17"><a></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">vjust =</span> <span class="dv">0</span>)</span>
-<span id="cb7-18"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">geom_density_ridges</span>(</span>
+<span id="cb8-4"><a href="#cb8-4"></a>    <span class="at">scale =</span> <span class="dv">3</span>, <span class="at">bandwidth =</span> <span class="fl">3.4</span>,</span>
+<span id="cb8-5"><a href="#cb8-5"></a>    <span class="at">rel_min_height =</span> <span class="fl">0.01</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb8-8"><a href="#cb8-8"></a>    <span class="at">name =</span> <span class="st">"mean temperature (°F)"</span>,</span>
+<span id="cb8-9"><a href="#cb8-9"></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb8-10"><a href="#cb8-10"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a>  <span class="fu">scale_y_discrete</span>(</span>
+<span id="cb8-12"><a href="#cb8-12"></a>    <span class="at">name =</span> <span class="cn">NULL</span>,</span>
+<span id="cb8-13"><a href="#cb8-13"></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">2.6</span>))</span>
+<span id="cb8-14"><a href="#cb8-14"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a>  <span class="fu">theme</span>(</span>
+<span id="cb8-17"><a href="#cb8-17"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">vjust =</span> <span class="dv">0</span>)</span>
+<span id="cb8-18"><a href="#cb8-18"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/lincoln-ridgeline-progression7-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -684,37 +639,32 @@
 <h2>Change fill color from default gray to blue</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
-<span id="cb8-2"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
-<span id="cb8-3"><a></a>  <span class="fu">geom_density_ridges</span>(</span>
-<span id="cb8-4"><a></a>    <span class="at">scale =</span> <span class="dv">3</span>, <span class="at">bandwidth =</span> <span class="fl">3.4</span>,</span>
-<span id="cb8-5"><a></a>    <span class="at">rel_min_height =</span> <span class="fl">0.01</span>,</span>
-<span id="cb8-6"><a></a>    <span class="at">fill =</span> <span class="st">"#7DCCFF"</span></span>
-<span id="cb8-7"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb8-8"><a></a>  <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb8-9"><a></a>    <span class="at">name =</span> <span class="st">"mean temperature (°F)"</span>,</span>
-<span id="cb8-10"><a></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb8-11"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb8-12"><a></a>  <span class="fu">scale_y_discrete</span>(</span>
-<span id="cb8-13"><a></a>    <span class="at">name =</span> <span class="cn">NULL</span>,</span>
-<span id="cb8-14"><a></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">2.6</span>))</span>
-<span id="cb8-15"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb8-16"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb8-17"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb8-18"><a></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">vjust =</span> <span class="dv">0</span>)</span>
-<span id="cb8-19"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">geom_density_ridges</span>(</span>
+<span id="cb9-4"><a href="#cb9-4"></a>    <span class="at">scale =</span> <span class="dv">3</span>, <span class="at">bandwidth =</span> <span class="fl">3.4</span>,</span>
+<span id="cb9-5"><a href="#cb9-5"></a>    <span class="at">rel_min_height =</span> <span class="fl">0.01</span>,</span>
+<span id="cb9-6"><a href="#cb9-6"></a>    <span class="at">fill =</span> <span class="st">"#7DCCFF"</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb9-9"><a href="#cb9-9"></a>    <span class="at">name =</span> <span class="st">"mean temperature (°F)"</span>,</span>
+<span id="cb9-10"><a href="#cb9-10"></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb9-11"><a href="#cb9-11"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a>  <span class="fu">scale_y_discrete</span>(</span>
+<span id="cb9-13"><a href="#cb9-13"></a>    <span class="at">name =</span> <span class="cn">NULL</span>,</span>
+<span id="cb9-14"><a href="#cb9-14"></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">2.6</span>))</span>
+<span id="cb9-15"><a href="#cb9-15"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-16"><a href="#cb9-16"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb9-17"><a href="#cb9-17"></a>  <span class="fu">theme</span>(</span>
+<span id="cb9-18"><a href="#cb9-18"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">vjust =</span> <span class="dv">0</span>)</span>
+<span id="cb9-19"><a href="#cb9-19"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/lincoln-ridgeline-progression8-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -724,38 +674,33 @@
 <h2>Draw lines in white instead of black</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
-<span id="cb9-2"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
-<span id="cb9-3"><a></a>  <span class="fu">geom_density_ridges</span>(</span>
-<span id="cb9-4"><a></a>    <span class="at">scale =</span> <span class="dv">3</span>, <span class="at">bandwidth =</span> <span class="fl">3.4</span>,</span>
-<span id="cb9-5"><a></a>    <span class="at">rel_min_height =</span> <span class="fl">0.01</span>,</span>
-<span id="cb9-6"><a></a>    <span class="at">fill =</span> <span class="st">"#7DCCFF"</span>,</span>
-<span id="cb9-7"><a></a>    <span class="at">color =</span> <span class="st">"white"</span></span>
-<span id="cb9-8"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb9-9"><a></a>  <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb9-10"><a></a>    <span class="at">name =</span> <span class="st">"mean temperature (°F)"</span>,</span>
-<span id="cb9-11"><a></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb9-12"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb9-13"><a></a>  <span class="fu">scale_y_discrete</span>(</span>
-<span id="cb9-14"><a></a>    <span class="at">name =</span> <span class="cn">NULL</span>,</span>
-<span id="cb9-15"><a></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">2.6</span>))</span>
-<span id="cb9-16"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb9-17"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb9-18"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb9-19"><a></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">vjust =</span> <span class="dv">0</span>)</span>
-<span id="cb9-20"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">ggplot</span>(lincoln_temps) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> mean_temp, <span class="at">y =</span> month_long) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">geom_density_ridges</span>(</span>
+<span id="cb10-4"><a href="#cb10-4"></a>    <span class="at">scale =</span> <span class="dv">3</span>, <span class="at">bandwidth =</span> <span class="fl">3.4</span>,</span>
+<span id="cb10-5"><a href="#cb10-5"></a>    <span class="at">rel_min_height =</span> <span class="fl">0.01</span>,</span>
+<span id="cb10-6"><a href="#cb10-6"></a>    <span class="at">fill =</span> <span class="st">"#7DCCFF"</span>,</span>
+<span id="cb10-7"><a href="#cb10-7"></a>    <span class="at">color =</span> <span class="st">"white"</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb10-10"><a href="#cb10-10"></a>    <span class="at">name =</span> <span class="st">"mean temperature (°F)"</span>,</span>
+<span id="cb10-11"><a href="#cb10-11"></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb10-12"><a href="#cb10-12"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-13"><a href="#cb10-13"></a>  <span class="fu">scale_y_discrete</span>(</span>
+<span id="cb10-14"><a href="#cb10-14"></a>    <span class="at">name =</span> <span class="cn">NULL</span>,</span>
+<span id="cb10-15"><a href="#cb10-15"></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">2.6</span>))</span>
+<span id="cb10-16"><a href="#cb10-16"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-17"><a href="#cb10-17"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb10-18"><a href="#cb10-18"></a>  <span class="fu">theme</span>(</span>
+<span id="cb10-19"><a href="#cb10-19"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">vjust =</span> <span class="dv">0</span>)</span>
+<span id="cb10-20"><a href="#cb10-20"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/lincoln-ridgeline-final-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -773,17 +718,13 @@
 </p>
 <div style="font-size: 70%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb10-2"><a></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb10-3"><a></a><span class="co"># default theme is theme_gray()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="co"># default theme is theme_gray()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-complete-themes-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -794,15 +735,11 @@
 </p>
 <div style="font-size: 70%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb11-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb11-3"><a></a>  <span class="fu">theme_gray</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">theme_gray</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -813,15 +750,11 @@
 </p>
 <div style="font-size: 70%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb12-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb12-3"><a></a>  <span class="fu">theme_gray</span>(<span class="dv">14</span>) <span class="co"># most themes take a font-size argument to scale text size</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">theme_gray</span>(<span class="dv">14</span>) <span class="co"># most themes take a font-size argument to scale text size</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -832,15 +765,11 @@
 </p>
 <div style="font-size: 70%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb13-3"><a></a>  <span class="fu">theme_bw</span>(<span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">theme_bw</span>(<span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -851,15 +780,11 @@
 </p>
 <div style="font-size: 70%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb14-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb14-3"><a></a>  <span class="fu">theme_minimal</span>(<span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">theme_minimal</span>(<span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -870,15 +795,11 @@
 </p>
 <div style="font-size: 70%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb15-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb15-3"><a></a>  <span class="fu">theme_classic</span>(<span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">theme_classic</span>(<span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -889,15 +810,11 @@
 </p>
 <div style="font-size: 70%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb16-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb16-3"><a></a>  <span class="fu">theme_half_open</span>()  <span class="co"># from package cowplot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">theme_half_open</span>()  <span class="co"># from package cowplot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -908,15 +825,11 @@
 </p>
 <div style="font-size: 70%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb17-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb17-3"><a></a>  <span class="fu">theme_minimal_grid</span>()  <span class="co"># from package cowplot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">theme_minimal_grid</span>()  <span class="co"># from package cowplot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -927,15 +840,11 @@
 </p>
 <div style="font-size: 70%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb18-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb18-3"><a></a>  <span class="fu">theme_minimal_hgrid</span>()  <span class="co"># from package cowplot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">theme_minimal_hgrid</span>()  <span class="co"># from package cowplot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -946,15 +855,11 @@
 </p>
 <div style="font-size: 70%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb19-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb19-3"><a></a>  <span class="fu">theme_minimal_vgrid</span>()  <span class="co"># from package cowplot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">theme_minimal_vgrid</span>()  <span class="co"># from package cowplot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -965,15 +870,11 @@
 </p>
 <div style="font-size: 70%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb20-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb20-3"><a></a>  <span class="fu">theme_economist</span>(<span class="dv">14</span>)       <span class="co"># from package ggthemes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">theme_economist</span>(<span class="dv">14</span>)       <span class="co"># from package ggthemes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -984,15 +885,11 @@
 </p>
 <div style="font-size: 70%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb21-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb21-3"><a></a>  <span class="fu">theme_economist</span>(<span class="dv">14</span>) <span class="sc">+</span> <span class="fu">scale_color_economist</span>() <span class="co"># from package ggthemes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">theme_economist</span>(<span class="dv">14</span>) <span class="sc">+</span> <span class="fu">scale_color_economist</span>() <span class="co"># from package ggthemes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1003,15 +900,11 @@
 </p>
 <div style="font-size: 70%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb22-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb22-3"><a></a>  <span class="fu">theme_fivethirtyeight</span>(<span class="dv">14</span>) <span class="sc">+</span> <span class="fu">scale_color_fivethirtyeight</span>() <span class="co"># from package ggthemes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(flipper_length_mm, body_mass_g, <span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">theme_fivethirtyeight</span>(<span class="dv">14</span>) <span class="sc">+</span> <span class="fu">scale_color_fivethirtyeight</span>() <span class="co"># from package ggthemes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1020,22 +913,17 @@
 <h2>Customizing theme elements</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb23-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb23-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb23-4"><a></a>  <span class="fu">theme_minimal_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">theme_minimal_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements1-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1045,29 +933,24 @@
 <h2>Customizing theme elements</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb24-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb24-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb24-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb24-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb24-6"><a></a>    <span class="co"># change overall font family</span></span>
-<span id="cb24-7"><a></a>    <span class="co"># (requires font to be available)</span></span>
-<span id="cb24-8"><a></a>    <span class="at">text =</span> <span class="fu">element_text</span>(</span>
-<span id="cb24-9"><a></a>      <span class="at">family =</span> <span class="st">"Comic Sans MS"</span></span>
-<span id="cb24-10"><a></a>    )</span>
-<span id="cb24-11"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb25-6"><a href="#cb25-6"></a>    <span class="co"># change overall font family</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a>    <span class="co"># (requires font to be available)</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a>    <span class="at">text =</span> <span class="fu">element_text</span>(</span>
+<span id="cb25-9"><a href="#cb25-9"></a>      <span class="at">family =</span> <span class="st">"Comic Sans MS"</span></span>
+<span id="cb25-10"><a href="#cb25-10"></a>    )</span>
+<span id="cb25-11"><a href="#cb25-11"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements2-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1077,28 +960,23 @@
 <h2>Customizing theme elements</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb25-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb25-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb25-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb25-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb25-6"><a></a>    <span class="co"># change color of axis titles</span></span>
-<span id="cb25-7"><a></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(</span>
-<span id="cb25-8"><a></a>      <span class="at">color =</span> <span class="st">"royalblue2"</span></span>
-<span id="cb25-9"><a></a>    )</span>
-<span id="cb25-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb26-6"><a href="#cb26-6"></a>    <span class="co"># change color of axis titles</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(</span>
+<span id="cb26-8"><a href="#cb26-8"></a>      <span class="at">color =</span> <span class="st">"royalblue2"</span></span>
+<span id="cb26-9"><a href="#cb26-9"></a>    )</span>
+<span id="cb26-10"><a href="#cb26-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements3-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1108,28 +986,23 @@
 <h2>Customizing theme elements</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb26-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb26-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb26-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb26-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb26-6"><a></a>    <span class="co"># change color of only the x axis title</span></span>
-<span id="cb26-7"><a></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(</span>
-<span id="cb26-8"><a></a>      <span class="at">color =</span> <span class="st">"royalblue2"</span></span>
-<span id="cb26-9"><a></a>    )</span>
-<span id="cb26-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb27-4"><a href="#cb27-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb27-6"><a href="#cb27-6"></a>    <span class="co"># change color of only the x axis title</span></span>
+<span id="cb27-7"><a href="#cb27-7"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(</span>
+<span id="cb27-8"><a href="#cb27-8"></a>      <span class="at">color =</span> <span class="st">"royalblue2"</span></span>
+<span id="cb27-9"><a href="#cb27-9"></a>    )</span>
+<span id="cb27-10"><a href="#cb27-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements4-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1139,27 +1012,22 @@
 <h2>Customizing theme elements</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb27-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb27-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb27-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb27-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb27-6"><a></a>    <span class="co"># change all text colors?</span></span>
-<span id="cb27-7"><a></a>    <span class="co"># why does it not work?</span></span>
-<span id="cb27-8"><a></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"royalblue2"</span>)</span>
-<span id="cb27-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb28-6"><a href="#cb28-6"></a>    <span class="co"># change all text colors?</span></span>
+<span id="cb28-7"><a href="#cb28-7"></a>    <span class="co"># why does it not work?</span></span>
+<span id="cb28-8"><a href="#cb28-8"></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"royalblue2"</span>)</span>
+<span id="cb28-9"><a href="#cb28-9"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements5-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1169,28 +1037,23 @@
 <h2>Customizing theme elements</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb28-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb28-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb28-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb28-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb28-6"><a></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"royalblue2"</span>),</span>
-<span id="cb28-7"><a></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(</span>
-<span id="cb28-8"><a></a>      <span class="at">color =</span> <span class="st">"royalblue2"</span></span>
-<span id="cb28-9"><a></a>    )</span>
-<span id="cb28-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb29-6"><a href="#cb29-6"></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"royalblue2"</span>),</span>
+<span id="cb29-7"><a href="#cb29-7"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(</span>
+<span id="cb29-8"><a href="#cb29-8"></a>      <span class="at">color =</span> <span class="st">"royalblue2"</span></span>
+<span id="cb29-9"><a href="#cb29-9"></a>    )</span>
+<span id="cb29-10"><a href="#cb29-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements6-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1200,28 +1063,23 @@
 <h2>Customizing theme elements</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb29-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb29-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb29-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb29-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb29-6"><a></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"royalblue2"</span>),</span>
-<span id="cb29-7"><a></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(</span>
-<span id="cb29-8"><a></a>      <span class="at">color =</span> <span class="st">"royalblue2"</span></span>
-<span id="cb29-9"><a></a>    )</span>
-<span id="cb29-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb30-5"><a href="#cb30-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb30-6"><a href="#cb30-6"></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"royalblue2"</span>),</span>
+<span id="cb30-7"><a href="#cb30-7"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(</span>
+<span id="cb30-8"><a href="#cb30-8"></a>      <span class="at">color =</span> <span class="st">"royalblue2"</span></span>
+<span id="cb30-9"><a href="#cb30-9"></a>    )</span>
+<span id="cb30-10"><a href="#cb30-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements6-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1232,29 +1090,24 @@
 <h2>Horizontal and vertical alignment</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb30-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb30-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb30-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb30-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb30-6"><a></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(</span>
-<span id="cb30-7"><a></a>      <span class="co"># horizontal justification</span></span>
-<span id="cb30-8"><a></a>      <span class="co"># (0 = left)</span></span>
-<span id="cb30-9"><a></a>      <span class="at">hjust =</span> <span class="dv">0</span></span>
-<span id="cb30-10"><a></a>    )</span>
-<span id="cb30-11"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb31-6"><a href="#cb31-6"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(</span>
+<span id="cb31-7"><a href="#cb31-7"></a>      <span class="co"># horizontal justification</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a>      <span class="co"># (0 = left)</span></span>
+<span id="cb31-9"><a href="#cb31-9"></a>      <span class="at">hjust =</span> <span class="dv">0</span></span>
+<span id="cb31-10"><a href="#cb31-10"></a>    )</span>
+<span id="cb31-11"><a href="#cb31-11"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements7-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1264,29 +1117,24 @@
 <h2>Horizontal and vertical alignment</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb31-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb31-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb31-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb31-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb31-6"><a></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(</span>
-<span id="cb31-7"><a></a>      <span class="co"># horizontal justification</span></span>
-<span id="cb31-8"><a></a>      <span class="co"># (0.5 = center)</span></span>
-<span id="cb31-9"><a></a>      <span class="at">hjust =</span> <span class="fl">0.5</span></span>
-<span id="cb31-10"><a></a>    )</span>
-<span id="cb31-11"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb32-4"><a href="#cb32-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb32-6"><a href="#cb32-6"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(</span>
+<span id="cb32-7"><a href="#cb32-7"></a>      <span class="co"># horizontal justification</span></span>
+<span id="cb32-8"><a href="#cb32-8"></a>      <span class="co"># (0.5 = center)</span></span>
+<span id="cb32-9"><a href="#cb32-9"></a>      <span class="at">hjust =</span> <span class="fl">0.5</span></span>
+<span id="cb32-10"><a href="#cb32-10"></a>    )</span>
+<span id="cb32-11"><a href="#cb32-11"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements8-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1296,29 +1144,24 @@
 <h2>Horizontal and vertical alignment</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb32-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb32-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb32-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb32-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb32-6"><a></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(</span>
-<span id="cb32-7"><a></a>      <span class="co"># horizontal justification</span></span>
-<span id="cb32-8"><a></a>      <span class="co"># (1 = right)</span></span>
-<span id="cb32-9"><a></a>      <span class="at">hjust =</span> <span class="dv">1</span></span>
-<span id="cb32-10"><a></a>    )</span>
-<span id="cb32-11"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb33-4"><a href="#cb33-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb33-6"><a href="#cb33-6"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(</span>
+<span id="cb33-7"><a href="#cb33-7"></a>      <span class="co"># horizontal justification</span></span>
+<span id="cb33-8"><a href="#cb33-8"></a>      <span class="co"># (1 = right)</span></span>
+<span id="cb33-9"><a href="#cb33-9"></a>      <span class="at">hjust =</span> <span class="dv">1</span></span>
+<span id="cb33-10"><a href="#cb33-10"></a>    )</span>
+<span id="cb33-11"><a href="#cb33-11"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements9-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1328,29 +1171,24 @@
 <h2>Horizontal and vertical alignment</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb33-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb33-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb33-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb33-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb33-6"><a></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(</span>
-<span id="cb33-7"><a></a>      <span class="co"># vertical justification</span></span>
-<span id="cb33-8"><a></a>      <span class="co"># (0 = bottom)</span></span>
-<span id="cb33-9"><a></a>      <span class="at">vjust =</span> <span class="dv">0</span></span>
-<span id="cb33-10"><a></a>    )</span>
-<span id="cb33-11"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb34-4"><a href="#cb34-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb34-5"><a href="#cb34-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb34-6"><a href="#cb34-6"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(</span>
+<span id="cb34-7"><a href="#cb34-7"></a>      <span class="co"># vertical justification</span></span>
+<span id="cb34-8"><a href="#cb34-8"></a>      <span class="co"># (0 = bottom)</span></span>
+<span id="cb34-9"><a href="#cb34-9"></a>      <span class="at">vjust =</span> <span class="dv">0</span></span>
+<span id="cb34-10"><a href="#cb34-10"></a>    )</span>
+<span id="cb34-11"><a href="#cb34-11"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements10-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1360,29 +1198,24 @@
 <h2>Horizontal and vertical alignment</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb34-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb34-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb34-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb34-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb34-6"><a></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(</span>
-<span id="cb34-7"><a></a>      <span class="co"># vertical justification</span></span>
-<span id="cb34-8"><a></a>      <span class="co"># (0.5 = center)</span></span>
-<span id="cb34-9"><a></a>      <span class="at">vjust =</span> <span class="fl">0.5</span></span>
-<span id="cb34-10"><a></a>    )</span>
-<span id="cb34-11"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb35-5"><a href="#cb35-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb35-6"><a href="#cb35-6"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(</span>
+<span id="cb35-7"><a href="#cb35-7"></a>      <span class="co"># vertical justification</span></span>
+<span id="cb35-8"><a href="#cb35-8"></a>      <span class="co"># (0.5 = center)</span></span>
+<span id="cb35-9"><a href="#cb35-9"></a>      <span class="at">vjust =</span> <span class="fl">0.5</span></span>
+<span id="cb35-10"><a href="#cb35-10"></a>    )</span>
+<span id="cb35-11"><a href="#cb35-11"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements11-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1392,29 +1225,24 @@
 <h2>Horizontal and vertical alignment</h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb35-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span> </span>
-<span id="cb35-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb35-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb35-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb35-6"><a></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(</span>
-<span id="cb35-7"><a></a>      <span class="co"># vertical justification</span></span>
-<span id="cb35-8"><a></a>      <span class="co"># (1 = top)</span></span>
-<span id="cb35-9"><a></a>      <span class="at">vjust =</span> <span class="dv">1</span></span>
-<span id="cb35-10"><a></a>    )</span>
-<span id="cb35-11"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span> </span>
+<span id="cb36-3"><a href="#cb36-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb36-4"><a href="#cb36-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb36-5"><a href="#cb36-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb36-6"><a href="#cb36-6"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(</span>
+<span id="cb36-7"><a href="#cb36-7"></a>      <span class="co"># vertical justification</span></span>
+<span id="cb36-8"><a href="#cb36-8"></a>      <span class="co"># (1 = top)</span></span>
+<span id="cb36-9"><a href="#cb36-9"></a>      <span class="at">vjust =</span> <span class="dv">1</span></span>
+<span id="cb36-10"><a href="#cb36-10"></a>    )</span>
+<span id="cb36-11"><a href="#cb36-11"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements12-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1422,28 +1250,21 @@
 </section>
 <section id="remove-elements-entirely-element_blank" class="slide level2">
 <h2>Remove elements entirely: <code>element_blank()</code></h2>
-<p><br>
-</p>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb36-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb36-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb36-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb36-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb36-6"><a></a>    <span class="co"># all text gone</span></span>
-<span id="cb36-7"><a></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb36-8"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb37-3"><a href="#cb37-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb37-4"><a href="#cb37-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb37-5"><a href="#cb37-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb37-6"><a href="#cb37-6"></a>    <span class="co"># all text gone</span></span>
+<span id="cb37-7"><a href="#cb37-7"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb37-8"><a href="#cb37-8"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements13-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1453,26 +1274,21 @@
 <h2>Remove elements entirely: <code>element_blank()</code></h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb37-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb37-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb37-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb37-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb37-6"><a></a>    <span class="co"># no axis titles</span></span>
-<span id="cb37-7"><a></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb37-8"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb38-3"><a href="#cb38-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb38-4"><a href="#cb38-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb38-5"><a href="#cb38-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb38-6"><a href="#cb38-6"></a>    <span class="co"># no axis titles</span></span>
+<span id="cb38-7"><a href="#cb38-7"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb38-8"><a href="#cb38-8"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements14-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1482,27 +1298,22 @@
 <h2>Set background color: <code>element_rect()</code></h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb38-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb38-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb38-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb38-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb38-6"><a></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(</span>
-<span id="cb38-7"><a></a>      <span class="at">fill =</span> <span class="st">"aliceblue"</span></span>
-<span id="cb38-8"><a></a>    )</span>
-<span id="cb38-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb39-3"><a href="#cb39-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb39-4"><a href="#cb39-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb39-5"><a href="#cb39-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb39-6"><a href="#cb39-6"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(</span>
+<span id="cb39-7"><a href="#cb39-7"></a>      <span class="at">fill =</span> <span class="st">"aliceblue"</span></span>
+<span id="cb39-8"><a href="#cb39-8"></a>    )</span>
+<span id="cb39-9"><a href="#cb39-9"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements15-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1512,27 +1323,22 @@
 <h2>Set background color: <code>element_rect()</code></h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb39-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb39-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb39-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb39-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb39-6"><a></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(</span>
-<span id="cb39-7"><a></a>      <span class="at">fill =</span> <span class="st">"aliceblue"</span></span>
-<span id="cb39-8"><a></a>    )</span>
-<span id="cb39-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb40-3"><a href="#cb40-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb40-4"><a href="#cb40-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb40-5"><a href="#cb40-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb40-6"><a href="#cb40-6"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(</span>
+<span id="cb40-7"><a href="#cb40-7"></a>      <span class="at">fill =</span> <span class="st">"aliceblue"</span></span>
+<span id="cb40-8"><a href="#cb40-8"></a>    )</span>
+<span id="cb40-9"><a href="#cb40-9"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements16-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1542,28 +1348,23 @@
 <h2>Set background color: <code>element_rect()</code></h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb40-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb40-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb40-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb40-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb40-6"><a></a>    <span class="at">legend.box.background =</span> <span class="fu">element_rect</span>(</span>
-<span id="cb40-7"><a></a>      <span class="at">fill =</span> <span class="st">"aliceblue"</span>,</span>
-<span id="cb40-8"><a></a>      <span class="at">color =</span> <span class="st">"steelblue4"</span> <span class="co"># line color</span></span>
-<span id="cb40-9"><a></a>    )</span>
-<span id="cb40-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb41-4"><a href="#cb41-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb41-5"><a href="#cb41-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb41-6"><a href="#cb41-6"></a>    <span class="at">legend.box.background =</span> <span class="fu">element_rect</span>(</span>
+<span id="cb41-7"><a href="#cb41-7"></a>      <span class="at">fill =</span> <span class="st">"aliceblue"</span>,</span>
+<span id="cb41-8"><a href="#cb41-8"></a>      <span class="at">color =</span> <span class="st">"steelblue4"</span> <span class="co"># line color</span></span>
+<span id="cb41-9"><a href="#cb41-9"></a>    )</span>
+<span id="cb41-10"><a href="#cb41-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements17-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1573,29 +1374,24 @@
 <h2>Set background color: <code>element_rect()</code></h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb41-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb41-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb41-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb41-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb41-6"><a></a>    <span class="at">legend.box.background =</span> <span class="fu">element_rect</span>(</span>
-<span id="cb41-7"><a></a>      <span class="at">fill =</span> <span class="st">"aliceblue"</span>,</span>
-<span id="cb41-8"><a></a>      <span class="at">color =</span> <span class="st">"steelblue4"</span> <span class="co"># line color</span></span>
-<span id="cb41-9"><a></a>    ),</span>
-<span id="cb41-10"><a></a>    <span class="at">legend.box.margin =</span> <span class="fu">margin</span>(<span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>)</span>
-<span id="cb41-11"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb42-2"><a href="#cb42-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb42-3"><a href="#cb42-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb42-4"><a href="#cb42-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb42-5"><a href="#cb42-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb42-6"><a href="#cb42-6"></a>    <span class="at">legend.box.background =</span> <span class="fu">element_rect</span>(</span>
+<span id="cb42-7"><a href="#cb42-7"></a>      <span class="at">fill =</span> <span class="st">"aliceblue"</span>,</span>
+<span id="cb42-8"><a href="#cb42-8"></a>      <span class="at">color =</span> <span class="st">"steelblue4"</span> <span class="co"># line color</span></span>
+<span id="cb42-9"><a href="#cb42-9"></a>    ),</span>
+<span id="cb42-10"><a href="#cb42-10"></a>    <span class="at">legend.box.margin =</span> <span class="fu">margin</span>(<span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>)</span>
+<span id="cb42-11"><a href="#cb42-11"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements18-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1605,33 +1401,28 @@
 <h2>Move the legend: <code>legend.position</code></h2>
 <p><br>
 </p>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
-<span id="cb42-2"><a></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
-<span id="cb42-3"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb42-4"><a></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
-<span id="cb42-5"><a></a>  <span class="fu">theme</span>(</span>
-<span id="cb42-6"><a></a>    <span class="at">legend.box.background =</span> <span class="fu">element_rect</span>(</span>
-<span id="cb42-7"><a></a>      <span class="at">fill =</span> <span class="st">"aliceblue"</span>, </span>
-<span id="cb42-8"><a></a>      <span class="at">color =</span> <span class="st">"steelblue4"</span> <span class="co"># line color</span></span>
-<span id="cb42-9"><a></a>    ),</span>
-<span id="cb42-10"><a></a>    <span class="at">legend.box.margin =</span> <span class="fu">margin</span>(<span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>),</span>
-<span id="cb42-11"><a></a>    <span class="co"># relative position inside plot panel</span></span>
-<span id="cb42-12"><a></a>    <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb42-13"><a></a>    <span class="co"># justification relative to position</span></span>
-<span id="cb42-14"><a></a>    <span class="at">legend.justification =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb42-15"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-layout-panel" style="font-size: 70%;" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-
+<div class="quarto-layout-panel" style="font-size: 70%;">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a>  <span class="fu">aes</span>(flipper_length_mm, body_mass_g) <span class="sc">+</span></span>
+<span id="cb43-3"><a href="#cb43-3"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb43-4"><a href="#cb43-4"></a>  <span class="fu">theme_minimal_grid</span>() <span class="sc">+</span></span>
+<span id="cb43-5"><a href="#cb43-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb43-6"><a href="#cb43-6"></a>    <span class="at">legend.box.background =</span> <span class="fu">element_rect</span>(</span>
+<span id="cb43-7"><a href="#cb43-7"></a>      <span class="at">fill =</span> <span class="st">"aliceblue"</span>, </span>
+<span id="cb43-8"><a href="#cb43-8"></a>      <span class="at">color =</span> <span class="st">"steelblue4"</span> <span class="co"># line color</span></span>
+<span id="cb43-9"><a href="#cb43-9"></a>    ),</span>
+<span id="cb43-10"><a href="#cb43-10"></a>    <span class="at">legend.box.margin =</span> <span class="fu">margin</span>(<span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">7</span>),</span>
+<span id="cb43-11"><a href="#cb43-11"></a>    <span class="co"># relative position inside plot panel</span></span>
+<span id="cb43-12"><a href="#cb43-12"></a>    <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb43-13"><a href="#cb43-13"></a>    <span class="co"># justification relative to position</span></span>
+<span id="cb43-14"><a href="#cb43-14"></a>    <span class="at">legend.justification =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb43-15"><a href="#cb43-15"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output-display">
-<div>
-<figure>
 <p><img data-src="figure_design_slides_files/figure-revealjs/penguins-theme-elements19-1.png" width="960"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
@@ -1641,10 +1432,8 @@
 <h1>Exercise</h1>
 <p>Go to <a href="https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/7-custom-data-visualizations/#coding-exercise-7.2">https://elsherbini.github.io/durban-data-science-for-biology/materials/1-workshop1/7-custom-data-visualizations/#coding-exercise-7.2</a> and complete the Compound Figures exercise.</p>
 
-<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p><a href="index.html">back to module</a></p>
-</div>
 </div>
 </section>
     </div>
@@ -1674,6 +1463,7 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1973,27 +1763,10 @@
         // clear code selection
         e.clearSelection();
       });
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/elsherbini\.github\.io\/durban-data-science-for-biology\/");
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
-            }
-          }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -2003,17 +1776,8 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -2027,11 +1791,7 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
+          return note.innerHTML;
         });
       }
       const findCites = (el) => {
