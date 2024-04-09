@@ -842,26 +842,7 @@ ggplot(penguins) +
 :::
 
 ## Remove elements entirely: `element_blank()`
-\
 
-::: {style="font-size: 70%;" layout-ncol=2}
-```{r penguins-theme-elements13}
-#| eval: FALSE
-#| echo: TRUE
-ggplot(penguins) +
-  aes(flipper_length_mm, body_mass_g) +
-  geom_point(aes(color = species)) +
-  theme_minimal_grid() +
-  theme(
-    # all text gone
-    text = element_blank()
-  )
-```
-```{r penguins-theme-elements13}
-#| eval: TRUE
-#| echo: FALSE
-```
-:::
 
 ## Remove elements entirely: `element_blank()`
 \
