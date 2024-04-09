@@ -1,0 +1,8 @@
+---
+title: "welcome"
+format:
+  html:
+    toc: true
+---
+
+> Let's learn about the types of data we'll use for this workshop

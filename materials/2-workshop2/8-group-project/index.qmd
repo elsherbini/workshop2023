@@ -1,0 +1,33 @@
+---
+title: "Group Project"
+format:
+  html:
+    toc: true
+---
+
+For this group activity, the Group A will be analyzing the yogurt dataset and Group B will be analyzing the menstruation dataset.
+
+
+:::{.callout-note}
+
+test content  
+
+:::
+
+
+:::{.solutionbox}
+
+::::{.solutionbox-header}
+:::::{.solutionbox-icon}
+:::::
+test
+::::
+
+::::{.solutionbox-body}
+content
+::::
+
+:::
+
+
+<!-- {{< group_projects.qmd >}} -->
