@@ -39,24 +39,24 @@ toc: false
 |--------|--------|--------|
 | **Monday, April 22^nd^**  | | |
 | AM   | Course Introduction | Scott Handley (Wash U School of Medicine)|
-|    | Keynote | Jacques Ravel |
-|  | Microbiome Sample Processing and Library prep  | Lindsay |
+|    | Keynote | Sinaye Ngcapu |
+|  | Microbiome Sample Processing and Library prep  | Lindsay Droit (Wash U School of Medicine)|
 | PM   | R Refresher (<code> tidyverse</code> /summary tables/data visualization) | Scott Handley (Wash U School of Medicine)|
 | **Tuesday, April 23^th^**  |____________________________________________ |____________________________________________ |
-| AM   | 16S Data Preprocessing| Asavela|
-| PM | 16S Data Analysis pt. 1 | Elizabeth Costello |
+| AM   | 16S Data Preprocessing| Asavela Kama (CAPRISA)|
+| PM | 16S Data Analysis pt. 1 | Elizabeth Costello (Stanford University) |
 | **Wednesday, April 24^th^**  |____________________________________________ | ____________________________________________|
-| AM   | Group Activity session I  | Johnathan Shih |
- PM | 16S Data Analysis pt. 1 | Joseph Elsherbini |
+| AM   | Group Activity session I  | Johnathan Shih (Ragon Institute)|
+ PM | 16S Data Analysis pt. 1 | Joseph Elsherbini (Ragon Institute)|
 | **Thursday, April 25^th^**  |____________________________________________ | ____________________________________________|
-| AM   | VIRGO / Shotgun Metagenomics | Michael France|
-| PM   | Group Activity session II  | Johnathan Shih |
+| AM   | VIRGO / Shotgun Metagenomics | Michael France (UMD School of Medicine)|
+| PM   | Group Activity session II  | Johnathan Shih (Ragon Institute)|
 |Evening|Reception||
 | **Friday, April 26^th^**  |____________________________________________ | ____________________________________________|
-| AM   | Keynote | Sinaye Ngcapu (CERI Stellenbosch)|  
+| AM   | Keynote | Jacques Ravel (UMD Scool of Medicine)|  
 | | Group Activity review |  |  
 | PM | Group Presentations | Participants |
 |  | Dataset Demo |  |
-|  | Workshop Outro | Scott Handley |
+|  | Workshop Outro | Scott Handley (Wash U School of Medicine) |
 | |____________________________________________ |____________________________________________ |
 : <b>Schedule</b> {#tbl-1 .table-bordered .table-sm}
