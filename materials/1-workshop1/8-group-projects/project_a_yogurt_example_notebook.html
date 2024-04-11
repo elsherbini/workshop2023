@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -99,16 +106,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-sidebar docked nav-fixed fullcontent">
 
-
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Data Science for Biology Workshop Series</span>
     </a>
@@ -120,51 +153,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../installation-instructions.html" rel="" target="">
- <span class="menu-text">Installation</span></a>
+    <a class="nav-link" href="../../../installation-instructions.html"> 
+<span class="menu-text">Installation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../datasets.html" rel="" target="">
- <span class="menu-text">Datasets</span></a>
+    <a class="nav-link" href="../../../datasets.html"> 
+<span class="menu-text">Datasets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../resources.html" rel="" target="">
- <span class="menu-text">Resources</span></a>
+    <a class="nav-link" href="../../../resources.html"> 
+<span class="menu-text">Resources</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../past_workshops.html" rel="" target="">
- <span class="menu-text">Past Workshops</span></a>
+    <a class="nav-link" href="../../../past_workshops.html"> 
+<span class="menu-text">Past Workshops</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/elsherbini/durban-data-science-for-biology" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/elsherbini/durban-data-science-for-biology"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Yogurt study data analysis</li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Yogurt study data analysis</li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
@@ -286,7 +319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/2-workshop2/8-group-project/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Group Project</b> Applying what you’ve learned to new data</span></a>
+ <span class="menu-text"><b>Group Activity:</b> Applying what you’ve learned to new data</span></a>
   </div>
 </li>
       </ul>
@@ -298,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     
 <!-- main -->
@@ -319,7 +352,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="section" class="level2">
 <h2 class="anchored" data-anchor-id="section"></h2>
@@ -533,7 +568,11 @@ dbl (2): days_since_last_sex, age
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>g_age <span class="sc">+</span> g_days_since_last_sex <span class="sc">+</span> g_birth_control <span class="sc">+</span> g_education</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="768"></p>
+<div>
+<figure class="figure">
+<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -642,24 +681,24 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
 simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): cannot compute exact p-value with ties</code></pre>
 </div>
 <div class="cell-output-display">
-
-<div id="ccvcmhnack" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ccvcmhnack table {
+<div>
+<div id="thcwakylup" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#thcwakylup table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ccvcmhnack thead, #ccvcmhnack tbody, #ccvcmhnack tfoot, #ccvcmhnack tr, #ccvcmhnack td, #ccvcmhnack th {
+#thcwakylup thead, #thcwakylup tbody, #thcwakylup tfoot, #thcwakylup tr, #thcwakylup td, #thcwakylup th {
   border-style: none;
 }
 
-#ccvcmhnack p {
+#thcwakylup p {
   margin: 0;
   padding: 0;
 }
 
-#ccvcmhnack .gt_table {
+#thcwakylup .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -685,12 +724,12 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   border-left-color: #D3D3D3;
 }
 
-#ccvcmhnack .gt_caption {
+#thcwakylup .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ccvcmhnack .gt_title {
+#thcwakylup .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -702,7 +741,7 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   border-bottom-width: 0;
 }
 
-#ccvcmhnack .gt_subtitle {
+#thcwakylup .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -714,7 +753,7 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   border-top-width: 0;
 }
 
-#ccvcmhnack .gt_heading {
+#thcwakylup .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -726,13 +765,13 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   border-right-color: #D3D3D3;
 }
 
-#ccvcmhnack .gt_bottom_border {
+#thcwakylup .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ccvcmhnack .gt_col_headings {
+#thcwakylup .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -747,7 +786,7 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   border-right-color: #D3D3D3;
 }
 
-#ccvcmhnack .gt_col_heading {
+#thcwakylup .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -767,7 +806,7 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   overflow-x: hidden;
 }
 
-#ccvcmhnack .gt_column_spanner_outer {
+#thcwakylup .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -779,15 +818,15 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   padding-right: 4px;
 }
 
-#ccvcmhnack .gt_column_spanner_outer:first-child {
+#thcwakylup .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ccvcmhnack .gt_column_spanner_outer:last-child {
+#thcwakylup .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ccvcmhnack .gt_column_spanner {
+#thcwakylup .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -799,11 +838,11 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   width: 100%;
 }
 
-#ccvcmhnack .gt_spanner_row {
+#thcwakylup .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ccvcmhnack .gt_group_heading {
+#thcwakylup .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -829,7 +868,7 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   text-align: left;
 }
 
-#ccvcmhnack .gt_empty_group_heading {
+#thcwakylup .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -844,15 +883,15 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   vertical-align: middle;
 }
 
-#ccvcmhnack .gt_from_md > :first-child {
+#thcwakylup .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ccvcmhnack .gt_from_md > :last-child {
+#thcwakylup .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ccvcmhnack .gt_row {
+#thcwakylup .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -871,7 +910,7 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   overflow-x: hidden;
 }
 
-#ccvcmhnack .gt_stub {
+#thcwakylup .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -884,7 +923,7 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   padding-right: 5px;
 }
 
-#ccvcmhnack .gt_stub_row_group {
+#thcwakylup .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -898,15 +937,15 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   vertical-align: top;
 }
 
-#ccvcmhnack .gt_row_group_first td {
+#thcwakylup .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ccvcmhnack .gt_row_group_first th {
+#thcwakylup .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ccvcmhnack .gt_summary_row {
+#thcwakylup .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -916,16 +955,16 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   padding-right: 5px;
 }
 
-#ccvcmhnack .gt_first_summary_row {
+#thcwakylup .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ccvcmhnack .gt_first_summary_row.thick {
+#thcwakylup .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ccvcmhnack .gt_last_summary_row {
+#thcwakylup .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -935,7 +974,7 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   border-bottom-color: #D3D3D3;
 }
 
-#ccvcmhnack .gt_grand_summary_row {
+#thcwakylup .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -945,7 +984,7 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   padding-right: 5px;
 }
 
-#ccvcmhnack .gt_first_grand_summary_row {
+#thcwakylup .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -955,7 +994,7 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   border-top-color: #D3D3D3;
 }
 
-#ccvcmhnack .gt_last_grand_summary_row_top {
+#thcwakylup .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -965,11 +1004,11 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   border-bottom-color: #D3D3D3;
 }
 
-#ccvcmhnack .gt_striped {
+#thcwakylup .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ccvcmhnack .gt_table_body {
+#thcwakylup .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -978,7 +1017,7 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   border-bottom-color: #D3D3D3;
 }
 
-#ccvcmhnack .gt_footnotes {
+#thcwakylup .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -992,7 +1031,7 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   border-right-color: #D3D3D3;
 }
 
-#ccvcmhnack .gt_footnote {
+#thcwakylup .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1001,7 +1040,7 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   padding-right: 5px;
 }
 
-#ccvcmhnack .gt_sourcenotes {
+#thcwakylup .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1015,7 +1054,7 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   border-right-color: #D3D3D3;
 }
 
-#ccvcmhnack .gt_sourcenote {
+#thcwakylup .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1023,127 +1062,165 @@ simpleWarning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): canno
   padding-right: 5px;
 }
 
-#ccvcmhnack .gt_left {
+#thcwakylup .gt_left {
   text-align: left;
 }
 
-#ccvcmhnack .gt_center {
+#thcwakylup .gt_center {
   text-align: center;
 }
 
-#ccvcmhnack .gt_right {
+#thcwakylup .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ccvcmhnack .gt_font_normal {
+#thcwakylup .gt_font_normal {
   font-weight: normal;
 }
 
-#ccvcmhnack .gt_font_bold {
+#thcwakylup .gt_font_bold {
   font-weight: bold;
 }
 
-#ccvcmhnack .gt_font_italic {
+#thcwakylup .gt_font_italic {
   font-style: italic;
 }
 
-#ccvcmhnack .gt_super {
+#thcwakylup .gt_super {
   font-size: 65%;
 }
 
-#ccvcmhnack .gt_footnote_marks {
+#thcwakylup .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ccvcmhnack .gt_asterisk {
+#thcwakylup .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ccvcmhnack .gt_indent_1 {
+#thcwakylup .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ccvcmhnack .gt_indent_2 {
+#thcwakylup .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ccvcmhnack .gt_indent_3 {
+#thcwakylup .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ccvcmhnack .gt_indent_4 {
+#thcwakylup .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ccvcmhnack .gt_indent_5 {
+#thcwakylup .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Characteristic</strong>"><strong>Characteristic</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>unchanged_diet</strong>, N = 25<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>unchanged_diet</strong>, N = 25<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>yogurt</strong>, N = 26<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>yogurt</strong>, N = 26<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>p-value</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>"><strong>p-value</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="label" class="gt_row gt_left">days_since_last_sex</td>
-<td headers="stat_1" class="gt_row gt_center">6 (3, 10)</td>
-<td headers="stat_2" class="gt_row gt_center">5 (3, 11)</td>
-<td headers="p.value" class="gt_row gt_center">0.8</td></tr>
-    <tr><td headers="label" class="gt_row gt_left">birth_control</td>
-<td headers="stat_1" class="gt_row gt_center"><br></td>
-<td headers="stat_2" class="gt_row gt_center"><br></td>
-<td headers="p.value" class="gt_row gt_center">0.017</td></tr>
-    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Depoprovera</td>
-<td headers="stat_1" class="gt_row gt_center">8 (32%)</td>
-<td headers="stat_2" class="gt_row gt_center">17 (65%)</td>
-<td headers="p.value" class="gt_row gt_center"><br></td></tr>
-    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;no hormonal birth control</td>
-<td headers="stat_1" class="gt_row gt_center">17 (68%)</td>
-<td headers="stat_2" class="gt_row gt_center">9 (35%)</td>
-<td headers="p.value" class="gt_row gt_center"><br></td></tr>
-    <tr><td headers="label" class="gt_row gt_left">age</td>
-<td headers="stat_1" class="gt_row gt_center">30.0 (28.0, 33.0)</td>
-<td headers="stat_2" class="gt_row gt_center">31.0 (29.0, 32.8)</td>
-<td headers="p.value" class="gt_row gt_center">0.6</td></tr>
-    <tr><td headers="label" class="gt_row gt_left">education</td>
-<td headers="stat_1" class="gt_row gt_center"><br></td>
-<td headers="stat_2" class="gt_row gt_center"><br></td>
-<td headers="p.value" class="gt_row gt_center">0.8</td></tr>
-    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;grade 10-12, matriculated</td>
-<td headers="stat_1" class="gt_row gt_center">6 (24%)</td>
-<td headers="stat_2" class="gt_row gt_center">4 (15%)</td>
-<td headers="p.value" class="gt_row gt_center"><br></td></tr>
-    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;grade 10-12, not matriculated</td>
-<td headers="stat_1" class="gt_row gt_center">9 (36%)</td>
-<td headers="stat_2" class="gt_row gt_center">12 (46%)</td>
-<td headers="p.value" class="gt_row gt_center"><br></td></tr>
-    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;less than grade 9</td>
-<td headers="stat_1" class="gt_row gt_center">4 (16%)</td>
-<td headers="stat_2" class="gt_row gt_center">5 (19%)</td>
-<td headers="p.value" class="gt_row gt_center"><br></td></tr>
-    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;post-secondary</td>
-<td headers="stat_1" class="gt_row gt_center">6 (24%)</td>
-<td headers="stat_2" class="gt_row gt_center">5 (19%)</td>
-<td headers="p.value" class="gt_row gt_center"><br></td></tr>
-  </tbody>
-  
-  <tfoot class="gt_footnotes">
-    <tr>
-      <td class="gt_footnote" colspan="4"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Median (IQR); n (%)</td>
-    </tr>
-    <tr>
-      <td class="gt_footnote" colspan="4"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Wilcoxon rank sum test; Pearson’s Chi-squared test; Fisher’s exact test</td>
-    </tr>
-  </tfoot>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header gt_col_headings">
+<th id="<strong>Characteristic</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
+<th id="<strong>unchanged_diet</strong>, N = 25<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>unchanged_diet</strong>, N = 25<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+<th id="<strong>yogurt</strong>, N = 26<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>yogurt</strong>, N = 26<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+<th id="<strong>p-value</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">days_since_last_sex</td>
+<td class="gt_row gt_center" headers="stat_1">6 (3, 10)</td>
+<td class="gt_row gt_center" headers="stat_2">5 (3, 11)</td>
+<td class="gt_row gt_center" headers="p.value">0.8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">birth_control</td>
+<td class="gt_row gt_center" headers="stat_1"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2"><br>
+</td>
+<td class="gt_row gt_center" headers="p.value">0.017</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Depoprovera</td>
+<td class="gt_row gt_center" headers="stat_1">8 (32%)</td>
+<td class="gt_row gt_center" headers="stat_2">17 (65%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;no hormonal birth control</td>
+<td class="gt_row gt_center" headers="stat_1">17 (68%)</td>
+<td class="gt_row gt_center" headers="stat_2">9 (35%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">age</td>
+<td class="gt_row gt_center" headers="stat_1">30.0 (28.0, 33.0)</td>
+<td class="gt_row gt_center" headers="stat_2">31.0 (29.0, 32.8)</td>
+<td class="gt_row gt_center" headers="p.value">0.6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">education</td>
+<td class="gt_row gt_center" headers="stat_1"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2"><br>
+</td>
+<td class="gt_row gt_center" headers="p.value">0.8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;grade 10-12, matriculated</td>
+<td class="gt_row gt_center" headers="stat_1">6 (24%)</td>
+<td class="gt_row gt_center" headers="stat_2">4 (15%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;grade 10-12, not matriculated</td>
+<td class="gt_row gt_center" headers="stat_1">9 (36%)</td>
+<td class="gt_row gt_center" headers="stat_2">12 (46%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;less than grade 9</td>
+<td class="gt_row gt_center" headers="stat_1">4 (16%)</td>
+<td class="gt_row gt_center" headers="stat_2">5 (19%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;post-secondary</td>
+<td class="gt_row gt_center" headers="stat_1">6 (24%)</td>
+<td class="gt_row gt_center" headers="stat_2">5 (19%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+</tbody><tfoot class="gt_footnotes">
+<tr class="odd">
+<td colspan="4" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Median (IQR); n (%)</td>
+</tr>
+<tr class="even">
+<td colspan="4" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Wilcoxon rank sum test; Pearson’s Chi-squared test; Fisher’s exact test</td>
+</tr>
+</tfoot>
+
 </table>
+
+</div>
 </div>
 </div>
 </div>
@@ -1247,7 +1324,11 @@ dbl (3): qpcr_bacteria, qpcr_crispatus, qpcr_iners
 <span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>) <span class="sc">+</span></span>
 <span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(variable <span class="sc">~</span> .)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>We see that we may have to transform our data. We can try to see what a log transformation would do:</p>
@@ -1264,7 +1345,11 @@ dbl (3): qpcr_bacteria, qpcr_crispatus, qpcr_iners
 (`stat_bin()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Notice that we got a warning that the log transformation introduced infinite values. That’s because some values in <em>L. crispatus</em> and <em>L. iners</em> are 0 and log(0) = -<span class="math inline">\(\infty\)</span>.</p>
@@ -1297,7 +1382,11 @@ dbl (3): qpcr_bacteria, qpcr_crispatus, qpcr_iners
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="st">"was zero"</span>, <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"gray40"</span>, <span class="st">"gray60"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"no"</span>,<span class="st">"yes"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This gives us a better idea of the overall distributions of the variables describing the microbiota.</p>
@@ -1416,7 +1505,11 @@ chr (4): pid, time_point, arm, sample_id
 <span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribution of qPCR values at BASELINE by arm"</span>) <span class="sc">+</span></span>
 <span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>It looks like almost no one had <em>L. crispatus</em> before intervention but that there might be a small difference in the <em>L. iners</em> amounts.</p>
@@ -1465,7 +1558,11 @@ Caused by warning in `wilcox.test.default()`:
 <span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
 <span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribution of qPCR values AFTER INTERVENTION by arm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Visually, it looks like the yogurt might have had an effect on <em>L. crispatus.</em></p>
@@ -1487,7 +1584,11 @@ Caused by warning in `wilcox.test.default()`:
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Let’s now compute the median values in both arms and test our hypotheses:</p>
@@ -1586,7 +1687,11 @@ Caused by warning in `wilcox.test.default()`:
 <span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
 <span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"L. crispatus qPCR values at both visits in both arms"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>So, we see, comparing the yogurt and the control group, that, in the yogurt arm, there are more people who ended up having at least <em>some</em> <em>L. crispatus</em>. Whether that’s enough to restore a healthy vaginal microbiota is something to discuss with microbiota experts so one could decide whether it would be worth designing a new, better powered, study to refine our understanding of the effects of eating yogurt.</p>
@@ -1610,7 +1715,11 @@ Caused by warning in `wilcox.test.default()`:
 <span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> arm_colors) <span class="sc">+</span></span>
 <span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(variable <span class="sc">~</span> ., <span class="at">scales =</span> <span class="st">"free"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>We see huge difference between the visits, but not so much between the arms. We might conclude that the antibiotic drove most of these effects.</p>
@@ -1631,7 +1740,11 @@ Caused by warning in `wilcox.test.default()`:
 <pre><code>Joining with `by = join_by(pid, arm)`</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="cell">
@@ -1645,7 +1758,11 @@ Caused by warning in `wilcox.test.default()`:
 <pre><code>Joining with `by = join_by(pid, arm)`</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="project_a_yogurt_example_notebook_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Visually, we don’t see consistent effects of the birth control on the outcomes.</p>
@@ -1737,10 +1854,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/elsherbini\.github\.io\/durban-data-science-for-biology\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1750,8 +1884,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1763,7 +1906,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1807,6 +2073,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1832,6 +2099,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1894,13 +2187,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">© 2023. Huge thanks to <a href="https://github.com/andrewpbray">Andrew P. Bray</a> and <a href="https://github.com/clauswilke">Claus O. Wilke</a> for open source code and sharing content.</div>   
+    <div class="nav-footer-left">
+<p>© 2023. Huge thanks to <a href="https://github.com/andrewpbray">Andrew P. Bray</a> and <a href="https://github.com/clauswilke">Claus O. Wilke</a> for open source code and sharing content.</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
-    <div class="nav-footer-right">This page is built with <i class="fa-solid fa-heart" aria-label="heart"></i> and <a href="https://quarto.org/">Quarto</a>.</div>
+    <div class="nav-footer-right">
+<p>This page is built with <i class="fa-solid fa-heart" aria-label="heart"></i> and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
   </div>
 </footer>
+
 
 
 

@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data Science for Biology Workshop Series - test</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Data Science for Biology Workshop Series</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../installation-instructions.html"> 
+<span class="menu-text">Installation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../datasets.html"> 
+<span class="menu-text">Datasets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../resources.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../past_workshops.html"> 
+<span class="menu-text">Past Workshops</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/elsherbini/durban-data-science-for-biology"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">test</li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text"><em>1. Reproducible Data Analysis with R</em></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/0-welcome/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 0:</b> Welcome to the workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/1-data-generation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 1</b>: How data analysis is informed by data generation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/2-intro-to-r/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 2</b>: Intro to R, Rstudio, and Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/3-tidyverse-101/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 3</b>: Intro to data visualization and data wrangling with the <code>tidyverse</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/4-tidyverse-201/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 4</b>: Data wrangling and more data visualization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/5-tableone/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 5</b>: <code>tableone</code> and its Basic Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/6-hypothesis-testing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 6</b>: Data transformations and more statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/7-custom-data-visualizations/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 7</b>: Customizing data visualizations using <code>colorspace</code>, <code>ggplot2</code>, and <code>patchwork</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/8-group-projects/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Group Project</b> -Applying what you’ve learned to new data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text"><b>2. Working with High Dimensional Data in R - The Human Microbiome</b></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/1-introduction/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 0:</b> Welcome and Course Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/2-r-refresher/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 1</b>: R Refresher</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/3-dada2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 2</b>: Dada2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/4-16s-pt1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 3</b>: 16S analysis pt.1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/5-16s-pt2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 4</b>: 16S analysis pt.2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/6-virgo/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 5</b>: VIRGO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/7-keynote/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 6</b>: Keynote</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/8-group-project/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Group Activity:</b> Applying what you’ve learned to new data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text"><em>3. Bioinformatics and Transcriptomics Data Analysis - Coming October 2024</em></span></span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">test</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="before-the-workshop-installing-r-and-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="before-the-workshop-installing-r-and-rstudio">Before the workshop: Installing R and RStudio</h2>
+<p>Please install R and RStudio on your laptop. If you already have R and Rstudio installed, please make sure they are up-to date. Please install <code>R version 4.3.1</code> and <code>RStudio version 2023.09.0</code> <a href="installation-instructions.qmd">Click here for instructions on installing R and RStudio</a></p>
+</section>
+<section id="textbooks" class="level2">
+<h2 class="anchored" data-anchor-id="textbooks">Textbooks</h2>
+<p><img src="images/R_for_data_science.png" class="img-fluid quarto-figure quarto-figure-left" style="width:15.0%"><br>
+R for Data Science: Import, Tidy, Transform, Visualize, and Model Data by Garrett Grolemund and Hadley Wickham<br>
+<a href="https://r4ds.had.co.nz/">Link</a></p>
+</section>
+<section id="definitions-from-glosario" class="level2">
+<h2 class="anchored" data-anchor-id="definitions-from-glosario">Definitions from Glosario</h2>
+<p>Further definitions at <a href="https://glosario.carpentries.org/">Glosario</a></p>
+<p><strong>Argument</strong>: one of possibly several expressions that are passed to a function. Oftentimes parameter and arugument are used interchangably, even though techincally parameter refers to the variable and argument refers to the value.</p>
+<p><strong>Assignment operator</strong>: Symbol that assigns values on the right to an object on the left. Looks like &lt;-. Keyboard shortcut is Alt + -</p>
+<p><strong>Comment</strong>: Text written in a script that is not treated as code to be run, but rather as text that describes what the code is doing. These are usually short notes, beginning with a #</p>
+<p><strong>Comprehensive R Archive Network (CRAN)</strong>: A public repository of R packages.</p>
+<p><strong>Data frame</strong>: A two-dimensional data structure for storing tabular data in memory. Rows represent records and columns represent variables.</p>
+<p><strong>Function</strong>: A code block which gathers a sequence of operations into a whole, preserving it for ongoing use by defining a set of tasks that takes zero or more required and optional arguments as inputs and returns expected outputs (return values), if any. Functions enable repeating these defined tasks with one command, known as a function call.</p>
+<p><strong>NA</strong>: A special value used to represent data that is not available.</p>
+<p><strong>Pipe operator</strong>: The %&gt;% used to make the output of one function the input of the next.</p>
+<p><strong>Package</strong>: A collection of code, data, and documentation that can be distributed and re-used. Also referred to in some languages as a library or module.</p>
+<p><strong>Parameter</strong>: A variable specified in a function definition whose value is passed to the function when the function is called. Parameters and arguments are distinct, but related concepts. Parameters are variables and arguments are the values assigned to those variables. In practice though these terms are often used interchangeably.</p>
+<p><strong>Positional argument</strong>: An argument to a function that gets its value according to its place in the function’s definition, as opposed to a named argument that is explicitly matched by name.</p>
+<p><strong>Reproducible research</strong>: The practice of describing and documenting research results in such a way that another researcher or person can re-run the analysis code on the same data to obtain the same result.</p>
+<p><strong>Tibble</strong>: A modern replacement for R’s data frame, which stores tabular data in columns and rows, defined and used in the tidyverse. Almost always when you are working with a data frame, you are actually working with a tibble.</p>
+<p><strong>Tidy data</strong>: Tabular data that satisfies three conditions that facilitate initial cleaning, and later exploration and analysis—(1) each variable forms a column, (2) each observation forms a row, and (3) each type of observation unit forms a table.</p>
+<p><strong>Tidyverse</strong>: A collection of R packages for operating on tabular data in consistent ways.</p>
+<p><strong>Variable</strong>: A name in a program that has some data associated with it. A variable’s value can be changed after definition.</p>
+<p><strong>Vector</strong>: A sequence of values that have all the same type. Vectors are the fundamental data structure in R; a scalar is just a vector with exactly one element.</p>
+</section>
+<section id="incredible-list-of-resources-for-learning" class="level1">
+<h1>Incredible list of resources for learning</h1>
+<p>Reproduced from <a href="https://github.com/timyers/r-learning-resources-for-genomics/">Tim Myer’s incredible r-learning-resources-for-genomics</a></p>
+<p>We’ve added <i class="fa-solid fa-star" aria-label="star"></i> to some of the best resources for everyone on this list.</p>
+<!-- badges: start -->
+<p><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg?style=flat-square" class="img-fluid" alt="Lifecycle badge"> <a href="https://github.com/login?return_to=%2Ftimyers"><img src="https://img.shields.io/github/followers/timyers?label=Follow%20me&amp;style=flat-square&amp;logo=github&amp;logoColor=white&amp;colorB=4CAF50.png" class="img-fluid" alt="GitHub followers"></a> <a href="https://twitter.com/tim_myers"><img src="https://img.shields.io/twitter/follow/tim_myers?label=Follow%20%40tim_myers&amp;style=flat-square&amp;labelColor=2196F3&amp;logo=twitter&amp;logoColor=white&amp;colorB=0D47A1.png" class="img-fluid" alt="Twitter Follow"></a> <a href="https://github.com/timyers/r-learning-resources-for-genomics/issues"><img src="https://img.shields.io/badge/contributions-welcome-blueviolet.svg?style=flat-square" class="img-fluid" alt="contributions"></a> <a href="https://creativecommons.org/publicdomain/zero/1.0/"><img src="https://img.shields.io/badge/license-CC0%201.0-blue.svg?style=flat-square" class="img-fluid" alt="License"></a></p>
+<!-- badges: end -->
+<p><br></p>
+<blockquote class="blockquote">
+<p>The <code>R Learning Resources for Genomics</code> repository is a curated collection of free resources to help the aspiring computational biologist learn about the <code>R</code> programming language. <code>R</code> is a free and open source language for statistical analyses and graphics. Biology and medicine generate more data than ever before. Data analysis skills and understanding of computational genomics is more important than ever.</p>
+</blockquote>
+<p align="center">
+<img src="images/r_rollercoaster.png" width="75%" height="75%">
+</p>
+<p>Illustration by <a href="https://github.com/allisonhorst/stats-illustrations">Allison Horst</a> - CC BY 4.0</p>
+<section id="getting-started-with-r" class="level3">
+<h3 class="anchored" data-anchor-id="getting-started-with-r">Getting Started with <code>R</code></h3>
+<ul>
+<li><a href="https://education.rstudio.com/learn/">RStudio Education</a> - RStudio provides free and open source tools for <code>R</code>, including educational tools. Choose your <code>R</code> learning path: beginner, intermediate, expert. Resources include cheatsheets, books and tutorials.</li>
+<li><a href="https://www.youtube.com/watch?v=wfshEa_F2FQ">How to Get Started with R: A Video</a> - In this brief YouTube video, you will find all the essentials you need to get started with the <code>R</code> Programming Language. Make sure to download <code>R</code> and RStudio to your local machine first. Brought to you by the Duke Center for Computational Thinking.</li>
+<li><a href="https://adv-r.hadley.nz/index.html"><i class="fa-solid fa-star" aria-label="star"></i> R for Data Science (R4DS)</a> - This book by Hadley Wickham will teach you how to do data science with <code>R</code>. You’ll learn how to get your data into <code>R</code>, get it into the most useful structure, transform it, visualise it and model it. It’s designed to take you from knowing nothing about <code>R</code> or the tidyverse (see below) to having all the basic tools of data science at your fingertips. <a href="https://jrnold.github.io/r4ds-exercise-solutions/">Find exercise solutions for R4DS here.</a></li>
+<li><a href="http://r-guide.steveharoz.com/">A Succinct Intro to R</a> - This online book by Steve Haroz is a short introduction to the <code>R</code> language. It assumes you are familiar with programing concepts but want to learn <code>R</code>.</li>
+<li><a href="https://rafalab.github.io/dsbook/">Introduction to Data Science</a> - This book by Rafael A. Irizarry which started out as the class notes used in the HarvardX Data Science Series introduces concepts and skills that can help you tackle real-world data analysis challenges.</li>
+<li><a href="https://bookdown.org/jgscott/DSGI/">Data Science in R: A Gentle Introduction</a> - This online book is structured as a series of walk-through lessons in <code>R</code> that will have you doing real data science in no time.</li>
+<li><a href="https://bookdown.org/f_lennert/introduction-to-r/">An(other) introduction to R</a> - An(other) gentle introduction to <code>R</code> and how you can use it to work with data.</li>
+<li><a href="https://cran.r-project.org/doc/manuals/r-devel/R-intro.html">An Introduction to R</a> - A basic introduction to <code>R</code>. Official CRAN documentation.</li>
+<li><a href="https://swirlstats.com/">Swirl</a> - Learn <code>R</code>, in <code>R</code>. <code>Swirl</code> teaches you <code>R</code> programming and data science interactively, at your own pace, and right in the <code>R</code> console.</li>
+<li><a href="https://data-flair.training/blogs/r-tutorials-home/">Data Flair</a> - The tutorials are grouped by skill level (beginner, intermediate, expert).</li>
+<li><a href="https://compgenomr.github.io/book/index.html">Computational Genomics with R</a> - The aim of this online book is to provide the fundamentals for data analysis for genomics. It contains practical and theoretical aspects of computational genomics. Since computational genomics is interdisciplinary, this book aims to be accessible for biologists, medical scientists, computer scientists and people from other quantitative backgrounds.</li>
+<li><a href="http://swcarpentry.github.io/r-novice-gapminder/">R for Reproducible Scientific Analysis</a> - The goal of <code>R for Reproducible Scientific Analysis</code> is to teach novice programmers to write modular code and best practices for using <code>R</code> for data analysis.</li>
+<li><a href="https://www.datamentor.io/r-programming/examples/">R Programming Examples</a> - This web resource contains examples on basic concepts of <code>R</code> programming.</li>
+<li><a href="https://github.com/etmckinley/Coffey-Lab-R-Tutorial">Using R for Common Scientific Tasks</a> - <code>R</code> tutorial for common scientific data analysis and visualization tasks. View slides related to this tutorial here: (https://raw.githack.com/etmckinley/Coffey-Lab-R-Tutorial/main/R-tutorial-xaringnan.html).</li>
+<li><a href="https://www.r-bloggers.com/2022/02/r-graphical-user-interface-comparison/">R Graphical User Interface Comparison</a> - A comparison of Graphical User interfaces for <code>R</code> posted on February 9, 2022 by Bob Muenchen in R bloggers.</li>
+<li><a href="https://socviz.co/appendix.html?s=09#a-little-more-about-r"><i class="fa-solid fa-star" aria-label="star"></i> How to read an R help page</a> - “How to read an <code>R</code> help page” taken from <a href="https://socviz.co/index.html#preface">Data Visualization - A practical introduction</a> by Kieran Healy.</li>
+</ul>
+<hr>
+</section>
+<section id="learn-the-tidyverse" class="level3">
+<h3 class="anchored" data-anchor-id="learn-the-tidyverse">Learn the Tidyverse</h3>
+<ul>
+<li><a href="https://www.tidyverse.org/">Tidyverse</a> - The tidyverse is a collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.</li>
+<li><a href="https://adv-r.hadley.nz/index.html"><i class="fa-solid fa-star" aria-label="star"></i> R for Data Science (R4DS)</a> - This book by Hadley Wickham will teach you how to do data science with <code>R</code>. You’ll learn how to get your data into <code>R</code>, get it into the most useful structure, transform it, visualise it and model it. It’s designed to take you from knowing nothing about <code>R</code> or the tidyverse to having all the basic tools of data science at your fingertips. <a href="https://jrnold.github.io/r4ds-exercise-solutions/">Find exercise solutions for R4DS here.</a></li>
+<li><a href="https://www.tidyverse.org/blog/2021/08/teach-tidyverse-2021/">Teaching the tidyverse in 2021</a> - A new blog post for to update teaching the <code>tidyverse</code> in 2021, by Mine Çetinkaya-Rundel.</li>
+<li><a href="https://www.rstudio.com/resources/cheatsheets/"><i class="fa-solid fa-star" aria-label="star"></i> RStudio Cheatsheets</a> - <code>RStudio</code> cheatsheets make it easy to use some of our favorite <code>R</code> packages.</li>
+<li><a href="https://moderndive.com/index.html">Statistical Inference via Data Science: A ModernDive into R and the Tidyverse</a> - “Help! I’m new to <code>R</code> and <code>RStudio</code> and I need to learn them! What do I do?” If you’re asking yourself this, this book is for you.</li>
+<li><a href="https://ggplot2-book.org/index.html"><i class="fa-solid fa-star" aria-label="star"></i> ggplot2: elegant graphics for data science</a> - This book by Hadley Wickham goes into greater depth into the <code>ggplot2</code> visualisation system. <code>ggplot2</code> is an <code>R</code> package for producing statistical, or data, graphics.</li>
+<li><a href="https://www.cedricscherer.com/2019/05/17/the-evolution-of-a-ggplot-ep.-1/">The Evolution of a ggplot</a> - In this blog post, Cédric Scherer shows you how to turn a default ggplot into a plot that visualizes information in an appealing and easily understandable way.</li>
+<li><a href="https://z3tt.github.io/OutlierConf2021/?s=09">ggplot Wizardry Hands-On</a> - A Step-by-Step tutorial: Tricks and secrets for a beautiful plot in <code>R</code>, by Cédric Scherer.</li>
+<li><a href="https://www.tidymodels.org/">Tidymodels</a> - The tidymodels framework is a collection of packages for modeling and machine learning using tidyverse principles.</li>
+<li><a href="https://www.tmwr.org/?s=09">Tidy Modeling with R</a> - This book is a guide to using a new collection of software in the <code>R</code> programming language for model building.</li>
+<li><a href="https://github.com/jtlandis/ggside">ggside</a> - The <code>R</code> package <code>ggside</code> expands on the <code>ggplot2</code> package. This package allows the user to add graphical information about one of the main panel’s axis.</li>
+<li><a href="https://bjnnowak.netlify.app/2021/09/15/r-pca-with-tidyverse/?s=09">Principal Component Analysis (PCA) with tidyverse</a> - A blog post by Benjamin Nowak to show how to use <code>tidyverse</code> tools and syntax to perform PCA.</li>
+</ul>
+<hr>
+</section>
+<section id="beyond-the-basics" class="level3">
+<h3 class="anchored" data-anchor-id="beyond-the-basics">Beyond the basics</h3>
+<ul>
+<li><a href="https://rstats.wtf/">What They Forgot to Teach You About R</a> - Free online resource by Jenny Bryan and Jim Hester. The material is based on in-person workshops that focused on building holistic and project-oriented workflows that address the most common sources of friction in data analysis, outside of doing the statistical analysis itself.</li>
+<li><a href="https://adv-r.hadley.nz/index.html">Advanced R (2nd Edition)</a> - This is the website for the 2nd edition of <code>Advanced R</code>, a book in Chapman &amp; Hall’s R Series. The book is designed primarily for R users who want to improve their programming skills and understanding of the language. It should also be useful for programmers coming to R from other languages, as help you to understand why <code>R</code> works the way it does.</li>
+<li><a href="https://r-pkgs.org/index.html">R Packages</a> - The goal of this book, by Hadley Wickham and Jenny Bryan, is to teach you how to develop <code>R</code> packages so that you can write your own.</li>
+<li><a href="https://www.bigbookofr.com/index.html">Big Book of R</a> - An online book by Oscar Baruffa and contributors that lists 200+ <code>R</code> books, most are free.</li>
+<li><a href="http://swcarpentry.github.io/r-novice-gapminder/">R for Reproducible Scientific Analysis</a> - The goal of <code>R for Reproducible Scientific Analysis</code> is to teach novice programmers to write modular code and best practices for using <code>R</code> for data analysis.</li>
+<li><a href="infoworld.com/article/3411819/do-more-with-r-video-tutorials.html">“Do More with R” video tutorials</a> - An article by Sharon Machlis about quick video tips on useful things you can do in <code>R</code>. Most videos are shorter than 10 minutes.</li>
+<li><a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/">Project-oriented workflow</a> - An article by Jenny Bryan that includes advice on setting up your <code>R</code> life to maximize effectiveness and reduce frustration.</li>
+<li><a href="https://smltar.com/">Supervised Machine Learning for Text Analysis in R</a> - This book serves as a thorough introduction to prediction and modeling with text, along with detailed practical examples.</li>
+<li><a href="https://book.javascript-for-r.com/">JavaScript for R</a> - Did you know <code>R</code> works just as well with JavaScript?! This book delves into the various ways both the <code>R</code> and JavaScript languages can work together.</li>
+<li><a href="https://github.com/ianmcook/tidyquery">tidyquery - SQL and R</a> - The <code>tidyquery</code> package runs SQL queries on <code>R</code> data frames. For an introduction to tidyquery and queryparser, watch the recording of the talk <a href="https://www.youtube.com/watch?v=JwP5KdWSgqE">“Bridging the Gap between SQL and R”</a> from rstudio::conf(2020).</li>
+<li><a href="https://geocompr.robinlovelace.net/">Geocomputation with R</a> - Geocomputation with <code>R</code> is for people who want to analyze, visualize and model geographic data.</li>
+<li><a href="https://rkabacoff.github.io/datavis/">Data Visualization with R</a> - This book helps you create the most popular visualizations - from quick and dirty plots to publication-ready graphs.</li>
+<li><a href="https://socviz.co/index.html#preface"><i class="fa-solid fa-star" aria-label="star"></i> Data Visualization - A practical introduction</a> - A treasure trove of R-dataviz help by Kieran Healy.</li>
+<li><a href="https://cran.r-project.org/web/packages/gghighlight/vignettes/gghighlight.html">gghighlight: An R package for improved visualization</a> - Highlight lines and points in a <code>ggplot2</code> data visualization object. <a href="https://www.youtube.com/watch?v=1IHAZcumjkA">An introductory YouTube video is available.</a></li>
+<li><a href="https://db.rstudio.com/">Connecting to databases using R</a> - A resource from RStudio for connecting to databases.</li>
+<li><a href="https://github.com/IndrajeetPatil/awesome-r-pkgtools">Awesome R Package Development</a> - A curated list of awesome tools to assist R 📦 development.</li>
+<li><a href="https://arrow.apache.org/docs/index.html">Apache Arrow</a> - Apache <code>Arrow</code> contains a set of technologies that enable big data systems to process and move data fast. The <code>arrow</code> package for <code>R</code> can:
+<ul>
+<li>Read and write <strong>Parquet files</strong>,</li>
+<li>Read and write <strong>Feather files</strong></li>
+<li>Analyze, process, and write multi-file, larger-than-memory datasets. <a href="https://arrow.apache.org/docs/r/articles/dataset.html">Click here for vignette.</a></li>
+<li>Much, much more. <b> In order to learn how to use <code>arrow</code> in <code>R</code>, refer to this <a href="https://arrow.apache.org/docs/r/">documentation specific for the <code>R</code> environment</a>.</b></li><b>
+</b></ul></li><b>
+</b></ul><b>
+<hr>
+</b></section><b>
+<section id="finding-help-with-r" class="level3">
+<h3 class="anchored" data-anchor-id="finding-help-with-r">Finding Help with <code>R</code></h3>
+<ul>
+<li><a href="https://www.r-project.org/help.html"><i class="fa-solid fa-star" aria-label="star"></i> Getting Help with R</a> - An article from the <code>R Project</code> that describes the extensive facilities for accessing documentation and searching for help.</li>
+<li><a href="https://adv-r.hadley.nz/debugging.html"><i class="fa-solid fa-star" aria-label="star"></i> What do you do when R code throws an unexpected error?</a> - This chapter of Hadley Wickham’s <code>Advanced R</code> (see above) will give a general strategy for finding help with those obscure error messages.</li>
+<li><a href="http://varianceexplained.org/courses/errors/"><i class="fa-solid fa-star" aria-label="star"></i> R Error Message Cheat Sheet</a> - A blog post by David Robinson lists common errors and how to fix them.</li>
+<li><a href="https://www.tidyverse.org/help/#reprex">Get Help….with reprex</a> - If you need help, the first step is to create a <code>reprex</code>, or reproducible example….learn how.</li>
+<li><a href="https://www.rstudio.com/resources/cheatsheets/"><i class="fa-solid fa-star" aria-label="star"></i> RStudio Cheatsheets</a> - <code>RStudio</code> cheatsheets make it easy to use some of our favorite <code>R</code> packages.</li>
+<li><a href="https://stackoverflow.com/questions/tagged/r">Stack Overflow</a> - Find the best answers to your <code>R</code> questions and help others with theirs.</li>
+<li><a href="https://chat.openai.com/"><i class="fa-solid fa-star" aria-label="star"></i> ChatGPT</a> - ChatGPT is a really incredible tool for learning coding. You can ask it to help you debug your code, or even write code for you.</li>
+<li><a href="https://www.phind.com/"><i class="fa-solid fa-star" aria-label="star"></i> Phind</a> - Phind is tuned for programming and adds links to sources. Phind uses the GPT models as well, only 10 free queries a day. ***</li>
+</ul>
+</section>
+<section id="continuous-learning" class="level3">
+<h3 class="anchored" data-anchor-id="continuous-learning">Continuous Learning</h3>
+<ul>
+<li><a href="https://themockup.blog/posts/2018-12-11-tidytuesday-a-weekly-social-data-project-in-r/"><i class="fa-solid fa-star" aria-label="star"></i> TidyTuesday - A weekly social data project in R</a> - A weekly social data project in <code>R</code>. Every Monday they release a new dataset on the <a href="https://github.com/rfordatascience/tidytuesday">TidyTuesday Github page</a> for participants to clean, wrangle, tidy, and plot.</li>
+<li><a href="https://www.t4rstats.com/index.html">Twitter for R programmers</a> - The <code>R</code> community is very active on Twitter. You can learn a lot about the language, about new approaches to problems, and make new friends. This online book will show you how.</li>
+<li><a href="https://rweekly.org/about">R Weekly</a> - <code>R</code> is growing very quickly, and there are lots of great blogs, tutorials and other formats of resources coming out every day. R Weekly wants to keep track of these great things in the R community and make it more accessible to everyone.</li>
+<li><a href="https://masalmon.eu/2019/01/25/uptodate/">Keeping up to date with R news</a> - Following <code>R</code> news helps you learn about new tools and their applications.</li>
+<li><a href="https://www.rstudio.com/resources/books/">RStudio Books</a> - In addition to software tools, RStudio has also authored many books, some already highlighted in this curated list. Another tool for your toolbox.</li>
+</ul>
+<hr>
+</section>
+<section id="statistics" class="level3">
+<h3 class="anchored" data-anchor-id="statistics">Statistics</h3>
+<ul>
+<li><a href="https://github.com/easystats/easystats">eastystats</a> - <code>easystats</code> is a collection of <code>R</code> packages that provides a consistent framework to harness <code>R</code> statistics.</li>
+<li><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions: Tidy dataframes and expressions with statistical details</a> - This <code>R</code> package provides a consistent syntax to do statistical analysis with tidy data (in pipe-friendly manner) and provides statistical expressions (pre-formatted in-text statistical results) for plotting functions.</li>
+<li><a href="https://indrajeetpatil.github.io/ggstatsplot/">ggstatsplot: ggplot2 Based Plots with Statistical Details</a> - <code>ggstatsplot</code> is an extension of the <code>ggplot2</code> package (see section above) for creating graphics with details from statistical tests included in the information-rich plots themselves.</li>
+<li><a href="http://www.modernstatisticswithr.com/">Modern Statistics with R</a> - The aim of <em>Modern Statistics with R</em> is to introduce you to key parts of the modern statistical toolkit.</li>
+<li><a href="">Beyond Multiple Linear Regression</a> - Online version of the book <em>Beyond Multiple Linear Regression: Applied Generalized Linear Models and Multilevel Models in <code>R</code></em>, by Paul Roback and Julie Legler.</li>
+<li><a href="https://easystats.github.io/bayestestR/articles/bayestestR.html">Get Started with Bayesian Analysis</a> - A vignette describing the Bayesian framework for statistics, including examples in <code>R</code>.</li>
+<li><a href="https://www.bayesrulesbook.com/?s=09">Bayes Rules! An Introduction to Bayesian Modeling with R</a> - The primary goal of <code>Bayes Rules!</code> is to make modern Bayesian thinking, modeling, and computing accessible to a broader audience.</li>
+<li><a href="https://github.com/SebKrantz/fastverse">Fastverse</a> - The fastverse is a suite of complementary high-performance packages for statistical computing and data manipulation in <code>R</code>.</li>
+<li><a href="https://bjnnowak.netlify.app/2021/09/15/r-pca-with-tidyverse/?s=09">Principal Component Analysis (PCA) with tidyverse</a> - A blog post by Benjamin Nowak to show how to use <code>tidyverse</code> tools and syntax to perform PCA.</li>
+<li><a href="https://github.com/vincentarelbundock/modelsummary">modelsummary</a> - <code>modelsummary is an</code>R` package that creates tables and plots to summarize statistical models and data.</li>
+<li><a href="https://github.com/ddsjoberg/gtsummary">gtsummary</a> - The <code>gtsummary</code> package creates publication-ready analytical and summary tables in <code>R</code>.</li>
+<li><a href="https://rpkgs.datanovia.com/factoextra/index.html">factoextra : Extract and Visualize the Results of Multivariate Data Analyses</a> - <code>factoextra</code> is an R package that makes it easy to extract and visualize the output of exploratory multivariate data analyses, including: PCA, CA, MCA, MFA, HMFA and FAMD.</li>
+</ul>
+<hr>
+</section>
+<section id="reproducibility" class="level3">
+<h3 class="anchored" data-anchor-id="reproducibility">Reproducibility</h3>
+<ul>
+<li><a href="http://swcarpentry.github.io/r-novice-gapminder/">R for Reproducible Scientific Analysis</a> - The goal of <code>R for Reproducible Scientific Analysis</code> is to teach novice programmers to write modular code and best practices for using <code>R</code> for data analysis.</li>
+<li><a href="https://annakrystalli.me/rrresearchACCE20/">Reproducible Research Data and Project Management in R</a> - A workshop that discusses <code>R</code> and <code>Rstudio</code> tools and conventions that offer a powerful framework for making modern, open, reproducible and collaborative computational workflows more accessible to researchers.</li>
+<li><a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375986?journalCode=utas20&amp;">Packaging Data Analytical Work Reproducibly Using R</a> - The purpose of this article is to show how the R package can be a suitable template for organising files into a research compendium to enhance the reproducibility of research.</li>
+<li><a href="https://the-turing-way.netlify.app/welcome">The Turing Way</a> - A community and handbook to reproducible, ethical and collaborative data science. <a href="https://the-turing-way.netlify.app/welcome">The Turing Way</a> also maintains a <em>Zero-to-Binder</em> tutorial for 3 common languages, <a href="http://bit.ly/zero-to-binder-julia"><code>Julia</code></a>, <a href="http://bit.ly/zero-to-binder-python"><code>Python</code></a>, and <a href="http://bit.ly/zero-to-binder-r"><code>R</code></a>. For more information about <code>Binder</code>, see <em>Getting Started with Binder</em> below.</li>
+<li><a href="https://github.com/benmarwick/rrtools">rrtools</a> - Tools for Writing Reproducible Research in <code>R</code>. This package documents the key steps and provides convenient functions for quickly creating a new research compendium.</li>
+<li><a href="https://frbcesab.github.io/rcompendium/articles/rcompendium.html">rcompendium</a> - <code>rcompendium</code> makes it easy to create of R packages or research compendia with a predefined files/folders structure.</li>
+<li><a href="https://docs.ropensci.org/targets/">targets: pipeline tool for R</a> - The <code>targets</code> package is a <a href="https://www.gnu.org/software/make/">Make</a>-like pipeline toolkit for Statistics and data science in <code>R</code>. With <code>targets</code>, you can maintain a reproducible workflow that skips costly runtime for tasks that are already performed. The <a href="https://books.ropensci.org/targets/">user manual</a> includes a <a href="https://books.ropensci.org/targets/walkthrough.html">walkthrough chapter</a>.</li>
+<li><a href="https://reproducible-analysis-workshop.readthedocs.io/en/latest/">Reproducible analysis and Research Transparency</a> - Transparency, open sharing, and reproducibility are core values of science, but not always part of daily practice. This workshop (2017) provided an overview of current status in reproducible analysis in order to provide transparency in research.</li>
+<li><a href="https://www.vaccineimpact.org/orderly/articles/orderly.html">orderly</a> - <code>orderly</code> is a package designed to help make analysis more reproducible. Its principal aim is to automate a series of basic steps in the process of writing analyses.</li>
+<li><a href="https://speakerdeck.com/jennybc/how-to-name-files">How to name files</a> - Slide deck from Jenny Bryan about the why’s and how’s of naming files.</li>
+<li><a href="http://groundhogr.com/using/">groundhog</a> - Write <code>R</code> scripts that are reproducible using the <code>groundhog</code> package.</li>
+<li><a href="https://rstudio.github.io/renv/">renv</a> - The <code>renv</code> package helps you create reproducible environments for <code>R</code> projects.</li>
+<li><a href="https://masalmon.eu/2021/06/30/r-projects/">Draw me a project</a> - A great blog post by Maëlle Salmon about reproducibility.</li>
+<li><a href="https://docs.docker.com/">Docker</a> - Get started with <code>Docker</code>.</li>
+<li><a href="https://jsta.github.io/r-docker-tutorial/">A Docker tutorial for reproducible research.</a> - This is an introduction to Docker designed for participants with knowledge about R and RStudio.</li>
+<li><a href="https://colinfay.me/docker-r-reproducibility/">An Introduction to Docker for R Users</a> - A quick introduction on using Docker for reproducibility in R, by Colin Fay.</li>
+<li><a href="https://o2r.info/containerit/index.html">Generating Dockerfiles for Reproducible Research with R</a> - The <code>R</code> package <code>containerit</code> aims to make reproducible and archivable research with containers easy.</li>
+<li><a href="https://eliocamp.github.io/codigo-r/en/2021/08/docker-renv/">Transparent reproducible R environment with Docker + renv</a> - A quick introduction to setting up a transparent reproducible R environment with Docker + renv, by Elio Campitelli.</li>
+<li><a href="http://www.derekmpowell.com/posts/2018/02/docker-tutorial-1/">Conducting reproducible research with Docker (Part 1 of 3)</a> - A blog post by Derek Powell where he describes how to use to produce statistically and computationally reproducible researc using Docker.</li>
+<li><a href="https://sylabs.io/singularity/">Singularity</a> - <code>Singularity</code> is an alternative container platform to Docker. You can build a container on your laptop and then run it on many of the largest HPC clusters in the world, local university or company clusters, a single server, in the cloud, or on a workstation down the hall. Additional details and help is also available <a href="https://singularity.hpcng.org/">here</a>.</li>
+<li><a href="https://mybinder.readthedocs.io/en/latest/introduction.html#preparing-repositories">Get Started with Binder</a> - This page will help you get started building your own repositories and sharing them with <code>Binder</code>. <code>Binder</code> is a code repository that contains (1) code or content that you’d like people to be able to run (e.g.&nbsp;<code>R</code> script or Jupyter Notebook) and (2) configuration files used by <code>Binder</code> to build the environment to run you code.</li>
+<li><a href="https://github.com/grst/containerize-conda">Containerize conda</a> - Instructions about how to package an existing environment into a Docker or Singularity container which should be more portable and can also easily be integrated into a fully reproducible data analysis workflow.</li>
+<li><a href="https://conda.github.io/conda-pack/">conda-pack</a> - <code>Conda-pack</code> is a command line tool for creating archives of conda environments that can be installed on other systems and locations. A tool like <code>conda-pack</code> is necessary because conda environments are not relocatable. Simply moving an environment to a different directory can render it partially or completely inoperable. <code>conda-pack</code> addresses this challenge by building archives from original conda package sources and reproducing conda’s own relocation logic.</li>
+<li><a href="https://cran.r-project.org/web/views/ReproducibleResearch.html">CRAN Task View: Reproducible Research</a> - The goal of reproducible research is to tie specific instructions to data analysis and experimental data so that scholarship can be recreated, better understood and verified. Packages in <code>R</code> for this purpose can be split into groups for: literate programming, pipeline toolkits, package reproducibility, project workflows, code/data formatting tools, format convertors, and object caching.</li>
+<li><a href="https://hbiostat.org/rflow/">R Workflow: Reproducible Biomedical Research Using Quarto</a> - This online book was written to foster best practices in reproducible data documentation and manipulation, statistical analysis, graphics, and reporting. By Frank E Harrell Jr, Department of Biostatistics, School of Medicine, Vanderbilt University.</li>
+<li><a href="https://crazyhottommy.blogspot.com/2022/11/12-resources-to-bookmark-for.html">12 resources for reproducible computational research</a> - A list of resources by Ming “Tommy” Tang, article dated 2022-11-09.</li>
+<li><a href="https://raps-with-r.dev/">Building reproducible analytical pipelines with R</a> - A free ebook on how using a few ideas from software engineering can help data scientists, analysts and researchers write reliable code, by Bruno Rodrigues (June 2023).</li>
+<li><a href="https://peerj.com/preprints/3192v1/">Packaging data analytical work reproducibly using R (and friends)</a> - Using real-world examples, the authors show how researchers can improve the reproducibility of their work using research compendia based on R packages and related tools.</li>
+<li><a href="https://packagemanager.posit.co/client/#/">Posit Public Package Manager</a> - Provides standard mirrors of CRAN, Bioconductor, and PyPI, and can track changes over time or freeze packages to specific versions, to help ensure reproducibility and ease collaboration.</li>
+<li><a href="https://signaturescience.github.io/pracpac/index.html">pracpac</a> - Practical R Packaging with Docker.</li>
+</ul>
+<hr>
+</section>
+<section id="markdown-r-markdown" class="level3">
+<h3 class="anchored" data-anchor-id="markdown-r-markdown">Markdown &amp; R Markdown</h3>
+<p><em>Note: We are teaching Quarto which is the new supported way of doing markdown + R, but its is almost enteriely compatible with <code>R Markdown</code> so much of this will still apply.<br>
+- <a href="https://rmarkdown.rstudio.com/lesson-1.html">R Markdown from RStudio</a> - Getting started with <code>R Markdown</code>. - <a href="https://bookdown.org/yihui/rmarkdown-cookbook/">R Markdown Cookbook</a> - <code>R Markdown</code> is a powerful tool for combining analysis and reporting into the same document. This book provides practical and short examples to show the interesting and useful usage of R Markdown. - <a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a> - An online reference book for <code>R Markdown</code>. And provides a detailed reference on the built-in <code>R Markdown</code> output formats of the <code>rmarkdown</code> package, as well as several other extension packages. - <a href="https://rstudio.github.io/visual-markdown-editing/?_ga=2.75875613.906511098.1628520305-780811595.1628176381">Visual R Markdown</a> - RStudio v1.4 includes a new visual markdown editing mode. It provides improved productivity for composing longer-form articles and analyses with R Markdown. - <a href="https://alison.rbind.io/blog/2021-07-officedown/?s=09">Up and running with <code>officedown</code></a> - A blog article by Alison Hill that describes the <code>officedown</code> package which allows users to write Word and Powerpoint documents using <code>R Markdown</code>. - <a href="https://github.com/rstudio/bookdown">bookdown</a> - An <code>R</code> package to facilitate writing books and long-form articles/reports with R Markdown. The home page includes a list of featured books. - <a href="https://bookdown.org/">List of featured books written with <strong>bookdown</strong></a> - A list of </em>featured* books published to <a href="https://bookdown.org/">bookdown.org</a>. Click <a href="https://bookdown.org/home/archive/?s=09">here</a> for a list generated automatically and roughly ordered by date. - <a href="https://indrajeetpatil.github.io/RmarkdownTips/">RMarkdown Tips and Tricks</a> - A collection of tweets by <a href="https://github.com/IndrajeetPatil">Indrajeet Patil</a> containing tips and tricks related to <a href="https://rmarkdown.rstudio.com/">R Markdown</a>.</p>
+<hr>
+</section>
+<section id="shiny" class="level3">
+<h3 class="anchored" data-anchor-id="shiny">Shiny</h3>
+<ul>
+<li><a href="https://shiny.rstudio.com/">Shiny from RStudio</a> - Get started with <code>Shiny</code>, an <code>R</code> package to build interactive web apps straight from <code>R</code>.</li>
+<li><a href="https://mastering-shiny.org/index.html">Mastering Shiny</a> - The online version of the book by Hadley Wickham to get you writing <code>Shiny</code> apps quickly.</li>
+<li><a href="https://unleash-shiny.rinterface.com/index.html">Outstanding User Interfaces with Shiny</a> - A book for experienced <code>Shiny</code> users who want to learn more about the underlying web technologies.</li>
+</ul>
+<hr>
+</section>
+<section id="git-and-version-control" class="level3">
+<h3 class="anchored" data-anchor-id="git-and-version-control">Git and Version Control</h3>
+<ul>
+<li><a href="https://git-scm.com/"><code>Git</code></a> is a useful tool for version control and <a href="https://github.com/"><code>GitHub</code></a> sits on top of <code>Git</code> and supports collaborative and distributed working.</li>
+<li><a href="http://git-scm.com/book/en/v2">Pro Git</a> - What is “version control” and why we should care? This free online book by Scott Chacon and Ben Straub is explains it all. Dead tree versions are available <img src="https://user-images.githubusercontent.com/48717893/170250444-21fc793c-0ef0-4e8a-ad96-6b049ad5caf2.png" class="img-fluid" alt="image">.</li>
+<li><a href="https://peerj.com/preprints/3159v2/">Excuse me, do you have a moment to talk about version control?</a> - This article by Jennifer Bryan describes the use of the version control system Git and and the hosting site GitHub for statistical and data scientific workflows. Special attention is given to projects that use the statistical language R and, optionally, R Markdown documents.</li>
+<li><a href="https://happygitwithr.com/">Happy Git and GitHub for the useR</a> - An online book that introduces Git, GitHub and version control.</li>
+<li><a href="https://chris.beams.io/posts/git-commit/">How to Write a Git Commit Message</a> - Commit messages matter. Here’s how to write them well, by Chris Beams.</li>
+<li><a href="https://git-scm.com/book/en/v2">The Pro Git Book</a> - The entire <em>Pro Git book</em>, written by Scott Chacon and Ben Straub and published by Apress.</li>
+<li><a href="">GitHub actions with R</a> - This book introduces GitHub actions, which help you automate tasks within your software development life cycle. More information available from <a href="https://docs.github.com/en/actions">GitHub Actions Documentation.</a></li>
+<li><a href="https://cran.r-project.org/web/packages/gert/vignettes/gert.html">gert</a> - The <code>gert</code> package is a simple git client based on <a href="libgit2.org">‘libgit2’</a>. What this means for <code>R</code> users is that you can work with local and remote Git repositories from the comfort of <code>R</code>!</li>
+<li><a href="https://github.blog/2021-08-19-enhanced-support-citations-github/">Enhanced support for citations on GitHub</a> - GitHub now has <a href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files">built-in support</a> for <a href="https://citation-file-format.github.io/">CITATION.cff</a> files. This new feature enables academics and researchers to let people know how to correctly cite their work, especially in academic publications/materials.</li>
+<li><a href="https://orchid00.github.io/actions_sandbox/">Github actions with R</a> - Trigger <a href="https://github.com/features/actions">GitHub actions</a> that allow you to automate steps after launching GitHub interactions such as when you push, pull, submit a pull request, or write an issue.</li>
+</ul>
+<hr>
+</section>
+<section id="other" class="level3">
+<h3 class="anchored" data-anchor-id="other">Other</h3>
+<ul>
+<li><a href="https://guides.github.com/activities/citable-code/#create">Making Your Code Citable</a> - If you’re a researcher writing software, this guide will show you how to make the work you share on GitHub citable by archiving one of your GitHub repositories and assigning a <a href="https://en.wikipedia.org/wiki/Digital_object_identifier">Digital Object Identifiers</a> (DOI) with the data archiving tool <a href="https://about.zenodo.org/">Zenodo</a>.</li>
+<li><a href="https://github.blog/2021-08-19-enhanced-support-citations-github/">Enhanced support for citations on GitHub</a> - GitHub now has <a href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files">built-in support</a> for <a href="https://citation-file-format.github.io/">CITATION.cff</a> files. This new feature (2021) enables academics and researchers to let people know how to correctly cite their work, especially in academic publications/materials.</li>
+<li><a href="https://github.com/Pakillo/grateful?s=09">grateful</a> - The goal of <code>grateful</code> is to make it very easy to cite the <code>R</code> packages used in any report or publication.</li>
+<li><a href="https://t4scientists.com/">Twitter for Scientists</a> - This book by Daniel S. Quintana, University of Oslo, will walk you through the ins and outs of using Twitter as a scientist to share your work. With Twitter and social media, the opportunity to share your work with everyone is available. People need to know your work exists before they can read it.</li>
+<li><a href="https://github.com/ianmcook/tidyquery">tidyquery - SQL and R</a> - The <code>tidyquery</code> package runs SQL queries on <code>R</code> data frames. For an introduction to tidyquery and queryparser, watch the recording of the talk <a href="https://www.youtube.com/watch?v=JwP5KdWSgqE">“Bridging the Gap between SQL and R”</a> from rstudio::conf(2020).</li>
+<li><a href="https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/">Doing Meta Analysis in R</a> - This book serves as an accessible introduction into how meta-analyses can be conducted in <code>R</code>.</li>
+<li><a href="https://emilyriederer.netlify.app/post/team-of-packages/">Building a team of internal R packages</a> - A blog post by Emily Riederer.</li>
+<li><a href="https://ropensci.org/blog/2021/09/28/rspatialdata/">The Story Behind rspatialdata</a> - A blog post by Dilinie Seimon &amp; Varsha Ujjinni Vijay Kumar about <code>rspatialdata</code>, a repository of data sources and simple tutorials on how to retrieve and visualize spatial data using R.</li>
+<li><a href="https://higgi13425.github.io/medical_r/posts/2020-10-18-building-a-data-package/?s=09">Building a Data Package</a> - Building an <code>R</code> package to make datasets readily available.</li>
+<li><a href="https://github.com/IndrajeetPatil/awesome-r-pkgtools?s=09">Awesome R package development</a> - A curated list of awesome tools to assist with <code>R</code> 📦 development.</li>
+<li><a href="https://yuzar-blog.netlify.app/posts/2021-01-09-exploratory-data-analysis-and-beyond-in-r-in-progress/">Deep Exploratory Data Analysis (EDA) in R</a> - Exploratory Data Analysis is an important first step in data science. In this excellent post by Yury Zablotski, he provide the simplest and most effective ways to explore data in <code>R</code>.</li>
+</ul>
+<hr>
+</section>
+<section id="miscellaneous" class="level3">
+<h3 class="anchored" data-anchor-id="miscellaneous">Miscellaneous</h3>
+<ul>
+<li><a href="https://books.ropensci.org/http-testing/index.html">HTTP testing in R</a> - This book is meant to be a free, central reference for developers of <code>R</code> packages accessing web resources.</li>
+<li><a href="https://http-testing-r.netlify.app/">Get Better At Testing Your R Package</a> - This tutorial is about advanced testing of <code>R</code> packages, with HTTP testing as a case study. Companion video tutorial available <a href="https://www.youtube.com/watch?v=tzQGg1kAzGs&amp;list=PL4IzsxWztPdnCC_kMCYKrd_t6cViMhBrD&amp;index=13">here</a>.</li>
+<li><a href="https://ropensci.org/blog/2021/06/22/setup-runiverse/">How to create your personal CRAN-like repository</a> - The <a href="https://r-universe.dev/">r-universe</a> platform provides users and organizations with a personal CRAN-like repository for publishing software, rmarkdown articles, and other content that fits in an <code>R</code> package.</li>
+<li><a href="https://speakerdeck.com/jennybc/how-to-name-files">How to name files</a> - Slide deck from Jenny Bryan about the why’s and how’s of naming files.</li>
+<li><a href="https://carbon.now.sh/">carbon</a> - Create and share beautiful images of your source code.</li>
+<li><a href="https://johnmackintosh.net/blog/2021-08-12-well-well-well-my-excel/">Well Well Well my Excel</a> - How to import multiple excel files (not sheets, but files) into <code>R</code>, by <em>Data by John</em>.</li>
+<li><a href="https://github.com/SebKrantz/fastverse">Fastverse</a> - The fastverse is a suite of complementary high-performance packages for statistical computing and data manipulation in R.</li>
+<li><a href="https://www.dsquintana.blog/twitter-for-scientists/">Why scientists should use Twitter</a> - A blog post by the author of <a href="https://t4scientists.com/">Twitter for Scientists</a>, Dan Quintana.</li>
+<li><a href="https://gt.rstudio.com/index.html">gt Tables</a> - With the <code>gt</code> package, anyone can make wonderful-looking <em>display</em> tables using the <code>R</code> programming language.</li>
+<li><a href="https://ropensci.org/blog/2021/09/13/system-calls-r-package/">How to Use System Commands in your R Script or Package</a> - Learn the basics of using command-lines tools from within <code>R</code>.</li>
+<li><a href="https://cran.r-project.org/web/packages/ARTofR/readme/README.html?s=09">ARTofR Package</a> - The {xxx_*} family of functions offers a collection of stand-out comment lines that make different sections of <code>R</code> scripts easy to identify.</li>
+<li><a href="https://github.com/MichaelChirico/potools">potools</a> - Tools for working with translations in <code>R</code>.</li>
+<li><a href="https://github.com/Zhong-Lab-UCSD/Genomic-Interactive-Visualization-Engine">GIVE (Genomic Interactive Visualization Engine)</a> - Not <code>R</code> but an HTML5 library for creating portable and versatile genome browsers that can be used on personal websites.</li>
+<li><a href="https://sandbox.bio/">sandbox.bio - Interactive bioinformatics tutorials</a> - Learn how to use bioinformatics tools right from your browser. Everything runs in a sandbox, so you can experiment all you want.</li>
+</ul>
+<hr>
+
+
+</section>
+</b></section><b>
+
+</b></main><b> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</b></div><b> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2023. Huge thanks to <a href="https://github.com/andrewpbray">Andrew P. Bray</a> and <a href="https://github.com/clauswilke">Claus O. Wilke</a> for open source code and sharing content.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This page is built with <i class="fa-solid fa-heart" aria-label="heart"></i> and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</b></body></html>

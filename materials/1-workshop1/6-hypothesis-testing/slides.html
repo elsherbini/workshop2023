@@ -10,7 +10,7 @@
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.551">
 
   <title>Data Science for Biology Workshop Series - Hypothesis testing, data transformation, longitudinal displays</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -224,7 +224,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -414,7 +415,7 @@
 <p>🎓 I am an assistant professor in non-clinical biostatistics at the University of Louvain in Belgium.</p>
 <p>💙 I love statistics AND climbing, hiking, and painting.</p>
 
-<img data-src="images/climbing.png" alt="A picture of Laura climbing" width="546" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/climbing.png" class="quarto-figure quarto-figure-center r-stretch" alt="A picture of Laura climbing" width="546"></section>
 <section id="section-1" class="slide level2" data-menu-item="Workshop Goals">
 <h2></h2>
 <p><br>
@@ -439,7 +440,7 @@
 <h2>💬 Discussions: discord</h2>
 <p>Ask questions at <strong>#workshop-questions</strong> on <a href="https://discord.gg/UDAsYTzZE" class="uri">https://discord.gg/UDAsYTzZE</a>.</p>
 
-<img data-src="images/0_discord_durban.png" alt="Screenshot of the discord server app that serves as the forum for the workshop." width="546" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/0_discord_durban.png" class="quarto-figure quarto-figure-center r-stretch" alt="Screenshot of the discord server app that serves as the forum for the workshop." width="546"></section>
 <section id="wooclap" class="slide level2 your-turn">
 <h2>Wooclap</h2>
 <p>Go to <a href="https://app.wooclap.com/DURBAN?from=event-page">the event on wooclap</a></p>
@@ -448,7 +449,7 @@
 <section id="malva-pudding" class="slide level2">
 <h2>Malva pudding</h2>
 
-<img data-src="images/malva.jpg" alt="A picture of a malva pudding." width="546" class="r-stretch quarto-figure-center"><div class="fragment">
+<img data-src="images/malva.jpg" class="quarto-figure quarto-figure-center r-stretch" alt="A picture of a malva pudding." width="546"><div class="fragment">
 <p>My friend told me that Malva puddings in Durban are usually much sweeter than those sold in Cape Town.</p>
 </div>
 <div class="fragment">
@@ -547,7 +548,11 @@
 <p>We go to the lab and measure the sugar content of all 40 puddings. Let’s display this data.</p>
 <div class="cell">
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -559,7 +564,11 @@
 <div class="column" style="width:35%;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div><div class="column" style="width:65%;">
@@ -629,7 +638,7 @@
 <section id="the-null-and-alternative-hypothesis-for-malva-puddings" class="slide level2">
 <h2>The Null and alternative hypothesis for Malva puddings</h2>
 
-<img data-src="images/malva.jpg" alt="A picture of a malva pudding." width="546" class="r-stretch quarto-figure-center"><p><span class="math display">\[H_0: \mu_{D} \leq \mu_{C}\]</span> and</p>
+<img data-src="images/malva.jpg" class="quarto-figure quarto-figure-center r-stretch" alt="A picture of a malva pudding." width="546"><p><span class="math display">\[H_0: \mu_{D} \leq \mu_{C}\]</span> and</p>
 <p><span class="math display">\[H_a: \mu_D &gt; \mu_C\]</span></p>
 <p>The alternative is my friend’s claim (Malva puddings in Durban are sweeter than those in Cape Town).</p>
 </section>
@@ -714,7 +723,11 @@
 <div class="column" style="width:35%;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div><div class="column" style="width:65%;">
@@ -762,7 +775,11 @@
 <div class="fragment">
 <div class="cell">
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="slides_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -788,7 +805,11 @@
 <div class="fragment">
 <div class="cell">
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="slides_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -801,7 +822,11 @@
 <div class="fragment">
 <div class="cell">
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="slides_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>If the dots are close to the line, that indicates that the data is compatible with a normal distribution.</p>
@@ -812,7 +837,7 @@
 <h2>The <span class="math inline">\(t\)</span>-test in R</h2>
 <p>In <code>R</code>, we can do a <span class="math inline">\(t\)</span>-test using the function <code>t.test</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">t.test</span>(sugar <span class="sc">~</span> town, <span class="at">data =</span> malva, <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">t.test</span>(sugar <span class="sc">~</span> town, <span class="at">data =</span> malva, <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -855,7 +880,7 @@ sample estimates:
 <section id="data-transformation" class="slide level2">
 <h2>Data transformation</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>IL1b <span class="ot">&lt;-</span> IL1b <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">logconc =</span> <span class="fu">log10</span>(conc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>IL1b <span class="ot">&lt;-</span> IL1b <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">logconc =</span> <span class="fu">log10</span>(conc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"><p>Does this look normal?</p>
@@ -872,7 +897,7 @@ sample estimates:
 <section id="t-test" class="slide level2">
 <h2><span class="math inline">\(t\)</span>-test?</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>IL1b <span class="sc">|&gt;</span> <span class="fu">count</span>(BV) <span class="sc">|&gt;</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> BV, <span class="at">values_from =</span> n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>IL1b <span class="sc">|&gt;</span> <span class="fu">count</span>(BV) <span class="sc">|&gt;</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> BV, <span class="at">values_from =</span> n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
      BV Healthy
@@ -885,7 +910,7 @@ sample estimates:
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">t.test</span>(logconc <span class="sc">~</span> BV, <span class="at">data =</span> IL1b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">t.test</span>(logconc <span class="sc">~</span> BV, <span class="at">data =</span> IL1b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -992,7 +1017,7 @@ sample estimates:
 <h2>➡️➡️➡️ Longitudinal design</h2>
 <p>Remember the study design of the data we are analyzing:</p>
 
-<img data-src="images/study_design.png" alt="The study design" width="546" class="r-stretch quarto-figure-center"><div class="fragment">
+<img data-src="images/study_design.png" class="quarto-figure quarto-figure-center r-stretch" alt="The study design" width="546"><div class="fragment">
 <p>Should we try to display the data in a way that highlights the “trajectories” of participants along the study?</p>
 </div>
 </section>
@@ -1000,12 +1025,12 @@ sample estimates:
 <h2>🧠 Remember: <code>left_join</code></h2>
 <p>First, we need to join the cytokine data with the sample data so we have the study arm and the time-point for each sample:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>elisa <span class="ot">&lt;-</span> </span>
-<span id="cb8-2"><a href="#cb8-2"></a>  elisa <span class="sc">|&gt;</span> </span>
-<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">mutate</span>(<span class="at">logconc =</span> <span class="fu">log10</span>(conc)) <span class="sc">|&gt;</span> </span>
-<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">left_join</span>(sample_info, <span class="at">by =</span> <span class="fu">join_by</span>(sample_id))</span>
-<span id="cb8-5"><a href="#cb8-5"></a></span>
-<span id="cb8-6"><a href="#cb8-6"></a>elisa <span class="sc">|&gt;</span> <span class="fu">head</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>elisa <span class="ot">&lt;-</span> </span>
+<span id="cb8-2"><a></a>  elisa <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a></a>  <span class="fu">mutate</span>(<span class="at">logconc =</span> <span class="fu">log10</span>(conc)) <span class="sc">|&gt;</span> </span>
+<span id="cb8-4"><a></a>  <span class="fu">left_join</span>(sample_info, <span class="at">by =</span> <span class="fu">join_by</span>(sample_id))</span>
+<span id="cb8-5"><a></a></span>
+<span id="cb8-6"><a></a>elisa <span class="sc">|&gt;</span> <span class="fu">head</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 8
   sample_id cytokine    conc limits        logconc pid    time_point arm    
@@ -1031,11 +1056,11 @@ sample estimates:
 <div class="fragment">
 <p>We can use the <code>str_replace</code> function from the <code>stringr</code> package to replace the underscores with spaces:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>elisa <span class="ot">&lt;-</span> </span>
-<span id="cb11-2"><a href="#cb11-2"></a>  elisa <span class="sc">|&gt;</span> </span>
-<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">mutate</span>(<span class="at">time_point =</span> time_point <span class="sc">|&gt;</span> <span class="fu">str_replace</span>(<span class="st">"_"</span>, <span class="st">" "</span>))</span>
-<span id="cb11-4"><a href="#cb11-4"></a></span>
-<span id="cb11-5"><a href="#cb11-5"></a>elisa<span class="sc">$</span>time_point <span class="sc">|&gt;</span> <span class="fu">unique</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>elisa <span class="ot">&lt;-</span> </span>
+<span id="cb11-2"><a></a>  elisa <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a></a>  <span class="fu">mutate</span>(<span class="at">time_point =</span> time_point <span class="sc">|&gt;</span> <span class="fu">str_replace</span>(<span class="st">"_"</span>, <span class="st">" "</span>))</span>
+<span id="cb11-4"><a></a></span>
+<span id="cb11-5"><a></a>elisa<span class="sc">$</span>time_point <span class="sc">|&gt;</span> <span class="fu">unique</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "baseline" "week 1"   "week 7"  </code></pre>
 </div>
@@ -1060,30 +1085,30 @@ sample estimates:
 <p>Which columns should be converted to factors?</p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>elisa <span class="ot">&lt;-</span> </span>
-<span id="cb14-2"><a href="#cb14-2"></a>  elisa <span class="sc">|&gt;</span> </span>
-<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb14-4"><a href="#cb14-4"></a>    <span class="at">sample_id =</span> sample_id <span class="sc">|&gt;</span> <span class="fu">factor</span>(),</span>
-<span id="cb14-5"><a href="#cb14-5"></a>    <span class="at">cytokine =</span> cytokine <span class="sc">|&gt;</span> <span class="fu">factor</span>(),</span>
-<span id="cb14-6"><a href="#cb14-6"></a>    <span class="at">pid =</span> pid <span class="sc">|&gt;</span> <span class="fu">factor</span>(),</span>
-<span id="cb14-7"><a href="#cb14-7"></a>    <span class="at">time_point =</span>time_point <span class="sc">|&gt;</span> <span class="fu">factor</span>(),</span>
-<span id="cb14-8"><a href="#cb14-8"></a>    <span class="at">arm =</span> arm <span class="sc">|&gt;</span> <span class="fu">factor</span>(),</span>
-<span id="cb14-9"><a href="#cb14-9"></a>    <span class="at">limits =</span> limits <span class="sc">|&gt;</span> <span class="fu">factor</span>()</span>
-<span id="cb14-10"><a href="#cb14-10"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>elisa <span class="ot">&lt;-</span> </span>
+<span id="cb14-2"><a></a>  elisa <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-4"><a></a>    <span class="at">sample_id =</span> sample_id <span class="sc">|&gt;</span> <span class="fu">factor</span>(),</span>
+<span id="cb14-5"><a></a>    <span class="at">cytokine =</span> cytokine <span class="sc">|&gt;</span> <span class="fu">factor</span>(),</span>
+<span id="cb14-6"><a></a>    <span class="at">pid =</span> pid <span class="sc">|&gt;</span> <span class="fu">factor</span>(),</span>
+<span id="cb14-7"><a></a>    <span class="at">time_point =</span>time_point <span class="sc">|&gt;</span> <span class="fu">factor</span>(),</span>
+<span id="cb14-8"><a></a>    <span class="at">arm =</span> arm <span class="sc">|&gt;</span> <span class="fu">factor</span>(),</span>
+<span id="cb14-9"><a></a>    <span class="at">limits =</span> limits <span class="sc">|&gt;</span> <span class="fu">factor</span>()</span>
+<span id="cb14-10"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="il-1beta-longitudinal-patterns" class="slide level2">
 <h2>IL-1<span class="math inline">\(\beta\)</span> longitudinal patterns</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>elisa <span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">filter</span>(cytokine <span class="sc">==</span> <span class="st">"IL-1b"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time_point, <span class="at">y =</span> logconc, <span class="at">color =</span> arm)) <span class="sc">+</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> pid), <span class="at">alpha =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a>  <span class="fu">xlab</span>(<span class="st">"Visits"</span>) <span class="sc">+</span></span>
-<span id="cb15-7"><a href="#cb15-7"></a>  <span class="fu">ylab</span>(<span class="st">"log10(IL-1b concentration)"</span>) <span class="sc">+</span></span>
-<span id="cb15-8"><a href="#cb15-8"></a>  <span class="fu">scale_color_manual</span>(<span class="st">"Arm"</span>, <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"deeppink"</span>,<span class="st">"steelblue1"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>elisa <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a></a>  <span class="fu">filter</span>(cytokine <span class="sc">==</span> <span class="st">"IL-1b"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb15-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time_point, <span class="at">y =</span> logconc, <span class="at">color =</span> arm)) <span class="sc">+</span></span>
+<span id="cb15-4"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> pid), <span class="at">alpha =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
+<span id="cb15-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb15-6"><a></a>  <span class="fu">xlab</span>(<span class="st">"Visits"</span>) <span class="sc">+</span></span>
+<span id="cb15-7"><a></a>  <span class="fu">ylab</span>(<span class="st">"log10(IL-1b concentration)"</span>) <span class="sc">+</span></span>
+<span id="cb15-8"><a></a>  <span class="fu">scale_color_manual</span>(<span class="st">"Arm"</span>, <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"deeppink"</span>,<span class="st">"steelblue1"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-30-1.png" width="960" class="r-stretch"></section>
@@ -1113,16 +1138,16 @@ sample estimates:
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>condition_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span> <span class="ot">=</span> <span class="dv">102</span>, <span class="st">"B"</span> <span class="ot">=</span> <span class="dv">239</span>, <span class="st">"C"</span> <span class="ot">=</span> <span class="dv">163</span>)</span>
-<span id="cb16-2"><a href="#cb16-2"></a>condition_2 <span class="ot">&lt;-</span> condition_1</span>
-<span id="cb16-3"><a href="#cb16-3"></a>condition_2[<span class="st">"A"</span>] <span class="ot">&lt;-</span> condition_2[<span class="st">"A"</span>] <span class="sc">+</span> <span class="dv">78</span> <span class="co"># we only increase A</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a></span>
-<span id="cb16-5"><a href="#cb16-5"></a>(condition_1<span class="sc">/</span><span class="fu">sum</span>(condition_1)) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>condition_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span> <span class="ot">=</span> <span class="dv">102</span>, <span class="st">"B"</span> <span class="ot">=</span> <span class="dv">239</span>, <span class="st">"C"</span> <span class="ot">=</span> <span class="dv">163</span>)</span>
+<span id="cb16-2"><a></a>condition_2 <span class="ot">&lt;-</span> condition_1</span>
+<span id="cb16-3"><a></a>condition_2[<span class="st">"A"</span>] <span class="ot">&lt;-</span> condition_2[<span class="st">"A"</span>] <span class="sc">+</span> <span class="dv">78</span> <span class="co"># we only increase A</span></span>
+<span id="cb16-4"><a></a></span>
+<span id="cb16-5"><a></a>(condition_1<span class="sc">/</span><span class="fu">sum</span>(condition_1)) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   A    B    C 
 0.20 0.47 0.32 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>(condition_2<span class="sc">/</span><span class="fu">sum</span>(condition_2)) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="co"># but the % of B and C decrease!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>(condition_2<span class="sc">/</span><span class="fu">sum</span>(condition_2)) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="co"># but the % of B and C decrease!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   A    B    C 
 0.31 0.41 0.28 </code></pre>
@@ -1172,8 +1197,10 @@ sample estimates:
 <div class="fragment">
 <pre><code>📊 Use the appropriate statistical tests (and consult a statistician *before* and after collecting your data if your question requires something more complex than a two-sample test)</code></pre>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p><a href="index.html">back to module</a></p>
+</div>
 </div>
 </div>
 </section>
@@ -1204,7 +1231,6 @@ sample estimates:
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1504,10 +1530,27 @@ sample estimates:
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/elsherbini\.github\.io\/durban-data-science-for-biology\/");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1517,8 +1560,17 @@ sample estimates:
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1532,7 +1584,11 @@ sample estimates:
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

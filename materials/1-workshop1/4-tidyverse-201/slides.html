@@ -10,7 +10,7 @@
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.551">
 
   <title>Data Science for Biology Workshop Series - More data wrangling and data visualization with the tidyverse</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,7 +32,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -224,7 +224,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -436,15 +437,15 @@
 <h2>Discussions: discord</h2>
 <p>Ask questions at <strong>#workshop-questions</strong> on <a href="https://discord.gg/UDAsYTzZE">https://discord.gg/UDAsYTzZE</a>.</p>
 
-<img data-src="images/discord_durban.png" alt="Screenshot of the discord server app that serves as the forum for the workshop." width="546" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/discord_durban.png" class="quarto-figure quarto-figure-center r-stretch" alt="Screenshot of the discord server app that serves as the forum for the workshop." width="546"></section>
 <section id="stickies" class="slide level2">
 <h2>Stickies</h2>
-<div class="quarto-layout-panel">
+<div class="quarto-layout-panel" data-layout="[[4, 5, 1]]">
 <div class="quarto-layout-row quarto-layout-valign-center">
 <div class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: center;">
 <p><img data-src="images/sticky.jpeg" alt="Picture of a laptop with a red sticky note stuck to the top." width="540"></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <p>During an activity, place a <span style="color: Gold"><strong>yellow</strong></span> sticky on your laptop if you’re good to go and a <span style="color: hotpink"><strong>pink</strong></span> sticky if you want help.</p>
 </div>
 </div>
@@ -493,10 +494,10 @@
 <h2 data-id="quarto-animate-title">Example application of grouping: Counting</h2>
 <p>Previously, we counted like so:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb1-1" class="hljs-ln-code"><a href="#cb1-1"></a><span class="in">```{r}</span></span>
-<span id="cb1-2" class="hljs-ln-code"><a href="#cb1-2"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb1-3" class="hljs-ln-code"><a href="#cb1-3"></a>  <span class="fu">count</span>(smoker)</span>
-<span id="cb1-4" class="hljs-ln-code"><a href="#cb1-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb1-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb1-2" class="hljs-ln-code"><a></a><span class="in">table_01 %&gt;%</span></span>
+<span id="cb1-3" class="hljs-ln-code"><a></a><span class="in">  count(smoker)</span></span>
+<span id="cb1-4" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   smoker         n
@@ -513,9 +514,9 @@
 <h2 data-id="quarto-animate-title">Example application of grouping: Counting</h2>
 <p>Let’s go back to the original table</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb3-1" class="hljs-ln-code"><a href="#cb3-1"></a><span class="in">```{r}</span></span>
-<span id="cb3-2" class="hljs-ln-code"><a href="#cb3-2"></a>table_01</span>
-<span id="cb3-3" class="hljs-ln-code"><a href="#cb3-3"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb3-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb3-2" class="hljs-ln-code"><a></a><span class="in">table_01</span></span>
+<span id="cb3-3" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 44 × 6
    pid    arm       smoker       age education                     sex  
@@ -538,10 +539,10 @@
 <h2 data-id="quarto-animate-title">Example application of grouping: Counting</h2>
 <p>Then we <code>group</code> the data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb5-1" class="hljs-ln-code"><a href="#cb5-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-2" class="hljs-ln-code"><a href="#cb5-2"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb5-3" class="hljs-ln-code"><a href="#cb5-3"></a>  <span class="fu">group_by</span>(smoker)</span>
-<span id="cb5-4" class="hljs-ln-code"><a href="#cb5-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb5-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb5-2" class="hljs-ln-code"><a></a><span class="in">table_01 %&gt;%</span></span>
+<span id="cb5-3" class="hljs-ln-code"><a></a><span class="in">  group_by(smoker)</span></span>
+<span id="cb5-4" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 44 × 6
 # Groups:   smoker [2]
@@ -565,13 +566,13 @@
 <h2 data-id="quarto-animate-title">Example application of grouping: Counting</h2>
 <p>Then we <code>group</code> the data, and then summarise</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb7-1" class="hljs-ln-code"><a href="#cb7-1"></a><span class="in">```{r}</span></span>
-<span id="cb7-2" class="hljs-ln-code"><a href="#cb7-2"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb7-3" class="hljs-ln-code"><a href="#cb7-3"></a>  <span class="fu">group_by</span>(smoker) <span class="sc">%&gt;%</span></span>
-<span id="cb7-4" class="hljs-ln-code"><a href="#cb7-4"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb7-5" class="hljs-ln-code"><a href="#cb7-5"></a>    <span class="at">n =</span> <span class="fu">n</span>() <span class="co"># n() returns the number of observations per group</span></span>
-<span id="cb7-6" class="hljs-ln-code"><a href="#cb7-6"></a>    )</span>
-<span id="cb7-7" class="hljs-ln-code"><a href="#cb7-7"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb7-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb7-2" class="hljs-ln-code"><a></a><span class="in">table_01 %&gt;%</span></span>
+<span id="cb7-3" class="hljs-ln-code"><a></a><span class="in">  group_by(smoker) %&gt;%</span></span>
+<span id="cb7-4" class="hljs-ln-code"><a></a><span class="in">  summarise(</span></span>
+<span id="cb7-5" class="hljs-ln-code"><a></a><span class="in">    n = n() # n() returns the number of observations per group</span></span>
+<span id="cb7-6" class="hljs-ln-code"><a></a><span class="in">    )</span></span>
+<span id="cb7-7" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   smoker         n
@@ -585,10 +586,10 @@
 <h2 data-id="quarto-animate-title">Example application of grouping: Counting</h2>
 <p>Now let’s group by multiple variables</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb9-1" class="hljs-ln-code"><a href="#cb9-1"></a><span class="in">```{r}</span></span>
-<span id="cb9-2" class="hljs-ln-code"><a href="#cb9-2"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb9-3" class="hljs-ln-code"><a href="#cb9-3"></a>  <span class="fu">group_by</span>(smoker, arm)</span>
-<span id="cb9-4" class="hljs-ln-code"><a href="#cb9-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb9-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb9-2" class="hljs-ln-code"><a></a><span class="in">table_01 %&gt;%</span></span>
+<span id="cb9-3" class="hljs-ln-code"><a></a><span class="in">  group_by(smoker, arm)</span></span>
+<span id="cb9-4" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 44 × 6
 # Groups:   smoker, arm [4]
@@ -612,13 +613,13 @@
 <h2 data-id="quarto-animate-title">Example application of grouping: Counting</h2>
 <p>Now let’s group by multiple variables, and summarise</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb11-1" class="hljs-ln-code"><a href="#cb11-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-2" class="hljs-ln-code"><a href="#cb11-2"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb11-3" class="hljs-ln-code"><a href="#cb11-3"></a>  <span class="fu">group_by</span>(smoker, arm) <span class="sc">%&gt;%</span></span>
-<span id="cb11-4" class="hljs-ln-code"><a href="#cb11-4"></a>    <span class="fu">summarise</span>(</span>
-<span id="cb11-5" class="hljs-ln-code"><a href="#cb11-5"></a>    <span class="at">n =</span> <span class="fu">n</span>() <span class="co"># n() returns the number of observations per group</span></span>
-<span id="cb11-6" class="hljs-ln-code"><a href="#cb11-6"></a>    )</span>
-<span id="cb11-7" class="hljs-ln-code"><a href="#cb11-7"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb11-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb11-2" class="hljs-ln-code"><a></a><span class="in">table_01 %&gt;%</span></span>
+<span id="cb11-3" class="hljs-ln-code"><a></a><span class="in">  group_by(smoker, arm) %&gt;%</span></span>
+<span id="cb11-4" class="hljs-ln-code"><a></a><span class="in">    summarise(</span></span>
+<span id="cb11-5" class="hljs-ln-code"><a></a><span class="in">    n = n() # n() returns the number of observations per group</span></span>
+<span id="cb11-6" class="hljs-ln-code"><a></a><span class="in">    )</span></span>
+<span id="cb11-7" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
 # Groups:   smoker [2]
@@ -635,10 +636,10 @@
 <h2 data-id="quarto-animate-title">Example application of grouping: Counting</h2>
 <p><code>count(...)</code> is a short-cut for <code>group_by(...) %&gt;% summarize(n = n())</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb13-1" class="hljs-ln-code"><a href="#cb13-1"></a><span class="in">```{r}</span></span>
-<span id="cb13-2" class="hljs-ln-code"><a href="#cb13-2"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb13-3" class="hljs-ln-code"><a href="#cb13-3"></a>  <span class="fu">count</span>(smoker, arm)</span>
-<span id="cb13-4" class="hljs-ln-code"><a href="#cb13-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb13-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb13-2" class="hljs-ln-code"><a></a><span class="in">table_01 %&gt;%</span></span>
+<span id="cb13-3" class="hljs-ln-code"><a></a><span class="in">  count(smoker, arm)</span></span>
+<span id="cb13-4" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
   smoker     arm           n
@@ -653,11 +654,11 @@
 <section id="group_by-and-summariseis-the-general-method" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title"><code>group_by()</code> and <code>summarise()</code>is the general method</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb15-1" class="hljs-ln-code"><a href="#cb15-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-2" class="hljs-ln-code"><a href="#cb15-2"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb15-3" class="hljs-ln-code"><a href="#cb15-3"></a>  <span class="fu">group_by</span>(smoker, arm) <span class="sc">%&gt;%</span></span>
-<span id="cb15-4" class="hljs-ln-code"><a href="#cb15-4"></a>  <span class="fu">summarise</span>(<span class="at">median_age =</span> <span class="fu">median</span>(age))</span>
-<span id="cb15-5" class="hljs-ln-code"><a href="#cb15-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb15-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb15-2" class="hljs-ln-code"><a></a><span class="in">table_01 %&gt;%</span></span>
+<span id="cb15-3" class="hljs-ln-code"><a></a><span class="in">  group_by(smoker, arm) %&gt;%</span></span>
+<span id="cb15-4" class="hljs-ln-code"><a></a><span class="in">  summarise(median_age = median(age))</span></span>
+<span id="cb15-5" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
 # Groups:   smoker [2]
@@ -673,14 +674,14 @@
 <section id="you-can-make-multiple-summarise-at-once" class="slide level2">
 <h2>You can make multiple summarise at once</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1"></a><span class="in">```{r}</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">group_by</span>(smoker, arm) <span class="sc">%&gt;%</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb17-5"><a href="#cb17-5"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb17-6"><a href="#cb17-6"></a>    <span class="at">median_age =</span> <span class="fu">median</span>(age)</span>
-<span id="cb17-7"><a href="#cb17-7"></a>    )</span>
-<span id="cb17-8"><a href="#cb17-8"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb17-2"><a></a><span class="in">table_01 %&gt;%</span></span>
+<span id="cb17-3"><a></a><span class="in">  group_by(smoker, arm) %&gt;%</span></span>
+<span id="cb17-4"><a></a><span class="in">  summarise(</span></span>
+<span id="cb17-5"><a></a><span class="in">    n = n(),</span></span>
+<span id="cb17-6"><a></a><span class="in">    median_age = median(age)</span></span>
+<span id="cb17-7"><a></a><span class="in">    )</span></span>
+<span id="cb17-8"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
 # Groups:   smoker [2]
@@ -699,9 +700,9 @@
 
 <img data-src="../../../images/wooclap_info.png" width="500" class="r-stretch"><p>What 4 columns do you expect in the output of this code?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">group_by</span>(education_level, smoker) <span class="sc">%&gt;%</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">average_age =</span> <span class="fu">mean</span>(age))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a></a>  <span class="fu">group_by</span>(education_level, smoker) <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">average_age =</span> <span class="fu">mean</span>(age))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="reshape-pivot_wider-and-pivot_longer" class="slide level2">
@@ -711,10 +712,10 @@
 <section id="reshaping-example-making-a-wide-summary-table" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Reshaping example: Making a wide summary table</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb20-1" class="hljs-ln-code"><a href="#cb20-1"></a><span class="in">```{r}</span></span>
-<span id="cb20-2" class="hljs-ln-code"><a href="#cb20-2"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb20-3" class="hljs-ln-code"><a href="#cb20-3"></a>  <span class="fu">count</span>(education, arm)</span>
-<span id="cb20-4" class="hljs-ln-code"><a href="#cb20-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb20-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb20-2" class="hljs-ln-code"><a></a><span class="in">table_01 %&gt;%</span></span>
+<span id="cb20-3" class="hljs-ln-code"><a></a><span class="in">  count(education, arm)</span></span>
+<span id="cb20-4" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 3
   education                     arm           n
@@ -733,11 +734,11 @@
 <section id="reshaping-example-making-a-wide-summary-table-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Reshaping example: Making a wide summary table</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb22-1" class="hljs-ln-code"><a href="#cb22-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-2" class="hljs-ln-code"><a href="#cb22-2"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb22-3" class="hljs-ln-code"><a href="#cb22-3"></a>  <span class="fu">count</span>(education, arm) <span class="sc">%&gt;%</span></span>
-<span id="cb22-4" class="hljs-ln-code"><a href="#cb22-4"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> arm, <span class="at">values_from =</span> n)</span>
-<span id="cb22-5" class="hljs-ln-code"><a href="#cb22-5"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb22-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb22-2" class="hljs-ln-code"><a></a><span class="in">table_01 %&gt;%</span></span>
+<span id="cb22-3" class="hljs-ln-code"><a></a><span class="in">  count(education, arm) %&gt;%</span></span>
+<span id="cb22-4" class="hljs-ln-code"><a></a><span class="in">  pivot_wider(names_from = arm, values_from = n)</span></span>
+<span id="cb22-5" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
   education                     placebo treatment
@@ -752,14 +753,14 @@
 <section id="reshaping-example-making-a-wide-summary-table-2" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Reshaping example: Making a wide summary table</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb24-1" class="hljs-ln-code"><a href="#cb24-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-2" class="hljs-ln-code"><a href="#cb24-2"></a>education_wide <span class="ot">&lt;-</span> table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb24-3" class="hljs-ln-code"><a href="#cb24-3"></a>  <span class="fu">count</span>(education, arm) <span class="sc">%&gt;%</span></span>
-<span id="cb24-4" class="hljs-ln-code"><a href="#cb24-4"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> arm, <span class="at">values_from =</span> n)</span>
-<span id="cb24-5" class="hljs-ln-code"><a href="#cb24-5"></a></span>
-<span id="cb24-6" class="hljs-ln-code"><a href="#cb24-6"></a>education_wide <span class="sc">%&gt;%</span></span>
-<span id="cb24-7" class="hljs-ln-code"><a href="#cb24-7"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>education, <span class="at">names_to =</span> <span class="st">"arm"</span>, <span class="at">values_to =</span> <span class="st">"n"</span>)</span>
-<span id="cb24-8" class="hljs-ln-code"><a href="#cb24-8"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb24-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb24-2" class="hljs-ln-code"><a></a><span class="in">education_wide &lt;- table_01 %&gt;%</span></span>
+<span id="cb24-3" class="hljs-ln-code"><a></a><span class="in">  count(education, arm) %&gt;%</span></span>
+<span id="cb24-4" class="hljs-ln-code"><a></a><span class="in">  pivot_wider(names_from = arm, values_from = n)</span></span>
+<span id="cb24-5" class="hljs-ln-code"><a></a></span>
+<span id="cb24-6" class="hljs-ln-code"><a></a><span class="in">education_wide %&gt;%</span></span>
+<span id="cb24-7" class="hljs-ln-code"><a></a><span class="in">  pivot_longer(-education, names_to = "arm", values_to = "n")</span></span>
+<span id="cb24-8" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 3
   education                     arm           n
@@ -806,7 +807,7 @@
 <p><code>left_join()</code> - the resulting table always has the same <strong>key_values</strong> as the “left” table</p>
 
 <img data-src="images/left_join.png" class="r-stretch"><div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>table_a <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(table_b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>table_a <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(table_b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="right-join" class="slide level2">
@@ -814,7 +815,7 @@
 <p><code>right_join()</code> - the resulting table always has the same <strong>key_values</strong> as the “right” table</p>
 
 <img data-src="images/right_join.png" class="r-stretch"><div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>table_a <span class="sc">%&gt;%</span> <span class="fu">right_join</span>(table_b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>table_a <span class="sc">%&gt;%</span> <span class="fu">right_join</span>(table_b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="inner_join" class="slide level2">
@@ -822,7 +823,7 @@
 <p><code>inner_join()</code> - the resulting table always only keeps the <strong>key_values</strong> that are in both tables</p>
 
 <img data-src="images/inner_join.png" class="r-stretch"><div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>table_a <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(table_b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>table_a <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(table_b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="full-join" class="slide level2">
@@ -830,7 +831,7 @@
 <p><code>full_join()</code> - the resulting table always has all <strong>key_values</strong> found in both tables</p>
 
 <img data-src="images/full_join.png" class="r-stretch"><div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>table_a <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(table_b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>table_a <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(table_b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p>But what are those NAs?</p>
@@ -851,16 +852,16 @@
 <h2>Note, merging tables vertically is bind_rows(), not a join</h2>
 
 <img data-src="images/vertical_join.png" class="r-stretch"><div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>table_a <span class="sc">%&gt;%</span> <span class="fu">bind_rows</span>(table_b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>table_a <span class="sc">%&gt;%</span> <span class="fu">bind_rows</span>(table_b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="by-default-joins-will-match-all-column-names-in-common" class="slide level2">
 <h2>by default, joins will match all column names in common</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1"></a><span class="in">```{r}</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="co">#| message: true</span></span>
-<span id="cb31-3"><a href="#cb31-3"></a>table_01 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(table_02)</span>
-<span id="cb31-4"><a href="#cb31-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb31-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb31-2"><a></a><span class="in">#| message: true</span></span>
+<span id="cb31-3"><a></a><span class="in">table_01 %&gt;% left_join(table_02)</span></span>
+<span id="cb31-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(pid, arm)`</code></pre>
 </div>
@@ -888,7 +889,7 @@
 <p>That’s enough slides for now time to try for yourself! Go to <a href="index.html">the module</a> and go to the first exercise.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_c83588fc" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_21759ab3" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">30</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1179,6 +1180,7 @@
 <div class="column" style="width:25%;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -1225,9 +1227,11 @@
 
 </div>
 </div>
+</div>
 </div><div class="column" style="width:25%;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -1272,6 +1276,7 @@
 </table>
 
 
+</div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -1285,6 +1290,7 @@
 <div class="column" style="width:25%;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -1331,9 +1337,11 @@
 
 </div>
 </div>
+</div>
 </div><div class="column" style="width:25%;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
 <table data-quarto-postprocess="true">
 <thead>
 <tr class="header">
@@ -1380,10 +1388,15 @@
 
 </div>
 </div>
+</div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="slides_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -1399,13 +1412,21 @@
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="slides_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="slides_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -1426,15 +1447,23 @@
 <h2>Careful, are bars stacked or overlapping?</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="cell" data-fig.asp="0.618">
+<div class="cell">
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="slides_files/figure-revealjs/titanic-age-hist-stacked-1.svg" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="cell" data-fig.asp="0.618">
+<div class="cell">
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="slides_files/figure-revealjs/titanic-age-hist-overlap-1.svg" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -1456,20 +1485,20 @@
 <section id="making-histograms-with-ggplot-geom_histogram" class="slide level2">
 <h2>Making histograms with ggplot: <code>geom_histogram()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb34-1"><a href="#cb34-1"></a><span class="in">```{r}</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">ggplot</span>(titanic, <span class="fu">aes</span>(age)) <span class="sc">+</span></span>
-<span id="cb34-3"><a href="#cb34-3"></a>  <span class="fu">geom_histogram</span>()</span>
-<span id="cb34-4"><a href="#cb34-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb34-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb34-2"><a></a><span class="in">ggplot(titanic, aes(age)) +</span></span>
+<span id="cb34-3"><a></a><span class="in">  geom_histogram()</span></span>
+<span id="cb34-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-35-1.png" width="960" class="r-stretch"></section>
 <section id="setting-the-bin-width" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Setting the bin width</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb35-1" class="hljs-ln-code"><a href="#cb35-1"></a><span class="in">```{r}</span></span>
-<span id="cb35-2" class="hljs-ln-code"><a href="#cb35-2"></a><span class="fu">ggplot</span>(titanic, <span class="fu">aes</span>(age)) <span class="sc">+</span></span>
-<span id="cb35-3" class="hljs-ln-code"><a href="#cb35-3"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span>
-<span id="cb35-4" class="hljs-ln-code"><a href="#cb35-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb35-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb35-2" class="hljs-ln-code"><a></a><span class="in">ggplot(titanic, aes(age)) +</span></span>
+<span id="cb35-3" class="hljs-ln-code"><a></a><span class="in">  geom_histogram(binwidth = 5)</span></span>
+<span id="cb35-4" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-36-1.png" width="960" class="r-stretch"><div class="fragment">
@@ -1479,10 +1508,10 @@
 <section id="always-set-the-center-as-well-to-half-the-bin_width" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Always set the <code>center</code> as well, to half the <code>bin_width</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb36-1" class="hljs-ln-code"><a href="#cb36-1"></a><span class="in">```{r}</span></span>
-<span id="cb36-2" class="hljs-ln-code"><a href="#cb36-2"></a><span class="fu">ggplot</span>(titanic, <span class="fu">aes</span>(age)) <span class="sc">+</span></span>
-<span id="cb36-3" class="hljs-ln-code"><a href="#cb36-3"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">center=</span><span class="fl">2.5</span>)</span>
-<span id="cb36-4" class="hljs-ln-code"><a href="#cb36-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb36-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb36-2" class="hljs-ln-code"><a></a><span class="in">ggplot(titanic, aes(age)) +</span></span>
+<span id="cb36-3" class="hljs-ln-code"><a></a><span class="in">  geom_histogram(binwidth = 5, center=2.5)</span></span>
+<span id="cb36-4" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-37-1.png" width="960" class="r-stretch"><div class="fragment">
@@ -1492,20 +1521,20 @@
 <section id="making-density-plots-with-ggplot-geom_density-auto-animatetrue" class="slide level2">
 <h2>Making density plots with ggplot: <code>geom_density()</code> {auto-animate:true}</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb37-1"><a href="#cb37-1"></a><span class="in">```{r}</span></span>
-<span id="cb37-2"><a href="#cb37-2"></a><span class="fu">ggplot</span>(titanic, <span class="fu">aes</span>(age)) <span class="sc">+</span></span>
-<span id="cb37-3"><a href="#cb37-3"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"skyblue"</span>)</span>
-<span id="cb37-4"><a href="#cb37-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb37-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb37-2"><a></a><span class="in">ggplot(titanic, aes(age)) +</span></span>
+<span id="cb37-3"><a></a><span class="in">  geom_density(fill = "skyblue")</span></span>
+<span id="cb37-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-38-1.png" width="960" class="r-stretch"></section>
 <section id="making-density-plots-with-ggplot-geom_density-auto-animatetrue-1" class="slide level2">
 <h2>Making density plots with ggplot: <code>geom_density()</code> {auto-animate:true}</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb38-1"><a href="#cb38-1"></a><span class="in">```{r}</span></span>
-<span id="cb38-2"><a href="#cb38-2"></a><span class="fu">ggplot</span>(titanic, <span class="fu">aes</span>(age)) <span class="sc">+</span></span>
-<span id="cb38-3"><a href="#cb38-3"></a>  <span class="fu">geom_density</span>()</span>
-<span id="cb38-4"><a href="#cb38-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb38-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb38-2"><a></a><span class="in">ggplot(titanic, aes(age)) +</span></span>
+<span id="cb38-3"><a></a><span class="in">  geom_density()</span></span>
+<span id="cb38-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-39-1.png" width="960" class="r-stretch"><p>without <code>fill</code></p>
@@ -1513,28 +1542,28 @@
 <section id="modifying-bandwidth-bw-and-kernel-parameters-auto-animatetrue" class="slide level2">
 <h2>Modifying bandwidth (<code>bw</code>) and kernel parameters {auto-animate:true}</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb39-1"><a href="#cb39-1"></a><span class="in">```{r}</span></span>
-<span id="cb39-2"><a href="#cb39-2"></a><span class="fu">ggplot</span>(titanic, <span class="fu">aes</span>(age)) <span class="sc">+</span></span>
-<span id="cb39-3"><a href="#cb39-3"></a>  <span class="fu">geom_density</span>(</span>
-<span id="cb39-4"><a href="#cb39-4"></a>    <span class="at">fill =</span> <span class="st">"skyblue"</span>,</span>
-<span id="cb39-5"><a href="#cb39-5"></a>    <span class="at">bw =</span> <span class="fl">0.5</span>,               <span class="co"># a small bandwidth</span></span>
-<span id="cb39-6"><a href="#cb39-6"></a>    <span class="at">kernel =</span> <span class="st">"gaussian"</span>     <span class="co"># Gaussian kernel (the default)</span></span>
-<span id="cb39-7"><a href="#cb39-7"></a>  )</span>
-<span id="cb39-8"><a href="#cb39-8"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb39-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb39-2"><a></a><span class="in">ggplot(titanic, aes(age)) +</span></span>
+<span id="cb39-3"><a></a><span class="in">  geom_density(</span></span>
+<span id="cb39-4"><a></a><span class="in">    fill = "skyblue",</span></span>
+<span id="cb39-5"><a></a><span class="in">    bw = 0.5,               # a small bandwidth</span></span>
+<span id="cb39-6"><a></a><span class="in">    kernel = "gaussian"     # Gaussian kernel (the default)</span></span>
+<span id="cb39-7"><a></a><span class="in">  )</span></span>
+<span id="cb39-8"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-40-1.png" width="960" class="r-stretch"></section>
 <section id="modifying-bandwidth-bw-and-kernel-parameters-auto-animatetrue-1" class="slide level2">
 <h2>Modifying bandwidth (<code>bw</code>) and kernel parameters {auto-animate:true}</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb40-1"><a href="#cb40-1"></a><span class="in">```{r}</span></span>
-<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">ggplot</span>(titanic, <span class="fu">aes</span>(age)) <span class="sc">+</span></span>
-<span id="cb40-3"><a href="#cb40-3"></a>  <span class="fu">geom_density</span>(</span>
-<span id="cb40-4"><a href="#cb40-4"></a>    <span class="at">fill =</span> <span class="st">"skyblue"</span>,</span>
-<span id="cb40-5"><a href="#cb40-5"></a>    <span class="at">bw =</span> <span class="dv">2</span>,                 <span class="co"># a moderate bandwidth</span></span>
-<span id="cb40-6"><a href="#cb40-6"></a>    <span class="at">kernel =</span> <span class="st">"rectangular"</span>  <span class="co"># rectangular kernel</span></span>
-<span id="cb40-7"><a href="#cb40-7"></a>  )</span>
-<span id="cb40-8"><a href="#cb40-8"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb40-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb40-2"><a></a><span class="in">ggplot(titanic, aes(age)) +</span></span>
+<span id="cb40-3"><a></a><span class="in">  geom_density(</span></span>
+<span id="cb40-4"><a></a><span class="in">    fill = "skyblue",</span></span>
+<span id="cb40-5"><a></a><span class="in">    bw = 2,                 # a moderate bandwidth</span></span>
+<span id="cb40-6"><a></a><span class="in">    kernel = "rectangular"  # rectangular kernel</span></span>
+<span id="cb40-7"><a></a><span class="in">  )</span></span>
+<span id="cb40-8"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-41-1.png" width="960" class="r-stretch"></section>
@@ -1600,7 +1629,11 @@
 </div><div class="column" style="width:70%;">
 <div class="cell">
 <div class="cell-output-display">
+<div>
+<figure>
 <p><img data-src="slides_files/figure-revealjs/unnamed-chunk-42-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -1716,50 +1749,50 @@
 <section id="examples-boxplot-auto-animate-true" class="slide level2">
 <h2>Examples: Boxplot {auto-animate: true}</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb41-1"><a href="#cb41-1"></a><span class="in">```{r}</span></span>
-<span id="cb41-2"><a href="#cb41-2"></a><span class="fu">ggplot</span>(lincoln_temps, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> mean_temp)) <span class="sc">+</span></span>
-<span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"skyblue"</span>) </span>
-<span id="cb41-4"><a href="#cb41-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb41-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb41-2"><a></a><span class="in">ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +</span></span>
+<span id="cb41-3"><a></a><span class="in">  geom_boxplot(fill = "skyblue") </span></span>
+<span id="cb41-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-50-1.png" width="960" class="r-stretch"></section>
 <section id="examples-violins-auto-animate-true" class="slide level2">
 <h2>Examples: Violins {auto-animate: true}</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb42-1"><a href="#cb42-1"></a><span class="in">```{r}</span></span>
-<span id="cb42-2"><a href="#cb42-2"></a><span class="fu">ggplot</span>(lincoln_temps, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> mean_temp)) <span class="sc">+</span></span>
-<span id="cb42-3"><a href="#cb42-3"></a>  <span class="fu">geom_violin</span>(<span class="at">fill =</span> <span class="st">"skyblue"</span>) </span>
-<span id="cb42-4"><a href="#cb42-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb42-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb42-2"><a></a><span class="in">ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +</span></span>
+<span id="cb42-3"><a></a><span class="in">  geom_violin(fill = "skyblue") </span></span>
+<span id="cb42-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-51-1.png" width="960" class="r-stretch"></section>
 <section id="examples-strip-chart-no-jitter-auto-animate-true" class="slide level2">
 <h2>Examples: Strip chart (no jitter) {auto-animate: true}</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb43-1"><a href="#cb43-1"></a><span class="in">```{r}</span></span>
-<span id="cb43-2"><a href="#cb43-2"></a><span class="fu">ggplot</span>(lincoln_temps, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> mean_temp)) <span class="sc">+</span></span>
-<span id="cb43-3"><a href="#cb43-3"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"skyblue"</span>) </span>
-<span id="cb43-4"><a href="#cb43-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb43-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb43-2"><a></a><span class="in">ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +</span></span>
+<span id="cb43-3"><a></a><span class="in">  geom_point(color = "skyblue") </span></span>
+<span id="cb43-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-52-1.png" width="960" class="r-stretch"></section>
 <section id="examples-strip-chart-w-jitter-auto-animate-true" class="slide level2">
 <h2>Examples: Strip chart (w/ jitter) {auto-animate: true}</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb44-1"><a href="#cb44-1"></a><span class="in">```{r}</span></span>
-<span id="cb44-2"><a href="#cb44-2"></a><span class="fu">ggplot</span>(lincoln_temps, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> mean_temp)) <span class="sc">+</span></span>
-<span id="cb44-3"><a href="#cb44-3"></a>  <span class="fu">geom_jitter</span>(<span class="at">color =</span> <span class="st">"skyblue"</span>) </span>
-<span id="cb44-4"><a href="#cb44-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb44-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb44-2"><a></a><span class="in">ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +</span></span>
+<span id="cb44-3"><a></a><span class="in">  geom_jitter(color = "skyblue") </span></span>
+<span id="cb44-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-53-1.png" width="960" class="r-stretch"></section>
 <section id="examples-scatter-density-plot-auto-animate-true" class="slide level2">
 <h2>Examples: Scatter density plot {auto-animate: true}</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb45-1"><a href="#cb45-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-2"><a href="#cb45-2"></a><span class="fu">ggplot</span>(lincoln_temps, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> mean_temp)) <span class="sc">+</span></span>
-<span id="cb45-3"><a href="#cb45-3"></a>  <span class="fu">geom_quasirandom</span>(<span class="at">color =</span> <span class="st">"skyblue"</span>) </span>
-<span id="cb45-4"><a href="#cb45-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb45-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb45-2"><a></a><span class="in">ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +</span></span>
+<span id="cb45-3"><a></a><span class="in">  geom_quasirandom(color = "skyblue") </span></span>
+<span id="cb45-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-54-1.png" width="960" class="r-stretch"></section>
@@ -1767,8 +1800,10 @@
 <h2>Exercise</h2>
 <p>Try exploring different continuous variables in table 01, table 02, and table_03 using these density visualization strategies.</p>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p><a href="index.html">back to module</a></p>
+</div>
 </div>
 </section></section>
     </div>
@@ -1798,7 +1833,6 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -2098,10 +2132,27 @@
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/elsherbini\.github\.io\/durban-data-science-for-biology\/");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -2111,8 +2162,17 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -2126,7 +2186,11 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

@@ -1,0 +1,132 @@
+---
+title: "Yogurt dataset demo"
+author: "Johnathan Shih"
+output: html_document
+---
+
+```{r}
+#loading libaries
+library(dada2)
+library(phyloseq)
+library(microViz)
+library(rmarkdown)
+library(tidyverse)
+```
+
+
+### Pre-processing
+```{r}
+# created a manifest file to explicitly set files to each sample
+
+manifest <- read_csv("/home/jshih38/Documents/work/workshop2024/manifest.csv")
+path <- "/home/jshih38/Downloads/Vaginal"
+
+#Examining read quality
+plotQualityProfile(manifest %>% slice(19:20) %>% pull(forward))
+plotQualityProfile(manifest %>% slice(1:2) %>% pull(reverse))
+
+#Trim and filtering
+filtFs <- file.path(path, "filtered", paste0(manifest %>% pull(amplicon_sample_id), "_R1_filt.fastq.gz"))
+filtRs <- file.path(path, "filtered", paste0(manifest %>% pull(amplicon_sample_id), "_R2_filt.fastq.gz"))
+names(filtFs) <- manifest %>% pull(amplicon_sample_id)
+names(filtRs) <- manifest %>% pull(amplicon_sample_id)
+
+out <- filterAndTrim(manifest$forward, filtFs, manifest$reverse, filtRs, trimLeft=10, truncLen=c(280,270), compress=TRUE, multithread=TRUE) # On Windows set multithread=FALSE
+head(out)
+
+#obtain error model
+errF <- learnErrors(filtFs, multithread=TRUE)
+errR <- learnErrors(filtRs, multithread=TRUE)
+
+#view error rates
+# plotErrors(errF, nominalQ=TRUE)
+# plotErrors(errR, nominalQ=TRUE)
+
+#running dada2 algorithm
+dadaFs <- dada(filtFs, err=errF, multithread=TRUE)
+dadaRs <- dada(filtRs, err=errR, multithread=TRUE)
+
+#merging paired reads
+mergers <- mergePairs(dadaFs, filtFs, dadaRs, filtRs, verbose=TRUE)
+
+#making seq tab
+seqtab <- makeSequenceTable(mergers)
+dim(seqtab)
+
+#removing chimeras
+seqtab_nochim <- removeBimeraDenovo(seqtab, method="consensus", multithread=TRUE, verbose=TRUE)
+dim(seqtab_nochim)
+
+#see what % of the reads were chimeras
+sum(seqtab_nochim)/sum(seqtab)
+
+#to see the number of reads at each step
+getN <- function(x) sum(getUniques(x))
+track <- cbind(out, sapply(dadaFs, getN), sapply(dadaRs, getN), sapply(mergers, getN), rowSums(seqtab_nochim))
+colnames(track) <- c("input", "filtered", "denoisedF", "denoisedR", "merged", "nonchim")
+rownames(track) <- manifest %>% pull(amplicon_sample_id)
+head(track)
+ 
+#assinging taxonomy
+taxa <- assignTaxonomy(seqtab_nochim, "~/Downloads/silva_nr99_v138.1_train_set.fa.gz", multithread=TRUE) %>% addSpecies("~/Downloads/silva_species_assignment_v138.1.fa.gz")
+
+```
+
+```{r}
+#potential mock sample dada2 accuracy evaluation
+```
+
+
+### Creating phyloseq object
+```{r}
+#reading in other assays and metadata
+amplicon_ids <- read_csv("/home/jshih38/Downloads/Group A Dataset Yogurt/04_yogurt_amplicon_sample_ids.csv")
+samp_id <- read_csv("/home/jshih38/Downloads/Group A Dataset Yogurt/00_sample_ids_yogurt.csv")
+participant_metadata <- read_csv("/home/jshih38/Downloads/Group A Dataset Yogurt/01_participant_metadata_yogurt.csv")
+qpcr <- read_csv("/home/jshih38/Downloads/Group A Dataset Yogurt/02_qpcr_results_yogurt.csv")
+luminex <- read_csv("/home/jshih38/Downloads/Group A Dataset Yogurt/03_luminex_results_yogurt.csv")
+
+
+#creating sample data for the phyloseq
+sample_data <- amplicon_ids %>%
+    left_join(samp_id %>% select(-arm), by = c("pid","time_point")) %>%
+    left_join(participant_metadata %>% select(-arm), by = "pid") %>%
+    left_join(qpcr, by = "sample_id") %>% 
+    left_join(luminex %>%
+        pivot_wider(names_from = cytokine, values_from = c(conc,limits)), by = "sample_id") %>%
+    column_to_rownames("amplicon_sample_id") %>%
+    sample_data()
+
+#removing controls from the seq tab
+seqtab_nochim_no_control <- seqtab_nochim %>% 
+                            as.data.frame() %>%
+                            rownames_to_column("amplicon_sample_id") %>%
+                            filter(str_detect(amplicon_sample_id, "VAG") & !(str_detect(amplicon_sample_id, "CTRL"))) %>%
+                            column_to_rownames("amplicon_sample_id") 
+
+#merging phyloseq parts to create phyloseq object
+ps <- phyloseq(otu_table(seqtab_nochim, taxa_are_rows=FALSE), 
+               sample_data, 
+               tax_table(taxa))
+
+#saving phyloseq so i dont have to regenerate it every time
+saveRDS(ps, "ps.Rds")
+```
+
+### Exploring the phyloseq with microViz
+
+```{r}
+ps <- readRDS("ps.Rds")
+ps_fixed <- ps %>%
+            tax_fix(unknowns = c("unassigned"), anon_unique = FALSE) %>%
+            tax_mutate(Genus_Species = str_c(Genus, Species, sep = " "))
+            # comp_barplot(tax_level = c("Order"), x = "SAMPLE")
+
+ps_fixed %>% ord_explore()
+
+```
+
+
+
+
+
