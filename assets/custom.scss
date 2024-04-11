@@ -395,6 +395,37 @@ input,
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23dfd7ca'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>");
   }
 }
+ // testing
+ .block {
+  margin: 1em 0;
+  border: 2px solid rgb(180, 177, 177);
+  border-left: 5px solid teal; 
+  border-radius: 10px;
+}
+.block-header {
+  margin-left: 0em;
+  padding-left:  10px;
+  padding-top:  5px;
+  padding-bottom: 0.1em;
+  color: black;
+  // background-color: rgb(123, 173, 173);
+  border-top-right-radius: 10px;
+  font-size: 1em;
+  font-weight: bold;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+}
+
+.block-container {
+  padding-top: 5px;
+  padding-left: 20px;
+  color: black;
+  // background-color: white;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+}
+
 
 // Fancy Links (these only effect nav links for some reason)
 

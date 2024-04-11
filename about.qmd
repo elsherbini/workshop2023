@@ -2,6 +2,165 @@
 title: "About"
 sidebar: false
 ---
+## Working with High Dimensional Data in R -  Teaching Team
+::: {.grid}
+
+
+::: {.g-col-2}
+![](images/Scott.png){fig-align="left"}
+:::
+::: {.g-col-4}
+[*Series Organizer and Instructor*]{style="font-size: 0.8em"}  
+**Dr. Scott Handley**  
+Professor  
+Washington University School of Medicine  
+Department of Pathology and Immunology
+:::
+
+::: {.g-col-2}
+![](images/Joseph.png){fig-align="left"}
+:::
+::: {.g-col-4}
+[*Series Organizer and Instructor*]{style="font-size: 0.8em"}  
+**Dr. Joseph Elsherbini**  
+Data Scientist  
+Ragon Institute of MGH, MIT and Harvard
+:::
+
+::: {.g-col-2}
+<!-- ![](images/Chandani.png){fig-align="left"} -->
+:::
+::: {.g-col-4}
+[*Instructor*]{style="font-size: 0.8em"}  
+**Dr. Lindsay Droit**  
+Research Laboratory Manager
+Washington University School of Medicine  
+:::
+
+::: {.g-col-2}
+<!-- ![](images/Chandani.png){fig-align="left"} -->
+:::
+::: {.g-col-4}
+[*Instructor*]{style="font-size: 0.8em"}  
+**Dr. Elizabeth Costello**  
+Research Scientist\
+Stanford University
+:::
+
+::: {.g-col-2}
+<!-- ![](images/Chandani.png){fig-align="left"} -->
+:::
+::: {.g-col-4}
+[*Instructor*]{style="font-size: 0.8em"}  
+**Dr. Michael France**  
+Bioinformatician\
+University of Maryland School of Medicine
+:::
+
+::: {.g-col-2}
+![](images/Chandani.png){fig-align="left"}
+:::
+::: {.g-col-4}
+[*Series Organizer and Instructor*]{style="font-size: 0.8em"}  
+**Chandani Desai**  
+Project Manager  
+Ragon Institute of MGH, MIT and Harvard
+:::
+
+::: {.g-col-2}
+![](images/Asavela.png){fig-align="left"}
+:::
+
+::: {.g-col-4}
+[*Instructor*]{style="font-size: 0.8em"}  
+**Asavela Kama**  
+Bioinformatician  
+Centre for the AIDS Programme of Research in South Africa (CAPRISA) -  UKZN
+:::
+
+::: {.g-col-2}
+<!-- ![](images/Asavela.png){fig-align="left"} -->
+:::
+
+::: {.g-col-4}
+[*Instructor*]{style="font-size: 0.8em"}  
+**Johnathan Shih**  
+Bioinformatics Research Technician  
+Ragon Institute of MGH, MIT and Harvard
+:::
+
+::: {.g-col-2}
+![](images/Sarah.png){fig-align="left"}
+:::
+
+::: {.g-col-4}
+[*Series Logistics and Management*]{style="font-size: 0.8em"}  
+**Sarah Eisa**  
+Program Manager  
+Ragon Institute of MGH, MIT and Harvard
+:::
+
+::: {.g-col-2}
+<!-- ![](images/Salina.png){fig-align="left"} -->
+:::
+::: {.g-col-4}
+[*Teaching Assistant*]{style="font-size: 0.8em"}  
+**Aaron Abai**  
+Research Technician  
+Ragon Institute of MGH, MIT and Harvard
+:::
+
+
+::: {.g-col-2}
+![](images/Derek.png){fig-align="left"}
+:::
+
+::: {.g-col-4}
+[*Teaching Assistant*]{style="font-size: 0.8em"}  
+**Derek Tshiabuila**  
+PhD Research Fellow  
+Centre for Epidemic Response and Innovation (CERI) - Stellenbosch  
+:::
+
+
+
+::: {.g-col-2}
+![](images/Afrah.png){fig-align="left"}
+:::
+
+::: {.g-col-4}
+[*Teaching Assistant*]{style="font-size: 0.8em"}  
+**Afrah Khairallah**  
+Postdoctoral research fellow
+Africa Health Research Institute (AHRI) - UKZN  
+:::
+
+
+
+::: {.g-col-2}
+![](images/Johan.png){fig-align="left"}
+:::
+
+::: {.g-col-4}
+[*Teaching Assistant*]{style="font-size: 0.8em"}  
+**Johan van der Molen**  
+Centre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN
+:::
+
+
+::: {.g-col-2}
+
+:::
+
+::: {.g-col-4}
+[*Teaching Assistant*]{style="font-size: 0.8em"}  
+**Wasim Abdool Karim**  
+Bioinformatician
+Centre for Epidemic Response and Innovation (CERI) - Stellenbosch  
+:::
+
+:::
+
 
 ## Reproducible Data Analysis with R - Teaching Team
 

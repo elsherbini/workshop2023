@@ -44,10 +44,10 @@ toc: false
 | PM   | R Refresher (<code> tidyverse</code> /summary tables/data visualization) | Scott Handley (Wash U School of Medicine)|
 | **Tuesday, April 23^th^**  |____________________________________________ |____________________________________________ |
 | AM   | 16S Data Preprocessing| Asavela Kama (CAPRISA)|
-| PM | 16S Data Analysis pt. 1 | Elizabeth Costello (Stanford University) |
+| PM | 16S Data Analysis pt. I | Elizabeth Costello (Stanford University) |
 | **Wednesday, April 24^th^**  |____________________________________________ | ____________________________________________|
 | AM   | Group Activity session I  | Johnathan Shih (Ragon Institute)|
- PM | 16S Data Analysis pt. 1 | Joseph Elsherbini (Ragon Institute)|
+ PM | 16S Data Analysis pt. II | Joseph Elsherbini (Ragon Institute)|
 | **Thursday, April 25^th^**  |____________________________________________ | ____________________________________________|
 | AM   | VIRGO / Shotgun Metagenomics | Michael France (UMD School of Medicine)|
 | PM   | Group Activity session II  | Johnathan Shih (Ragon Institute)|

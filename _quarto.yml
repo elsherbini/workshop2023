@@ -89,7 +89,7 @@ website:
             - text: "<b>Module 6</b>: Keynote "
               contents:
               href: materials/2-workshop2/7-keynote/index.qmd
-            - text: "<b>Group Project</b> Applying what you've learned to new data"
+            - text: "<b>Group Activity:</b> Applying what you've learned to new data"
               contents:
               href: materials/2-workshop2/8-group-project/index.qmd
 

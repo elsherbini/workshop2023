@@ -1,0 +1,31 @@
+---
+title: "Research Project B "
+format:
+  html:
+    toc: true
+---
+
+## Does birth control change inflammation during menstruation? ![](images/birth_control.png){width=15%}
+
+#### Questions and aims for birth control dataset (!To be updated with birth control data and lecture slide notes)
+**16S processing** \
+
+* Identify project files on your instance
+* What are some pre-processing steps to take before running Dada2?
+* What can you say about the quality of the reads?
+* Merge data from other assays 
+* Generate a phyloseq object
+* Phyloseq cleaning
+* Optional: Can you use the control samples to test Dada2's accuracy?
+ 
+
+**16S analysis**
+
+* Generate plots to compare relative abundance across arms and time points
+* What are noticable differences after antibiotic treatment?
+* **Does consumption of yogurt influence people's microbiome?**
+* Are there ways to change the scale so that taxa at lower abundance can be more easily visualized?
+* Use a distance metric and explain what it means when comparing across groups
+* Conduct differential abundance testing (simply wilcoxon or using DESeq2?)
+* Incorporate shotgun metagenomic data into the phyloseq
+* Optional: Use microViz to explore the phyloseq object
