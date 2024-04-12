@@ -11,6 +11,7 @@ project:
 from: markdown+emoji
 
 website:
+  bread-crumbs: false
   title: "Data Science for Biology Workshop Series"
   page-navigation: true
   navbar:
@@ -67,6 +68,7 @@ website:
               href: materials/1-workshop1/8-group-projects/index.qmd
 
           - section: "<b>2. Working with High Dimensional Data in R - The Human Microbiome</b>"
+            id: "workshop2"
             contents:
             - text: "<b>Module 0:</b> Welcome and Course Introduction"
               contents:
@@ -98,11 +100,14 @@ website:
     right: "This page is built with {{< fa heart >}} and [Quarto](https://quarto.org/)."
     left: "&copy; 2023. Huge thanks to [Andrew P. Bray](https://github.com/andrewpbray) and [Claus O. Wilke](https://github.com/clauswilke) for open source code and sharing content."
 
-format: 
+format:   
   html:
-    theme: [default, assets/custom.scss]
+    theme: [default, assets/custom.scss, assets/keep_open.html]
     toc: false
+    includes:
+      - assets/keep_open.html
     
+
 # Design tips:
 # 1. maggieappleton.com
 # 2. Palette: https://www.jpl.nasa.gov/images/the-grand-tour-jpl-travel-poster

@@ -125,25 +125,3 @@ Learning Goals
 [Johnathan's Demo (temporary test)](johnathan_yogurt_demo.rmd)
 
 
-
-<!-- ::: {#tbl-panel layout-ncol=2}
-| Col1 | Col2 | Col3 |
-|------|------|------|
-| A    | B    | C    |
-| E    | F    | G    |
-| A    | G    | G    |
-
-: First Table {#tbl-first}
-
-| Col1 | Col2 | Col3 |
-|------|------|------|
-| A    | B    | C    |
-| E    | F    | G    |
-| A    | G    | G    |
-
-: Second Table {#tbl-second}
-
-Wednesday Session Structure
-:::
-
-See @tbl-panel for details, especially @tbl-second. -->
