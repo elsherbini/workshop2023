@@ -225,8 +225,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../materials/2-workshop2/3-dada2/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 2</b>: Dada2</span></a>
+  <a href="../../../materials/2-workshop2/3-16s_processing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 2</b>: 16S Data Processing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -305,7 +305,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="does-yogurt-consumption-change-the-vaginal-microbiome">Does yogurt consumption change the vaginal microbiome? <img src="images/greek-yogurt.jpg" class="img-fluid" style="width:15.0%"></h2>
 <section id="description" class="level4">
 <h4 class="anchored" data-anchor-id="description">Description</h4>
-<p>This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment. (add 16s)</p>
+<p>This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. 16S rRNA sequencing was done to charaterize patient microbiome composition. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment.</p>
 <p><br>
 </p>
 </section>
@@ -314,23 +314,29 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>16S processing</strong><br>
 </p>
 <ul>
-<li>Identify project files on your instance</li>
-<li>What are some pre-processing steps to take before running Dada2?</li>
-<li>What can you say about the quality of the reads?</li>
+<li>Identify project files on your instance ** What does the count tables represent?</li>
+<li>Thinky question about dada2</li>
 <li>Merge data from other assays</li>
-<li>Generate a phyloseq object</li>
-<li>Phyloseq cleaning</li>
-<li>Optional: Can you use the control samples to test Dada2’s accuracy?</li>
+<li>Filter sample data with groups metadata</li>
+<li>Filter counts table with filtered sample data</li>
+<li>Filter tax table with cleaned count table</li>
+<li>Generate phyloseq object</li>
+<li>Phyloseq cleaning (following Liz’s slides)</li>
+<li>tax_fix to set unassinged <!-- * Optional: Can you use the control samples to test Dada2's accuracy? --></li>
 </ul>
 <p><strong>16S analysis</strong></p>
 <ul>
+<li>Plot the microbiome!</li>
 <li>Generate plots to compare relative abundance across arms and time points</li>
 <li>What are noticable differences after antibiotic treatment?</li>
 <li><strong>Does consumption of yogurt influence people’s microbiome?</strong></li>
-<li>Are there ways to change the scale so that taxa at lower abundance can be more easily visualized?</li>
+<li>Are there ways to change the scale so that taxa at lower abundance can be more easily visualized? (log transform)</li>
+<li>Diversity</li>
+<li>Shannon</li>
 <li>Use a distance metric and explain what it means when comparing across groups</li>
-<li>Conduct differential abundance testing (simply wilcoxon or using DESeq2?)</li>
-<li>Incorporate shotgun metagenomic data into the phyloseq</li>
+<li>Conduct differential abundance testing (joseph’s slides)</li>
+<li>give steps with tax tree</li>
+<li>Incorporate shotgun metagenomic data into the phyloseq (micahel’s slides)</li>
 <li>Optional: Use microViz to explore the phyloseq object</li>
 </ul>
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science for Biology Workshop Series - Group Activity</title>
+<title>Data Science for Biology Workshop Series - Johnathan Yogurt Demo Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../materials/2-workshop2/7-keynote/index.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -73,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -127,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Group Activity</h1>
+          <h1 class="quarto-secondary-nav-title">Johnathan Yogurt Demo Analysis</h1>
         </a>     
     </div>
   </nav>
@@ -205,13 +238,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text"><b>2. Working with High Dimensional Data in R - The Human Microbiome</b></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/2-workshop2/1-introduction/index.html" class="sidebar-item-text sidebar-link">
@@ -256,7 +289,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../materials/2-workshop2/8-group-project/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../materials/2-workshop2/8-group-project/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Group Activity:</b> Applying what you’ve learned to new data</span></a>
   </div>
 </li>
@@ -271,23 +304,13 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#projects" id="toc-projects" class="nav-link active" data-scroll-target="#projects">Projects</a></li>
-  <li><a href="#schedule-to-be-updated-with-lecture-slide-points" id="toc-schedule-to-be-updated-with-lecture-slide-points" class="nav-link" data-scroll-target="#schedule-to-be-updated-with-lecture-slide-points">Schedule (! To be updated with lecture slide points)</a></li>
-  <li><a href="#example-workflows" id="toc-example-workflows" class="nav-link" data-scroll-target="#example-workflows">Example workflows</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Group Activity</h1>
+<h1 class="title d-none d-lg-block">Johnathan Yogurt Demo Analysis</h1>
 </div>
 
 
@@ -304,160 +327,117 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Group A will be analyzing the yogurt dataset and Group B will be analyzing the menstruation dataset.</p>
-<!-- :::{.callout-Group_A}
-
-<b>Study Description</b>  
-
-::: -->
-<section id="projects" class="level3">
-<h3 class="anchored" data-anchor-id="projects">Projects</h3>
-<!-- :::{.callout-note title="Research Project A - Does yogurt consumption change the vaginal microbiome?" appearance="simple"}
-\
-**Aim**\
-To investigate whether the consumption of yogurt influences microbiome composition after antibiotics treatment.\
-\
-**Study Description** \
-This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment. (add 16s)
-\
- 
-::: -->
-<div class="block">
-<div class="block-header">
-<p>Research Project A - Does yogurt consumption change the vaginal microbiome?</p>
+<section id="pre-processing" class="level3">
+<h3 class="anchored" data-anchor-id="pre-processing">Pre-processing</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#reading in assays and metadata</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>amplicon_ids <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Group A Dataset Yogurt/04_yogurt_amplicon_sample_ids.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>samp_id <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Group A Dataset Yogurt/00_sample_ids_yogurt.csv"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>participant_metadata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Group A Dataset Yogurt/01_participant_metadata_yogurt.csv"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>qpcr <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Group A Dataset Yogurt/02_qpcr_results_yogurt.csv"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>luminex <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Group A Dataset Yogurt/03_luminex_results_yogurt.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="group_a" class="block-container">
-<p><strong>Aim</strong><br>
-To investigate whether the consumption of yogurt influences microbiome composition after antibiotics treatment.<br>
-<br>
-<strong>Study Description</strong><br>
-This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment. (add 16s)<br>
-</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating sample data for the phyloseq by merging the csvs, also created log transformed cytokines</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>yogurt_sample_data <span class="ot">&lt;-</span> amplicon_ids <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(samp_id <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>arm), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"pid"</span>,<span class="st">"time_point"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(participant_metadata <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>arm), <span class="at">by =</span> <span class="st">"pid"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">arm_timepoint =</span> <span class="fu">str_c</span>(arm, time_point, <span class="at">sep =</span> <span class="st">"_"</span>)) <span class="sc">%&gt;%</span>            <span class="co">#creating a arm and timepoint column for later plotting</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(qpcr, <span class="at">by =</span> <span class="st">"sample_id"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(luminex <span class="sc">%&gt;%</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> cytokine, <span class="at">values_from =</span> <span class="fu">c</span>(conc,limits)), <span class="at">by =</span> <span class="st">"sample_id"</span>) <span class="sc">%&gt;%</span>      <span class="co">#will need to pivot the cyotokine data to longer to merge with sample data</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column_to_rownames</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="fu">starts_with</span>(<span class="st">"conc_"</span>)), <span class="fu">list</span>(<span class="at">log10 =</span> <span class="sc">~</span> <span class="fu">log10</span>(. <span class="sc">+</span> <span class="dv">1</span> )))</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># select(-matches("conc") | matches("log10")) %&gt;%</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#merging metadata with the full reads</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#get amplicon sample ids for the yogurt dataset</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>yogurt_ids <span class="ot">&lt;-</span> yogurt_sample_data <span class="sc">%&gt;%</span> </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>              <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>              <span class="fu">rownames_to_column</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>              <span class="fu">pull</span>(amplicon_sample_id)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">#filtering the count data by the yogurt ids, then removing unused ASVs - when sum of column is 0</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>count_table <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/gv_seqtab_nobim.rds"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>                <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>                <span class="fu">rownames_to_column</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>                <span class="fu">filter</span>(amplicon_sample_id <span class="sc">%in%</span> yogurt_ids) <span class="sc">%&gt;%</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="sc">-</span>amplicon_sample_id), as.numeric) <span class="sc">%&gt;%</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                <span class="fu">column_to_rownames</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                <span class="fu">select</span>(<span class="fu">where</span>(<span class="sc">~</span><span class="fu">sum</span>(.) <span class="sc">!=</span> <span class="dv">0</span>))</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co">#getting all asvs for the yogurt data</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>asvs <span class="ot">&lt;-</span> <span class="fu">colnames</span>(count_table)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co">#filtering the taxa table so there is only asavs for the yogurt data</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>tax_table <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/gv_spetab_nobim_silva.rds"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>              <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>              <span class="fu">rownames_to_column</span>(<span class="st">"tax_table_asv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>              <span class="fu">filter</span>(tax_table_asv <span class="sc">%in%</span> asvs) <span class="sc">%&gt;%</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>              <span class="fu">column_to_rownames</span>(<span class="st">"tax_table_asv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>              <span class="fu">as.matrix</span>()</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co">#creating phyloseq object</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>yogurt_ps <span class="ot">&lt;-</span> <span class="fu">phyloseq</span>(<span class="fu">otu_table</span>(count_table, <span class="at">taxa_are_rows=</span><span class="cn">FALSE</span>), </span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>               <span class="fu">sample_data</span>(yogurt_sample_data), </span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>               <span class="fu">tax_table</span>(tax_table))</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co">#saving phyloseq so i dont have to regenerate it every time</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(yogurt_ps, <span class="st">"yogurt_ps.Rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<script> 
-  // Add click event listener to the block header
-  document.getElementById("group_a").addEventListener("click", function() {
-    window.location.href = "group_a.html";
-  });
-</script>
-<div class="block">
-<div class="block-header">
-<p>Research Project B - Does birth control change inflammation during menstruation?</p>
-</div>
-<div id="group_b" class="block-container">
-<p><strong>Aim</strong><br>
-To investigate whether taking birth control is associated with vaginal inflammation throughout the menstrual cycle.<br>
-<br>
-<strong>Study Description</strong><br>
-This is an observational study to evaluate the relationship between birth control and vaginal inflammation In response to menstruation. Absolute abundance of bacteria was measured by 3 qPCR assays (for total Bacteria, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation. (add 16s)<br>
-</p>
-</div>
-</div>
-<script> 
-  // Add click event listener to the block header
-  document.getElementById("group_b").addEventListener("click", function() {
-    window.location.href = "group_b.html";
-  });
-</script>
-<!-- :::{.goals}
-::::{.goals-header}
-Learning Goals
-::::
-::::{.goals-container}
-* Know how to make your own callouts.
-* Be able to mess with some SCSS/CSS styling.
-::::
-::: -->
-<!-- {{< group_projects.qmd  >}} -->
 </section>
-<section id="schedule-to-be-updated-with-lecture-slide-points" class="level3">
-<h3 class="anchored" data-anchor-id="schedule-to-be-updated-with-lecture-slide-points">Schedule (! To be updated with lecture slide points)</h3>
-<p><strong>Wednesday (4/24)</strong></p>
-<table class="table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 83%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Time</th>
-<th>Task</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>9:00-9:30am</td>
-<td><ul>
-<li>Read project description and aims for your project</li>
-<li>Locate project files on your instance</li>
-<li>Create a new .qmd file</li>
-</ul></td>
-</tr>
-<tr class="even">
-<td>9:30 - 10:30am</td>
-<td><ul>
-<li><strong>Explore the data!</strong></li>
-<li>Merge in metadata, qPCR, and Luminex data</li>
-<li>Create a phyloseq object</li>
-</ul></td>
-</tr>
-<tr class="odd">
-<td>10:30 - 11:00am</td>
-<td><strong>Break</strong></td>
-</tr>
-<tr class="even">
-<td>11:00- 12:00pm</td>
-<td><ul>
-<li>Phyloseq cleaning</li>
-<li>Visualizing microbiome composition</li>
-<li>Diversity and Ordination</li>
-</ul></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Thursday (4/25)</strong></p>
-<table class="table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 83%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Time</th>
-<th>Task</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1:30 - 2:00pm</td>
-<td><ul>
-<li>Diversity and Ordination</li>
-</ul></td>
-</tr>
-<tr class="even">
-<td>2:00 - 3:00pm</td>
-<td><ul>
-<li>Differential abundance</li>
-<li>Running shotgun metagenomics and integrating into phyloseq</li>
-</ul></td>
-</tr>
-<tr class="odd">
-<td>3:00 - 3:30pm</td>
-<td><strong>Break</strong></td>
-</tr>
-<tr class="even">
-<td>3:30 - 5:00pm</td>
-<td><ul>
-<li>etc</li>
-</ul></td>
-</tr>
-</tbody>
-</table>
+<section id="phyloseq-cleaning" class="level3">
+<h3 class="anchored" data-anchor-id="phyloseq-cleaning">Phyloseq cleaning</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#after merging the metadata and the count/tax table</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>yogurt_ps <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"yogurt_ps.Rds"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">tax_fix</span>(<span class="at">unknowns =</span> <span class="fu">c</span>(<span class="st">"unassigned"</span>), <span class="at">anon_unique =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">tax_mutate</span>(<span class="at">Genus_Species =</span> <span class="fu">str_c</span>(Genus, Species, <span class="at">sep =</span> <span class="st">" "</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>yogurt_ps <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ps_seriate</span>(<span class="at">dist =</span> <span class="st">"bray"</span>, <span class="at">method =</span> <span class="st">"OLO_ward"</span>) <span class="sc">%&gt;%</span> <span class="co"># these are the defaults</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comp_barplot</span>(<span class="at">tax_level =</span> <span class="st">"Genus_Species"</span>, <span class="at">facet_by =</span> <span class="fu">c</span>(<span class="st">"arm"</span>,<span class="st">"time_point"</span>), <span class="at">sample_order =</span> <span class="st">"bray"</span>, <span class="at">n_taxa =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="johnathan_demo_final_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="1440"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#The taxa names can use some updating</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>updated_yogurt_ps <span class="ot">&lt;-</span> yogurt_ps <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># tax_select(tax_list = "Lactobacillus", ranks = "Genus") %&gt;%  #filters for Lactos</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">tax_mutate</span>(<span class="at">Species =</span> <span class="fu">case_when</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                        Species <span class="sc">==</span> <span class="st">"Lactobacillus Genus"</span> <span class="sc">~</span> <span class="st">"crispatus"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                        Species <span class="sc">==</span>  <span class="st">"acidophilus/casei/crispatus/gallinarum"</span> <span class="sc">~</span> <span class="st">"crispatus"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                        Species <span class="sc">==</span> <span class="st">"crispatus/gasseri/helveticus/johnsonii/kefiranofaciens"</span> <span class="sc">~</span> <span class="st">"crispatus"</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                        Species <span class="sc">==</span> <span class="st">"animalis/apodemi/crispatus/murinus"</span> <span class="sc">~</span> <span class="st">"crispatus"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">.default =</span> Species</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                    ))<span class="sc">%&gt;%</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">tax_mutate</span>(<span class="at">Genus_Species =</span> <span class="fu">str_c</span>(Genus, Species, <span class="at">sep =</span> <span class="st">" "</span>))</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>updated_yogurt_ps <span class="sc">%&gt;%</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ps_seriate</span>(<span class="at">dist =</span> <span class="st">"bray"</span>, <span class="at">method =</span> <span class="st">"OLO_ward"</span>) <span class="sc">%&gt;%</span> <span class="co"># arranges samples by microbiome similarity</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comp_barplot</span>(<span class="at">tax_level =</span> <span class="st">"Genus_Species"</span>, <span class="at">facet_by =</span> <span class="fu">c</span>(<span class="st">"arm"</span>,<span class="st">"time_point"</span>), <span class="at">sample_order =</span> <span class="st">"bray"</span>, <span class="at">n_taxa =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="johnathan_demo_final_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="1440"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="example-workflows" class="level3">
-<h3 class="anchored" data-anchor-id="example-workflows">Example workflows</h3>
-<p><a href="../../../materials/2-workshop2/8-group-project/johnathan_demo_final.html">Johnathan’s test demo</a></p>
+<section id="diversity" class="level3">
+<h3 class="anchored" data-anchor-id="diversity">Diversity</h3>
+</section>
+<section id="ordination" class="level3">
+<h3 class="anchored" data-anchor-id="ordination">Ordination</h3>
+</section>
+<section id="differential-abundance" class="level3">
+<h3 class="anchored" data-anchor-id="differential-abundance">Differential Abundance</h3>
 
 
 </section>
@@ -872,15 +852,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../../materials/2-workshop2/7-keynote/index.html" class="pagination-link" aria-label="<b>Module 6</b>: Keynote ">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><b>Module 6</b>: Keynote</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

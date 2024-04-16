@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science for Biology Workshop Series - Group Activity</title>
+<title>Data Science for Biology Workshop Series - 16S Data Processing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../materials/2-workshop2/7-keynote/index.html" rel="prev">
+<link href="../../../materials/2-workshop2/4-16s-pt1/index.html" rel="next">
+<link href="../../../materials/2-workshop2/2-r-refresher/index.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -127,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Group Activity</h1>
+          <h1 class="quarto-secondary-nav-title">16S Data Processing</h1>
         </a>     
     </div>
   </nav>
@@ -226,7 +227,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../materials/2-workshop2/3-16s_processing/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/2-workshop2/3-16s_processing/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><b>Module 2</b>: 16S Data Processing</span></a>
   </div>
 </li>
@@ -256,7 +257,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../materials/2-workshop2/8-group-project/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../materials/2-workshop2/8-group-project/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Group Activity:</b> Applying what you’ve learned to new data</span></a>
   </div>
 </li>
@@ -276,9 +277,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#projects" id="toc-projects" class="nav-link active" data-scroll-target="#projects">Projects</a></li>
-  <li><a href="#schedule-to-be-updated-with-lecture-slide-points" id="toc-schedule-to-be-updated-with-lecture-slide-points" class="nav-link" data-scroll-target="#schedule-to-be-updated-with-lecture-slide-points">Schedule (! To be updated with lecture slide points)</a></li>
-  <li><a href="#example-workflows" id="toc-example-workflows" class="nav-link" data-scroll-target="#example-workflows">Example workflows</a></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
   </ul>
 </nav>
     </div>
@@ -287,7 +286,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Group Activity</h1>
+<h1 class="title d-none d-lg-block">16S Data Processing</h1>
 </div>
 
 
@@ -304,160 +303,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Group A will be analyzing the yogurt dataset and Group B will be analyzing the menstruation dataset.</p>
-<!-- :::{.callout-Group_A}
-
-<b>Study Description</b>  
-
-::: -->
-<section id="projects" class="level3">
-<h3 class="anchored" data-anchor-id="projects">Projects</h3>
-<!-- :::{.callout-note title="Research Project A - Does yogurt consumption change the vaginal microbiome?" appearance="simple"}
-\
-**Aim**\
-To investigate whether the consumption of yogurt influences microbiome composition after antibiotics treatment.\
-\
-**Study Description** \
-This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment. (add 16s)
-\
- 
-::: -->
-<div class="block">
-<div class="block-header">
-<p>Research Project A - Does yogurt consumption change the vaginal microbiome?</p>
-</div>
-<div id="group_a" class="block-container">
-<p><strong>Aim</strong><br>
-To investigate whether the consumption of yogurt influences microbiome composition after antibiotics treatment.<br>
-<br>
-<strong>Study Description</strong><br>
-This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment. (add 16s)<br>
-</p>
-</div>
-</div>
-<script> 
-  // Add click event listener to the block header
-  document.getElementById("group_a").addEventListener("click", function() {
-    window.location.href = "group_a.html";
-  });
-</script>
-<div class="block">
-<div class="block-header">
-<p>Research Project B - Does birth control change inflammation during menstruation?</p>
-</div>
-<div id="group_b" class="block-container">
-<p><strong>Aim</strong><br>
-To investigate whether taking birth control is associated with vaginal inflammation throughout the menstrual cycle.<br>
-<br>
-<strong>Study Description</strong><br>
-This is an observational study to evaluate the relationship between birth control and vaginal inflammation In response to menstruation. Absolute abundance of bacteria was measured by 3 qPCR assays (for total Bacteria, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation. (add 16s)<br>
-</p>
-</div>
-</div>
-<script> 
-  // Add click event listener to the block header
-  document.getElementById("group_b").addEventListener("click", function() {
-    window.location.href = "group_b.html";
-  });
-</script>
-<!-- :::{.goals}
-::::{.goals-header}
-Learning Goals
-::::
-::::{.goals-container}
-* Know how to make your own callouts.
-* Be able to mess with some SCSS/CSS styling.
-::::
-::: -->
-<!-- {{< group_projects.qmd  >}} -->
-</section>
-<section id="schedule-to-be-updated-with-lecture-slide-points" class="level3">
-<h3 class="anchored" data-anchor-id="schedule-to-be-updated-with-lecture-slide-points">Schedule (! To be updated with lecture slide points)</h3>
-<p><strong>Wednesday (4/24)</strong></p>
-<table class="table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 83%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Time</th>
-<th>Task</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>9:00-9:30am</td>
-<td><ul>
-<li>Read project description and aims for your project</li>
-<li>Locate project files on your instance</li>
-<li>Create a new .qmd file</li>
-</ul></td>
-</tr>
-<tr class="even">
-<td>9:30 - 10:30am</td>
-<td><ul>
-<li><strong>Explore the data!</strong></li>
-<li>Merge in metadata, qPCR, and Luminex data</li>
-<li>Create a phyloseq object</li>
-</ul></td>
-</tr>
-<tr class="odd">
-<td>10:30 - 11:00am</td>
-<td><strong>Break</strong></td>
-</tr>
-<tr class="even">
-<td>11:00- 12:00pm</td>
-<td><ul>
-<li>Phyloseq cleaning</li>
-<li>Visualizing microbiome composition</li>
-<li>Diversity and Ordination</li>
-</ul></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Thursday (4/25)</strong></p>
-<table class="table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 83%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Time</th>
-<th>Task</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1:30 - 2:00pm</td>
-<td><ul>
-<li>Diversity and Ordination</li>
-</ul></td>
-</tr>
-<tr class="even">
-<td>2:00 - 3:00pm</td>
-<td><ul>
-<li>Differential abundance</li>
-<li>Running shotgun metagenomics and integrating into phyloseq</li>
-</ul></td>
-</tr>
-<tr class="odd">
-<td>3:00 - 3:30pm</td>
-<td><strong>Break</strong></td>
-</tr>
-<tr class="even">
-<td>3:30 - 5:00pm</td>
-<td><ul>
-<li>etc</li>
-</ul></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="example-workflows" class="level3">
-<h3 class="anchored" data-anchor-id="example-workflows">Example workflows</h3>
-<p><a href="../../../materials/2-workshop2/8-group-project/johnathan_demo_final.html">Johnathan’s test demo</a></p>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR9PuJrSSzS2xPiHx_GINCYjCMaAy4pbNkIDVdwKW_bFKapuPcBBD3D_wErKuadjj0o-oZYuvUcB8Zf/embed?start=true&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 
 </section>
@@ -874,11 +722,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../materials/2-workshop2/7-keynote/index.html" class="pagination-link" aria-label="<b>Module 6</b>: Keynote ">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><b>Module 6</b>: Keynote</span>
+      <a href="../../../materials/2-workshop2/2-r-refresher/index.html" class="pagination-link" aria-label="<b>Module 1</b>: R Refresher">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><b>Module 1</b>: R Refresher</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../../materials/2-workshop2/4-16s-pt1/index.html" class="pagination-link" aria-label="<b>Module 3</b>: 16S analysis pt.1">
+        <span class="nav-page-text"><b>Module 3</b>: 16S analysis pt.1</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
