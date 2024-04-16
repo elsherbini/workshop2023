@@ -1,0 +1,12 @@
+---
+title: "16S Data Processing"
+format:
+  html:
+    toc: true
+---
+  
+## Slides
+
+```{=html}
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR9PuJrSSzS2xPiHx_GINCYjCMaAy4pbNkIDVdwKW_bFKapuPcBBD3D_wErKuadjj0o-oZYuvUcB8Zf/embed?start=true&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+```

@@ -38,7 +38,7 @@ Washington University School of Medicine
 :::
 
 ::: {.g-col-2}
-<!-- ![](images/Chandani.png){fig-align="left"} -->
+![](images/Liz.png){fig-align="left"}
 :::
 ::: {.g-col-4}
 [*Instructor*]{style="font-size: 0.8em"}  
@@ -48,7 +48,7 @@ Stanford University
 :::
 
 ::: {.g-col-2}
-<!-- ![](images/Chandani.png){fig-align="left"} -->
+![](images/Michael.png){fig-align="left"}
 :::
 ::: {.g-col-4}
 [*Instructor*]{style="font-size: 0.8em"}  
@@ -79,11 +79,11 @@ Centre for the AIDS Programme of Research in South Africa (CAPRISA) -  UKZN
 :::
 
 ::: {.g-col-2}
-<!-- ![](images/Asavela.png){fig-align="left"} -->
+![](images/Johnathan.png){fig-align="left"}
 :::
 
 ::: {.g-col-4}
-[*Instructor*]{style="font-size: 0.8em"}  
+[*Instructor*]{style="font-size: 0.8em"}
 **Johnathan Shih**  
 Bioinformatics Research Technician  
 Ragon Institute of MGH, MIT and Harvard
@@ -101,7 +101,7 @@ Ragon Institute of MGH, MIT and Harvard
 :::
 
 ::: {.g-col-2}
-<!-- ![](images/Salina.png){fig-align="left"} -->
+![](images/Aaron.png){fig-align="left"}
 :::
 ::: {.g-col-4}
 [*Teaching Assistant*]{style="font-size: 0.8em"}  

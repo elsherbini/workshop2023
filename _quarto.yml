@@ -68,7 +68,6 @@ website:
               href: materials/1-workshop1/8-group-projects/index.qmd
 
           - section: "<b>2. Working with High Dimensional Data in R - The Human Microbiome</b>"
-            id: "workshop2"
             contents:
             - text: "<b>Module 0:</b> Welcome and Course Introduction"
               contents:
@@ -76,9 +75,9 @@ website:
             - text: "<b>Module 1</b>: R Refresher"
               contents:
               href: materials/2-workshop2/2-r-refresher/index.qmd
-            - text: "<b>Module 2</b>: Dada2 "
+            - text: "<b>Module 2</b>: 16S Data Processing"
               contents:
-              href: materials/2-workshop2/3-dada2/index.qmd
+              href: materials/2-workshop2/3-16s_processing/index.qmd
             - text: "<b>Module 3</b>: 16S analysis pt.1"
               contents:
               href: materials/2-workshop2/4-16s-pt1/index.qmd
@@ -102,10 +101,8 @@ website:
 
 format:   
   html:
-    theme: [default, assets/custom.scss, assets/keep_open.html]
+    theme: [default, assets/custom.scss]
     toc: false
-    includes:
-      - assets/keep_open.html
     
 
 # Design tips:

@@ -97,12 +97,14 @@ Learning Goals
 |                |- Create a new .qmd file                                                           |
 +----------------+-----------------------------------------------------------------------------------+
 | 9:30 - 10:30am |- **Explore the data!**                                                            |
-|                |- Begin sample inference with Dada2                                                |
+|                |- Merge in metadata, qPCR, and Luminex data                                        |
+|                |- Create a phyloseq object                                                         |
 +----------------+-----------------------------------------------------------------------------------+
 |10:30 - 11:00am | **Break**                                                                         |
 +----------------+-----------------------------------------------------------------------------------+
-|11:00- 12:00pm  |- Merge in metadata, qPCR, and Luminex data                                        |
-|                |- Create a phyloseq object                                                         |
+|11:00- 12:00pm  |- Phyloseq cleaning                                                                |
+|                |- Visualizing microbiome composition                                               |
+|                |- Diversity and Ordination                                                         |
 +----------------+-----------------------------------------------------------------------------------+
 
 
@@ -111,9 +113,9 @@ Learning Goals
 +----------------+-------------------------------------------------------------------------------------+
 | Time           | Task                                                                                |
 +================+=====================================================================================+
-| 1:30 - 2:00pm  |- Phyloseq processing and visualizations                                             |
+| 1:30 - 2:00pm  |- Diversity and Ordination                                                           |
 +----------------+-------------------------------------------------------------------------------------+
-| 2:00 - 3:00pm  |- Differential abundance testing                                                     |
+| 2:00 - 3:00pm  |- Differential abundance                                                             |
 |                |- Running shotgun metagenomics and integrating into phyloseq                         |
 +----------------+-------------------------------------------------------------------------------------+
 |3:00 - 3:30pm   | **Break**                                                                           |
@@ -122,6 +124,5 @@ Learning Goals
 +----------------+-------------------------------------------------------------------------------------+
 
 ### Example workflows
-[Johnathan's Demo (temporary test)](johnathan_yogurt_demo.rmd)
-
+[Johnathan's test demo](johnathan_demo_final.qmd)
 

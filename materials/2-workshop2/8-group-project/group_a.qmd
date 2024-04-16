@@ -9,7 +9,7 @@ format:
 
 
 #### Description
-This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment. (add 16s)
+This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. 16S rRNA sequencing was done to charaterize patient microbiome composition. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment.
 
 \
 
@@ -17,21 +17,29 @@ This is a randomized controlled trial to study whether yogurt consumption has an
 **16S processing** \
 
 * Identify project files on your instance
-* What are some pre-processing steps to take before running Dada2?
-* What can you say about the quality of the reads?
-* Merge data from other assays 
-* Generate a phyloseq object
-* Phyloseq cleaning
-* Optional: Can you use the control samples to test Dada2's accuracy?
+** What does the count tables represent?
+* Thinky question about dada2
+* Merge data from other assays
+* Filter sample data with groups metadata
+* Filter counts table with filtered sample data
+* Filter tax table with cleaned count table
+* Generate phyloseq object
+* Phyloseq cleaning (following Liz's slides)
+* tax_fix to set unassinged
+<!-- * Optional: Can you use the control samples to test Dada2's accuracy? -->
  
 
 **16S analysis**
 
+* Plot the microbiome!
 * Generate plots to compare relative abundance across arms and time points
 * What are noticable differences after antibiotic treatment?
 * **Does consumption of yogurt influence people's microbiome?**
-* Are there ways to change the scale so that taxa at lower abundance can be more easily visualized?
+* Are there ways to change the scale so that taxa at lower abundance can be more easily visualized? (log transform)
+* Diversity
+* Shannon
 * Use a distance metric and explain what it means when comparing across groups
-* Conduct differential abundance testing (simply wilcoxon or using DESeq2?)
-* Incorporate shotgun metagenomic data into the phyloseq
+* Conduct differential abundance testing (joseph's slides)
+* give steps with tax tree 
+* Incorporate shotgun metagenomic data into the phyloseq (micahel's slides)
 * Optional: Use microViz to explore the phyloseq object
