@@ -1,0 +1,1605 @@
+---
+title: "R refresher (Brief review of Workshop I)"
+subtitle: "<em>remixed from <a href='https://github.com/wilkelab/SDS375'>Claus O. Wilke's SDS375 course</a> and <a href='https://github.com/posit-conf-2023/quarto-r'> Andrew P. Bray's quarto workshop</a></em>"
+format: qmdrslides-revealjs
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(countdown)
+library(tidyverse)
+library(cowplot)
+library(colorspace)
+library(here)
+
+align_legend <- function(p, hjust = 0.5)
+{
+  # extract legend
+  g <- cowplot::plot_to_gtable(p)
+  grobs <- g$grobs
+  legend_index <- which(sapply(grobs, function(x) x$name) == "guide-box")
+  legend <- grobs[[legend_index]]
+
+  # extract guides table
+  guides_index <- which(sapply(legend$grobs, function(x) x$name) == "layout")
+
+  # there can be multiple guides within one legend box  
+  for (gi in guides_index) {
+    guides <- legend$grobs[[gi]]
+    
+    # add extra column for spacing
+    # guides$width[5] is the extra spacing from the end of the legend text
+    # to the end of the legend title. If we instead distribute it by `hjust:(1-hjust)` on
+    # both sides, we get an aligned legend
+    spacing <- guides$width[5]
+    guides <- gtable::gtable_add_cols(guides, hjust*spacing, 1)
+    guides$widths[6] <- (1-hjust)*spacing
+    title_index <- guides$layout$name == "title"
+    guides$layout$l[title_index] <- 2
+
+    # reconstruct guides and write back
+    legend$grobs[[gi]] <- guides
+  }
+  
+  # reconstruct legend and write back
+  g$grobs[[legend_index]] <- legend
+  g
+}
+
+
+theme_set(theme_cowplot(24) + background_grid())
+
+table_01 <- read_csv(here("datasets/instructional_dataset/01_participant_metadata_UKZN_workshop_2023.csv"))
+
+table_02 <- read_csv(here("datasets/instructional_dataset/02_visit_clinical_measurements_UKZN_workshop_2023.csv"))
+
+```
+
+## {data-menu-title="Website Link" style="text-align: center"}
+
+\
+\
+\
+
+:::{.r-fit-text}
+Workshop materials are at:
+
+[https://elsherbini.github.io/durban-data-science-for-biology/](https://elsherbini.github.io/durban-data-science-for-biology/)
+:::
+
+## {data-menu-item="Workshop Goals"}
+
+\
+\
+
+### Goals for this session {style="font-size: 2.5em; text-align: center"}
+
+:::{.incremental style="font-size: 1em"}
+1. RStudio and the Quarto notebook
+
+2. Data types and manipulations
+
+3. Review data visualization 
+
+4. Data wrangling and make plots with the `tidyverse`
+
+5. Advanced table commands 
+
+6. Plotting distributions with `tidyverse` and `ggplot`
+:::
+
+## Discussions: discord
+
+Ask questions at **#workshop-questions** on [https://discord.com/channels/1227264067899621427](https://discord.com/channels/1227264067899621427).
+
+## Stickies
+
+:::{layout="[[4, 5, 1]]" layout-valign=center}
+![](images/sticky.jpeg){fig-alt="Picture of a laptop with a red sticky note stuck to the top." width=540}
+
+During an activity, place a [**yellow**]{style="color: Gold"}  sticky on your laptop if you're good to go and a [**pink**]{style="color: hotpink"} sticky if you want help.
+:::
+
+:::footer
+Image by [Megan Duffy](https://dynamicecology.wordpress.com/2015/01/13/sticky-notes-as-a-teaching-and-lab-meeting-tool/)
+:::
+
+## Practicalities
+:::{.r-fit-text}
+
+WiFi:
+
+Network: 
+
+Network Password:
+
+Bathrooms are XXXXXX
+
+:::
+
+---
+
+## Getting on AWS & RStudio
+
+---
+
+## Create an R Project {.your-turn}
+::::: {columns}
+
+::: {.column width=20%}
+1. File -> New Project...
+:::
+
+::: {.column width=75%}
+![](images/01-new-project.png) 
+:::
+
+:::::
+
+## Create an R Project {.your-turn}
+::::: {columns}
+
+::: {.column width=20%}
+2. Click on New Directory
+:::
+
+::: {.column width=75%}
+![](images/02-new-directory.png)
+:::
+
+:::::
+
+## Create an R Project {.your-turn}
+::::: {columns}
+
+::: {.column width=20%}
+3. Name your directory and click "Create Project"
+:::
+
+::: {.column width=75%}
+![](images/03-create-project.png)
+:::
+
+:::::
+
+## Create an R Project {.your-turn}
+
+::::: {columns}
+
+::: {.column width=20%}
+4. You made a project! This creates a file for you with the `.qmd` extension
+:::
+
+::: {.column width=75%}
+![](images/04-you-made-a-project.png)
+:::
+
+:::::
+
+## Create an R Project {.your-turn}
+
+::::: {columns}
+
+::: {.column width=20%}
+5. Switch from "visual" to "source" to see the plain-text version of this document.
+:::
+
+::: {.column width=75%}
+![](images/05-switch-to-source.png)
+:::
+
+:::::
+
+## Create an R Project {.your-turn}
+
+::::: {columns}
+
+::: {.column width=20%}
+6. Click on "Render" to ask Quarto to turn this plain-text document into an HTML page
+:::
+
+::: {.column width=75%}
+![](images/06-render.png)
+:::
+
+:::::
+
+## Create an R Project {.your-turn}
+
+::::: {columns}
+
+::: {.column width=20%}
+7. Your default web-browser will open and show you the rendered document!
+:::
+
+::: {.column width=75%}
+![](images/07-rendered.png)
+:::
+
+:::::
+
+---
+
+## Parts of RStudio (make an image with all 3 parts highlighted)
+
+![](images/rstudio-text-editor.png)
+
+---
+
+# Anatomy of a Document
+
+1. Code Cells
+2. Text
+3. Metadata
+
+
+## Quarto's Code Chunk
+
+::: columns
+::: {.column width=25%}
+:::
+
+::: {.column width=50%}
+    ```{{r}}
+    #| echo: false
+    rnorm(3)
+    ```
+:::
+
+Write a math expression in a chunk and press the green arrow at the top-right of the chunk.
+
+::: {.column width=25%}
+:::
+:::
+
+---
+
+## Example: Figures from Code {auto-animate=true}
+
+:::columns
+:::{.column width=54%}
+````markdown
+```{{r}}
+library(palmerpenguins)
+library(ggplot2)
+
+ggplot(penguins,
+       aes(x = bill_length_mm,
+           y = bill_depth_mm,
+           col = island)) +
+  geom_point()
+```
+````
+:::
+:::{.column width=46% .fragment}
+```{r}
+#| echo: false
+library(palmerpenguins)
+library(ggplot2)
+
+ggplot(penguins,
+       aes(x = bill_length_mm,
+           y = bill_depth_mm,
+           col = island)) +
+  geom_point() +
+  theme_grey(base_size = 18)
+```
+:::
+:::
+
+## Example: Figures from Code {auto-animate=true}
+
+:::columns
+:::{.column width=54%}
+````markdown
+```{{r}}
+#| fig-width: 5
+#| fig-height: 3
+
+library(palmerpenguins)
+library(ggplot2)
+
+ggplot(penguins,
+       aes(x = bill_length_mm,
+           y = bill_depth_mm,
+           col = island)) +
+  geom_point()
+```
+````
+:::
+:::{.column width=46% .fragment}
+```{r}
+#| echo: false
+#| fig-width: 5
+#| fig-height: 3
+#| 
+library(palmerpenguins)
+library(ggplot2)
+
+ggplot(penguins,
+       aes(x = bill_length_mm,
+           y = bill_depth_mm,
+           col = island)) +
+  geom_point() +
+  theme_grey(base_size = 18)
+```
+:::
+:::
+
+---
+
+:::
+## Text
+:::
+
+### [Inline Elements:]{.inline-el} Text Formatting
+
+::: columns
+::: {.column width="65%"}
+#### Markdown
+
+```{.markdown}
+Markdown allows you to format text
+with *emphasis* and **strong emphasis**.
+You can also add superscripts^2^, 
+subscripts~2~, and display code 
+`verbatim`. Little known fact: you can 
+also ~~strikethrough~~ text and present
+it in [small caps]{.smallcaps}.
+```
+:::
+
+::: {.column width="35%" .fragment}
+#### Output
+
+Markdown allows you to format text with *emphasis* and **strong emphasis**. You can also add superscripts^2^, subscripts~2~, and display code `verbatim`. Little known fact: you can also ~~strikethrough~~ text and present it in [small caps]{.smallcaps}.
+:::
+:::
+
+:::
+## Text
+:::
+
+### [Inline Elements:]{.inline-el} Links and Images
+
+#### Markdown
+
+```markdown
+You can embed [links with names](https://quarto.org/), direct urls
+like <https://quarto.org/>, and links to 
+[other places](#inline-elements-text-formatting) in the document. 
+The syntax is similar for embedding an inline image:
+![render icon](images/render-icon.png).
+```
+
+\
+
+:::{.fragment}
+#### Output
+
+You can embed [links with names](https://quarto.org/), direct urls like <https://quarto.org/>, and links to [other places](#inline-elements-text-formatting) in the document. The syntax is similar for embedding an inline image: ![render icon](images/render-icon.png){fig-alt="small icon of render arrow" width="100"}.
+:::
+
+## [Metadata:]{.meta-el} YAML
+
+"Yet Another Markup Language" or "YAML Ain't Markup Language" is used to provide document level metadata ...
+
+:::columns
+
+:::{.column width=10%}
+:::
+
+:::{.column width=50%}
+[... in key-value pairs,]
+
+[... that can nest,]
+
+[... are fussy about indentation,]
+
+[... and are kept between `---`.]
+
+:::
+
+:::{.column width=40% .fragment}
+
+\
+
+``` yaml
+---
+format: 
+  title: "Intro to R"
+  author: "Yours Truly"
+  html:
+    toc: true
+    code-fold: true
+---
+```
+:::
+
+:::
+
+[There are many options for [front matter](https://quarto.org/docs/authoring/front-matter.html) and [configuring rendering](https://quarto.org/docs/reference/formats/html.html).]{.fragment}
+
+## Writing code
+
+## Assignment
+
+You can use `<-` or `=` to assign values to variables
+
+```r
+a <- 6
+b = 8
+c <- 5.44
+d = TRUE
+e = "hello world" 
+e <- 'hello world' # same as double quote
+```
+
+We will use `<-` for all examples going forward.
+
+## Naming variables
+
+A lot of R people use `.` inside variable names, but in most languages besides R this would be an error. It's good practice these days to use the `_` underscore if you want separation in your variable names. 
+
+```r
+r.people.sometimes.put.dots <- TRUE
+dots.are.confusing <- "maybe"
+just_use_underscores <- "please"
+```
+
+## Functions {auto-animate="true"}
+
+Functions are named bits of code that take parameters as input and return some output
+
+```{r}
+#| echo: true
+library(tidyverse)
+word_1 <- "hello"
+word_2 <- "world"
+str_c(word_1, word_2, sep = " ")
+```
+
+`str_c` is a function that puts **c**oncatenates **str**ings. 
+
+functions can have *named parameters* as well as *positional parameters.*  
+*named parameters* always take an `=` sign for assignment.
+
+## Getting help with functions {auto-animate="true"}
+
+Type ?str_c in the console to get a help page. check out [this guide](https://socviz.co/appendix.html?s=09#a-little-more-about-r) on how to read the R help pages.
+
+also try googling str_c R tidyverse to get help.
+
+chatGPT and phind.com are really good at answering specific questions about R functions - not always correct but most of the time.
+
+---
+
+## Value types in R
+
+The type of the value can be 
+
+```r
+# numeric
+c(1,2,3,4) 
+
+# character
+c("a","b","c","d")
+
+# boolean
+c(TRUE, FALSE)
+
+# factor
+c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun") %>% as_factor()
+```
+
+## `tibble`s (aka data frames)
+
+`tibble`s are the big reason R is great for working with tabular data.
+
+A data frame is a rectangular collection of variables (in the columns) and observations (in the rows). 
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+library(here)
+table_02 <- read_csv(here("datasets/instructional_dataset/02_visit_clinical_measurements_UKZN_workshop_2023.csv"))
+```
+
+```{r}
+#| echo: true 
+table_02
+```
+
+---
+
+# Elementary data manipulations
+
+:::{.incremental style="font-size: 1.5em"}
+
+- Pick rows: `filter()`
+
+- Pick columns: `select()`
+
+- Sort rows: `arrange()`
+
+- Count things: `count()`
+
+- Make new columns: `mutate()`
+
+:::
+
+## Read in data
+
+Data is often in tables, and the easiest way to store tabular data is in `csv` or `tsv` format.
+
+`csv` - comma separated values    
+`tsv` - tab separated values  
+
+to read in data stored this way use `read_csv(filename)` or `read_tsv(filename)`
+
+```r
+table_02 <- read_csv("02_visit_clinical_measurements_UKZN_workshop_2023.csv")
+```
+
+## The pipe `%>%` feeds data into functions {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+head(table_02)
+```
+
+## The pipe `%>%` feeds data into functions {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+# head(table_02)
+table_02 %>%
+  head()
+```
+
+
+## The pipe `%>%` feeds data into functions {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+ggplot(table_02, aes(crp_blood, ph, color = arm)) + geom_point()
+```
+
+---
+
+## The pipe `%>%` feeds data into functions {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  ggplot(aes(crp_blood, ph, color = arm)) + geom_point()
+```
+
+# Picking rows or columns, and sorting
+
+## Pick rows from a table: `filter()`
+
+
+![](images/filter.svg)
+
+
+## Filter only placebo {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  filter(arm == "placebo")
+```
+
+
+## Filter out samples with ph < 4 {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  filter(ph < 4)
+```
+
+
+## Pick columns from a table: `select()`
+
+
+![](images/select.svg)
+
+
+## Pick columns `pid`, `ph`, and `nugent` {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  select(pid, ph, nugent_score)
+```
+
+
+## Rename columns and subset with select {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  select(participant_id = pid, ph, nugent_score)
+```
+
+
+
+---
+
+## Sort the rows in a table: `arrange()`
+
+![](images/arrange.svg)
+
+---
+
+## Sort samples by ph ascending {auto-animate=true}
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  arrange(ph)
+```
+
+
+---
+
+## Sort samples by ph, descending {auto-animate=true}
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  arrange(desc(ph))
+```
+
+
+## Counting things
+
+To demonstrate counting, let's switch to `table_01`
+
+```{r}
+#| echo: fenced
+table_01
+```
+
+---
+
+## Counting things  {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  count(smoker)
+```
+
+
+## Counting things {auto-animate=true}
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  count(arm, smoker)
+```
+
+## Let's take a poll {.your-turn}
+
+Go to [the event on wooclap](https://app.wooclap.com/DURBAN?from=event-page)  
+
+![](../../../images/wooclap_info.png)
+
+[M2. Does filter get rid of rows that match TRUE, or keep rows that match TRUE? ]{style="font-size: 0.9em"}
+
+## Use the pipe to build analysis pipelines {auto-animate=true}
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  filter(arm == "placebo")
+```
+
+
+## Use the pipe to build analysis pipelines {auto-animate=true}
+
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  filter(age < 30) %>%
+  select(pid, arm, smoker)
+```
+
+## Use the pipe to build analysis pipelines {auto-animate=true}
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  filter(age < 30) %>%
+  select(pid, arm, smoker) %>%
+  count(arm, smoker)
+```
+
+
+## Adding new columns to a table
+
+## Make a new table column: `mutate()`
+
+![](images/mutate.svg)
+
+
+## Example: C-reactive protein {auto-animate=TRUE}
+
+The `crp_blood` column is in units of mg/L. What if you needed it in ug/ul? What's the calculation?
+
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  select(pid, time_point, crp_blood)
+```
+
+
+## Example: C-reactive protein {auto-animate=TRUE}
+
+The `crp_blood` column is in units of mg/L. What if you needed it in ug/ul? What's the calculation?
+
+To get ug/L you would multiply by 1000. To get ug/ul you need to then divide by 1000000
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  select(pid, time_point, crp_blood)
+```
+
+
+
+## Example: C-reactive protein {auto-animate=TRUE}
+
+The `crp_blood` column is in units of mg/L. What if you needed it in ug/ul? What's the calculation?
+
+To get ug/L you would multiply by 1000. To get ug/ul you need to then divide by 1000000
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  select(pid, time_point, crp_blood) %>%
+  mutate(crp_blood_ugul = crp_blood / 1000)
+```
+
+
+
+## Make multiple columns at once
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  select(pid, time_point, crp_blood) %>%
+  mutate(crp_blood_ugul = crp_blood / 1000,
+         crp_blood_ugl = crp_blood * 1000)
+```
+
+# Aesthetics - the elements of data visualization
+
+## Plots map data onto graphical elements.
+
+
+```{r}
+#| echo: false
+#| label: tbl-02
+#| tbl-cap: "`02_visit_clinical_measurements_UKZN_workshop_2023.csv`"
+knitr::kable(head(table_02))
+
+```
+
+## pH mapped to y position
+
+```{r}
+table_02 %>%
+  ggplot(aes(x = time_point, y=ph)) +
+  geom_jitter()
+
+```
+
+## pH mapped to color
+
+```{r}
+table_02 %>%
+  ggplot(aes(x = time_point, y=pid, color=ph)) +
+  geom_point(size=2) +
+  theme(axis.text.y = element_blank())
+
+```
+
+
+## Commonly used aesthetics
+
+![Figure from <a href = 'https://clauswilke.com/dataviz'> Claus O. Wilke. Fundamentals of Data Visualization. O'Reilly, 2019 </a>](images/common-aesthetics-1.png)
+
+## The same data values can be mapped to different aesthetics
+
+![Figure from <a href = 'https://clauswilke.com/dataviz'> Claus O. Wilke. Fundamentals of Data Visualization. O'Reilly, 2019 </a>](images/basic-scales-example-1.png)
+
+## We can use many different aesthetics at once
+
+```{r mtcars-five-scale, echo = FALSE, message = FALSE, fig.width = 5.5, fig.asp = .8, dev = "svg"}
+p_mtcars <- ggplot(mtcars, aes(disp, mpg, fill = hp, shape = factor(cyl), size = wt)) + 
+  geom_point(color = "white") +
+  scale_shape_manual(values = c(23, 24, 21), name = "cylinders") +
+  scale_fill_continuous_sequential(
+    palette = "Emrld", name = "power (hp)",
+    breaks = c(100, 200, 300),
+    rev = FALSE
+  ) +
+  xlab("displacement (cu. in.)") +
+  ylab("fuel efficiency (mpg)") +
+  guides(
+    shape = guide_legend(override.aes = list(size = 4, fill = "#329D84")),
+    size = guide_legend(override.aes = list(shape = 21, fill = "#329D84"),
+    title = "weight (1000 lbs)")
+  ) +
+  theme_half_open(14) + background_grid() +
+  theme(
+    legend.box.background = element_rect(fill = "white", color = "white"),
+    legend.position = "top",
+    legend.direction = "vertical",
+    legend.justification = "center",
+    legend.box.margin = margin(7, 7, 7, 7)
+  )
+legend <- get_legend(align_legend(p_mtcars))
+ggdraw() + 
+  draw_plot(p_mtcars + theme(legend.position = "none")) + 
+  draw_grob(
+    legend,
+    vjust = 1, hjust = 1, valign = 1, halign = 1,
+    x = 1, y = 1, width = .65, height = .3
+  )
+```
+
+
+# Creating aesthetic mappings in `ggplot`
+
+## We define the mapping with `aes()`
+
+```{r}
+#| echo: fenced
+table_02 %>%
+  ggplot(mapping = aes(x = time_point, y = ph, color = ph)) +
+  geom_jitter()
+```
+
+## We frequently omit argument names {auto-animate="true"}
+
+Long form, all arguments are named:
+
+```{r}
+#| echo: fenced
+#| eval: false
+
+ggplot(
+  data= table_02,
+  mapping = aes(x = time_point, y = ph, color = ph)
+) +
+  geom_jitter()
+
+```
+
+## We frequently omit argument names {auto-animate="true"}
+
+Abbreviated form, common arguments remain unnamed:
+
+```{r}
+#| echo: fenced
+#| eval: false
+
+ggplot(table_02, aes(x = time_point, y = ph, color = ph)) +
+  geom_jitter()
+
+```
+
+
+## The geom determines how the data is shown  {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+ggplot(table_02, aes(x = time_point, y = ph, color = ph)) +
+  geom_point()
+```
+
+## The geom determines how the data is shown  {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+ggplot(table_02, aes(x = time_point, y = ph, color = ph)) +
+  geom_boxplot()
+```
+
+
+## The geom determines how the data is shown  {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+ggplot(table_02, aes(x = time_point, y = ph, color = ph)) +
+  geom_jitter()
+```
+
+## Different geoms have parameters for control  {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+ggplot(table_02, aes(x = time_point, y = ph, color = ph)) +
+  geom_jitter(size=3)
+```
+
+
+## Different geoms have parameters for control  {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+ggplot(table_02, aes(x = time_point, y = ph, color = ph)) +
+  geom_jitter(size=3, width = 0.2)
+```
+
+
+## Important: `color` and `fill` apply to different elements
+
+
+`color`<br>
+Applies color to points, lines, text, borders
+
+
+`fill`<br>
+Applies color to any filled areas 
+
+
+
+## Many geoms have both `color` and `fill` aesthetics {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+#| output-location: column
+ggplot(
+  data = table_02,
+  mapping = aes(
+    x = time_point,
+    y = ph,
+    color = time_point
+  )
+) + geom_boxplot()
+```
+
+## Many geoms have both `color` and `fill` aesthetics {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+#| output-location: column
+ggplot(
+  data = table_02,
+  mapping = aes(
+    x = time_point,
+    y = ph,
+    fill = time_point
+  )
+) + geom_boxplot()
+```
+
+## Many geoms have both `color` and `fill` aesthetics {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+#| output-location: column
+ggplot(
+  data = table_02,
+  mapping = aes(
+    x = time_point,
+    y = ph,
+    fill = time_point,
+    color = time_point
+  )
+) + geom_boxplot()
+```
+
+## Aesthetics can also be used as parameters in geoms {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+#| output-location: column
+ggplot(
+  data = table_02,
+  mapping = aes(
+    x = time_point,
+    y = ph
+  )
+) + geom_boxplot()
+```
+
+## Aesthetics can also be used as parameters in geoms {auto-animate="true"}
+
+```{r}
+#| echo: fenced
+#| output-location: column
+ggplot(
+  data = table_02,
+  mapping = aes(
+    x = time_point,
+    y = ph
+  )
+) + geom_boxplot(fill="orange")
+```
+
+---
+
+## Analyze subsets: `group_by()` and `summarize()`
+
+![](images/summarize.svg)
+
+## Example application of grouping: Counting {auto-animate=true}
+
+Previously we used `count`, now we `group` the data
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  group_by(smoker)
+```
+
+
+## Example application of grouping: Counting {auto-animate=true}
+
+Previously we used `count`, now we `group` the data, and then summarise
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  group_by(smoker) %>%
+  summarise(
+    n = n() # n() returns the number of observations per group
+    )
+```
+
+## Example application of grouping: Counting {auto-animate=true}
+
+Now let's group by multiple variables
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  group_by(smoker, arm)
+```
+
+
+## Example application of grouping: Counting {auto-animate=true}
+
+Now let's group by multiple variables, and summarise
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  group_by(smoker, arm) %>%
+    summarise(
+    n = n() # n() returns the number of observations per group
+    )
+```
+
+## Example application of grouping: Counting {auto-animate=true}
+
+`count(...)` is a short-cut for `group_by(...) %>% summarize(n = n())`
+`group_by()` and `summarise()`is the general method
+
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  count(smoker, arm)
+
+table_01 %>%
+  group_by(smoker, arm) %>%
+  summarise(median_age = median(age))
+```
+
+## You can make multiple summarise at once
+
+```{r}
+#| echo: fenced
+
+table_01 %>%
+  group_by(smoker, arm) %>%
+  summarise(
+    n = n(),
+    median_age = median(age)
+    )
+```
+
+
+## Reshape: `pivot_wider()` and `pivot_longer()`
+
+![](images/pivot.svg)
+
+## Reshaping example: Making a wide summary table {auto-animate=true}
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  count(education, arm) %>%
+  pivot_wider(names_from = arm, values_from = n)
+```
+
+## Reshaping example: Making a wide summary table {auto-animate=true}
+
+```{r}
+#| echo: fenced
+education_wide <- table_01 %>%
+  count(education, arm) %>%
+  pivot_wider(names_from = arm, values_from = n)
+
+education_wide %>%
+  pivot_longer(-education, names_to = "arm", values_to = "n")
+```
+
+# combining datasets: joins
+
+
+## We use joins to add columns from one table into another
+
+![](images/join.svg)
+
+## There are different types of joins
+
+The differences are all about how to handle when the two tables have different **key values** 
+
+![](images/joins-venn.svg)
+
+. . .
+
+::: {.incremental style="font-size: 0.7em"}
+`left_join()` - the resulting table always has the same **key_values** as the "left" table
+
+`right_join()` - the resulting table always has the same **key_values** as the "right" table
+
+`inner_join()` - the resulting table always only keeps the  **key_values** that are in both tables
+
+`full_join()` - the resulting table always has all **key_values** found in both tables
+:::
+
+## Left Join
+
+`left_join()` - the resulting table always has the same **key_values** as the "left" table
+
+![](images/left_join.png)
+
+## inner_join
+
+`inner_join()` - the resulting table always only keeps the  **key_values** that are in both tables
+
+![](images/inner_join.png)
+
+```{r}
+#| eval: false
+#| echo: true
+table_a %>% inner_join(table_b)
+```
+
+## Note, merging tables vertically is bind_rows(), not a join
+
+![](images/vertical_join.png)
+
+
+```{r}
+#| eval: false
+#| echo: true
+table_a %>% bind_rows(table_b)
+```
+
+```{r setup, include=FALSE, echo=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(comment = "")
+
+library(tidyverse)
+library(lubridate)
+library(cowplot)
+library(colorspace)
+library(here)
+library(ggridges)
+library(ggforce)
+library(ggbeeswarm)
+# ggplot2 settings so plots scale well for slide size 
+theme_set(theme_gray(16)) # 16 for full width, 18 for half width 
+update_geom_defaults("point", list(size = 2)) # 2 for full width, 2.5 for half width
+
+# this function should be added to cowplot
+align_legend <- function(p, hjust = 0.5)
+{
+  # extract legend
+  g <- cowplot::plot_to_gtable(p)
+  grobs <- g$grobs
+  legend_index <- which(sapply(grobs, function(x) x$name) == "guide-box")
+  legend <- grobs[[legend_index]]
+
+  # extract guides table
+  guides_index <- which(sapply(legend$grobs, function(x) x$name) == "layout")
+
+  # there can be multiple guides within one legend box  
+  for (gi in guides_index) {
+    guides <- legend$grobs[[gi]]
+    
+    # add extra column for spacing
+    # guides$width[5] is the extra spacing from the end of the legend text
+    # to the end of the legend title. If we instead distribute it by `hjust:(1-hjust)` on
+    # both sides, we get an aligned legend
+    spacing <- guides$width[5]
+    guides <- gtable::gtable_add_cols(guides, hjust*spacing, 1)
+    guides$widths[6] <- (1-hjust)*spacing
+    title_index <- guides$layout$name == "title"
+    guides$layout$l[title_index] <- 2
+
+    # reconstruct guides and write back
+    legend$grobs[[gi]] <- guides
+  }
+  
+  # reconstruct legend and write back
+  g$grobs[[legend_index]] <- legend
+  g
+}
+
+income_by_age <- readRDS(here("datasets", "income_by_age.rds"))
+
+titanic <- read_csv(here("datasets", "titanic.csv")) %>%
+  select(age, sex, class, survived) %>%
+  arrange(age, sex, class)
+
+lincoln_temps <- readRDS(here("datasets", "lincoln_temps.rds")) %>% mutate(mean_temp = ((mean_temp - 32)*5/9) %>% round())
+```
+
+
+# Visualizing distributions
+
+## Histograms and density plots
+
+::: {.columns}
+
+:::{.column width=33%}
+
+```{r}
+#| echo: false
+titanic %>% slice(1:12) %>% knitr::kable()
+
+```
+
+:::
+
+:::{.column width=33%}
+
+```{r}
+#| echo: false
+titanic %>% slice(13:24) %>% knitr::kable()
+
+```
+
+:::
+
+:::{.column width=33%}
+
+```{r}
+#| echo: false
+titanic  %>% slice(25:36) %>% knitr::kable()
+
+```
+
+:::
+
+:::
+
+## Histograms depend on the chosen bin width
+
+```{r titanic-age-hist-binwidth, echo = FALSE, fig.width = 8, fig.asp = 0.618, dev = "svg"}
+
+age_counts <- hist(titanic$age, breaks = (0:15) * 5 + .01, plot = FALSE)$counts
+age_hist <- tibble(
+  `age range` = c("0–5", "6–10", "11–15", "16–20", "21–25", "26–30", "31–35", "36–40", "41–45", "46–50", "51–55", "56–60", "61–65", "66–70", "71–75", "76–80"),
+  count = c(age_counts, 0)
+)
+
+age_hist_1 <- tibble(
+  age = (1:75) - 0.5, 
+  count = hist(titanic$age, breaks = (0:75) + .01, plot = FALSE)$counts
+)
+age_hist_3 <- tibble(
+  age = (1:25) * 3 - 1.5, 
+  count = hist(titanic$age, breaks = (0:25) * 3 + .01, plot = FALSE)$counts
+)
+age_hist_15 <- tibble(
+  age = (1:5) * 15 - 7.5, 
+  count = hist(titanic$age, breaks = (0:5) * 15 + .01, plot = FALSE)$counts
+)
+
+age_hist5 <- age_hist %>%
+  mutate(age = (1:16) * 5 - 2.5) %>%
+  filter(count > 0)
+
+h1 <- ggplot(age_hist5, aes(x = age, y = count)) + 
+  geom_col(width = 4.7, fill = "#56B4E9", na.rm = TRUE)  + 
+  scale_y_continuous(expand = c(0, 0), breaks = 25 * (0:5)) +
+  scale_x_continuous(name = "age (years)", limits = c(0, 75), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_minimal_hgrid(18) +
+  theme(
+    axis.line.x = element_blank()
+  )
+
+h2 <- ggplot(age_hist_1, aes(x = age, y = count)) + 
+  geom_col(width = .85, fill = "#56B4E9")  + 
+  scale_y_continuous(expand = c(0, 0), breaks = 10 * (0:5)) +
+  scale_x_continuous(name = "age (years)", limits = c(0, 75), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_minimal_hgrid(14) +
+  theme(
+    axis.line.x = element_blank()
+  )
+
+h3 <- ggplot(age_hist_3, aes(x = age, y = count)) + 
+  geom_col(width = 2.75, fill = "#56B4E9")  + 
+  scale_y_continuous(expand = c(0, 0), breaks = 25 * (0:5)) +
+  scale_x_continuous(name = "age (years)", limits = c(0, 75), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_minimal_hgrid(14) +
+  theme(
+    axis.line.x = element_blank()
+  )
+
+h4 <- ggplot(age_hist_15, aes(x = age, y = count)) + 
+  geom_col(width = 14.5, fill = "#56B4E9")  + 
+  scale_y_continuous(expand = c(0, 0), breaks = 100 * (0:4)) +
+  scale_x_continuous(name = "age (years)", limits = c(0, 75), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_minimal_hgrid(14) +
+  theme(
+    axis.line.x = element_blank()
+  )
+
+h1 <- h1 + theme_minimal_hgrid(16) +
+  theme(
+    axis.line.x = element_blank()
+  )
+
+plot_grid(
+  h2, NULL, h3,
+  NULL, NULL, NULL,
+  h1, NULL, h4,
+  align = 'hv',
+  rel_widths = c(1, .04, 1),
+  rel_heights = c(1, .04, 1)
+)
+```
+
+# Histograms and density plots in **ggplot2**
+
+## Making histograms with ggplot: `geom_histogram()`
+
+```{r}
+#| echo: fenced
+ggplot(titanic, aes(age)) +
+  geom_histogram()
+```
+
+## Setting the bin width {auto-animate=true}
+
+```{r}
+#| echo: fenced
+ggplot(titanic, aes(age)) +
+  geom_histogram(binwidth = 5)
+```
+
+. . .
+
+Do you like where there bins are? What does the first bin say?
+
+## Always set the `center` as well, to half the `bin_width` {auto-animate=true}
+
+```{r}
+#| echo: fenced
+ggplot(titanic, aes(age)) +
+  geom_histogram(binwidth = 5, center=2.5)
+```
+
+. . .
+
+
+Setting center 2.5 makes the bars start 0-5, 5-10, etc. instead of 2.5-7.5, etc. You could instead use the argument  `boundary=5` to accomplish the same behavior.
+
+## Making density plots with ggplot: `geom_density()` {auto-animate:true}
+
+```{r}
+#| echo: fenced
+ggplot(titanic, aes(age)) +
+  geom_density(fill = "skyblue")
+```
+
+
+## Making density plots with ggplot: `geom_density()` {auto-animate:true}
+
+```{r}
+#| echo: fenced
+ggplot(titanic, aes(age)) +
+  geom_density()
+```
+
+without `fill`
+
+## Boxplots: Showing values along y, conditions along x
+
+```{r}
+#| echo: false
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  geom_boxplot(fill = "gray90") + 
+  xlab("month") + 
+  ylab("mean temperature (°C)") +
+  theme_half_open()
+```
+
+A boxplot is a crude way of visualizing a distribution.
+
+
+## How to read a boxplot
+
+
+```{r boxplot-schematic, echo = FALSE, fig.width = 8, fig.asp = 0.618, dev = "svg"}
+set.seed(3423)
+
+y <- c(rnorm(100), 3.4)
+s <- boxplot.stats(y)
+df <- tibble(
+  y = c(s$stats, max(y)),
+  x = c(1.03, 1.405, 1.405, 1.405, 1.03, 1.04),
+  label = c("minimum", "first quartile", "median", "third quartile", "maximum within upper fence", "outlier")
+)
+
+p_points <- ggplot(tibble(y), aes(x = 0, y = y)) + 
+  geom_point(position = position_jitter(width = .4, height = 0, seed = 320)) +
+  annotate("text", label = "data", x = 0, y = 4, hjust = 0.5, vjust = 1, size = 20/.pt) +
+  scale_x_continuous(limits = c(-1.8, .4), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(-2.55, 4), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_nothing()
+
+p_boxplot <- ggplot(tibble(y), aes(x = 1, y = y)) + 
+  geom_boxplot(fill = "gray90", outlier.size = 2) +
+  annotate("text", label = "boxplot", x = 1, y = 4, hjust = 0.5, vjust = 1, size = 20/.pt) +
+  geom_text(
+    data = df, aes(x, y, label = label), hjust = 0,
+    size = 16/.pt
+  ) +
+  scale_x_continuous(limits = c(0, 3.5), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(-2.55, 4), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_nothing()
+
+plot_grid(p_points, p_boxplot, rel_widths = c(.65, 1), nrow = 1)
+```
+
+## If you like density plots, consider violins
+   
+```{r}
+#| echo: false
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  geom_violin(fill = "gray90") + 
+  xlab("month") + 
+  ylab("mean temperature (°C)") +
+  theme_half_open()
+
+```
+
+. . .
+
+A violin plot is a density plot rotated 90 degrees and then mirrored.
+
+## How to read a violin plot
+
+```{r}
+#| echo: false
+set.seed(3423)
+
+y <- c(rnorm(100), 3.4)
+d <- density(y)
+df <- tibble(
+  y = c(min(y), d$x[which(d$y == max(d$y))], max(y)),
+  x = c(1.1, 1.5, 1.08),
+  label = c("minimum data value", "maximum point density", "maximum data value")
+)
+
+p_points <- ggplot(tibble(y), aes(x = 0, y = y)) + 
+  geom_point(position = position_jitter(width = .4, height = 0, seed = 320)) +
+  annotate("text", label = "data", x = 0, y = 4, hjust = 0.5, vjust = 1, size = 20/.pt) +
+  scale_x_continuous(limits = c(-1.8, .4), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(-2.55, 4), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_nothing()
+
+p_violin <- ggplot(tibble(y), aes(x = 1, y = y)) + 
+  geom_violin(fill = "gray90") +
+  annotate("text", label = "violin plot", x = 1, y = 4, hjust = 0.5, vjust = 1, size = 20/.pt) +
+  geom_text(
+    data = df, aes(x, y, label = label), hjust = 0,
+    size = 16/.pt
+  ) +
+  scale_x_continuous(limits = c(0, 3.5), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(-2.55, 4), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_nothing()
+
+plot_grid(p_points, p_violin, rel_widths = c(.65, 1), nrow = 1)
+```
+
+# Making boxplots, violins, etc. in `ggplot2`
+
+## Making boxplots, violins, etc. in **ggplot2**
+
+Plot type    | Geom                    | Notes
+:----------- | :-----------------      | :-------------------------
+boxplot      | `geom_boxplot()`        |
+violin plot  | `geom_violin()`         |
+strip chart  | `geom_point()`          | Jittering requires `position_jitter()`
+sina plot    | `geom_sina()`           | From package **ggforce**
+scatter-density plot    | `geom_quasirandom()`           | From package **ggbeeswarm**
+ridgeline    | `geom_density_ridges()` | From package **ggridges**
+
+## Examples: Boxplot {auto-animate: true}
+
+```{r}
+#| echo: fenced
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  geom_boxplot(fill = "skyblue") 
+
+```
+
+## Examples: Violins {auto-animate: true}
+
+```{r}
+#| echo: fenced
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  geom_violin(fill = "skyblue") 
+
+```
+
+
+## Examples: Strip chart (no jitter) {auto-animate: true}
+
+```{r}
+#| echo: fenced
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  geom_point(color = "skyblue") 
+
+```
+
+
+## Examples: Strip chart (w/ jitter) {auto-animate: true}
+
+```{r}
+#| echo: fenced
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  geom_jitter(color = "skyblue") 
+```
+
+
+
+## Examples: Scatter density plot {auto-animate: true}
+
+```{r}
+#| echo: fenced
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  geom_quasirandom(color = "skyblue") 
+```
+
+
+

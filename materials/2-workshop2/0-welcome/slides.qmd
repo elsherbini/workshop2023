@@ -1,0 +1,150 @@
+---
+title: "Welcome to the workshop"
+format: qmdrslides-revealjs
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r}
+#| echo: false
+library(countdown)
+```
+
+## {data-menu-item="Workshop Goals"}
+
+\
+\
+
+### Goals for this session {style="font-size: 2.5em; text-align: center"}
+
+:::{.incremental style="font-size: 1.5em"}
+1. Get to know your instructors and neighbors
+
+2. Set expectations for the week
+
+3. Get excited!
+
+:::
+
+## {data-menu-title="Website Link" style="text-align: center"}
+
+\
+\
+\
+
+:::{.r-fit-text}
+Workshop materials are at:
+
+[https://elsherbini.github.io/durban-data-science-for-biology/](https://elsherbini.github.io/durban-data-science-for-biology/)
+:::
+
+## Discussions: discord
+
+Ask questions at **#workshop-questions** on [https://discord.gg/UDAsYTzZE](https://discord.gg/UDAsYTzZE).
+
+![](images/discord_durban.png){fig-alt="Screenshot of the discord server app that serves as the forum for the workshop." fig-align="center" width="546"}
+
+## Stickies
+
+:::{layout="[[4, 5, 1]]" layout-valign=center}
+![](images/sticky.jpeg){fig-alt="Picture of a laptop with a red sticky note stuck to the top." width=540}
+
+During an activity, place a [**yellow**]{style="color: Gold"}  sticky on your laptop if you're good to go and a [**pink**]{style="color: hotpink"} sticky if you want help.
+:::
+
+:::footer
+Image by [Megan Duffy](https://dynamicecology.wordpress.com/2015/01/13/sticky-notes-as-a-teaching-and-lab-meeting-tool/)
+:::
+
+
+## Practicalities
+:::{.r-fit-text}
+
+WiFi:
+
+Network: 
+
+Network Password:
+
+Bathrooms are XXXXXX
+
+:::
+
+
+## Introductions {.your-turn}
+
+```{r}
+#| echo: false
+countdown::countdown(3)
+```
+
+Take \~3 minutes to introduce yourself to your neighbors.
+
+
+Please share ...
+
+1.  Your name
+2.  Where you're from and where you work
+3.  Your current go-to method for analyzing data
+
+
+## Your Instructors {.our-turn}
+
+Who are we?
+
+## Let's make this workshop work for all
+
+:::{.incremental style="font-size: 1.2em"}
+
+1. You belong here. This workshop is intended for a wide-audience with a focus on beginners. If you feel out of place - it's our problem, not yours! 
+
+2. Stay committed. This week-long workshop is intended to build each day and leave you with skills you can really use. Commit to stay engaged for best results, for you and your group!
+
+3. This is a challenging but friendly environment. We are here to learn and grow. In order to make the right environment please follow "[the 4 social rules](https://www.recurse.com/social-rules)" and [code-of-conduct](https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html).
+
+:::
+
+## Flow of the Workshop
+
+:::{.r-stretch layout="[2, 2]" style="text-align: center"}
+![](images/slide-normal.png){width=540 .drop .fragment}
+
+![](images/slide-discord.png){width=540 .drop .fragment}
+
+![](images/slide-our-turn.png){width=540 .drop .fragment}
+
+![](images/slide-your-turn.png){width=540 .drop .fragment}
+:::
+
+## The premise of the workshop
+
+We've extended the true-to-life dataset from workshop 1 to include high dimensional 16S data
+
+- about 40 participants split across two treatment arms
+- three time points (before treatment, after treatment, and longer follow-up)
+- several measurements per time-point including cytokine concentrations and flow cytometry data
+- 16S sequencing for every time point, as well as microbial gene counts from shotgun metagenomics
+
+We've also created group datasets so you can practice applying what you've learned on new data.  
+
+## Why this format
+
+We've taught workshops here before where we packed a lot (too much) into one week.
+
+Based on feedback, we focused on basic R skills at the first workshop, and will spend this week using R to analyze microbiome data as a case-study in higher dimensional data analysis.
+
+This is the first time running this new workshop - please give lots of feedback on how to improve it for next time.
+
+## The content of this workshop
+
+:::{style="font-size: 1.2em"}
+We've created 6 modules as well as a group activity for this workshop.  
+\
+There might be too much material to get through in this week!  
+\
+As instructors we're going to be trying to teach at the right pace to keep everyone learning all week.  
+\
+The materials will stay on the website forever for you to work through at your own pace.  
+:::
+
+{{< include ../_wooclap.qmd >}}
