@@ -103,7 +103,7 @@ format:
   html:
     theme: [default, assets/custom.scss]
     toc: false
-    
+  
 
 # Design tips:
 # 1. maggieappleton.com

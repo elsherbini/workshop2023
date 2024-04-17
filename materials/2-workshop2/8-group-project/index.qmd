@@ -36,7 +36,7 @@ Research Project A - Does yogurt consumption change the vaginal microbiome?
 To investigate whether the consumption of yogurt influences microbiome composition after antibiotics treatment.\
 \
 **Study Description** \
-This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment. (add 16s)
+This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. 16S rRNA sequencing was done to charaterize patient microbiome composition. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment.
 \
 ::::
 :::
@@ -59,7 +59,7 @@ Research Project B - Does birth control change inflammation during menstruation?
 To investigate whether taking birth control is associated with vaginal inflammation throughout the menstrual cycle.\
 \
 **Study Description** \
-This is an observational study to evaluate the relationship between birth control and vaginal inflammation In response to menstruation. Absolute abundance of bacteria was measured by 3 qPCR assays (for total Bacteria, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation. (add 16s)
+This is an observational study to evaluate the relationship between birth control and vaginal inflammation In response to menstruation. 16S rRNA sequencing was done to charaterize patient microbiome composition. Absolute abundance of bacteria was measured by 3 qPCR assays (for total Bacteria, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation.
 \
 ::::
 :::
@@ -86,7 +86,7 @@ Learning Goals
 
 
 
-### Schedule (! To be updated with lecture slide points)
+### Schedule
 **Wednesday (4/24)**
 
 +----------------+-----------------------------------------------------------------------------------+
@@ -116,11 +116,10 @@ Learning Goals
 | 1:30 - 2:00pm  |- Diversity and Ordination                                                           |
 +----------------+-------------------------------------------------------------------------------------+
 | 2:00 - 3:00pm  |- Differential abundance                                                             |
-|                |- Running shotgun metagenomics and integrating into phyloseq                         |
 +----------------+-------------------------------------------------------------------------------------+
 |3:00 - 3:30pm   | **Break**                                                                           |
 +----------------+-------------------------------------------------------------------------------------+
-|3:30 - 5:00pm   |- etc                                                                                |
+|3:30 - 5:00pm   |- Integrating shotgun metagenomics                                                   |
 +----------------+-------------------------------------------------------------------------------------+
 
 ### Example workflows

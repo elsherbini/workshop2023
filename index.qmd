@@ -40,7 +40,7 @@ toc: false
 | **Monday, April 22^nd^**  | | |
 | AM   | Course Introduction | Scott Handley (Wash U School of Medicine)|
 |    | Keynote | Sinaye Ngcapu (CAPRISA)|
-|  | Microbiome Sample Processing and Library prep  | Lindsay Droit (Wash U School of Medicine)|
+|  | Microbiome Sample Processing and Library preparation  | Lindsay Droit (Wash U School of Medicine)|
 | PM   | R Refresher (<code> tidyverse</code> /summary tables/data visualization) | Scott Handley (Wash U School of Medicine)|
 | **Tuesday, April 23^th^**  |____________________________________________ |____________________________________________ |
 | AM   | 16S Data Preprocessing| Asavela Kama (CAPRISA)|

@@ -99,7 +99,7 @@ yogurt_ps <- readRDS("yogurt_ps.Rds") %>%
             tax_mutate(Genus_Species = str_c(Genus, Species, sep = " "))
 
 yogurt_ps %>%
-  ps_seriate(dist = "bray", method = "OLO_ward") %>% # these are the defaults
+  ps_seriate(dist = "bray", method = "OLO_ward") %>% # arranges samples by microbiome similarity
   comp_barplot(tax_level = "Genus_Species", facet_by = c("arm","time_point"), sample_order = "bray", n_taxa = 21)
 
 #The taxa names can use some updating
