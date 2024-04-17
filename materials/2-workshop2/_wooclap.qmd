@@ -1,0 +1,5 @@
+## Let's take a poll {.your-turn}
+
+Go to [the event on wooclap](https://app.wooclap.com/DURBAN?from=event-page)  
+
+![](../../../images/wooclap_info.png)

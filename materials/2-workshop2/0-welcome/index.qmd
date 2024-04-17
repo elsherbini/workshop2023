@@ -1,8 +1,20 @@
 ---
-title: "welcome"
+title: "Welcome to the workshop"
 format:
   html:
     toc: true
 ---
 
-> Let's learn about the types of data we'll use for this workshop
+> Get to know your neighbors and instructors and learn what to expect from this workshop
+
+
+## Slides
+[Make slides full screen](slides.qmd)
+
+```{=html}
+<iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
+
+## Before the workshop
+
+Before the workshop, check the front page for instructions on joining the Discord and filling out the pre-workshop survey.
