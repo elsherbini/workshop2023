@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science for Biology Workshop Series - welcome</title>
+<title>Data Science for Biology Workshop Series - Welcome to the workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../materials/2-workshop2/1-library-prep/index.html" rel="next">
+<link href="../../../materials/1-workshop1/8-group-projects/index.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -126,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">welcome</h1>
+          <h1 class="quarto-secondary-nav-title">Welcome to the workshop</h1>
         </a>     
     </div>
   </nav>
@@ -204,47 +206,53 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
  <span class="menu-text"><b>2. Working with High Dimensional Data in R - The Human Microbiome</b></span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../materials/2-workshop2/1-introduction/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 0:</b> Welcome and Course Introduction</span></a>
+  <a href="../../../materials/2-workshop2/0-welcome/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><b>Module 0:</b> Welcome to the workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/1-library-prep/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 1</b>: Sequencing Library Preparation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/2-workshop2/2-r-refresher/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 1</b>: R Refresher</span></a>
+ <span class="menu-text"><b>Module 2</b>: R Refresher</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/2-workshop2/3-16s_processing/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 2</b>: 16S Data Processing</span></a>
+ <span class="menu-text"><b>Module 3</b>: 16S Data Processing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/2-workshop2/4-16s-pt1/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 3</b>: 16S analysis pt.1</span></a>
+ <span class="menu-text"><b>Module 4</b>: Exploring High Dimensional Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/2-workshop2/5-16s-pt2/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 4</b>: 16S analysis pt.2</span></a>
+ <span class="menu-text"><b>Module 5</b>: Correlations and Differential Abundance Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/2-workshop2/6-virgo/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 5</b>: VIRGO</span></a>
+ <span class="menu-text"><b>Module 6</b>: VIRGO</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -271,14 +279,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#before-the-workshop" id="toc-before-the-workshop" class="nav-link" data-scroll-target="#before-the-workshop">Before the workshop</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">welcome</h1>
+<h1 class="title d-none d-lg-block">Welcome to the workshop</h1>
 </div>
 
 
@@ -296,10 +311,19 @@ ul.task-list li input[type="checkbox"] {
 
 
 <blockquote class="blockquote">
-<p>Let’s learn about the types of data we’ll use for this workshop</p>
+<p>Get to know your neighbors and instructors and learn what to expect from this workshop</p>
 </blockquote>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<p><a href="../../../materials/2-workshop2/0-welcome/slides.html">Make slides full screen</a></p>
+<iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+</section>
+<section id="before-the-workshop" class="level2">
+<h2 class="anchored" data-anchor-id="before-the-workshop">Before the workshop</h2>
+<p>Before the workshop, check the front page for instructions on joining the Discord and filling out the pre-workshop survey.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -711,6 +735,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../materials/1-workshop1/8-group-projects/index.html" class="pagination-link" aria-label="<b>Group Project</b> -Applying what you've learned to new data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><b>Group Project</b> -Applying what you’ve learned to new data</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../materials/2-workshop2/1-library-prep/index.html" class="pagination-link" aria-label="<b>Module 1</b>: Sequencing Library Preparation">
+        <span class="nav-page-text"><b>Module 1</b>: Sequencing Library Preparation</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

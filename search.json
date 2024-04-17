@@ -32,7 +32,7 @@
     "href": "materials/2-workshop2/8-group-project/johnathan_demo_final.html",
     "title": "Johnathan Yogurt Demo Analysis",
     "section": "",
-    "text": "Pre-processing\n\n#reading in assays and metadata\namplicon_ids &lt;- read_csv(\"data/Group A Dataset Yogurt/04_yogurt_amplicon_sample_ids.csv\")\nsamp_id &lt;- read_csv(\"data/Group A Dataset Yogurt/00_sample_ids_yogurt.csv\")\nparticipant_metadata &lt;- read_csv(\"data/Group A Dataset Yogurt/01_participant_metadata_yogurt.csv\")\nqpcr &lt;- read_csv(\"data/Group A Dataset Yogurt/02_qpcr_results_yogurt.csv\")\nluminex &lt;- read_csv(\"data/Group A Dataset Yogurt/03_luminex_results_yogurt.csv\")\n\n\n#creating sample data for the phyloseq by merging the csvs, also created log transformed cytokines\nyogurt_sample_data &lt;- amplicon_ids %&gt;%\n    left_join(samp_id %&gt;% select(-arm), by = c(\"pid\",\"time_point\")) %&gt;%\n    left_join(participant_metadata %&gt;% select(-arm), by = \"pid\") %&gt;%\n    mutate(arm_timepoint = str_c(arm, time_point, sep = \"_\")) %&gt;%            #creating a arm and timepoint column for later plotting\n    left_join(qpcr, by = \"sample_id\") %&gt;% \n    left_join(luminex %&gt;%\n        pivot_wider(names_from = cytokine, values_from = c(conc,limits)), by = \"sample_id\") %&gt;%      #will need to pivot the cyotokine data to longer to merge with sample data\n    column_to_rownames(\"amplicon_sample_id\") %&gt;%\n    mutate_at(vars(starts_with(\"conc_\")), list(log10 = ~ log10(. + 1 )))\n    # select(-matches(\"conc\") | matches(\"log10\")) %&gt;%\n\n#merging metadata with the full reads\n\n#get amplicon sample ids for the yogurt dataset\nyogurt_ids &lt;- yogurt_sample_data %&gt;% \n              as.data.frame() %&gt;%\n              rownames_to_column(\"amplicon_sample_id\") %&gt;%\n              pull(amplicon_sample_id)\n\n#filtering the count data by the yogurt ids, then removing unused ASVs - when sum of column is 0\ncount_table &lt;- readRDS(\"data/gv_seqtab_nobim.rds\") %&gt;%\n                as.data.frame() %&gt;%\n                rownames_to_column(\"amplicon_sample_id\") %&gt;%\n                filter(amplicon_sample_id %in% yogurt_ids) %&gt;%\n                mutate_at(vars(-amplicon_sample_id), as.numeric) %&gt;%\n                column_to_rownames(\"amplicon_sample_id\") %&gt;%\n                select(where(~sum(.) != 0))\n\n#getting all asvs for the yogurt data\nasvs &lt;- colnames(count_table)\n\n#filtering the taxa table so there is only asavs for the yogurt data\ntax_table &lt;- readRDS(\"data/gv_spetab_nobim_silva.rds\") %&gt;%\n              as.data.frame() %&gt;%\n              rownames_to_column(\"tax_table_asv\") %&gt;%\n              filter(tax_table_asv %in% asvs) %&gt;%\n              column_to_rownames(\"tax_table_asv\") %&gt;%\n              as.matrix()\n\n#creating phyloseq object\nyogurt_ps &lt;- phyloseq(otu_table(count_table, taxa_are_rows=FALSE), \n               sample_data(yogurt_sample_data), \n               tax_table(tax_table))\n\n\n#saving phyloseq so i dont have to regenerate it every time\nsaveRDS(yogurt_ps, \"yogurt_ps.Rds\")\n\n\n\nPhyloseq cleaning\n\n#after merging the metadata and the count/tax table\nyogurt_ps &lt;- readRDS(\"yogurt_ps.Rds\") %&gt;%\n            tax_fix(unknowns = c(\"unassigned\"), anon_unique = FALSE) %&gt;%\n            tax_mutate(Genus_Species = str_c(Genus, Species, sep = \" \"))\n\nyogurt_ps %&gt;%\n  ps_seriate(dist = \"bray\", method = \"OLO_ward\") %&gt;% # these are the defaults\n  comp_barplot(tax_level = \"Genus_Species\", facet_by = c(\"arm\",\"time_point\"), sample_order = \"bray\", n_taxa = 21)\n\n\n\n\n\n\n\n#The taxa names can use some updating\nupdated_yogurt_ps &lt;- yogurt_ps %&gt;%\n                    # tax_select(tax_list = \"Lactobacillus\", ranks = \"Genus\") %&gt;%  #filters for Lactos\n                    tax_mutate(Species = case_when(\n                        Species == \"Lactobacillus Genus\" ~ \"crispatus\",\n                        Species ==  \"acidophilus/casei/crispatus/gallinarum\" ~ \"crispatus\",\n                        Species == \"crispatus/gasseri/helveticus/johnsonii/kefiranofaciens\" ~ \"crispatus\",\n                        Species == \"animalis/apodemi/crispatus/murinus\" ~ \"crispatus\",\n                        .default = Species\n                    ))%&gt;%\n                    tax_mutate(Genus_Species = str_c(Genus, Species, sep = \" \"))\n  \nupdated_yogurt_ps %&gt;%\n  ps_seriate(dist = \"bray\", method = \"OLO_ward\") %&gt;% # arranges samples by microbiome similarity\n  comp_barplot(tax_level = \"Genus_Species\", facet_by = c(\"arm\",\"time_point\"), sample_order = \"bray\", n_taxa = 21)\n\n\n\n\n\n\n\n\n\n\nDiversity\n\n\nOrdination\n\n\nDifferential Abundance"
+    "text": "Pre-processing\n\n#reading in assays and metadata\namplicon_ids &lt;- read_csv(\"data/Group A Dataset Yogurt/04_yogurt_amplicon_sample_ids.csv\")\nsamp_id &lt;- read_csv(\"data/Group A Dataset Yogurt/00_sample_ids_yogurt.csv\")\nparticipant_metadata &lt;- read_csv(\"data/Group A Dataset Yogurt/01_participant_metadata_yogurt.csv\")\nqpcr &lt;- read_csv(\"data/Group A Dataset Yogurt/02_qpcr_results_yogurt.csv\")\nluminex &lt;- read_csv(\"data/Group A Dataset Yogurt/03_luminex_results_yogurt.csv\")\n\n\n#creating sample data for the phyloseq by merging the csvs, also created log transformed cytokines\nyogurt_sample_data &lt;- amplicon_ids %&gt;%\n    left_join(samp_id %&gt;% select(-arm), by = c(\"pid\",\"time_point\")) %&gt;%\n    left_join(participant_metadata %&gt;% select(-arm), by = \"pid\") %&gt;%\n    mutate(arm_timepoint = str_c(arm, time_point, sep = \"_\")) %&gt;%            #creating a arm and timepoint column for later plotting\n    left_join(qpcr, by = \"sample_id\") %&gt;% \n    left_join(luminex %&gt;%\n        pivot_wider(names_from = cytokine, values_from = c(conc,limits)), by = \"sample_id\") %&gt;%      #will need to pivot the cyotokine data to longer to merge with sample data\n    column_to_rownames(\"amplicon_sample_id\") %&gt;%\n    mutate_at(vars(starts_with(\"conc_\")), list(log10 = ~ log10(. + 1 )))\n    # select(-matches(\"conc\") | matches(\"log10\")) %&gt;%\n\n#merging metadata with the full reads\n\n#get amplicon sample ids for the yogurt dataset\nyogurt_ids &lt;- yogurt_sample_data %&gt;% \n              as.data.frame() %&gt;%\n              rownames_to_column(\"amplicon_sample_id\") %&gt;%\n              pull(amplicon_sample_id)\n\n#filtering the count data by the yogurt ids, then removing unused ASVs - when sum of column is 0\ncount_table &lt;- readRDS(\"data/gv_seqtab_nobim.rds\") %&gt;%\n                as.data.frame() %&gt;%\n                rownames_to_column(\"amplicon_sample_id\") %&gt;%\n                filter(amplicon_sample_id %in% yogurt_ids) %&gt;%\n                mutate_at(vars(-amplicon_sample_id), as.numeric) %&gt;%\n                column_to_rownames(\"amplicon_sample_id\") %&gt;%\n                select(where(~sum(.) != 0))\n\n#getting all asvs for the yogurt data\nasvs &lt;- colnames(count_table)\n\n#filtering the taxa table so there is only asavs for the yogurt data\ntax_table &lt;- readRDS(\"data/gv_spetab_nobim_silva.rds\") %&gt;%\n              as.data.frame() %&gt;%\n              rownames_to_column(\"tax_table_asv\") %&gt;%\n              filter(tax_table_asv %in% asvs) %&gt;%\n              column_to_rownames(\"tax_table_asv\") %&gt;%\n              as.matrix()\n\n#creating phyloseq object\nyogurt_ps &lt;- phyloseq(otu_table(count_table, taxa_are_rows=FALSE), \n               sample_data(yogurt_sample_data), \n               tax_table(tax_table))\n\n\n#saving phyloseq so i dont have to regenerate it every time\nsaveRDS(yogurt_ps, \"yogurt_ps.Rds\")\n\n\n\nPhyloseq cleaning\n\n#after merging the metadata and the count/tax table\nyogurt_ps &lt;- readRDS(\"yogurt_ps.Rds\") %&gt;%\n            tax_fix(unknowns = c(\"unassigned\"), anon_unique = FALSE) %&gt;%\n            tax_mutate(Genus_Species = str_c(Genus, Species, sep = \" \"))\n\nyogurt_ps %&gt;%\n  ps_seriate(dist = \"bray\", method = \"OLO_ward\") %&gt;% # arranges samples by microbiome similarity\n  comp_barplot(tax_level = \"Genus_Species\", facet_by = c(\"arm\",\"time_point\"), sample_order = \"bray\", n_taxa = 21)\n\n\n\n\n\n\n\n#The taxa names can use some updating\nupdated_yogurt_ps &lt;- yogurt_ps %&gt;%\n                    # tax_select(tax_list = \"Lactobacillus\", ranks = \"Genus\") %&gt;%  #filters for Lactos\n                    tax_mutate(Species = case_when(\n                        Species == \"Lactobacillus Genus\" ~ \"crispatus\",\n                        Species ==  \"acidophilus/casei/crispatus/gallinarum\" ~ \"crispatus\",\n                        Species == \"crispatus/gasseri/helveticus/johnsonii/kefiranofaciens\" ~ \"crispatus\",\n                        Species == \"animalis/apodemi/crispatus/murinus\" ~ \"crispatus\",\n                        .default = Species\n                    ))%&gt;%\n                    tax_mutate(Genus_Species = str_c(Genus, Species, sep = \" \"))\n  \nupdated_yogurt_ps %&gt;%\n  ps_seriate(dist = \"bray\", method = \"OLO_ward\") %&gt;% # arranges samples by microbiome similarity\n  comp_barplot(tax_level = \"Genus_Species\", facet_by = c(\"arm\",\"time_point\"), sample_order = \"bray\", n_taxa = 21)\n\n\n\n\n\n\n\n\n\n\nDiversity\n\n\nOrdination\n\n\nDifferential Abundance"
   },
   {
     "objectID": "materials/2-workshop2/8-group-project/group_b.html",
@@ -47,6 +47,114 @@
     "title": "Research Project B",
     "section": "",
     "text": "16S processing\n\n\nIdentify project files on your instance\nWhat are some pre-processing steps to take before running Dada2?\nWhat can you say about the quality of the reads?\nMerge data from other assays\nGenerate a phyloseq object\nPhyloseq cleaning\nOptional: Can you use the control samples to test Dada2’s accuracy?\n\n16S analysis\n\nGenerate plots to compare relative abundance across arms and time points\nWhat are noticable differences after antibiotic treatment?\nDoes consumption of yogurt influence people’s microbiome?\nAre there ways to change the scale so that taxa at lower abundance can be more easily visualized?\nUse a distance metric and explain what it means when comparing across groups\nConduct differential abundance testing (simply wilcoxon or using DESeq2?)\nIncorporate shotgun metagenomic data into the phyloseq\nOptional: Use microViz to explore the phyloseq object"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/index.html",
+    "href": "materials/2-workshop2/2-r-refresher/index.html",
+    "title": "r_refresher_exercise",
+    "section": "",
+    "text": "Let’s do a refresher on R, RStudio and Quarto for data analysis.",
+    "crumbs": [
+      "Installation",
+      "<b>2. Working with High Dimensional Data in R - The Human Microbiome</b>",
+      "<b>Module 2</b>: R Refresher"
+    ]
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/index.html#slides-intro-to-rstudio-quarto-and-r",
+    "href": "materials/2-workshop2/2-r-refresher/index.html#slides-intro-to-rstudio-quarto-and-r",
+    "title": "r_refresher_exercise",
+    "section": "Slides: Intro to RStudio, Quarto, and R",
+    "text": "Slides: Intro to RStudio, Quarto, and R\nMake slides full screen",
+    "crumbs": [
+      "Installation",
+      "<b>2. Working with High Dimensional Data in R - The Human Microbiome</b>",
+      "<b>Module 2</b>: R Refresher"
+    ]
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/index.html#exercise-2.1-data-wrangling-and-manipulations",
+    "href": "materials/2-workshop2/2-r-refresher/index.html#exercise-2.1-data-wrangling-and-manipulations",
+    "title": "r_refresher_exercise",
+    "section": "Exercise 2.1 : Data wrangling and manipulations",
+    "text": "Exercise 2.1 : Data wrangling and manipulations\nIn this exercise, we will work with basic data manipulations, grouping and summarizing, making data tables wider or longer, and joining data tables.\nWe will be using the R package, tidyverse for the data manipulation functions %&gt;%, group_by(), summarize(), pivot_wider(), pivot_longer(), and join functions such as left_join()\nPaste the following into the top code chunk of your qmd file.\nlibrary(tidyverse)\n\ntable_01 &lt;- read_csv(\"01_participant_metadata_UKZN_workshop_2023.csv\")\n\ntable_02 &lt;- read_csv(\"02_visit_clinical_measurements_UKZN_workshop_2023.csv\")\n\nAnalyzing subsets\nGroup the table_01 dataset by education_level and smoker.\n\ntable_01 %&gt;%\n  ___ %&gt;%\n  print()\n\nAnswer for yourself How many distinct groups did this produce?\nNow undo the previous grouping.\n\n```{r}\n# build all the code for this exercise\n```\n\nAlso verify what the output looks like when you omit the print() function at the end.\n\n\nPerforming summaries\nOnce we have set up a grouping for a data table, we can then calculate summary data with the summarize() function. This function works similarly to mutate(), in that we provide it with statements of the form &lt;new column name&gt; = &lt;computation&gt;, where &lt;new column name&gt; stands for the name of the new column that is being created and &lt;computation&gt; stands for the computation that is used to generate the values in the new column.\nAs an example, using table_02 we want to calculate the median ph of participants, by arm, we could write summarise(median_ph = median(ph)), and this would create a new column called median_ph\nTry this out. First group by arm and then make the new column:\n\ntable_02 %&gt;%\n  group_by(____) %&gt;%\n  summarise(___)\n\nNow see what it looks like if you instead group by timepoint\n\ntable_02 %&gt;%\n  group_by(____) %&gt;%\n  summarise(___)\n\nNow try grouping by both timepoint and arm\n\ntable_02 %&gt;%\n  group_by(__, __) %&gt;%\n  summarise(___)\n\nWe can perform multiple summaries at once by adding more statements inside the summarise() function, separated by a ,. To try this out, calculate the median nugent in addition to the median ph\n\ntable_02 %&gt;%\n  group_by(____) %&gt;%\n  summarise(___, ___)\n\nWhen performing summaries, we often want to know how many observations there are in each group (i.e., we want to count). We can do this with the function n(), which inside summarise() gives us the group size. So, we can count by adding a statement such as count = n() inside `summarise(). Try this out.\n\ntable_02 %&gt;%\n  group_by(____) %&gt;%\n  summarise(___, ___)\n\n\n\nMaking tables wider or longer\nFor efficient data processing, we usually want tables in long form, where each columns is one variable and each row is one observation. However, in some applications, for example when making a table easier to read for humans, a wide format can be preferred. In a wide format, some variables are displayed as column names, and other variables are distributed over multiple columns.\nFirst, make a summary table that shows median ph by arm and time_point, just like you did above, and save it to a variable ph_summary_long\n\nph_summary_long &lt;- table_02 %&gt;%\n  group_by(___) %&gt;%\n  summarise(___)\n\nNow, try using pivot_wider() to make a column for each arm. Remember, use ?pivot_wider if you want help, and try asking google or chatGPT if you get stuck.\n\nph_summary_long %&gt;%\n  pivot_wider(____)\n\nWhat if you wanted to instead make a column for each time point, and have the arms be different rows?\n\nph_summary_long %&gt;%\n  pivot_wider(____)\n\n\n\nCombining datasets with joins\nFinally, we sometimes encounter the situation where we have two data sets that contain different pieces of information about the same subjects or objects, and we need to merge these tables for further analysis. In this situation, we need to perform a join, and there are multiple different types of joins available: left_join(), right_join(), inner_join(), full_join(). These joins all differ in how they handle cases where an observation is present in only one of the two tables but missing in the other.\nOur instructional dataset has no missing values, so all types of joins are actually equivalent. Try to join table_01 and table_02 using left_join()\n\n```{r}\n# join table_01 and table_02\n```",
+    "crumbs": [
+      "Installation",
+      "<b>2. Working with High Dimensional Data in R - The Human Microbiome</b>",
+      "<b>Module 2</b>: R Refresher"
+    ]
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/index.html#exercise-2.2-aesthetics-using-ggplot",
+    "href": "materials/2-workshop2/2-r-refresher/index.html#exercise-2.2-aesthetics-using-ggplot",
+    "title": "r_refresher_exercise",
+    "section": "Exercise 2.2 : Aesthetics using ggplot",
+    "text": "Exercise 2.2 : Aesthetics using ggplot\nFor this exercise, we will be using the instructional dataset (path to dataset)\nIn this worksheet, we will work on ggplot and the mapping of data values onto aesthetics.\n\nlibrary(tidyverse) # load the tidyverse library\n\n# we want to use the data in the visit_clinical_measurements file\nclinical_measurements &lt;- read_csv(path to dataset) # read in your data \n\n#then show the first few rows\nhead(clinical_measurements)\n\n\nBasic geom examples\nRemember: we call the ggplot() function with a dataset and an aesthetic mapping (created with aes()), and then we add a geom, such as geom_line() to draw lines or geom_point() to draw points.\nTry this for yourself. Map the column ph onto the x axis and the column crp_blood onto the y axis, and use geom_line() to display the data.\nWhenever you see ___ in the code below, that means you should swap it in with your own code.\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\nTry again. Now use geom_point() instead of geom_line().\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\nAnd now swap which column you map to x and which to y.\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\n\n\nMore complex geoms\nYou can use other geoms to make different types of plots. For example, geom_boxplot() will make boxplots. For boxplots, we frequently want categorical data on the x or y axis. For example, we might want a separate boxplot for each month. Try this out. Put nugent_score on the x axis, ph on the y axis, and use geom_boxplot().\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\nNow try swapping the x and y axis geom_jitter()\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\nNow try swapping the x and y axis\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\n\n\nAdding color\nTry again with geom_jitter(), this time using ph as the location along the y axis and arm for the color. Remember to check the ggplot cheat sheet, or type ?geom_jitter() in the console to and look at the “Aesthetics” section if you get stuck.\n\nggplot(clinical_measurements, aes(x = ___, y = ___)) +\n  ___()\n\n(Hint: Try adding size = 3 as a parameter to the geom_jitter() to create larger points.)",
+    "crumbs": [
+      "Installation",
+      "<b>2. Working with High Dimensional Data in R - The Human Microbiome</b>",
+      "<b>Module 2</b>: R Refresher"
+    ]
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/index.html#exercise-2.3-compund-figures",
+    "href": "materials/2-workshop2/2-r-refresher/index.html#exercise-2.3-compund-figures",
+    "title": "r_refresher_exercise",
+    "section": "Exercise 2.3 : Compund figures",
+    "text": "Exercise 2.3 : Compund figures\nIn this worksheet, we will discuss how to combine several ggplot2 plots into one compound figure.\nWe will be using the R package tidyverse, which includes ggplot() and related functions. We will also be using the package patchwork for plot composition.\n\n# load required library\nlibrary(tidyverse)\nlibrary(patchwork)\n\n\nAttaching package: 'patchwork'\n\n\nThe following object is masked from 'package:cowplot':\n\n    align_plots\n\n\nWe will be working with the dataset mtcars, which contains fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).\n\nmtcars\n\n                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb\nMazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2\nValiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1\nDuster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4\nMerc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2\nMerc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2\nMerc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4\nMerc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4\nMerc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3\nMerc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3\nMerc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3\nCadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4\nLincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4\nChrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4\nFiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1\nHonda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2\nToyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1\nToyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1\nDodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2\nAMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2\nCamaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4\nPontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2\nFiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1\nPorsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2\nLotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2\nFord Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4\nFerrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6\nMaserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8\nVolvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2\n\n\n\nCombining plots\nFirst we set up four different plots that we will subsequently combine. The plots are stored in variables p1, p2, p3, p4.\n\np1 &lt;- ggplot(mtcars) + \n  geom_point(aes(mpg, disp))\np1  \n\n\n\n\n\n\n\np2 &lt;- ggplot(mtcars) + \n  geom_boxplot(aes(gear, disp, group = gear))\np2\n\n\n\n\n\n\n\np3 &lt;- ggplot(mtcars) + \n  geom_smooth(aes(disp, qsec))\np3\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n\n\n\np4 &lt;- ggplot(mtcars) + \n  geom_bar(aes(carb))\np4\n\n\n\n\n\n\n\n\nTo show plots side-by-side, we use the operator |, as in p1 | p2. Try this by making a compound plot of plots p1, p2, p3 side-by-side.\n\n # build all the code for this exercise\n\nTo show plots on top of one-another, we use the operator /, as in p1 / p2. Try this by making a compound plot of plots p1, p2, p3 on top of each other.\n\n # build all the code for this exercise\n\nWe can also use parentheses to group plots with respect to the operators | and /. For example, we can place several plots side-by-side and then place this entire row of plots on top of another plot. Try putting p1, p2, p3, on the top row, and p4 on the bottom row.\n\n(___) / ___",
+    "crumbs": [
+      "Installation",
+      "<b>2. Working with High Dimensional Data in R - The Human Microbiome</b>",
+      "<b>Module 2</b>: R Refresher"
+    ]
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/index.html#exercise-2.4-color-scales",
+    "href": "materials/2-workshop2/2-r-refresher/index.html#exercise-2.4-color-scales",
+    "title": "r_refresher_exercise",
+    "section": "Exercise 2.4 : Color scales",
+    "text": "Exercise 2.4 : Color scales\nIn this worksheet, we will discuss how to change and customize color scales.\nWe will be using the R package tidyverse, which includes ggplot() and related functions. We will also be using the R package colorspace for the scale functions it provides.\n\n# load required library\nlibrary(tidyverse)\nlibrary(colorspace)\n\ntemperatures &lt;- read_csv(\"https://wilkelab.org/SDS375/datasets/tempnormals.csv\") %&gt;%\n  mutate(\n    location = factor(\n      location, levels = c(\"Death Valley\", \"Houston\", \"San Diego\", \"Chicago\")\n    )\n  ) %&gt;%\n  select(location, day_of_year, month, temperature)\n\ntemps_months &lt;- read_csv(\"https://wilkelab.org/SDS375/datasets/tempnormals.csv\") %&gt;%\n  group_by(location, month_name) %&gt;%\n  summarize(mean = mean(temperature)) %&gt;%\n  mutate(\n    month = factor(\n      month_name,\n      levels = c(\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\")\n    ),\n    location = factor(\n      location, levels = c(\"Death Valley\", \"Houston\", \"San Diego\", \"Chicago\")\n    )\n  ) %&gt;%\n  select(-month_name)\n\nWe will be working with the dataset temperatures that we have used in previous worksheets. This dataset contains the average temperature for each day of the year for four different locations.\n\ntemperatures\n\n# A tibble: 1,464 × 4\n   location     day_of_year month temperature\n   &lt;fct&gt;              &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;\n 1 Death Valley           1 01           51  \n 2 Death Valley           2 01           51.2\n 3 Death Valley           3 01           51.3\n 4 Death Valley           4 01           51.4\n 5 Death Valley           5 01           51.6\n 6 Death Valley           6 01           51.7\n 7 Death Valley           7 01           51.9\n 8 Death Valley           8 01           52  \n 9 Death Valley           9 01           52.2\n10 Death Valley          10 01           52.3\n# ℹ 1,454 more rows\n\n\nWe will also be working with an aggregated version of this dataset called temps_months, which contains the mean temperature for each month for the same locations.\n\ntemps_months\n\n# A tibble: 48 × 3\n# Groups:   location [4]\n   location  mean month\n   &lt;fct&gt;    &lt;dbl&gt; &lt;fct&gt;\n 1 Chicago   50.4 Apr  \n 2 Chicago   74.1 Aug  \n 3 Chicago   29   Dec  \n 4 Chicago   28.9 Feb  \n 5 Chicago   24.8 Jan  \n 6 Chicago   75.8 Jul  \n 7 Chicago   71.0 Jun  \n 8 Chicago   38.8 Mar  \n 9 Chicago   60.9 May  \n10 Chicago   41.6 Nov  \n# ℹ 38 more rows\n\n\nAs a challenge, try to create this above table yourself using group_by() and summarize(), and then make a month column which is a factor with levels froing from “Jan” to “Dec”, and make the location column a factor with levels “Death Valley”, “Houston”, “San Diego”, “Chicago”. If you are having trouble, the solution is at the end of this page, make sure you copy it into your code so the rest of the exercise works.\n\n# check solution at the end before moving on!\ntemps_months &lt;- read_csv(\"https://wilkelab.org/SDS375/datasets/tempnormals.csv\") %&gt;%\n  group_by(___) %&gt;%\n  summarize(___) %&gt;%\n  mutate(\n    month = factor(\n      month_name,\n      ___\n    ),\n    location = factor(\n      location, ___\n    )\n  ) %&gt;%\n  select(-month_name)\n\n\nBuilt in ggplot2 color scales\nWe will start with built-in ggplot2 color scales, which require no additional packages. The scale functions are always named scale_color_*() or scale_fill_*(), depending on whether they apply to the color or fill aesthetic. The * indicates some other words specifying the type of the scale, for example scale_color_brewer() or scale_color_distiller() for discrete or continuous scales from the ColorBrewer project, respectively. You can find all available built-in scales here: https://ggplot2.tidyverse.org/reference/index.html#section-scales\nNow consider the following plot.\n\nggplot(temps_months, aes(x = month, y = location, fill = mean)) + \n  geom_tile() + \n  coord_fixed(expand = FALSE)\n\n\n\n\n\n\n\n\nIf you wanted to change the color scale to one from the ColorBrewer project, which scale function would you have to add? scale_color_brewer(), scale_color_distiller(), scale_fill_brewer(), scale_fill_distiller()?\n\n # answer the question above to yourself\n\nNow try this out.\n\nggplot(temps_months, aes(x = month, y = location, fill = mean)) + \n  geom_tile() + \n  coord_fixed(expand = FALSE) +\n  ___\n\nMost color scale functions have additional customizations. How to use them depends on the specific scale function. For the ColorBrewer scales you can set direction = 1 or direction = -1 to set the direction of the scale (light to dark or dark to light). You can also set the palette via a numeric argument, e.g. palette = 1, palette = 2, palette = 3 etc.\nTry this out by setting the direction of the scale from light to dark and using palette #4.\n\n # build all the code for this exercise\n\n\n\nManual scales\nFor discrete data with a small number of categories, it’s usually best to set colors manually. This can be done with the scale functions scale_*_manual(). These functions take an argument values that specifies the color values to use.\nTo see how this works, let’s go back to this plot of temperatures over time for four locations.\n\nggplot(temperatures, aes(day_of_year, temperature, color = location)) +\n  geom_line(size = 1.5)\n\n\n\n\n\n\n\n\nLet’s use the following four colors: \"gold2\", \"firebrick\", \"blue3\", \"springgreen4\". We can visualize this palette using the function swatchplot() from the colorspace package.\n\ncolorspace::swatchplot(c(\"gold2\", \"firebrick\", \"blue3\", \"springgreen4\"))\n\n\n\n\n\n\n\n\nNow apply this color palette to the temperatures plot, by using the manual color scale. Hint: use the values argument to provide the colors to the manual scale.\n\nggplot(temperatures, aes(day_of_year, temperature, color = location)) +\n  geom_line(size = 1.5) +\n  ___\n\nOne problem with this approach is that we can’t easily control which data value gets assigned to which color. What if we wanted San Diego to be shown in green and Chicago in blue? The simplest way to resolve this issue is to use a named vector. A named vector in R is a vector where each value has a name. Named vectors are created by writing c(name1 = value1, name2 = value2, ...). See the following example.\n\n# regular vector\nc(\"cat\", \"mouse\", \"house\")\n\n[1] \"cat\"   \"mouse\" \"house\"\n\n# named vector\nc(A = \"cat\", B = \"mouse\", C = \"house\")\n\n      A       B       C \n  \"cat\" \"mouse\" \"house\" \n\n\nThe names in the second example are A, B, and C. Notice that the names are not in quotes. However, if you need a name containing a space (such as Death Valley), you need to enclose the name in backticks. Thus, our named vector of colors could be written like so:\n\nc(`Death Valley` = \"gold2\", Houston = \"firebrick\", Chicago = \"blue3\", `San Diego` = \"springgreen4\")\n\n  Death Valley        Houston        Chicago      San Diego \n       \"gold2\"    \"firebrick\"        \"blue3\" \"springgreen4\" \n\n\nNow try to use this color vector in the figure showing temperatures over time.\n\n # build all the code for this exercise\n\nTry some other colors also. You can find a list of all named colors here. You can also run the command colors() in your R console to get a list of all available color names.\nHint: It’s a good idea to never use the colors \"red\", \"green\", \"blue\", \"cyan\", \"magenta\", \"yellow\". They are extreme points in the RGB color space and tend to look unnatural and too crazy. Try this by making a swatch plot of these colors, and compare for example to the color scale containing the colors \"firebrick\", \"springgreen4\", \"blue3\", \"turquoise3\", \"darkorchid2\", \"gold2\". Do you see the difference?\n\n # build all the code for this exercise\n\nSolution to the challenge to make the summary table of mean temperature by month:\n\n# paste this below the \"temperatures\" code-chunk\ntemps_months &lt;- read_csv(\"https://wilkelab.org/SDS375/datasets/tempnormals.csv\") %&gt;%\n  group_by(location, month_name) %&gt;%\n  summarize(mean = mean(temperature)) %&gt;%\n  mutate(\n    month = factor(\n      month_name,\n      levels = c(\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\")\n    ),\n    location = factor(\n      location, levels = c(\"Death Valley\", \"Houston\", \"San Diego\", \"Chicago\")\n    )\n  ) %&gt;%\n  select(-month_name)",
+    "crumbs": [
+      "Installation",
+      "<b>2. Working with High Dimensional Data in R - The Human Microbiome</b>",
+      "<b>Module 2</b>: R Refresher"
+    ]
+  },
+  {
+    "objectID": "materials/2-workshop2/0-welcome/index.html",
+    "href": "materials/2-workshop2/0-welcome/index.html",
+    "title": "Welcome to the workshop",
+    "section": "",
+    "text": "Get to know your neighbors and instructors and learn what to expect from this workshop",
+    "crumbs": [
+      "Installation",
+      "<b>2. Working with High Dimensional Data in R - The Human Microbiome</b>",
+      "<b>Module 0:</b> Welcome to the workshop"
+    ]
+  },
+  {
+    "objectID": "materials/2-workshop2/0-welcome/index.html#slides",
+    "href": "materials/2-workshop2/0-welcome/index.html#slides",
+    "title": "Welcome to the workshop",
+    "section": "Slides",
+    "text": "Slides\nMake slides full screen",
+    "crumbs": [
+      "Installation",
+      "<b>2. Working with High Dimensional Data in R - The Human Microbiome</b>",
+      "<b>Module 0:</b> Welcome to the workshop"
+    ]
+  },
+  {
+    "objectID": "materials/2-workshop2/0-welcome/index.html#before-the-workshop",
+    "href": "materials/2-workshop2/0-welcome/index.html#before-the-workshop",
+    "title": "Welcome to the workshop",
+    "section": "Before the workshop",
+    "text": "Before the workshop\nBefore the workshop, check the front page for instructions on joining the Discord and filling out the pre-workshop survey.",
+    "crumbs": [
+      "Installation",
+      "<b>2. Working with High Dimensional Data in R - The Human Microbiome</b>",
+      "<b>Module 0:</b> Welcome to the workshop"
+    ]
   },
   {
     "objectID": "materials/1-workshop1/8-group-projects/slides.html#even-numbered-groups",
@@ -2503,7 +2611,7 @@
     "href": "materials/1-workshop1/2-intro-to-r/slides.html#what-is-programming",
     "title": "Intro to R,R Studio, and Quarto",
     "section": "What is programming?",
-    "text": "What is programming?\nProgramming is giving the computer instructions using text. The tricky part is learning how to speak to a computer.\n```{r}\n\"a\" == \"A\"\n```\n```{r error=TRUE}\nmax(c(1,2,3,4)]\n```\n```{r error=TRUE}\n# how old will I be in 10 years?\nmy_age + 10\n```\n\n\n\n\nComputers are incredibly literal\n\n\n\n[1] FALSE\n\n\n\n\n\nComputers care about punctuation\n\n\n\nError: &lt;text&gt;:1:15: unexpected ']'\n1: max(c(1,2,3,4)]\n                  ^\n\n\n\n\n\nComputers only know what you tell them\n\n\n\nError in eval(expr, envir, enclos): object 'my_age' not found\n\n\n\n\n\nMost bugs happen because of one of these things."
+    "text": "What is programming?\nProgramming is giving the computer instructions using text. The tricky part is learning how to speak to a computer.\n```{r}\n\"a\" == \"A\"\n```\n```{r error=TRUE}\nmax(c(1,2,3,4))\n```\n```{r error=TRUE}\n# how old will I be in 10 years?\nmy_age + 10\n```\n\n\n\n\nComputers are incredibly literal\n\n\n\n[1] FALSE\n\n\n\n\n\nComputers care about punctuation\n\n\n\n[1] 4\n\n\n\n\n\nComputers only know what you tell them\n\n\n\nError in eval(expr, envir, enclos): object 'my_age' not found\n\n\n\n\n\nMost bugs happen because of one of these things."
   },
   {
     "objectID": "materials/1-workshop1/2-intro-to-r/slides.html#what-is-programming-1",
@@ -3063,28 +3171,28 @@
     "href": "index.html",
     "title": "Data Science for Biology Workshop Series",
     "section": "",
-    "text": "Data Science for Biology Workshop Series\n\n\nWorkshop II - Working with High Dimensional Data\n\n\n\n\n\n\nWelcome to the workshop!\n\nFill out the pre-workshop survey here\n\nJoin the discord here (once you’ve joined, you can bookmark https://discord.com/channels/1158136582201692202/ to go straight to the channel.)\n\nAwait instructions on logging into your AWS instance.\n\n\n\n\n\nTable 1: Schedule\n\n\n\n\n\n\n\n\n\n\nDate/Time\nTopic\nInstructor\n\n\n\n\nMonday, April 22nd\n\n\n\n\nAM\nCourse Introduction\nScott Handley (Wash U School of Medicine)\n\n\n\nKeynote\nSinaye Ngcapu (CAPRISA)\n\n\n\nMicrobiome Sample Processing and Library prep\nLindsay Droit (Wash U School of Medicine)\n\n\nPM\nR Refresher ( tidyverse /summary tables/data visualization)\nScott Handley (Wash U School of Medicine)\n\n\nTuesday, April 23th\n____________________________________________\n____________________________________________\n\n\nAM\n16S Data Preprocessing\nAsavela Kama (CAPRISA)\n\n\nPM\n16S Data Analysis pt. I\nElizabeth Costello (Stanford University)\n\n\nWednesday, April 24th\n____________________________________________\n____________________________________________\n\n\nAM\nGroup Activity session I\nJohnathan Shih (Ragon Institute)\n\n\nPM\n16S Data Analysis pt. II\nJoseph Elsherbini (Ragon Institute)\n\n\nThursday, April 25th\n____________________________________________\n____________________________________________\n\n\nAM\nVIRGO / Shotgun Metagenomics\nMichael France (UMD School of Medicine)\n\n\nPM\nGroup Activity session II\nJohnathan Shih (Ragon Institute)\n\n\nEvening\nReception\n\n\n\nFriday, April 26th\n____________________________________________\n____________________________________________\n\n\nAM\nKeynote\nJacques Ravel (UMD School of Medicine)\n\n\n\nGroup Activity review\n\n\n\nPM\nGroup Presentations\nParticipants\n\n\n\nDataset Demo\n\n\n\n\nWorkshop Outro\nScott Handley (Wash U School of Medicine)\n\n\n\n____________________________________________\n____________________________________________"
+    "text": "Data Science for Biology Workshop Series\n\n\nWorkshop II - Working with High Dimensional Data\n\n\n\n\n\n\nWelcome to the workshop!\n\nFill out the pre-workshop survey here\n\nJoin the discord here (once you’ve joined, you can bookmark https://discord.com/channels/1158136582201692202/ to go straight to the channel.)\n\nAwait instructions on logging into your AWS instance.\n\n\n\n\n\nTable 1: Schedule\n\n\n\n\n\n\n\n\n\n\nDate/Time\nTopic\nInstructor\n\n\n\n\nMonday, April 22nd\n\n\n\n\nAM\nCourse Introduction\nScott Handley (Wash U School of Medicine)\n\n\n\nKeynote\nSinaye Ngcapu (CAPRISA)\n\n\n\nMicrobiome Sample Processing and Library preparation\nLindsay Droit (Wash U School of Medicine)\n\n\nPM\nR Refresher ( tidyverse /summary tables/data visualization)\nScott Handley (Wash U School of Medicine)\n\n\nTuesday, April 23th\n____________________________________________\n____________________________________________\n\n\nAM\n16S Data Preprocessing\nAsavela Kama (CAPRISA)\n\n\nPM\n16S Data Analysis pt. I\nElizabeth Costello (Stanford University)\n\n\nWednesday, April 24th\n____________________________________________\n____________________________________________\n\n\nAM\nGroup Activity session I\nJohnathan Shih (Ragon Institute)\n\n\nPM\n16S Data Analysis pt. II\nJoseph Elsherbini (Ragon Institute)\n\n\nThursday, April 25th\n____________________________________________\n____________________________________________\n\n\nAM\nVIRGO / Shotgun Metagenomics\nMichael France (UMD School of Medicine)\n\n\nPM\nGroup Activity session II\nJohnathan Shih (Ragon Institute)\n\n\nEvening\nReception\n\n\n\nFriday, April 26th\n____________________________________________\n____________________________________________\n\n\nAM\nKeynote\nJacques Ravel (UMD School of Medicine)\n\n\n\nGroup Activity review\n\n\n\nPM\nGroup Presentations\nParticipants\n\n\n\nDataset Demo\n\n\n\n\nWorkshop Outro\nScott Handley (Wash U School of Medicine)\n\n\n\n____________________________________________\n____________________________________________"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Series Organizer and Instructor\nDr. Scott Handley\nProfessor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Joseph Elsherbini\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\nInstructor\nDr. Lindsay Droit\nResearch Laboratory Manager Washington University School of Medicine\n\n\n\n\n\n\n\n\n\nInstructor\nDr. Elizabeth Costello\nResearch Scientist\nStanford University\n\n\n\n\n\n\n\n\n\nInstructor\nDr. Michael France\nBioinformatician\nUniversity of Maryland School of Medicine\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nInstructor\nAsavela Kama\nBioinformatician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nInstructor Johnathan Shih\nBioinformatics Research Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Logistics and Management\nSarah Eisa\nProgram Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAaron Abai\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nDerek Tshiabuila\nPhD Research Fellow\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAfrah Khairallah\nPostdoctoral research fellow Africa Health Research Institute (AHRI) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nJohan van der Molen\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\nTeaching Assistant\nWasim Abdool Karim\nBioinformatician Centre for Epidemic Response and Innovation (CERI) - Stellenbosch"
+    "text": "Series Organizer and Instructor\nDr. Scott Handley\nProfessor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Joseph Elsherbini\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\nInstructor\nDr. Lindsay Droit\nResearch Laboratory Manager Washington University School of Medicine\n\n\n\n\n\n\n\n\n\nInstructor\nDr. Elizabeth Costello\nResearch Scientist\nStanford University\n\n\n\n\n\n\n\n\n\nInstructor\nDr. Michael France\nBioinformatician\nUniversity of Maryland School of Medicine\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nInstructor\nAsavela Kama\nBioinformatician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nInstructor\nJohnathan Shih\nBioinformatics\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Logistics and Management\nSarah Eisa\nProgram Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAaron Abai\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nDerek Tshiabuila\nPhD Research Fellow\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAfrah Khairallah\nPostdoctoral research fellow Africa Health Research Institute (AHRI) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nJohan van der Molen\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nWasim Abdool Karim\nBioinformatician Centre for Epidemic Response and Innovation (CERI) - Stellenbosch"
   },
   {
     "objectID": "about.html#working-with-high-dimensional-data-in-r---teaching-team",
     "href": "about.html#working-with-high-dimensional-data-in-r---teaching-team",
     "title": "About",
     "section": "",
-    "text": "Series Organizer and Instructor\nDr. Scott Handley\nProfessor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Joseph Elsherbini\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\nInstructor\nDr. Lindsay Droit\nResearch Laboratory Manager Washington University School of Medicine\n\n\n\n\n\n\n\n\n\nInstructor\nDr. Elizabeth Costello\nResearch Scientist\nStanford University\n\n\n\n\n\n\n\n\n\nInstructor\nDr. Michael France\nBioinformatician\nUniversity of Maryland School of Medicine\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nInstructor\nAsavela Kama\nBioinformatician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nInstructor Johnathan Shih\nBioinformatics Research Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Logistics and Management\nSarah Eisa\nProgram Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAaron Abai\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nDerek Tshiabuila\nPhD Research Fellow\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAfrah Khairallah\nPostdoctoral research fellow Africa Health Research Institute (AHRI) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nJohan van der Molen\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\nTeaching Assistant\nWasim Abdool Karim\nBioinformatician Centre for Epidemic Response and Innovation (CERI) - Stellenbosch"
+    "text": "Series Organizer and Instructor\nDr. Scott Handley\nProfessor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Joseph Elsherbini\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\nInstructor\nDr. Lindsay Droit\nResearch Laboratory Manager Washington University School of Medicine\n\n\n\n\n\n\n\n\n\nInstructor\nDr. Elizabeth Costello\nResearch Scientist\nStanford University\n\n\n\n\n\n\n\n\n\nInstructor\nDr. Michael France\nBioinformatician\nUniversity of Maryland School of Medicine\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nInstructor\nAsavela Kama\nBioinformatician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nInstructor\nJohnathan Shih\nBioinformatics\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Logistics and Management\nSarah Eisa\nProgram Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAaron Abai\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nDerek Tshiabuila\nPhD Research Fellow\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAfrah Khairallah\nPostdoctoral research fellow Africa Health Research Institute (AHRI) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nJohan van der Molen\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nWasim Abdool Karim\nBioinformatician Centre for Epidemic Response and Innovation (CERI) - Stellenbosch"
   },
   {
     "objectID": "about.html#reproducible-data-analysis-with-r---teaching-team",
     "href": "about.html#reproducible-data-analysis-with-r---teaching-team",
     "title": "About",
     "section": "Reproducible Data Analysis with R - Teaching Team",
-    "text": "Reproducible Data Analysis with R - Teaching Team\n\n\n\n\n\n\n\n\n\nKeynote Speaker\nDr. Lenine Liebenberg\nChief Researcher\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nDr. Laura Symul\nAssistant Professor\nUCLouvain Institute of Statistics, Biostatistics and Actuarial Sciences\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nMarothi Peter Letsoalo\nSenior Biostatistician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nSalina Hussain\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nSuuba Demby\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Scott Handley\nProfessor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Joseph Elsherbini\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Logistics and Management\nSarah Eisa\nProgram Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nDerek Tshiabuila\nPhD Research Fellow\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAsavela Kama\nBioinformatician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAfrah Khairallah\nPostdoctoral research fellow Africa Health Research Institute (AHRI) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nKwabena Asare\nStatistician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nJohan van der Molen\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\nTeaching Assistant\nWasim Abdool Karim\nBioinformatician Centre for Epidemic Response and Innovation (CERI) - Stellenbosch"
+    "text": "Reproducible Data Analysis with R - Teaching Team\n\n\n\n\n\n\n\n\n\nKeynote Speaker\nDr. Lenine Liebenberg\nChief Researcher\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nDr. Laura Symul\nAssistant Professor\nUCLouvain Institute of Statistics, Biostatistics and Actuarial Sciences\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nMarothi Peter Letsoalo\nSenior Biostatistician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nSalina Hussain\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nWorkshop Instructor\nSuuba Demby\nResearch Technician\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Scott Handley\nProfessor\nWashington University School of Medicine\nDepartment of Pathology and Immunology\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nDr. Joseph Elsherbini\nData Scientist\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Organizer and Instructor\nChandani Desai\nProject Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nSeries Logistics and Management\nSarah Eisa\nProgram Manager\nRagon Institute of MGH, MIT and Harvard\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nDerek Tshiabuila\nPhD Research Fellow\nCentre for Epidemic Response and Innovation (CERI) - Stellenbosch\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAsavela Kama\nBioinformatician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nAfrah Khairallah\nPostdoctoral research fellow Africa Health Research Institute (AHRI) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nKwabena Asare\nStatistician\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nJohan van der Molen\nCentre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN\n\n\n\n\n\n\n\n\n\nTeaching Assistant\nWasim Abdool Karim\nBioinformatician Centre for Epidemic Response and Innovation (CERI) - Stellenbosch"
   },
   {
     "objectID": "about.html#about-these-materials",
@@ -3827,11 +3935,837 @@
     "text": "Cytokines vs flow\nAre there any relationships between cytokines and cd4 ratio?\n\n\nCode\nmerged_dataset %&gt;%\n  ggplot(aes(x=conc, y=cd4_ratio, color=arm, )) +\n  geom_point() +\n  scale_x_log10(labels=scales::label_log()) +\n  facet_wrap(~cytokine)"
   },
   {
-    "objectID": "materials/2-workshop2/0-welcome/index.html",
-    "href": "materials/2-workshop2/0-welcome/index.html",
-    "title": "welcome",
+    "objectID": "materials/2-workshop2/0-welcome/exercise_1.html#activity",
+    "href": "materials/2-workshop2/0-welcome/exercise_1.html#activity",
+    "title": "Exploring Data for Patterns",
+    "section": "Activity",
+    "text": "Activity\n\nPatterns are the essence of data exploration and our eyes’ ability to pick them out is integral to data understanding. Much of the data we work with, however, do not have a natural form and we need to make decisions about how they are to be represented. Try different ways to visualize the datasets so meaningful patterns may be found.\n\n\nGenetic profiles of cancer\nThese datasets contains 10 cancer samples. Table 1 describes the mutational status for a set of genes (A-E) and whether a mutation if absent (0) or present (1). Table 2 summarizes the expression levels of those genes, ranging from no expression (0) to high expression (3).\n\n\n\nTable 1: Mutational status for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n\n\nGene B\n0\n0\n0\n0\n1\n1\n1\n0\n1\n1\n\n\nGene C\n0\n0\n1\n0\n0\n0\n1\n1\n1\n1\n\n\nGene D\n1\n1\n0\n0\n1\n1\n0\n0\n0\n0\n\n\nGene E\n0\n1\n1\n0\n1\n0\n0\n0\n1\n0\n\n\n\n\n\n\n\n\n\nTable 2: Expression levels for a set of genes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsample -&gt;\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n\n\n\n\nGene A\n2\n1\n1\n2\n2\n0\n2\n1\n1\n2\n\n\nGene B\n1\n1\n2\n1\n0\n0\n0\n2\n0\n0\n\n\nGene C\n1\n1\n3\n1\n2\n2\n3\n0\n3\n0\n\n\nGene D\n0\n0\n2\n1\n3\n3\n2\n1\n1\n1\n\n\nGene E\n1\n3\n3\n1\n3\n1\n2\n1\n3\n2\n\n\n\n\n\n\n\n\n          1. Think about the problem on your own for 5 minutes.\n          2. In your groups, discuss and create different visualizations to highlight underlying patterns\n          3. Summarize the group’s approach\n          4. Elect/volunteer a spokesperson to present the solution\n\n\nConsider the following concepts when creating your visualizations\n\n\n\n\nPatterns\nPatterns are the essence of data exploration. What kinds of representation will produce the most meaningful insights?\n   \n\n\nEncodings\nSome visual estimations are easier to make than others. How might you use encodings that are less accurate but otherwise better at conveying overall trends?\n  \n\n\n\n\nColor\nColor is a powerful encoding that presents several challenges. Have you chosen a color scale that is optimal for that data type?\n   \n\n\nSalience and Relevance\nPop-out effects enable quick recognition. Are the most noticeable elements of your visualizations also the most relevant?"
+  },
+  {
+    "objectID": "materials/2-workshop2/0-welcome/slides.html#section",
+    "href": "materials/2-workshop2/0-welcome/slides.html#section",
+    "title": "Welcome to the workshop",
     "section": "",
-    "text": "Let’s learn about the types of data we’ll use for this workshop"
+    "text": "Goals for this session\n\n\nGet to know your instructors and neighbors\nSet expectations for the week\nGet excited!"
+  },
+  {
+    "objectID": "materials/2-workshop2/0-welcome/slides.html#section-1",
+    "href": "materials/2-workshop2/0-welcome/slides.html#section-1",
+    "title": "Welcome to the workshop",
+    "section": "",
+    "text": "Workshop materials are at:\nhttps://elsherbini.github.io/durban-data-science-for-biology/"
+  },
+  {
+    "objectID": "materials/2-workshop2/0-welcome/slides.html#discussions-discord",
+    "href": "materials/2-workshop2/0-welcome/slides.html#discussions-discord",
+    "title": "Welcome to the workshop",
+    "section": "Discussions: discord",
+    "text": "Discussions: discord\nAsk questions at #workshop-questions on https://discord.gg/UDAsYTzZE."
+  },
+  {
+    "objectID": "materials/2-workshop2/0-welcome/slides.html#stickies",
+    "href": "materials/2-workshop2/0-welcome/slides.html#stickies",
+    "title": "Welcome to the workshop",
+    "section": "Stickies",
+    "text": "Stickies\n\n\n\n\n\n\nDuring an activity, place a yellow sticky on your laptop if you’re good to go and a pink sticky if you want help.\n\n\n\n\nImage by Megan Duffy"
+  },
+  {
+    "objectID": "materials/2-workshop2/0-welcome/slides.html#practicalities",
+    "href": "materials/2-workshop2/0-welcome/slides.html#practicalities",
+    "title": "Welcome to the workshop",
+    "section": "Practicalities",
+    "text": "Practicalities\n\nWiFi:\nNetwork:\nNetwork Password:\nBathrooms are XXXXXX"
+  },
+  {
+    "objectID": "materials/2-workshop2/0-welcome/slides.html#introductions",
+    "href": "materials/2-workshop2/0-welcome/slides.html#introductions",
+    "title": "Welcome to the workshop",
+    "section": "Introductions",
+    "text": "Introductions\n\n\n\n−+\n03:00\n\n\n\nTake ~3 minutes to introduce yourself to your neighbors.\nPlease share …\n\nYour name\nWhere you’re from and where you work\nYour current go-to method for analyzing data"
+  },
+  {
+    "objectID": "materials/2-workshop2/0-welcome/slides.html#your-instructors",
+    "href": "materials/2-workshop2/0-welcome/slides.html#your-instructors",
+    "title": "Welcome to the workshop",
+    "section": "Your Instructors",
+    "text": "Your Instructors\nWho are we?"
+  },
+  {
+    "objectID": "materials/2-workshop2/0-welcome/slides.html#lets-make-this-workshop-work-for-all",
+    "href": "materials/2-workshop2/0-welcome/slides.html#lets-make-this-workshop-work-for-all",
+    "title": "Welcome to the workshop",
+    "section": "Let’s make this workshop work for all",
+    "text": "Let’s make this workshop work for all\n\n\nYou belong here. This workshop is intended for a wide-audience with a focus on beginners. If you feel out of place - it’s our problem, not yours!\nStay committed. This week-long workshop is intended to build each day and leave you with skills you can really use. Commit to stay engaged for best results, for you and your group!\nThis is a challenging but friendly environment. We are here to learn and grow. In order to make the right environment please follow “the 4 social rules” and code-of-conduct."
+  },
+  {
+    "objectID": "materials/2-workshop2/0-welcome/slides.html#flow-of-the-workshop",
+    "href": "materials/2-workshop2/0-welcome/slides.html#flow-of-the-workshop",
+    "title": "Welcome to the workshop",
+    "section": "Flow of the Workshop",
+    "text": "Flow of the Workshop"
+  },
+  {
+    "objectID": "materials/2-workshop2/0-welcome/slides.html#the-premise-of-the-workshop",
+    "href": "materials/2-workshop2/0-welcome/slides.html#the-premise-of-the-workshop",
+    "title": "Welcome to the workshop",
+    "section": "The premise of the workshop",
+    "text": "The premise of the workshop\nWe’ve extended the true-to-life dataset from workshop 1 to include high dimensional 16S data\n\nabout 40 participants split across two treatment arms\nthree time points (before treatment, after treatment, and longer follow-up)\nseveral measurements per time-point including cytokine concentrations and flow cytometry data\n16S sequencing for every time point, as well as microbial gene counts from shotgun metagenomics\n\nWe’ve also created group datasets so you can practice applying what you’ve learned on new data."
+  },
+  {
+    "objectID": "materials/2-workshop2/0-welcome/slides.html#why-this-format",
+    "href": "materials/2-workshop2/0-welcome/slides.html#why-this-format",
+    "title": "Welcome to the workshop",
+    "section": "Why this format",
+    "text": "Why this format\nWe’ve taught workshops here before where we packed a lot (too much) into one week.\nBased on feedback, we focused on basic R skills at the first workshop, and will spend this week using R to analyze microbiome data as a case-study in higher dimensional data analysis.\nThis is the first time running this new workshop - please give lots of feedback on how to improve it for next time."
+  },
+  {
+    "objectID": "materials/2-workshop2/0-welcome/slides.html#the-content-of-this-workshop",
+    "href": "materials/2-workshop2/0-welcome/slides.html#the-content-of-this-workshop",
+    "title": "Welcome to the workshop",
+    "section": "The content of this workshop",
+    "text": "The content of this workshop\n\nWe’ve created 6 modules as well as a group activity for this workshop.\n\nThere might be too much material to get through in this week!\n\nAs instructors we’re going to be trying to teach at the right pace to keep everyone learning all week.\n\nThe materials will stay on the website forever for you to work through at your own pace."
+  },
+  {
+    "objectID": "materials/2-workshop2/0-welcome/slides.html#lets-take-a-poll",
+    "href": "materials/2-workshop2/0-welcome/slides.html#lets-take-a-poll",
+    "title": "Welcome to the workshop",
+    "section": "Let’s take a poll",
+    "text": "Let’s take a poll\nGo to the event on wooclap\n\n\n\n\nback to module"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/images/ex-2.html",
+    "href": "materials/2-workshop2/2-r-refresher/images/ex-2.html",
+    "title": "Data Science for Biology Workshop Series",
+    "section": "",
+    "text": "Spatial Logical Toy Inventor: Erno Rubik Assignee: Politoys Ipari Szovetkezet, Budapest, Hungary The first patent by the inventor is registered in Hungary. Appl. No.: 289,192 Filed: Aug. 3, 1981 Background of the Invention The invention relates to a spatial logical toy having a total of eighteen toy elements which form a regular or an irregular spatial body, preferably an oblong body, in the assembled state. Spatial logical toys are well known, such as that described in the HU-PS No. 170 062 of the same applicant, which relates to a spatial logical toy consisting of twenty-seven solids which form a cube in the assembled state. The toy elements, in the shape of small cubes, may be turned along the spatial axes of the cube by means of connecting elements arranged in the geometric center of the large cube. The surfaces of the small cubes forming each surface of the large cube are colored or carry numbers, figures or any other symbols which can be assembled into the predetermined logical order of sequence by simultaneously rotating the nine toy elements forming the surfaces of the large cube. Summary of the Invention The logical toy according to the present invention represents an improved form of the previously described spatial logical toy. The construction is based on the same principles, however, the internal connection is performed by means of absolutely new and particular solids. The key feature according to the invention, i.e. shape, name, sounds, mode of interconnection and central fixture will be described in detail by means of two preferred embodiments, by the aid of the accompanying drawings, wherein. Component blocks of the spatial logial toy. ex-2-figs.png What is claimed is: 1. In a spatial logical toy assembled from a plurality of toy elements, of which a predetermined number may be rotated in the direction of the spatial axes starting from the geometrical center of the logical toy, the improvement wherein the spatial logical toy is formed by a total of eighteen toy elements. Two sets of eight toy elements each comprise substantially cubiforms with integally formed cam elements and each of the sets comprise eight identical toy elements, and two connecting toy elements, and means for joining the connecting toy elements to coact with the cam elements to form an integrated toy body, the joining means comprising a single screw enclosed by a spring. The spatial logical toy as claimed in claim 1, wherein the toy has the shape of a regular geometrical body in the assembled state. The toy elements thereof belonging to one set comprise eight cubiform homologous elements each having a first cam element connected to one corner thereof. Two confining surfaces of which lie at a unit distance from two surfaces of the cube and are parallel therewith and are cut-off in the form of an ellipsis-quarter, and a third confining surface thereof is coplanar with another surface of the cube and between the two confining faces of the first cam element running parallel with the cube and the cube there is a hollow with a convex spherical surface."
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#section",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#section",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "",
+    "text": "Workshop materials are at:\nhttps://elsherbini.github.io/durban-data-science-for-biology/"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#section-1",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#section-1",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "",
+    "text": "Goals for this session\n\n\nRStudio and the Quarto notebook\nData types and manipulations\nReview data visualization\nData wrangling and make plots with the tidyverse\nAdvanced table commands\nPlotting distributions with tidyverse and ggplot"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#discussions-discord",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#discussions-discord",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Discussions: discord",
+    "text": "Discussions: discord\nAsk questions at #workshop-questions on https://discord.com/channels/1227264067899621427."
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#stickies",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#stickies",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Stickies",
+    "text": "Stickies\n\n\n\n\n\n\nDuring an activity, place a yellow sticky on your laptop if you’re good to go and a pink sticky if you want help.\n\n\n\n\nImage by Megan Duffy"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#practicalities",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#practicalities",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Practicalities",
+    "text": "Practicalities\n\nWiFi:\nNetwork:\nNetwork Password:\nBathrooms are XXXXXX"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#getting-on-aws-rstudio",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#getting-on-aws-rstudio",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Getting on AWS & RStudio",
+    "text": "Getting on AWS & RStudio"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#create-an-r-project",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#create-an-r-project",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Create an R Project",
+    "text": "Create an R Project\n\n\n\nFile -&gt; New Project…"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#create-an-r-project-1",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#create-an-r-project-1",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Create an R Project",
+    "text": "Create an R Project\n\n\n\nClick on New Directory"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#create-an-r-project-2",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#create-an-r-project-2",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Create an R Project",
+    "text": "Create an R Project\n\n\n\nName your directory and click “Create Project”"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#create-an-r-project-3",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#create-an-r-project-3",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Create an R Project",
+    "text": "Create an R Project\n\n\n\nYou made a project! This creates a file for you with the .qmd extension"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#create-an-r-project-4",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#create-an-r-project-4",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Create an R Project",
+    "text": "Create an R Project\n\n\n\nSwitch from “visual” to “source” to see the plain-text version of this document."
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#create-an-r-project-5",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#create-an-r-project-5",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Create an R Project",
+    "text": "Create an R Project\n\n\n\nClick on “Render” to ask Quarto to turn this plain-text document into an HTML page"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#create-an-r-project-6",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#create-an-r-project-6",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Create an R Project",
+    "text": "Create an R Project\n\n\n\nYour default web-browser will open and show you the rendered document!"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#parts-of-rstudio-make-an-image-with-all-3-parts-highlighted",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#parts-of-rstudio-make-an-image-with-all-3-parts-highlighted",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Parts of RStudio (make an image with all 3 parts highlighted)",
+    "text": "Parts of RStudio (make an image with all 3 parts highlighted)"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#quartos-code-chunk",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#quartos-code-chunk",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Quarto’s Code Chunk",
+    "text": "Quarto’s Code Chunk\n\n\n\n\n```{r}\n#| echo: false\nrnorm(3)\n```\nWrite a math expression in a chunk and press the green arrow at the top-right of the chunk."
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#example-figures-from-code",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#example-figures-from-code",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Example: Figures from Code",
+    "text": "Example: Figures from Code\n\n\n```{r}\nlibrary(palmerpenguins)\nlibrary(ggplot2)\n\nggplot(penguins,\n       aes(x = bill_length_mm,\n           y = bill_depth_mm,\n           col = island)) +\n  geom_point()\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#example-figures-from-code-1",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#example-figures-from-code-1",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Example: Figures from Code",
+    "text": "Example: Figures from Code\n\n\n```{r}\n#| fig-width: 5\n#| fig-height: 3\n\nlibrary(palmerpenguins)\nlibrary(ggplot2)\n\nggplot(penguins,\n       aes(x = bill_length_mm,\n           y = bill_depth_mm,\n           col = island)) +\n  geom_point()\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#metadata-yaml",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#metadata-yaml",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Metadata: YAML",
+    "text": "Metadata: YAML\n“Yet Another Markup Language” or “YAML Ain’t Markup Language” is used to provide document level metadata …\n\n\n\n\n[… in key-value pairs,]\n[… that can nest,]\n[… are fussy about indentation,]\n[… and are kept between ---.]\n\n\n\n---\nformat: \n  title: \"Intro to R\"\n  author: \"Yours Truly\"\n  html:\n    toc: true\n    code-fold: true\n---\n\n\nThere are many options for front matter and configuring rendering."
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#writing-code",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#writing-code",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Writing code",
+    "text": "Writing code"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#assignment",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#assignment",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Assignment",
+    "text": "Assignment\nYou can use &lt;- or = to assign values to variables\na &lt;- 6\nb = 8\nc &lt;- 5.44\nd = TRUE\ne = \"hello world\" \ne &lt;- 'hello world' # same as double quote\nWe will use &lt;- for all examples going forward."
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#naming-variables",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#naming-variables",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Naming variables",
+    "text": "Naming variables\nA lot of R people use . inside variable names, but in most languages besides R this would be an error. It’s good practice these days to use the _ underscore if you want separation in your variable names.\nr.people.sometimes.put.dots &lt;- TRUE\ndots.are.confusing &lt;- \"maybe\"\njust_use_underscores &lt;- \"please\""
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#functions",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#functions",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Functions",
+    "text": "Functions\nFunctions are named bits of code that take parameters as input and return some output\n\nlibrary(tidyverse)\nword_1 &lt;- \"hello\"\nword_2 &lt;- \"world\"\nstr_c(word_1, word_2, sep = \" \")\n\n[1] \"hello world\"\n\n\nstr_c is a function that puts concatenates strings.\nfunctions can have named parameters as well as positional parameters.\nnamed parameters always take an = sign for assignment."
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#getting-help-with-functions",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#getting-help-with-functions",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Getting help with functions",
+    "text": "Getting help with functions\nType ?str_c in the console to get a help page. check out this guide on how to read the R help pages.\nalso try googling str_c R tidyverse to get help.\nchatGPT and phind.com are really good at answering specific questions about R functions - not always correct but most of the time."
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#value-types-in-r",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#value-types-in-r",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Value types in R",
+    "text": "Value types in R\nThe type of the value can be\n# numeric\nc(1,2,3,4) \n\n# character\nc(\"a\",\"b\",\"c\",\"d\")\n\n# boolean\nc(TRUE, FALSE)\n\n# factor\nc(\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\") %&gt;% as_factor()"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#tibbles-aka-data-frames",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#tibbles-aka-data-frames",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "tibbles (aka data frames)",
+    "text": "tibbles (aka data frames)\ntibbles are the big reason R is great for working with tabular data.\nA data frame is a rectangular collection of variables (in the columns) and observations (in the rows).\n\ntable_02\n\n# A tibble: 132 × 6\n   pid    time_point arm     nugent_score crp_blood    ph\n   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n 1 pid_01 baseline   placebo            8      0.44   5.7\n 2 pid_01 week_1     placebo            7      1.66   5.2\n 3 pid_01 week_7     placebo            7      1.44   5.4\n 4 pid_02 baseline   placebo            7      1.55   5.2\n 5 pid_02 week_1     placebo            7      0.75   4.8\n 6 pid_02 week_7     placebo            4      1.17   4.2\n 7 pid_03 baseline   placebo            6      1.78   4.8\n 8 pid_03 week_1     placebo           10      0.57   5.3\n 9 pid_03 week_7     placebo            7      1.79   5.2\n10 pid_04 baseline   placebo            5      1.76   4.8\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#read-in-data",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#read-in-data",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Read in data",
+    "text": "Read in data\nData is often in tables, and the easiest way to store tabular data is in csv or tsv format.\ncsv - comma separated values\ntsv - tab separated values\nto read in data stored this way use read_csv(filename) or read_tsv(filename)\ntable_02 &lt;- read_csv(\"02_visit_clinical_measurements_UKZN_workshop_2023.csv\")"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#the-pipe-feeds-data-into-functions",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#the-pipe-feeds-data-into-functions",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "The pipe %>% feeds data into functions",
+    "text": "The pipe %&gt;% feeds data into functions\n\n```{r}\nhead(table_02)\n```\n\n# A tibble: 6 × 6\n  pid    time_point arm     nugent_score crp_blood    ph\n  &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 pid_01 baseline   placebo            8      0.44   5.7\n2 pid_01 week_1     placebo            7      1.66   5.2\n3 pid_01 week_7     placebo            7      1.44   5.4\n4 pid_02 baseline   placebo            7      1.55   5.2\n5 pid_02 week_1     placebo            7      0.75   4.8\n6 pid_02 week_7     placebo            4      1.17   4.2"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#the-pipe-feeds-data-into-functions-1",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#the-pipe-feeds-data-into-functions-1",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "The pipe %>% feeds data into functions",
+    "text": "The pipe %&gt;% feeds data into functions\n\n```{r}\n# head(table_02)\ntable_02 %&gt;%\n  head()\n```\n\n# A tibble: 6 × 6\n  pid    time_point arm     nugent_score crp_blood    ph\n  &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 pid_01 baseline   placebo            8      0.44   5.7\n2 pid_01 week_1     placebo            7      1.66   5.2\n3 pid_01 week_7     placebo            7      1.44   5.4\n4 pid_02 baseline   placebo            7      1.55   5.2\n5 pid_02 week_1     placebo            7      0.75   4.8\n6 pid_02 week_7     placebo            4      1.17   4.2"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#the-pipe-feeds-data-into-functions-2",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#the-pipe-feeds-data-into-functions-2",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "The pipe %>% feeds data into functions",
+    "text": "The pipe %&gt;% feeds data into functions\n\n```{r}\nggplot(table_02, aes(crp_blood, ph, color = arm)) + geom_point()\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#the-pipe-feeds-data-into-functions-3",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#the-pipe-feeds-data-into-functions-3",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "The pipe %>% feeds data into functions",
+    "text": "The pipe %&gt;% feeds data into functions\n\n```{r}\ntable_02 %&gt;%\n  ggplot(aes(crp_blood, ph, color = arm)) + geom_point()\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#pick-rows-from-a-table-filter",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#pick-rows-from-a-table-filter",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Pick rows from a table: filter()",
+    "text": "Pick rows from a table: filter()"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#filter-only-placebo",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#filter-only-placebo",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Filter only placebo",
+    "text": "Filter only placebo\n\n```{r}\ntable_02 %&gt;%\n  filter(arm == \"placebo\")\n```\n\n# A tibble: 69 × 6\n   pid    time_point arm     nugent_score crp_blood    ph\n   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n 1 pid_01 baseline   placebo            8      0.44   5.7\n 2 pid_01 week_1     placebo            7      1.66   5.2\n 3 pid_01 week_7     placebo            7      1.44   5.4\n 4 pid_02 baseline   placebo            7      1.55   5.2\n 5 pid_02 week_1     placebo            7      0.75   4.8\n 6 pid_02 week_7     placebo            4      1.17   4.2\n 7 pid_03 baseline   placebo            6      1.78   4.8\n 8 pid_03 week_1     placebo           10      0.57   5.3\n 9 pid_03 week_7     placebo            7      1.79   5.2\n10 pid_04 baseline   placebo            5      1.76   4.8\n# ℹ 59 more rows"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#filter-out-samples-with-ph-4",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#filter-out-samples-with-ph-4",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Filter out samples with ph < 4",
+    "text": "Filter out samples with ph &lt; 4\n\n```{r}\ntable_02 %&gt;%\n  filter(ph &lt; 4)\n```\n\n# A tibble: 39 × 6\n   pid    time_point arm       nugent_score crp_blood    ph\n   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n 1 pid_05 week_1     treatment            3      0.19   3.2\n 2 pid_05 week_7     treatment            2      0.45   3.5\n 3 pid_09 week_1     treatment            3      0.27   3.6\n 4 pid_10 week_1     treatment            0      0.01   3.5\n 5 pid_10 week_7     treatment            1      2.87   2.9\n 6 pid_11 week_1     treatment            1      0.1    3.3\n 7 pid_15 week_1     treatment            3      0.84   3.4\n 8 pid_15 week_7     treatment            3      0.68   3.5\n 9 pid_16 week_1     treatment            0      0.03   3.7\n10 pid_16 week_7     treatment            2      0.5    3.2\n# ℹ 29 more rows"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#pick-columns-from-a-table-select",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#pick-columns-from-a-table-select",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Pick columns from a table: select()",
+    "text": "Pick columns from a table: select()"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#pick-columns-pid-ph-and-nugent",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#pick-columns-pid-ph-and-nugent",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Pick columns pid, ph, and nugent",
+    "text": "Pick columns pid, ph, and nugent\n\n```{r}\ntable_02 %&gt;%\n  select(pid, ph, nugent_score)\n```\n\n# A tibble: 132 × 3\n   pid       ph nugent_score\n   &lt;chr&gt;  &lt;dbl&gt;        &lt;dbl&gt;\n 1 pid_01   5.7            8\n 2 pid_01   5.2            7\n 3 pid_01   5.4            7\n 4 pid_02   5.2            7\n 5 pid_02   4.8            7\n 6 pid_02   4.2            4\n 7 pid_03   4.8            6\n 8 pid_03   5.3           10\n 9 pid_03   5.2            7\n10 pid_04   4.8            5\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#rename-columns-and-subset-with-select",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#rename-columns-and-subset-with-select",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Rename columns and subset with select",
+    "text": "Rename columns and subset with select\n\n```{r}\ntable_02 %&gt;%\n  select(participant_id = pid, ph, nugent_score)\n```\n\n# A tibble: 132 × 3\n   participant_id    ph nugent_score\n   &lt;chr&gt;          &lt;dbl&gt;        &lt;dbl&gt;\n 1 pid_01           5.7            8\n 2 pid_01           5.2            7\n 3 pid_01           5.4            7\n 4 pid_02           5.2            7\n 5 pid_02           4.8            7\n 6 pid_02           4.2            4\n 7 pid_03           4.8            6\n 8 pid_03           5.3           10\n 9 pid_03           5.2            7\n10 pid_04           4.8            5\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#sort-the-rows-in-a-table-arrange",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#sort-the-rows-in-a-table-arrange",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Sort the rows in a table: arrange()",
+    "text": "Sort the rows in a table: arrange()"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#sort-samples-by-ph-ascending",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#sort-samples-by-ph-ascending",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Sort samples by ph ascending",
+    "text": "Sort samples by ph ascending\n\n```{r}\ntable_02 %&gt;%\n  arrange(ph)\n```\n\n# A tibble: 132 × 6\n   pid    time_point arm       nugent_score crp_blood    ph\n   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n 1 pid_31 week_7     treatment            2      1.36   2.8\n 2 pid_10 week_7     treatment            1      2.87   2.9\n 3 pid_28 baseline   treatment            3      0.67   2.9\n 4 pid_26 week_1     treatment            0      0.11   3  \n 5 pid_23 week_7     placebo              3      3.67   3.1\n 6 pid_40 baseline   treatment            3      1.48   3.1\n 7 pid_40 week_1     treatment            2      0.17   3.1\n 8 pid_05 week_1     treatment            3      0.19   3.2\n 9 pid_16 week_7     treatment            2      0.5    3.2\n10 pid_37 week_7     treatment            2      0.7    3.2\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#sort-samples-by-ph-descending",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#sort-samples-by-ph-descending",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Sort samples by ph, descending",
+    "text": "Sort samples by ph, descending\n\n```{r}\ntable_02 %&gt;%\n  arrange(desc(ph))\n```\n\n# A tibble: 132 × 6\n   pid    time_point arm       nugent_score crp_blood    ph\n   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;\n 1 pid_29 baseline   placebo              7      2.39   5.8\n 2 pid_01 baseline   placebo              8      0.44   5.7\n 3 pid_16 baseline   treatment            6      1.91   5.7\n 4 pid_06 week_1     placebo              8      1.72   5.6\n 5 pid_26 baseline   treatment            7      0.94   5.6\n 6 pid_13 week_1     placebo              7      2.57   5.5\n 7 pid_23 week_1     placebo              8      0.8    5.5\n 8 pid_27 baseline   placebo              7      1.17   5.5\n 9 pid_01 week_7     placebo              7      1.44   5.4\n10 pid_04 week_7     placebo              7      5.68   5.4\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#counting-things",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#counting-things",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Counting things",
+    "text": "Counting things\nTo demonstrate counting, let’s switch to table_01\n\n```{r}\ntable_01\n```\n\n# A tibble: 44 × 6\n   pid    arm       smoker       age education                     sex  \n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                         &lt;lgl&gt;\n 1 pid_01 placebo   non-smoker    26 grade 10-12, matriculated     FALSE\n 2 pid_02 placebo   smoker        33 grade 10-12, matriculated     FALSE\n 3 pid_03 placebo   smoker        30 post-secondary                FALSE\n 4 pid_04 placebo   non-smoker    34 grade 10-12, not matriculated FALSE\n 5 pid_05 treatment non-smoker    29 grade 10-12, matriculated     FALSE\n 6 pid_06 placebo   smoker        34 post-secondary                FALSE\n 7 pid_07 placebo   non-smoker    31 grade 10-12, not matriculated FALSE\n 8 pid_08 placebo   smoker        30 grade 10-12, not matriculated FALSE\n 9 pid_09 treatment non-smoker    35 grade 10-12, not matriculated FALSE\n10 pid_10 treatment non-smoker    32 less than grade 9             FALSE\n# ℹ 34 more rows"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#counting-things-1",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#counting-things-1",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Counting things",
+    "text": "Counting things\n\n```{r}\ntable_01 %&gt;%\n  count(smoker)\n```\n\n# A tibble: 2 × 2\n  smoker         n\n  &lt;chr&gt;      &lt;int&gt;\n1 non-smoker    27\n2 smoker        17"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#counting-things-2",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#counting-things-2",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Counting things",
+    "text": "Counting things\n\n```{r}\ntable_01 %&gt;%\n  count(arm, smoker)\n```\n\n# A tibble: 4 × 3\n  arm       smoker         n\n  &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt;\n1 placebo   non-smoker    12\n2 placebo   smoker        11\n3 treatment non-smoker    15\n4 treatment smoker         6"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#lets-take-a-poll",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#lets-take-a-poll",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Let’s take a poll",
+    "text": "Let’s take a poll\nGo to the event on wooclap\n\nM2. Does filter get rid of rows that match TRUE, or keep rows that match TRUE?"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#use-the-pipe-to-build-analysis-pipelines",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#use-the-pipe-to-build-analysis-pipelines",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Use the pipe to build analysis pipelines",
+    "text": "Use the pipe to build analysis pipelines\n\n```{r}\ntable_01 %&gt;%\n  filter(arm == \"placebo\")\n```\n\n# A tibble: 23 × 6\n   pid    arm     smoker       age education                     sex  \n   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                         &lt;lgl&gt;\n 1 pid_01 placebo non-smoker    26 grade 10-12, matriculated     FALSE\n 2 pid_02 placebo smoker        33 grade 10-12, matriculated     FALSE\n 3 pid_03 placebo smoker        30 post-secondary                FALSE\n 4 pid_04 placebo non-smoker    34 grade 10-12, not matriculated FALSE\n 5 pid_06 placebo smoker        34 post-secondary                FALSE\n 6 pid_07 placebo non-smoker    31 grade 10-12, not matriculated FALSE\n 7 pid_08 placebo smoker        30 grade 10-12, not matriculated FALSE\n 8 pid_12 placebo non-smoker    31 grade 10-12, matriculated     FALSE\n 9 pid_13 placebo non-smoker    32 post-secondary                FALSE\n10 pid_14 placebo smoker        32 grade 10-12, matriculated     FALSE\n# ℹ 13 more rows"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#use-the-pipe-to-build-analysis-pipelines-1",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#use-the-pipe-to-build-analysis-pipelines-1",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Use the pipe to build analysis pipelines",
+    "text": "Use the pipe to build analysis pipelines\n\n```{r}\ntable_01 %&gt;%\n  filter(age &lt; 30) %&gt;%\n  select(pid, arm, smoker)\n```\n\n# A tibble: 12 × 3\n   pid    arm       smoker    \n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;     \n 1 pid_01 placebo   non-smoker\n 2 pid_05 treatment non-smoker\n 3 pid_15 treatment non-smoker\n 4 pid_17 treatment non-smoker\n 5 pid_21 treatment non-smoker\n 6 pid_27 placebo   smoker    \n 7 pid_30 placebo   non-smoker\n 8 pid_31 treatment non-smoker\n 9 pid_35 placebo   non-smoker\n10 pid_36 placebo   non-smoker\n11 pid_41 treatment smoker    \n12 pid_44 treatment non-smoker"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#use-the-pipe-to-build-analysis-pipelines-2",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#use-the-pipe-to-build-analysis-pipelines-2",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Use the pipe to build analysis pipelines",
+    "text": "Use the pipe to build analysis pipelines\n\n```{r}\ntable_01 %&gt;%\n  filter(age &lt; 30) %&gt;%\n  select(pid, arm, smoker) %&gt;%\n  count(arm, smoker)\n```\n\n# A tibble: 4 × 3\n  arm       smoker         n\n  &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt;\n1 placebo   non-smoker     4\n2 placebo   smoker         1\n3 treatment non-smoker     6\n4 treatment smoker         1"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#adding-new-columns-to-a-table",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#adding-new-columns-to-a-table",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Adding new columns to a table",
+    "text": "Adding new columns to a table"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#make-a-new-table-column-mutate",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#make-a-new-table-column-mutate",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Make a new table column: mutate()",
+    "text": "Make a new table column: mutate()"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#example-c-reactive-protein",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#example-c-reactive-protein",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Example: C-reactive protein",
+    "text": "Example: C-reactive protein\nThe crp_blood column is in units of mg/L. What if you needed it in ug/ul? What’s the calculation?\n\n```{r}\ntable_02 %&gt;%\n  select(pid, time_point, crp_blood)\n```\n\n# A tibble: 132 × 3\n   pid    time_point crp_blood\n   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;\n 1 pid_01 baseline        0.44\n 2 pid_01 week_1          1.66\n 3 pid_01 week_7          1.44\n 4 pid_02 baseline        1.55\n 5 pid_02 week_1          0.75\n 6 pid_02 week_7          1.17\n 7 pid_03 baseline        1.78\n 8 pid_03 week_1          0.57\n 9 pid_03 week_7          1.79\n10 pid_04 baseline        1.76\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#example-c-reactive-protein-1",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#example-c-reactive-protein-1",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Example: C-reactive protein",
+    "text": "Example: C-reactive protein\nThe crp_blood column is in units of mg/L. What if you needed it in ug/ul? What’s the calculation?\nTo get ug/L you would multiply by 1000. To get ug/ul you need to then divide by 1000000\n\n```{r}\ntable_02 %&gt;%\n  select(pid, time_point, crp_blood)\n```\n\n# A tibble: 132 × 3\n   pid    time_point crp_blood\n   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;\n 1 pid_01 baseline        0.44\n 2 pid_01 week_1          1.66\n 3 pid_01 week_7          1.44\n 4 pid_02 baseline        1.55\n 5 pid_02 week_1          0.75\n 6 pid_02 week_7          1.17\n 7 pid_03 baseline        1.78\n 8 pid_03 week_1          0.57\n 9 pid_03 week_7          1.79\n10 pid_04 baseline        1.76\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#example-c-reactive-protein-2",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#example-c-reactive-protein-2",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Example: C-reactive protein",
+    "text": "Example: C-reactive protein\nThe crp_blood column is in units of mg/L. What if you needed it in ug/ul? What’s the calculation?\nTo get ug/L you would multiply by 1000. To get ug/ul you need to then divide by 1000000\n\n```{r}\ntable_02 %&gt;%\n  select(pid, time_point, crp_blood) %&gt;%\n  mutate(crp_blood_ugul = crp_blood / 1000)\n```\n\n# A tibble: 132 × 4\n   pid    time_point crp_blood crp_blood_ugul\n   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;          &lt;dbl&gt;\n 1 pid_01 baseline        0.44        0.00044\n 2 pid_01 week_1          1.66        0.00166\n 3 pid_01 week_7          1.44        0.00144\n 4 pid_02 baseline        1.55        0.00155\n 5 pid_02 week_1          0.75        0.00075\n 6 pid_02 week_7          1.17        0.00117\n 7 pid_03 baseline        1.78        0.00178\n 8 pid_03 week_1          0.57        0.00057\n 9 pid_03 week_7          1.79        0.00179\n10 pid_04 baseline        1.76        0.00176\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#make-multiple-columns-at-once",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#make-multiple-columns-at-once",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Make multiple columns at once",
+    "text": "Make multiple columns at once\n\n```{r}\ntable_02 %&gt;%\n  select(pid, time_point, crp_blood) %&gt;%\n  mutate(crp_blood_ugul = crp_blood / 1000,\n         crp_blood_ugl = crp_blood * 1000)\n```\n\n# A tibble: 132 × 5\n   pid    time_point crp_blood crp_blood_ugul crp_blood_ugl\n   &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;          &lt;dbl&gt;         &lt;dbl&gt;\n 1 pid_01 baseline        0.44        0.00044           440\n 2 pid_01 week_1          1.66        0.00166          1660\n 3 pid_01 week_7          1.44        0.00144          1440\n 4 pid_02 baseline        1.55        0.00155          1550\n 5 pid_02 week_1          0.75        0.00075           750\n 6 pid_02 week_7          1.17        0.00117          1170\n 7 pid_03 baseline        1.78        0.00178          1780\n 8 pid_03 week_1          0.57        0.00057           570\n 9 pid_03 week_7          1.79        0.00179          1790\n10 pid_04 baseline        1.76        0.00176          1760\n# ℹ 122 more rows"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#plots-map-data-onto-graphical-elements.",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#plots-map-data-onto-graphical-elements.",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Plots map data onto graphical elements.",
+    "text": "Plots map data onto graphical elements.\n\n\n\n\nTable 1: 02_visit_clinical_measurements_UKZN_workshop_2023.csv\n\n\n\n\n\n\npid\ntime_point\narm\nnugent_score\ncrp_blood\nph\n\n\n\n\npid_01\nbaseline\nplacebo\n8\n0.44\n5.7\n\n\npid_01\nweek_1\nplacebo\n7\n1.66\n5.2\n\n\npid_01\nweek_7\nplacebo\n7\n1.44\n5.4\n\n\npid_02\nbaseline\nplacebo\n7\n1.55\n5.2\n\n\npid_02\nweek_1\nplacebo\n7\n0.75\n4.8\n\n\npid_02\nweek_7\nplacebo\n4\n1.17\n4.2"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#ph-mapped-to-y-position",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#ph-mapped-to-y-position",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "pH mapped to y position",
+    "text": "pH mapped to y position"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#ph-mapped-to-color",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#ph-mapped-to-color",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "pH mapped to color",
+    "text": "pH mapped to color"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#commonly-used-aesthetics",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#commonly-used-aesthetics",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Commonly used aesthetics",
+    "text": "Commonly used aesthetics\n\nFigure from  Claus O. Wilke. Fundamentals of Data Visualization. O’Reilly, 2019"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#the-same-data-values-can-be-mapped-to-different-aesthetics",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#the-same-data-values-can-be-mapped-to-different-aesthetics",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "The same data values can be mapped to different aesthetics",
+    "text": "The same data values can be mapped to different aesthetics\n\nFigure from  Claus O. Wilke. Fundamentals of Data Visualization. O’Reilly, 2019"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#we-can-use-many-different-aesthetics-at-once",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#we-can-use-many-different-aesthetics-at-once",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "We can use many different aesthetics at once",
+    "text": "We can use many different aesthetics at once"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#we-define-the-mapping-with-aes",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#we-define-the-mapping-with-aes",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "We define the mapping with aes()",
+    "text": "We define the mapping with aes()\n\n```{r}\ntable_02 %&gt;%\n  ggplot(mapping = aes(x = time_point, y = ph, color = ph)) +\n  geom_jitter()\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#we-frequently-omit-argument-names",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#we-frequently-omit-argument-names",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "We frequently omit argument names",
+    "text": "We frequently omit argument names\nLong form, all arguments are named:\n\n```{r}\n#| eval: false\n\nggplot(\n  data= table_02,\n  mapping = aes(x = time_point, y = ph, color = ph)\n) +\n  geom_jitter()\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#we-frequently-omit-argument-names-1",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#we-frequently-omit-argument-names-1",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "We frequently omit argument names",
+    "text": "We frequently omit argument names\nAbbreviated form, common arguments remain unnamed:\n\n```{r}\n#| eval: false\n\nggplot(table_02, aes(x = time_point, y = ph, color = ph)) +\n  geom_jitter()\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#the-geom-determines-how-the-data-is-shown",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#the-geom-determines-how-the-data-is-shown",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "The geom determines how the data is shown",
+    "text": "The geom determines how the data is shown\n\n```{r}\nggplot(table_02, aes(x = time_point, y = ph, color = ph)) +\n  geom_point()\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#the-geom-determines-how-the-data-is-shown-1",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#the-geom-determines-how-the-data-is-shown-1",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "The geom determines how the data is shown",
+    "text": "The geom determines how the data is shown\n\n```{r}\nggplot(table_02, aes(x = time_point, y = ph, color = ph)) +\n  geom_boxplot()\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#the-geom-determines-how-the-data-is-shown-2",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#the-geom-determines-how-the-data-is-shown-2",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "The geom determines how the data is shown",
+    "text": "The geom determines how the data is shown\n\n```{r}\nggplot(table_02, aes(x = time_point, y = ph, color = ph)) +\n  geom_jitter()\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#different-geoms-have-parameters-for-control",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#different-geoms-have-parameters-for-control",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Different geoms have parameters for control",
+    "text": "Different geoms have parameters for control\n\n```{r}\nggplot(table_02, aes(x = time_point, y = ph, color = ph)) +\n  geom_jitter(size=3)\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#different-geoms-have-parameters-for-control-1",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#different-geoms-have-parameters-for-control-1",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Different geoms have parameters for control",
+    "text": "Different geoms have parameters for control\n\n```{r}\nggplot(table_02, aes(x = time_point, y = ph, color = ph)) +\n  geom_jitter(size=3, width = 0.2)\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#important-color-and-fill-apply-to-different-elements",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#important-color-and-fill-apply-to-different-elements",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Important: color and fill apply to different elements",
+    "text": "Important: color and fill apply to different elements\ncolor Applies color to points, lines, text, borders\nfill Applies color to any filled areas"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#many-geoms-have-both-color-and-fill-aesthetics",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#many-geoms-have-both-color-and-fill-aesthetics",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Many geoms have both color and fill aesthetics",
+    "text": "Many geoms have both color and fill aesthetics\n\n\n```{r}\n#| output-location: column\nggplot(\n  data = table_02,\n  mapping = aes(\n    x = time_point,\n    y = ph,\n    color = time_point\n  )\n) + geom_boxplot()\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#many-geoms-have-both-color-and-fill-aesthetics-1",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#many-geoms-have-both-color-and-fill-aesthetics-1",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Many geoms have both color and fill aesthetics",
+    "text": "Many geoms have both color and fill aesthetics\n\n\n```{r}\n#| output-location: column\nggplot(\n  data = table_02,\n  mapping = aes(\n    x = time_point,\n    y = ph,\n    fill = time_point\n  )\n) + geom_boxplot()\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#many-geoms-have-both-color-and-fill-aesthetics-2",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#many-geoms-have-both-color-and-fill-aesthetics-2",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Many geoms have both color and fill aesthetics",
+    "text": "Many geoms have both color and fill aesthetics\n\n\n```{r}\n#| output-location: column\nggplot(\n  data = table_02,\n  mapping = aes(\n    x = time_point,\n    y = ph,\n    fill = time_point,\n    color = time_point\n  )\n) + geom_boxplot()\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#aesthetics-can-also-be-used-as-parameters-in-geoms",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#aesthetics-can-also-be-used-as-parameters-in-geoms",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Aesthetics can also be used as parameters in geoms",
+    "text": "Aesthetics can also be used as parameters in geoms\n\n\n```{r}\n#| output-location: column\nggplot(\n  data = table_02,\n  mapping = aes(\n    x = time_point,\n    y = ph\n  )\n) + geom_boxplot()\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#aesthetics-can-also-be-used-as-parameters-in-geoms-1",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#aesthetics-can-also-be-used-as-parameters-in-geoms-1",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Aesthetics can also be used as parameters in geoms",
+    "text": "Aesthetics can also be used as parameters in geoms\n\n\n```{r}\n#| output-location: column\nggplot(\n  data = table_02,\n  mapping = aes(\n    x = time_point,\n    y = ph\n  )\n) + geom_boxplot(fill=\"orange\")\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#analyze-subsets-group_by-and-summarize",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#analyze-subsets-group_by-and-summarize",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Analyze subsets: group_by() and summarize()",
+    "text": "Analyze subsets: group_by() and summarize()"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#example-application-of-grouping-counting",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#example-application-of-grouping-counting",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Example application of grouping: Counting",
+    "text": "Example application of grouping: Counting\nPreviously we used count, now we group the data\n\n```{r}\ntable_01 %&gt;%\n  group_by(smoker)\n```\n\n# A tibble: 44 × 6\n# Groups:   smoker [2]\n   pid    arm       smoker       age education                     sex  \n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                         &lt;lgl&gt;\n 1 pid_01 placebo   non-smoker    26 grade 10-12, matriculated     FALSE\n 2 pid_02 placebo   smoker        33 grade 10-12, matriculated     FALSE\n 3 pid_03 placebo   smoker        30 post-secondary                FALSE\n 4 pid_04 placebo   non-smoker    34 grade 10-12, not matriculated FALSE\n 5 pid_05 treatment non-smoker    29 grade 10-12, matriculated     FALSE\n 6 pid_06 placebo   smoker        34 post-secondary                FALSE\n 7 pid_07 placebo   non-smoker    31 grade 10-12, not matriculated FALSE\n 8 pid_08 placebo   smoker        30 grade 10-12, not matriculated FALSE\n 9 pid_09 treatment non-smoker    35 grade 10-12, not matriculated FALSE\n10 pid_10 treatment non-smoker    32 less than grade 9             FALSE\n# ℹ 34 more rows"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#example-application-of-grouping-counting-1",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#example-application-of-grouping-counting-1",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Example application of grouping: Counting",
+    "text": "Example application of grouping: Counting\nPreviously we used count, now we group the data, and then summarise\n\n```{r}\ntable_01 %&gt;%\n  group_by(smoker) %&gt;%\n  summarise(\n    n = n() # n() returns the number of observations per group\n    )\n```\n\n# A tibble: 2 × 2\n  smoker         n\n  &lt;chr&gt;      &lt;int&gt;\n1 non-smoker    27\n2 smoker        17"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#example-application-of-grouping-counting-2",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#example-application-of-grouping-counting-2",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Example application of grouping: Counting",
+    "text": "Example application of grouping: Counting\nNow let’s group by multiple variables\n\n```{r}\ntable_01 %&gt;%\n  group_by(smoker, arm)\n```\n\n# A tibble: 44 × 6\n# Groups:   smoker, arm [4]\n   pid    arm       smoker       age education                     sex  \n   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                         &lt;lgl&gt;\n 1 pid_01 placebo   non-smoker    26 grade 10-12, matriculated     FALSE\n 2 pid_02 placebo   smoker        33 grade 10-12, matriculated     FALSE\n 3 pid_03 placebo   smoker        30 post-secondary                FALSE\n 4 pid_04 placebo   non-smoker    34 grade 10-12, not matriculated FALSE\n 5 pid_05 treatment non-smoker    29 grade 10-12, matriculated     FALSE\n 6 pid_06 placebo   smoker        34 post-secondary                FALSE\n 7 pid_07 placebo   non-smoker    31 grade 10-12, not matriculated FALSE\n 8 pid_08 placebo   smoker        30 grade 10-12, not matriculated FALSE\n 9 pid_09 treatment non-smoker    35 grade 10-12, not matriculated FALSE\n10 pid_10 treatment non-smoker    32 less than grade 9             FALSE\n# ℹ 34 more rows"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#example-application-of-grouping-counting-3",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#example-application-of-grouping-counting-3",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Example application of grouping: Counting",
+    "text": "Example application of grouping: Counting\nNow let’s group by multiple variables, and summarise\n\n```{r}\ntable_01 %&gt;%\n  group_by(smoker, arm) %&gt;%\n    summarise(\n    n = n() # n() returns the number of observations per group\n    )\n```\n\n# A tibble: 4 × 3\n# Groups:   smoker [2]\n  smoker     arm           n\n  &lt;chr&gt;      &lt;chr&gt;     &lt;int&gt;\n1 non-smoker placebo      12\n2 non-smoker treatment    15\n3 smoker     placebo      11\n4 smoker     treatment     6"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#example-application-of-grouping-counting-4",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#example-application-of-grouping-counting-4",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Example application of grouping: Counting",
+    "text": "Example application of grouping: Counting\ncount(...) is a short-cut for group_by(...) %&gt;% summarize(n = n()) group_by() and summarise()is the general method\n\n```{r}\ntable_01 %&gt;%\n  count(smoker, arm)\n\ntable_01 %&gt;%\n  group_by(smoker, arm) %&gt;%\n  summarise(median_age = median(age))\n```\n\n# A tibble: 4 × 3\n  smoker     arm           n\n  &lt;chr&gt;      &lt;chr&gt;     &lt;int&gt;\n1 non-smoker placebo      12\n2 non-smoker treatment    15\n3 smoker     placebo      11\n4 smoker     treatment     6\n# A tibble: 4 × 3\n# Groups:   smoker [2]\n  smoker     arm       median_age\n  &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;\n1 non-smoker placebo         31  \n2 non-smoker treatment       30  \n3 smoker     placebo         33  \n4 smoker     treatment       33.5"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#you-can-make-multiple-summarise-at-once",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#you-can-make-multiple-summarise-at-once",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "You can make multiple summarise at once",
+    "text": "You can make multiple summarise at once\n\n```{r}\ntable_01 %&gt;%\n  group_by(smoker, arm) %&gt;%\n  summarise(\n    n = n(),\n    median_age = median(age)\n    )\n```\n\n# A tibble: 4 × 4\n# Groups:   smoker [2]\n  smoker     arm           n median_age\n  &lt;chr&gt;      &lt;chr&gt;     &lt;int&gt;      &lt;dbl&gt;\n1 non-smoker placebo      12       31  \n2 non-smoker treatment    15       30  \n3 smoker     placebo      11       33  \n4 smoker     treatment     6       33.5"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#reshape-pivot_wider-and-pivot_longer",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#reshape-pivot_wider-and-pivot_longer",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Reshape: pivot_wider() and pivot_longer()",
+    "text": "Reshape: pivot_wider() and pivot_longer()"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#reshaping-example-making-a-wide-summary-table",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#reshaping-example-making-a-wide-summary-table",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Reshaping example: Making a wide summary table",
+    "text": "Reshaping example: Making a wide summary table\n\n```{r}\ntable_01 %&gt;%\n  count(education, arm) %&gt;%\n  pivot_wider(names_from = arm, values_from = n)\n```\n\n# A tibble: 4 × 3\n  education                     placebo treatment\n  &lt;chr&gt;                           &lt;int&gt;     &lt;int&gt;\n1 grade 10-12, matriculated           7         9\n2 grade 10-12, not matriculated      11         7\n3 less than grade 9                   2         4\n4 post-secondary                      3         1"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#reshaping-example-making-a-wide-summary-table-1",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#reshaping-example-making-a-wide-summary-table-1",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Reshaping example: Making a wide summary table",
+    "text": "Reshaping example: Making a wide summary table\n\n```{r}\neducation_wide &lt;- table_01 %&gt;%\n  count(education, arm) %&gt;%\n  pivot_wider(names_from = arm, values_from = n)\n\neducation_wide %&gt;%\n  pivot_longer(-education, names_to = \"arm\", values_to = \"n\")\n```\n\n# A tibble: 8 × 3\n  education                     arm           n\n  &lt;chr&gt;                         &lt;chr&gt;     &lt;int&gt;\n1 grade 10-12, matriculated     placebo       7\n2 grade 10-12, matriculated     treatment     9\n3 grade 10-12, not matriculated placebo      11\n4 grade 10-12, not matriculated treatment     7\n5 less than grade 9             placebo       2\n6 less than grade 9             treatment     4\n7 post-secondary                placebo       3\n8 post-secondary                treatment     1"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#we-use-joins-to-add-columns-from-one-table-into-another",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#we-use-joins-to-add-columns-from-one-table-into-another",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "We use joins to add columns from one table into another",
+    "text": "We use joins to add columns from one table into another"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#there-are-different-types-of-joins",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#there-are-different-types-of-joins",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "There are different types of joins",
+    "text": "There are different types of joins\nThe differences are all about how to handle when the two tables have different key values\n\n\n\nleft_join() - the resulting table always has the same key_values as the “left” table\nright_join() - the resulting table always has the same key_values as the “right” table\ninner_join() - the resulting table always only keeps the key_values that are in both tables\nfull_join() - the resulting table always has all key_values found in both tables"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#left-join",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#left-join",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Left Join",
+    "text": "Left Join\nleft_join() - the resulting table always has the same key_values as the “left” table"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#inner_join",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#inner_join",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "inner_join",
+    "text": "inner_join\ninner_join() - the resulting table always only keeps the key_values that are in both tables\n\n\ntable_a %&gt;% inner_join(table_b)"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#note-merging-tables-vertically-is-bind_rows-not-a-join",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#note-merging-tables-vertically-is-bind_rows-not-a-join",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Note, merging tables vertically is bind_rows(), not a join",
+    "text": "Note, merging tables vertically is bind_rows(), not a join\n\n\ntable_a %&gt;% bind_rows(table_b)"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#histograms-and-density-plots",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#histograms-and-density-plots",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Histograms and density plots",
+    "text": "Histograms and density plots\n\n\n\n\n\n\n\nage\nsex\nclass\nsurvived\n\n\n\n\n0.17\nfemale\n3rd\nsurvived\n\n\n0.33\nmale\n3rd\ndied\n\n\n0.80\nmale\n2nd\nsurvived\n\n\n0.83\nmale\n2nd\nsurvived\n\n\n0.83\nmale\n3rd\nsurvived\n\n\n0.92\nmale\n1st\nsurvived\n\n\n1.00\nfemale\n2nd\nsurvived\n\n\n1.00\nfemale\n3rd\nsurvived\n\n\n1.00\nmale\n2nd\nsurvived\n\n\n1.00\nmale\n2nd\nsurvived\n\n\n1.00\nmale\n3rd\nsurvived\n\n\n1.50\nfemale\n3rd\ndied\n\n\n\n\n\n\n\n\n\n\n\nage\nsex\nclass\nsurvived\n\n\n\n\n1.5\nfemale\n3rd\ndied\n\n\n2.0\nfemale\n1st\ndied\n\n\n2.0\nfemale\n2nd\nsurvived\n\n\n2.0\nfemale\n3rd\ndied\n\n\n2.0\nfemale\n3rd\ndied\n\n\n2.0\nmale\n2nd\nsurvived\n\n\n2.0\nmale\n2nd\nsurvived\n\n\n2.0\nmale\n2nd\nsurvived\n\n\n3.0\nfemale\n2nd\nsurvived\n\n\n3.0\nfemale\n3rd\nsurvived\n\n\n3.0\nmale\n2nd\nsurvived\n\n\n3.0\nmale\n2nd\nsurvived\n\n\n\n\n\n\n\n\n\n\n\nage\nsex\nclass\nsurvived\n\n\n\n\n3\nmale\n3rd\nsurvived\n\n\n3\nmale\n3rd\nsurvived\n\n\n4\nfemale\n2nd\nsurvived\n\n\n4\nfemale\n2nd\nsurvived\n\n\n4\nfemale\n3rd\nsurvived\n\n\n4\nfemale\n3rd\nsurvived\n\n\n4\nmale\n1st\nsurvived\n\n\n4\nmale\n3rd\ndied\n\n\n4\nmale\n3rd\nsurvived\n\n\n5\nfemale\n3rd\nsurvived\n\n\n5\nfemale\n3rd\nsurvived\n\n\n5\nmale\n3rd\ndied"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#histograms-depend-on-the-chosen-bin-width",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#histograms-depend-on-the-chosen-bin-width",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Histograms depend on the chosen bin width",
+    "text": "Histograms depend on the chosen bin width"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#making-histograms-with-ggplot-geom_histogram",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#making-histograms-with-ggplot-geom_histogram",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Making histograms with ggplot: geom_histogram()",
+    "text": "Making histograms with ggplot: geom_histogram()\n\n```{r}\nggplot(titanic, aes(age)) +\n  geom_histogram()\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#setting-the-bin-width",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#setting-the-bin-width",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Setting the bin width",
+    "text": "Setting the bin width\n\n```{r}\nggplot(titanic, aes(age)) +\n  geom_histogram(binwidth = 5)\n```\n\n\n\nDo you like where there bins are? What does the first bin say?"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#always-set-the-center-as-well-to-half-the-bin_width",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#always-set-the-center-as-well-to-half-the-bin_width",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Always set the center as well, to half the bin_width",
+    "text": "Always set the center as well, to half the bin_width\n\n```{r}\nggplot(titanic, aes(age)) +\n  geom_histogram(binwidth = 5, center=2.5)\n```\n\n\n\nSetting center 2.5 makes the bars start 0-5, 5-10, etc. instead of 2.5-7.5, etc. You could instead use the argument boundary=5 to accomplish the same behavior."
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#making-density-plots-with-ggplot-geom_density-auto-animatetrue",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#making-density-plots-with-ggplot-geom_density-auto-animatetrue",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Making density plots with ggplot: geom_density() {auto-animate:true}",
+    "text": "Making density plots with ggplot: geom_density() {auto-animate:true}\n\n```{r}\nggplot(titanic, aes(age)) +\n  geom_density(fill = \"skyblue\")\n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#making-density-plots-with-ggplot-geom_density-auto-animatetrue-1",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#making-density-plots-with-ggplot-geom_density-auto-animatetrue-1",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Making density plots with ggplot: geom_density() {auto-animate:true}",
+    "text": "Making density plots with ggplot: geom_density() {auto-animate:true}\n\n```{r}\nggplot(titanic, aes(age)) +\n  geom_density()\n```\n\n\nwithout fill"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#boxplots-showing-values-along-y-conditions-along-x",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#boxplots-showing-values-along-y-conditions-along-x",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Boxplots: Showing values along y, conditions along x",
+    "text": "Boxplots: Showing values along y, conditions along x\n\nA boxplot is a crude way of visualizing a distribution."
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#how-to-read-a-boxplot",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#how-to-read-a-boxplot",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "How to read a boxplot",
+    "text": "How to read a boxplot"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#if-you-like-density-plots-consider-violins",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#if-you-like-density-plots-consider-violins",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "If you like density plots, consider violins",
+    "text": "If you like density plots, consider violins\n\n\nA violin plot is a density plot rotated 90 degrees and then mirrored."
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#how-to-read-a-violin-plot",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#how-to-read-a-violin-plot",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "How to read a violin plot",
+    "text": "How to read a violin plot"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#making-boxplots-violins-etc.-in-ggplot2-1",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#making-boxplots-violins-etc.-in-ggplot2-1",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Making boxplots, violins, etc. in ggplot2",
+    "text": "Making boxplots, violins, etc. in ggplot2\n\n\n\n\n\n\n\n\nPlot type\nGeom\nNotes\n\n\n\n\nboxplot\ngeom_boxplot()\n\n\n\nviolin plot\ngeom_violin()\n\n\n\nstrip chart\ngeom_point()\nJittering requires position_jitter()\n\n\nsina plot\ngeom_sina()\nFrom package ggforce\n\n\nscatter-density plot\ngeom_quasirandom()\nFrom package ggbeeswarm\n\n\nridgeline\ngeom_density_ridges()\nFrom package ggridges"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#examples-boxplot-auto-animate-true",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#examples-boxplot-auto-animate-true",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Examples: Boxplot {auto-animate: true}",
+    "text": "Examples: Boxplot {auto-animate: true}\n\n```{r}\nggplot(lincoln_temps, aes(x = month, y = mean_temp)) +\n  geom_boxplot(fill = \"skyblue\") \n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#examples-violins-auto-animate-true",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#examples-violins-auto-animate-true",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Examples: Violins {auto-animate: true}",
+    "text": "Examples: Violins {auto-animate: true}\n\n```{r}\nggplot(lincoln_temps, aes(x = month, y = mean_temp)) +\n  geom_violin(fill = \"skyblue\") \n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#examples-strip-chart-no-jitter-auto-animate-true",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#examples-strip-chart-no-jitter-auto-animate-true",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Examples: Strip chart (no jitter) {auto-animate: true}",
+    "text": "Examples: Strip chart (no jitter) {auto-animate: true}\n\n```{r}\nggplot(lincoln_temps, aes(x = month, y = mean_temp)) +\n  geom_point(color = \"skyblue\") \n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#examples-strip-chart-w-jitter-auto-animate-true",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#examples-strip-chart-w-jitter-auto-animate-true",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Examples: Strip chart (w/ jitter) {auto-animate: true}",
+    "text": "Examples: Strip chart (w/ jitter) {auto-animate: true}\n\n```{r}\nggplot(lincoln_temps, aes(x = month, y = mean_temp)) +\n  geom_jitter(color = \"skyblue\") \n```"
+  },
+  {
+    "objectID": "materials/2-workshop2/2-r-refresher/slides.html#examples-scatter-density-plot-auto-animate-true",
+    "href": "materials/2-workshop2/2-r-refresher/slides.html#examples-scatter-density-plot-auto-animate-true",
+    "title": "R refresher (Brief review of Workshop I)",
+    "section": "Examples: Scatter density plot {auto-animate: true}",
+    "text": "Examples: Scatter density plot {auto-animate: true}\n\n```{r}\nggplot(lincoln_temps, aes(x = month, y = mean_temp)) +\n  geom_quasirandom(color = \"skyblue\") \n```\n\n\n\n\n\nback to module"
   },
   {
     "objectID": "materials/2-workshop2/8-group-project/group_a.html",
@@ -3852,7 +4786,7 @@
     "href": "materials/2-workshop2/8-group-project/index.html",
     "title": "Group Activity",
     "section": "",
-    "text": "Group A will be analyzing the yogurt dataset and Group B will be analyzing the menstruation dataset.\n\n\nProjects\n\n\n\nResearch Project A - Does yogurt consumption change the vaginal microbiome?\n\n\nAim\nTo investigate whether the consumption of yogurt influences microbiome composition after antibiotics treatment.\n\nStudy Description\nThis is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment. (add 16s)\n\n\n\n\n\n\nResearch Project B - Does birth control change inflammation during menstruation?\n\n\nAim\nTo investigate whether taking birth control is associated with vaginal inflammation throughout the menstrual cycle.\n\nStudy Description\nThis is an observational study to evaluate the relationship between birth control and vaginal inflammation In response to menstruation. Absolute abundance of bacteria was measured by 3 qPCR assays (for total Bacteria, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation. (add 16s)\n\n\n\n\n\n\n\n\nSchedule (! To be updated with lecture slide points)\nWednesday (4/24)\n\n\n\n\n\n\n\nTime\nTask\n\n\n\n\n9:00-9:30am\n\nRead project description and aims for your project\nLocate project files on your instance\nCreate a new .qmd file\n\n\n\n9:30 - 10:30am\n\nExplore the data!\nMerge in metadata, qPCR, and Luminex data\nCreate a phyloseq object\n\n\n\n10:30 - 11:00am\nBreak\n\n\n11:00- 12:00pm\n\nPhyloseq cleaning\nVisualizing microbiome composition\nDiversity and Ordination\n\n\n\n\nThursday (4/25)\n\n\n\n\n\n\n\nTime\nTask\n\n\n\n\n1:30 - 2:00pm\n\nDiversity and Ordination\n\n\n\n2:00 - 3:00pm\n\nDifferential abundance\nRunning shotgun metagenomics and integrating into phyloseq\n\n\n\n3:00 - 3:30pm\nBreak\n\n\n3:30 - 5:00pm\n\netc\n\n\n\n\n\n\nExample workflows\nJohnathan’s test demo",
+    "text": "Group A will be analyzing the yogurt dataset and Group B will be analyzing the menstruation dataset.\n\n\nProjects\n\n\n\nResearch Project A - Does yogurt consumption change the vaginal microbiome?\n\n\nAim\nTo investigate whether the consumption of yogurt influences microbiome composition after antibiotics treatment.\n\nStudy Description\nThis is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. 16S rRNA sequencing was done to charaterize patient microbiome composition. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment.\n\n\n\n\n\n\nResearch Project B - Does birth control change inflammation during menstruation?\n\n\nAim\nTo investigate whether taking birth control is associated with vaginal inflammation throughout the menstrual cycle.\n\nStudy Description\nThis is an observational study to evaluate the relationship between birth control and vaginal inflammation In response to menstruation. 16S rRNA sequencing was done to charaterize patient microbiome composition. Absolute abundance of bacteria was measured by 3 qPCR assays (for total Bacteria, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation.\n\n\n\n\n\n\n\n\nSchedule\nWednesday (4/24)\n\n\n\n\n\n\n\nTime\nTask\n\n\n\n\n9:00-9:30am\n\nRead project description and aims for your project\nLocate project files on your instance\nCreate a new .qmd file\n\n\n\n9:30 - 10:30am\n\nExplore the data!\nMerge in metadata, qPCR, and Luminex data\nCreate a phyloseq object\n\n\n\n10:30 - 11:00am\nBreak\n\n\n11:00- 12:00pm\n\nPhyloseq cleaning\nVisualizing microbiome composition\nDiversity and Ordination\n\n\n\n\nThursday (4/25)\n\n\n\n\n\n\n\nTime\nTask\n\n\n\n\n1:30 - 2:00pm\n\nDiversity and Ordination\n\n\n\n2:00 - 3:00pm\n\nDifferential abundance\n\n\n\n3:00 - 3:30pm\nBreak\n\n\n3:30 - 5:00pm\n\nIntegrating shotgun metagenomics\n\n\n\n\n\n\nExample workflows\nJohnathan’s test demo",
     "crumbs": [
       "Installation",
       "<b>2. Working with High Dimensional Data in R - The Human Microbiome</b>",

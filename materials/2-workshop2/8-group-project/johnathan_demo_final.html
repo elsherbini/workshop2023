@@ -247,38 +247,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../materials/2-workshop2/1-introduction/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 0:</b> Welcome and Course Introduction</span></a>
+  <a href="../../../materials/2-workshop2/0-welcome/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 0:</b> Welcome to the workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/1-library-prep/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 1</b>: Sequencing Library Preparation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/2-workshop2/2-r-refresher/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 1</b>: R Refresher</span></a>
+ <span class="menu-text"><b>Module 2</b>: R Refresher</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/2-workshop2/3-16s_processing/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 2</b>: 16S Data Processing</span></a>
+ <span class="menu-text"><b>Module 3</b>: 16S Data Processing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/2-workshop2/4-16s-pt1/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 3</b>: 16S analysis pt.1</span></a>
+ <span class="menu-text"><b>Module 4</b>: Exploring High Dimensional Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/2-workshop2/5-16s-pt2/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 4</b>: 16S analysis pt.2</span></a>
+ <span class="menu-text"><b>Module 5</b>: Correlations and Differential Abundance Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/2-workshop2/6-virgo/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><b>Module 5</b>: VIRGO</span></a>
+ <span class="menu-text"><b>Module 6</b>: VIRGO</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -397,7 +403,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">tax_mutate</span>(<span class="at">Genus_Species =</span> <span class="fu">str_c</span>(Genus, Species, <span class="at">sep =</span> <span class="st">" "</span>))</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>yogurt_ps <span class="sc">%&gt;%</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ps_seriate</span>(<span class="at">dist =</span> <span class="st">"bray"</span>, <span class="at">method =</span> <span class="st">"OLO_ward"</span>) <span class="sc">%&gt;%</span> <span class="co"># these are the defaults</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ps_seriate</span>(<span class="at">dist =</span> <span class="st">"bray"</span>, <span class="at">method =</span> <span class="st">"OLO_ward"</span>) <span class="sc">%&gt;%</span> <span class="co"># arranges samples by microbiome similarity</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comp_barplot</span>(<span class="at">tax_level =</span> <span class="st">"Genus_Species"</span>, <span class="at">facet_by =</span> <span class="fu">c</span>(<span class="st">"arm"</span>,<span class="st">"time_point"</span>), <span class="at">sample_order =</span> <span class="st">"bray"</span>, <span class="at">n_taxa =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
