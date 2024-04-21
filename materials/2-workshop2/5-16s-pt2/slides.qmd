@@ -1,0 +1,139 @@
+---
+title: "Correlations and Differential Abundance Testing"
+subtitle: "Joseph Elsherbini"
+format: qmdrslides-revealjs
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(countdown)
+library(tidyverse)
+library(cowplot)
+library(colorspace)
+library(here)
+library(phyloseq)
+library(microViz)
+
+```
+
+##  {data-menu-title="Website Link" style="text-align: center"}
+
+\
+\
+\
+
+::: r-fit-text
+Workshop materials are at:
+
+<https://elsherbini.github.io/durban-data-science-for-biology/>
+:::
+
+##  {data-menu-item="Workshop Goals"}
+
+\
+\
+
+### Goals for this session {style="font-size: 2.5em; text-align: center"}
+
+::: {.incremental style="font-size: 1.5em"}
+1.  Learn more advanced table commands
+
+2.  Learn about plotting distributions with the `tidyverse`
+:::
+
+::: {.fragment .fade-up}
+> data wrangling (n.) - the art of taking data in one format and filtering, reshaping, and deriving values to make the data format you need.
+:::
+
+## Discussions: discord
+
+Ask questions at **#workshop-questions** on <https://discord.gg/UDAsYTzZE>.
+
+![](images/discord_durban.png){fig-alt="Screenshot of the discord server app that serves as the forum for the workshop." fig-align="center" width="546"}
+
+## Stickies
+
+::: {layout="[[4, 5, 1]]" layout-valign="center"}
+![](images/sticky.jpeg){fig-alt="Picture of a laptop with a red sticky note stuck to the top." width="540"}
+
+During an activity, place a [**yellow**]{style="color: Gold"} sticky on your laptop if you're good to go and a [**pink**]{style="color: hotpink"} sticky if you want help.
+:::
+
+::: footer
+Image by [Megan Duffy](https://dynamicecology.wordpress.com/2015/01/13/sticky-notes-as-a-teaching-and-lab-meeting-tool/)
+:::
+
+## Practicalities
+
+::: r-fit-text
+WiFi:
+
+Network: KTB Free Wifi (no password needed)
+
+Network AHRI Password: `@hR1W1F1!17`
+
+Network CAPRISA-Corp Password: `corp@caprisa17`
+
+Bathrooms are out the lobby to your left
+:::
+
+## Intro: Exploratory Data Analysis vs modelling
+
+## Correlations are exploratory / observational
+
+## Correlations can be spurious
+
+## spurious example
+
+## How do we perform correlations on microbial taxa?
+
+## one at a time
+
+## spearman vs pearson
+
+## what to do with zeros
+
+## build a grid
+
+## heatmap
+
+## wooclap of heatmap interpretation
+
+## correlations of taxa with other taxa
+
+## interpretation
+
+## exercise
+
+## modelling
+
+## now we are talking about potentially causal interpretations
+
+## what kinds of questions are we asking?
+
+## how do we build a causal model?
+
+## how do we convert that model into a statistical model?
+
+## Test one taxa at a time
+
+## interpret the model
+
+## testing multiple taxa
+
+## wooclap interpretting the multiple taxa
+
+## showing results of modelling as a tree
+
+## interpretting the tree
+
+## distinction between real phylogenetic tree and this abomination
+
+## wooclap
+
+## exercise on 
