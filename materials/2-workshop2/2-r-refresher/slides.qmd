@@ -224,11 +224,41 @@ Bathrooms are XXXXXX
 
 ---
 
-## Parts of RStudio (make an image with all 3 parts highlighted)
+# RStudio
+
+## What are the parts of RStudio?
+
+## The text editor
 
 ![](images/rstudio-text-editor.png)
 
+## The console
+
+
+![](images/rstudio-text-console-image.png)
+
+## The right panes
+
+
+![](images/rstudio-text-right_panes.png)
+
+
 ---
+
+## Installing and loading  packages
+
+:::{.incremental style="font-size: 1em"}
+Packages are a collection of functions and objects that are shared for free to use.
+
+
+In the console, you can type `install.packages("package_name")` to install most R packages.
+
+
+Sometimes R packages need to be installed a different way, and the documentation of the package will tell you how.
+
+
+Then, to load a package, add `library("package_name")` in a code chunk (usually in the first code cell of your document)
+:::
 
 # Anatomy of a Document
 
@@ -332,11 +362,8 @@ ggplot(penguins,
 
 ---
 
-:::
-## Text
-:::
 
-### [Inline Elements:]{.inline-el} Text Formatting
+## [Inline Elements:]{.inline-el} Text Formatting
 
 ::: columns
 ::: {.column width="65%"}
@@ -360,9 +387,7 @@ Markdown allows you to format text with *emphasis* and **strong emphasis**. You 
 :::
 :::
 
-:::
-## Text
-:::
+---
 
 ### [Inline Elements:]{.inline-el} Links and Images
 
@@ -1418,7 +1443,7 @@ ggplot(titanic, aes(age)) +
 
 Setting center 2.5 makes the bars start 0-5, 5-10, etc. instead of 2.5-7.5, etc. You could instead use the argument  `boundary=5` to accomplish the same behavior.
 
-## Making density plots with ggplot: `geom_density()` {auto-animate:true}
+## Making density plots with ggplot: `geom_density()` {auto-animate=true}
 
 ```{r}
 #| echo: fenced
@@ -1427,7 +1452,7 @@ ggplot(titanic, aes(age)) +
 ```
 
 
-## Making density plots with ggplot: `geom_density()` {auto-animate:true}
+## Making density plots with ggplot: `geom_density()` {auto-animate=true}
 
 ```{r}
 #| echo: fenced
@@ -1554,7 +1579,7 @@ sina plot    | `geom_sina()`           | From package **ggforce**
 scatter-density plot    | `geom_quasirandom()`           | From package **ggbeeswarm**
 ridgeline    | `geom_density_ridges()` | From package **ggridges**
 
-## Examples: Boxplot {auto-animate: true}
+## Examples: Boxplot {auto-animate=true}
 
 ```{r}
 #| echo: fenced
@@ -1563,7 +1588,7 @@ ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
 
 ```
 
-## Examples: Violins {auto-animate: true}
+## Examples: Violins {auto-animate=true}
 
 ```{r}
 #| echo: fenced
@@ -1573,7 +1598,7 @@ ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
 ```
 
 
-## Examples: Strip chart (no jitter) {auto-animate: true}
+## Examples: Strip chart (no jitter) {auto-animate=true}
 
 ```{r}
 #| echo: fenced
@@ -1583,23 +1608,11 @@ ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
 ```
 
 
-## Examples: Strip chart (w/ jitter) {auto-animate: true}
+## Examples: Strip chart (w/ jitter) {auto-animate=true}
 
 ```{r}
 #| echo: fenced
 ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
   geom_jitter(color = "skyblue") 
 ```
-
-
-
-## Examples: Scatter density plot {auto-animate: true}
-
-```{r}
-#| echo: fenced
-ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
-  geom_quasirandom(color = "skyblue") 
-```
-
-
 

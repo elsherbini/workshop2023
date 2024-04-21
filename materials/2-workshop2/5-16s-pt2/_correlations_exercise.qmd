@@ -1,0 +1,213 @@
+## Exercise: Data wrangling 2
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+table_01 <- read_csv(here("datasets/instructional_dataset/01_participant_metadata_UKZN_workshop_2023.csv"))
+
+table_02 <- read_csv(here("datasets/instructional_dataset/02_visit_clinical_measurements_UKZN_workshop_2023.csv"))
+```
+
+In this exercise, we will continue with basic data manipulations, now moving on to grouping and summarizing, making data tables wider or longer, and joining data tables.
+
+We will be using the R package, **tidyverse** for the data manipulation functions `%>%`, `group_by()`, `summarize()`, `pivot_wider()`, `pivot_longer()`, and join functions such as `left_join()`
+
+Paste the following into the top code chunk of your `qmd` file.
+
+
+Download the data files from the [dataset page](../../../datasets.qmd) and place all 5 files into this directory.
+
+Paste the following code chunk into a new qmd file in this project:
+
+```r
+library(tidyverse)
+
+table_01 <- read_csv("01_participant_metadata_UKZN_workshop_2023.csv")
+
+table_02 <- read_csv("02_visit_clinical_measurements_UKZN_workshop_2023.csv")
+```
+
+### Analyzing subsets
+
+In many data analysis settings, we want to break a dataset into subsets and then perform some summary calculation on each subset. The simplest example is counting, which we have done previously with the count() function.
+
+```{r}
+#| echo: fenced
+table_01 %>%
+  count(arm)
+```
+
+This function subdivides the penguins dataset into subsets for each species and then calculates the number n for each subset, which is the number of observations in each subset.
+
+The function `count()` here does all the work for us, but what if instead of counting we wanted to calculate the mean weight of the penguins for each species, or calculate the mean weight and count at the same time? We need a general framework that allows us to do these kinds of calculations with maximum flexibility.
+
+The tidyverse approach is to first group a dataset with `group_by()` and then to calculate grouped summaries with `summarize()`.
+
+### Grouping
+
+Let’s first consider just grouping. If we look at the raw R output of just the penguins table or the penguins table after running it through `group_by(arm)`, we see that the table is the same, except in the second case there is a line `# Groups: arm [2]` which indicates that the table is grouped by arm and there are two groups. (Here, we need to pipe the tables into the print() function to see the raw R output instead of a formatted table that would hide the grouping information.)
+
+
+```{r}
+#| echo: true
+table_01 %>%
+  print()
+
+```
+
+
+
+```{r}
+#| echo: true
+table_01 %>%
+  group_by(arm) %>%
+  print()
+```
+
+We can also group by multiple data columns at once, and we can undo any grouping with `ungroup()`.
+
+```{r}
+#| echo: true
+table_01 %>%
+  group_by(arm, education) %>%
+  print()
+```
+
+```{r}
+#| echo: true
+table_01 %>%
+  group_by(arm, education) %>%
+  ungroup() %>%
+  print()
+```
+
+Now try this yourself. Group the table_01 dataset by education_level and smoker.
+
+```{r}
+#| echo: true
+#| eval: false
+table_01 %>%
+  ___ %>%
+  print()
+```
+
+*Answer for yourself* How many distinct groups did this produce?
+
+Now undo the previous grouping.
+
+
+```{r}
+#| echo: fenced
+# build all the code for this exercise
+```
+
+Also verify what the output looks like when you omit the `print()` function at the end.
+
+### Performing summaries
+
+Once we have set up a grouping for a data table, we can then calculate summary data with the `summarize()` function. This function works similarly to `mutate()`, in that we provide it with statements of the form `<new column name> = <computation>`, where `<new column name>` stands for the name of the new column that is being created and `<computation>` stands for the computation that is used to generate the values in the new column. 
+
+As an example, using `table_02` we want to calculate the median ph of participants, by `arm`,  we could write `summarise(median_ph = median(ph))`, and this would create a new column called `median_ph`
+
+Try this out. First group by `arm` and then make the new column:
+
+```{r}
+#| echo: true
+#| eval: false
+table_02 %>%
+  group_by(____) %>%
+  summarise(___)
+```
+
+
+Now see what it looks like if you instead group by `timepoint`
+
+```{r}
+#| echo: true
+#| eval: false
+table_02 %>%
+  group_by(____) %>%
+  summarise(___)
+```
+
+
+Now try grouping by both `timepoint` and `arm`
+
+```{r}
+#| echo: true
+#| eval: false
+table_02 %>%
+  group_by(__, __) %>%
+  summarise(___)
+```
+
+We can perform multiple summaries at once by adding more statements inside the summarise() function, separated by a `,`. To try this out, calculate the median `nugent` in addition to the median ph
+
+
+```{r}
+#| echo: true
+#| eval: false
+table_02 %>%
+  group_by(____) %>%
+  summarise(___, ___)
+```
+
+When performing summaries, we often want to know how many observations there are in each group (i.e., we want to count). We can do this with the function `n()`, which inside summarise() gives us the group size. So, we can count by adding a statement such as `count = n()` inside `summarise(). Try this out.
+
+```{r}
+#| echo: true
+#| eval: false
+table_02 %>%
+  group_by(____) %>%
+  summarise(___, ___)
+```
+
+### Making tables wider or longer
+
+For efficient data processing, we usually want tables in long form, where each columns is one variable and each row is one observation. However, in some applications, for example when making a table easier to read for humans, a wide format can be preferred. In a wide format, some variables are displayed as column names, and other variables are distributed over multiple columns.
+
+First, make a summary table that shows median `ph` by `arm` and `time_point`, just like you did above, and save it to a variable `ph_summary_long`
+
+```{r}
+#| echo: true
+#| eval: false
+
+ph_summary_long <- table_02 %>%
+  group_by(___) %>%
+  summarise(___)
+```
+
+Now, try using `pivot_wider()` to make a column for each arm. Remember, use `?pivot_wider` if you want help, and try asking google or chatGPT if you get stuck.
+
+```{r}
+#| echo: true
+#| eval: false
+
+ph_summary_long %>%
+  pivot_wider(____)
+```
+
+What if you wanted to instead make a column for each time point, and have the arms be different rows?
+
+```{r}
+#| echo: true
+#| eval: false
+ph_summary_long %>%
+  pivot_wider(____)
+```
+
+### Combining datasets with joins
+
+Finally, we sometimes encounter the situation where we have two data sets that contain different pieces of information about the same subjects or objects, and we need to merge these tables for further analysis. In this situation, we need to perform a join, and there are multiple different types of joins available: left_join(), right_join(), inner_join(), full_join(). These joins all differ in how they handle cases where an observation is present in only one of the two tables but missing in the other.
+
+Our instructional dataset has no missing values, so all types of joins are actually equivalent. Try to join `table_01` and `table_02` using `left_join()`
+
+```{r}
+#| echo: fenced
+
+# join table_01 and table_02
+```
+

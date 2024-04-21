@@ -1,5 +1,4 @@
 ---
-title: "r_refresher_exercise"
 editor: visual
 format:
   html:
@@ -19,7 +18,274 @@ library(here)
 
 ```
 
-## Exercise 2.1 : Data wrangling and manipulations
+## Exercise 2.1 : Data wrangling and simple manipulations
+
+In this worksheet, we will discuss how to perform basic data manipulations, such as filtering data rows that meet certain conditions, choosing data columns, and arranging data in ascending or descending order.
+
+We will be using the R package, **tidyverse** for the data manipulation functions `%>%`, `filter()`, `select()`, `arrange()`, `count()`, and `mutate()`.
+
+
+### The pipe (`%>%`, read: "and then")
+
+When writing complex data analysis pipelines, we frequently use the pipe operator `%>%` to move data from one analysis step to the next. The pipe is pronounced "and then", and it takes the data on its left and uses it as the first argument for the function on its right.
+
+For example, to see the first few lines of a dataset, we often write `head(data)`. Instead, we can write `data %>% head()`.
+
+Try this yourself. Write code that displays the first few lines of `table_01`, using `%>%` and `head()`:
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+table_01 <- read_csv(here("datasets/instructional_dataset/01_participant_metadata_UKZN_workshop_2023.csv"))
+
+table_02 <- read_csv(here("datasets/instructional_dataset/02_visit_clinical_measurements_UKZN_workshop_2023.csv"))
+```
+
+```{r pipe-hint}
+#| echo: true
+#| eval: false
+table_01 ___ head()
+```
+
+### Choosing data rows
+
+The function `filter()` allows you to find rows in a dataset that meet one or more specific conditions. The syntax is `data %>% filter(condition)`, where condition is a logical condition. For example, `filter(x > 5)` would pick all rows for which the value in column `x` is greater than 5.
+
+Below, write code to pick all measurements from the `placebo` arm in `table_02` :
+
+```{r filter-arm, exercise=TRUE}
+#| echo: true
+#| eval: false
+
+table_02 %>%
+  filter(___)
+```
+
+### Filtering for multiple conditions
+
+You can also state multiple conditions, separated by a comma. For example, `filter(x > 5, y < 2)` would pick all rows for which the value in the column `x` is greater than 5 and the value in the column `y` is less than 2. Note that the conditions are combined via logical and, both need to be satisfied for the row to be picked.
+
+To try this out, pick all measurements at `baseline` for the `placebo` arm in `table_02` :
+
+```{r filter-timepoint-arm-hint}
+#| echo: true
+#| eval: false
+
+table_02 %>%
+  filter(time_point == ___, arm == ___)
+```
+
+### Choosing data columns
+
+The function `select()` allows you to pick specific data columns by name. This is frequently useful when a dataset has many more columns than we are interested in at the time. For example, if we are only interested in the participants' education, and sex, we could select these three columns:
+
+```{r select-example, echo = TRUE}
+
+table_01 %>%
+  select(education, sex)
+```
+
+Try this yourself, picking the columns representing the participant age (`age`), and then study arm (`arm`).
+
+```{r select-exercise-hint}
+#| echo: true
+#| eval: false
+
+table_01 %>%
+  select(___)
+```
+
+### Choosing columns for removal
+
+Another situation that arises frequently is one where we want to remove specific columns. We can also do this with `select()`, but now write `select(-column)` to remove one or more columns.
+
+Try this. Remove the column `smoker`.
+
+```{r select-remove-hint}
+#| echo: true
+#| eval: false
+
+table_01 %>%
+  select(___)
+```
+
+And now remove both `smoker` and `education`.
+
+```{r select-remove2-hint}
+#| echo: true
+#| eval: false
+
+table_01 %>%
+  select(-___, -___)
+```
+
+### Sorting data
+
+The function `arrange()` allows you to sort data by one or more columns. For example, `data %>% arrange(x)` would sort the data by increasing values of `x`, and `data %>% arrange(x, y)` would sort the data first by `x` and then, for ties in `x`, by `y`.
+
+Sort the participants by age:
+
+```{r arrange-participants-age-hint}
+#| echo: true
+#| eval: false
+
+table_01 %>%
+  arrange(___)
+```
+
+To arrange data in descending order, enclose the data column in `desc()`. For example, `data %>% arrange(desc(x))` would sort the data by decreasing values of `x`. (`desc` stands for "descending".)
+
+### Counting
+
+We frequently want to count how many times a particular value or combination of values occurs in a dataset. We do this using the `count()` function. For example, the following code counts how many participants there are in each study arm in table_01.
+
+```{r count-demo}
+#| echo: true
+#| eval: true
+table_01 %>%
+  count(arm)
+```
+
+Now try this yourself. Count how many smokers and non smokers there are.
+
+```{r count-simple-hint}
+#| echo: true
+#| eval: false
+
+table_01 %>%
+  count(___)
+```
+
+We can also perform more fine-grained counts, by providing the `count()` function with more than one column name. See if you can count how many smokers and non smokers the dataset contains for each treatment arm
+
+```{r count-complex-hint}
+#| echo: true
+#| eval: false
+
+table_01 %>%
+  count(___, smoker)
+```
+
+Now count how many participants are in each study arm for each education level in the dataset
+
+```{r count-complex2-hint}
+#| echo: true
+#| eval: false
+
+table_01 %>%
+  count(___, arm)
+```
+
+### Chaining analysis steps into pipelines
+
+We can chain multiple analysis steps into a pipeline by continuing to add "and then" statements. For example, `data %>% count(...) %>% arrange(...)` would first count and then sort the data.
+
+Try this out by counting the number of participants in each study arm and then sorting by the number of participants
+
+```{r analysis-chain-hint-1}
+#| echo: true
+#| eval: false
+
+table_01 %>%
+  count(___) %>%
+  arrange(___)
+```
+
+## Exercise 2.2 : Aesthetics using ggplot
+
+For this exercise, we will be using the instructional dataset (path to dataset)
+
+In this worksheet, we will work on ggplot and the mapping of data values onto aesthetics.
+
+```{r}
+#| echo: true
+#| eval: false
+library(tidyverse) # load the tidyverse library
+
+# we want to use the data in the visit_clinical_measurements file
+clinical_measurements <- read_csv(path to dataset) # read in your data 
+
+#then show the first few rows
+head(clinical_measurements)
+```
+
+### Basic geom examples
+
+Remember: we call the `ggplot()` function with a dataset and an aesthetic mapping (created with `aes()`), and then we add a geom, such as `geom_line()` to draw lines or `geom_point()` to draw points.
+
+Try this for yourself. Map the column `ph` onto the x axis and the column `crp_blood` onto the y axis, and use `geom_line()` to display the data.
+
+Whenever you see `___` in the code below, that means you should swap it in with your own code.
+
+```{r}
+#| eval: false
+ggplot(clinical_measurements, aes(x = ___, y = ___)) +
+  ___()
+```
+
+Try again. Now use `geom_point()` instead of `geom_line()`.
+
+```{r}
+#| eval: false
+ggplot(clinical_measurements, aes(x = ___, y = ___)) +
+  ___()
+
+```
+
+And now swap which column you map to x and which to y.
+
+```{r}
+#| eval: false
+ggplot(clinical_measurements, aes(x = ___, y = ___)) +
+  ___()
+
+```
+
+### More complex geoms
+
+You can use other geoms to make different types of plots. For example, `geom_boxplot()` will make boxplots. For boxplots, we frequently want categorical data on the x or y axis. For example, we might want a separate boxplot for each month. Try this out. Put `nugent_score` on the x axis, `ph` on the y axis, and use `geom_boxplot()`.
+
+```{r}
+#| eval: false
+ggplot(clinical_measurements, aes(x = ___, y = ___)) +
+  ___()
+
+```
+
+Now try swapping the x and y axis `geom_jitter()`
+
+```{r}
+#| eval: false
+ggplot(clinical_measurements, aes(x = ___, y = ___)) +
+  ___()
+
+```
+
+Now try swapping the x and y axis
+
+```{r}
+#| eval: false
+ggplot(clinical_measurements, aes(x = ___, y = ___)) +
+  ___()
+
+```
+
+### Adding color
+
+Try again with `geom_jitter()`, this time using `ph` as the location along the y axis and `arm` for the color. Remember to check the `ggplot` cheat sheet, or type `?geom_jitter()` in the console to and look at the "Aesthetics" section if you get stuck.
+
+```{r}
+#| eval: false
+ggplot(clinical_measurements, aes(x = ___, y = ___)) +
+  ___()
+```
+
+(Hint: Try adding `size = 3` as a parameter to the `geom_jitter()` to create larger points.)
+
+
+## Exercise 2.3: Table manipulations
 
 ```{r}
 #| echo: false
@@ -170,161 +436,6 @@ Our instructional dataset has no missing values, so all types of joins are actua
 # join table_01 and table_02
 ```
 
-## Exercise 2.2 : Aesthetics using ggplot
-
-For this exercise, we will be using the instructional dataset (path to dataset)
-
-In this worksheet, we will work on ggplot and the mapping of data values onto aesthetics.
-
-```{r}
-#| eval: false
-library(tidyverse) # load the tidyverse library
-
-# we want to use the data in the visit_clinical_measurements file
-clinical_measurements <- read_csv(path to dataset) # read in your data 
-
-#then show the first few rows
-head(clinical_measurements)
-```
-
-### Basic geom examples
-
-Remember: we call the `ggplot()` function with a dataset and an aesthetic mapping (created with `aes()`), and then we add a geom, such as `geom_line()` to draw lines or `geom_point()` to draw points.
-
-Try this for yourself. Map the column `ph` onto the x axis and the column `crp_blood` onto the y axis, and use `geom_line()` to display the data.
-
-Whenever you see `___` in the code below, that means you should swap it in with your own code.
-
-```{r}
-#| eval: false
-ggplot(clinical_measurements, aes(x = ___, y = ___)) +
-  ___()
-```
-
-Try again. Now use `geom_point()` instead of `geom_line()`.
-
-```{r}
-#| eval: false
-ggplot(clinical_measurements, aes(x = ___, y = ___)) +
-  ___()
-
-```
-
-And now swap which column you map to x and which to y.
-
-```{r}
-#| eval: false
-ggplot(clinical_measurements, aes(x = ___, y = ___)) +
-  ___()
-
-```
-
-### More complex geoms
-
-You can use other geoms to make different types of plots. For example, `geom_boxplot()` will make boxplots. For boxplots, we frequently want categorical data on the x or y axis. For example, we might want a separate boxplot for each month. Try this out. Put `nugent_score` on the x axis, `ph` on the y axis, and use `geom_boxplot()`.
-
-```{r}
-#| eval: false
-ggplot(clinical_measurements, aes(x = ___, y = ___)) +
-  ___()
-
-```
-
-Now try swapping the x and y axis `geom_jitter()`
-
-```{r}
-#| eval: false
-ggplot(clinical_measurements, aes(x = ___, y = ___)) +
-  ___()
-
-```
-
-Now try swapping the x and y axis
-
-```{r}
-#| eval: false
-ggplot(clinical_measurements, aes(x = ___, y = ___)) +
-  ___()
-
-```
-
-### Adding color
-
-Try again with `geom_jitter()`, this time using `ph` as the location along the y axis and `arm` for the color. Remember to check the `ggplot` cheat sheet, or type `?geom_jitter()` in the console to and look at the "Aesthetics" section if you get stuck.
-
-```{r}
-#| eval: false
-ggplot(clinical_measurements, aes(x = ___, y = ___)) +
-  ___()
-```
-
-(Hint: Try adding `size = 3` as a parameter to the `geom_jitter()` to create larger points.)
-
-## Exercise 2.3 : Compund figures
-
-In this worksheet, we will discuss how to combine several **ggplot2** plots into one compound figure.
-
-We will be using the R package **tidyverse**, which includes `ggplot()` and related functions. We will also be using the package **patchwork** for plot composition.
-
-```{r library-calls3}
-#| eval: TRUE
-#| echo: TRUE
-# load required library
-library(tidyverse)
-library(patchwork)
-```
-
-We will be working with the dataset `mtcars`, which contains fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).
-
-```{r mtcars}
-#| eval: TRUE
-#| echo: TRUE
-mtcars
-```
-
-#### Combining plots
-
-First we set up four different plots that we will subsequently combine. The plots are stored in variables `p1`, `p2`, `p3`, `p4`.
-
-```{r singlet-plot}
-#| eval: TRUE
-#| echo: TRUE
-p1 <- ggplot(mtcars) + 
-  geom_point(aes(mpg, disp))
-p1  
-
-p2 <- ggplot(mtcars) + 
-  geom_boxplot(aes(gear, disp, group = gear))
-p2
-
-p3 <- ggplot(mtcars) + 
-  geom_smooth(aes(disp, qsec))
-p3
-
-p4 <- ggplot(mtcars) + 
-  geom_bar(aes(carb))
-p4
-```
-
-To show plots side-by-side, we use the operator `|`, as in `p1 | p2`. Try this by making a compound plot of plots `p1`, `p2`, `p3` side-by-side.
-
-```{r plots-side-by-side}
- # build all the code for this exercise
-```
-
-To show plots on top of one-another, we use the operator `/`, as in `p1 / p2`. Try this by making a compound plot of plots `p1`, `p2`, `p3` on top of each other.
-
-```{r plots-on-top}
- # build all the code for this exercise
-```
-
-We can also use parentheses to group plots with respect to the operators `|` and `/`. For example, we can place several plots side-by-side and then place this entire row of plots on top of another plot. Try putting `p1`, `p2`, `p3`, on the top row, and `p4` on the bottom row.
-
-```{r plots-complex}
-#| eval: FALSE
-#| echo: TRUE
-(___) / ___
-```
 
 ## Exercise 2.4 : Color scales
 
@@ -558,3 +669,72 @@ p3 <- ggplot(mtcars) +
 p4 <- ggplot(mtcars) + 
   geom_bar(aes(carb))
 ```
+
+
+
+## Exercise 2.5 : Compund figures
+
+In this worksheet, we will discuss how to combine several **ggplot2** plots into one compound figure.
+
+We will be using the R package **tidyverse**, which includes `ggplot()` and related functions. We will also be using the package **patchwork** for plot composition.
+
+```{r library-calls3}
+#| eval: TRUE
+#| echo: TRUE
+# load required library
+library(tidyverse)
+library(patchwork)
+```
+
+We will be working with the dataset `mtcars`, which contains fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).
+
+```{r mtcars}
+#| eval: TRUE
+#| echo: TRUE
+mtcars
+```
+
+#### Combining plots
+
+First we set up four different plots that we will subsequently combine. The plots are stored in variables `p1`, `p2`, `p3`, `p4`.
+
+```{r singlet-plot}
+#| eval: TRUE
+#| echo: TRUE
+p1 <- ggplot(mtcars) + 
+  geom_point(aes(mpg, disp))
+p1  
+
+p2 <- ggplot(mtcars) + 
+  geom_boxplot(aes(gear, disp, group = gear))
+p2
+
+p3 <- ggplot(mtcars) + 
+  geom_smooth(aes(disp, qsec))
+p3
+
+p4 <- ggplot(mtcars) + 
+  geom_bar(aes(carb))
+p4
+```
+
+To show plots side-by-side, we use the operator `|`, as in `p1 | p2`. Try this by making a compound plot of plots `p1`, `p2`, `p3` side-by-side.
+
+```{r plots-side-by-side}
+ # build all the code for this exercise
+```
+
+To show plots on top of one-another, we use the operator `/`, as in `p1 / p2`. Try this by making a compound plot of plots `p1`, `p2`, `p3` on top of each other.
+
+```{r plots-on-top}
+ # build all the code for this exercise
+```
+
+We can also use parentheses to group plots with respect to the operators `|` and `/`. For example, we can place several plots side-by-side and then place this entire row of plots on top of another plot. Try putting `p1`, `p2`, `p3`, on the top row, and `p4` on the bottom row.
+
+```{r plots-complex}
+#| eval: false
+#| echo: true
+(___) / ___
+```
+
