@@ -126,6 +126,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
+    <a class="nav-link" href="../../../instance_ips.html"> 
+<span class="menu-text">AWS Instance IPs</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../../installation-instructions.html"> 
 <span class="menu-text">Installation</span></a>
   </li>  
@@ -162,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">r_refresher_exercise</h1>
+          <h1 class="quarto-secondary-nav-title">R refresher</h1>
         </a>     
     </div>
   </nav>
@@ -318,12 +322,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#slides-intro-to-rstudio-quarto-and-r" id="toc-slides-intro-to-rstudio-quarto-and-r" class="nav-link active" data-scroll-target="#slides-intro-to-rstudio-quarto-and-r">Slides: Intro to RStudio, Quarto, and R</a></li>
-  <li><a href="#exercise-2.1-data-wrangling-and-manipulations" id="toc-exercise-2.1-data-wrangling-and-manipulations" class="nav-link" data-scroll-target="#exercise-2.1-data-wrangling-and-manipulations">Exercise 2.1 : Data wrangling and manipulations</a>
+  <li><a href="#exercise-2.1-data-wrangling-and-simple-manipulations" id="toc-exercise-2.1-data-wrangling-and-simple-manipulations" class="nav-link" data-scroll-target="#exercise-2.1-data-wrangling-and-simple-manipulations">Exercise 2.1 : Data wrangling and simple manipulations</a>
   <ul class="collapse">
-  <li><a href="#analyzing-subsets" id="toc-analyzing-subsets" class="nav-link" data-scroll-target="#analyzing-subsets">Analyzing subsets</a></li>
-  <li><a href="#performing-summaries" id="toc-performing-summaries" class="nav-link" data-scroll-target="#performing-summaries">Performing summaries</a></li>
-  <li><a href="#making-tables-wider-or-longer" id="toc-making-tables-wider-or-longer" class="nav-link" data-scroll-target="#making-tables-wider-or-longer">Making tables wider or longer</a></li>
-  <li><a href="#combining-datasets-with-joins" id="toc-combining-datasets-with-joins" class="nav-link" data-scroll-target="#combining-datasets-with-joins">Combining datasets with joins</a></li>
+  <li><a href="#the-pipe-read-and-then" id="toc-the-pipe-read-and-then" class="nav-link" data-scroll-target="#the-pipe-read-and-then">The pipe (<code>%&gt;%</code>, read: “and then”)</a></li>
+  <li><a href="#choosing-data-rows" id="toc-choosing-data-rows" class="nav-link" data-scroll-target="#choosing-data-rows">Choosing data rows</a></li>
+  <li><a href="#filtering-for-multiple-conditions" id="toc-filtering-for-multiple-conditions" class="nav-link" data-scroll-target="#filtering-for-multiple-conditions">Filtering for multiple conditions</a></li>
+  <li><a href="#choosing-data-columns" id="toc-choosing-data-columns" class="nav-link" data-scroll-target="#choosing-data-columns">Choosing data columns</a></li>
+  <li><a href="#choosing-columns-for-removal" id="toc-choosing-columns-for-removal" class="nav-link" data-scroll-target="#choosing-columns-for-removal">Choosing columns for removal</a></li>
+  <li><a href="#sorting-data" id="toc-sorting-data" class="nav-link" data-scroll-target="#sorting-data">Sorting data</a></li>
+  <li><a href="#counting" id="toc-counting" class="nav-link" data-scroll-target="#counting">Counting</a></li>
+  <li><a href="#chaining-analysis-steps-into-pipelines" id="toc-chaining-analysis-steps-into-pipelines" class="nav-link" data-scroll-target="#chaining-analysis-steps-into-pipelines">Chaining analysis steps into pipelines</a></li>
   </ul></li>
   <li><a href="#exercise-2.2-aesthetics-using-ggplot" id="toc-exercise-2.2-aesthetics-using-ggplot" class="nav-link" data-scroll-target="#exercise-2.2-aesthetics-using-ggplot">Exercise 2.2 : Aesthetics using ggplot</a>
   <ul class="collapse">
@@ -331,8 +339,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#more-complex-geoms" id="toc-more-complex-geoms" class="nav-link" data-scroll-target="#more-complex-geoms">More complex geoms</a></li>
   <li><a href="#adding-color" id="toc-adding-color" class="nav-link" data-scroll-target="#adding-color">Adding color</a></li>
   </ul></li>
-  <li><a href="#exercise-2.3-compund-figures" id="toc-exercise-2.3-compund-figures" class="nav-link" data-scroll-target="#exercise-2.3-compund-figures">Exercise 2.3 : Compund figures</a></li>
+  <li><a href="#exercise-2.3-table-manipulations" id="toc-exercise-2.3-table-manipulations" class="nav-link" data-scroll-target="#exercise-2.3-table-manipulations">Exercise 2.3: Table manipulations</a>
+  <ul class="collapse">
+  <li><a href="#analyzing-subsets" id="toc-analyzing-subsets" class="nav-link" data-scroll-target="#analyzing-subsets">Analyzing subsets</a></li>
+  <li><a href="#performing-summaries" id="toc-performing-summaries" class="nav-link" data-scroll-target="#performing-summaries">Performing summaries</a></li>
+  <li><a href="#making-tables-wider-or-longer" id="toc-making-tables-wider-or-longer" class="nav-link" data-scroll-target="#making-tables-wider-or-longer">Making tables wider or longer</a></li>
+  <li><a href="#combining-datasets-with-joins" id="toc-combining-datasets-with-joins" class="nav-link" data-scroll-target="#combining-datasets-with-joins">Combining datasets with joins</a></li>
+  </ul></li>
   <li><a href="#exercise-2.4-color-scales" id="toc-exercise-2.4-color-scales" class="nav-link" data-scroll-target="#exercise-2.4-color-scales">Exercise 2.4 : Color scales</a></li>
+  <li><a href="#exercise-2.5-compund-figures" id="toc-exercise-2.5-compund-figures" class="nav-link" data-scroll-target="#exercise-2.5-compund-figures">Exercise 2.5 : Compund figures</a></li>
   </ul>
 </nav>
     </div>
@@ -341,7 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">r_refresher_exercise</h1>
+<h1 class="title d-none d-lg-block">R refresher</h1>
 </div>
 
 
@@ -366,30 +381,216 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="../../../materials/2-workshop2/2-r-refresher/slides.html">Make slides full screen</a></p>
 <iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 </section>
-<section id="exercise-2.1-data-wrangling-and-manipulations" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-2.1-data-wrangling-and-manipulations">Exercise 2.1 : Data wrangling and manipulations</h2>
+<section id="exercise-2.1-data-wrangling-and-simple-manipulations" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2.1-data-wrangling-and-simple-manipulations">Exercise 2.1 : Data wrangling and simple manipulations</h2>
+<p>In this worksheet, we will discuss how to perform basic data manipulations, such as filtering data rows that meet certain conditions, choosing data columns, and arranging data in ascending or descending order.</p>
+<p>We will be using the R package, <strong>tidyverse</strong> for the data manipulation functions <code>%&gt;%</code>, <code>filter()</code>, <code>select()</code>, <code>arrange()</code>, <code>count()</code>, and <code>mutate()</code>.</p>
+<section id="the-pipe-read-and-then" class="level3">
+<h3 class="anchored" data-anchor-id="the-pipe-read-and-then">The pipe (<code>%&gt;%</code>, read: “and then”)</h3>
+<p>When writing complex data analysis pipelines, we frequently use the pipe operator <code>%&gt;%</code> to move data from one analysis step to the next. The pipe is pronounced “and then”, and it takes the data on its left and uses it as the first argument for the function on its right.</p>
+<p>For example, to see the first few lines of a dataset, we often write <code>head(data)</code>. Instead, we can write <code>data %&gt;% head()</code>.</p>
+<p>Try this yourself. Write code that displays the first few lines of <code>table_01</code>, using <code>%&gt;%</code> and <code>head()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>table_01 ___ <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="choosing-data-rows" class="level3">
+<h3 class="anchored" data-anchor-id="choosing-data-rows">Choosing data rows</h3>
+<p>The function <code>filter()</code> allows you to find rows in a dataset that meet one or more specific conditions. The syntax is <code>data %&gt;% filter(condition)</code>, where condition is a logical condition. For example, <code>filter(x &gt; 5)</code> would pick all rows for which the value in column <code>x</code> is greater than 5.</p>
+<p>Below, write code to pick all measurements from the <code>placebo</code> arm in <code>table_02</code> :</p>
+<div class="cell" data-exercise="true">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="filtering-for-multiple-conditions" class="level3">
+<h3 class="anchored" data-anchor-id="filtering-for-multiple-conditions">Filtering for multiple conditions</h3>
+<p>You can also state multiple conditions, separated by a comma. For example, <code>filter(x &gt; 5, y &lt; 2)</code> would pick all rows for which the value in the column <code>x</code> is greater than 5 and the value in the column <code>y</code> is less than 2. Note that the conditions are combined via logical and, both need to be satisfied for the row to be picked.</p>
+<p>To try this out, pick all measurements at <code>baseline</code> for the <code>placebo</code> arm in <code>table_02</code> :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time_point <span class="sc">==</span> ___, arm <span class="sc">==</span> ___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="choosing-data-columns" class="level3">
+<h3 class="anchored" data-anchor-id="choosing-data-columns">Choosing data columns</h3>
+<p>The function <code>select()</code> allows you to pick specific data columns by name. This is frequently useful when a dataset has many more columns than we are interested in at the time. For example, if we are only interested in the participants’ education, and sex, we could select these three columns:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(education, sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 44 × 2
+   education                     sex  
+   &lt;chr&gt;                         &lt;lgl&gt;
+ 1 grade 10-12, matriculated     FALSE
+ 2 grade 10-12, matriculated     FALSE
+ 3 post-secondary                FALSE
+ 4 grade 10-12, not matriculated FALSE
+ 5 grade 10-12, matriculated     FALSE
+ 6 post-secondary                FALSE
+ 7 grade 10-12, not matriculated FALSE
+ 8 grade 10-12, not matriculated FALSE
+ 9 grade 10-12, not matriculated FALSE
+10 less than grade 9             FALSE
+# ℹ 34 more rows</code></pre>
+</div>
+</div>
+<p>Try this yourself, picking the columns representing the participant age (<code>age</code>), and then study arm (<code>arm</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="choosing-columns-for-removal" class="level3">
+<h3 class="anchored" data-anchor-id="choosing-columns-for-removal">Choosing columns for removal</h3>
+<p>Another situation that arises frequently is one where we want to remove specific columns. We can also do this with <code>select()</code>, but now write <code>select(-column)</code> to remove one or more columns.</p>
+<p>Try this. Remove the column <code>smoker</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And now remove both <code>smoker</code> and <code>education</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>___, <span class="sc">-</span>___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sorting-data" class="level3">
+<h3 class="anchored" data-anchor-id="sorting-data">Sorting data</h3>
+<p>The function <code>arrange()</code> allows you to sort data by one or more columns. For example, <code>data %&gt;% arrange(x)</code> would sort the data by increasing values of <code>x</code>, and <code>data %&gt;% arrange(x, y)</code> would sort the data first by <code>x</code> and then, for ties in <code>x</code>, by <code>y</code>.</p>
+<p>Sort the participants by age:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To arrange data in descending order, enclose the data column in <code>desc()</code>. For example, <code>data %&gt;% arrange(desc(x))</code> would sort the data by decreasing values of <code>x</code>. (<code>desc</code> stands for “descending”.)</p>
+</section>
+<section id="counting" class="level3">
+<h3 class="anchored" data-anchor-id="counting">Counting</h3>
+<p>We frequently want to count how many times a particular value or combination of values occurs in a dataset. We do this using the <code>count()</code> function. For example, the following code counts how many participants there are in each study arm in table_01.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(arm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  arm           n
+  &lt;chr&gt;     &lt;int&gt;
+1 placebo      23
+2 treatment    21</code></pre>
+</div>
+</div>
+<p>Now try this yourself. Count how many smokers and non smokers there are.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can also perform more fine-grained counts, by providing the <code>count()</code> function with more than one column name. See if you can count how many smokers and non smokers the dataset contains for each treatment arm</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(___, smoker)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now count how many participants are in each study arm for each education level in the dataset</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(___, arm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="chaining-analysis-steps-into-pipelines" class="level3">
+<h3 class="anchored" data-anchor-id="chaining-analysis-steps-into-pipelines">Chaining analysis steps into pipelines</h3>
+<p>We can chain multiple analysis steps into a pipeline by continuing to add “and then” statements. For example, <code>data %&gt;% count(...) %&gt;% arrange(...)</code> would first count and then sort the data.</p>
+<p>Try this out by counting the number of participants in each study arm and then sorting by the number of participants</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(___) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="exercise-2.2-aesthetics-using-ggplot" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2.2-aesthetics-using-ggplot">Exercise 2.2 : Aesthetics using ggplot</h2>
+<p>For this exercise, we will be using the instructional dataset (path to dataset)</p>
+<p>In this worksheet, we will work on ggplot and the mapping of data values onto aesthetics.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># load the tidyverse library</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># we want to use the data in the visit_clinical_measurements file</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>clinical_measurements <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(path to dataset) <span class="co"># read in your data </span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#then show the first few rows</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clinical_measurements)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="basic-geom-examples" class="level3">
+<h3 class="anchored" data-anchor-id="basic-geom-examples">Basic geom examples</h3>
+<p>Remember: we call the <code>ggplot()</code> function with a dataset and an aesthetic mapping (created with <code>aes()</code>), and then we add a geom, such as <code>geom_line()</code> to draw lines or <code>geom_point()</code> to draw points.</p>
+<p>Try this for yourself. Map the column <code>ph</code> onto the x axis and the column <code>crp_blood</code> onto the y axis, and use <code>geom_line()</code> to display the data.</p>
+<p>Whenever you see <code>___</code> in the code below, that means you should swap it in with your own code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Try again. Now use <code>geom_point()</code> instead of <code>geom_line()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And now swap which column you map to x and which to y.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="more-complex-geoms" class="level3">
+<h3 class="anchored" data-anchor-id="more-complex-geoms">More complex geoms</h3>
+<p>You can use other geoms to make different types of plots. For example, <code>geom_boxplot()</code> will make boxplots. For boxplots, we frequently want categorical data on the x or y axis. For example, we might want a separate boxplot for each month. Try this out. Put <code>nugent_score</code> on the x axis, <code>ph</code> on the y axis, and use <code>geom_boxplot()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now try swapping the x and y axis <code>geom_jitter()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now try swapping the x and y axis</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="adding-color" class="level3">
+<h3 class="anchored" data-anchor-id="adding-color">Adding color</h3>
+<p>Try again with <code>geom_jitter()</code>, this time using <code>ph</code> as the location along the y axis and <code>arm</code> for the color. Remember to check the <code>ggplot</code> cheat sheet, or type <code>?geom_jitter()</code> in the console to and look at the “Aesthetics” section if you get stuck.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(Hint: Try adding <code>size = 3</code> as a parameter to the <code>geom_jitter()</code> to create larger points.)</p>
+</section>
+</section>
+<section id="exercise-2.3-table-manipulations" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2.3-table-manipulations">Exercise 2.3: Table manipulations</h2>
 <p>In this exercise, we will work with basic data manipulations, grouping and summarizing, making data tables wider or longer, and joining data tables.</p>
 <p>We will be using the R package, <strong>tidyverse</strong> for the data manipulation functions <code>%&gt;%</code>, <code>group_by()</code>, <code>summarize()</code>, <code>pivot_wider()</code>, <code>pivot_longer()</code>, and join functions such as <code>left_join()</code></p>
 <p>Paste the following into the top code chunk of your <code>qmd</code> file.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>table_01 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"01_participant_metadata_UKZN_workshop_2023.csv"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>table_02 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"02_visit_clinical_measurements_UKZN_workshop_2023.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>table_01 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"01_participant_metadata_UKZN_workshop_2023.csv"</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>table_02 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"02_visit_clinical_measurements_UKZN_workshop_2023.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="analyzing-subsets" class="level3">
 <h3 class="anchored" data-anchor-id="analyzing-subsets">Analyzing subsets</h3>
 <p>Group the table_01 dataset by education_level and smoker.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  ___ <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>table_01 <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  ___ <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Answer for yourself</em> How many distinct groups did this produce?</p>
 <p>Now undo the previous grouping.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in"># build all the code for this exercise</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="in"># build all the code for this exercise</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Also verify what the output looks like when you omit the <code>print()</code> function at the end.</p>
 </section>
@@ -399,33 +600,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>As an example, using <code>table_02</code> we want to calculate the median ph of participants, by <code>arm</code>, we could write <code>summarise(median_ph = median(ph))</code>, and this would create a new column called <code>median_ph</code></p>
 <p>Try this out. First group by <code>arm</code> and then make the new column:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(____) <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(____) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now see what it looks like if you instead group by <code>timepoint</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(____) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(____) <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now try grouping by both <code>timepoint</code> and <code>arm</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(__, __) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(__, __) <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can perform multiple summaries at once by adding more statements inside the summarise() function, separated by a <code>,</code>. To try this out, calculate the median <code>nugent</code> in addition to the median ph</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(____) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___, ___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(____) <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___, ___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When performing summaries, we often want to know how many observations there are in each group (i.e., we want to count). We can do this with the function <code>n()</code>, which inside summarise() gives us the group size. So, we can count by adding a statement such as <code>count = n()</code> inside `summarise(). Try this out.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(____) <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___, ___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(____) <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___, ___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="making-tables-wider-or-longer" class="level3">
@@ -433,19 +634,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>For efficient data processing, we usually want tables in long form, where each columns is one variable and each row is one observation. However, in some applications, for example when making a table easier to read for humans, a wide format can be preferred. In a wide format, some variables are displayed as column names, and other variables are distributed over multiple columns.</p>
 <p>First, make a summary table that shows median <code>ph</code> by <code>arm</code> and <code>time_point</code>, just like you did above, and save it to a variable <code>ph_summary_long</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ph_summary_long <span class="ot">&lt;-</span> table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(___) <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>ph_summary_long <span class="ot">&lt;-</span> table_02 <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(___) <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, try using <code>pivot_wider()</code> to make a column for each arm. Remember, use <code>?pivot_wider</code> if you want help, and try asking google or chatGPT if you get stuck.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ph_summary_long <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(____)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>ph_summary_long <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(____)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>What if you wanted to instead make a column for each time point, and have the arms be different rows?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ph_summary_long <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(____)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>ph_summary_long <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(____)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="combining-datasets-with-joins" class="level3">
@@ -453,94 +654,228 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Finally, we sometimes encounter the situation where we have two data sets that contain different pieces of information about the same subjects or objects, and we need to merge these tables for further analysis. In this situation, we need to perform a join, and there are multiple different types of joins available: left_join(), right_join(), inner_join(), full_join(). These joins all differ in how they handle cases where an observation is present in only one of the two tables but missing in the other.</p>
 <p>Our instructional dataset has no missing values, so all types of joins are actually equivalent. Try to join <code>table_01</code> and <code>table_02</code> using <code>left_join()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="in"># join table_01 and table_02</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="in"># join table_01 and table_02</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="exercise-2.2-aesthetics-using-ggplot" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-2.2-aesthetics-using-ggplot">Exercise 2.2 : Aesthetics using ggplot</h2>
-<p>For this exercise, we will be using the instructional dataset (path to dataset)</p>
-<p>In this worksheet, we will work on ggplot and the mapping of data values onto aesthetics.</p>
+<section id="exercise-2.4-color-scales" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2.4-color-scales">Exercise 2.4 : Color scales</h2>
+<p>In this worksheet, we will discuss how to change and customize color scales.</p>
+<p>We will be using the R package <strong>tidyverse</strong>, which includes <code>ggplot()</code> and related functions. We will also be using the R package <strong>colorspace</strong> for the scale functions it provides.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># load the tidyverse library</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># we want to use the data in the visit_clinical_measurements file</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>clinical_measurements <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(path to dataset) <span class="co"># read in your data </span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#then show the first few rows</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(clinical_measurements)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load required library</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(colorspace)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>temperatures <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://wilkelab.org/SDS375/datasets/tempnormals.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">location =</span> <span class="fu">factor</span>(</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>      location, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Death Valley"</span>, <span class="st">"Houston"</span>, <span class="st">"San Diego"</span>, <span class="st">"Chicago"</span>)</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(location, day_of_year, month, temperature)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>temps_months <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://wilkelab.org/SDS375/datasets/tempnormals.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location, month_name) <span class="sc">%&gt;%</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(temperature)) <span class="sc">%&gt;%</span></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">month =</span> <span class="fu">factor</span>(</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>      month_name,</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Jan"</span>, <span class="st">"Feb"</span>, <span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span>, <span class="st">"Jul"</span>, <span class="st">"Aug"</span>, <span class="st">"Sep"</span>, <span class="st">"Oct"</span>, <span class="st">"Nov"</span>, <span class="st">"Dec"</span>)</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">location =</span> <span class="fu">factor</span>(</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>      location, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Death Valley"</span>, <span class="st">"Houston"</span>, <span class="st">"San Diego"</span>, <span class="st">"Chicago"</span>)</span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>month_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="basic-geom-examples" class="level3">
-<h3 class="anchored" data-anchor-id="basic-geom-examples">Basic geom examples</h3>
-<p>Remember: we call the <code>ggplot()</code> function with a dataset and an aesthetic mapping (created with <code>aes()</code>), and then we add a geom, such as <code>geom_line()</code> to draw lines or <code>geom_point()</code> to draw points.</p>
-<p>Try this for yourself. Map the column <code>ph</code> onto the x axis and the column <code>crp_blood</code> onto the y axis, and use <code>geom_line()</code> to display the data.</p>
-<p>Whenever you see <code>___</code> in the code below, that means you should swap it in with your own code.</p>
+<p>We will be working with the dataset <code>temperatures</code> that we have used in previous worksheets. This dataset contains the average temperature for each day of the year for four different locations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>temperatures</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,464 × 4
+   location     day_of_year month temperature
+   &lt;fct&gt;              &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
+ 1 Death Valley           1 01           51  
+ 2 Death Valley           2 01           51.2
+ 3 Death Valley           3 01           51.3
+ 4 Death Valley           4 01           51.4
+ 5 Death Valley           5 01           51.6
+ 6 Death Valley           6 01           51.7
+ 7 Death Valley           7 01           51.9
+ 8 Death Valley           8 01           52  
+ 9 Death Valley           9 01           52.2
+10 Death Valley          10 01           52.3
+# ℹ 1,454 more rows</code></pre>
 </div>
-<p>Try again. Now use <code>geom_point()</code> instead of <code>geom_line()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>And now swap which column you map to x and which to y.</p>
+<p>We will also be working with an aggregated version of this dataset called <code>temps_months</code>, which contains the mean temperature for each month for the same locations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>temps_months</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 48 × 3
+# Groups:   location [4]
+   location  mean month
+   &lt;fct&gt;    &lt;dbl&gt; &lt;fct&gt;
+ 1 Chicago   50.4 Apr  
+ 2 Chicago   74.1 Aug  
+ 3 Chicago   29   Dec  
+ 4 Chicago   28.9 Feb  
+ 5 Chicago   24.8 Jan  
+ 6 Chicago   75.8 Jul  
+ 7 Chicago   71.0 Jun  
+ 8 Chicago   38.8 Mar  
+ 9 Chicago   60.9 May  
+10 Chicago   41.6 Nov  
+# ℹ 38 more rows</code></pre>
+</div>
+</div>
+<p>As a challenge, try to create this above table yourself using <code>group_by()</code> and <code>summarize()</code>, and then make a <code>month</code> column which is a factor with levels froing from “Jan” to “Dec”, and make the location column a factor with levels “Death Valley”, “Houston”, “San Diego”, “Chicago”. If you are having trouble, the solution is at the end of this page, make sure you copy it into your code so the rest of the exercise works.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check solution at the end before moving on!</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>temps_months <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://wilkelab.org/SDS375/datasets/tempnormals.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(___) <span class="sc">%&gt;%</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(___) <span class="sc">%&gt;%</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">month =</span> <span class="fu">factor</span>(</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>      month_name,</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>      ___</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">location =</span> <span class="fu">factor</span>(</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>      location, ___</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>month_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="built-in-ggplot2-color-scales" class="level4">
+<h4 class="anchored" data-anchor-id="built-in-ggplot2-color-scales">Built in <strong>ggplot2</strong> color scales</h4>
+<p>We will start with built-in <strong>ggplot2</strong> color scales, which require no additional packages. The scale functions are always named <code>scale_color_*()</code> or <code>scale_fill_*()</code>, depending on whether they apply to the <code>color</code> or <code>fill</code> aesthetic. The <code>*</code> indicates some other words specifying the type of the scale, for example <code>scale_color_brewer()</code> or <code>scale_color_distiller()</code> for discrete or continuous scales from the ColorBrewer project, respectively. You can find all available built-in scales here: https://ggplot2.tidyverse.org/reference/index.html#section-scales</p>
+<p>Now consider the following plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(temps_months, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> location, <span class="at">fill =</span> mean)) <span class="sc">+</span> </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">expand =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/temps-months-default-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>If you wanted to change the color scale to one from the ColorBrewer project, which scale function would you have to add? <code>scale_color_brewer()</code>, <code>scale_color_distiller()</code>, <code>scale_fill_brewer()</code>, <code>scale_fill_distiller()</code>?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># answer the question above to yourself</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now try this out.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(temps_months, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> location, <span class="at">fill =</span> mean)) <span class="sc">+</span> </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">expand =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  ___</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Most color scale functions have additional customizations. How to use them depends on the specific scale function. For the ColorBrewer scales you can set <code>direction = 1</code> or <code>direction = -1</code> to set the direction of the scale (light to dark or dark to light). You can also set the palette via a numeric argument, e.g.&nbsp;<code>palette = 1</code>, <code>palette = 2</code>, <code>palette = 3</code> etc.</p>
+<p>Try this out by setting the direction of the scale from light to dark and using palette #4.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="more-complex-geoms" class="level3">
-<h3 class="anchored" data-anchor-id="more-complex-geoms">More complex geoms</h3>
-<p>You can use other geoms to make different types of plots. For example, <code>geom_boxplot()</code> will make boxplots. For boxplots, we frequently want categorical data on the x or y axis. For example, we might want a separate boxplot for each month. Try this out. Put <code>nugent_score</code> on the x axis, <code>ph</code> on the y axis, and use <code>geom_boxplot()</code>.</p>
+<section id="manual-scales" class="level4">
+<h4 class="anchored" data-anchor-id="manual-scales">Manual scales</h4>
+<p>For discrete data with a small number of categories, it’s usually best to set colors manually. This can be done with the scale functions <code>scale_*_manual()</code>. These functions take an argument <code>values</code> that specifies the color values to use.</p>
+<p>To see how this works, let’s go back to this plot of temperatures over time for four locations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(temperatures, <span class="fu">aes</span>(day_of_year, temperature, <span class="at">color =</span> location)) <span class="sc">+</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/temps-locations-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<p>Now try swapping the x and y axis <code>geom_jitter()</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now try swapping the x and y axis</p>
+</div>
+<p>Let’s use the following four colors: <code>"gold2"</code>, <code>"firebrick"</code>, <code>"blue3"</code>, <code>"springgreen4"</code>. We can visualize this palette using the function <code>swatchplot()</code> from the <strong>colorspace</strong> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>colorspace<span class="sc">::</span><span class="fu">swatchplot</span>(<span class="fu">c</span>(<span class="st">"gold2"</span>, <span class="st">"firebrick"</span>, <span class="st">"blue3"</span>, <span class="st">"springgreen4"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/swatchplot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now apply this color palette to the temperatures plot, by using the manual color scale. <em>Hint</em>: use the <code>values</code> argument to provide the colors to the manual scale.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(temperatures, <span class="fu">aes</span>(day_of_year, temperature, <span class="at">color =</span> location)) <span class="sc">+</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  ___</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>One problem with this approach is that we can’t easily control which data value gets assigned to which color. What if we wanted San Diego to be shown in green and Chicago in blue? The simplest way to resolve this issue is to use a named vector. A named vector in R is a vector where each value has a name. Named vectors are created by writing <code>c(name1 = value1, name2 = value2, ...)</code>. See the following example.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regular vector</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"cat"</span>, <span class="st">"mouse"</span>, <span class="st">"house"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "cat"   "mouse" "house"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># named vector</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">A =</span> <span class="st">"cat"</span>, <span class="at">B =</span> <span class="st">"mouse"</span>, <span class="at">C =</span> <span class="st">"house"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      A       B       C 
+  "cat" "mouse" "house" </code></pre>
+</div>
+</div>
+<p>The names in the second example are <code>A</code>, <code>B</code>, and <code>C</code>. Notice that the names are not in quotes. However, if you need a name containing a space (such as <code>Death Valley</code>), you need to enclose the name in backticks. Thus, our named vector of colors could be written like so:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">`</span><span class="at">Death Valley</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"gold2"</span>, <span class="at">Houston =</span> <span class="st">"firebrick"</span>, <span class="at">Chicago =</span> <span class="st">"blue3"</span>, <span class="st">`</span><span class="at">San Diego</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"springgreen4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Death Valley        Houston        Chicago      San Diego 
+       "gold2"    "firebrick"        "blue3" "springgreen4" </code></pre>
+</div>
+</div>
+<p>Now try to use this color vector in the figure showing temperatures over time.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Try some other colors also. You can find a list of all named colors <a href="https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/">here.</a> You can also run the command <code>colors()</code> in your R console to get a list of all available color names.</p>
+<p><em>Hint:</em> It’s a good idea to never use the colors <code>"red"</code>, <code>"green"</code>, <code>"blue"</code>, <code>"cyan"</code>, <code>"magenta"</code>, <code>"yellow"</code>. They are extreme points in the RGB color space and tend to look unnatural and too crazy. Try this by making a swatch plot of these colors, and compare for example to the color scale containing the colors <code>"firebrick"</code>, <code>"springgreen4"</code>, <code>"blue3"</code>, <code>"turquoise3"</code>, <code>"darkorchid2"</code>, <code>"gold2"</code>. Do you see the difference?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><em>Solution to the challenge to make the summary table of mean temperature by month:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># paste this below the "temperatures" code-chunk</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>temps_months <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://wilkelab.org/SDS375/datasets/tempnormals.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location, month_name) <span class="sc">%&gt;%</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(temperature)) <span class="sc">%&gt;%</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">month =</span> <span class="fu">factor</span>(</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>      month_name,</span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Jan"</span>, <span class="st">"Feb"</span>, <span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span>, <span class="st">"Jul"</span>, <span class="st">"Aug"</span>, <span class="st">"Sep"</span>, <span class="st">"Oct"</span>, <span class="st">"Nov"</span>, <span class="st">"Dec"</span>)</span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">location =</span> <span class="fu">factor</span>(</span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>      location, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Death Valley"</span>, <span class="st">"Houston"</span>, <span class="st">"San Diego"</span>, <span class="st">"Chicago"</span>)</span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>month_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="adding-color" class="level3">
-<h3 class="anchored" data-anchor-id="adding-color">Adding color</h3>
-<p>Try again with <code>geom_jitter()</code>, this time using <code>ph</code> as the location along the y axis and <code>arm</code> for the color. Remember to check the <code>ggplot</code> cheat sheet, or type <code>?geom_jitter()</code> in the console to and look at the “Aesthetics” section if you get stuck.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(clinical_measurements, <span class="fu">aes</span>(<span class="at">x =</span> ___, <span class="at">y =</span> ___)) <span class="sc">+</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>(Hint: Try adding <code>size = 3</code> as a parameter to the <code>geom_jitter()</code> to create larger points.)</p>
 </section>
-</section>
-<section id="exercise-2.3-compund-figures" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-2.3-compund-figures">Exercise 2.3 : Compund figures</h2>
+<section id="exercise-2.5-compund-figures" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2.5-compund-figures">Exercise 2.5 : Compund figures</h2>
 <p>In this worksheet, we will discuss how to combine several <strong>ggplot2</strong> plots into one compound figure.</p>
 <p>We will be using the R package <strong>tidyverse</strong>, which includes <code>ggplot()</code> and related functions. We will also be using the package <strong>patchwork</strong> for plot composition.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load required library</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'patchwork'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:cowplot':
-
-    align_plots</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load required library</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will be working with the dataset <code>mtcars</code>, which contains fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>mtcars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>mtcars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
@@ -581,9 +916,9 @@ Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></
 <h4 class="anchored" data-anchor-id="combining-plots">Combining plots</h4>
 <p>First we set up four different plots that we will subsequently combine. The plots are stored in variables <code>p1</code>, <code>p2</code>, <code>p3</code>, <code>p4</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars) <span class="sc">+</span> </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(mpg, disp))</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>p1  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars) <span class="sc">+</span> </span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(mpg, disp))</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>p1  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -591,9 +926,9 @@ Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars) <span class="sc">+</span> </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(gear, disp, <span class="at">group =</span> gear))</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars) <span class="sc">+</span> </span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(gear, disp, <span class="at">group =</span> gear))</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -601,12 +936,9 @@ Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars) <span class="sc">+</span> </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(disp, qsec))</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>p3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars) <span class="sc">+</span> </span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(disp, qsec))</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>p3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -614,9 +946,9 @@ Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars) <span class="sc">+</span> </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(carb))</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>p4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars) <span class="sc">+</span> </span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(carb))</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>p4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -627,219 +959,15 @@ Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></
 </div>
 <p>To show plots side-by-side, we use the operator <code>|</code>, as in <code>p1 | p2</code>. Try this by making a compound plot of plots <code>p1</code>, <code>p2</code>, <code>p3</code> side-by-side.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To show plots on top of one-another, we use the operator <code>/</code>, as in <code>p1 / p2</code>. Try this by making a compound plot of plots <code>p1</code>, <code>p2</code>, <code>p3</code> on top of each other.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can also use parentheses to group plots with respect to the operators <code>|</code> and <code>/</code>. For example, we can place several plots side-by-side and then place this entire row of plots on top of another plot. Try putting <code>p1</code>, <code>p2</code>, <code>p3</code>, on the top row, and <code>p4</code> on the bottom row.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(___) <span class="sc">/</span> ___</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="exercise-2.4-color-scales" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-2.4-color-scales">Exercise 2.4 : Color scales</h2>
-<p>In this worksheet, we will discuss how to change and customize color scales.</p>
-<p>We will be using the R package <strong>tidyverse</strong>, which includes <code>ggplot()</code> and related functions. We will also be using the R package <strong>colorspace</strong> for the scale functions it provides.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load required library</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(colorspace)</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>temperatures <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://wilkelab.org/SDS375/datasets/tempnormals.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">location =</span> <span class="fu">factor</span>(</span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>      location, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Death Valley"</span>, <span class="st">"Houston"</span>, <span class="st">"San Diego"</span>, <span class="st">"Chicago"</span>)</span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(location, day_of_year, month, temperature)</span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>temps_months <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://wilkelab.org/SDS375/datasets/tempnormals.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location, month_name) <span class="sc">%&gt;%</span></span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(temperature)) <span class="sc">%&gt;%</span></span>
-<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">month =</span> <span class="fu">factor</span>(</span>
-<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>      month_name,</span>
-<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Jan"</span>, <span class="st">"Feb"</span>, <span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span>, <span class="st">"Jul"</span>, <span class="st">"Aug"</span>, <span class="st">"Sep"</span>, <span class="st">"Oct"</span>, <span class="st">"Nov"</span>, <span class="st">"Dec"</span>)</span>
-<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">location =</span> <span class="fu">factor</span>(</span>
-<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>      location, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Death Valley"</span>, <span class="st">"Houston"</span>, <span class="st">"San Diego"</span>, <span class="st">"Chicago"</span>)</span>
-<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>month_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We will be working with the dataset <code>temperatures</code> that we have used in previous worksheets. This dataset contains the average temperature for each day of the year for four different locations.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>temperatures</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,464 × 4
-   location     day_of_year month temperature
-   &lt;fct&gt;              &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
- 1 Death Valley           1 01           51  
- 2 Death Valley           2 01           51.2
- 3 Death Valley           3 01           51.3
- 4 Death Valley           4 01           51.4
- 5 Death Valley           5 01           51.6
- 6 Death Valley           6 01           51.7
- 7 Death Valley           7 01           51.9
- 8 Death Valley           8 01           52  
- 9 Death Valley           9 01           52.2
-10 Death Valley          10 01           52.3
-# ℹ 1,454 more rows</code></pre>
-</div>
-</div>
-<p>We will also be working with an aggregated version of this dataset called <code>temps_months</code>, which contains the mean temperature for each month for the same locations.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>temps_months</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 48 × 3
-# Groups:   location [4]
-   location  mean month
-   &lt;fct&gt;    &lt;dbl&gt; &lt;fct&gt;
- 1 Chicago   50.4 Apr  
- 2 Chicago   74.1 Aug  
- 3 Chicago   29   Dec  
- 4 Chicago   28.9 Feb  
- 5 Chicago   24.8 Jan  
- 6 Chicago   75.8 Jul  
- 7 Chicago   71.0 Jun  
- 8 Chicago   38.8 Mar  
- 9 Chicago   60.9 May  
-10 Chicago   41.6 Nov  
-# ℹ 38 more rows</code></pre>
-</div>
-</div>
-<p>As a challenge, try to create this above table yourself using <code>group_by()</code> and <code>summarize()</code>, and then make a <code>month</code> column which is a factor with levels froing from “Jan” to “Dec”, and make the location column a factor with levels “Death Valley”, “Houston”, “San Diego”, “Chicago”. If you are having trouble, the solution is at the end of this page, make sure you copy it into your code so the rest of the exercise works.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check solution at the end before moving on!</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>temps_months <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://wilkelab.org/SDS375/datasets/tempnormals.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(___) <span class="sc">%&gt;%</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(___) <span class="sc">%&gt;%</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">month =</span> <span class="fu">factor</span>(</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>      month_name,</span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>      ___</span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">location =</span> <span class="fu">factor</span>(</span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>      location, ___</span>
-<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>month_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="built-in-ggplot2-color-scales" class="level4">
-<h4 class="anchored" data-anchor-id="built-in-ggplot2-color-scales">Built in <strong>ggplot2</strong> color scales</h4>
-<p>We will start with built-in <strong>ggplot2</strong> color scales, which require no additional packages. The scale functions are always named <code>scale_color_*()</code> or <code>scale_fill_*()</code>, depending on whether they apply to the <code>color</code> or <code>fill</code> aesthetic. The <code>*</code> indicates some other words specifying the type of the scale, for example <code>scale_color_brewer()</code> or <code>scale_color_distiller()</code> for discrete or continuous scales from the ColorBrewer project, respectively. You can find all available built-in scales here: https://ggplot2.tidyverse.org/reference/index.html#section-scales</p>
-<p>Now consider the following plot.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(temps_months, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> location, <span class="at">fill =</span> mean)) <span class="sc">+</span> </span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">expand =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/temps-months-default-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>If you wanted to change the color scale to one from the ColorBrewer project, which scale function would you have to add? <code>scale_color_brewer()</code>, <code>scale_color_distiller()</code>, <code>scale_fill_brewer()</code>, <code>scale_fill_distiller()</code>?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># answer the question above to yourself</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now try this out.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(temps_months, <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> location, <span class="at">fill =</span> mean)) <span class="sc">+</span> </span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">expand =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  ___</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Most color scale functions have additional customizations. How to use them depends on the specific scale function. For the ColorBrewer scales you can set <code>direction = 1</code> or <code>direction = -1</code> to set the direction of the scale (light to dark or dark to light). You can also set the palette via a numeric argument, e.g.&nbsp;<code>palette = 1</code>, <code>palette = 2</code>, <code>palette = 3</code> etc.</p>
-<p>Try this out by setting the direction of the scale from light to dark and using palette #4.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="manual-scales" class="level4">
-<h4 class="anchored" data-anchor-id="manual-scales">Manual scales</h4>
-<p>For discrete data with a small number of categories, it’s usually best to set colors manually. This can be done with the scale functions <code>scale_*_manual()</code>. These functions take an argument <code>values</code> that specifies the color values to use.</p>
-<p>To see how this works, let’s go back to this plot of temperatures over time for four locations.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(temperatures, <span class="fu">aes</span>(day_of_year, temperature, <span class="at">color =</span> location)) <span class="sc">+</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/temps-locations-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Let’s use the following four colors: <code>"gold2"</code>, <code>"firebrick"</code>, <code>"blue3"</code>, <code>"springgreen4"</code>. We can visualize this palette using the function <code>swatchplot()</code> from the <strong>colorspace</strong> package.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>colorspace<span class="sc">::</span><span class="fu">swatchplot</span>(<span class="fu">c</span>(<span class="st">"gold2"</span>, <span class="st">"firebrick"</span>, <span class="st">"blue3"</span>, <span class="st">"springgreen4"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/swatchplot-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Now apply this color palette to the temperatures plot, by using the manual color scale. <em>Hint</em>: use the <code>values</code> argument to provide the colors to the manual scale.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(temperatures, <span class="fu">aes</span>(day_of_year, temperature, <span class="at">color =</span> location)) <span class="sc">+</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  ___</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>One problem with this approach is that we can’t easily control which data value gets assigned to which color. What if we wanted San Diego to be shown in green and Chicago in blue? The simplest way to resolve this issue is to use a named vector. A named vector in R is a vector where each value has a name. Named vectors are created by writing <code>c(name1 = value1, name2 = value2, ...)</code>. See the following example.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regular vector</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"cat"</span>, <span class="st">"mouse"</span>, <span class="st">"house"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "cat"   "mouse" "house"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># named vector</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">A =</span> <span class="st">"cat"</span>, <span class="at">B =</span> <span class="st">"mouse"</span>, <span class="at">C =</span> <span class="st">"house"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      A       B       C 
-  "cat" "mouse" "house" </code></pre>
-</div>
-</div>
-<p>The names in the second example are <code>A</code>, <code>B</code>, and <code>C</code>. Notice that the names are not in quotes. However, if you need a name containing a space (such as <code>Death Valley</code>), you need to enclose the name in backticks. Thus, our named vector of colors could be written like so:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">`</span><span class="at">Death Valley</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"gold2"</span>, <span class="at">Houston =</span> <span class="st">"firebrick"</span>, <span class="at">Chicago =</span> <span class="st">"blue3"</span>, <span class="st">`</span><span class="at">San Diego</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"springgreen4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Death Valley        Houston        Chicago      San Diego 
-       "gold2"    "firebrick"        "blue3" "springgreen4" </code></pre>
-</div>
-</div>
-<p>Now try to use this color vector in the figure showing temperatures over time.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Try some other colors also. You can find a list of all named colors <a href="https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/">here.</a> You can also run the command <code>colors()</code> in your R console to get a list of all available color names.</p>
-<p><em>Hint:</em> It’s a good idea to never use the colors <code>"red"</code>, <code>"green"</code>, <code>"blue"</code>, <code>"cyan"</code>, <code>"magenta"</code>, <code>"yellow"</code>. They are extreme points in the RGB color space and tend to look unnatural and too crazy. Try this by making a swatch plot of these colors, and compare for example to the color scale containing the colors <code>"firebrick"</code>, <code>"springgreen4"</code>, <code>"blue3"</code>, <code>"turquoise3"</code>, <code>"darkorchid2"</code>, <code>"gold2"</code>. Do you see the difference?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># build all the code for this exercise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><em>Solution to the challenge to make the summary table of mean temperature by month:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># paste this below the "temperatures" code-chunk</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>temps_months <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://wilkelab.org/SDS375/datasets/tempnormals.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location, month_name) <span class="sc">%&gt;%</span></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(temperature)) <span class="sc">%&gt;%</span></span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">month =</span> <span class="fu">factor</span>(</span>
-<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>      month_name,</span>
-<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Jan"</span>, <span class="st">"Feb"</span>, <span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>, <span class="st">"Jun"</span>, <span class="st">"Jul"</span>, <span class="st">"Aug"</span>, <span class="st">"Sep"</span>, <span class="st">"Oct"</span>, <span class="st">"Nov"</span>, <span class="st">"Dec"</span>)</span>
-<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">location =</span> <span class="fu">factor</span>(</span>
-<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>      location, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Death Valley"</span>, <span class="st">"Houston"</span>, <span class="st">"San Diego"</span>, <span class="st">"Chicago"</span>)</span>
-<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>month_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>(___) <span class="sc">/</span> ___</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

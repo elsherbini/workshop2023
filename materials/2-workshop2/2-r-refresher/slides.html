@@ -553,13 +553,38 @@
 </div>
 </div>
 </section>
-<section id="parts-of-rstudio-make-an-image-with-all-3-parts-highlighted" class="slide level2">
-<h2>Parts of RStudio (make an image with all 3 parts highlighted)</h2>
-
-<img data-src="images/rstudio-text-editor.png" class="r-stretch"></section>
 <section class="slide level2">
 
 </section>
+<section>
+<section id="rstudio" class="title-slide slide level1 center">
+<h1>RStudio</h1>
+
+</section>
+<section id="what-are-the-parts-of-rstudio" class="slide level2">
+<h2>What are the parts of RStudio?</h2>
+</section>
+<section id="the-text-editor" class="slide level2">
+<h2>The text editor</h2>
+
+<img data-src="images/rstudio-text-editor.png" class="r-stretch"></section>
+<section id="the-console" class="slide level2">
+<h2>The console</h2>
+
+<img data-src="images/rstudio-text-console-image.png" class="r-stretch"></section>
+<section id="the-right-panes" class="slide level2">
+<h2>The right panes</h2>
+
+<img data-src="images/rstudio-text-right_panes.png" class="r-stretch"></section>
+<section id="installing-and-loading-packages" class="slide level2">
+<h2>Installing and loading packages</h2>
+<div style="font-size: 1em">
+<p>Packages are a collection of functions and objects that are shared for free to use.</p>
+<p>In the console, you can type <code>install.packages("package_name")</code> to install most R packages.</p>
+<p>Sometimes R packages need to be installed a different way, and the documentation of the package will tell you how.</p>
+<p>Then, to load a package, add <code>library("package_name")</code> in a code chunk (usually in the first code cell of your document)</p>
+</div>
+</section></section>
 <section>
 <section id="anatomy-of-a-document" class="title-slide slide level1 center">
 <h1>Anatomy of a Document</h1>
@@ -641,10 +666,8 @@
 </div>
 </div>
 </section>
-<section class="slide level2">
-
-<p>::: ## Text :::</p>
-<h3 id="inline-elements-text-formatting"><span class="inline-el">Inline Elements:</span> Text Formatting</h3>
+<section id="inline-elements-text-formatting" class="slide level2">
+<h2><span class="inline-el">Inline Elements:</span> Text Formatting</h2>
 <div class="columns">
 <div class="column" style="width:65%;">
 <h4 id="markdown">Markdown</h4>
@@ -661,7 +684,9 @@
 <p>Markdown allows you to format text with <em>emphasis</em> and <strong>strong emphasis</strong>. You can also add superscripts<sup>2</sup>, subscripts<sub>2</sub>, and display code <code>verbatim</code>. Little known fact: you can also <del>strikethrough</del> text and present it in <span class="smallcaps">small caps</span>.</p>
 </div>
 </div>
-<p>::: ## Text :::</p>
+</section>
+<section class="slide level2">
+
 <h3 id="inline-elements-links-and-images"><span class="inline-el">Inline Elements:</span> Links and Images</h3>
 <h4 id="markdown-1">Markdown</h4>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a></a>You can embed <span class="co">[</span><span class="ot">links with names</span><span class="co">](https://quarto.org/)</span>, direct urls</span>
@@ -2186,23 +2211,23 @@ Table&nbsp;1: <code>02_visit_clinical_measurements_UKZN_workshop_2023.csv</code>
 <p>Setting center 2.5 makes the bars start 0-5, 5-10, etc. instead of 2.5-7.5, etc. You could instead use the argument <code>boundary=5</code> to accomplish the same behavior.</p>
 </div>
 </section>
-<section id="making-density-plots-with-ggplot-geom_density-auto-animatetrue" class="slide level2">
-<h2>Making density plots with ggplot: <code>geom_density()</code> {auto-animate:true}</h2>
+<section id="making-density-plots-with-ggplot-geom_density" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Making density plots with ggplot: <code>geom_density()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb87-1"><a></a><span class="in">```{r}</span></span>
-<span id="cb87-2"><a></a><span class="in">ggplot(titanic, aes(age)) +</span></span>
-<span id="cb87-3"><a></a><span class="in">  geom_density(fill = "skyblue")</span></span>
-<span id="cb87-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb87-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb87-2" class="hljs-ln-code"><a></a><span class="in">ggplot(titanic, aes(age)) +</span></span>
+<span id="cb87-3" class="hljs-ln-code"><a></a><span class="in">  geom_density(fill = "skyblue")</span></span>
+<span id="cb87-4" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-59-1.png" width="960" class="r-stretch"></section>
-<section id="making-density-plots-with-ggplot-geom_density-auto-animatetrue-1" class="slide level2">
-<h2>Making density plots with ggplot: <code>geom_density()</code> {auto-animate:true}</h2>
+<section id="making-density-plots-with-ggplot-geom_density-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Making density plots with ggplot: <code>geom_density()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb88-1"><a></a><span class="in">```{r}</span></span>
-<span id="cb88-2"><a></a><span class="in">ggplot(titanic, aes(age)) +</span></span>
-<span id="cb88-3"><a></a><span class="in">  geom_density()</span></span>
-<span id="cb88-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb88-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb88-2" class="hljs-ln-code"><a></a><span class="in">ggplot(titanic, aes(age)) +</span></span>
+<span id="cb88-3" class="hljs-ln-code"><a></a><span class="in">  geom_density()</span></span>
+<span id="cb88-4" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-60-1.png" width="960" class="r-stretch"><p>without <code>fill</code></p>
@@ -2281,57 +2306,47 @@ Table&nbsp;1: <code>02_visit_clinical_measurements_UKZN_workshop_2023.csv</code>
 </tbody>
 </table>
 </section>
-<section id="examples-boxplot-auto-animate-true" class="slide level2">
-<h2>Examples: Boxplot {auto-animate: true}</h2>
+<section id="examples-boxplot" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Examples: Boxplot</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb89-1"><a></a><span class="in">```{r}</span></span>
-<span id="cb89-2"><a></a><span class="in">ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +</span></span>
-<span id="cb89-3"><a></a><span class="in">  geom_boxplot(fill = "skyblue") </span></span>
-<span id="cb89-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb89-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb89-2" class="hljs-ln-code"><a></a><span class="in">ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +</span></span>
+<span id="cb89-3" class="hljs-ln-code"><a></a><span class="in">  geom_boxplot(fill = "skyblue") </span></span>
+<span id="cb89-4" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-64-1.png" width="960" class="r-stretch"></section>
-<section id="examples-violins-auto-animate-true" class="slide level2">
-<h2>Examples: Violins {auto-animate: true}</h2>
+<section id="examples-violins" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Examples: Violins</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb90-1"><a></a><span class="in">```{r}</span></span>
-<span id="cb90-2"><a></a><span class="in">ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +</span></span>
-<span id="cb90-3"><a></a><span class="in">  geom_violin(fill = "skyblue") </span></span>
-<span id="cb90-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb90-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb90-2" class="hljs-ln-code"><a></a><span class="in">ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +</span></span>
+<span id="cb90-3" class="hljs-ln-code"><a></a><span class="in">  geom_violin(fill = "skyblue") </span></span>
+<span id="cb90-4" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-65-1.png" width="960" class="r-stretch"></section>
-<section id="examples-strip-chart-no-jitter-auto-animate-true" class="slide level2">
-<h2>Examples: Strip chart (no jitter) {auto-animate: true}</h2>
+<section id="examples-strip-chart-no-jitter" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Examples: Strip chart (no jitter)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb91-1"><a></a><span class="in">```{r}</span></span>
-<span id="cb91-2"><a></a><span class="in">ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +</span></span>
-<span id="cb91-3"><a></a><span class="in">  geom_point(color = "skyblue") </span></span>
-<span id="cb91-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb91-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb91-2" class="hljs-ln-code"><a></a><span class="in">ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +</span></span>
+<span id="cb91-3" class="hljs-ln-code"><a></a><span class="in">  geom_point(color = "skyblue") </span></span>
+<span id="cb91-4" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-66-1.png" width="960" class="r-stretch"></section>
-<section id="examples-strip-chart-w-jitter-auto-animate-true" class="slide level2">
-<h2>Examples: Strip chart (w/ jitter) {auto-animate: true}</h2>
+<section id="examples-strip-chart-w-jitter" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Examples: Strip chart (w/ jitter)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb92-1"><a></a><span class="in">```{r}</span></span>
-<span id="cb92-2"><a></a><span class="in">ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +</span></span>
-<span id="cb92-3"><a></a><span class="in">  geom_jitter(color = "skyblue") </span></span>
-<span id="cb92-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-67-1.png" width="960" class="r-stretch"></section>
-<section id="examples-scatter-density-plot-auto-animate-true" class="slide level2">
-<h2>Examples: Scatter density plot {auto-animate: true}</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb93-1"><a></a><span class="in">```{r}</span></span>
-<span id="cb93-2"><a></a><span class="in">ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +</span></span>
-<span id="cb93-3"><a></a><span class="in">  geom_quasirandom(color = "skyblue") </span></span>
-<span id="cb93-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource markdown number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode markdown hljs"><span id="cb92-1" class="hljs-ln-code"><a></a><span class="in">```{r}</span></span>
+<span id="cb92-2" class="hljs-ln-code"><a></a><span class="in">ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +</span></span>
+<span id="cb92-3" class="hljs-ln-code"><a></a><span class="in">  geom_jitter(color = "skyblue") </span></span>
+<span id="cb92-4" class="hljs-ln-code"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-68-1.png" width="960" class="r-stretch"><div class="quarto-auto-generated-content">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-67-1.png" width="960" class="r-stretch"><div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p><a href="index.html">back to module</a></p>
 </div>
