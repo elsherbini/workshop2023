@@ -28,11 +28,11 @@ Ragon Institute of MGH, MIT and Harvard
 :::
 
 ::: {.g-col-2}
-<!-- ![](images/Chandani.png){fig-align="left"} -->
+![](images/Lindsay.png){fig-align="left"}
 :::
 ::: {.g-col-4}
 [*Instructor*]{style="font-size: 0.8em"}  
-**Dr. Lindsay Droit**  
+**Lindsay Droit**  
 Research Laboratory Manager
 Washington University School of Medicine  
 :::
@@ -132,7 +132,7 @@ Centre for Epidemic Response and Innovation (CERI) - Stellenbosch
 ::: {.g-col-4}
 [*Teaching Assistant*]{style="font-size: 0.8em"}  
 **Afrah Khairallah**  
-Postdoctoral research fellow
+Postdoctoral Research Fellow
 Africa Health Research Institute (AHRI) - UKZN  
 :::
 

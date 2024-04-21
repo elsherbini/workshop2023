@@ -36,7 +36,7 @@ Research Project A - Does yogurt consumption change the vaginal microbiome?
 To investigate whether the consumption of yogurt influences microbiome composition after antibiotics treatment.\
 \
 **Study Description** \
-This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. 16S rRNA sequencing was done to charaterize patient microbiome composition. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment.
+This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. 16S rRNA sequencing was done to characterize patient microbiome composition. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. Data was collected at two timepoints, pre and post antibiotic treatment.
 \
 ::::
 :::
@@ -59,7 +59,7 @@ Research Project B - Does birth control change inflammation during menstruation?
 To investigate whether taking birth control is associated with vaginal inflammation throughout the menstrual cycle.\
 \
 **Study Description** \
-This is an observational study to evaluate the relationship between birth control and vaginal inflammation In response to menstruation. 16S rRNA sequencing was done to charaterize patient microbiome composition. Absolute abundance of bacteria was measured by 3 qPCR assays (for total Bacteria, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation.
+This is an observational study to evaluate the relationship between birth control and vaginal inflammation. In response to menstruation. 16S rRNA sequencing was done to characterize patient microbiome composition. Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation.
 \
 ::::
 :::
@@ -96,15 +96,15 @@ Learning Goals
 |                |- Locate project files on your instance                                            |
 |                |- Create a new .qmd file                                                           |
 +----------------+-----------------------------------------------------------------------------------+
-| 9:30 - 10:30am |- **Explore the data!**                                                            |
-|                |- Merge in metadata, qPCR, and Luminex data                                        |
+| 9:30 - 10:30am |- Merge in metadata, qPCR, and Luminex data                                        |
 |                |- Create a phyloseq object                                                         |
+|                |- Phyloseq cleaning                                                                |
 +----------------+-----------------------------------------------------------------------------------+
 |10:30 - 11:00am | **Break**                                                                         |
 +----------------+-----------------------------------------------------------------------------------+
-|11:00- 12:00pm  |- Phyloseq cleaning                                                                |
+|11:00- 12:00pm  |- **Explore the data!**                                                            |
 |                |- Visualizing microbiome composition                                               |
-|                |- Diversity and Ordination                                                         |
+|                |- Diversity                                                                        |
 +----------------+-----------------------------------------------------------------------------------+
 
 
@@ -113,15 +113,14 @@ Learning Goals
 +----------------+-------------------------------------------------------------------------------------+
 | Time           | Task                                                                                |
 +================+=====================================================================================+
-| 1:30 - 2:00pm  |- Diversity and Ordination                                                           |
+| 1:30 - 2:00pm  |- Ordination and Correlations                                                        |
 +----------------+-------------------------------------------------------------------------------------+
-| 2:00 - 3:00pm  |- Differential abundance                                                             |
+| 2:00 - 3:00pm  |- Differential Abundance                                                             |
 +----------------+-------------------------------------------------------------------------------------+
 |3:00 - 3:30pm   | **Break**                                                                           |
 +----------------+-------------------------------------------------------------------------------------+
-|3:30 - 5:00pm   |- Integrating shotgun metagenomics                                                   |
+|3:30 - 5:00pm   |- Integrating Shotgun Metagenomics                                                   |
 +----------------+-------------------------------------------------------------------------------------+
 
 ### Example workflows
-[Johnathan's test demo](johnathan_demo_final.qmd)
-
+<!-- [Johnathan's test demo](johnathan_demo_final.qmd) -->

@@ -37,26 +37,26 @@ toc: false
 
 | Date/Time  | Topic  | Instructor|
 |--------|--------|--------|
-| **Monday, April 22^nd^**  | | |
-| AM   | Course Introduction | Scott Handley (Wash U School of Medicine)|
+| **Monday, April 22^nd^**  |-------------------------------------------------------------- |-------------------------------------------------------------- |
+| AM   | Workshop Introduction | Scott Handley (Wash U School of Medicine)|
 |    | Keynote | Sinaye Ngcapu (CAPRISA)|
-|  | Microbiome Sample Processing and Library preparation  | Lindsay Droit (Wash U School of Medicine)|
-| PM   | R Refresher (<code> tidyverse</code> /summary tables/data visualization) | Scott Handley (Wash U School of Medicine)|
-| **Tuesday, April 23^th^**  |____________________________________________ |____________________________________________ |
+|  | Sequencing and Library Preperation  | Lindsay Droit (Wash U School of Medicine)|
+| PM   | R Refresher (<code>tidyverse</code>/summary tables/data visualization) | Scott Handley (Wash U School of Medicine)|
+| **Tuesday, April 23^th^**  |--------------------------------------------------------------|-------------------------------------------------------------- |
 | AM   | 16S Data Preprocessing| Asavela Kama (CAPRISA)|
-| PM | 16S Data Analysis pt. I | Elizabeth Costello (Stanford University) |
-| **Wednesday, April 24^th^**  |____________________________________________ | ____________________________________________|
-| AM   | Group Activity session I  | Johnathan Shih (Ragon Institute)|
- PM | 16S Data Analysis pt. II | Joseph Elsherbini (Ragon Institute)|
-| **Thursday, April 25^th^**  |____________________________________________ | ____________________________________________|
+| PM | Exploring High Dimensional Data | Elizabeth Costello (Stanford University) |
+| **Wednesday, April 24^th^**  |-------------------------------------------------------------- | --------------------------------------------------------------|
+| AM   | Group Activity I  | Johnathan Shih (Ragon Institute)|
+ PM | Correlations and Differential Abundance Testing | Joseph Elsherbini (Ragon Institute)|
+| **Thursday, April 25^th^**  |-------------------------------------------------------------- | --------------------------------------------------------------|
 | AM   | VIRGO / Shotgun Metagenomics | Michael France (UMD School of Medicine)|
-| PM   | Group Activity session II  | Johnathan Shih (Ragon Institute)|
+| PM   | Group Activity II  | Johnathan Shih (Ragon Institute)|
 |Evening|Reception||
-| **Friday, April 26^th^**  |____________________________________________ | ____________________________________________|
+| **Friday, April 26^th^**  |-------------------------------------------------------------- | --------------------------------------------------------------|
 | AM   | Keynote | Jacques Ravel (UMD School of Medicine)|  
 | | Group Activity review |  |  
 | PM | Group Presentations | Participants |
 |  | Dataset Demo |  |
 |  | Workshop Outro | Scott Handley (Wash U School of Medicine) |
-| |____________________________________________ |____________________________________________ |
-: <b>Schedule</b> {#tbl-1 .table-bordered .table-sm}
+| |-------------------------------------------------------------- |-------------------------------------------------------------- |
+: <b>Schedule</b> {#tbl-1 .table-bordered .table-sm

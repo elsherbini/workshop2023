@@ -2,8 +2,10 @@
 title: "Johnathan Yogurt Demo Analysis"
 format: 
   html:
-    code-fold: false
+    code-fold: true
     code-summary: "Show code"
+execute:
+  cache: true
 ---
 
 ```{r}
@@ -18,7 +20,7 @@ library(cowplot)
 library(tidyverse)
 ```
 
-### Pre-processing
+### 16S Processing
 
 ```{r}
 #| message: false
@@ -30,10 +32,15 @@ participant_metadata <- read_csv("data/Group A Dataset Yogurt/01_participant_met
 qpcr <- read_csv("data/Group A Dataset Yogurt/02_qpcr_results_yogurt.csv")
 luminex <- read_csv("data/Group A Dataset Yogurt/03_luminex_results_yogurt.csv")
 
+all_samples_count_table <- readRDS("data/gv_seqtab_nobim.rds")
+all_samples_tax_table <- readRDS("data/gv_spetab_nobim_silva.rds")
 
+head(all_samples_count_table %>% as.data.frame() %>% rownames_to_column("amplicon_sample_id") %>% as_tibble() %>% head())
 ```
 
+The count table columns as the ASVs and rows are each sample.
 
+Subsetting phyloseq object by yogurt dataset samples
 ```{r}
 
 #creating sample data for the phyloseq by merging the csvs, also created log transformed cytokines
@@ -41,6 +48,8 @@ yogurt_sample_data <- amplicon_ids %>%
     left_join(samp_id %>% select(-arm), by = c("pid","time_point")) %>%
     left_join(participant_metadata %>% select(-arm), by = "pid") %>%
     mutate(arm_timepoint = str_c(arm, time_point, sep = "_")) %>%            #creating a arm and timepoint column for later plotting
+    mutate(arm_timepoint = fct_relevel(arm_timepoint, "unchanged_diet_baseline", "unchanged_diet_after_antibiotic","yogurt_baseline","yogurt_after_antibiotic")) %>%           #creating a arm and timepoint column for later plotting
+    mutate(time_point = fct_relevel(time_point, "baseline", "after_antibiotic")) %>%
     left_join(qpcr, by = "sample_id") %>% 
     left_join(luminex %>%
         pivot_wider(names_from = cytokine, values_from = c(conc,limits)), by = "sample_id") %>%      #will need to pivot the cyotokine data to longer to merge with sample data
@@ -57,7 +66,7 @@ yogurt_ids <- yogurt_sample_data %>%
               pull(amplicon_sample_id)
 
 #filtering the count data by the yogurt ids, then removing unused ASVs - when sum of column is 0
-count_table <- readRDS("data/gv_seqtab_nobim.rds") %>%
+count_table <- all_samples_count_table %>%
                 as.data.frame() %>%
                 rownames_to_column("amplicon_sample_id") %>%
                 filter(amplicon_sample_id %in% yogurt_ids) %>%
@@ -69,7 +78,7 @@ count_table <- readRDS("data/gv_seqtab_nobim.rds") %>%
 asvs <- colnames(count_table)
 
 #filtering the taxa table so there is only asavs for the yogurt data
-tax_table <- readRDS("data/gv_spetab_nobim_silva.rds") %>%
+tax_table <- all_samples_tax_table %>%
               as.data.frame() %>%
               rownames_to_column("tax_table_asv") %>%
               filter(tax_table_asv %in% asvs) %>%
@@ -87,7 +96,7 @@ saveRDS(yogurt_ps, "yogurt_ps.Rds")
 ```
 
 
-### Phyloseq cleaning
+### Phyloseq cleaning (add cleaning that Liz did)
 ```{r}
 #| fig-width: 15
 #| fig-height: 10
@@ -114,25 +123,218 @@ updated_yogurt_ps <- yogurt_ps %>%
                     ))%>%
                     tax_mutate(Genus_Species = str_c(Genus, Species, sep = " "))
   
+
+
+```
+
+### Exploring High Dimensional Data
+
+```{r}
+#| fig-width: 15
+#| fig-height: 10
+
 updated_yogurt_ps %>%
   ps_seriate(dist = "bray", method = "OLO_ward") %>% # arranges samples by microbiome similarity
   comp_barplot(tax_level = "Genus_Species", facet_by = c("arm","time_point"), sample_order = "bray", n_taxa = 21)
+
+```
+
+
+Absolute abundance after antibiotics
+```{r}
+#| fig-width: 15
+#| fig-height: 10
+
+updated_yogurt_ps %>%
+  samdat_tbl() %>%
+  select(c(.sample_name, pid, arm, time_point, arm_timepoint, starts_with("qpcr"))) %>%
+  pivot_longer(c(qpcr_bacteria, qpcr_crispatus, qpcr_iners), names_to = "qpcr", values_to = "copies") %>%
+  mutate(copies = copies + 1) %>%
+  mutate(time_point = fct_relevel(time_point, "baseline", "after_antibiotic")) %>%
+  ggplot(aes(x=time_point, y = copies)) +
+    geom_boxplot(width = 0.5) + 
+    geom_jitter(width = 0.1) +
+    facet_wrap(vars(arm, qpcr), scales = "free_y", ncol = 3) + 
+    scale_y_log10(labels=scales::label_log()) +
+    theme_cowplot() +
+    background_grid()
+
+```
+
+
+### Diversity (Alpha Diversity)
+```{r}
+#| fig-width: 6
+#| fig-height: 6
+
+
+#alpha div
+#observed richness
+updated_yogurt_ps %>%
+    ps_calc_richness(rank = "Genus", index = "observed", varname = "n_genuses") %>%
+    comp_barplot(
+    tax_level = "Genus", n_taxa = 14, label = "n_genuses", bar_width = 0.8,
+    sample_order = "bray", merge_other = FALSE, facet_by = c("arm","time_point")
+    )
+
+#shannon
+updated_yogurt_ps %>%
+    ps_calc_diversity(rank = "Genus", index = "shannon", varname = "Shannon_Genus") %>%
+    ps_arrange(Shannon_Genus) %>% 
+    ps_mutate(Shannon = formatC(Shannon_Genus, digits = 2, format = "f")) %>%
+    comp_barplot(
+    tax_level = "Genus", n_taxa = 14, label = "Shannon", bar_width = 0.8,
+    sample_order = "bray", merge_other = FALSE, facet_by = c("arm","time_point")
+  ) 
+
+#does vaginal microbiome diversity differ by yogurt diet and/or antibiotics?
+yogurt_shannon <- updated_yogurt_ps %>%
+                    ps_calc_diversity(rank = "Genus", index = "shannon", exp  =TRUE, varname = "Shannon_Genus") %>%
+                    samdat_tbl()
+
+yogurt_shannon %>%
+          ggplot(aes(y = Shannon_Genus, x = arm_timepoint, color = arm)) +
+          geom_boxplot(width = 0.4) +
+          geom_jitter(width = 0.1) +
+          scale_color_brewer(palette = "Set2", guide = NULL) +
+          labs( y = "Effective Shannon Diversity") +
+          theme_cowplot()
+
+
+# In the yogurt arm, is there greater diversity before antibiotics?
+yogurt_shannon %>%
+  filter(arm == "yogurt") %>%
+  wilcox.test(formula = Shannon_Genus ~ time_point, data = .)
   
-
 ```
 
-
-### Diversity
+### Ordination (Beta Diversity)
 ```{r}
+#| fig-width: 6
+#| fig-height: 6
+
+updated_yogurt_ps %>%
+  tax_transform(trans = "compositional", rank = "Genus_Species") %>%
+  dist_calc(dist = "bray") %>%
+  ord_calc(method = "PCoA") %>%
+  ord_plot(alpha = 0.6, size = 2) +
+  theme_classic(12) +
+  coord_fixed(0.7)
+
 
 ```
 
-### Ordination
+
+### Correlation
+
 ```{r}
+#| fig-width: 10
+#| fig-height: 10
+
+#How well does qPCR data correlate wtih 16s?
+
+#melt the data for plotting
+melted_yogurt_ps <- updated_yogurt_ps %>%
+    microViz::ps_melt() %>% 
+    group_by(Sample, pid, arm, time_point, sample_id, arm_timepoint, qpcr_bacteria, qpcr_iners, qpcr_crispatus, Kingdom, Phylum, Class, Order, Family, Genus, Species, Genus_Species) %>%
+    summarise(count = sum(Abundance)) %>%
+    group_by(Sample) %>%
+    mutate(rel_abundance = count / sum(count)) %>%
+    ungroup()
+
+
+#how does Lactobacillus correlate with cytokines?
+
+# cytokine_data <- updated_yogurt_ps %>% 
+#   samdat_tbl() %>% view
+#     group_by(Sample) %>%
+#     mutate(rel_abundance = count / sum(count)) %>%
+#     ungroup()
+
+# # qpcr vs 16s
+# melted_yogurt_ps %>%
+#   filter(Genus == "Lactobacillus" & Species == "crispatus") %>%
+#   mutate(qpcr_crispatus = ifelse(qpcr_crispatus >= qpcr_bacteria, qpcr_bacteria, qpcr_crispatus)) %>% 
+#   mutate(rel_qpcr_crispatus = qpcr_crispatus / qpcr_bacteria) %>% 
+#   ggplot(aes(x = rel_abundance, y = rel_qpcr_crispatus)) +
+#     geom_point()+
+#     # scale_y_log10() + 
+#     theme_cowplot() + 
+#     background_grid()
+
+
+#how does Lactobacillus correlate with cytokines?
+
+cytokine_data <- updated_yogurt_ps %>% 
+  samdat_tbl() %>%
+  select(.sample_name, sample_id, arm, time_point, arm_timepoint, starts_with("conc"))
+  # pivot_longer(c(starts_with("conc")), names_to = "analyte", values_to = "conc") %>%
+  # filter(!str_detect(analyte, "log")) %>%
+  # mutate(analyte = str_replace(analyte, "conc_", ""))
+
+#correlation plots
+melted_yogurt_ps %>%
+  filter(Genus == "Lactobacillus") %>%
+  group_by(Sample, arm_timepoint, pid, sample_id, Kingdom, Phylum, Class, Order, Family, Genus) %>%
+  summarize(rel_abundance = sum(rel_abundance)) %>%
+  left_join(cytokine_data, by = c("Sample" = ".sample_name", "arm_timepoint")) %>%
+  pivot_longer(c(starts_with("conc")), names_to = "analyte", values_to = "conc") %>%
+  filter(!str_detect(analyte, "log")) %>%
+  mutate(analyte = str_replace(analyte, "conc_", "")) %>%
+  group_by(analyte) %>%
+  mutate(cor = cor(rel_abundance, conc, method="spearman") %>% scales::label_number(accuracy = 0.01)()) %>%
+  mutate(facet_label = str_c(analyte, " *(ρ = ", cor, ")*")) %>%
+  ggplot(aes(x = rel_abundance, y = conc)) +
+  geom_point(aes(color = arm_timepoint)) +
+  scale_color_brewer(palette = "Set2", guide = NULL) +
+  scale_y_log10(labels=scales::label_log()) +
+  facet_wrap(vars(facet_label), scales="free_y") +
+  theme_cowplot() + 
+  background_grid() + 
+  theme(axis.title.x = ggtext::element_markdown(), strip.text =  ggtext::element_markdown())
+
+
+
 
 ```
+
+
+### Microbiome heatmaps
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6
+
+updated_yogurt_ps %>%
+    tax_sort(by = sum, at = "Genus", trans = "compositional", tree_warn = FALSE) %>%
+    tax_transform(trans = "compositional", rank = "Genus") %>%
+      # tax_transform(trans = "clr", zero_replace = "halfmin", chain = TRUE, rank = "Genus_Species") %>%
+    comp_heatmap(samples = 1:51, taxa = 1:30, name = "Proportions", tax_seriation = "Identity")
+
+
+```
+
+
 
 ### Differential Abundance
 ```{r}
+#| fig-width: 6
+#| fig-height: 6
+
 
 ```
+
+### Integrating metagenomics  
+```{r}
+#| message: false
+#| fig-width: 6
+#| fig-height: 6
+
+
+yogurt_virgo <- read_csv("/home/jshih38/Downloads/YogurtDataset_VIRGO2.csv")
+
+
+```
+
+
+# can plot virgo genes vs taxa, diff abundance, can plot qpcr vs 16s, plot 16s vs cytokines
