@@ -102,6 +102,17 @@ Ragon Institute of MGH, MIT and Harvard
 :::
 
 ::: {.g-col-2}
+<!-- ![](images/Sarah.png){fig-align="left"} -->
+:::
+
+::: {.g-col-4}
+[*Series Logistics and Management*]{style="font-size: 0.8em"}  
+**Renee Schumm**  
+Senior Administrator 
+Ragon Institute of MGH, MIT and Harvard
+:::
+
+::: {.g-col-2}
 ![](images/Aaron.png){fig-align="left"}
 :::
 ::: {.g-col-4}

@@ -124,3 +124,4 @@ Learning Goals
 
 ### Example workflows
 <!-- [Johnathan's test demo](johnathan_demo_final.qmd) -->
+Note: If downloading the demos, make sure the filepaths to the datasets match!

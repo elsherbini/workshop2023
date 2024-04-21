@@ -15,7 +15,7 @@ format:
 This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. 16S rRNA sequencing was done to characterize patient microbiome composition. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. Data was collected at two timepoints, pre and post antibiotic treatment.
 
 
-## Question and Aims
+## Questions and Aims
 
 #### **16S Processing** \
 

@@ -12,7 +12,7 @@ format:
 This is an observational study to evaluate the relationship between birth control and vaginal inflammation. In response to menstruation. 16S rRNA sequencing was done to characterize patient microbiome composition. Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation.
 
 
-## Question and Aims
+## Questions and Aims
 
 #### **16S Processing** \
 

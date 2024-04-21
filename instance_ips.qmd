@@ -1,0 +1,19 @@
+---
+title: "AWS Instance IP addresses"
+sidebar: false
+---
+
+
+```{r}
+#| message: false
+#| echo: false
+#| warning: false
+
+library(gt)
+library(tidyverse)
+
+ips <- read_csv("datasets/ips_for_workshop.csv")
+
+ips %>% gt() %>% opt_stylize(style = 6, color = 'gray') %>% cols_align(align = "center")
+
+```

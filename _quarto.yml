@@ -18,6 +18,8 @@ website:
     background: light
     foreground: dark
     right:
+      - text: "AWS Instance IPs"
+        href: instance_ips.qmd
       - text: "Installation"
         href: installation-instructions.qmd
       - text: "Datasets"
