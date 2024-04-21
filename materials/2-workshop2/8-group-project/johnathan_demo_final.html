@@ -333,78 +333,114 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="pre-processing" class="level3">
-<h3 class="anchored" data-anchor-id="pre-processing">Pre-processing</h3>
+<section id="s-processing" class="level3">
+<h3 class="anchored" data-anchor-id="s-processing">16S Processing</h3>
 <div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#reading in assays and metadata</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>amplicon_ids <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Group A Dataset Yogurt/04_yogurt_amplicon_sample_ids.csv"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>samp_id <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Group A Dataset Yogurt/00_sample_ids_yogurt.csv"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>participant_metadata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Group A Dataset Yogurt/01_participant_metadata_yogurt.csv"</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>qpcr <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Group A Dataset Yogurt/02_qpcr_results_yogurt.csv"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>luminex <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Group A Dataset Yogurt/03_luminex_results_yogurt.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>luminex <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Group A Dataset Yogurt/03_luminex_results_yogurt.csv"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>all_samples_count_table <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/gv_seqtab_nobim.rds"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>all_samples_tax_table <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/gv_spetab_nobim_silva.rds"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(all_samples_count_table <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">rownames_to_column</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> <span class="fu">head</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 18,687
+  amplicon_sample_id TAGGGAATCTTCCACAATGGACGCAAGTCTGATG…¹ TGAGGAATATTGGTCAATGG…²
+  &lt;chr&gt;                                             &lt;int&gt;                  &lt;int&gt;
+1 GUT0001                                              22                    397
+2 GUT0002                                              23                     77
+3 GUT0003                                               0                      0
+4 GUT0004                                             121                   3495
+5 GUT0005                                              51                      0
+6 GUT0006                                               0                  12139
+# ℹ abbreviated names:
+#   ¹​TAGGGAATCTTCCACAATGGACGCAAGTCTGATGGAGCAACGCCGCGTGAGTGAAGAAGGGTTTCGGCTCGTAAAGCTCTGTTGTTGGTGAAGAAGGACAGGGGTAGTAACTGACCTTTGTTTGACGGTAATCAATTAGAAAGTCACGGCTAACTACGTGCCAGCAGCCGCGGTAATACGTAGGTGGCAAGCGTTGTCCGGATTTATTGGGCGTAAAGCGAGTGCAGGCGGCTCGATAAGTCTGATGTGAAAGCCTTCGGCTCAACCGGAGAATTGCATCAGAAACTGTCGAGCTTGAGTACAGAAGAGGAGAGTGGAACTCCATGTGTAGCGGTGAAATGCGTAGATATATGGAAGAACACCGGTGGCGAAGGCGGCTCTCTGGTCTGTTACTGACGCTGAGGCTCGAAAGCATGGGTAGCGAACAGG,
+#   ²​TGAGGAATATTGGTCAATGGGCGAGAGCCTGAACCAGCCAAGTAGCGTGAAGGATGACTGCCCTATGGGTTGTAAACTTCTTTTATAAAGGAATAAAGTCGGGTATGGATACCCGTTTGCATGTACTTTATGAATAAGGATCGGCTAACTCCGTGCCAGCAGCCGCGGTAATACGGAGGATCCGAGCGTTATCCGGATTTATTGGGTTTAAAGGGAGCGTAGATGGATGTTTAAGTCAGTTGTGAAAGTTTGCGGCTCAACCGTAAAATTGCAGTTGATACTGGATATCTTGAGTGCAGTTGAGGCAGGCGGAATTCGTGGTGTAGCGGTGAAATGCTTAGATATCACGAAGAACTCCGATTGCGAAGGCAGCCTGCTAAGCTGCAACTGACATTGAGGCTCGAAAGTGTGGGTATCAAACAGG
+# ℹ 18,684 more variables:
+#   TGGGGAATCTTGCACAATGGGCGAAAGCCTGATGCAGCGACGCCGCGTGCGGGATGAAGGCCTTCGGGTTGTAAACCGCTTTCAGCAGGGACGAGGCCGCAAGGTGACGGTACCTGCAGAAGAAGCCCCGGCTAACTACGTGCCAGCAGCCGCGGTAATACGTAGGGGGCAAGCGTTATCCGGATTCATTGGGCGTAAAGCGCGCGTAGGCGGTCTGTTAGGTCAGGAGTTAAATCTGGGGGCTCAACCCCTATCCGCTCCTGATACCGGCAGGCTTGAGTCTGGTAGGGGAAGATGGAATTCCAAGTGTAGCGGTGAAATGCGCAGATATTTGGAAGAACACCGGTGGCGAAGGCGGTCTTCTGGGCCATGACTGACGCTGAGGCGCGAAAGCTAGGGGAGCGAACAGG &lt;int&gt;,
+#   TGGGGAATATTGCACAATGGGCGCAAGCCTGATGCAGCCATGCCGCGTGTATGAAGAAGGCCTTCGGGTTGTAAAGTACTTTCAGCGGGGAGGAAGGGAGTAAAGTTAATACCTTTGCTCATTGACGTTACCCGCAGAAGAAGCACCGGCTAACTCCGTGCCAGCAGCCGCGGTAATACGGAGGGTGCAAGCGTTAATCGGAATTACTGGGCGTAAAGCGCACGCAGGCGGTTTGTTAAGTCAGATGTGAAATCCCCGGGCTCAACCTGGGAACTGCATCTGATACTGGCAAGCTTGAGTCTCGTAGAGGGGGGTAGAATTCCAGGTGTAGCGGTGAAATGCGTAGAGATCTGGAGGAATACCGGTGGCGAAGGCGGCCCCCTGGACGAAGACTGACGCTCAGGTGCGAAAGCGTGGGGAGCAAACAGG &lt;int&gt;,
+#   TAGGGAATCTTCCACAATGGACGCAAGTCTGATGGAGCAACGCCGCGTGAGTGAAGAAGGTTTTCGGATCGTAAAGCTCTGTTGTTGGTGAAGAAGGATAGAGGTAGTAACTGGCCTTTATTTGACGGTAATCAACCAGAAAGTCACGGCTAACTACGTGCCAGCAGCCGCGGTAATACGTAGGTGGCAAGCGTTGTCCGGATTTATTGGGCGTAAAGCGAGCGCAGGCGGAAGAATAAGTCTGATGTGAAAGCCCTCGGCTTAACCGAGGAACTGCATCGGAAACTGTTTTTCTTGAGTGCAGAAGAGGAGAGTGGAACTCCATGTGTAGCGGTGGAATGCGTAGATATATGGAAGAACACCAGTGGCGAAGGCGGCTCTCTGGTCTGCAACTGACGCTGAGGCTCGAAAGCATGGGTAGTGAACAGG &lt;int&gt;, …</code></pre>
 </div>
+</div>
+<p>The count table columns as the ASVs and rows are each sample.</p>
+<p>Subsetting phyloseq object by yogurt dataset samples</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating sample data for the phyloseq by merging the csvs, also created log transformed cytokines</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>yogurt_sample_data <span class="ot">&lt;-</span> amplicon_ids <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(samp_id <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>arm), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"pid"</span>,<span class="st">"time_point"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(participant_metadata <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>arm), <span class="at">by =</span> <span class="st">"pid"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">arm_timepoint =</span> <span class="fu">str_c</span>(arm, time_point, <span class="at">sep =</span> <span class="st">"_"</span>)) <span class="sc">%&gt;%</span>            <span class="co">#creating a arm and timepoint column for later plotting</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(qpcr, <span class="at">by =</span> <span class="st">"sample_id"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(luminex <span class="sc">%&gt;%</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> cytokine, <span class="at">values_from =</span> <span class="fu">c</span>(conc,limits)), <span class="at">by =</span> <span class="st">"sample_id"</span>) <span class="sc">%&gt;%</span>      <span class="co">#will need to pivot the cyotokine data to longer to merge with sample data</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column_to_rownames</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="fu">starts_with</span>(<span class="st">"conc_"</span>)), <span class="fu">list</span>(<span class="at">log10 =</span> <span class="sc">~</span> <span class="fu">log10</span>(. <span class="sc">+</span> <span class="dv">1</span> )))</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># select(-matches("conc") | matches("log10")) %&gt;%</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#merging metadata with the full reads</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#get amplicon sample ids for the yogurt dataset</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>yogurt_ids <span class="ot">&lt;-</span> yogurt_sample_data <span class="sc">%&gt;%</span> </span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>              <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>              <span class="fu">rownames_to_column</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>              <span class="fu">pull</span>(amplicon_sample_id)</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">#filtering the count data by the yogurt ids, then removing unused ASVs - when sum of column is 0</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>count_table <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/gv_seqtab_nobim.rds"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>                <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>                <span class="fu">rownames_to_column</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>                <span class="fu">filter</span>(amplicon_sample_id <span class="sc">%in%</span> yogurt_ids) <span class="sc">%&gt;%</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="sc">-</span>amplicon_sample_id), as.numeric) <span class="sc">%&gt;%</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                <span class="fu">column_to_rownames</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                <span class="fu">select</span>(<span class="fu">where</span>(<span class="sc">~</span><span class="fu">sum</span>(.) <span class="sc">!=</span> <span class="dv">0</span>))</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co">#getting all asvs for the yogurt data</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>asvs <span class="ot">&lt;-</span> <span class="fu">colnames</span>(count_table)</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co">#filtering the taxa table so there is only asavs for the yogurt data</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>tax_table <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/gv_spetab_nobim_silva.rds"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>              <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>              <span class="fu">rownames_to_column</span>(<span class="st">"tax_table_asv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>              <span class="fu">filter</span>(tax_table_asv <span class="sc">%in%</span> asvs) <span class="sc">%&gt;%</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>              <span class="fu">column_to_rownames</span>(<span class="st">"tax_table_asv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>              <span class="fu">as.matrix</span>()</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co">#creating phyloseq object</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>yogurt_ps <span class="ot">&lt;-</span> <span class="fu">phyloseq</span>(<span class="fu">otu_table</span>(count_table, <span class="at">taxa_are_rows=</span><span class="cn">FALSE</span>), </span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>               <span class="fu">sample_data</span>(yogurt_sample_data), </span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>               <span class="fu">tax_table</span>(tax_table))</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co">#saving phyloseq so i dont have to regenerate it every time</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(yogurt_ps, <span class="st">"yogurt_ps.Rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating sample data for the phyloseq by merging the csvs, also created log transformed cytokines</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>yogurt_sample_data <span class="ot">&lt;-</span> amplicon_ids <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(samp_id <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>arm), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"pid"</span>,<span class="st">"time_point"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(participant_metadata <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>arm), <span class="at">by =</span> <span class="st">"pid"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">arm_timepoint =</span> <span class="fu">str_c</span>(arm, time_point, <span class="at">sep =</span> <span class="st">"_"</span>)) <span class="sc">%&gt;%</span>            <span class="co">#creating a arm and timepoint column for later plotting</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">arm_timepoint =</span> <span class="fu">fct_relevel</span>(arm_timepoint, <span class="st">"unchanged_diet_baseline"</span>, <span class="st">"unchanged_diet_after_antibiotic"</span>,<span class="st">"yogurt_baseline"</span>,<span class="st">"yogurt_after_antibiotic"</span>)) <span class="sc">%&gt;%</span>           <span class="co">#creating a arm and timepoint column for later plotting</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">time_point =</span> <span class="fu">fct_relevel</span>(time_point, <span class="st">"baseline"</span>, <span class="st">"after_antibiotic"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(qpcr, <span class="at">by =</span> <span class="st">"sample_id"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(luminex <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> cytokine, <span class="at">values_from =</span> <span class="fu">c</span>(conc,limits)), <span class="at">by =</span> <span class="st">"sample_id"</span>) <span class="sc">%&gt;%</span>      <span class="co">#will need to pivot the cyotokine data to longer to merge with sample data</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column_to_rownames</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="fu">starts_with</span>(<span class="st">"conc_"</span>)), <span class="fu">list</span>(<span class="at">log10 =</span> <span class="sc">~</span> <span class="fu">log10</span>(. <span class="sc">+</span> <span class="dv">1</span> )))</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># select(-matches("conc") | matches("log10")) %&gt;%</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#merging metadata with the full reads</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#get amplicon sample ids for the yogurt dataset</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>yogurt_ids <span class="ot">&lt;-</span> yogurt_sample_data <span class="sc">%&gt;%</span> </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>              <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>              <span class="fu">rownames_to_column</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>              <span class="fu">pull</span>(amplicon_sample_id)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#filtering the count data by the yogurt ids, then removing unused ASVs - when sum of column is 0</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>count_table <span class="ot">&lt;-</span> all_samples_count_table <span class="sc">%&gt;%</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>                <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>                <span class="fu">rownames_to_column</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>                <span class="fu">filter</span>(amplicon_sample_id <span class="sc">%in%</span> yogurt_ids) <span class="sc">%&gt;%</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="sc">-</span>amplicon_sample_id), as.numeric) <span class="sc">%&gt;%</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>                <span class="fu">column_to_rownames</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>                <span class="fu">select</span>(<span class="fu">where</span>(<span class="sc">~</span><span class="fu">sum</span>(.) <span class="sc">!=</span> <span class="dv">0</span>))</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co">#getting all asvs for the yogurt data</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>asvs <span class="ot">&lt;-</span> <span class="fu">colnames</span>(count_table)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="co">#filtering the taxa table so there is only asavs for the yogurt data</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>tax_table <span class="ot">&lt;-</span> all_samples_tax_table <span class="sc">%&gt;%</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>              <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>              <span class="fu">rownames_to_column</span>(<span class="st">"tax_table_asv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>              <span class="fu">filter</span>(tax_table_asv <span class="sc">%in%</span> asvs) <span class="sc">%&gt;%</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>              <span class="fu">column_to_rownames</span>(<span class="st">"tax_table_asv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>              <span class="fu">as.matrix</span>()</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="co">#creating phyloseq object</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>yogurt_ps <span class="ot">&lt;-</span> <span class="fu">phyloseq</span>(<span class="fu">otu_table</span>(count_table, <span class="at">taxa_are_rows=</span><span class="cn">FALSE</span>), </span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>               <span class="fu">sample_data</span>(yogurt_sample_data), </span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>               <span class="fu">tax_table</span>(tax_table))</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="co">#saving phyloseq so i dont have to regenerate it every time</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(yogurt_ps, <span class="st">"yogurt_ps.Rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section>
-<section id="phyloseq-cleaning" class="level3">
-<h3 class="anchored" data-anchor-id="phyloseq-cleaning">Phyloseq cleaning</h3>
+<section id="phyloseq-cleaning-add-cleaning-that-liz-did" class="level3">
+<h3 class="anchored" data-anchor-id="phyloseq-cleaning-add-cleaning-that-liz-did">Phyloseq cleaning (add cleaning that Liz did)</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#after merging the metadata and the count/tax table</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>yogurt_ps <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"yogurt_ps.Rds"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">tax_fix</span>(<span class="at">unknowns =</span> <span class="fu">c</span>(<span class="st">"unassigned"</span>), <span class="at">anon_unique =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">tax_mutate</span>(<span class="at">Genus_Species =</span> <span class="fu">str_c</span>(Genus, Species, <span class="at">sep =</span> <span class="st">" "</span>))</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>yogurt_ps <span class="sc">%&gt;%</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ps_seriate</span>(<span class="at">dist =</span> <span class="st">"bray"</span>, <span class="at">method =</span> <span class="st">"OLO_ward"</span>) <span class="sc">%&gt;%</span> <span class="co"># arranges samples by microbiome similarity</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comp_barplot</span>(<span class="at">tax_level =</span> <span class="st">"Genus_Species"</span>, <span class="at">facet_by =</span> <span class="fu">c</span>(<span class="st">"arm"</span>,<span class="st">"time_point"</span>), <span class="at">sample_order =</span> <span class="st">"bray"</span>, <span class="at">n_taxa =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#after merging the metadata and the count/tax table</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>yogurt_ps <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"yogurt_ps.Rds"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">tax_fix</span>(<span class="at">unknowns =</span> <span class="fu">c</span>(<span class="st">"unassigned"</span>), <span class="at">anon_unique =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">tax_mutate</span>(<span class="at">Genus_Species =</span> <span class="fu">str_c</span>(Genus, Species, <span class="at">sep =</span> <span class="st">" "</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>yogurt_ps <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ps_seriate</span>(<span class="at">dist =</span> <span class="st">"bray"</span>, <span class="at">method =</span> <span class="st">"OLO_ward"</span>) <span class="sc">%&gt;%</span> <span class="co"># arranges samples by microbiome similarity</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comp_barplot</span>(<span class="at">tax_level =</span> <span class="st">"Genus_Species"</span>, <span class="at">facet_by =</span> <span class="fu">c</span>(<span class="st">"arm"</span>,<span class="st">"time_point"</span>), <span class="at">sample_order =</span> <span class="st">"bray"</span>, <span class="at">n_taxa =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -412,38 +448,302 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#The taxa names can use some updating</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>updated_yogurt_ps <span class="ot">&lt;-</span> yogurt_ps <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># tax_select(tax_list = "Lactobacillus", ranks = "Genus") %&gt;%  #filters for Lactos</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">tax_mutate</span>(<span class="at">Species =</span> <span class="fu">case_when</span>(</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                        Species <span class="sc">==</span> <span class="st">"Lactobacillus Genus"</span> <span class="sc">~</span> <span class="st">"crispatus"</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                        Species <span class="sc">==</span>  <span class="st">"acidophilus/casei/crispatus/gallinarum"</span> <span class="sc">~</span> <span class="st">"crispatus"</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                        Species <span class="sc">==</span> <span class="st">"crispatus/gasseri/helveticus/johnsonii/kefiranofaciens"</span> <span class="sc">~</span> <span class="st">"crispatus"</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                        Species <span class="sc">==</span> <span class="st">"animalis/apodemi/crispatus/murinus"</span> <span class="sc">~</span> <span class="st">"crispatus"</span>,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">.default =</span> Species</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                    ))<span class="sc">%&gt;%</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">tax_mutate</span>(<span class="at">Genus_Species =</span> <span class="fu">str_c</span>(Genus, Species, <span class="at">sep =</span> <span class="st">" "</span>))</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>updated_yogurt_ps <span class="sc">%&gt;%</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ps_seriate</span>(<span class="at">dist =</span> <span class="st">"bray"</span>, <span class="at">method =</span> <span class="st">"OLO_ward"</span>) <span class="sc">%&gt;%</span> <span class="co"># arranges samples by microbiome similarity</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comp_barplot</span>(<span class="at">tax_level =</span> <span class="st">"Genus_Species"</span>, <span class="at">facet_by =</span> <span class="fu">c</span>(<span class="st">"arm"</span>,<span class="st">"time_point"</span>), <span class="at">sample_order =</span> <span class="st">"bray"</span>, <span class="at">n_taxa =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#The taxa names can use some updating</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>updated_yogurt_ps <span class="ot">&lt;-</span> yogurt_ps <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># tax_select(tax_list = "Lactobacillus", ranks = "Genus") %&gt;%  #filters for Lactos</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">tax_mutate</span>(<span class="at">Species =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                        Species <span class="sc">==</span> <span class="st">"Lactobacillus Genus"</span> <span class="sc">~</span> <span class="st">"crispatus"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                        Species <span class="sc">==</span>  <span class="st">"acidophilus/casei/crispatus/gallinarum"</span> <span class="sc">~</span> <span class="st">"crispatus"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                        Species <span class="sc">==</span> <span class="st">"crispatus/gasseri/helveticus/johnsonii/kefiranofaciens"</span> <span class="sc">~</span> <span class="st">"crispatus"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                        Species <span class="sc">==</span> <span class="st">"animalis/apodemi/crispatus/murinus"</span> <span class="sc">~</span> <span class="st">"crispatus"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">.default =</span> Species</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                    ))<span class="sc">%&gt;%</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">tax_mutate</span>(<span class="at">Genus_Species =</span> <span class="fu">str_c</span>(Genus, Species, <span class="at">sep =</span> <span class="st">" "</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="exploring-high-dimensional-data" class="level3">
+<h3 class="anchored" data-anchor-id="exploring-high-dimensional-data">Exploring High Dimensional Data</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>updated_yogurt_ps <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ps_seriate</span>(<span class="at">dist =</span> <span class="st">"bray"</span>, <span class="at">method =</span> <span class="st">"OLO_ward"</span>) <span class="sc">%&gt;%</span> <span class="co"># arranges samples by microbiome similarity</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comp_barplot</span>(<span class="at">tax_level =</span> <span class="st">"Genus_Species"</span>, <span class="at">facet_by =</span> <span class="fu">c</span>(<span class="st">"arm"</span>,<span class="st">"time_point"</span>), <span class="at">sample_order =</span> <span class="st">"bray"</span>, <span class="at">n_taxa =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'seriation':
+  method         from 
+  reorder.hclust vegan</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="johnathan_demo_final_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="johnathan_demo_final_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="1440"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Absolute abundance after antibiotics</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>updated_yogurt_ps <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">samdat_tbl</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(.sample_name, pid, arm, time_point, arm_timepoint, <span class="fu">starts_with</span>(<span class="st">"qpcr"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(qpcr_bacteria, qpcr_crispatus, qpcr_iners), <span class="at">names_to =</span> <span class="st">"qpcr"</span>, <span class="at">values_to =</span> <span class="st">"copies"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">copies =</span> copies <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_point =</span> <span class="fu">fct_relevel</span>(time_point, <span class="st">"baseline"</span>, <span class="st">"after_antibiotic"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>time_point, <span class="at">y =</span> copies)) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(arm, qpcr), <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_log10</span>(<span class="at">labels=</span>scales<span class="sc">::</span><span class="fu">label_log</span>()) <span class="sc">+</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_cowplot</span>() <span class="sc">+</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">background_grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="johnathan_demo_final_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="1440"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="diversity" class="level3">
-<h3 class="anchored" data-anchor-id="diversity">Diversity</h3>
+<section id="diversity-alpha-diversity" class="level3">
+<h3 class="anchored" data-anchor-id="diversity-alpha-diversity">Diversity (Alpha Diversity)</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#alpha div</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#observed richness</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>updated_yogurt_ps <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ps_calc_richness</span>(<span class="at">rank =</span> <span class="st">"Genus"</span>, <span class="at">index =</span> <span class="st">"observed"</span>, <span class="at">varname =</span> <span class="st">"n_genuses"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">comp_barplot</span>(</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">tax_level =</span> <span class="st">"Genus"</span>, <span class="at">n_taxa =</span> <span class="dv">14</span>, <span class="at">label =</span> <span class="st">"n_genuses"</span>, <span class="at">bar_width =</span> <span class="fl">0.8</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_order =</span> <span class="st">"bray"</span>, <span class="at">merge_other =</span> <span class="cn">FALSE</span>, <span class="at">facet_by =</span> <span class="fu">c</span>(<span class="st">"arm"</span>,<span class="st">"time_point"</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="johnathan_demo_final_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#shannon</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>updated_yogurt_ps <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ps_calc_diversity</span>(<span class="at">rank =</span> <span class="st">"Genus"</span>, <span class="at">index =</span> <span class="st">"shannon"</span>, <span class="at">varname =</span> <span class="st">"Shannon_Genus"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ps_arrange</span>(Shannon_Genus) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ps_mutate</span>(<span class="at">Shannon =</span> <span class="fu">formatC</span>(Shannon_Genus, <span class="at">digits =</span> <span class="dv">2</span>, <span class="at">format =</span> <span class="st">"f"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">comp_barplot</span>(</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">tax_level =</span> <span class="st">"Genus"</span>, <span class="at">n_taxa =</span> <span class="dv">14</span>, <span class="at">label =</span> <span class="st">"Shannon"</span>, <span class="at">bar_width =</span> <span class="fl">0.8</span>,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_order =</span> <span class="st">"bray"</span>, <span class="at">merge_other =</span> <span class="cn">FALSE</span>, <span class="at">facet_by =</span> <span class="fu">c</span>(<span class="st">"arm"</span>,<span class="st">"time_point"</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="johnathan_demo_final_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#does vaginal microbiome diversity differ by yogurt diet and/or antibiotics?</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>yogurt_shannon <span class="ot">&lt;-</span> updated_yogurt_ps <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">ps_calc_diversity</span>(<span class="at">rank =</span> <span class="st">"Genus"</span>, <span class="at">index =</span> <span class="st">"shannon"</span>, <span class="at">exp  =</span><span class="cn">TRUE</span>, <span class="at">varname =</span> <span class="st">"Shannon_Genus"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">samdat_tbl</span>()</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>yogurt_shannon <span class="sc">%&gt;%</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> Shannon_Genus, <span class="at">x =</span> arm_timepoint, <span class="at">color =</span> arm)) <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>          <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>          <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>          <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>, <span class="at">guide =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>          <span class="fu">labs</span>( <span class="at">y =</span> <span class="st">"Effective Shannon Diversity"</span>) <span class="sc">+</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>          <span class="fu">theme_cowplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="johnathan_demo_final_files/figure-html/unnamed-chunk-7-3.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In the yogurt arm, is there greater diversity before antibiotics?</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>yogurt_shannon <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(arm <span class="sc">==</span> <span class="st">"yogurt"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wilcox.test</span>(<span class="at">formula =</span> Shannon_Genus <span class="sc">~</span> time_point, <span class="at">data =</span> .)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum exact test
+
+data:  Shannon_Genus by time_point
+W = 234, p-value = 0.05776
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+</div>
 </section>
-<section id="ordination" class="level3">
-<h3 class="anchored" data-anchor-id="ordination">Ordination</h3>
+<section id="ordination-beta-diversity" class="level3">
+<h3 class="anchored" data-anchor-id="ordination-beta-diversity">Ordination (Beta Diversity)</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>updated_yogurt_ps <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tax_transform</span>(<span class="at">trans =</span> <span class="st">"compositional"</span>, <span class="at">rank =</span> <span class="st">"Genus_Species"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dist_calc</span>(<span class="at">dist =</span> <span class="st">"bray"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ord_calc</span>(<span class="at">method =</span> <span class="st">"PCoA"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ord_plot</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="fl">0.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="johnathan_demo_final_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="correlation" class="level3">
+<h3 class="anchored" data-anchor-id="correlation">Correlation</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#How well does qPCR data correlate wtih 16s?</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#melt the data for plotting</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>melted_yogurt_ps <span class="ot">&lt;-</span> updated_yogurt_ps <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    microViz<span class="sc">::</span><span class="fu">ps_melt</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Sample, pid, arm, time_point, sample_id, arm_timepoint, qpcr_bacteria, qpcr_iners, qpcr_crispatus, Kingdom, Phylum, Class, Order, Family, Genus, Species, Genus_Species) <span class="sc">%&gt;%</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">sum</span>(Abundance)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Sample) <span class="sc">%&gt;%</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">rel_abundance =</span> count <span class="sc">/</span> <span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'Sample', 'pid', 'arm', 'time_point',
+'sample_id', 'arm_timepoint', 'qpcr_bacteria', 'qpcr_iners', 'qpcr_crispatus',
+'Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus', 'Species'. You can
+override using the `.groups` argument.</code></pre>
+</div>
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#how does Lactobacillus correlate with cytokines?</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cytokine_data &lt;- updated_yogurt_ps %&gt;% </span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   samdat_tbl() %&gt;% view</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     group_by(Sample) %&gt;%</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#     mutate(rel_abundance = count / sum(count)) %&gt;%</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#     ungroup()</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># # qpcr vs 16s</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># melted_yogurt_ps %&gt;%</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(Genus == "Lactobacillus" &amp; Species == "crispatus") %&gt;%</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   mutate(qpcr_crispatus = ifelse(qpcr_crispatus &gt;= qpcr_bacteria, qpcr_bacteria, qpcr_crispatus)) %&gt;% </span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   mutate(rel_qpcr_crispatus = qpcr_crispatus / qpcr_bacteria) %&gt;% </span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co">#   ggplot(aes(x = rel_abundance, y = rel_qpcr_crispatus)) +</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co">#     geom_point()+</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="co">#     # scale_y_log10() + </span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co">#     theme_cowplot() + </span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="co">#     background_grid()</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="co">#how does Lactobacillus correlate with cytokines?</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>cytokine_data <span class="ot">&lt;-</span> updated_yogurt_ps <span class="sc">%&gt;%</span> </span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">samdat_tbl</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(.sample_name, sample_id, arm, time_point, arm_timepoint, <span class="fu">starts_with</span>(<span class="st">"conc"</span>))</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># pivot_longer(c(starts_with("conc")), names_to = "analyte", values_to = "conc") %&gt;%</span></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter(!str_detect(analyte, "log")) %&gt;%</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mutate(analyte = str_replace(analyte, "conc_", ""))</span></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a><span class="co">#correlation plots</span></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>melted_yogurt_ps <span class="sc">%&gt;%</span></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Genus <span class="sc">==</span> <span class="st">"Lactobacillus"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Sample, arm_timepoint, pid, sample_id, Kingdom, Phylum, Class, Order, Family, Genus) <span class="sc">%&gt;%</span></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">rel_abundance =</span> <span class="fu">sum</span>(rel_abundance)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(cytokine_data, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"Sample"</span> <span class="ot">=</span> <span class="st">".sample_name"</span>, <span class="st">"arm_timepoint"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(<span class="fu">starts_with</span>(<span class="st">"conc"</span>)), <span class="at">names_to =</span> <span class="st">"analyte"</span>, <span class="at">values_to =</span> <span class="st">"conc"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(analyte, <span class="st">"log"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">analyte =</span> <span class="fu">str_replace</span>(analyte, <span class="st">"conc_"</span>, <span class="st">""</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(analyte) <span class="sc">%&gt;%</span></span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cor =</span> <span class="fu">cor</span>(rel_abundance, conc, <span class="at">method=</span><span class="st">"spearman"</span>) <span class="sc">%&gt;%</span> scales<span class="sc">::</span><span class="fu">label_number</span>(<span class="at">accuracy =</span> <span class="fl">0.01</span>)()) <span class="sc">%&gt;%</span></span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">facet_label =</span> <span class="fu">str_c</span>(analyte, <span class="st">" *(ρ = "</span>, cor, <span class="st">")*"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> rel_abundance, <span class="at">y =</span> conc)) <span class="sc">+</span></span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> arm_timepoint)) <span class="sc">+</span></span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>, <span class="at">guide =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels=</span>scales<span class="sc">::</span><span class="fu">label_log</span>()) <span class="sc">+</span></span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(facet_label), <span class="at">scales=</span><span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_cowplot</span>() <span class="sc">+</span> </span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">background_grid</span>() <span class="sc">+</span> </span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> ggtext<span class="sc">::</span><span class="fu">element_markdown</span>(), <span class="at">strip.text =</span>  ggtext<span class="sc">::</span><span class="fu">element_markdown</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'Sample', 'arm_timepoint', 'pid',
+'sample_id', 'Kingdom', 'Phylum', 'Class', 'Order', 'Family'. You can override
+using the `.groups` argument.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `cor = cor(rel_abundance, conc, method = "spearman") %&gt;%
+  (scales::label_number(accuracy = 0.01))()`.
+ℹ In group 2: `analyte = "IL.10"`.
+Caused by warning in `cor()`:
+! the standard deviation is zero</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="johnathan_demo_final_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="microbiome-heatmaps" class="level3">
+<h3 class="anchored" data-anchor-id="microbiome-heatmaps">Microbiome heatmaps</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>updated_yogurt_ps <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tax_sort</span>(<span class="at">by =</span> sum, <span class="at">at =</span> <span class="st">"Genus"</span>, <span class="at">trans =</span> <span class="st">"compositional"</span>, <span class="at">tree_warn =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tax_transform</span>(<span class="at">trans =</span> <span class="st">"compositional"</span>, <span class="at">rank =</span> <span class="st">"Genus"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>      <span class="co"># tax_transform(trans = "clr", zero_replace = "halfmin", chain = TRUE, rank = "Genus_Species") %&gt;%</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">comp_heatmap</span>(<span class="at">samples =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">51</span>, <span class="at">taxa =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>, <span class="at">name =</span> <span class="st">"Proportions"</span>, <span class="at">tax_seriation =</span> <span class="st">"Identity"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="johnathan_demo_final_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="differential-abundance" class="level3">
 <h3 class="anchored" data-anchor-id="differential-abundance">Differential Abundance</h3>
+</section>
+<section id="integrating-metagenomics" class="level3">
+<h3 class="anchored" data-anchor-id="integrating-metagenomics">Integrating metagenomics</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>yogurt_virgo <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"/home/jshih38/Downloads/YogurtDataset_VIRGO2.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="can-plot-virgo-genes-vs-taxa-diff-abundance-can-plot-qpcr-vs-16s-plot-16s-vs-cytokines" class="level1">
+<h1>can plot virgo genes vs taxa, diff abundance, can plot qpcr vs 16s, plot 16s vs cytokines</h1>
 
 
 </section>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science for Biology Workshop Series - Research Project B</title>
+<title>Data Science for Biology Workshop Series -</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -126,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Research Project B</h1>
+          <h1 class="quarto-secondary-nav-title"></h1>
         </a>     
     </div>
   </nav>
@@ -282,56 +282,93 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#does-birth-control-change-inflammation-during-menstruation" id="toc-does-birth-control-change-inflammation-during-menstruation" class="nav-link active" data-scroll-target="#does-birth-control-change-inflammation-during-menstruation">Does birth control change inflammation during menstruation? <img src="images/birth_control.png" class="img-fluid" style="width:15.0%"></a></li>
+  <li><a href="#question-and-aims" id="toc-question-and-aims" class="nav-link" data-scroll-target="#question-and-aims">Question and Aims</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title d-none d-lg-block">Research Project B</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
+<section id="research-project-b" class="level5">
+<h5 class="anchored" data-anchor-id="research-project-b">Research Project B<br>
+</h5>
+</section>
 <section id="does-birth-control-change-inflammation-during-menstruation" class="level2">
 <h2 class="anchored" data-anchor-id="does-birth-control-change-inflammation-during-menstruation">Does birth control change inflammation during menstruation? <img src="images/birth_control.png" class="img-fluid" style="width:15.0%"></h2>
-<section id="questions-and-aims-for-birth-control-dataset-to-be-updated-with-birth-control-data-and-lecture-slide-notes" class="level4">
-<h4 class="anchored" data-anchor-id="questions-and-aims-for-birth-control-dataset-to-be-updated-with-birth-control-data-and-lecture-slide-notes">Questions and aims for birth control dataset (!To be updated with birth control data and lecture slide notes)</h4>
-<p><strong>16S processing</strong><br>
-</p>
+<section id="description" class="level4">
+<h4 class="anchored" data-anchor-id="description"><strong>Description</strong></h4>
+<p>This is an observational study to evaluate the relationship between birth control and vaginal inflammation. In response to menstruation. 16S rRNA sequencing was done to characterize patient microbiome composition. Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation.</p>
+</section>
+</section>
+<section id="question-and-aims" class="level2">
+<h2 class="anchored" data-anchor-id="question-and-aims">Question and Aims</h2>
+<section id="s-processing" class="level4">
+<h4 class="anchored" data-anchor-id="s-processing"><strong>16S Processing</strong><br>
+</h4>
 <ul>
-<li>Identify project files on your instance</li>
-<li>What are some pre-processing steps to take before running Dada2?</li>
-<li>What can you say about the quality of the reads?</li>
-<li>Merge data from other assays</li>
-<li>Generate a phyloseq object</li>
-<li>Phyloseq cleaning</li>
-<li>Optional: Can you use the control samples to test Dada2’s accuracy?</li>
+<li>Identify project files on your instance
+<ul>
+<li>What does the count table represent? What are the columns and rows?</li>
+</ul></li>
+<li>Subset phyloseq object by birth control dataset samples
+<ul>
+<li>Filter count table by samples</li>
+<li>Remove unused ASVs</li>
+<li>Filter tax_table by the ASVs<br>
+</li>
+</ul></li>
+<li>Merge data from other assays
+<ul>
+<li>Which columns should you use to merge columns?</li>
+</ul></li>
+<li>Create phyloseq object</li>
+<li>Phyloseq cleaning (Liz’s slides)
+<ul>
+<li>Fix NAs <!-- * Optional: Can you use the control samples to test Dada2's accuracy? --></li>
+</ul></li>
 </ul>
-<p><strong>16S analysis</strong></p>
+</section>
+<section id="exploring-high-dimensional-data" class="level4">
+<h4 class="anchored" data-anchor-id="exploring-high-dimensional-data"><strong>Exploring High Dimensional Data</strong><br>
+</h4>
 <ul>
-<li>Generate plots to compare relative abundance across arms and time points</li>
+<li>Plot the microbiome!</li>
+<li>Generate plots to compare relative abundance across arms and time points
+<ul>
 <li>What are noticable differences after antibiotic treatment?</li>
-<li><strong>Does consumption of yogurt influence people’s microbiome?</strong></li>
-<li>Are there ways to change the scale so that taxa at lower abundance can be more easily visualized?</li>
-<li>Use a distance metric and explain what it means when comparing across groups</li>
-<li>Conduct differential abundance testing (simply wilcoxon or using DESeq2?)</li>
-<li>Incorporate shotgun metagenomic data into the phyloseq</li>
+<li><strong>How does taking birth control influence a patient’s microbiome across their menstrual cycle?</strong></li>
+</ul></li>
+<li>How do cytokines correlate with Lactobacillus?<br>
+</li>
+<li>Which cytokines correlate with certain taxa?
+<ul>
+<li>Create a heatmap</li>
+</ul></li>
+<li>How do the number of immune cells vary across time points?</li>
+<li>Are there ways to change the scale so that taxa at lower abundance can be more easily visualized? (transformations)</li>
 <li>Optional: Use microViz to explore the phyloseq object</li>
+</ul>
+</section>
+<section id="further-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="further-analysis"><strong>Further Analysis</strong></h4>
+<ul>
+<li>Microbiome diversity
+<ul>
+<li>Compute Shannon Indices</li>
+</ul></li>
+<li>Ordination
+<ul>
+<li>What are some distance metrics?</li>
+</ul></li>
+<li>Differential Abundance testing (joseph’s slides)
+<ul>
+<li>Statistical modeling</li>
+<li>Create a taxa tree</li>
+</ul></li>
+<li>Incorporate metagenomic data into the phyloseq (micahel’s slides)</li>
 </ul>
 
 
