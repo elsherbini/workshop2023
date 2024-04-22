@@ -1,0 +1,111 @@
+---
+title: "16S Data Analysis Part I"
+subtitle: "Elizabeth Costello, Ph.D. - Stanford University"
+format: qmdrslides-revealjs
+editor: source
+---
+
+Workshop materials can be found here:
+
+<https://elsherbini.github.io/durban-data-science-for-biology/>
+
+## Hello 👋👋
+
+My name is Elizabeth Costello (**Liz**)
+
++ I'm a Research Scientist in David Relman's lab at Stanford University's School of Medicine.
+
++ I enjoy microbial ecology, bioinformatics AND spending time outdoors.
+
+![Liz kayaking](images/kayaking.jpg){fig-alt="A picture of Liz kayaking" fig-align="left" width="600"}
+
+## Workflow check-in
+
+Let's review what we've done and what's next
+
+::: incremental
++ Done: Starting with the raw sequence data, we filtered, trimmed, inferred ASVs, removed chimeras, and assigned taxonomy.
+
++ Next up: Take the results of these steps (count table; taxonomy table) and do some initial and exploratory data analysis.
+:::
+
+## 🎯 Goals for this module
+
+::: incremental
+1. Understand what exploratory data analysis is
+
+2. Apply exploratory data analysis to 16S data
+    a. Get to know the data
+    b. Create a `phyloseq` object
+    c. Explore (stacked) bar plots
+    d. Explore alpha (within-sample) diversity
+    e. Explore beta (between-sample) diversity using ordination
+
+3. Become familiar with the `phyloseq` package
+:::
+
+## Exploratory data analysis
+
+A popular quote:
+
+. . .
+
+*"Exploratory data analysis is an attitude, a flexibility, and a reliance on display, NOT a bundle of techniques"* -John Tukey
+
+. . .
+
+🫣 What do the data look like? 🔬
+
+## Key considerations for molecular survey data
+
+::: incremental
++ Uneven/incomplete sampling depth
++ Wideness/sparseness
++ Compositionality
++ Collinearities
++ Confounders
++ "Garbage in, garbage out"
+:::
+
+## The `phyloseq` package {.smaller}
+
+![McMurdie & Holmes (2013)](images/phyloseq.png){fig-alt="McMurdie fig 3" fig-align="center" width="600"}
+
+## Alpha diversity (𝜶) {.smaller}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+![Fierer *et al*. (2012)](images/diversity.png){fig-alt="Fierer fig 2" fig-align="left" width="600"}
+:::
+
+::: {.column width="40%"}
++ *Within*-sample diversity
++ **Richness**: The number of taxa or lineages within a given sample
++ **Evenness**: The relative abundance of taxa or lineages within a given sample
++ A metric that considers both richness & evenness (e.g., the Shannon diversity index)
+:::
+
+::::
+
+## Beta diversity (β) {.smaller}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+![Fierer *et al*. (2012)](images/diversity.png){fig-alt="Fierer fig 2" fig-align="left" width="600"}
+:::
+
+::: {.column width="40%"}
++ *Between*-sample diversity
++ Taxonomic or phylogenetic difference in community composition between samples
++ Various measures of pairwise resemblance
++ Dimensionality reduction (e.g., ordination)
++ Identify primary sources of variation in data
+:::
+
+::::
+
+## Let's analyze some data!
+
+Go to RStudio, navigate to directory 16S_part1, and open Quarto document 16S_part1_code.qmd

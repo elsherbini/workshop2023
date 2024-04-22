@@ -2,7 +2,7 @@
 title: "16S Data Processing"
 format:
   html:
-    toc: true
+    toc: false
 ---
   
 ## Slides
@@ -10,3 +10,5 @@ format:
 ```{=html}
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSDDNPU7vfFf3C7eFSqQE1_XePWXvvpBeJp1N7GtheUj9ta0FpiRO7pGlTBgrUasa-fsh82O4nS9JsG/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 ```
+
+{{< include _rworkshop_tut.qmd >}}
