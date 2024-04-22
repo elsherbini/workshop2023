@@ -86,11 +86,15 @@ Bathrooms are out the lobby to your left
 
 ## Correlations are exploratory / observational
 
-## Correlations can be spurious
+## Correlations can be "spurious"
 
 ## spurious example
 
+https://www.tylervigen.com/spurious/correlation/2592_the-distance-between-uranus-and-earth_correlates-with_asthma-prevalence-in-american-children
+
 ## How do we perform correlations on microbial taxa?
+
+
 
 ## one at a time
 
