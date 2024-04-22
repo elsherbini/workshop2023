@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -74,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -282,15 +316,7 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -316,8 +342,266 @@ ul.task-list li input[type="checkbox"] {
 <section id="slides" class="level2">
 <h2 class="anchored" data-anchor-id="slides">Slides</h2>
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSDDNPU7vfFf3C7eFSqQE1_XePWXvvpBeJp1N7GtheUj9ta0FpiRO7pGlTBgrUasa-fsh82O4nS9JsG/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+</section>
+<section id="load-packages-of-interest" class="level1">
+<h1>Load packages of interest</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dada2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phyloseq)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="specify-path-to-the-files" class="level2">
+<h2 class="anchored" data-anchor-id="specify-path-to-the-files">Specify path to the files</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">"../subsampled_reads/Gut"</span> <span class="do">## CHANGE to the directory containing the fastq files.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#list.files(path) # this lists the names of each file inside the directory </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="separate-foward-and-reverse-reads-using-file-extensions" class="level2">
+<h2 class="anchored" data-anchor-id="separate-foward-and-reverse-reads-using-file-extensions">Separate foward and reverse reads using file extensions</h2>
+<p>This allows you to assess the quality of the foward and reverse reads appropriately</p>
+<p><code>list.files</code> function is used with specific patterns (“R1.fastq.gz” for forward reads and “R2.fastq.gz” for reverse reads) to separate the forward and reverse reads.</p>
+<p>The sort function ensures that the forward and reverse reads are in the same order, which is necessary for the subsequent paired-end read assembly and analysis.</p>
+<p><code>full.names = TRUE</code>: This argument specifies that you want the full path names of the files rather than just their names.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort ensures forward/reverse reads are in same order</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>fwdR<span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">list.files</span>(path, <span class="at">pattern =</span> <span class="st">"R1.fastq.gz"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>revR <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">list.files</span>(path, <span class="at">pattern =</span> <span class="st">"R2.fastq.gz"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="inspect-the-quality-of-the-reads" class="level2">
+<h2 class="anchored" data-anchor-id="inspect-the-quality-of-the-reads">Inspect the quality of the reads</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotQualityProfile</span>(fwdR[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotQualityProfile</span>(revR[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Red line: Represents the scaled proportion of reads that extend to at least a certain position in the sequencing read.</p>
+<p>In the context of next-generation sequencing (NGS), reads are the sequences generated by the sequencing machine. The length of these reads can vary depending on the technology used and the specific settings of the sequencing run. The “position” in this context refers to the position along the length of the reads. For example, position 1 would be the first base of the reads, position 2 would be the second base, and so on. The “scaled proportion of reads that extend to at least that position” means the proportion of reads that are at least as long as that position, adjusted (or scaled) for the total number of reads. This kind of plot can be used to assess the quality of the sequencing run. For example, if a large proportion of reads do not extend to the expected full length, it may indicate an issue with the sequencing process, such as poor quality of the DNA input or a technical problem with the sequencing machine.</p>
+<p>The number after the red line in a sequencing analysis plot typically represents the count or proportion of reads that extend to at least the position indicated by the red line. This can be used to assess the quality and depth of the sequencing data. If the number is high, it means that a large proportion of the reads extend to the full length, which is generally a good sign. It indicates that the sequencing process was successful and that the data is of high quality. Conversely, if the number is low, it suggests that many reads did not extend to the full length. This could be due to various factors such as poor quality of the DNA input, technical issues with the sequencing machine, or errors in the sequencing process. It’s important to note that the specifics can vary depending on the exact context and the software or pipeline being used. Therefore, it’s always a good idea to refer to the documentation or guidelines associated with the specific sequencing analysis pipeline you’re using.</p>
+</section>
+<section id="extract-sample-names" class="level2">
+<h2 class="anchored" data-anchor-id="extract-sample-names">Extract sample names</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sample.names <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">strsplit</span>(<span class="fu">basename</span>(fwdR), <span class="st">"_R"</span>), <span class="st">`</span><span class="at">[</span><span class="st">`</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>sapply is a function that applies a given function to each element of a list or vector and returns the results in a simplified format.</p>
+<p>strsplit separates each element of the character vector fwdR at the “_R” character.</p>
+<p>basename(fwdR) extracts the last part of the file path specified by fwdR. It removes the directory part of the file path and returns only the file name.</p>
+<p>The sapply function is used to apply the subsetting function to each element of the list returned by strsplit. The 1 inside indicates that we want to keep only the first element of each split character vector.</p>
+</section>
+<section id="name-the-filtered-reads" class="level2">
+<h2 class="anchored" data-anchor-id="name-the-filtered-reads">Name the filtered reads</h2>
+<p>To identify the filtered reads, we add a string “_F_filt” to the sample names paste0 allows you to put the file extension “_F_filt.fastq.gz” to each element of the sample.names vector.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span>(<span class="fu">str_c</span>(path, <span class="st">"/filtered"</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>filtFs <span class="ot">&lt;-</span> <span class="fu">file.path</span>(path,<span class="st">"filtered"</span>, <span class="fu">paste0</span>(sample.names, <span class="st">"_F_filt.fastq.gz"</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>filtRs <span class="ot">&lt;-</span> <span class="fu">file.path</span>(path,<span class="st">"filtered"</span>, <span class="fu">paste0</span>(sample.names, <span class="st">"_R_filt.fastq.gz"</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(filtFs) <span class="ot">&lt;-</span> sample.names</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(filtRs) <span class="ot">&lt;-</span> sample.names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>file.path(path, "filtered", paste0(sample.names, "\_F_filt.fastq.gz"))</code>: This part constructs the file paths for the filtered reads. <code>file.path()</code> concatenates directory paths and file names. <code>path</code> = base directory where the raw files are located. <code>"filtered"</code> is a subdirectory within path. <code>paste0(sample.names, "\_F_filt.fastq.gz")</code> creates file names by appending each sample name from the vector sample.names with <code>"\_F_filt.fastq.gz"</code>.</p>
+<p><code>names(filtFs) &lt;- sample.names</code> and <code>names(filtRs) &lt;- sample.names</code>: These lines assign the sample names to the constructed file paths. This way, each file path is associated with its corresponding sample name.</p>
+</section>
+<section id="filter-and-trim" class="level2">
+<h2 class="anchored" data-anchor-id="filter-and-trim">Filter and trim</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">filterAndTrim</span>(fwdR,filtFs,revR,filtRs,<span class="at">compress=</span><span class="cn">TRUE</span>,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">truncLen=</span><span class="fu">c</span>(<span class="dv">300</span>,<span class="dv">270</span>), <span class="co">#truncation length (fwdR,revR) </span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">maxN=</span><span class="dv">0</span>,<span class="co">#sequences that contain no unknown bases</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">maxEE=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">truncQ=</span><span class="dv">2</span> , <span class="at">multithread =</span> <span class="cn">TRUE</span>  </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                     )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>compress = TRUE</code>: Indicates whether or not to compress the output. truncLen: Specifies the truncation length for the forward and reverse reads, respectively. maxN = 0: Maximum number of unknown bases allowed in the sequences. maxEE = c(2, 2): Specifies the maximum expected errors for the forward and reverse reads, respectively. truncQ = 2: Quality score threshold for truncation.</p>
+<p>Multithreading is a programming technique used to achieve multitasking within a single process. It allows a program to perform multiple tasks concurrently by breaking them into smaller threads of execution that can run independently.</p>
+<p>The multithread parameter is controlling whether the filterAndTrim function will utilize multiple threads (multithreading) to process the data in parallel.</p>
+</section>
+<section id="inspect-filtered-reads" class="level2">
+<h2 class="anchored" data-anchor-id="inspect-filtered-reads">Inspect filtered reads</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(out)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(out, <span class="at">file=</span><span class="st">"filtering_summary.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="specify-the-minimum-number-of-reads-expected-post-filtering-and-trimming" class="level3">
+<h3 class="anchored" data-anchor-id="specify-the-minimum-number-of-reads-expected-post-filtering-and-trimming">Specify the minimum number of reads expected post filtering and trimming</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>keep <span class="ot">&lt;-</span> out[,<span class="st">"reads.out"</span>] <span class="sc">&gt;</span> <span class="dv">200</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="determine-number-of-samples-that-are-to-be-kept" class="level2">
+<h2 class="anchored" data-anchor-id="determine-number-of-samples-that-are-to-be-kept">Determine number of samples that are to be kept</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(out[keep])<span class="sc">/</span><span class="dv">2</span> <span class="co"># number samples w/ over 200 reads</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#404 samples out of 418</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="determine-the-percentage-of-remaining-samples" class="level3">
+<h3 class="anchored" data-anchor-id="determine-the-percentage-of-remaining-samples">Determine the percentage of remaining samples</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">length</span>(out[keep]))<span class="sc">/</span><span class="dv">2</span><span class="sc">/</span>(<span class="fu">length</span>(out)<span class="sc">/</span><span class="dv">2</span>) <span class="co"># percent of samples kept</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a> <span class="co">#0.9665072 good number </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="determine-samples-to-keep-for-downstream-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="determine-samples-to-keep-for-downstream-analysis">Determine samples to keep for downstream analysis</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>filtFs <span class="ot">&lt;-</span> <span class="fu">file.path</span>(filtFs)[keep]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>filtRs <span class="ot">&lt;-</span> <span class="fu">file.path</span>(filtRs)[keep]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="error-rates" class="level2">
+<h2 class="anchored" data-anchor-id="error-rates">Error rates</h2>
+<p>The DADA2 algorithm depends on a parametric error model (err) and every amplicon dataset has a different set of error rates. The learnErrors method learns the error model from the data, by alternating estimation of the error rates and inference of sample composition until they converge on a jointly consistent solution. As in many optimization problems, the algorithm must begin with an initial guess, for which the maximum possible error rates in this data are used (the error rates if only the most abundant sequence is correct and all the rest are errors).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>errF <span class="ot">&lt;-</span> <span class="fu">learnErrors</span>(filtFs, <span class="at">multithread =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>errR <span class="ot">&lt;-</span> <span class="fu">learnErrors</span>(filtRs, <span class="at">multithread =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="these-contain-information-about-sequencing-errors-base-quality-scores-or-other-quality-related-metrics." class="level2">
+<h2 class="anchored" data-anchor-id="these-contain-information-about-sequencing-errors-base-quality-scores-or-other-quality-related-metrics.">These contain information about sequencing errors, base quality scores, or other quality-related metrics.</h2>
+</section>
+<section id="visualize-the-estimated-error-rates-as-a-sanity-check." class="level2">
+<h2 class="anchored" data-anchor-id="visualize-the-estimated-error-rates-as-a-sanity-check.">Visualize the estimated error rates as a sanity check.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotErrors</span>(errF, <span class="at">nominalQ =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotErrors</span>(errR, <span class="at">nominalQ=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>plotErrors: Creates plots of errors or quality metrics associated with sequencing data. errF and errR: These are variables representing the errors or quality metrics for the forward and reverse reads, respectively. nominalQ = TRUE: This argument specifies whether to use nominal quality scores. If TRUE, it indicates that the quality scores are nominal (e.g., Phred scores), and the plot should be adjusted accordingly. If FALSE or not specified, the function may interpret the quality scores differently.</p>
+<p>The error rates for each possible transition (eg. A-&gt;C, A-&gt;G, …) are shown. Points are the observed error rates for each consensus quality score. The black line shows the estimated error rates after convergence. The red line shows the error rates expected under the nominal definition of the Q-value. Here the black line (the estimated rates) fits the observed rates well, and the error rates drop with increased quality as expected.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>derepFs <span class="ot">&lt;-</span> <span class="fu">derepFastq</span>(filtFs, <span class="at">verbose=</span><span class="cn">TRUE</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>derepRs <span class="ot">&lt;-</span> <span class="fu">derepFastq</span>(filtRs, <span class="at">verbose=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="name-dereplicated-files" class="level2">
+<h2 class="anchored" data-anchor-id="name-dereplicated-files">Name dereplicated files</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(derepFs) <span class="ot">&lt;-</span> sample.names[keep]</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(derepRs) <span class="ot">&lt;-</span> sample.names[keep]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sample-inference" class="level2">
+<h2 class="anchored" data-anchor-id="sample-inference">Sample Inference</h2>
+<p>The core sample inference algorithm is applied to the dereplicated data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dadaFs <span class="ot">&lt;-</span> <span class="fu">dada</span>(derepFs, <span class="at">err=</span>errF, <span class="at">pool =</span> <span class="cn">FALSE</span>, <span class="at">multithread=</span><span class="cn">TRUE</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>dadaRs <span class="ot">&lt;-</span> <span class="fu">dada</span>(derepRs, <span class="at">err=</span>errR, <span class="at">pool =</span> <span class="cn">FALSE</span>, <span class="at">multithread=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="merge-paired-reads" class="level2">
+<h2 class="anchored" data-anchor-id="merge-paired-reads">Merge paired reads</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mergers <span class="ot">&lt;-</span> <span class="fu">mergePairs</span>(dadaFs, filtFs, dadaRs, filtRs, <span class="at">verbose=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="construct-sequence-table" class="level2">
+<h2 class="anchored" data-anchor-id="construct-sequence-table">Construct Sequence Table</h2>
+<p>Amplicon sequence variant table (ASV) table: a higher-resolution version of the OTU table produced by traditional methods.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>seqtab <span class="ot">&lt;-</span> <span class="fu">makeSequenceTable</span>(mergers)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(seqtab) <span class="co">#tells you the (rows, columns) in a matrix</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#rows represent samples and columns have unique sequence variants </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="determine-how-many-bases-are-in-each-amplicon-using-nchar-table-summarizes-the-number-of-amplicons-with-a-specific-length" class="level2">
+<h2 class="anchored" data-anchor-id="determine-how-many-bases-are-in-each-amplicon-using-nchar-table-summarizes-the-number-of-amplicons-with-a-specific-length">Determine how many bases are in each amplicon using nchar #Table summarizes the number of amplicons with a specific length</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">nchar</span>(<span class="fu">getSequences</span>(seqtab)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="view-length-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="view-length-distribution">View length distribution</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">nchar</span>(<span class="fu">getSequences</span>(seqtab)),</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Distribution of sequence lengths"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="in-the-event-that-a-lot-of-reads-have-much-longer-or-shorter-lengths-than-expected-filter-seqtab-to-keep-only-the-reads-that-fall-within-the-expected-range-may-be-the-result-of-non-specific-priming" class="level2">
+<h2 class="anchored" data-anchor-id="in-the-event-that-a-lot-of-reads-have-much-longer-or-shorter-lengths-than-expected-filter-seqtab-to-keep-only-the-reads-that-fall-within-the-expected-range-may-be-the-result-of-non-specific-priming">In the event that a lot of reads have much longer or shorter lengths than expected , filter seqtab to keep only the reads that fall within the expected range May be the result of non-specific priming</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>seqtab.f <span class="ot">&lt;-</span> seqtab[,<span class="fu">nchar</span>(<span class="fu">colnames</span>(seqtab)) <span class="sc">%in%</span> <span class="fu">seq</span>(<span class="dv">430</span>, <span class="dv">480</span>)]</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># % of reads with desired length</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(seqtab.f)<span class="sc">/</span><span class="fu">sum</span>(seqtab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="remove-chimeras" class="level2">
+<h2 class="anchored" data-anchor-id="remove-chimeras">Remove chimeras</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>seqtab.nochim <span class="ot">&lt;-</span> <span class="fu">removeBimeraDenovo</span>(seqtab.f, <span class="at">method=</span><span class="st">"consensus"</span>, <span class="at">multithread=</span><span class="cn">TRUE</span>, <span class="at">verbose=</span><span class="cn">TRUE</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#nonchimeric % of reads</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(seqtab.nochim)<span class="sc">/</span><span class="fu">sum</span>(seqtab.f)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(seqtab.nochim)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(seqtab.nochim, <span class="at">file=</span><span class="st">"seqtab.nochim120424.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="inspect-distribution-of-sequence-lengths" class="level2">
+<h2 class="anchored" data-anchor-id="inspect-distribution-of-sequence-lengths">Inspect distribution of sequence lengths:</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">nchar</span>(<span class="fu">getSequences</span>(seqtab.nochim)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="view-length-distribution-1" class="level2">
+<h2 class="anchored" data-anchor-id="view-length-distribution-1">View length distribution</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">nchar</span>(<span class="fu">getSequences</span>(seqtab.nochim)),</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Distribution of sequence lengths"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="track-reads-through-the-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="track-reads-through-the-pipeline">Track reads through the pipeline</h2>
+<p>Inspect the the number of reads that made it through each step in the pipeline to verify everything worked as expected.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>getN <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sum</span>(<span class="fu">getUniques</span>(x))</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>track <span class="ot">&lt;-</span> <span class="fu">cbind</span>(out, </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">sapply</span>(dadaFs, getN), </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>               <span class="fu">sapply</span>(dadaRs, getN),</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>               <span class="fu">sapply</span>(mergers, getN), </span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>               <span class="fu">rowSums</span>(seqtab.f), </span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>               <span class="fu">rowSums</span>(seqtab.nochim))</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(track) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"input"</span>,</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"filtered"</span>,</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"denoisedF"</span>,</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"denoisedR"</span>,</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"merged"</span>,</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"tabled"</span>, </span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"nonchim"</span>)</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="co"># A .txt file to map the loss of reads across the different DADA2 steps</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(track,</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">"track_2304424.txt"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">col.names =</span> T, <span class="at">row.names =</span> F)</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(track, <span class="at">file=</span><span class="st">"track_2304424.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="assign-taxonomy" class="level2">
+<h2 class="anchored" data-anchor-id="assign-taxonomy">Assign taxonomy</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>taxa <span class="ot">&lt;-</span> <span class="fu">assignTaxonomy</span>(</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  seqtab.nochim,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"~/workshop_2/taxonomic_database/silva_nr99_v138.1_wSpecies_train_set.fa"</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">minBoot =</span> <span class="dv">60</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">multithread=</span><span class="cn">TRUE</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">unname</span>(<span class="fu">head</span>(taxa))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="check-assignmnent" class="level2">
+<h2 class="anchored" data-anchor-id="check-assignmnent">Check assignmnent</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>taxa.print <span class="ot">&lt;-</span> taxa </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(taxa.print) <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># Removing sequence rownames for display only</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(taxa.print)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(taxa,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"taxa_230424.rds"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
