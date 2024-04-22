@@ -62,11 +62,10 @@ Image by [Megan Duffy](https://dynamicecology.wordpress.com/2015/01/13/sticky-no
 
 WiFi:
 
-Network: 
+Network: Southernsunconference
 
-Network Password:
+Network Password: S0uthernsun1
 
-Bathrooms are XXXXXX
 
 :::
 
