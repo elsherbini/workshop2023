@@ -4,6 +4,9 @@ subtitle: "Dr. Laura Symul - UC Louvain"
 format: qmdrslides-revealjs
 editor_options: 
   chunk_output_type: inline
+
+execute:
+  cache: true
 ---
 
 ```{r}

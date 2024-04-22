@@ -3,6 +3,9 @@ title: "Group Projects"
 format:
   html:
     toc: true
+
+execute:
+  cache: true
 ---
 
 For this group activity, the odd-numbered groups will be analyzing the data from Research Project A, and the even numbered groups from Research Project B.

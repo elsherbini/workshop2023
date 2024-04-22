@@ -8,6 +8,10 @@ format:
 editor_options: 
   chunk_output_type: inline
 bibliography: references.bib
+
+execute:
+  cache: true
+
 ---
 
 ```{r,include=FALSE}

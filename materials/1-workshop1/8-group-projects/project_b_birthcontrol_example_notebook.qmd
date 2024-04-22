@@ -5,6 +5,8 @@ format:
     code-fold: true
 execute:
   warning: false
+  cache: true
+
 ---
 
 

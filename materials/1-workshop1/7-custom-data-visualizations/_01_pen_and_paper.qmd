@@ -1,5 +1,10 @@
 ---
+format:
+  html:
+    code-link: true
 
+execute:
+  cache: true
 ---
 
 \

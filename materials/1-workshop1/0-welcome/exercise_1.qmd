@@ -1,6 +1,9 @@
 ---
 title: "Exploring Data for Patterns"
 subtitle: "<em>reproduced from a Schmidt Science Fellowship activity, thanks to Fatima Hussain</em>"
+
+execute:
+  cache: true
 ---
 
 \

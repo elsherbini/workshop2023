@@ -4,6 +4,9 @@ format:
   html:
     code-fold: false
     code-summary: "Show code"
+
+execute:
+  cache: true
 ---
 
 ## 

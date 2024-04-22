@@ -1,6 +1,10 @@
 ---
 title: "joining table"
 format: html
+
+execute:
+  cache: true
+
 ---
 
 In this document, we'll explore with very simple and small tables how to use the different `join` functions to merge tables together.

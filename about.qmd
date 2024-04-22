@@ -102,13 +102,13 @@ Ragon Institute of MGH, MIT and Harvard
 :::
 
 ::: {.g-col-2}
-<!-- ![](images/Sarah.png){fig-align="left"} -->
+![](images/Renee.png){fig-align="left"}
 :::
 
 ::: {.g-col-4}
 [*Series Logistics and Management*]{style="font-size: 0.8em"}  
 **Renee Schumm**  
-Senior Administrator 
+Staff Assistant II \ 
 Ragon Institute of MGH, MIT and Harvard
 :::
 

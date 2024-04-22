@@ -3,6 +3,10 @@ title: "Compound Figures Exercise Solutions"
 format: 
   html: default
 
+
+execute:
+  cache: true
+
 ---
 
 

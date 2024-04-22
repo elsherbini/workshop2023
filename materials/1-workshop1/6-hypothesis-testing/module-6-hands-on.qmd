@@ -6,6 +6,9 @@ format:
     toc: true
     toc-location: left
 editor: visual
+
+execute:
+  cache: true
 ---
 
 ```{r}

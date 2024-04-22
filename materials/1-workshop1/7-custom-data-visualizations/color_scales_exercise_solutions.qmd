@@ -3,6 +3,9 @@ title: "Color Scales Exercise Solutions"
 format: 
   html: default
 
+execute:
+  cache: true
+
 ---
 
 ### Coding exercise 7.1

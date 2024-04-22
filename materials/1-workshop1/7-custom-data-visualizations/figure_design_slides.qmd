@@ -4,6 +4,9 @@ subtitle: "<em>remixed from <a href='https://github.com/wilkelab/SDS375'>Claus O
 format: qmdrslides-revealjs
 editor_options: 
   chunk_output_type: inline
+
+execute:
+  cache: true
 ---
 
 
