@@ -339,14 +339,14 @@ updated_yogurt_ps %>%
 #| fig-height: 6
 
 
-yogurt_virgo <- read_csv("/home/jshih38/Downloads/YogurtDataset_VIRGO2.csv")
-
-virgo_tax <- yogurt_virgo %>% 
-            select(Gene, Taxa)
-
-virgo_count <- yogurt_virgo %>%
-                select(-c(KEGG, Taxa, Length)) %>% t()
-
+# yogurt_virgo <- read_csv("/home/jshih38/Downloads/YogurtDataset_VIRGO2.csv")
+# 
+# virgo_tax <- yogurt_virgo %>% 
+#             select(Gene, Taxa)
+# 
+# virgo_count <- yogurt_virgo %>%
+#                 select(-c(KEGG, Taxa, Length)) %>% t()
+# 
 
 
 

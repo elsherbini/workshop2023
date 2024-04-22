@@ -165,11 +165,11 @@ Enter the login credentials
 ## Create an R Project {.your-turn}
 ::::: {columns}
 
-::: {.column width=20%}
-3. Name your directory and click "Create Project"
+::: {.column width=30%}
+3. Navigate to the `workshop_2` folder name your directory and click "Create Project"
 :::
 
-::: {.column width=75%}
+::: {.column width=60%}
 ![](images/03-create-project.png)
 :::
 
@@ -230,8 +230,6 @@ Enter the login credentials
 :::
 
 :::::
-
----
 
 # RStudio
 
