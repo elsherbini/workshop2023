@@ -43,10 +43,26 @@ table_01 <- read_csv(here("datasets/instructional_dataset/01_participant_metadat
 table_02 <- read_csv(here("datasets/instructional_dataset/02_visit_clinical_measurements_UKZN_workshop_2023.csv"))
 ```
 
+
+
+```{r}
+#| echo: fenced
+#| eval: false
+#| warning: false
+
+library(tidyverse)
+
+table_01 <- read_csv("../instructional_dataset/data/01_participant_metadata_UKZN_workshop_2023.csv")
+
+table_02 <- read_csv("../instructional_dataset/data/02_visit_clinical_measurements_UKZN_workshop_2023.csv")
+```
+
+
 ```{r pipe-hint}
 #| echo: true
 #| eval: false
 table_01 ___ head()
+
 ```
 
 ### Choosing data rows
