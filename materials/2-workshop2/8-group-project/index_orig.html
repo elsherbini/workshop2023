@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science for Biology Workshop Series</title>
+<title>Data Science for Biology Workshop Series - Group Activity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title"></h1>
+          <h1 class="quarto-secondary-nav-title">Group Activity</h1>
         </a>     
     </div>
   </nav>
@@ -285,98 +285,190 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#does-yogurt-consumption-change-the-vaginal-microbiome" id="toc-does-yogurt-consumption-change-the-vaginal-microbiome" class="nav-link active" data-scroll-target="#does-yogurt-consumption-change-the-vaginal-microbiome">Does yogurt consumption change the vaginal microbiome?<br>
-  </a></li>
-  <li><a href="#questions-and-aims" id="toc-questions-and-aims" class="nav-link" data-scroll-target="#questions-and-aims">Questions and Aims</a></li>
+  <li><a href="#projects" id="toc-projects" class="nav-link active" data-scroll-target="#projects">Projects</a></li>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#example-workflows" id="toc-example-workflows" class="nav-link" data-scroll-target="#example-workflows">Example workflows</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Group Activity</h1>
+</div>
 
 
 
-<section id="research-project-a" class="level5">
-<h5 class="anchored" data-anchor-id="research-project-a">Research Project A<br>
-</h5>
-</section>
-<section id="does-yogurt-consumption-change-the-vaginal-microbiome" class="level2">
-<h2 class="anchored" data-anchor-id="does-yogurt-consumption-change-the-vaginal-microbiome">Does yogurt consumption change the vaginal microbiome?<br>
-</h2>
-<p><img src="images/greek-yogurt.jpg" class="img-fluid" style="width:25.0%"></p>
-<section id="description" class="level4">
-<h4 class="anchored" data-anchor-id="description"><strong>Description</strong></h4>
-<p>This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. 16S rRNA sequencing was done to characterize patient microbiome composition. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. Data was collected at two timepoints, pre and post antibiotic treatment.</p>
-</section>
-</section>
-<section id="questions-and-aims" class="level2">
-<h2 class="anchored" data-anchor-id="questions-and-aims">Questions and Aims</h2>
-<section id="s-processing" class="level4">
-<h4 class="anchored" data-anchor-id="s-processing"><strong>16S Processing</strong><br>
-</h4>
-<ul>
-<li>Identify project files on your instance
-<ul>
-<li>What does the count table represent? What are the columns and rows?</li>
-</ul></li>
-<li>Subset phyloseq object by yogurt dataset samples
-<ul>
-<li>Filter count table by yogurt samples</li>
-<li>Remove unused ASVs</li>
-<li>Filter tax_table by the ASVs<br>
-</li>
-</ul></li>
-<li>Merge data from other assays
-<ul>
-<li>Which columns should you use to merge columns?</li>
-</ul></li>
-<li>Create phyloseq object</li>
-<li>Phyloseq cleaning (Liz’s slides)
-<ul>
-<li>Fix NAs <!-- * Optional: Can you use the control samples to test Dada2's accuracy? --></li>
-</ul></li>
-</ul>
-</section>
-<section id="exploring-high-dimensional-data" class="level4">
-<h4 class="anchored" data-anchor-id="exploring-high-dimensional-data"><strong>Exploring High Dimensional Data</strong><br>
-</h4>
-<ul>
-<li>Plot the microbiome!</li>
-<li>Generate plots to compare relative abundance across arms and time points
-<ul>
-<li>What are noticable differences after antibiotic treatment?</li>
-<li><strong>Does consumption of yogurt influence patient’s microbiome?</strong></li>
-</ul></li>
-<li>How do cytokines correlate with Lactobacillus?<br>
-</li>
-<li>Which cytokines correlate with certain taxa?
-<ul>
-<li>Create a heatmap</li>
-</ul></li>
-<li>How do the absolute abundance of bacteria change after antibiotic administration?</li>
-<li>Are there ways to change the scale so that taxa at lower abundance can be more easily visualized? (transformations)</li>
-<li>Optional: Use microViz to explore the phyloseq object</li>
-</ul>
-</section>
-<section id="further-analysis" class="level4">
-<h4 class="anchored" data-anchor-id="further-analysis"><strong>Further Analysis</strong></h4>
-<ul>
-<li>Microbiome diversity
-<ul>
-<li>Compute Shannon Indices</li>
-</ul></li>
-<li>Ordination
-<ul>
-<li>What are some distance metrics? &lt;!– - Differential Abundance testing (joseph’s slides)</li>
-<li>Statistical modelling</li>
-<li>Create a taxa tree</li>
-</ul></li>
-<li>Incorporate metagenomic data into the phyloseq (micahel’s slides) –&gt;</li>
-</ul>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<p>Group A will be analyzing the yogurt dataset and Group B will be analyzing the menstruation dataset.</p>
+<!-- :::{.callout-Group_A}
+
+<b>Study Description</b>  
+
+::: -->
+<section id="projects" class="level3">
+<h3 class="anchored" data-anchor-id="projects">Projects</h3>
+<!-- :::{.callout-note title="Research Project A - Does yogurt consumption change the vaginal microbiome?" appearance="simple"}
+\
+**Aim**\
+To investigate whether the consumption of yogurt influences microbiome composition after antibiotics treatment.\
+\
+**Study Description** \
+This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment. (add 16s)
+\
+ 
+::: -->
+<div class="block">
+<div class="block-header">
+<p>Research Project A - Does yogurt consumption change the vaginal microbiome?</p>
+</div>
+<div id="group_a" class="block-container">
+<p><strong>Aim</strong><br>
+To investigate whether the consumption of yogurt influences microbiome composition after antibiotics treatment.<br>
+<br>
+<strong>Study Description</strong><br>
+This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. 16S rRNA sequencing was done to characterize patient microbiome composition. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. Data was collected at two timepoints, pre and post antibiotic treatment.<br>
+</p>
+</div>
+</div>
+<script> 
+  // Add click event listener to the block header
+  document.getElementById("group_a").addEventListener("click", function() {
+    window.location.href = "group_a.html";
+  });
+</script>
+<div class="block">
+<div class="block-header">
+<p>Research Project B - Does birth control change inflammation during menstruation?</p>
+</div>
+<div id="group_b" class="block-container">
+<p><strong>Aim</strong><br>
+To investigate whether taking birth control is associated with vaginal inflammation throughout the menstrual cycle.<br>
+<br>
+<strong>Study Description</strong><br>
+This is an observational study to evaluate the relationship between birth control and vaginal inflammation. In response to menstruation. 16S rRNA sequencing was done to characterize patient microbiome composition. Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation.<br>
+</p>
+</div>
+</div>
+<script> 
+  // Add click event listener to the block header
+  document.getElementById("group_b").addEventListener("click", function() {
+    window.location.href = "group_b.html";
+  });
+</script>
+<!-- :::{.goals}
+::::{.goals-header}
+Learning Goals
+::::
+::::{.goals-container}
+* Know how to make your own callouts.
+* Be able to mess with some SCSS/CSS styling.
+::::
+::: -->
+<!-- {{< group_projects.qmd  >}} -->
 </section>
+<section id="schedule" class="level3">
+<h3 class="anchored" data-anchor-id="schedule">Schedule</h3>
+<p><strong>Wednesday (4/24)</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 83%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Time</th>
+<th>Task</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>9:00-9:30am</td>
+<td><ul>
+<li>Read project description and aims for your project</li>
+<li>Locate project files on your instance</li>
+<li>Create a new .qmd file</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>9:30 - 10:30am</td>
+<td><ul>
+<li>Merge in metadata, qPCR, and Luminex data</li>
+<li>Create a phyloseq object</li>
+<li>Phyloseq cleaning</li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td>10:30 - 11:00am</td>
+<td><strong>Break</strong></td>
+</tr>
+<tr class="even">
+<td>11:00- 12:00pm</td>
+<td><ul>
+<li><strong>Explore the data!</strong></li>
+<li>Visualizing microbiome composition</li>
+<li>Diversity</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Thursday (4/25)</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 83%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Time</th>
+<th>Task</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1:30 - 2:00pm</td>
+<td><ul>
+<li>Ordination and Correlations</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>2:00 - 3:00pm</td>
+<td><ul>
+<li>Differential Abundance</li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td>3:00 - 3:30pm</td>
+<td><strong>Break</strong></td>
+</tr>
+<tr class="even">
+<td>3:30 - 5:00pm</td>
+<td><ul>
+<li>Integrating Shotgun Metagenomics</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-workflows" class="level3">
+<h3 class="anchored" data-anchor-id="example-workflows">Example workflows</h3>
+<!-- [Johnathan's test demo](johnathan_demo_final.qmd) -->
+<p>Note: If downloading the demos, make sure the filepaths to the datasets match!</p>
+
+
 </section>
 
 </main> <!-- /main -->
