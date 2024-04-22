@@ -13,7 +13,7 @@ format:
 <iframe class="slide-deck" src="16S_part1_slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 ```
 
-### [Link to code](https://raw.githubusercontent.com/elsherbini/durban-data-science-for-biology/materials/2-workshop2/4-16s-pt1/16S_part1_code.qmd)
+### [Link to code](https://raw.githubusercontent.com/elsherbini/durban-data-science-for-biology/main/materials/2-workshop2/4-16s-pt1/16S_part1_code.qmd)
 
 
 {{< include 16S_part1_code.qmd >}}
