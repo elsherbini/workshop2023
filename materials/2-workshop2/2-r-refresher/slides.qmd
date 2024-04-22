@@ -124,6 +124,16 @@ Network Password: S0uthernsun1
 
 ## Getting on AWS & RStudio
 
+To get on your instance, find the address associated with your name. Copy the link into your browser and it will take you to navigate to RStudio \
+[IP addresses](../../../instance_ips.qmd)
+ 
+ \
+
+
+Enter the login credentials
+
+**Username:** genomics \
+**Password:** evomics2024
 ---
 
 ## Create an R Project {.your-turn}

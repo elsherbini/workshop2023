@@ -3,8 +3,14 @@ title: "AWS Instance IP addresses"
 sidebar: false
 ---
 
+To get on your instance, find the address associated with your name. Copy the link into your browser and it will take you to navigate to RStudio
+ 
+ \
+Enter the login credentials \
 **Username:** genomics \
 **Password:** evomics2024
+
+### Copy the link into your browser to navigate to RStudio
 
 ```{r}
 #| message: false
