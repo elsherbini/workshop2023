@@ -53,9 +53,9 @@ This is a randomized controlled trial to study whether yogurt consumption has an
 
 - Ordination
   - What are some distance metrics?
-- Differential Abundance testing (joseph's slides)
+<!-- - Differential Abundance testing (joseph's slides)
   - Statistical modelling
   - Create a taxa tree 
 
 - Incorporate metagenomic data into the phyloseq (micahel's slides)
-
+ -->

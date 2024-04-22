@@ -22,6 +22,7 @@ library(tidyverse)
 
 ips <- read_csv("datasets/ips_for_workshop.csv") %>%
         mutate(Name = str_c(First, Last, sep = " ")) %>%
+        # mutate(Dataset = rep(c("A","B"), 10))
         select(-c(First,Last))
 
 ips %>% gt() %>% opt_stylize(style = 6, color = 'gray') %>% cols_align(align = "left")

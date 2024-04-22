@@ -50,8 +50,8 @@ This is an observational study to evaluate the relationship between birth contro
 
 - Ordination
   - What are some distance metrics?
-- Differential Abundance testing (joseph's slides)
+<!-- - Differential Abundance testing (joseph's slides)
   - Statistical modeling
   - Create a taxa tree 
 
-- Incorporate metagenomic data into the phyloseq (micahel's slides)
+- Incorporate metagenomic data into the phyloseq (micahel's slides) -->
