@@ -92,7 +92,7 @@ website:
             - text: "<b>Module 6</b>: VIRGO"
               contents:
               href: materials/2-workshop2/6-virgo/index.qmd
-            - text: "<b>Module 6</b>: Keynote "
+            - text: "<b>Module 7</b>: Keynote "
               contents:
               href: materials/2-workshop2/7-keynote/index.qmd
             - text: "<b>Group Activity:</b> Applying what you've learned to new data"
