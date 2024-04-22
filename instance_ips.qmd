@@ -3,6 +3,8 @@ title: "AWS Instance IP addresses"
 sidebar: false
 ---
 
+**Username:** genomics \
+**Password:** evomics2024
 
 ```{r}
 #| message: false
@@ -12,8 +14,10 @@ sidebar: false
 library(gt)
 library(tidyverse)
 
-ips <- read_csv("datasets/ips_for_workshop.csv")
+ips <- read_csv("datasets/ips_for_workshop.csv") %>%
+        mutate(Name = str_c(First, Last, sep = " ")) %>%
+        select(-c(First,Last))
 
-ips %>% gt() %>% opt_stylize(style = 6, color = 'gray') %>% cols_align(align = "center")
+ips %>% gt() %>% opt_stylize(style = 6, color = 'gray') %>% cols_align(align = "left")
 
 ```
