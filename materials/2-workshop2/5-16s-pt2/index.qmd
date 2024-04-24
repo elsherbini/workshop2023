@@ -22,6 +22,8 @@ library(here)
 
 ## In this session, we're going to take a look at beta diversity, and at the microViz package for working with phyloseq objects.
 
+## [Have this microviz documentation  open](https://david-barnett.github.io/microViz/articles/web-only/heatmaps.html)
+
 
 First let's load the libraries:
 
