@@ -21,7 +21,7 @@ library(gt)
 library(tidyverse)
 
 ips <- read_csv("datasets/ips_for_workshop.csv") %>%
-        arrange(Present, First) %>%
+        # arrange(Present, First) %>%
         mutate(Name = str_c(First, Last, sep = " ")) %>%
         # select(-c(First,Last))
         mutate(Dataset = c(rep(c("A","B"), 28), rep("", 12))) %>%
