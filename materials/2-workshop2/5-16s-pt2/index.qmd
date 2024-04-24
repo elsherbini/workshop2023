@@ -1,5 +1,5 @@
 ---
-title: "Correlations and Differential Abundance Testing"
+title: "Correlation and Ordination"
 format:
   html:
     toc: true

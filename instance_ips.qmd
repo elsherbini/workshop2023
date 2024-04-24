@@ -20,7 +20,7 @@ Enter the login credentials \
 library(gt)
 library(tidyverse)
 
-ips <- read_csv("/home/jshih38/Documents/work/workshop2024/durban-data-science-for-biology/datasets/ips_for_workshop.csv") %>%
+ips <- read_csv("datasets/ips_for_workshop.csv") %>%
         mutate(Name = str_c(First, Last, sep = " ")) %>%
         # mutate(Dataset = rep(c("A","B"), n()/2)) %>%
         # mutate(group = rep(1:6,))

@@ -86,7 +86,7 @@ website:
             - text: "<b>Module 4</b>: Exploring High Dimensional Data"
               contents:
               href: materials/2-workshop2/4-16s-pt1/index.qmd
-            - text: "<b>Module 5</b>: Correlations and Differential Abundance Testing"
+            - text: "<b>Module 5</b>: Correlation and Ordination"
               contents:
               href: materials/2-workshop2/5-16s-pt2/index.qmd
             - text: "<b>Module 6</b>: VIRGO"
