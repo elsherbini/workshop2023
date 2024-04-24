@@ -324,17 +324,6 @@ updated_yogurt_ps %>%
 
 
 
-### Differential Abundance
-```{r}
-#| fig-width: 6
-#| fig-height: 6
-
-
-
-
-
-```
-
 ### Integrating metagenomics  
 ```{r}
 #| message: false
