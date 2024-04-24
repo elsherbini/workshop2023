@@ -9,6 +9,22 @@ Workshop materials can be found here:
 
 <https://elsherbini.github.io/durban-data-science-for-biology/>
 
+
+## Practicalities
+
+::: r-fit-text
+WiFi:
+
+Network: KTB Free Wifi (no password needed)
+
+Network AHRI Password: `@hR1W1F1!17`
+
+Network CAPRISA-Corp Password: `corp@caprisa17`
+
+Bathrooms are out the lobby to your left
+:::
+
+
 ## Hello 👋👋
 
 My name is Elizabeth Costello (**Liz**)
