@@ -440,7 +440,7 @@ Which columns do I merge by?
 </div>
 </div>
 <p>Earlier, I mentioned that there are samples from other projects in the count and tax table! Here we need to update the count and tax table to to reflect the correct ASVs and samples.</p>
-<p>Extracting a vector of yogurt dataset sample ids</p>
+<p>Extracting a vector of birth control dataset sample ids</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>bc_ids <span class="ot">&lt;-</span> bc_sample_data <span class="sc">%&gt;%</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>              <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
@@ -452,16 +452,16 @@ Which columns do I merge by?
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>count_table <span class="ot">&lt;-</span> all_samples_count_table <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                <span class="fu">rownames_to_column</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">filter</span>(amplicon_sample_id <span class="sc">%in%</span> bc_ids) <span class="sc">%&gt;%</span> <span class="co">#filtering the count data by the yogurt ids</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">filter</span>(amplicon_sample_id <span class="sc">%in%</span> bc_ids) <span class="sc">%&gt;%</span> <span class="co">#filtering the count data by the birth control ids</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="sc">-</span>amplicon_sample_id), as.numeric) <span class="sc">%&gt;%</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                <span class="fu">column_to_rownames</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                <span class="fu">select</span>(<span class="fu">where</span>(<span class="sc">~</span><span class="fu">sum</span>(.) <span class="sc">!=</span> <span class="dv">0</span>)) <span class="co"># removing unused ASVs - when the sum of a column is 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Filtering the taxa table so there are only ASVs for the yogurt sample</p>
+<p>Filtering the taxa table so there are only ASVs for the birth control dataset sample</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#getting all asvs for the yogurt data</span></span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#getting all asvs for the birth control data</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>asvs <span class="ot">&lt;-</span> <span class="fu">colnames</span>(count_table)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#filtering the taxa table so there is only asvs for the yogurt samples</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#filtering the taxa table so there is only asvs for the birth control samples</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>tax_table <span class="ot">&lt;-</span> all_samples_tax_table <span class="sc">%&gt;%</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>              <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>              <span class="fu">rownames_to_column</span>(<span class="st">"tax_table_asv"</span>) <span class="sc">%&gt;%</span></span>
@@ -477,6 +477,9 @@ Which columns do I merge by?
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>               <span class="fu">tax_table</span>(tax_table))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Warning:</strong> From here on out, there will be less helpful code!</p>
+<p><br>
+</p>
+<p><em>These are questions that can be used as a guide. Looking at the data, think about what questions you can address!</em></p>
 </section>
 <section id="phyloseq-cleaning-and-diagnosis" class="level3">
 <h3 class="anchored" data-anchor-id="phyloseq-cleaning-and-diagnosis">Phyloseq cleaning and diagnosis <span class="emoji" data-emoji="mag">🔍</span></h3>
@@ -491,14 +494,14 @@ Which columns do I merge by?
 <h3 class="anchored" data-anchor-id="plot-the-relative-abundance-bar-plots">Plot the relative abundance bar plots <span class="emoji" data-emoji="bar_chart">📊</span></h3>
 <ul>
 <li>Generate plots to compare relative abudances across arms and time points</li>
-<li>What are some noticable differences after antibiotic treatment?</li>
-<li><strong>Does consumption of yogurt influence a patient’s microbiome?</strong></li>
+<li>What are some noticable differences throughout menstruation?</li>
+<li><strong>Does birth control change inflammation during menstruation?</strong></li>
 </ul>
 <p>Optional questions (Examine your sample_data to see what other questions you can ask!):</p>
 <ul>
 <li>What cytokines correlated with Lactobaccilus?</li>
 <li>What cytokines correlate with certain taxa?</li>
-<li>How do the absolute abundance of bacteria and Lactobacillus speices change after antibiotic administration?</li>
+<li>How do the absolute abundance of bacteria and Lactobacillus species change throughout menstruation?</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled" title="Is your plot hard to see?">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -541,7 +544,7 @@ Checking your plots or if you’re stuck!
 <ul>
 <li>Does your data contain singletons?</li>
 <li>Calculate alpha diversity using three different diversity measures</li>
-<li>Is there a difference in alpha diversity between the yogurt and normal diet arms? How about before and after antibiotics?</li>
+<li>Is there a difference in alpha diversity between the birth control and no birth control arms? How about across menstruation?</li>
 <li>Is the difference between arms statistically significant?</li>
 </ul>
 <!-- 
