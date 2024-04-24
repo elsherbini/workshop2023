@@ -128,7 +128,7 @@ yogurt_ps <- phyloseq(otu_table(count_table, taxa_are_rows=FALSE),
 \
 
 
-*These are questions that can be used as a guide. Looking at the data, think about what questions you can address!*
+*These are questions that can be used as a guide. Looking at the data, think about what questions you can address.*
 
 ### Phyloseq cleaning and diagnosis :mag:
 
