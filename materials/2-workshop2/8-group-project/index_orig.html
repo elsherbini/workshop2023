@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science for Biology Workshop Series - Birth Control Group Activity I starter code</title>
+<title>Data Science for Biology Workshop Series - Group Activity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -164,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Birth Control Group Activity I starter code</h1>
+          <h1 class="quarto-secondary-nav-title">Group Activity</h1>
         </a>     
     </div>
   </nav>
@@ -315,20 +281,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#does-birth-control-change-inflammation-during-menstruation" id="toc-does-birth-control-change-inflammation-during-menstruation" class="nav-link active" data-scroll-target="#does-birth-control-change-inflammation-during-menstruation">Does birth control change inflammation during menstruation?<br>
-  </a></li>
-  <li><a href="#goals" id="toc-goals" class="nav-link" data-scroll-target="#goals"><strong>Goals</strong></a>
-  <ul class="collapse">
-  <li><a href="#loading-in-libraries-and-data" id="toc-loading-in-libraries-and-data" class="nav-link" data-scroll-target="#loading-in-libraries-and-data">Loading in libraries and data <span class="emoji" data-emoji="books">📚</span></a></li>
-  <li><a href="#creating-the-phyloseq" id="toc-creating-the-phyloseq" class="nav-link" data-scroll-target="#creating-the-phyloseq">Creating the phyloseq <span class="emoji" data-emoji="parking">🅿️</span></a></li>
-  <li><a href="#phyloseq-cleaning-and-diagnosis" id="toc-phyloseq-cleaning-and-diagnosis" class="nav-link" data-scroll-target="#phyloseq-cleaning-and-diagnosis">Phyloseq cleaning and diagnosis <span class="emoji" data-emoji="mag">🔍</span></a></li>
-  <li><a href="#plot-the-relative-abundance-bar-plots" id="toc-plot-the-relative-abundance-bar-plots" class="nav-link" data-scroll-target="#plot-the-relative-abundance-bar-plots">Plot the relative abundance bar plots <span class="emoji" data-emoji="bar_chart">📊</span></a></li>
-  <li><a href="#exploring-within-sample-diversity-alpha-diversity" id="toc-exploring-within-sample-diversity-alpha-diversity" class="nav-link" data-scroll-target="#exploring-within-sample-diversity-alpha-diversity">Exploring within-sample diversity (Alpha Diversity) <span class="emoji" data-emoji="flags">🎏</span></a></li>
-  </ul></li>
+  <li><a href="#projects" id="toc-projects" class="nav-link active" data-scroll-target="#projects">Projects</a></li>
+  <li><a href="#schedule" id="toc-schedule" class="nav-link" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#example-workflows" id="toc-example-workflows" class="nav-link" data-scroll-target="#example-workflows">Example workflows</a></li>
   </ul>
 </nav>
     </div>
@@ -337,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Birth Control Group Activity I starter code</h1>
+<h1 class="title d-none d-lg-block">Group Activity</h1>
 </div>
 
 
@@ -354,243 +313,162 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="does-birth-control-change-inflammation-during-menstruation" class="level2">
-<h2 class="anchored" data-anchor-id="does-birth-control-change-inflammation-during-menstruation">Does birth control change inflammation during menstruation?<br>
-</h2>
-<p><img src="images/birth_control.png" class="img-fluid" style="width:15.0%"></p>
+<p>Group A will be analyzing the yogurt dataset and Group B will be analyzing the menstruation dataset.</p>
+<!-- :::{.callout-Group_A}
+
+<b>Study Description</b>  
+
+::: -->
+<section id="projects" class="level3">
+<h3 class="anchored" data-anchor-id="projects">Projects</h3>
+<!-- :::{.callout-note title="Research Project A - Does yogurt consumption change the vaginal microbiome?" appearance="simple"}
+\
+**Aim**\
+To investigate whether the consumption of yogurt influences microbiome composition after antibiotics treatment.\
+\
+**Study Description** \
+This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at two timepoints, pre and post antibiotic treatment. (add 16s)
+\
+ 
+::: -->
+<div class="block">
+<div class="block-header">
+<p>Research Project A - Does yogurt consumption change the vaginal microbiome?</p>
+</div>
+<div id="group_a" class="block-container">
+<p><strong>Aim</strong><br>
+To investigate whether the consumption of yogurt influences microbiome composition after antibiotics treatment.<br>
+<br>
+<strong>Study Description</strong><br>
+This is a randomized controlled trial to study whether yogurt consumption has an effect on the microbiome post antibiotic treatment. 16S rRNA sequencing was done to characterize patient microbiome composition. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, L. crispatus, L. iners). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. Data was collected at two timepoints, pre and post antibiotic treatment.<br>
+</p>
+</div>
+</div>
+<script> 
+  // Add click event listener to the block header
+  document.getElementById("group_a").addEventListener("click", function() {
+    window.location.href = "group_a.html";
+  });
+</script>
+<div class="block">
+<div class="block-header">
+<p>Research Project B - Does birth control change inflammation during menstruation?</p>
+</div>
+<div id="group_b" class="block-container">
+<p><strong>Aim</strong><br>
+To investigate whether taking birth control is associated with vaginal inflammation throughout the menstrual cycle.<br>
+<br>
+<strong>Study Description</strong><br>
+This is an observational study to evaluate the relationship between birth control and vaginal inflammation. In response to menstruation. 16S rRNA sequencing was done to characterize patient microbiome composition. Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation.<br>
+</p>
+</div>
+</div>
+<script> 
+  // Add click event listener to the block header
+  document.getElementById("group_b").addEventListener("click", function() {
+    window.location.href = "group_b.html";
+  });
+</script>
+<!-- :::{.goals}
+::::{.goals-header}
+Learning Goals
+::::
+::::{.goals-container}
+* Know how to make your own callouts.
+* Be able to mess with some SCSS/CSS styling.
+::::
+::: -->
+<!-- {{< group_projects.qmd  >}} -->
 </section>
-<section id="goals" class="level2">
-<h2 class="anchored" data-anchor-id="goals"><strong>Goals</strong></h2>
-<ul>
+<section id="schedule" class="level3">
+<h3 class="anchored" data-anchor-id="schedule">Schedule</h3>
+<p><strong>Wednesday (4/24)</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 83%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Time</th>
+<th>Task</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>9:00-9:30am</td>
+<td><ul>
+<li>Read project description and aims for your project</li>
+<li>Locate project files on your instance</li>
+<li>Create a new .qmd file</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>9:30 - 10:30am</td>
+<td><ul>
+<li>Merge in metadata, qPCR, and Luminex data</li>
 <li>Create a phyloseq object</li>
-<li>Create relative abundance bar plots</li>
-<li>Explore within-sample diversity (Alpha Diversity)</li>
-</ul>
-<p><br>
-</p>
-<section id="loading-in-libraries-and-data" class="level3">
-<h3 class="anchored" data-anchor-id="loading-in-libraries-and-data">Loading in libraries and data <span class="emoji" data-emoji="books">📚</span></h3>
-<p>Loading in libraries. You may need to add more!<br>
-</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phyloseq)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(microViz)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Identify your project file paths, and read them in! Depending on where you created your Quarto project, this may vary.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>amplicon_ids <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Group B Dataset Menstruation/04_period_amplicon_sample_ids.csv"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>samp_id <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Group B Dataset Menstruation/00_sample_ids_period.csv"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>participant_metadata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Group B Dataset Menstruation/01_participant_metadata_period.csv"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>flow <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Group B Dataset Menstruation/03_flow_cytometry_period.csv"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>luminex <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Group B Dataset Menstruation/02_luminex_period.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This loads in the count and tax table for the whole sequencing run, so there may be samples you don’t need!</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>all_samples_count_table <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/gv_seqtab_nobim.rds"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>all_samples_tax_table <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/gv_spetab_nobim_silva.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<li>Phyloseq cleaning</li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td>10:30 - 11:00am</td>
+<td><strong>Break</strong></td>
+</tr>
+<tr class="even">
+<td>11:00- 12:00pm</td>
+<td><ul>
+<li><strong>Explore the data!</strong></li>
+<li>Visualizing microbiome composition</li>
+<li>Diversity</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Thursday (4/25)</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 83%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Time</th>
+<th>Task</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1:30 - 2:00pm</td>
+<td><ul>
+<li>Ordination and Correlations</li>
+</ul></td>
+</tr>
+<tr class="even">
+<td>2:00 - 3:00pm</td>
+<td><ul>
+<li>Differential Abundance</li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td>3:00 - 3:30pm</td>
+<td><strong>Break</strong></td>
+</tr>
+<tr class="even">
+<td>3:30 - 5:00pm</td>
+<td><ul>
+<li>Integrating Shotgun Metagenomics</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="creating-the-phyloseq" class="level3">
-<h3 class="anchored" data-anchor-id="creating-the-phyloseq">Creating the phyloseq <span class="emoji" data-emoji="parking">🅿️</span></h3>
-<p><strong>To speed up some data manipulation steps to get you to your analysis, I’ve provided some code to help you merge all the csvs together and create your phyloseq.</strong></p>
-<p>In a phyloseq object, we can put qPCR, cytokine data, and other sample metadata into the sample_data. We can create a bc_sample_data dataframe that will become the sample_data.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating sample data for the phyloseq</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>bc_sample_data <span class="ot">&lt;-</span> amplicon_ids <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(samp_id <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>arm), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"pid"</span>,<span class="st">"time_point"</span>)) <span class="sc">%&gt;%</span> <span class="co"># merges sample ids</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(participant_metadata <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>arm), <span class="at">by =</span> <span class="st">"pid"</span>) <span class="sc">%&gt;%</span> <span class="co"># merges participant metadata</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">arm_timepoint =</span> <span class="fu">str_c</span>(arm, time_point, <span class="at">sep =</span> <span class="st">"_"</span>)) <span class="sc">%&gt;%</span><span class="co">#creating a arm and timepoint column for later plotting</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(flow, <span class="at">by =</span> <span class="st">"sample_id"</span>) <span class="sc">%&gt;%</span> <span class="co"># merges flow</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(luminex <span class="sc">%&gt;%</span> <span class="co"># merges luminex</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> cytokine, <span class="at">values_from =</span> <span class="fu">c</span>(conc,limits)), <span class="at">by =</span> <span class="st">"sample_id"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">arm_timepoint =</span> <span class="fu">str_c</span>(arm, time_point, <span class="at">sep =</span> <span class="st">"_"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column_to_rownames</span>(<span class="st">"amplicon_sample_id"</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># #removing controls from the seq tab</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># seqtab_nochim_no_control &lt;- seqtab_nochim %&gt;% </span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#                             as.data.frame() %&gt;%</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#                             rownames_to_column("amplicon_sample_id") %&gt;%</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#                             filter(str_detect(amplicon_sample_id, "VAG") &amp; !(str_detect(amplicon_sample_id, "CTRL"))) %&gt;%</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#                             column_to_rownames("amplicon_sample_id") </span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># #merging phyloseq parts to create phyloseq object</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># bc_ps &lt;- phyloseq(otu_table(seqtab_nochim_no_control, taxa_are_rows=FALSE), </span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">#                bc_sample_data, </span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#                tax_table(taxa))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Why did I pivot_wider?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Why did I pivot_wider?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><span class="emoji" data-emoji="thought_balloon">💭</span> Because the luminex csv was in long format, pivoting it to wider helps set each analyte as a column and makes each row an unique sample.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Which columns do I merge by?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Which columns do I merge by?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><span class="emoji" data-emoji="thought_balloon">💭</span> How did I know which columns to merge by? This depends on the structure of your data and the task you’re performing. Usually you can choose columns that uniquely identify each row, and you can merge based on these columns. Some times, you need more than one!</p>
-</div>
-</div>
-</div>
-<p>Earlier, I mentioned that there are samples from other projects in the count and tax table! Here we need to update the count and tax table to to reflect the correct ASVs and samples.</p>
-<p>Extracting a vector of yogurt dataset sample ids</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>bc_ids <span class="ot">&lt;-</span> bc_sample_data <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>              <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>              <span class="fu">rownames_to_column</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>              <span class="fu">pull</span>(amplicon_sample_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Removing unused ASVs from the count table</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>count_table <span class="ot">&lt;-</span> all_samples_count_table <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                <span class="fu">rownames_to_column</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">filter</span>(amplicon_sample_id <span class="sc">%in%</span> bc_ids) <span class="sc">%&gt;%</span> <span class="co">#filtering the count data by the yogurt ids</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="sc">-</span>amplicon_sample_id), as.numeric) <span class="sc">%&gt;%</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                <span class="fu">column_to_rownames</span>(<span class="st">"amplicon_sample_id"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                <span class="fu">select</span>(<span class="fu">where</span>(<span class="sc">~</span><span class="fu">sum</span>(.) <span class="sc">!=</span> <span class="dv">0</span>)) <span class="co"># removing unused ASVs - when the sum of a column is 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Filtering the taxa table so there are only ASVs for the yogurt sample</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#getting all asvs for the yogurt data</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>asvs <span class="ot">&lt;-</span> <span class="fu">colnames</span>(count_table)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#filtering the taxa table so there is only asvs for the yogurt samples</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>tax_table <span class="ot">&lt;-</span> all_samples_tax_table <span class="sc">%&gt;%</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>              <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>              <span class="fu">rownames_to_column</span>(<span class="st">"tax_table_asv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>              <span class="fu">filter</span>(tax_table_asv <span class="sc">%in%</span> asvs) <span class="sc">%&gt;%</span> <span class="co"># filters the tax table by the asvs we want</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>              <span class="fu">column_to_rownames</span>(<span class="st">"tax_table_asv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>              <span class="fu">as.matrix</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now, we can create our phyloseq!</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creating phyloseq object</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>bc_ps <span class="ot">&lt;-</span> <span class="fu">phyloseq</span>(<span class="fu">otu_table</span>(count_table, <span class="at">taxa_are_rows=</span><span class="cn">FALSE</span>), </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">sample_data</span>(bc_sample_data), </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>               <span class="fu">tax_table</span>(tax_table))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Warning:</strong> From here on out, there will be less helpful code!</p>
-</section>
-<section id="phyloseq-cleaning-and-diagnosis" class="level3">
-<h3 class="anchored" data-anchor-id="phyloseq-cleaning-and-diagnosis">Phyloseq cleaning and diagnosis <span class="emoji" data-emoji="mag">🔍</span></h3>
-<ul>
-<li>Remove low-yield samples</li>
-<li>How sparse is your count table?</li>
-<li>Explore the distribution of ASV lengths. Are there any you’d like to remove?</li>
-<li>Are there NAs in the tax table?</li>
-</ul>
-</section>
-<section id="plot-the-relative-abundance-bar-plots" class="level3">
-<h3 class="anchored" data-anchor-id="plot-the-relative-abundance-bar-plots">Plot the relative abundance bar plots <span class="emoji" data-emoji="bar_chart">📊</span></h3>
-<ul>
-<li>Generate plots to compare relative abudances across arms and time points</li>
-<li>What are some noticable differences after antibiotic treatment?</li>
-<li><strong>Does consumption of yogurt influence a patient’s microbiome?</strong></li>
-</ul>
-<p>Optional questions (Examine your sample_data to see what other questions you can ask!):</p>
-<ul>
-<li>What cytokines correlated with Lactobaccilus?</li>
-<li>What cytokines correlate with certain taxa?</li>
-<li>How do the absolute abundance of bacteria and Lactobacillus speices change after antibiotic administration?</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled" title="Is your plot hard to see?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Is your plot hard to see?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><span class="emoji" data-emoji="thought_balloon">💭</span> Consider adjusting the code chunk options!<br>
-#| fig-width: 10<br>
-#| fig-height: 10<br>
-Or a number depending on your window size may help.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Checking your plots or if you're stuck!">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Checking your plots or if you’re stuck!
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><span class="emoji" data-emoji="thought_balloon">💭</span> Remember, ord_explore() is a very useful function within the microViz package that can build ordinations and relative abundance plots!</p>
-</div>
-</div>
-</div>
-</section>
-<section id="exploring-within-sample-diversity-alpha-diversity" class="level3">
-<h3 class="anchored" data-anchor-id="exploring-within-sample-diversity-alpha-diversity">Exploring within-sample diversity (Alpha Diversity) <span class="emoji" data-emoji="flags">🎏</span></h3>
-<ul>
-<li>Does your data contain singletons?</li>
-<li>Calculate alpha diversity using three different diversity measures</li>
-<li>Is there a difference in alpha diversity between the yogurt and normal diet arms? How about before and after antibiotics?</li>
-<li>Is the difference between arms statistically significant?</li>
-</ul>
-<!-- 
-
-#| warnings: false
-#| fig-width: 10
-#| fig-height: 10
-bc_ps <- bc_ps %>%
-            tax_fix(unknowns = c("unassigned"), anon_unique = FALSE) %>%
-            tax_mutate(Genus_Species = str_c(Genus, Species, sep = " "))
-
-bc_ps %>%
-  # ps_seriate(dist = "bray", method = "OLO_ward") %>% # arranges samples by microbiome similarity
-  comp_barplot(tax_level = "Genus_Species", facet_by = c("arm","time_point"), sample_order = "bray", n_taxa = 21)
-
-#The taxa names can use some updating
-# making all asvs that could be crispatus set to be crispatus because most likely, it is a crispatus species in the vaginal microbiome
-bc_ps_fixed <- bc_ps %>%
-                    # tax_select(tax_list = "Lactobacillus", ranks = "Genus") %>%  #filters for Lactos
-                    tax_mutate(Species = case_when(
-                        Species == "Lactobacillus Genus" ~ "crispatus",
-                        Species ==  "acidophilus/casei/crispatus/gallinarum" ~ "crispatus",
-                        Species == "crispatus/gasseri/helveticus/johnsonii/kefiranofaciens" ~ "crispatus",
-                        Species == "animalis/apodemi/crispatus/murinus" ~ "crispatus",
-                        .default = Species
-                    ))%>%
-                    tax_mutate(Genus_Species = str_c(Genus, Species, sep = " "))
-  
-bc_ps_fixed %>%
-  ps_seriate(dist = "bray", method = "OLO_ward") %>% # arranges samples by microbiome similarity
-  comp_barplot(tax_level = "Genus_Species", facet_by = c("arm","time_point"), sample_order = "bray", n_taxa = 21)
+<section id="example-workflows" class="level3">
+<h3 class="anchored" data-anchor-id="example-workflows">Example workflows</h3>
+<!-- [Johnathan's test demo](johnathan_demo_final.qmd) -->
+<p>Note: If downloading the demos, make sure the filepaths to the datasets match!</p>
 
 
-``` -->
-
-
-</section>
 </section>
 
 </main> <!-- /main -->
