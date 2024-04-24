@@ -34,7 +34,7 @@ library(microViz)
 library(tidyverse)
 ```
 
-Identify your project file paths, and read them in! Depending on where you created your Quarto project, this may vary.
+Identify your project file paths, and read them in! Depending on where you created your Quarto project, this may vary. Make sure you **change the following file paths** to match your directory structure.
 ```{r}
 #| warning: false
 amplicon_ids <- read_csv("data/Group B Dataset Menstruation/04_period_amplicon_sample_ids.csv")
@@ -69,17 +69,6 @@ bc_sample_data <- amplicon_ids %>%
     mutate(arm_timepoint = str_c(arm, time_point, sep = "_")) %>%
     column_to_rownames("amplicon_sample_id")
 
-# #removing controls from the seq tab
-# seqtab_nochim_no_control <- seqtab_nochim %>% 
-#                             as.data.frame() %>%
-#                             rownames_to_column("amplicon_sample_id") %>%
-#                             filter(str_detect(amplicon_sample_id, "VAG") & !(str_detect(amplicon_sample_id, "CTRL"))) %>%
-#                             column_to_rownames("amplicon_sample_id") 
-
-# #merging phyloseq parts to create phyloseq object
-# bc_ps <- phyloseq(otu_table(seqtab_nochim_no_control, taxa_are_rows=FALSE), 
-#                bc_sample_data, 
-#                tax_table(taxa))
 ```
 
 ::: {.callout-tip title="Why did I pivot_wider?" collapse="true"}

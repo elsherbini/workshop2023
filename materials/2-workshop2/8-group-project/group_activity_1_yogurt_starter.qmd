@@ -34,7 +34,7 @@ library(microViz)
 library(tidyverse)
 ```
 
-Identify your project file paths, and read them in! Depending on where you created your Quarto project, this may vary.
+Identify your project file paths, and read them in! Depending on where you created your Quarto project, this may vary. Make sure you **change the following file paths** to match your directory structure.
 ```{r}
 #| warning: false
 amplicon_ids <- read_csv("data/Group A Dataset Yogurt/04_yogurt_amplicon_sample_ids.csv")
