@@ -85,7 +85,6 @@ To identify the filtered reads, we add a string "\_F_filt" to the sample names p
 ```{r}
 #| echo: true
 #| eval: false
-mkdir(str_c(path, "/filtered"))
 filtFs <- file.path(path,"filtered", paste0(sample.names, "_F_filt.fastq.gz"))
 filtRs <- file.path(path,"filtered", paste0(sample.names, "_R_filt.fastq.gz"))
 names(filtFs) <- sample.names
