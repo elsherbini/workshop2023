@@ -89,7 +89,7 @@ website:
             - text: "<b>Module 5</b>: Correlations and Ordinations"
               contents:
               href: materials/2-workshop2/5-16s-pt2/index.qmd
-            - text: "<b>Module 6</b>: VIRGO"
+            - text: "<b>Module 6</b>: Shotgun Metagenomics and VIRGO"
               contents:
               href: materials/2-workshop2/6-virgo/index.qmd
             - text: "<b>Module 7</b>: Keynote "
