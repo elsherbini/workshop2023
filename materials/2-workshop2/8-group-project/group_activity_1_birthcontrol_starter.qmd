@@ -132,6 +132,7 @@ bc_ps <- phyloseq(otu_table(count_table, taxa_are_rows=FALSE),
 
 ### Phyloseq cleaning and diagnosis :mag:
 
+- Describe the structure of the experimental design
 - Remove low-yield samples
 - How sparse is your count table?
 - Explore the distribution of ASV lengths. Are there any you'd like to remove?

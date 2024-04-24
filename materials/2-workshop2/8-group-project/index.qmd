@@ -90,7 +90,7 @@ Research Project B - Does birth control change inflammation during menstruation?
 To investigate whether taking birth control is associated with vaginal inflammation throughout the menstrual cycle.\
 \
 **Study Description** \
-This is an observational study to evaluate the relationship between birth control and vaginal inflammation. In response to menstruation. 16S rRNA sequencing was done to characterize patient microbiome composition. Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation.
+This is an observational study to evaluate the relationship between birth control and vaginal inflammation in response to menstruation. 16S rRNA sequencing was done to characterize patient microbiome composition. Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. We also looked at the number and type of immune cells in the vagina using Flow Cytometry. Data was collected at four timepoints; before, at the start, the end, and after menstruation.
 \
 ::::
 :::
