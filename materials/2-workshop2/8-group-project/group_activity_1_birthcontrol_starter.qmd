@@ -81,7 +81,7 @@ bc_sample_data <- amplicon_ids %>%
 
 Earlier, I mentioned that there are samples from other projects in the count and tax table! Here we need to update the count and tax table to to reflect the correct ASVs and samples.
 
-Extracting a vector of yogurt dataset sample ids
+Extracting a vector of birth control dataset sample ids
 ```{r}
 bc_ids <- bc_sample_data %>% 
               as.data.frame() %>% 
@@ -95,17 +95,17 @@ Removing unused ASVs from the count table
 count_table <- all_samples_count_table %>%
                 as.data.frame() %>%
                 rownames_to_column("amplicon_sample_id") %>%
-                filter(amplicon_sample_id %in% bc_ids) %>% #filtering the count data by the yogurt ids
+                filter(amplicon_sample_id %in% bc_ids) %>% #filtering the count data by the birth control ids
                 mutate_at(vars(-amplicon_sample_id), as.numeric) %>%
                 column_to_rownames("amplicon_sample_id") %>%
                 select(where(~sum(.) != 0)) # removing unused ASVs - when the sum of a column is 0
 ```
 
-Filtering the taxa table so there are only ASVs for the yogurt sample
+Filtering the taxa table so there are only ASVs for the birth control dataset sample
 ```{r}
-#getting all asvs for the yogurt data
+#getting all asvs for the birth control data
 asvs <- colnames(count_table)
-#filtering the taxa table so there is only asvs for the yogurt samples
+#filtering the taxa table so there is only asvs for the birth control samples
 tax_table <- all_samples_tax_table %>%
               as.data.frame() %>%
               rownames_to_column("tax_table_asv") %>%
@@ -126,6 +126,10 @@ bc_ps <- phyloseq(otu_table(count_table, taxa_are_rows=FALSE),
 
 **Warning:** From here on out, there will be less helpful code! 
 
+\
+
+*These are questions that can be used as a guide. Looking at the data, think about what questions you can address!*
+
 ### Phyloseq cleaning and diagnosis :mag:
 
 - Remove low-yield samples
@@ -137,14 +141,14 @@ bc_ps <- phyloseq(otu_table(count_table, taxa_are_rows=FALSE),
 ### Plot the relative abundance bar plots :bar_chart:
 
 - Generate plots to compare relative abudances across arms and time points
-- What are some noticable differences after antibiotic treatment?
-- **Does consumption of yogurt influence a patient's microbiome?**
+- What are some noticable differences throughout menstruation?
+- **Does birth control change inflammation during menstruation?**
 
 Optional questions (Examine your sample_data to see what other questions you can ask!):
 
 - What cytokines correlated with Lactobaccilus?
 - What cytokines correlate with certain taxa?
-- How do the absolute abundance of bacteria and Lactobacillus speices change after antibiotic administration?
+- How do the absolute abundance of bacteria and Lactobacillus species change throughout menstruation?
 
 ::: {.callout-tip title="Is your plot hard to see?" collapse="true"}
 :thought_balloon: Consider adjusting the code chunk options! \
@@ -161,7 +165,7 @@ Or a number depending on your window size may help.
 
 - Does your data contain singletons?
 - Calculate alpha diversity using three different diversity measures
-- Is there a difference in alpha diversity between the yogurt and normal diet arms? How about before and after antibiotics?
+- Is there a difference in alpha diversity between the birth control and no birth control arms? How about across menstruation?
 - Is the difference between arms statistically significant?
 
 
