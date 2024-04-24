@@ -46,8 +46,9 @@ toc: false
 | AM   | 16S Data Preprocessing| Asavela Kama (CAPRISA)|
 | PM | Exploring High Dimensional Data | Elizabeth Costello (Stanford University) |
 | **Wednesday, April 24^th^**  |-------------------------------------------------------------- | --------------------------------------------------------------|
-| AM   | Group Activity I  | Johnathan Shih (Ragon Institute)|
- PM | Correlations and Differential Abundance Testing | Joseph Elsherbini (Ragon Institute)|
+| AM   | Exploring High Dimensional Data | Elizabeth Costello (Stanford University)|
+|    | Correlations and Differential Abundance Testing | Joseph Elsherbini (Ragon Institute)|
+ PM | Group Activity I | Johnathan Shih (Ragon Institute)|
 | **Thursday, April 25^th^**  |-------------------------------------------------------------- | --------------------------------------------------------------|
 | AM   | VIRGO / Shotgun Metagenomics | Michael France (UMD School of Medicine)|
 | PM   | Group Activity II  | Johnathan Shih (Ragon Institute)|

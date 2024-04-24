@@ -1,0 +1,202 @@
+---
+title: "Yogurt Group Activity I starter code"
+format:
+ html:
+    code-fold: false
+    toc: true
+    toc-expand: true
+    toc-location: right
+editor: visual
+execute:
+  cache: true
+--- 
+## Does yogurt consumption change the vaginal microbiome? \
+
+![](images/greek-yogurt.jpg){width=25%}
+
+
+
+## **Goals**
+- Create a phyloseq object
+- Create relative abundance bar plots
+- Explore within-sample diversity (Alpha Diversity)
+
+\
+
+
+### Loading in libraries and data :books:
+
+Loading in libraries. You may need to add more! \
+```{r}
+#| warning: false
+library(phyloseq)
+library(microViz)
+library(tidyverse)
+```
+
+Identify your project file paths, and read them in! Depending on where you created your Quarto project, this may vary.
+```{r}
+#| warning: false
+amplicon_ids <- read_csv("data/Group A Dataset Yogurt/04_yogurt_amplicon_sample_ids.csv")
+sample_id <- read_csv("data/Group A Dataset Yogurt/00_sample_ids_yogurt.csv")
+participant_metadata <- read_csv("data/Group A Dataset Yogurt/01_participant_metadata_yogurt.csv")
+qpcr <- read_csv("data/Group A Dataset Yogurt/02_qpcr_results_yogurt.csv")
+luminex <- read_csv("data/Group A Dataset Yogurt/03_luminex_results_yogurt.csv")
+```
+
+This loads in the count and tax table for the whole sequencing run, so there may be samples you don't need!
+```{r}
+#| warning: false
+all_samples_count_table <- readRDS("data/gv_seqtab_nobim.rds")
+all_samples_tax_table <- readRDS("data/gv_spetab_nobim_silva.rds")
+```
+
+### Creating the phyloseq :parking:
+
+**To speed up some data manipulation steps to get you to your analysis, I've provided some code to help you merge all the csvs together and create your phyloseq.**
+
+In a phyloseq object, we can put qPCR, cytokine data, and other sample metadata into the sample_data. We can create a yogurt_sample_data dataframe that will become the sample_data.
+
+```{r}
+yogurt_sample_data <- amplicon_ids %>%
+    left_join(sample_id %>% select(-arm), by = c("pid","time_point")) %>% #merges sample ids
+    left_join(participant_metadata %>% select(-arm), by = "pid") %>% #merges participant metadata
+    mutate(arm_timepoint = str_c(arm, time_point, sep = "_")) %>%  #creating a arm and timepoint column for later plotting
+    mutate(arm_timepoint = fct_relevel(arm_timepoint, "unchanged_diet_baseline", "unchanged_diet_after_antibiotic","yogurt_baseline","yogurt_after_antibiotic")) %>%  # sets the factor order of this column for plotting
+    mutate(time_point = fct_relevel(time_point, "baseline", "after_antibiotic")) %>% # sets the factor order of this column for plotting
+    left_join(qpcr, by = "sample_id") %>% # merges qpcr data
+    left_join(luminex %>%  # merges luminex data 
+        pivot_wider(names_from = cytokine, values_from = c(conc,limits)), by = "sample_id") %>%      #will need to pivot the cyotokine data to longer to merge with sample data
+    column_to_rownames("amplicon_sample_id")
+```
+
+::: {.callout-tip title="Why did I pivot_wider?" collapse="true"}
+:thought_balloon: Because the luminex csv was in long format, pivoting it to wider helps set each analyte as a column and makes each row an unique sample.
+:::
+
+::: {.callout-tip title="Which columns do I merge by?" collapse="true"}
+:thought_balloon: How did I know which columns to merge by? This depends on the structure of your data and the task you're performing. Usually you can choose columns that uniquely identify each row, and you can merge based on these columns. Some times, you need more than one!
+:::
+
+Earlier, I mentioned that there are samples from other projects in the count and tax table! Here we need to update the count and tax table to to reflect the correct ASVs and samples.
+
+Extracting a vector of yogurt dataset sample ids
+```{r}
+yogurt_ids <- yogurt_sample_data %>% 
+              as.data.frame() %>% 
+              rownames_to_column("amplicon_sample_id") %>%
+              pull(amplicon_sample_id)
+```
+
+
+Removing unused ASVs from the count table
+```{r}
+count_table <- all_samples_count_table %>%
+                as.data.frame() %>%
+                rownames_to_column("amplicon_sample_id") %>%
+                filter(amplicon_sample_id %in% yogurt_ids) %>% #filtering the count data by the yogurt ids
+                mutate_at(vars(-amplicon_sample_id), as.numeric) %>%
+                column_to_rownames("amplicon_sample_id") %>%
+                select(where(~sum(.) != 0)) # removing unused ASVs - when the sum of a column is 0
+```
+
+Filtering the taxa table so there are only ASVs for the yogurt sample
+```{r}
+#getting all asvs for the yogurt data
+asvs <- colnames(count_table)
+#filtering the taxa table so there is only asvs for the yogurt samples
+tax_table <- all_samples_tax_table %>%
+              as.data.frame() %>%
+              rownames_to_column("tax_table_asv") %>%
+              filter(tax_table_asv %in% asvs) %>% # filters the tax table by the asvs we want
+              column_to_rownames("tax_table_asv") %>%
+              as.matrix()
+
+```
+
+Now, we can create our phyloseq!
+```{r}
+#creating phyloseq object
+yogurt_ps <- phyloseq(otu_table(count_table, taxa_are_rows=FALSE), 
+               sample_data(yogurt_sample_data), 
+               tax_table(tax_table))
+
+```
+
+**Warning:** From here on out, there will be less helpful code! 
+
+### Phyloseq cleaning and diagnosis :mag:
+
+- Remove low-yield samples
+- How sparse is your count table?
+- Explore the distribution of ASV lengths. Are there any you'd like to remove?
+- Are there NAs in the tax table? 
+
+
+### Plot the relative abundance bar plots :bar_chart:
+
+- Generate plots to compare relative abudances across arms and time points
+- What are some noticable differences after antibiotic treatment?
+- **Does consumption of yogurt influence a patient's microbiome?**
+
+Optional questions (Examine your sample_data to see what other questions you can ask!):
+
+- What cytokines correlated with Lactobaccilus?
+- What cytokines correlate with certain taxa?
+- How do the absolute abundance of bacteria and Lactobacillus speices change after antibiotic administration?
+
+::: {.callout-tip title="Is your plot hard to see?" collapse="true"}
+:thought_balloon: Consider adjusting the code chunk options! \
+#| fig-width: 10 \
+#| fig-height: 10 \
+Or a number depending on your window size may help.
+:::
+
+::: {.callout-tip title="Checking your plots or if you're stuck!" collapse="true"}
+:thought_balloon: Remember, ord_explore() is a very useful function within the microViz package that can build ordinations and relative abundance plots!
+:::
+
+### Exploring within-sample diversity (Alpha Diversity) :flags:
+
+- Does your data contain singletons?
+- Calculate alpha diversity using three different diversity measures
+- Is there a difference in alpha diversity between the yogurt and normal diet arms? How about before and after antibiotics?
+- Is the difference between arms statistically significant?
+
+
+
+
+
+
+<!-- 
+```{r}
+#| warnings: false
+#| fig-width: 10
+#| fig-height: 10
+yogurt_ps <- yogurt_ps %>%
+            tax_fix(unknowns = c("unassigned"), anon_unique = FALSE) %>%
+            tax_mutate(Genus_Species = str_c(Genus, Species, sep = " "))
+
+yogurt_ps %>%
+  # ps_seriate(dist = "bray", method = "OLO_ward") %>% # arranges samples by microbiome similarity
+  comp_barplot(tax_level = "Genus_Species", facet_by = c("arm","time_point"), sample_order = "bray", n_taxa = 21)
+
+#The taxa names can use some updating
+# making all asvs that could be crispatus set to be crispatus because most likely, it is a crispatus species in the vaginal microbiome
+updated_yogurt_ps <- yogurt_ps %>%
+                    # tax_select(tax_list = "Lactobacillus", ranks = "Genus") %>%  #filters for Lactos
+                    tax_mutate(Species = case_when(
+                        Species == "Lactobacillus Genus" ~ "crispatus",
+                        Species ==  "acidophilus/casei/crispatus/gallinarum" ~ "crispatus",
+                        Species == "crispatus/gasseri/helveticus/johnsonii/kefiranofaciens" ~ "crispatus",
+                        Species == "animalis/apodemi/crispatus/murinus" ~ "crispatus",
+                        .default = Species
+                    ))%>%
+                    tax_mutate(Genus_Species = str_c(Genus, Species, sep = " "))
+  
+updated_yogurt_ps %>%
+  ps_seriate(dist = "bray", method = "OLO_ward") %>% # arranges samples by microbiome similarity
+  comp_barplot(tax_level = "Genus_Species", facet_by = c("arm","time_point"), sample_order = "bray", n_taxa = 21)
+
+
+``` -->

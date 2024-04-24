@@ -40,7 +40,7 @@ Workshop materials are at:
 
 ## Discussions: discord
 
-Ask questions at **#workshop-questions** on [https://discord.gg/UDAsYTzZE](https://discord.gg/UDAsYTzZE).
+Ask questions at **#workshop-questions** on [https://discord.com/channels/1227264067899621427](https://discord.com/channels/1227264067899621427).
 
 ![](images/discord_durban.png){fig-alt="Screenshot of the discord server app that serves as the forum for the workshop." fig-align="center" width="546"}
 
