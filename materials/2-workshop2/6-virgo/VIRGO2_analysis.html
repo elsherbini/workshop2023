@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science for Biology Workshop Series - VIRGO</title>
+<title>Data Science for Biology Workshop Series - VIRGO2 analysis of shotgun metagenomic data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../materials/2-workshop2/7-keynote/index.html" rel="next">
-<link href="../../../materials/2-workshop2/5-16s-pt2/index.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -244,13 +242,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text"><b>2. Working with High Dimensional Data in R - The Human Microbiome</b></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/2-workshop2/0-welcome/index.html" class="sidebar-item-text sidebar-link">
@@ -289,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../materials/2-workshop2/6-virgo/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../materials/2-workshop2/6-virgo/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 6</b>: Shotgun Metagenomics and VIRGO</span></a>
   </div>
 </li>
@@ -317,12 +315,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
-  <li><a href="#working-with-virgo2-output" id="toc-working-with-virgo2-output" class="nav-link" data-scroll-target="#working-with-virgo2-output">Working with VIRGO2 output</a></li>
+  <li><a href="#working-with-virgo2-output" id="toc-working-with-virgo2-output" class="nav-link active" data-scroll-target="#working-with-virgo2-output">Working with VIRGO2 output</a></li>
   <li><a href="#installing-a-required-package" id="toc-installing-a-required-package" class="nav-link" data-scroll-target="#installing-a-required-package">Installing a required package</a></li>
   <li><a href="#loading-required-packages" id="toc-loading-required-packages" class="nav-link" data-scroll-target="#loading-required-packages">Loading required packages</a></li>
   <li><a href="#reading-in-and-examining-the-metadata-file" id="toc-reading-in-and-examining-the-metadata-file" class="nav-link" data-scroll-target="#reading-in-and-examining-the-metadata-file">Reading in and examining the metadata file</a></li>
@@ -351,10 +348,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="slides" class="level2">
-<h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTLH8yyWnvKdBNsnW6whNAgO_7b3lD809h_ZUfgcWo-3UfOhSm5jvEAbQ0pS9AHcZa5IACYIi2nsWKs/embed?start=true&amp;loop=false&amp;delayms=3000" frameborder="0" height="420" width="747" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-</section>
 <section id="working-with-virgo2-output" class="level2">
 <h2 class="anchored" data-anchor-id="working-with-virgo2-output">Working with VIRGO2 output</h2>
 <p>The output of VIRGO2 is a data frame of dimensions Genes by Samples and the values are the number of reads that were mapped to that gene. This data frame is generally LARGE and WIDE with up to 1.7 million genes. For the example code I’ve selected a random subset of 100,000 VIRGO2 genes. So the dataframe contains 100,000 rows (features). To expedite things, I’ve already merged a column for the taxonomic and functional annotations for each gene from the VIRGO2 annotation files.</p>
@@ -1156,18 +1149,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../../materials/2-workshop2/5-16s-pt2/index.html" class="pagination-link" aria-label="<b>Module 5</b>: Correlations and Ordinations">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><b>Module 5</b>: Correlations and Ordinations</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../../materials/2-workshop2/7-keynote/index.html" class="pagination-link" aria-label="<b>Module 7</b>: Keynote ">
-        <span class="nav-page-text"><b>Module 7</b>: Keynote</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
