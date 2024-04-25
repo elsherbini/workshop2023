@@ -169,7 +169,20 @@ Or a number depending on your window size may help.
 - Is there a difference in alpha diversity between the yogurt and normal diet arms? How about before and after antibiotics?
 - Is the difference between arms statistically significant?
 
+### Ordination and Correlation
 
+- Create Microbiome heatmaps
+- Annotate the heatmap with arms and/or timepoints
+- Using ord_explore() or with code, generate ordination plots
+- Create a correlation heatmap of taxa and cytokines (optional)
+
+::: {.callout-tip title="References" collapse="true"}
+:thought_balloon: The [microViz](https://david-barnett.github.io/microViz/articles/web-only/heatmaps.html) documentation can be helpful.
+:::
+### Shotgun Metagenomics
+
+- Create a phyloseq object using the VIRGO dataset
+- Try applying Michael's code!
 
 
 
