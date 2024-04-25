@@ -1,0 +1,472 @@
+---
+title: "VIRGO2 analysis of shotgun metagenomic data"
+format:
+ html:
+    code-fold: false
+    toc: true
+    toc-expand: true
+    toc-location: right
+editor: visual
+---
+
+## Working with VIRGO2 output
+
+The output of VIRGO2 is a data frame of dimensions Genes by Samples and the values are the number of reads that were mapped to that gene. This data frame is generally LARGE and WIDE with up to 1.7 million genes. For the example code I've selected a random subset of 100,000 VIRGO2 genes. So the dataframe contains 100,000 rows (features). To expedite things, I've already merged a column for the taxonomic and functional annotations for each gene from the VIRGO2 annotation files.
+
+This code will go through some basic exploration of the data to a simple analysis of differential taxonomic composition, differential functional composition, and then investigating which taxa are driving the differential abundance.
+
+## Installing a required package
+
+```{r}
+#| eval: false
+if (!require("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install("Heatplus", ask=FALSE)
+```
+
+## Loading required packages
+
+This block of code loads the packages we will use in this section.
+
+```{r}
+#| eval: false
+library(dplyr)
+library(gplots)
+library(vegan)
+library(RColorBrewer)
+library(reshape2)
+library(ggplot2)
+library(Heatplus)
+library(GUniFrac)
+```
+
+## Reading in and examining the metadata file
+
+This block of code sets the working directory and reads in the metadata file.
+
+```{r}
+#| eval: false
+#reading in and examining the metaData file
+metaData <- read.csv("data/instructional/InstructionalDataset_samplesMatch.csv")
+```
+
+Now lets examine some of the metadata fields and look at how many entries there are.
+
+```{r}
+#| eval: false
+#counting entries in metaDataFile
+#this function pipes the metaData object to the count function to generation a table of the number of times each variable in the column appears
+metaData %>% 
+  count(UID, name="Count")
+
+metaData %>% 
+  count(CST, name="Count")
+
+metaData %>% 
+  count(pid, name="Count")
+
+metaData %>% 
+  count(arm, name="Count")
+
+metaData %>% 
+  count(timepoint,name="Count")
+
+```
+
+Now we will read in the VIRGO2 read counts table, this will be followed by a bit of exploration of the dataset to identify and investigate potential problems.
+
+```{r}
+#| eval: false
+#reading in and examining the read counts file
+readCounts <- read.csv("./data/instructional/InstructionalDataset_VIRGO2.csv")
+
+#printing the column names
+print(colnames(readCounts))
+#printing the first couple lines of the dataframe
+print(head(readCounts))
+
+#printing the number of unique KEGG and Taxa values in the dataframe
+print(n_distinct(readCounts$KEGG))
+print(n_distinct(readCounts$Taxa))
+
+
+```
+
+As we can see, the dataframe contains 4 columns of information about the genes (Gene ID, the KEGG category, the taxonomy of the gene, and the length of the gene). This is then followed by one column for each sample where the values are the number of reads from the sample that mapped to each of the genes.
+
+First we will look for differences in the number of reads mapped per metagenome to identify any samples for which there were insufficient reads mapped.
+
+```{r}
+#| eval: false
+#investigating the total number of reads per MG for outliers
+#this line sums the columns to calculate the number of reads per MG, the first 4 columns are skipped because they contain annotations and not sample data
+totalReads = colSums(readCounts[,5:ncol(readCounts)])
+#this line returns the log10 transformed median value for the distribution of read counts
+log10(median(totalReads))
+
+#this line plots a simple histogram of the distribution of read counts per MG
+hist(log10(totalReads),col="#000000")
+
+#identifying the sample with the minimum number of reads
+which.min(totalReads)
+####dropping metagenome with minimum reads, from data table and metadata table
+drops <- c("VAG0042")
+readCounts <- readCounts[ , !(names(readCounts) %in% drops)]
+metaData <- metaData[!(metaData$UID %in% drops),]
+```
+
+Next we will just check that the sample was actually dropped and re-examine the distribution and minimum number of reads mapped.
+
+```{r}
+#| eval: false
+#checking it was dropped
+#again recalculating the number of reads mapped per MG
+totalReads = colSums(readCounts[,5:ncol(readCounts)])
+
+hist(log10(totalReads),col="#000000")
+```
+
+Another feature we might want to examine is the number of genes mapped per metagenome. This could help identify differences in the total gene content per metagenome but could also highlight metagenomes where the bulk of the reads mapped to very few genes.
+
+```{r}
+#| eval: false
+#examining the gene counts per MG
+#converting the abundance data to presence absence data
+geneCounts <- colSums(readCounts[,5:ncol(readCounts)] != 0)
+
+#breaking this down, this part return true if the value in the cell is not equal to 0 and a False if the value is equal to zero, the column sums then returns the number of TRUE values, whic is the number of genes observed
+readCounts[,5:ncol(readCounts)] != 0
+
+#generating a histogram of the number of genes per metagenome
+
+hist(geneCounts,breaks=seq(0,25000,by=1000))
+```
+
+What do we think? Is this distribution problematic or expected?
+
+```{r}
+#| eval: false
+metaData$geneCounts <- geneCounts
+boxplot(geneCounts~CST,data=metaData,notch=FALSE,col=c('#fe0308','#f6d3da','#ff7200','#f8a40e','#221886'),ylab = 'No. of Genes',xlab="CST")
+
+```
+
+As you can see, communities which contain more species (CST IV-B) yield more genes per metagenome than those that contain relatively few species (CST I, CST III).
+
+In this next section we will begin to calculate the taxonomic composition of each metagenome, using the read counts per gene.
+
+Essentially, we will divide the read counts for each gene by the length of the gene. This approximates the coverage of the genes.
+
+```{r}
+#| eval: false
+#calculating taxonomic composition (in relative abundance) of each MG
+#this line divides the read counts by the gene length (NOTE THIS IS AN APPROXIMATION, WHY?)
+geneCoverages <- readCounts[,5:ncol(readCounts)]/readCounts$Length
+
+print(head(geneCoverages))
+```
+
+Then to calculate the taxonomic composition, we will sum the coverages of genes per taxa to get a total coverage of the taxa.
+
+```{r}
+#| eval: false
+#calculating the taxa relative abundances by first summing coverages of genes across taxa
+
+#first we add back the gene metadata columns
+geneCoverages <- cbind(readCounts[,1:4],geneCoverages)
+#then we drop the metadata values we don't need
+drops <- c('Gene','KEGG','Length')
+geneCoverages <- geneCoverages[ , !(names(geneCoverages) %in% drops)]
+
+#then we group the coverage by taxa and apply the sum function
+taxaCoverages <- data.frame(geneCoverages %>% 
+  group_by(Taxa) %>% 
+  summarise(across(everything(), sum)))
+
+print(head(taxaCoverages))
+```
+
+In the next code block, we are going to drop the coverages of genes which did not have taxonomic annotations, and the genes annotated as originating from multiple genera. Opinions differ on whether or not to consider these proportions in your analyses and plots but for this analysis we will just remove them.
+
+```{r}
+#| eval: false
+#dropping the coverage contributed by genes without taxonomy and by genes which were annotated as "MultiGenera"
+taxaCoverages = taxaCoverages[!taxaCoverages$Taxa == "", ]
+taxaCoverages = taxaCoverages[!taxaCoverages$Taxa == "MultiGenera", ]
+
+```
+
+We will then change the row names to the taxa designations and then remove the column to taxa. Following that we will determine relative abundance as the coverage of each taxa divided by the sum of coverage values for the sample. This is akin to dividing the number of reads per taxa (in 16S amplicon data) by the total number of reads with the key difference being that we are considering variation in the gene length.
+
+```{r}
+#| eval: false
+rownames(taxaCoverages) <- taxaCoverages$Taxa
+drops <- c('Taxa')
+taxaCoverages <- taxaCoverages[ , !(names(taxaCoverages) %in% drops)]
+
+taxaRel <- data.frame(t(t(taxaCoverages)/colSums(taxaCoverages)))
+
+#sorting the taxa by their study wide relative abundances
+taxaRel <- taxaRel[order(rowSums(taxaRel),decreasing=T),]
+
+print(head(taxaRel))
+```
+
+In the next section we will apply some filters on the taxa to drop those that are not very prevalent or abundant in any given community. When we do this, we will keep track of how much "relative abundance" was lost when removing these taxa, to ensure that it is not having a major effect on our estimation of community composition.
+
+```{r}
+#| eval: false
+#applying a filter to remove any taxa less than 10-5 in average relative abundance (You should try additional filtering thresholds)
+#first we'll look at the sum of each column to demonstrate that, prior to filtering the total relative abundance for each sample was 1!
+colSums(taxaRel)
+
+#then we apply a rowMeans filter (average relative abundance of the taxa) as 10^-5 or 0.00001
+taxaRel_filt <-  taxaRel %>% filter(rowMeans(select(., where(is.numeric))) > 0.00001)
+
+#checking what effect this filter had on our relative abundance scores
+mean(colSums(taxaRel_filt))
+#on average, this filter removed <0.001% of the community composition
+1-min(colSums(taxaRel_filt))
+#the sample most impacted by this filter had 0.005% of it's community composition removed
+print(dim(taxaRel))
+print(dim(taxaRel_filt))
+```
+
+```{r}
+#| eval: false
+#recomputing relative abundance after dropping those taxa, so samples are back to summing to 1
+taxaRel <- data.frame(t(t(taxaRel_filt)/colSums(taxaRel_filt)))
+colSums(taxaRel)
+```
+
+In the next code block we will generate a heatmap displaying the taxonomic composition of each sample. As part of this process we'll generate a dendrogram which will arrange samples with similar taxonomic composition together.
+
+```{r}
+#| eval: false
+#setting the ravel lab heatmap color palette
+heat_cmap <- colorRampPalette(c('#FFFF00','#00EE76','#BBFFFF','#104E8B','#FF1493','#B22222'), space = "rgb")(12)
+
+# calculate the Bray-Curtis dissimilarity matrix on the full dataset:
+data.dist <- vegdist(t(taxaRel), method = "bray")
+data.dist.g <- vegdist(taxaRel, method = "bray")
+
+#Do ward linkage to generate dendrograms for hierarchical clustering.
+row.clus <- hclust(data.dist, "average")
+col.clus <- hclust(data.dist.g, "average")
+
+#creating a heatmap, sorting samples by the dendrogram generated in the above step
+heatmap(as.matrix(t(top_n(taxaRel,n=25))),Rowv = as.dendrogram(row.clus),Colv=NA, col = heat_cmap)
+```
+
+In the next section we will create a stacked bar plot (because I am addicted to them) which also displays the taxonomic composition. Importantly, we will sort the dataframe by the dendrogram so that, like the heatmap, samples which have similar taxonomic composition appear near each other in the plot.
+
+```{r}
+#| eval: false
+#subsetting out the top 25 taxa
+taxaRel_trim <- taxaRel[1:25,]
+
+#sorting the dataframe by the dendrogram orders
+sampSort <- row.clus$labels[match(row.clus$order, sort(row.clus$order))]
+taxaRelBar <- data.frame(t(taxaRel_trim[,sampSort]))
+
+#calculating the "other" variable which tracks the proprotion of coverage not contributed by the top 25
+taxaRelBar$other <- 1-rowSums(taxaRelBar)
+taxaRelBar$Sample <- row.names(taxaRelBar)
+
+#melting the dataframe from "wide" format to "long" format
+taxaRelBarLong = melt(taxaRelBar, id = c("Sample"))
+#ensuring that the samples in the bar graph will maintain their order
+taxaRelBarLong$Sample <- factor(taxaRelBarLong$Sample,levels=unique(taxaRelBarLong$Sample))
+
+#setting the taxa color scheme
+colours = c('#ff8c00','#ff0000','#58e0d9','#20b2aa','#409490','#0000cd','#ffeeee','#bbeff2','#99b0af','#1acad6','#333333','#008B45','#cf36b5','#05ebdf','#684a6b','#6accc7','#a16060','#3bb16f','#86bf4d','#146c73','#ff00d9','#ac8fc7','#00494f','#085e5a','#c997cc','#e1e1e1')
+
+#make the stackedplot!
+stackedBarPlot = ggplot(taxaRelBarLong, aes(x = Sample, fill = variable, y = value)) + 
+  geom_bar(stat = "identity", colour = "black") + 
+  theme(axis.text.x = element_text(angle = 90, size = 14, colour = "black", vjust = 0.5, hjust = 1), 
+        axis.title.y = element_text(size = 16, face = "bold"), legend.title = element_text(size = 16, face = "bold"), 
+        legend.text = element_text(size = 12, face = "bold", colour = "black"),
+        legend.key.size = unit(10, "pt"),
+        legend.background = element_rect(fill="lightgray"),
+        axis.text.y = element_text(colour = "black", size = 12, face = "bold")) + 
+  guides(fill=guide_legend(ncol =1)) + 
+  scale_y_continuous(expand = c(0,0)) + 
+  labs(x = "", y = "Relative Abundance (%)", fill = "Taxa") + 
+  scale_fill_manual(values = colours)
+
+stackedBarPlot
+
+```
+
+In the final section on taxonomic composition, we'll perform a differential abundance test to determine if their are taxa which are more abundant in the treatment versus the placebo arm. There are lots of different tools to do this analysis, most of them try to deal with the central problems with microbiome datasets (1: the data are compositional; 2: the data are sparse). For this analysis I'm using ZicoSeq which uses the read counts as inputs and not the relative abundance scores we calculated. Under the hood it's running a permutation test but if you want to know more I would suggest your read the paper. It seems like every week there is a new tool do this test, generally I recommend trying a couple options and look for consistency between them.
+
+In this first part we'll generate the input expected by ZicoSeq, which is a dataframe of read counts, this will look similar to what we did for the taxonomic composition except we are just summing read counts per taxa.
+
+```{r}
+#| eval: false
+#generating taxaReadCounts for analysis by ZicoSeq
+
+#dropping gene annotations we don't need
+drops <- c('Gene','KEGG','Length')
+taxaCounts <- readCounts[ , !(names(readCounts) %in% drops)]
+
+#summing the read counts per Taxa
+taxaCounts <- data.frame(taxaCounts %>% 
+                           group_by(Taxa) %>% 
+                           summarise(across(everything(), sum)))
+
+#filtering out reads mapped to genes without taxonomic annotations or with MultiGenera annotation
+taxaCounts = taxaCounts[!taxaCounts$Taxa == "", ]
+taxaCounts = taxaCounts[!taxaCounts$Taxa == "MultiGenera", ]
+
+#making the row names the taxa
+rownames(taxaCounts) <- taxaCounts$Taxa
+drops <- c('Taxa')
+taxaCounts <- taxaCounts[ , !(names(taxaCounts) %in% drops)]
+
+#sorting the dataframe so that the most abundant taxa are at the top of the dataframe
+taxaCounts <- taxaCounts[order(rowSums(taxaCounts),decreasing=T),]
+
+#dropping taxa which have absolutely no reads, ZicoSeq doesn't like this
+taxaCounts <- taxaCounts[rowSums(taxaCounts != 0) > 0,]
+
+print(head(taxaCounts))
+print(head(metaData))
+```
+
+Differences in baseline
+
+```{r}
+#| eval: false
+baseline_metaData <- metaData[metaData$timepoint == 'baseline',]
+baseline_taxaCounts <- taxaCounts[ , (names(taxaCounts) %in% baseline_metaData$UID)]
+
+print(head(baseline_metaData))
+print(head(baseline_taxaCounts))
+dim(baseline_taxaCounts)
+baseline_taxaCounts <- as.matrix(baseline_taxaCounts)
+baseline_taxaCounts <- baseline_taxaCounts[rowSums(baseline_taxaCounts != 0) > 0,]
+
+
+baseline_taxaZicoOut <- ZicoSeq(meta.dat = baseline_metaData, feature.dat = baseline_taxaCounts                                      ,grp.name =c('arm'),feature.dat.type = "count",
+                                     # Filter to remove rare taxa
+                                     prev.filter = 0.15, mean.abund.filter = 0.00001,  
+                                     max.abund.filter = 0.0001, min.prop = 0, 
+                                     # Winsorization to replace outliers
+                                     is.winsor = TRUE, outlier.pct = 0.03, winsor.end = 'both',
+                                     # Posterior sampling 
+                                     is.post.sample = TRUE, post.sample.no = 100, 
+                                     # Use the square-root transformation
+                                     link.func = list(function (x) x^0.5), stats.combine.func = max,
+                                     # Permutation-based multiple testing correction
+                                     perm.no = 99,  strata = NULL, 
+                                     # Reference-based multiple stage normalization
+                                     ref.pct = 0.5, stage.no = 6, excl.pct = 0.2,
+                                     is.fwer = TRUE, verbose = TRUE, return.feature.dat = T)
+
+
+ZicoSeq.plot(baseline_taxaZicoOut, metaData, pvalue.type = 'p.adj.fdr', cutoff = 0.01, text.size = 10,out.dir = NULL, width = 10, height = 6)
+
+x <- data.frame(baseline_taxaZicoOut$p.adj.fdr)
+y <- data.frame(baseline_taxaZicoOut$R2)
+z <- data.frame(baseline_taxaZicoOut$coef.list)
+z <- t(z)
+
+baselineTaxaOut <- cbind(x,y,z)
+baselineTaxaOut <- baselineTaxaOut[order(baselineTaxaOut$baseline_taxaZicoOut.p.adj.fdr,decreasing=FALSE),]
+#print(baselineTaxaOut)
+
+```
+
+Week 1
+
+```{r}
+#| eval: false
+week1_metaData <- metaData[metaData$timepoint == 'week_1',]
+week1_taxaCounts <- taxaCounts[ , (names(taxaCounts) %in% week1_metaData$UID)]
+
+print(head(week1_metaData))
+print(head(week1_taxaCounts))
+dim(week1_taxaCounts)
+week1_taxaCounts <- as.matrix(week1_taxaCounts)
+week1_taxaCounts <- week1_taxaCounts[rowSums(week1_taxaCounts != 0) > 0,]
+
+
+week1_taxaZicoOut <- ZicoSeq(meta.dat = week1_metaData, feature.dat = week1_taxaCounts, 
+                                     grp.name =c('arm'),feature.dat.type = "count",
+                                     # Filter to remove rare taxa
+                                     prev.filter = 0.15, mean.abund.filter = 0.00001,  
+                                     max.abund.filter = 0.0001, min.prop = 0, 
+                                     # Winsorization to replace outliers
+                                     is.winsor = TRUE, outlier.pct = 0.03, winsor.end = 'both',
+                                     # Posterior sampling 
+                                     is.post.sample = TRUE, post.sample.no = 100, 
+                                     # Use the square-root transformation
+                                     link.func = list(function (x) x^0.5), stats.combine.func = max,
+                                     # Permutation-based multiple testing correction
+                                     perm.no = 999,  strata = NULL, 
+                                     # Reference-based multiple stage normalization
+                                     ref.pct = 0.5, stage.no = 6, excl.pct = 0.2,
+                                     is.fwer = TRUE, verbose = TRUE, return.feature.dat = T)
+
+
+ZicoSeq.plot(week1_taxaZicoOut, metaData, pvalue.type = 'p.adj.fdr', cutoff = 0.01, text.size = 10,out.dir = NULL, width = 10, height = 6)
+
+x <- data.frame(week1_taxaZicoOut$p.adj.fdr)
+y <- data.frame(week1_taxaZicoOut$R2)
+z <- data.frame(week1_taxaZicoOut$coef.list)
+z <- t(z)
+
+week1TaxaOut <- cbind(x,y,z)
+week1TaxaOut <- week1TaxaOut[order(week1TaxaOut$week1_taxaZicoOut.p.adj.fdr,decreasing=FALSE),]
+#print(week1TaxaOut)
+```
+
+Week 7
+
+```{r}
+#| eval: false
+week7_metaData <- metaData[metaData$timepoint == 'week_7',]
+week7_taxaCounts <- taxaCounts[ , (names(taxaCounts) %in% week7_metaData$UID)]
+
+print(head(week7_metaData))
+print(head(week7_taxaCounts))
+dim(week7_taxaCounts)
+week7_taxaCounts <- as.matrix(week7_taxaCounts)
+week7_taxaCounts <- week7_taxaCounts[rowSums(week7_taxaCounts != 0) > 0,]
+
+
+week7_taxaZicoOut <- ZicoSeq(meta.dat = week7_metaData, feature.dat = week7_taxaCounts, 
+                                     grp.name =c('arm'),feature.dat.type = "count",
+                                     # Filter to remove rare taxa
+                                     prev.filter = 0.15, mean.abund.filter = 0.00001,  
+                                     max.abund.filter = 0.0001, min.prop = 0, 
+                                     # Winsorization to replace outliers
+                                     is.winsor = TRUE, outlier.pct = 0.03, winsor.end = 'both',
+                                     # Posterior sampling 
+                                     is.post.sample = TRUE, post.sample.no = 100, 
+                                     # Use the square-root transformation
+                                     link.func = list(function (x) x^0.5), stats.combine.func = max,
+                                     # Permutation-based multiple testing correction
+                                     perm.no = 99,  strata = NULL, 
+                                     # Reference-based multiple stage normalization
+                                     ref.pct = 0.5, stage.no = 6, excl.pct = 0.2,
+                                     is.fwer = TRUE, verbose = TRUE, return.feature.dat = T)
+
+
+ZicoSeq.plot(week7_taxaZicoOut, metaData, pvalue.type = 'p.adj.fdr', cutoff = 0.01, text.size = 10,
+             out.dir = NULL, width = 10, height = 6)
+x <- data.frame(week7_taxaZicoOut$p.adj.fdr)
+y <- data.frame(week7_taxaZicoOut$R2)
+z <- data.frame(week7_taxaZicoOut$coef.list)
+z <- t(z)
+
+week7TaxaOut <- cbind(x,y,z)
+week7TaxaOut <- week7TaxaOut[order(week7TaxaOut$week7_taxaZicoOut.p.adj.fdr,decreasing=FALSE),]
+#print(week7TaxaOut)
+```
+
+```{r}
+
+```
