@@ -32,6 +32,21 @@ toc: false
 2. [Join the discord here](https://discord.gg/Mb7pRTptqm) (once you've joined, you can bookmark [https://discord.com/channels/1158136582201692202/](https://discord.com/channels/1227264067899621427) to go straight to the channel.)  
 3. Await instructions on logging into your AWS instance.
 
+\
+
+
+**Thank you for participating in the workshop!**
+
+The instances will be going down, but your work has been saved! \
+\
+**To retrieve your files**: \
+1. Navigate to this link [Your workshop files here](https://github.com/elsherbini/durban-data-science-for-biology/releases/tag/2024-04-26-0300)\
+2. Find your IP \
+3. Download the folder associated with your IP. \
+
+
+
+
 
 <!-- ## Exporting your data from the AWS instance
 
