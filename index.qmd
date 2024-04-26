@@ -39,7 +39,7 @@ toc: false
 #### [Fill out the post-workshop survey here](https://docs.google.com/forms/d/e/1FAIpQLSfgMquCfq-CPnj96dfMcCfQTRBH8eZlAqw7r5ItYVaibA4b4Q/viewform?usp=sf_link){target="_blank"}
 Before you leave, we have some questions for you to understand if the workshop was valuable and how we can improve it.
 
-**The instances will be going down, but your work has been saved!**
+**The instances will be going down, but your work has been saved!** \
 To retrieve your files: \
 1. Navigate to this link [Workshop II instance files here](https://github.com/elsherbini/durban-data-science-for-biology/releases/tag/2024-04-26-0300){target="_blank"}\
 2. Find your IP \
