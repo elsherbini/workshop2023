@@ -26,23 +26,31 @@ toc: false
 
 :::
 
-## Welcome to the workshop!
+<!-- ## Welcome to the workshop!
 
 1. [Fill out the pre-workshop survey here](https://forms.gle/7sdT7YRJerdgFJcc7)  
 2. [Join the discord here](https://discord.gg/Mb7pRTptqm) (once you've joined, you can bookmark [https://discord.com/channels/1158136582201692202/](https://discord.com/channels/1227264067899621427) to go straight to the channel.)  
 3. Await instructions on logging into your AWS instance.
 
-\
+\ -->
 
 
-**Thank you for participating in the workshop!**
+## Thank you for participating in Workshop II!
+#### [Fill out the post-workshop survey here](https://docs.google.com/forms/d/e/1FAIpQLSfgMquCfq-CPnj96dfMcCfQTRBH8eZlAqw7r5ItYVaibA4b4Q/viewform?usp=sf_link){target="_blank"}
+Before you leave, we have some questions for you to understand if the workshop was valuable and how we can improve it.
 
-The instances will be going down, but your work has been saved! \
-\
-**To retrieve your files**: \
-1. Navigate to this link [Your workshop files here](https://github.com/elsherbini/durban-data-science-for-biology/releases/tag/2024-04-26-0300)\
+**The instances will be going down, but your work has been saved!**
+
+To retrieve your files: \
+1. Navigate to this link [Workshop II instance files here](https://github.com/elsherbini/durban-data-science-for-biology/releases/tag/2024-04-26-0300){target="_blank"}\
 2. Find your IP \
 3. Download the folder associated with your IP. \
+
+**Workshop II Discord** \
+[Join the discord here](https://discord.gg/Mb7pRTptqm){target="_blank"} \
+Once you've joined, you can bookmark [https://discord.com/channels/1158136582201692202/](https://discord.com/channels/1227264067899621427){target="_blank"} to go straight to the channel
+
+
 
 
 
