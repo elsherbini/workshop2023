@@ -17,6 +17,7 @@ Washington University School of Medicine
 Department of Pathology and Immunology
 :::
 
+
 ::: {.g-col-2}
 ![](images/Joseph.png){fig-align="left"}
 :::
@@ -25,6 +26,28 @@ Department of Pathology and Immunology
 **Dr. Joseph Elsherbini**  
 Data Scientist  
 Ragon Institute of MGH, MIT and Harvard
+:::
+
+::: {.g-col-2}
+![](images/Jacques.jpg){fig-align="left"}
+:::
+::: {.g-col-4}
+[*Instructor*]{style="font-size: 0.8em"}  
+**Dr. Jacques Ravel**  
+Professor  
+University of Maryland School of Medicine
+Department of Microbiology and Immunology
+:::
+
+::: {.g-col-2}
+![](images/Sinaye.jpg){fig-align="left"}
+:::
+::: {.g-col-4}
+[*Instructor*]{style="font-size: 0.8em"}  
+**Dr. Sinaye Ngcapu**  
+Senior Scientist \
+CAPRISA \
+HIV Mucosal Immunology Laboratory 
 :::
 
 ::: {.g-col-2}
@@ -107,8 +130,8 @@ Ragon Institute of MGH, MIT and Harvard
 
 ::: {.g-col-4}
 [*Series Logistics and Management*]{style="font-size: 0.8em"}  
-**Renee Schumm**  
-Staff Assistant II \ 
+**Renee Schumm**  \
+Staff Assistant II  \
 Ragon Institute of MGH, MIT and Harvard
 :::
 
@@ -167,7 +190,7 @@ Centre for the AIDS Programme of Research in South Africa (CAPRISA) - UKZN
 ::: {.g-col-4}
 [*Teaching Assistant*]{style="font-size: 0.8em"}  
 **Wasim Abdool Karim**  
-Bioinformatician
+Bioinformatician \
 Centre for Epidemic Response and Innovation (CERI) - Stellenbosch  
 :::
 
