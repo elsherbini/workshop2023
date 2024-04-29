@@ -1,0 +1,856 @@
+---
+title: "Yogurt study data analysis"
+format:
+ html:
+    code-fold: false
+    toc: true
+    toc-expand: true
+    toc-location: right
+editor: visual
+execute:
+  cache: true
+---
+
+**Research Project A** - Does yogurt consumption change the vaginal microbiome?
+
+**Aim** To investigate whether the consumption of yogurt influences microbiome composition after antibiotics treatment.
+
+**Study Description** This is a randomized controlled trial to study whether yogurt consumption has an effect on the vaginal microbiome post antibiotic treatment. 16S rRNA gene sequencing was done to characterize patient microbiome composition. Absolute abundance of bacteria (in gene copies / mL) was measured by 3 qPCR assays (for total, *L. crispatus*, *L. iners*). Cytokine levels (in ug/mL of vaginal fluid) were also measured by Luminex. Data was collected at two timepoints, pre- and post antibiotic treatment.
+
+### Load packages
+
+```{r}
+#| warning: false
+#| code-fold: true
+library(here)
+library(tidyverse)
+library(phyloseq)
+library(rstatix)
+library(microViz)
+library(ggpubr)
+library(ggbeeswarm)
+library(ggside)
+library(vegan)
+library(reshape2)
+library(pander)
+```
+
+### Manage paths
+
+Show path to the current project
+
+```{r}
+#| eval: false
+here::here()
+```
+
+Create object containing the path to the data we intend to analyze
+
+```{r}
+#| eval: false
+yo_path <- file.path(here("data/"))
+yo_path
+```
+
+List the files we intend to load
+
+```{r}
+#| eval: false
+list.files(yo_path)
+```
+
+### Load data
+
+Load the sample-associated data
+
+```{r}
+#| eval: false
+sample_ids <- read.csv(paste0(yo_path, "00_sample_ids_yogurt.csv"))
+participant_metadata <- read.csv(paste0(yo_path, "01_participant_metadata_yogurt.csv"))
+qpcr <- read.csv(paste0(yo_path, "02_qpcr_results_yogurt.csv"))
+luminex <- read.csv(paste0(yo_path, "03_luminex_results_yogurt.csv"))
+amplicon_ids <- read.csv(paste0(yo_path, "04_yogurt_amplicon_sample_ids.csv"))
+```
+
+Load the count table and taxonomy table. These are the outputs of `dada2`.
+
+```{r}
+#| eval: false
+all_samples_count_table <- readRDS(paste0(yo_path, "gv_seqtab_nobim.rds"))
+all_samples_tax_table <- readRDS(paste0(yo_path, "gv_spetab_nobim_silva.rds"))
+```
+
+```{r}
+#| eval: true
+#| echo: false
+sample_ids <- read.csv("data/Group A Dataset Yogurt/00_sample_ids_yogurt.csv")
+participant_metadata <- read.csv("data/Group A Dataset Yogurt/01_participant_metadata_yogurt.csv")
+qpcr <- read.csv("data/Group A Dataset Yogurt/02_qpcr_results_yogurt.csv")
+luminex <- read.csv("data/Group A Dataset Yogurt/03_luminex_results_yogurt.csv")
+amplicon_ids <- read.csv("data/Group A Dataset Yogurt/04_yogurt_amplicon_sample_ids.csv")
+
+all_samples_count_table <- readRDS("data/Group A Dataset Yogurt/gv_seqtab_nobim.rds")
+all_samples_tax_table <- readRDS("data/Group A Dataset Yogurt/gv_spetab_nobim_silva.rds")
+
+
+```
+
+### Prepare sample data
+
+Prepare the sample-associated data by joining (adding) the sample ids, participant metadata, qpcr data, and luminex data to the amplicon ids. Adjust the factor levels for several variables.
+
+```{r}
+yogurt_sample_data <- amplicon_ids %>%
+  
+  left_join(sample_ids %>% select(-arm), by = c("pid", "time_point")) %>% # joins sample ids
+  
+  left_join(participant_metadata %>% select(-arm), by = "pid") %>% # joins participant metadata
+  
+  left_join(qpcr, by = "sample_id") %>% # joins qpcr data
+  
+  left_join(luminex %>%  # pivots wider then joins the luminex data
+              pivot_wider(names_from = cytokine,
+                          values_from = c(conc,limits)), by = "sample_id") %>% 
+  
+  mutate(time_point = fct_relevel(time_point, "baseline", "after_antibiotic")) %>% 
+  
+  mutate(arm_timepoint = str_c(arm, time_point, sep = "_")) %>%
+  mutate(arm_timepoint = fct_relevel(arm_timepoint,
+                                     "unchanged_diet_baseline",
+                                     "unchanged_diet_after_antibiotic",
+                                     "yogurt_baseline",
+                                     "yogurt_after_antibiotic"))
+```
+
+### Quick check sample data
+
+```{r}
+# What are the variables?
+colnames(yogurt_sample_data)
+```
+
+```{r}
+# Any missing data?
+sum(is.na(yogurt_sample_data))
+```
+
+```{r}
+# All IDs unique?
+length(unique(yogurt_sample_data$amplicon_sample_id)) == nrow(yogurt_sample_data)
+```
+
+```{r}
+# Any incomplete cases?
+yogurt_sample_data %>% 
+  count(pid) %>% filter(n != 2)
+```
+
+### Viz study design
+
+```{r}
+yogurt_sample_data %>% 
+  ggplot(aes(x = time_point, y = pid, color = age, shape = sex)) +
+  geom_point(size = 3, stroke = FALSE) +
+  facet_wrap(~arm, scales = "free_y") +
+  labs(title = "VMB before & after ABX")
+```
+
+### Make phyloseq object
+
+```{r}
+yogurt_ps <- phyloseq(
+  
+  # Make the phyloseq object
+  sample_data(yogurt_sample_data %>% column_to_rownames(var = "amplicon_sample_id")),
+  otu_table(all_samples_count_table, taxa_are_rows = FALSE),
+  tax_table(all_samples_tax_table)) %>% 
+  
+  # Remove empty ASVs
+  filter_taxa(., function(x) sum(x > 0) > 0, prune = TRUE)
+
+# Show a concise summary of the phyloseq object
+yogurt_ps
+```
+
+```{r}
+min(sample_sums(yogurt_ps))
+min(taxa_sums(yogurt_ps))
+```
+
+### Quick check yields, ASVs
+
+Do we have any samples that returned very few reads?
+
+```{r}
+yield_df <- data.frame(yield = sample_sums(yogurt_ps)) %>% 
+  rownames_to_column(var = "amplicon_sample_id") %>% 
+  arrange(yield)
+
+head(yield_df, n = 3) %>% pander()
+```
+
+Yes, two samples returned very few reads.
+
+Do we see any arm- or time-point-associated bias in sequencing yield?
+
+```{r}
+yogurt_sample_data %>% 
+  left_join(yield_df, by = "amplicon_sample_id") %>% 
+  mutate(lo_yield = yield < 100) %>% 
+  ggplot(aes(x = yield, fill = lo_yield)) +
+  geom_histogram(alpha = 0.6, bins = 10) +
+  facet_grid(arm ~ time_point)
+```
+
+These look fine. Two low-yield samples are in the unchanged_diet arm, after abx.
+
+Are there any ASVs we'd consider setting aside for now?
+
+```{r}
+prev_df <- data.frame(
+  asv_sum = colSums(otu_table(yogurt_ps)),
+  asv_prev = colSums(otu_table(yogurt_ps) > 0)) %>% 
+  rownames_to_column(var = "asv_seq")
+
+asv_df <- tax_table(yogurt_ps) %>% 
+  data.frame() %>% 
+  rownames_to_column(var = "asv_seq") %>% 
+  left_join(prev_df, by = "asv_seq") %>% 
+  mutate(asv_len = nchar(asv_seq)) %>% 
+  arrange(desc(asv_sum))
+
+rm(prev_df)
+```
+
+```{r}
+asv_df %>% 
+  ggplot(aes(x = asv_len, y = asv_prev, color = Kingdom)) +
+  geom_point(alpha = 0.5, size = 3, stroke = FALSE) +
+  labs(title = "How prevalent are any length outliers?",
+       x = "ASV length",
+       y = "ASV prevalence") + 
+  scale_y_log10()
+```
+
+BLASTed a few of the Euk ASVs. Other than *Trichomomas vaginalis*, which was observed in one sample, they look like host contamination. Let's keep ASVs that fit the following criteria:
+
+```{r}
+keep <- asv_df %>% 
+  filter(asv_len %in% 390:450) %>% 
+  filter(Kingdom == "Bacteria") %>% 
+  filter(!is.na(Phylum)) %>% 
+  pull(asv_seq)
+
+nrow(asv_df) - length(keep)
+```
+
+### Clean phyloseq object
+
+Setting aside 71 length outliers, or non-Bacteria, or Bacteria with Phylum NA.
+
+```{r}
+yo_ps_clean <- yogurt_ps %>% 
+  prune_taxa(keep, .) %>%
+  prune_samples(sample_sums(.) > 100, .) %>% 
+  filter_taxa(., function(x) sum(x > 0) > 0, prune = TRUE) # Removes empty ASVs (if any exist)
+
+yo_ps_clean
+```
+
+### Potential confounders?
+
+We have two variables in our sample data that stand out (to me) as potential influencers of the vaginal microbiota - days_since_last_sex & birth_control. Are they well-balanced between arms; between timepoints?
+
+Let's check the variable days_since_last_sex
+
+```{r}
+yogurt_sample_data %>% 
+  ggplot(aes(x = days_since_last_sex, fill = arm)) +
+  geom_density(alpha = 0.5) +
+  facet_wrap(~time_point) +
+  theme(aspect.ratio = 1)
+```
+
+Note: We have the same value for baseline and after_antibiotic. Was days_since_last_sex assessed only at baseline? Will need to follow-up with team as to how the study was conducted. Were the participants asked to abstain from sex during the study? For now I will assume that days_since_last_sex is relative to the baseline timepoint.
+
+```{r}
+yogurt_sample_data %>% 
+  filter(time_point == "baseline") %>% 
+  group_by(arm) %>% 
+  get_summary_stats(days_since_last_sex, type = "five_number") %>% pander()
+```
+
+This variable, days_since_last_sex, seems reasonably well-balanced between arms.
+
+Let's check the variable birth_control
+
+```{r}
+yogurt_sample_data %>% 
+  filter(time_point == "after_antibiotic") %>% 
+  count(arm, birth_control) %>% pander()
+```
+
+Things are a bit unbalanced here. In the unchanged_diet arm, around 1/3 of participants use Depo, but in the yogurt arm around 2/3 of them do. We'll keep this in mind as we perform our analysis. This variable could confound a simple comparison of unchanged_diet vs yogurt at timepoint after_antibiotic.
+
+At the level of Genus, is there much difference in composition between participants using Depo vs Not using Depo?
+
+```{r}
+#| warning: false
+yo_ps_clean %>%
+  ps_filter(time_point == "baseline") %>%
+  tax_fix() %>% 
+  # tax_name(prefix = "asv", rank = "Genus") %>% 
+  # tax_names2rank(colname = "Label") %>% 
+  comp_barplot(tax_level = "Genus", n_taxa = 12) +
+  coord_flip() +
+  facet_wrap(.~birth_control, scales = "free_y")
+```
+
+Nothing too dramatic, it seems. Nonetheless, we'll try to compare participants to themselves.
+
+### qPCR results
+
+Let's glimpse the qPCR data. 
+
+```{r}
+yogurt_sample_data %>% 
+  
+  pivot_longer(qpcr_bacteria:qpcr_iners,
+               names_to = "qpcr_tax", values_to = "qpcr_value") %>% 
+  arrange(pid, arm, time_point) %>% 
+  
+  ggplot(aes(x = time_point, y = qpcr_value+1)) +
+  
+  geom_boxplot(alpha = 0.5, outlier.shape = NA) +
+  geom_line(aes(group = pid), alpha = 0.2) +
+  geom_point(alpha = 0.5, stroke = FALSE) +
+  
+  facet_grid(cols = vars(qpcr_tax), rows = vars(arm), scales = "free") +
+  scale_y_log10() + 
+  stat_compare_means(paired = TRUE)
+```
+
+Post antibiotics, bacterial load is down; *L. crispatus* is up (from none to some; more sporadic); and *L. iners* is up (from some to lots; more consistent). Maybe *L. crispatus* up more (often) in yogurt than in no-yogurt?
+
+### Plot bars, especially Lactos
+
+Let's fix *L. crispatus* as demonstrated in class
+
+```{r}
+# How many ways do we see crispatus?
+tax_table(yo_ps_clean) %>% 
+  data.frame() %>% 
+  filter(grepl("crispatus", Species)) %>% 
+  pull(Species) %>% unique()
+```
+
+```{r}
+# Make consistent
+ps_yo_tax <- yo_ps_clean %>%
+  tax_fix() %>%
+  tax_mutate(Species = case_when(
+    Species ==  "acidophilus/casei/crispatus/gallinarum" ~ "crispatus",
+    Species == "crispatus/gasseri/helveticus/johnsonii/kefiranofaciens" ~ "crispatus",
+    Species == "animalis/apodemi/crispatus/murinus" ~ "crispatus",
+    .default = Species)) %>%
+    tax_mutate(Genus_species = str_c(Genus, Species, sep = " ")) %>%
+    tax_rename(rank = "Genus_species")
+```
+
+```{r}
+#| warning: false
+# Plot bars Genus
+ps_yo_tax %>%
+  tax_fix() %>%
+  tax_agg("Genus") %>%
+  ps_seriate() %>% # This changes the order of the samples to be sorted by similarity
+  comp_barplot(tax_level = "Genus", sample_order = "asis", n_taxa = 11) +
+  facet_wrap(arm ~ time_point, scales="free_x") +
+  theme(axis.text.x = element_text(size = 5, angle = 45, vjust = 1, hjust = 1))
+```
+
+Looks like increase in prevalence of *Lactobacillus* dominance post antibiotic; little difference by diet
+
+```{r}
+# Plot bars Genus_species
+ps_yo_tax %>%
+  tax_fix() %>%
+  tax_agg("Genus_species") %>%
+  ps_seriate() %>% # This changes the order of the samples to be sorted by similarity
+  comp_barplot(tax_level = "Genus_species", sample_order = "asis", n_taxa = 11) +
+  facet_wrap(arm ~ time_point, scales="free_x") +
+  theme(axis.text.x = element_text(size = 5, angle = 45, vjust = 1, hjust = 1))
+```
+
+It would be worth spending some time to refine and make consistent all of the *Lactobacillus* species-level calls. In the past I've done this via clustering against a reference. Put it on the to-do list.
+
+```{r}
+# Viz & test genus Lactobacillus
+lacto_df <- yo_ps_clean %>% 
+  transform_sample_counts(., function(x) x/sum(x)) %>% 
+  tax_glom(., taxrank = "Genus") %>% 
+  subset_taxa(., Genus == "Lactobacillus") %>% 
+  otu_table() %>% 
+  data.frame() %>% 
+  rownames_to_column(var = "amplicon_sample_id")
+
+colnames(lacto_df) <- c("amplicon_sample_id", "Lactobacillus")
+
+lacto_df %>% 
+  left_join(yogurt_sample_data, by = "amplicon_sample_id") %>% 
+  group_by(pid) %>% filter(n() == 2) %>% ungroup() %>% 
+  arrange(pid, arm, time_point) %>% 
+  ggplot(aes(x = time_point, y = Lactobacillus)) +
+  geom_boxplot(alpha = 0.5, outlier.shape = NA) +
+  geom_line(aes(group = pid), alpha = 0.2) +
+  geom_point(alpha = 0.5, stroke = FALSE) +
+  facet_wrap(.~arm, scales = "free_y") + 
+  theme(aspect.ratio = 1) +
+  stat_compare_means(paired = TRUE)
+```
+
+In both arms, the relative abundance of the genus *Lactobacillus* was significantly higher post antibiotics.
+
+```{r}
+# Viz & test L. iners
+lin_df <- yo_ps_clean %>% 
+  transform_sample_counts(., function(x) x/sum(x)) %>% 
+  tax_glom(., taxrank = "Species") %>% 
+  subset_taxa(., Species == "iners") %>% 
+  otu_table() %>% 
+  data.frame() %>% 
+  rownames_to_column(var = "amplicon_sample_id")
+
+colnames(lin_df) <- c("amplicon_sample_id", "Lactobacillus_iners")
+
+lin_df %>% 
+  left_join(yogurt_sample_data, by = "amplicon_sample_id") %>% 
+  group_by(pid) %>% filter(n() == 2) %>% ungroup() %>% 
+  arrange(pid, arm, time_point) %>% 
+  ggplot(aes(x = time_point, y = Lactobacillus_iners)) +
+  geom_boxplot(alpha = 0.5, outlier.shape = NA) +
+  geom_line(aes(group = pid), alpha = 0.2) +
+  geom_point(alpha = 0.5, stroke = FALSE) +
+  facet_wrap(.~arm, scales = "free_y") + 
+  theme(aspect.ratio = 1) +
+  stat_compare_means(paired = TRUE)
+```
+
+This seems largely driven by increases in *Lactobacillus iners*
+
+```{r}
+# Viz & test L. crispatus
+lcr_df <- yo_ps_clean %>% 
+  transform_sample_counts(., function(x) x/sum(x)) %>% 
+  tax_glom(., taxrank = "Species") %>% 
+  subset_taxa(., grepl("crispatus", Species)) %>% 
+  otu_table() %>% 
+  data.frame() %>% 
+  rownames_to_column(var = "amplicon_sample_id") %>% 
+  rowwise() %>% 
+  mutate(Lactobacillus_crispatus = sum(c_across(2:5))) %>% 
+  select(amplicon_sample_id, Lactobacillus_crispatus)
+
+lcr_df %>% 
+  drop_na() %>% 
+  left_join(yogurt_sample_data, by = "amplicon_sample_id") %>% 
+  group_by(pid) %>% filter(n() == 2) %>% ungroup() %>% 
+  arrange(pid, arm, time_point) %>% 
+  ggplot(aes(x = time_point, y = Lactobacillus_crispatus)) +
+  geom_boxplot(alpha = 0.5, outlier.shape = NA) +
+  geom_line(aes(group = pid), alpha = 0.2) +
+  geom_point(alpha = 0.5, stroke = FALSE) +
+  facet_wrap(.~arm, scales = "free_y") + 
+  theme(aspect.ratio = 1) +
+  stat_compare_means(paired = TRUE)
+```
+
+And less so by increases in *Lactobacillus crispatus*
+
+### Cytokines
+
+Identify cytokines with most measurements within limits
+
+```{r}
+yogurt_sample_data %>% 
+  select(starts_with("limits")) %>%
+  summarise(across(starts_with("limits"), ~ sum(.x == "within limits", na.rm = TRUE))) %>% 
+  t() %>% data.frame() %>% 
+  rownames_to_column(var = "cytokine") %>% 
+  rename(samples_within_limits = ".") %>% 
+  arrange(desc(samples_within_limits)) %>% pander()
+```
+
+Let's go with these; at least 75% of measurements were "within the limits" of detection
+
+```{r}
+kines <- paste0("conc_", c("IL-1a", "IP-10", "IL-8", "MIG", "MIP-3a"))
+```
+
+```{r}
+yogurt_sample_data %>% 
+  pivot_longer(all_of(kines), names_to = "kine", values_to = "conc") %>% 
+  ggplot(aes(x = conc, fill = time_point)) + 
+  geom_histogram(bins = 30) +
+  facet_wrap(~kine) +
+  scale_x_log10()
+```
+
+Noticing a subtle shift with abx: Down for IL-1a and IL-8; up for IP-10 and MIG
+
+### Alpha diversity
+
+```{r}
+# Any singletons?
+sum(otu_table(yo_ps_clean) == 1)
+```
+
+Owing to very few singletons, we'll exclude Chao1 and ACE
+
+Calculate measures & add sample data
+
+```{r}
+measures <- c("Shannon", "Simpson", "InvSimpson", "Fisher")
+
+alpha_df <- yo_ps_clean %>%
+  estimate_richness(measures = measures) %>% 
+  rownames_to_column(var = "amplicon_sample_id") %>% 
+  left_join(yogurt_sample_data, by = "amplicon_sample_id")
+
+alpha_df %>% 
+  select(1:9) %>% 
+  head(n = 3) %>% pander()
+```
+
+How many complete cases?
+
+```{r}
+alpha_df %>% 
+  group_by(pid) %>% filter(n() == 2) %>% ungroup() %>%
+  count(time_point)
+```
+
+Plot and test for antibiotic-associated change
+
+```{r}
+alpha_df %>% 
+  group_by(pid) %>% filter(n() == 2) %>% ungroup() %>%
+  arrange(pid, time_point) %>% 
+  pivot_longer(cols = all_of(measures),
+               names_to = "adiv_measure",
+               values_to = "adiv_value") %>% 
+  ggplot(aes(x = time_point, y = adiv_value)) +
+  geom_boxplot(alpha = 0.5, outlier.shape = NA) +
+  geom_line(aes(group = pid), alpha = 0.2) +
+  geom_point(alpha = 0.5, stroke = FALSE) +
+  facet_wrap(.~adiv_measure, scales = "free_y") + 
+  theme(aspect.ratio = 1) +
+  stat_compare_means(paired = TRUE)
+```
+
+Result: Antibiotic treatment was associated with a modest decrease in vaginal bacterial diversity (Shannon diversity index, Wilcoxon signed rank test, *n* = 49 participants, *P* = 0.006). This result was robust to choice of alpha diversity metric (Supplemental Figure 1).
+
+How many complete cases per arm?
+
+```{r}
+alpha_df %>% 
+  group_by(pid) %>% filter(n() == 2) %>% ungroup() %>%
+  count(arm, time_point) %>% pander()
+```
+
+Plot and test for yogurt modulation of antibiotic-associated change
+
+```{r}
+alpha_df %>% 
+  group_by(pid) %>% filter(n() == 2) %>% ungroup() %>%
+  pivot_longer(all_of(measures), names_to="metric", values_to="value") %>%
+  select(pid, time_point, arm, metric, value) %>% 
+  pivot_wider(names_from = time_point, values_from = value) %>% 
+  mutate(diff_alpha = after_antibiotic - baseline) %>% 
+  ggplot(aes(x = arm, y = diff_alpha)) +
+  geom_boxplot(alpha = 0.4, outlier.shape = NA) +
+  geom_quasirandom(stroke = FALSE, width = 0.2) +
+  facet_wrap(.~metric, scales = "free_y") + 
+  theme(aspect.ratio = 1) +
+  stat_compare_means(paired = FALSE)
+```
+
+Result: Antibiotic-associated changes in vaginal bacterial diversity were similar between participants who consumed yogurt and those who did not (change in Shannon diversity index, Wilcoxon rank sum test, *N* = 26 yogurt consumers vs 23 with unchanged diet, *P* = 0.82). This result was robust to choice of alpha diversity metric (Supplemental Figure 2).
+
+### Beta diversity
+
+Let's ordinate using some microViz recipes
+
+```{r}
+# Using robust.aitchison distance, MDS (PCoA) ordination, and displaying side panel boxplots
+set.seed(123)
+
+ps_yo_tax %>%
+  tax_fix() %>% 
+  tax_transform("identity", rank = "Genus") %>%
+  dist_calc(dist = "robust.aitchison") %>%
+  ord_calc("PCoA") %>%
+  ord_plot(color = "time_point", shape = "arm", size = 2) +
+  scale_colour_brewer(palette = "Dark2", aesthetics = c("fill", "colour")) +
+  theme_bw() +
+  ggside::geom_xsideboxplot(aes(fill = time_point, y = time_point), orientation = "y") +
+  ggside::geom_ysideboxplot(aes(fill = time_point, x = time_point), orientation = "x") +
+  ggside::scale_xsidey_discrete(labels = NULL) +
+  ggside::scale_ysidex_discrete(labels = NULL) +
+  ggside::theme_ggside_void()
+```
+
+```{r}
+# Using bray-curtis distance, MDS (PCoA) ordination, and displaying side panel density plots
+set.seed(123)
+
+ps_yo_tax %>%
+  tax_fix() %>% 
+  tax_transform("identity", rank = "Genus") %>%
+  dist_calc(dist = "bray") %>%
+  ord_calc("PCoA") %>%
+  ord_plot(color = "time_point", shape = "arm", size = 2) +
+  scale_colour_brewer(palette = "Dark2", aesthetics = c("fill", "colour")) +
+  theme_bw() + 
+  ggside::geom_xsidedensity(aes(fill = time_point), alpha = 0.5, show.legend = FALSE) +
+  ggside::geom_ysidedensity(aes(fill = time_point), alpha = 0.5, show.legend = FALSE) +
+  ggside::theme_ggside_void()
+```
+
+Along axis 1, there's a subtle shift (in the density of samples) associated with antibiotic treatment, with more "after" samples clustering on left.
+
+Now let's answer our question about whether diet (yogurt) modulates response of vaginal microbiota to antibiotics.
+
+Get a distance for each person's pair of samples; we'll ask: are distances different for those who ate yogurt vs those who didn't?
+
+```{r}
+# Pick some distance metrics
+distances <- c("bray", "canberra", "euclidean", "hellinger", "kulczynski", "manhattan", "morisita", "robust.aitchison")
+
+# Get counts
+yo_tab <- yo_ps_clean %>% otu_table()
+
+# Prepare sample data
+sam1 <- yogurt_sample_data %>% select(amplicon_sample_id, pid, arm) %>%
+  dplyr::rename(sam1 = amplicon_sample_id, pid1 = pid, arm1 = arm)
+
+sam2 <- yogurt_sample_data %>% select(amplicon_sample_id, pid, arm) %>%
+  dplyr::rename(sam2 = amplicon_sample_id, pid2 = pid, arm2 = arm)
+```
+
+```{r}
+# Get distances
+result <- vector("list")
+
+for (d in distances) {
+  
+# Get distance matrix
+# This contains a distance for every pair of samples
+dist <- vegdist(x = yo_tab, method = d)  
+
+# Convert to regular matrix
+d_mat <- as(dist, "matrix")
+
+# Replace upper tri and diag w/ NA
+d_mat[upper.tri(d_mat, diag = TRUE)] <- NA
+
+# Melt to columns and drop NA
+d_col <- setNames(melt(d_mat, as.is = TRUE), c("sam1", "sam2", "dist")) %>% 
+  drop_na() %>% mutate(metric = d)
+
+# Add sample data
+d_col <- left_join(d_col, sam1, by = "sam1") %>% left_join(sam2, by = "sam2")
+
+# Filter to same-participant distances
+# This contains a distance for only those pairs we're interested in
+# For each person, the distance between their pre- and post-abx
+d_wi <- d_col %>% filter(pid1 == pid2)
+
+result[[d]] <- d_wi
+
+}
+```
+
+```{r}
+# Plot and test
+bind_rows(result) %>% 
+  ggplot(aes(x = arm1, y = dist)) +
+  geom_boxplot(alpha = 0.4, outlier.shape = NA) +
+  geom_quasirandom(stroke = FALSE, width = 0.2) +
+  facet_wrap(.~metric, nrow = 2, scales = "free_y") + 
+  stat_compare_means(paired = FALSE) +
+  labs(x = "", y = "Distance between pre-abx and post-abx sample")
+```
+
+Result: Turnover in bacterial community composition was similar between antibiotic-treated participants who consumed yogurt and those who did not (Bray-Curtis distance, Wilcoxon rank sum test, *N* = 26 yogurt consumers vs 23 with unchanged diet, *P* = 0.9). This result was robust to choice of distance metric (Supplemental Figure 3).
+
+### RDA
+
+Let's explore this microViz recipe for redundancy analysis (RDA).
+
+RDA is a constrained ordination method. "Constrained" means that the ordination (in this case, PCA) only shows the community variation that can be explained by/associated with the external environmental/clinical variables (these are called the "constraints").
+
+First let's constrain by time_point and arm
+
+```{r}
+yo_ps_clean %>%
+  ps_mutate(
+    after_abx = as.numeric(time_point == "after_antibiotic"),
+    yogurt = as.numeric(arm == "yogurt")
+  ) %>%
+  tax_fix() %>% 
+  tax_transform("clr", rank = "Genus") %>%
+  ord_calc(
+    constraints = c("after_abx", "yogurt"),
+    method = "RDA",
+    scale_cc = FALSE
+  ) %>%
+  ord_plot(
+    colour = "time_point", size = 2, alpha = 0.5, shape = "arm",
+    plot_taxa = 1:10
+  )
+```
+
+Good, makes sense given other findings. Look at the axes - how much variation explained? Less than in our unconstrained analyses shown above. So we might say that the variation associated with antibiotic exposure is just a (small?) part of the total variation observed among samples.
+
+Now let's examine birth control and recent sex
+
+```{r}
+yo_ps_clean %>%
+  ps_mutate(
+    depo = as.numeric(birth_control == "Depoprovera"),
+    recent_sex = as.numeric(days_since_last_sex < 7)
+  ) %>%
+  tax_fix() %>% 
+  tax_transform("clr", rank = "Genus") %>%
+  ord_calc(
+    constraints = c("depo", "recent_sex"),
+    method = "RDA",
+    scale_cc = FALSE
+  ) %>%
+  ord_plot(
+    colour = "time_point", size = 2, alpha = 0.5, shape = "arm",
+    plot_taxa = 1:10
+  )
+```
+
+Maybe not a lot of signal here.
+
+Let's try with cytokines as constraints
+
+```{r}
+yo_ps_clean %>%
+  # ps_mutate(
+  #   conc_IL.1a = log10(conc_IL.1a),
+  #   conc_IP.10 = log10(conc_IP.10),
+  #   conc_IL.8 = log10(conc_IL.8),
+  #   conc_MIG = log10(conc_MIG)
+  # ) %>%
+  tax_fix() %>% 
+  tax_transform("clr", rank = "Genus") %>%
+  ord_calc(
+    constraints = c("conc_IL.1a", "conc_IP.10", "conc_IL.8", "conc_MIG"),
+    method = "RDA",
+    scale_cc = FALSE
+  ) %>%
+  ord_plot(
+    colour = "time_point", size = 2, alpha = 0.5, shape = "arm",
+    plot_taxa = 1:12
+  )
+```
+
+Interesting, IL-1a and IL-8 associated with diverse anaerobes.
+
+Finally, let's look at antibiotic, IL-1a, IP-10 & IL-8
+
+```{r}
+yo_ps_clean %>%
+  ps_mutate(
+    after_abx = as.numeric(time_point == "after_antibiotic"),
+  ) %>%
+  tax_fix() %>% 
+  tax_transform("clr", rank = "Genus") %>%
+  ord_calc(
+    constraints = c("after_abx", "conc_IL.1a", "conc_IP.10", "conc_IL.8"),
+    method = "RDA",
+    scale_cc = FALSE
+  ) %>%
+  ord_plot(
+    colour = "time_point", size = 2, alpha = 0.5, shape = "arm",
+    plot_taxa = 1:15
+  )
+```
+
+So we're beginning to build a sense of how vaginal microbiota, vaginal cytokines, and antibiotic treatment relate to each other. We might suggest that antibiotic treatment was associated with an increase in the prevalence of Lactobacillus dominance, possibly accompanied by a reduction (or shift) in the levels (or type) of inflammation.
+
+That's it for now! 🤓
+
+### Other
+
+Correlation heatmaps in microViz
+
+```{r}
+ps_manual_taxonomy <- yo_ps_clean %>%
+  tax_fix() %>%
+  tax_mutate(Species = case_when(
+    Species ==  "acidophilus/casei/crispatus/gallinarum" ~ "crispatus",
+    Species == "crispatus/gasseri/helveticus/johnsonii/kefiranofaciens" ~ "crispatus",
+    Species == "animalis/apodemi/crispatus/murinus" ~ "crispatus",
+    .default = Species)) %>%
+    #also remake genus_species to fix those taxa
+    tax_mutate(genus_species = str_c(Genus, Species, sep = " ")) %>%
+    tax_rename(rank = "genus_species")
+```
+
+```{r}
+yo_ps_clean %>%
+  tax_filter(min_prevalence = 3, min_total_abundance = 3) %>%
+  tax_fix() %>%
+  tax_agg("Phylum") %>%
+  cor_heatmap(taxa = tax_top(yo_ps_clean, 8, by = max, rank = "Phylum"),
+              vars = c("conc_IL.1a", "conc_IP.10", "conc_IL.8", "conc_MIG", "conc_MIP.3a"),
+              cor = "spearman")
+```
+
+```{r}
+library("ComplexHeatmap")
+# data("ibd", package = "microViz")
+psq <- tax_filter(yo_ps_clean, min_prevalence = 5)
+psq <- tax_mutate(psq, Species = NULL)
+psq <- tax_fix(psq)
+psq <- tax_agg(psq, rank = "Phylum")
+taxa <- tax_top(psq, n = 15, rank = "Phylum")
+samples <- phyloseq::sample_names(psq)
+
+set.seed(42) # random colours used in first example
+# sampleAnnotation returns a function that takes data, samples, and which
+fun <- sampleAnnotation(
+  gap = grid::unit(2.5, "mm"),
+  Time = anno_sample_cat(var = "time_point", col = 1:2),
+  Arm = anno_sample_cat(var = "arm", col = 3:4),
+  Bc = anno_sample_cat(var = "birth_control", col = 5:6)
+)
+
+# manually specify the sample annotation function by giving it data etc.
+heatmapAnnoFunction <- fun(.data = psq, .side = "top", .samples = samples)
+
+# draw the annotation without a heatmap, you will never normally do this!
+grid.newpage()
+vp <- viewport(width = 0.65, height = 0.75)
+pushViewport(vp)
+draw(heatmapAnnoFunction)
+pushViewport(viewport(x = 0.7, y = 0.6))
+draw(attr(heatmapAnnoFunction, "Legends"))
+```
+
+```{r}
+yo_ps_clean %>%
+  ps_arrange(time_point) %>% 
+  tax_transform("compositional", rank = "Phylum") %>%
+  comp_heatmap(
+    tax_anno = taxAnnotation(
+      Prev. = anno_tax_prev(bar_width = 0.3, size = grid::unit(1, "cm"))),
+    sample_anno = fun, sample_seriation = "Identity")
+```
+
+
