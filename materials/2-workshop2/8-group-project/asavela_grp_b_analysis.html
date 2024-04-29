@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -316,7 +316,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#load-libraries" id="toc-load-libraries" class="nav-link active" data-scroll-target="#load-libraries">Load Libraries</a></li>
+  <li><a href="#load-data" id="toc-load-data" class="nav-link" data-scroll-target="#load-data">Load data</a></li>
+  <li><a href="#load-count-and-tax-table" id="toc-load-count-and-tax-table" class="nav-link" data-scroll-target="#load-count-and-tax-table">Load count and tax table</a></li>
+  <li><a href="#make-a-phyloseq-obj" id="toc-make-a-phyloseq-obj" class="nav-link" data-scroll-target="#make-a-phyloseq-obj">Make a phyloseq obj</a></li>
+  <li><a href="#extract-samples-of-interest-bc-birth-control" id="toc-extract-samples-of-interest-bc-birth-control" class="nav-link" data-scroll-target="#extract-samples-of-interest-bc-birth-control">Extract samples of interest : bc= birth control</a></li>
+  <li><a href="#remove-unused-asvs-from-the-count-table" id="toc-remove-unused-asvs-from-the-count-table" class="nav-link" data-scroll-target="#remove-unused-asvs-from-the-count-table">Remove unused ASVs from the count table</a></li>
+  <li><a href="#sparsity-of-my-count-table" id="toc-sparsity-of-my-count-table" class="nav-link" data-scroll-target="#sparsity-of-my-count-table">Sparsity of my count table</a></li>
+  <li><a href="#explore-the-distribution-of-asv-lengths." id="toc-explore-the-distribution-of-asv-lengths." class="nav-link" data-scroll-target="#explore-the-distribution-of-asv-lengths.">Explore the distribution of ASV lengths.</a></li>
+  <li><a href="#filter-the-taxa-table-to-only-keep-birth-contr-asvs" id="toc-filter-the-taxa-table-to-only-keep-birth-contr-asvs" class="nav-link" data-scroll-target="#filter-the-taxa-table-to-only-keep-birth-contr-asvs">Filter the taxa table to only keep birth contr ASVs</a></li>
+  <li><a href="#make-a-taxa-table" id="toc-make-a-taxa-table" class="nav-link" data-scroll-target="#make-a-taxa-table">Make a taxa table</a></li>
+  <li><a href="#are-there-nas-in-the-tax-table" id="toc-are-there-nas-in-the-tax-table" class="nav-link" data-scroll-target="#are-there-nas-in-the-tax-table">Are there NAs in the tax table?</a></li>
+  <li><a href="#create-a-birth-contr-specific-phyloseq-object" id="toc-create-a-birth-contr-specific-phyloseq-object" class="nav-link" data-scroll-target="#create-a-birth-contr-specific-phyloseq-object">Create a birth contr specific phyloseq object</a></li>
+  <li><a href="#phyloseq-cleaning-and-diagnosis" id="toc-phyloseq-cleaning-and-diagnosis" class="nav-link" data-scroll-target="#phyloseq-cleaning-and-diagnosis">Phyloseq cleaning and diagnosis</a></li>
+  <li><a href="#make-a-long-phyloseq-data-frame" id="toc-make-a-long-phyloseq-data-frame" class="nav-link" data-scroll-target="#make-a-long-phyloseq-data-frame">Make a long phyloseq data frame</a></li>
+  <li><a href="#removal-of-low-yield-samples" id="toc-removal-of-low-yield-samples" class="nav-link" data-scroll-target="#removal-of-low-yield-samples">Removal of low yield samples</a></li>
+  <li><a href="#calculate-total-read-counts-per-sample" id="toc-calculate-total-read-counts-per-sample" class="nav-link" data-scroll-target="#calculate-total-read-counts-per-sample">Calculate total read counts per sample</a></li>
+  <li><a href="#define-a-threshold-for-minimum-total-read-count-and-remove-empty-asvs" id="toc-define-a-threshold-for-minimum-total-read-count-and-remove-empty-asvs" class="nav-link" data-scroll-target="#define-a-threshold-for-minimum-total-read-count-and-remove-empty-asvs">Define a threshold for minimum total read count and remove empty ASVs</a></li>
+  <li><a href="#taxa-fix" id="toc-taxa-fix" class="nav-link" data-scroll-target="#taxa-fix">Taxa fix</a></li>
+  <li><a href="#what-cytokines-correlated-with-lactobaccilus-what-cytokines-correlate-with-certain-taxa-how-do-the-absolute-abundance-of-bacteria-and-lactobacillus-species-change-throughout-menstruation" id="toc-what-cytokines-correlated-with-lactobaccilus-what-cytokines-correlate-with-certain-taxa-how-do-the-absolute-abundance-of-bacteria-and-lactobacillus-species-change-throughout-menstruation" class="nav-link" data-scroll-target="#what-cytokines-correlated-with-lactobaccilus-what-cytokines-correlate-with-certain-taxa-how-do-the-absolute-abundance-of-bacteria-and-lactobacillus-species-change-throughout-menstruation">What cytokines correlated with Lactobaccilus? #What cytokines correlate with certain taxa? How do the absolute abundance of bacteria and #Lactobacillus species change throughout menstruation?</a></li>
+  <li><a href="#does-birth-control-change-inflammation-during-menstruation" id="toc-does-birth-control-change-inflammation-during-menstruation" class="nav-link" data-scroll-target="#does-birth-control-change-inflammation-during-menstruation">Does birth control change inflammation during menstruation?</a></li>
+  <li><a href="#correlation-plots" id="toc-correlation-plots" class="nav-link" data-scroll-target="#correlation-plots">Correlation plots</a></li>
+  <li><a href="#exploring-within-sample-diversity-alpha-diversity" id="toc-exploring-within-sample-diversity-alpha-diversity" class="nav-link" data-scroll-target="#exploring-within-sample-diversity-alpha-diversity">Exploring within-sample diversity (Alpha Diversity)</a></li>
+  <li><a href="#singletons" id="toc-singletons" class="nav-link" data-scroll-target="#singletons">Singletons</a></li>
+  <li><a href="#how-about-across-menstruation" id="toc-how-about-across-menstruation" class="nav-link" data-scroll-target="#how-about-across-menstruation">How about across menstruation?</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
