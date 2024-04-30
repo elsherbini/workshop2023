@@ -5,6 +5,17 @@ format:
     toc: true
 ---
 
+
+## Example workflows
+<!-- [Johnathan's test demo](johnathan_demo_final.qmd) -->
+
+[Asavela's Demo](asavela_grp_b_analysis.qmd) \
+[Liz's Demo](liz_yogurt.qmd) \
+*Note: The filepaths to the datasets may not match!* \
+
+\
+
+
 Find your group on the instances tab!
 
 ### Schedule
@@ -126,11 +137,4 @@ This is an observational study to evaluate the relationship between birth contro
 
 
 
-
-
-### Example workflows
-<!-- [Johnathan's test demo](johnathan_demo_final.qmd) -->
-Note: The filepaths to the datasets may not match! \
-[Asavela's Demo](asavela_grp_b_analysis.qmd) \
-[Liz's Demo](liz_yogurt.qmd)
 

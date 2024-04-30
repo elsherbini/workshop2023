@@ -39,11 +39,26 @@ toc: false
 #### [Fill out the post-workshop survey here](https://docs.google.com/forms/d/e/1FAIpQLSfgMquCfq-CPnj96dfMcCfQTRBH8eZlAqw7r5ItYVaibA4b4Q/viewform?usp=sf_link){target="_blank"}
 Before you leave, we have some questions for you to understand if the workshop was valuable and how we can improve it.
 
+\
+
+### Retreiving and running your workshop files \
 **The instances will be going down, but your work has been saved!** \
-To retrieve your files: \
-1. Navigate to this link [Workshop II instance files here](https://github.com/elsherbini/durban-data-science-for-biology/releases/tag/2024-04-26-0300){target="_blank"}\
-2. Find your IP \
-3. Download the folder associated with your IP. \
+
+1. Navigate to this link to download the contents of your workshop folder from your IP [Workshop II instance files here](https://github.com/elsherbini/durban-data-science-for-biology/releases/tag/2024-04-29-2200){target="_blank"}\
+2. Follow the detailed instructions [here](installation-instructions.qmd) to install R and RStudio on your computer. Ensure you are on R version 4.2 or higher.
+3. Run the following command to install the necessary packages in the R terminal
+```{r}
+#| eval: false
+install.packages(c("dada2", "here", "tidyverse", "phyloseq", "rstatix", "micoViz", "ggpubr", "ggbeeswarm", "ggside", "vegan", "reshape2", "pander", "gplots", "RColorBrewer", "GUniFrac")) if (!require("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install("Heatplus", ask=TRUE).
+```
+
+## Group Dataset Example Workflows
+[Asavela's Demo](materials/2-workshop2/8-group-project/asavela_grp_b_analysis.qmd) \
+[Liz's Demo](materials/2-workshop2/8-group-project/liz_yogurt.qmd) \
+*Note: The filepaths to the datasets may not match!* \
+\
 
 **Workshop II Discord** \
 [Join the discord here](https://discord.gg/Mb7pRTptqm){target="_blank"} \
