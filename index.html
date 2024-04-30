@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -309,11 +343,28 @@ ul.task-list li input[type="checkbox"] {
 <h2 id="thank-you-for-participating-in-workshop-ii">Thank you for participating in Workshop II!</h2>
 <h4 id="fill-out-the-post-workshop-survey-here"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfgMquCfq-CPnj96dfMcCfQTRBH8eZlAqw7r5ItYVaibA4b4Q/viewform?usp=sf_link" target="_blank">Fill out the post-workshop survey here</a></h4>
 <p>Before you leave, we have some questions for you to understand if the workshop was valuable and how we can improve it.</p>
+<p><br>
+</p>
+<h3 id="retreiving-and-running-your-workshop-files">Retreiving and running your workshop files<br>
+</h3>
 <p><strong>The instances will be going down, but your work has been saved!</strong><br>
-To retrieve your files:<br>
-1. Navigate to this link <a href="https://github.com/elsherbini/durban-data-science-for-biology/releases/tag/2024-04-26-0300" target="_blank">Workshop II instance files here</a><br>
-2. Find your IP<br>
-3. Download the folder associated with your IP.<br>
+</p>
+<ol type="1">
+<li>Navigate to this link to download the contents of your workshop folder from your IP <a href="https://github.com/elsherbini/durban-data-science-for-biology/releases/tag/2024-04-29-2200" target="_blank">Workshop II instance files here</a><br>
+</li>
+<li>Follow the detailed instructions <a href="./installation-instructions.html">here</a> to install R and RStudio on your computer. Ensure you are on R version 4.2 or higher.</li>
+<li>Run the following command to install the necessary packages in the R terminal</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"dada2"</span>, <span class="st">"here"</span>, <span class="st">"tidyverse"</span>, <span class="st">"phyloseq"</span>, <span class="st">"rstatix"</span>, <span class="st">"micoViz"</span>, <span class="st">"ggpubr"</span>, <span class="st">"ggbeeswarm"</span>, <span class="st">"ggside"</span>, <span class="st">"vegan"</span>, <span class="st">"reshape2"</span>, <span class="st">"pander"</span>, <span class="st">"gplots"</span>, <span class="st">"RColorBrewer"</span>, <span class="st">"GUniFrac"</span>)) <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"BiocManager"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"BiocManager"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">"Heatplus"</span>, <span class="at">ask=</span><span class="cn">TRUE</span>).</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<h2 id="group-dataset-example-workflows">Group Dataset Example Workflows</h2>
+<p><a href="./materials/2-workshop2/8-group-project/asavela_grp_b_analysis.html">Asavela’s Demo</a><br>
+<a href="./materials/2-workshop2/8-group-project/liz_yogurt.html">Liz’s Demo</a><br>
+<em>Note: The filepaths to the datasets may not match!</em><br>
+<br>
 </p>
 <p><strong>Workshop II Discord</strong><br>
 <a href="https://discord.gg/Mb7pRTptqm" target="_blank">Join the discord here</a><br>
