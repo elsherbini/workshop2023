@@ -12,17 +12,38 @@ toc: false
 # Data Science for Biology Workshop Series
 :::
 
-::: {.g-col-6}
-#### Workshop II - Working with High Dimensional Data
-<!-- This week of content will prepare you to use R, RStudio, and Quarto for data analysis in clinical research. -->
+
+
+:::{.g-col-8}
+
+The third workshop in the series is scheduled for **February 24-28, 2025.** 
+
+**Who is it for?** 
+
+For researchers who are working with raw sequencing data studying health and disease who want to build a foundatino of bioinformatics skills. No command line experience necessary, but data analysis with R would be a huge plus.
+
+**Content covered:**
+
+Understanding the outputs of sequencing experiments.
+
+Mapping viral sequences to reference databases.
+
+Building and visualizing trees of viruses.
+
+### To apply for the third workshop, [fill out this form](https://forms.gle/jTtRtaKQA8ivHccQ6)
+
 :::
 
-::: {.g-col-6 .text-start}
+
+::: {.g-col-4 .text-start}
 
 ![](assets/images/durban_workshop_stickers_front_page.png){width=50%} 
 
 :::
 
+::: {.g-col-12}
+![](images/Final Flyer III.png){width=75%} 
+:::
 
 :::
 

@@ -99,7 +99,7 @@ website:
               contents:
               href: materials/2-workshop2/8-group-project/index.qmd
 
-          - section: "<em>3. Bioinformatics and Transcriptomics Data Analysis - Coming October 2024</em>"
+          - section: "<em>3. Bioinformatics and Transcriptomics Data Analysis - Coming February 2025</em>"
   page-footer:
     right: "This page is built with {{< fa heart >}} and [Quarto](https://quarto.org/)."
     left: "&copy; 2023. Huge thanks to [Andrew P. Bray](https://github.com/andrewpbray) and [Claus O. Wilke](https://github.com/clauswilke) for open source code and sharing content."
