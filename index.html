@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -72,8 +38,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -243,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text"><b>2. Working with High Dimensional Data in R - The Human Microbiome</b></span></a>
+ <span class="menu-text"><em>2. Working with High Dimensional Data in R - The Human Microbiome</em></span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -306,8 +270,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text"><em>3. Bioinformatics and Transcriptomics Data Analysis - Coming February 2025</em></span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text"><b>3. Bioinformatics and Viral Genomics - February 22-28 2025</b></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./materials/3-workshop3/0-welcome/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 0:</b> Welcome to the workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./materials/3-workshop3/1-viral-sequencing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 1</b>: Preparing libraries for viromics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./materials/3-workshop3/2-intro-to-unix/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 2</b>: Intro to the Unix Shell</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Module 3</b>:Intro to Bioinformatics I</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Module 4</b>:Intro to Bioinformatics II</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Module 5</b>:Targetted Viromics and Phylogenetics</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Interactive 1</b>:Genomics Adventure</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Module 6</b>:Untargetted Viromics</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Interactive 2</b>:Genomics Adventure</span>
+  </li>
+      </ul>
   </li>
     </ul>
     </div>
@@ -325,21 +332,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="data-science-for-biology-workshop-series" class="g-col-12">
 <h1>Data Science for Biology Workshop Series</h1>
 </section>
-<div class="g-col-8">
-<p>The third workshop in the series is scheduled for <strong>February 24-28, 2025.</strong></p>
-<p><strong>Who is it for?</strong></p>
-<p>For researchers who are working with raw sequencing data studying health and disease who want to build a foundatino of bioinformatics skills. No command line experience necessary, but data analysis with R would be a huge plus.</p>
-<p><strong>Content covered:</strong></p>
-<p>Understanding the outputs of sequencing experiments.</p>
-<p>Mapping viral sequences to reference databases.</p>
-<p>Building and visualizing trees of viruses.</p>
-<h3 id="to-apply-for-the-third-workshop-fill-out-this-form">To apply for the third workshop, <a href="https://forms.gle/jTtRtaKQA8ivHccQ6">fill out this form</a></h3>
-</div>
+<section id="welcome-to-the-workshop" class="g-col-8">
+<h2>Welcome to the workshop</h2>
+<p>This is the third workshop in a series for people learning biological data science and bioinformatics.</p>
+<p><a href="./instance_ips.html">Log onto your instance by following these instructions</a></p>
+</section>
 <div class="g-col-4 text-start">
 <p><img src="assets/images/durban_workshop_stickers_front_page.png" class="img-fluid" style="width:50.0%"></p>
-</div>
-<div class="g-col-12">
-<p><img src="images/Final Flyer III.png" class="img-fluid" style="width:75.0%"></p>
 </div>
 </div>
 <!-- ## Welcome to the workshop!
@@ -349,42 +348,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 3. Await instructions on logging into your AWS instance.
 
 \ -->
-<h2 id="thank-you-for-participating-in-workshop-ii">Thank you for participating in Workshop II!</h2>
-<h4 id="fill-out-the-post-workshop-survey-here"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfgMquCfq-CPnj96dfMcCfQTRBH8eZlAqw7r5ItYVaibA4b4Q/viewform?usp=sf_link" target="_blank">Fill out the post-workshop survey here</a></h4>
-<p>Before you leave, we have some questions for you to understand if the workshop was valuable and how we can improve it.</p>
-<p><br>
-</p>
-<h3 id="retreiving-and-running-your-workshop-files">Retreiving and running your workshop files<br>
-</h3>
-<p><strong>The instances will be going down, but your work has been saved!</strong><br>
-</p>
-<ol type="1">
-<li>Navigate to this link to download the contents of your workshop folder from your IP <a href="https://github.com/elsherbini/durban-data-science-for-biology/releases/tag/2024-04-29-2200" target="_blank">Workshop II instance files here</a><br>
-</li>
-<li>Follow the detailed instructions <a href="./installation-instructions.html">here</a> to install R and RStudio on your computer. Ensure you are on R version 4.2 or higher.</li>
-<li>Run the following command to install the necessary packages in the R terminal</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"dada2"</span>, <span class="st">"here"</span>, <span class="st">"tidyverse"</span>, <span class="st">"phyloseq"</span>, <span class="st">"rstatix"</span>, <span class="st">"micoViz"</span>, <span class="st">"ggpubr"</span>, <span class="st">"ggbeeswarm"</span>, <span class="st">"ggside"</span>, <span class="st">"vegan"</span>, <span class="st">"reshape2"</span>, <span class="st">"pander"</span>, <span class="st">"gplots"</span>, <span class="st">"RColorBrewer"</span>, <span class="st">"GUniFrac"</span>)) <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"BiocManager"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"BiocManager"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">"Heatplus"</span>, <span class="at">ask=</span><span class="cn">TRUE</span>).</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<h2 id="group-dataset-example-workflows">Group Dataset Example Workflows</h2>
-<p><a href="./materials/2-workshop2/8-group-project/asavela_grp_b_analysis.html">Asavela’s Demo</a><br>
-<a href="./materials/2-workshop2/8-group-project/liz_yogurt.html">Liz’s Demo</a><br>
-<em>Note: The filepaths to the datasets may not match!</em><br>
-<br>
-</p>
-<p><strong>Workshop II Discord</strong><br>
-<a href="https://discord.gg/Mb7pRTptqm" target="_blank">Join the discord here</a><br>
-Once you’ve joined, you can bookmark <a href="https://discord.com/channels/1227264067899621427" target="_blank">https://discord.com/channels/1158136582201692202/</a> to go straight to the channel</p>
-<!-- ## Exporting your data from the AWS instance
-
-1. Navigate to the file pane in your interactive RStudio
-2. Click the house or "Home" to return the the home directory
-3. Select the "workshop_2" directory by clicking the white box next to it
-4. Click the gear or "More"
-5. Select Export and Download -->
 <table class="table">
 <caption><b>Schedule</b></caption>
 <colgroup>
@@ -401,116 +364,101 @@ Once you’ve joined, you can bookmark <a href="https://discord.com/channels/122
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Monday, April 22<sup>nd</sup></strong></td>
+<td><strong>Monday, February 24<sup>th</sup></strong></td>
 <td>————————————————————–</td>
 <td>————————————————————–</td>
 </tr>
 <tr class="even">
 <td>AM</td>
 <td>Workshop Introduction</td>
-<td>Scott Handley (Wash U School of Medicine)</td>
+<td>Joseph Elsherbini (Ragon Institute)</td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>Keynote</td>
-<td>Sinaye Ngcapu (CAPRISA)</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Sequencing and Library Preperation</td>
+<td>Viromics Sequencing and Library Preperation</td>
 <td>Lindsay Droit (Wash U School of Medicine)</td>
 </tr>
-<tr class="odd">
-<td>PM</td>
-<td>R Refresher (<code>tidyverse</code>/summary tables/data visualization)</td>
-<td>Scott Handley (Wash U School of Medicine)</td>
-</tr>
-<tr class="even">
-<td><strong>Tuesday, April 23<sup>th</sup></strong></td>
-<td>————————————————————–</td>
-<td>————————————————————–</td>
-</tr>
-<tr class="odd">
-<td>AM</td>
-<td>16S Data Preprocessing</td>
-<td>Asavela Kama (CAPRISA)</td>
-</tr>
 <tr class="even">
 <td>PM</td>
-<td>Exploring High Dimensional Data</td>
-<td>Elizabeth Costello (Stanford University)</td>
+<td>Intro to the UNIX Shell</td>
+<td>Marie HIDJO (AiBST)</td>
 </tr>
 <tr class="odd">
-<td><strong>Wednesday, April 24<sup>th</sup></strong></td>
+<td><strong>Tuesday, February 25<sup>th</sup></strong></td>
 <td>————————————————————–</td>
 <td>————————————————————–</td>
 </tr>
 <tr class="even">
 <td>AM</td>
-<td>Exploring High Dimensional Data</td>
-<td>Elizabeth Costello (Stanford University)</td>
+<td>16S Data Preprocessing</td>
+<td>Afrah Khairallah (AHRI)</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>Correlations and Differential Abundance Testing</td>
+<td>PM</td>
+<td>Mapping and Seembly of short read libraries</td>
 <td>Joseph Elsherbini (Ragon Institute)</td>
 </tr>
 <tr class="even">
-<td>PM</td>
-<td>Group Activity I</td>
-<td>Johnathan Shih (Ragon Institute)</td>
+<td><strong>Wednesday, February 26<sup>th</sup></strong></td>
+<td>————————————————————–</td>
+<td>————————————————————–</td>
 </tr>
 <tr class="odd">
-<td><strong>Thursday, April 25<sup>th</sup></strong></td>
-<td>————————————————————–</td>
-<td>————————————————————–</td>
-</tr>
-<tr class="even">
 <td>AM</td>
-<td>VIRGO / Shotgun Metagenomics</td>
-<td>Michael France (UMD School of Medicine)</td>
-</tr>
-<tr class="odd">
-<td>PM</td>
-<td>Group Activity II</td>
-<td>Johnathan Shih (Ragon Institute)</td>
+<td>Targetted Viromics bioinformatics</td>
+<td>Wonderful Choga (University of Botswana)</td>
 </tr>
 <tr class="even">
+<td>PM</td>
+<td>Genomics Adeventure I (interactive session)</td>
+<td>all instructors</td>
+</tr>
+<tr class="odd">
 <td>Evening</td>
 <td>Reception</td>
 <td></td>
 </tr>
+<tr class="even">
+<td><strong>Thursday, February 27<sup>th</sup></strong></td>
+<td>————————————————————–</td>
+<td>————————————————————–</td>
+</tr>
 <tr class="odd">
-<td><strong>Friday, April 26<sup>th</sup></strong></td>
+<td>AM</td>
+<td>Untargetted Viromics</td>
+<td>Luis Chica (Wash U School of Medicine)</td>
+</tr>
+<tr class="even">
+<td>PM</td>
+<td>Genomics Adeventure II (interactive session)</td>
+<td>all instructors</td>
+</tr>
+<tr class="odd">
+<td><strong>Friday, February 28<sup>th</sup></strong></td>
 <td>————————————————————–</td>
 <td>————————————————————–</td>
 </tr>
 <tr class="even">
 <td>AM</td>
-<td>Keynote</td>
-<td>Jacques Ravel (UMD School of Medicine)</td>
+<td>Certificate ceremony</td>
+<td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>Group Activity review</td>
-<td></td>
+<td><code>snakemake</code> demonstration</td>
+<td>Joseph Elsherbini (Ragon Institute)</td>
 </tr>
 <tr class="even">
 <td>PM</td>
-<td>Group Presentations</td>
+<td>Open Lab (discussion, work on own data, work on genomics adventure)</td>
 <td>Participants</td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>Dataset Demo</td>
-<td></td>
+<td>Workshop Outro</td>
+<td>Afrah Khairallah (AHRI)</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>Workshop Outro</td>
-<td>Scott Handley (Wash U School of Medicine)</td>
-</tr>
-<tr class="odd">
 <td></td>
 <td>————————————————————–</td>
 <td>————————————————————–</td>
@@ -933,7 +881,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>This page is built with <i class="fa-solid fa-heart" aria-label="heart"></i> and <a href="https://quarto.org/">Quarto</a>.</p>
+<p>This page is built <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
   </div>
 </footer>

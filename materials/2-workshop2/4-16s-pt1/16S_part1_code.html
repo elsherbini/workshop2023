@@ -73,8 +73,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -243,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text"><b>2. Working with High Dimensional Data in R - The Human Microbiome</b></span></a>
+ <span class="menu-text"><em>2. Working with High Dimensional Data in R - The Human Microbiome</em></span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -306,8 +304,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text"><em>3. Bioinformatics and Transcriptomics Data Analysis - Coming February 2025</em></span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text"><b>3. Bioinformatics and Viral Genomics - February 22-28 2025</b></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/3-workshop3/0-welcome/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 0:</b> Welcome to the workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/3-workshop3/1-viral-sequencing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 1</b>: Preparing libraries for viromics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/3-workshop3/2-intro-to-unix/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 2</b>: Intro to the Unix Shell</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Module 3</b>:Intro to Bioinformatics I</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Module 4</b>:Intro to Bioinformatics II</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Module 5</b>:Targetted Viromics and Phylogenetics</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Interactive 1</b>:Genomics Adventure</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Module 6</b>:Untargetted Viromics</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Interactive 2</b>:Genomics Adventure</span>
+  </li>
+      </ul>
   </li>
     </ul>
     </div>
@@ -2551,7 +2592,7 @@ LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlap
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
-time zone: America/New_York
+time zone: Africa/Johannesburg
 tzcode source: internal
 
 attached base packages:
@@ -2569,30 +2610,30 @@ loaded via a namespace (and not attached):
  [4] farver_2.1.1            Biostrings_2.70.3       bitops_1.0-7           
  [7] fastmap_1.1.1           RCurl_1.98-1.14         digest_0.6.35          
 [10] timechange_0.3.0        lifecycle_1.0.4         cluster_2.1.6          
-[13] survival_3.5-8          compiler_4.3.3          rlang_1.1.3            
+[13] survival_3.5-8          compiler_4.3.3          rlang_1.1.5            
 [16] tools_4.3.3             igraph_2.0.3            utf8_1.2.4             
 [19] yaml_2.3.8              data.table_1.15.4       ggsignif_0.6.4         
-[22] knitr_1.45              labeling_0.4.3          htmlwidgets_1.6.4      
+[22] knitr_1.49              labeling_0.4.3          htmlwidgets_1.6.4      
 [25] plyr_1.8.9              abind_1.4-5             withr_3.0.0            
 [28] BiocGenerics_0.48.1     grid_4.3.3              stats4_4.3.3           
 [31] fansi_1.0.6             multtest_2.58.0         biomformat_1.30.0      
-[34] colorspace_2.1-0        Rhdf5lib_1.24.2         scales_1.3.0           
-[37] iterators_1.0.14        MASS_7.3-60.0.1         cli_3.6.2              
-[40] rmarkdown_2.26          crayon_1.5.2            generics_0.1.3         
-[43] reshape2_1.4.4          tzdb_0.4.0              ape_5.8                
-[46] rhdf5_2.46.1            zlibbioc_1.48.2         splines_4.3.3          
-[49] parallel_4.3.3          XVector_0.42.0          vctrs_0.6.5            
-[52] Matrix_1.6-5            carData_3.0-5           jsonlite_1.8.8         
-[55] car_3.1-2               IRanges_2.36.0          hms_1.1.3              
-[58] S4Vectors_0.40.2        beeswarm_0.4.0          foreach_1.5.2          
-[61] glue_1.7.0              codetools_0.2-20        stringi_1.8.3          
-[64] gtable_0.3.4            GenomeInfoDb_1.38.8     munsell_0.5.1          
-[67] pillar_1.9.0            htmltools_0.5.8.1       rhdf5filters_1.14.1    
-[70] GenomeInfoDbData_1.2.11 R6_2.5.1                rprojroot_2.0.4        
-[73] evaluate_0.23           Biobase_2.62.0          backports_1.4.1        
-[76] broom_1.0.5             Rcpp_1.0.12             nlme_3.1-164           
-[79] mgcv_1.9-1              xfun_0.43               fs_1.6.3               
-[82] pkgconfig_2.0.3        </code></pre>
+[34] colorspace_2.1-1        Rhdf5lib_1.24.2         scales_1.3.0           
+[37] iterators_1.0.14        MASS_7.3-60.0.1         cli_3.6.3              
+[40] rmarkdown_2.29          crayon_1.5.2            generics_0.1.3         
+[43] rstudioapi_0.16.0       reshape2_1.4.4          tzdb_0.4.0             
+[46] ape_5.8                 rhdf5_2.46.1            zlibbioc_1.48.2        
+[49] splines_4.3.3           parallel_4.3.3          XVector_0.42.0         
+[52] vctrs_0.6.5             Matrix_1.6-5            carData_3.0-5          
+[55] jsonlite_1.8.8          car_3.1-2               IRanges_2.36.0         
+[58] hms_1.1.3               S4Vectors_0.40.2        beeswarm_0.4.0         
+[61] foreach_1.5.2           glue_1.8.0              codetools_0.2-20       
+[64] stringi_1.8.3           gtable_0.3.4            GenomeInfoDb_1.38.8    
+[67] munsell_0.5.1           pillar_1.9.0            htmltools_0.5.8.1      
+[70] rhdf5filters_1.14.1     GenomeInfoDbData_1.2.11 R6_2.5.1               
+[73] rprojroot_2.0.4         evaluate_0.23           Biobase_2.62.0         
+[76] backports_1.4.1         broom_1.0.5             Rcpp_1.0.12            
+[79] nlme_3.1-164            mgcv_1.9-1              xfun_0.50              
+[82] fs_1.6.5                pkgconfig_2.0.3        </code></pre>
 </div>
 </div>
 
@@ -3019,7 +3060,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>This page is built with <i class="fa-solid fa-heart" aria-label="heart"></i> and <a href="https://quarto.org/">Quarto</a>.</p>
+<p>This page is built <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
   </div>
 </footer>
