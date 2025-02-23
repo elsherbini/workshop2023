@@ -6394,13 +6394,6 @@
     "text": "The content of this workshop\n\nWe’ve created 6 modules as well as an interactive activity for this workshop.\n\nThere might be too much material to get through in this week!\n\nAs instructors we’re going to be trying to teach at the right pace to keep everyone learning all week.\n\nThe materials will stay on the website forever for you to work through at your own pace."
   },
   {
-    "objectID": "materials/3-workshop3/0-welcome/slides.html#why-bioinformatics-is-essential-for-viromics-research",
-    "href": "materials/3-workshop3/0-welcome/slides.html#why-bioinformatics-is-essential-for-viromics-research",
-    "title": "Welcome to the workshop",
-    "section": "Why Bioinformatics Is Essential for Viromics Research",
-    "text": "Why Bioinformatics Is Essential for Viromics Research\n\nHigh Complexity: Viromics often involves detecting many viral species and variants simultaneously.\n\nBig Data Generation: Modern sequencing platforms can output many millions of reads per sample.\n\nCrucial Insights: Bioinformatics turns raw sequence data into information we want as scientists (e.g., viral load estimation, variant calling, genome assemblies)."
-  },
-  {
     "objectID": "materials/3-workshop3/0-welcome/slides.html#when-might-you-not-need-sequencing",
     "href": "materials/3-workshop3/0-welcome/slides.html#when-might-you-not-need-sequencing",
     "title": "Welcome to the workshop",
@@ -6412,7 +6405,7 @@
     "href": "materials/3-workshop3/0-welcome/slides.html#question-1-detecting-emerging-variants-of-endemic-viruses",
     "title": "Welcome to the workshop",
     "section": "Question 1 — Detecting Emerging Variants of Endemic Viruses",
-    "text": "Question 1 — Detecting Emerging Variants of Endemic Viruses\nWithout Sequencing\n\nLimited Scope: Diagnostic tests (e.g., qPCR) only detect known variants and specific targets.\n\nPotentially Missed Variants: Novel or unexpected changes may escape traditional assays.\n\nInadequate Surveillance: Harder to link genetic variation with clinical or epidemiological outcomes.\n\nWith Sequencing\n\nIdentify New Mutations: Discover novel amino acid changes that might impact transmissibility or virulence.\n\nTrack Spread: Pinpoint where and when new variants emerge, supporting epidemiological modeling.\n\nPredict Drug Resistance: Monitor known resistance-associated mutations (e.g., in HIV, hepatitis viruses)."
+    "text": "Question 1 — Detecting Emerging Variants of Endemic Viruses\nWithout Sequencing\n- Limited Scope: Diagnostic tests (e.g., qPCR) only detect known variants and specific targets.\n- Potentially Missed Variants: Novel or unexpected changes may escape traditional assays.\n- Inadequate Surveillance: Harder to link genetic variation with clinical or epidemiological outcomes.\n\nWith Sequencing\n- Identify New Mutations: Discover novel mutations that might impact transmissibility or virulence.\n- Track Spread: Pinpoint where and when new variants emerge, supporting epidemiological modeling.\n- Predict Drug Resistance: Monitor known resistance-associated mutations"
   },
   {
     "objectID": "materials/3-workshop3/0-welcome/slides.html#question-2-discovering-viruses-in-outbreaks",
@@ -6420,20 +6413,6 @@
     "title": "Welcome to the workshop",
     "section": "Question 2 — Discovering Viruses in Outbreaks",
     "text": "Question 2 — Discovering Viruses in Outbreaks\nWithout Sequencing\n- Knowledge Gaps: You can only use qPCR and ELISA to test for known pathogens and antigens - Speed of Discovery: Cell culture based enrichment of viruses takes time and optimization\n\nWith Sequencing\n- Unbiased Detection: Metagenomic approaches allow for the identification of entirely new viruses.\n- Rapid Characterization: Genome assembly and annotation to quickly compare to known viruses.\n- Public Health Preparedness: Early detection can guide containment strategies before widespread transmission."
-  },
-  {
-    "objectID": "materials/3-workshop3/0-welcome/slides.html#question-3-linking-viral-diversity-to-immune-response",
-    "href": "materials/3-workshop3/0-welcome/slides.html#question-3-linking-viral-diversity-to-immune-response",
-    "title": "Welcome to the workshop",
-    "section": "Question 3 — Linking Viral Diversity to Immune Response",
-    "text": "Question 3 — Linking Viral Diversity to Immune Response\nWithout Sequencing\n\nFragmented Data: ELISA or qPCR can measure total antibody or targeted viral loads, but not the full range of viral diversity.\n\nGeneric Conclusions: Hard to pinpoint which specific strain (or mixture) triggers certain immune responses.\n\nMissed Correlations: Opportunities to connect viral genotypes with functional immunological readouts may be lost.\n\nWith Sequencing\n\nHolistic View: Integrate viromics data with immune markers (e.g., cytokines, antibody profiles).\n\nStratified Insights: Identify specific viral strains or communities associated with particular immune phenotypes.\n\nLongitudinal Tracking: Observe how viral populations and immune responses shift over time within individuals or across cohorts."
-  },
-  {
-    "objectID": "materials/3-workshop3/0-welcome/slides.html#complementarity-with-qpcr-elisa-and-other-techniques",
-    "href": "materials/3-workshop3/0-welcome/slides.html#complementarity-with-qpcr-elisa-and-other-techniques",
-    "title": "Welcome to the workshop",
-    "section": "Complementarity with qPCR, ELISA, and Other Techniques",
-    "text": "Complementarity with qPCR, ELISA, and Other Techniques\n\nqPCR\n\nStrength: Precise quantification of known targets.\n\nSynergy: Validate sequencing findings or monitor a specific strain with high sensitivity.\n\nELISA\n\nStrength: Measures protein-level immune responses (antibodies, antigens).\n\nSynergy: Correlate serological markers with specific viral variants discovered by sequencing.\n\nFlow Cytometry, Plaque Assays, Western Blot, etc.\n\nStrength: Provide functional and phenotypic data at cellular or protein levels.\n\nSynergy: Confirm infectivity, immune activation, or protein expression predicted by genomic data.\n\n\nBottom Line: Use sequencing and bioinformatics to gain a broad, high-resolution view of viral diversity and evolution, then combine with targeted lab assays to confirm and quantify functional or clinical outcomes."
   },
   {
     "objectID": "materials/3-workshop3/0-welcome/slides.html#lets-take-a-poll-1",
