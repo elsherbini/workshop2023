@@ -32,7 +32,7 @@
     "href": "materials/3-workshop3/genomics_adventure_wrapper/index.html",
     "title": "Building Sucessful Sequencing Libraries",
     "section": "",
-    "text": "#Before we start, run the following command:",
+    "text": "cd /home/genomics/workshop_materials/genomics_adventure/;\nmv sequencing_data .sequencing_data_backup;\nmv reference_sequences .reference_sequences_backup;\nmkdir -p sequencing_data/ecoli;\nmkdir -p reference_sequences/ecoli;\ncp .sequencing_data_backup/ecoli/*SRR857279* sequencing_data/ecoli;\ncp .reference_sequences_backup/ecoli/GCF_000005845.2_ASM584v2_genomic.fna reference_sequences/ecoli;\ncp .reference_sequences_backup/ecoli/GCF_000005845.2_ASM584v2_genomic.gff reference_sequences/ecoli;\n\n\nhttps://github.com/guyleonard/genomics_adventure/blob/release/README.md#a-few-notes-on-styles",
     "crumbs": [
       "AWS Instance IPs",
       "<b>3. Bioinformatics and Viral Genomics - February 22-28 2025</b>",
@@ -43,8 +43,8 @@
     "objectID": "materials/3-workshop3/genomics_adventure_wrapper/index.html#now-follow-the-adventure-here",
     "href": "materials/3-workshop3/genomics_adventure_wrapper/index.html#now-follow-the-adventure-here",
     "title": "Building Sucessful Sequencing Libraries",
-    "section": "Now follow the adventure here:",
-    "text": "Now follow the adventure here:\nhttps://github.com/guyleonard/genomics_adventure/blob/release/README.md#a-few-notes-on-styles",
+    "section": "",
+    "text": "https://github.com/guyleonard/genomics_adventure/blob/release/README.md#a-few-notes-on-styles",
     "crumbs": [
       "AWS Instance IPs",
       "<b>3. Bioinformatics and Viral Genomics - February 22-28 2025</b>",
