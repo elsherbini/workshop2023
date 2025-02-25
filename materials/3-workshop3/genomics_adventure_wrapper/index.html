@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science for Biology Workshop Series</title>
+<title>Data Science for Biology Workshop Series - Building Sucessful Sequencing Libraries</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,24 +20,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../materials/3-workshop3/3-sequence-files-quality-adapters/index.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -67,17 +103,16 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="assets/index.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Data Science for Biology Workshop Series</span>
     </a>
   </div>
@@ -88,27 +123,27 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./instance_ips.html"> 
+    <a class="nav-link" href="../../../instance_ips.html"> 
 <span class="menu-text">AWS Instance IPs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./installation-instructions.html"> 
+    <a class="nav-link" href="../../../installation-instructions.html"> 
 <span class="menu-text">Installation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./datasets.html"> 
+    <a class="nav-link" href="../../../datasets.html"> 
 <span class="menu-text">Datasets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resources.html"> 
+    <a class="nav-link" href="../../../resources.html"> 
 <span class="menu-text">Resources</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./past_workshops.html"> 
+    <a class="nav-link" href="../../../past_workshops.html"> 
 <span class="menu-text">Past Workshops</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -128,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title"></h1>
+          <h1 class="quarto-secondary-nav-title">Building Sucessful Sequencing Libraries</h1>
         </a>     
     </div>
   </nav>
@@ -150,55 +185,55 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/1-workshop1/0-welcome/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/1-workshop1/0-welcome/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 0:</b> Welcome to the workshop</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/1-workshop1/1-data-generation/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/1-workshop1/1-data-generation/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 1</b>: How data analysis is informed by data generation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/1-workshop1/2-intro-to-r/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/1-workshop1/2-intro-to-r/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 2</b>: Intro to R, Rstudio, and Quarto</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/1-workshop1/3-tidyverse-101/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/1-workshop1/3-tidyverse-101/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 3</b>: Intro to data visualization and data wrangling with the <code>tidyverse</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/1-workshop1/4-tidyverse-201/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/1-workshop1/4-tidyverse-201/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 4</b>: Data wrangling and more data visualization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/1-workshop1/5-tableone/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/1-workshop1/5-tableone/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 5</b>: <code>tableone</code> and its Basic Statistics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/1-workshop1/6-hypothesis-testing/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/1-workshop1/6-hypothesis-testing/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 6</b>: Data transformations and more statistics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/1-workshop1/7-custom-data-visualizations/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/1-workshop1/7-custom-data-visualizations/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 7</b>: Customizing data visualizations using <code>colorspace</code>, <code>ggplot2</code>, and <code>patchwork</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/1-workshop1/8-group-projects/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/1-workshop1/8-group-projects/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Group Project</b> -Applying what you’ve learned to new data</span></a>
   </div>
 </li>
@@ -215,55 +250,55 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/2-workshop2/0-welcome/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/2-workshop2/0-welcome/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 0:</b> Welcome to the workshop</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/2-workshop2/1-library-prep/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/2-workshop2/1-library-prep/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 1</b>: Sequencing Library Preparation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/2-workshop2/2-r-refresher/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/2-workshop2/2-r-refresher/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 2</b>: R Refresher</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/2-workshop2/3-16s_processing/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/2-workshop2/3-16s_processing/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 3</b>: 16S Data Processing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/2-workshop2/4-16s-pt1/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/2-workshop2/4-16s-pt1/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 4</b>: Exploring High Dimensional Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/2-workshop2/5-16s-pt2/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/2-workshop2/5-16s-pt2/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 5</b>: Correlations and Ordinations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/2-workshop2/6-virgo/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/2-workshop2/6-virgo/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 6</b>: Shotgun Metagenomics and VIRGO</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/2-workshop2/7-keynote/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/2-workshop2/7-keynote/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 7</b>: Keynote</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/2-workshop2/8-group-project/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/2-workshop2/8-group-project/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Group Activity:</b> Applying what you’ve learned to new data</span></a>
   </div>
 </li>
@@ -271,40 +306,40 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
  <span class="menu-text"><b>3. Bioinformatics and Viral Genomics - February 22-28 2025</b></span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/3-workshop3/0-welcome/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/3-workshop3/0-welcome/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 0:</b> Welcome to the workshop</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/3-workshop3/1-viral-sequencing/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/3-workshop3/1-viral-sequencing/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 1</b>: Preparing libraries for viromics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/3-workshop3/2-intro-to-unix/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/3-workshop3/2-intro-to-unix/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 2</b>: Intro to the Unix Shell</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/3-workshop3/3-sequence-files-quality-adapters/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/3-workshop3/3-sequence-files-quality-adapters/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 3</b>:Intro to Bioinformatics I</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials/3-workshop3/genomics_adventure_wrapper/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../materials/3-workshop3/genomics_adventure_wrapper/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><b>Interactive 1</b>:Genomics Adventure</span></a>
   </div>
 </li>
@@ -327,152 +362,52 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#now-follow-the-adventure-here" id="toc-now-follow-the-adventure-here" class="nav-link active" data-scroll-target="#now-follow-the-adventure-here">Now follow the adventure here:</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-
-
-
-<div class="grid">
-<section id="data-science-for-biology-workshop-series" class="g-col-12">
-<h1>Data Science for Biology Workshop Series</h1>
-</section>
-<section id="welcome-to-the-workshop" class="g-col-8">
-<h2>Welcome to the workshop</h2>
-<p>This is the third workshop in a series for people learning biological data science and bioinformatics.</p>
-<p><a href="./instance_ips.html">Log onto your instance by following these instructions</a></p>
-</section>
-<div class="g-col-4 text-start">
-<p><img src="assets/images/durban_workshop_stickers_front_page.png" class="img-fluid" style="width:50.0%"></p>
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Building Sucessful Sequencing Libraries</h1>
 </div>
-</div>
-<!-- ## Welcome to the workshop!
-
-1. [Fill out the pre-workshop survey here](https://forms.gle/7sdT7YRJerdgFJcc7)  
-2. [Join the discord here](https://discord.gg/Mb7pRTptqm) (once you've joined, you can bookmark [https://discord.com/channels/1158136582201692202/](https://discord.com/channels/1227264067899621427) to go straight to the channel.)  
-3. Await instructions on logging into your AWS instance.
-
-\ -->
-<table class="table">
-<caption><b>Schedule</b></caption>
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Date/Time</th>
-<th>Topic</th>
-<th>Instructor</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Monday, February 24<sup>th</sup></strong></td>
-<td>————————————————————–</td>
-<td>————————————————————–</td>
-</tr>
-<tr class="even">
-<td>AM</td>
-<td>Workshop Introduction</td>
-<td>Joseph Elsherbini (Ragon Institute)</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Viromics Sequencing and Library Preperation</td>
-<td>Lindsay Droit (Wash U School of Medicine)</td>
-</tr>
-<tr class="even">
-<td>PM</td>
-<td>Intro to the UNIX Shell</td>
-<td>Marie HIDJO (AiBST)</td>
-</tr>
-<tr class="odd">
-<td><strong>Tuesday, February 25<sup>th</sup></strong></td>
-<td>————————————————————–</td>
-<td>————————————————————–</td>
-</tr>
-<tr class="even">
-<td>AM</td>
-<td>16S Data Preprocessing</td>
-<td>Afrah Khairallah (AHRI)</td>
-</tr>
-<tr class="odd">
-<td>PM</td>
-<td>Mapping and Seembly of short read libraries</td>
-<td>Joseph Elsherbini (Ragon Institute)</td>
-</tr>
-<tr class="even">
-<td><strong>Wednesday, February 26<sup>th</sup></strong></td>
-<td>————————————————————–</td>
-<td>————————————————————–</td>
-</tr>
-<tr class="odd">
-<td>AM</td>
-<td>Targetted Viromics bioinformatics</td>
-<td>Wonderful Choga (University of Botswana)</td>
-</tr>
-<tr class="even">
-<td>PM</td>
-<td>Genomics Adeventure I (interactive session)</td>
-<td>all instructors</td>
-</tr>
-<tr class="odd">
-<td>Evening</td>
-<td>Reception</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><strong>Thursday, February 27<sup>th</sup></strong></td>
-<td>————————————————————–</td>
-<td>————————————————————–</td>
-</tr>
-<tr class="odd">
-<td>AM</td>
-<td>Untargetted Viromics</td>
-<td>Luis Chica (Wash U School of Medicine)</td>
-</tr>
-<tr class="even">
-<td>PM</td>
-<td>Genomics Adeventure II (interactive session)</td>
-<td>all instructors</td>
-</tr>
-<tr class="odd">
-<td><strong>Friday, February 28<sup>th</sup></strong></td>
-<td>————————————————————–</td>
-<td>————————————————————–</td>
-</tr>
-<tr class="even">
-<td>AM</td>
-<td>Certificate ceremony</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code>snakemake</code> demonstration</td>
-<td>Joseph Elsherbini (Ragon Institute)</td>
-</tr>
-<tr class="even">
-<td>PM</td>
-<td>Open Lab (discussion, work on own data, work on genomics adventure)</td>
-<td>Participants</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Workshop Outro</td>
-<td>Afrah Khairallah (AHRI)</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>————————————————————–</td>
-<td>————————————————————–</td>
-</tr>
-</tbody>
-</table>
 
 
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>#Before we start, run the following command:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /home/genomics/workshop_materials/genomics_adventure/<span class="kw">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> sequencing_data .sequencing_data_backup<span class="kw">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> reference_sequences .reference_sequences_backup<span class="kw">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> sequencing_data/ecoli<span class="kw">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> reference_sequences/ecoli<span class="kw">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> .sequencing_data_backup/ecoli/<span class="pp">*</span>SRR857279<span class="pp">*</span> sequencing_data/ecoli<span class="kw">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> .reference_sequences_backup/ecoli/GCF_000005845.2_ASM584v2_genomic.fna reference_sequences/ecoli<span class="kw">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> .reference_sequences_backup/ecoli/GCF_000005845.2_ASM584v2_genomic.gff reference_sequences/ecoli<span class="kw">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="now-follow-the-adventure-here" class="level2">
+<h2 class="anchored" data-anchor-id="now-follow-the-adventure-here">Now follow the adventure here:</h2>
+<p><a href="https://github.com/guyleonard/genomics_adventure/blob/release/README.md#a-few-notes-on-styles">https://github.com/guyleonard/genomics_adventure/blob/release/README.md#a-few-notes-on-styles</a></p>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -495,6 +430,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -877,6 +819,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../materials/3-workshop3/3-sequence-files-quality-adapters/index.html" class="pagination-link" aria-label="<b>Module 3</b>:Intro to Bioinformatics I">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><b>Module 3</b>:Intro to Bioinformatics I</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
