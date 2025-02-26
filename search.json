@@ -76,6 +76,18 @@
     ]
   },
   {
+    "objectID": "materials/3-workshop3/5-targetted-viromics/index.html#exercises",
+    "href": "materials/3-workshop3/5-targetted-viromics/index.html#exercises",
+    "title": "Building Sucessful Sequencing Libraries",
+    "section": "Exercises",
+    "text": "Exercises\n\nExercise 1\n\n\n\nExercise 2\n\n\n\nExercise 3",
+    "crumbs": [
+      "AWS Instance IPs",
+      "<b>3. Bioinformatics and Viral Genomics - February 22-28 2025</b>",
+      "<b>Module 5</b>:Targetted Viromics and Phylogenetics"
+    ]
+  },
+  {
     "objectID": "materials/3-workshop3/4-mapping-and-assembly/index.html",
     "href": "materials/3-workshop3/4-mapping-and-assembly/index.html",
     "title": "Alignment, mapping, and variant calling",
