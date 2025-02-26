@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science for Biology Workshop Series - More data wrangling and data visualization with the</title>
+<title>Data Science for Biology Workshop Series - Alignment, mapping, and variant calling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -162,8 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">More data wrangling and data visualization with the<br>
-<pre>tidyverse</pre></h1>
+          <h1 class="quarto-secondary-nav-title">Alignment, mapping, and variant calling</h1>
         </a>     
     </div>
   </nav>
@@ -367,15 +332,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
-  <li><a href="#exercise-data-wrangling-2" id="toc-exercise-data-wrangling-2" class="nav-link" data-scroll-target="#exercise-data-wrangling-2">Exercise: Data wrangling 2</a>
-  <ul class="collapse">
-  <li><a href="#analyzing-subsets" id="toc-analyzing-subsets" class="nav-link" data-scroll-target="#analyzing-subsets">Analyzing subsets</a></li>
-  <li><a href="#grouping" id="toc-grouping" class="nav-link" data-scroll-target="#grouping">Grouping</a></li>
-  <li><a href="#performing-summaries" id="toc-performing-summaries" class="nav-link" data-scroll-target="#performing-summaries">Performing summaries</a></li>
-  <li><a href="#making-tables-wider-or-longer" id="toc-making-tables-wider-or-longer" class="nav-link" data-scroll-target="#making-tables-wider-or-longer">Making tables wider or longer</a></li>
-  <li><a href="#combining-datasets-with-joins" id="toc-combining-datasets-with-joins" class="nav-link" data-scroll-target="#combining-datasets-with-joins">Combining datasets with joins</a></li>
-  </ul></li>
+  <li><a href="#wifi-details" id="toc-wifi-details" class="nav-link active" data-scroll-target="#wifi-details">Wifi details</a></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
   </ul>
 </nav>
     </div>
@@ -384,8 +342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">More data wrangling and data visualization with the<br>
-<pre>tidyverse</pre></h1>
+<h1 class="title d-none d-lg-block">Alignment, mapping, and variant calling</h1>
 </div>
 
 
@@ -402,215 +359,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="slides" class="level2">
-<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<section id="wifi-details" class="level2">
+<h2 class="anchored" data-anchor-id="wifi-details">Wifi details</h2>
 <p><a href="../../../materials/3-workshop3/4-mapping-and-assembly/slides.html">Make slides full screen</a></p>
 <iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 </section>
-<section id="exercise-data-wrangling-2" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-data-wrangling-2">Exercise: Data wrangling 2</h2>
-<p>In this exercise, we will continue with basic data manipulations, now moving on to grouping and summarizing, making data tables wider or longer, and joining data tables.</p>
-<p>We will be using the R package, <strong>tidyverse</strong> for the data manipulation functions <code>%&gt;%</code>, <code>group_by()</code>, <code>summarize()</code>, <code>pivot_wider()</code>, <code>pivot_longer()</code>, and join functions such as <code>left_join()</code></p>
-<p>Paste the following into the top code chunk of your <code>qmd</code> file.</p>
-<p>Download the data files from the <a href="../../../datasets.html">dataset page</a> and place all 5 files into this directory.</p>
-<p>Paste the following code chunk into a new qmd file in this project:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>table_01 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"01_participant_metadata_UKZN_workshop_2023.csv"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>table_02 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"02_visit_clinical_measurements_UKZN_workshop_2023.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="analyzing-subsets" class="level3">
-<h3 class="anchored" data-anchor-id="analyzing-subsets">Analyzing subsets</h3>
-<p>In many data analysis settings, we want to break a dataset into subsets and then perform some summary calculation on each subset. The simplest example is counting, which we have done previously with the count() function.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="in">table_01 %&gt;%</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">  count(arm)</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-  arm           n
-  &lt;chr&gt;     &lt;int&gt;
-1 placebo      23
-2 treatment    21</code></pre>
-</div>
-</div>
-<p>This function subdivides the penguins dataset into subsets for each species and then calculates the number n for each subset, which is the number of observations in each subset.</p>
-<p>The function <code>count()</code> here does all the work for us, but what if instead of counting we wanted to calculate the mean weight of the penguins for each species, or calculate the mean weight and count at the same time? We need a general framework that allows us to do these kinds of calculations with maximum flexibility.</p>
-<p>The tidyverse approach is to first group a dataset with <code>group_by()</code> and then to calculate grouped summaries with <code>summarize()</code>.</p>
-</section>
-<section id="grouping" class="level3">
-<h3 class="anchored" data-anchor-id="grouping">Grouping</h3>
-<p>Let’s first consider just grouping. If we look at the raw R output of just the penguins table or the penguins table after running it through <code>group_by(arm)</code>, we see that the table is the same, except in the second case there is a line <code># Groups: arm [2]</code> which indicates that the table is grouped by arm and there are two groups. (Here, we need to pipe the tables into the print() function to see the raw R output instead of a formatted table that would hide the grouping information.)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 44 × 6
-   pid    arm       smoker       age education                     sex  
-   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                         &lt;lgl&gt;
- 1 pid_01 placebo   non-smoker    26 grade 10-12, matriculated     FALSE
- 2 pid_02 placebo   smoker        33 grade 10-12, matriculated     FALSE
- 3 pid_03 placebo   smoker        30 post-secondary                FALSE
- 4 pid_04 placebo   non-smoker    34 grade 10-12, not matriculated FALSE
- 5 pid_05 treatment non-smoker    29 grade 10-12, matriculated     FALSE
- 6 pid_06 placebo   smoker        34 post-secondary                FALSE
- 7 pid_07 placebo   non-smoker    31 grade 10-12, not matriculated FALSE
- 8 pid_08 placebo   smoker        30 grade 10-12, not matriculated FALSE
- 9 pid_09 treatment non-smoker    35 grade 10-12, not matriculated FALSE
-10 pid_10 treatment non-smoker    32 less than grade 9             FALSE
-# ℹ 34 more rows</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(arm) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 44 × 6
-# Groups:   arm [2]
-   pid    arm       smoker       age education                     sex  
-   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                         &lt;lgl&gt;
- 1 pid_01 placebo   non-smoker    26 grade 10-12, matriculated     FALSE
- 2 pid_02 placebo   smoker        33 grade 10-12, matriculated     FALSE
- 3 pid_03 placebo   smoker        30 post-secondary                FALSE
- 4 pid_04 placebo   non-smoker    34 grade 10-12, not matriculated FALSE
- 5 pid_05 treatment non-smoker    29 grade 10-12, matriculated     FALSE
- 6 pid_06 placebo   smoker        34 post-secondary                FALSE
- 7 pid_07 placebo   non-smoker    31 grade 10-12, not matriculated FALSE
- 8 pid_08 placebo   smoker        30 grade 10-12, not matriculated FALSE
- 9 pid_09 treatment non-smoker    35 grade 10-12, not matriculated FALSE
-10 pid_10 treatment non-smoker    32 less than grade 9             FALSE
-# ℹ 34 more rows</code></pre>
-</div>
-</div>
-<p>We can also group by multiple data columns at once, and we can undo any grouping with <code>ungroup()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(arm, education) <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 44 × 6
-# Groups:   arm, education [8]
-   pid    arm       smoker       age education                     sex  
-   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                         &lt;lgl&gt;
- 1 pid_01 placebo   non-smoker    26 grade 10-12, matriculated     FALSE
- 2 pid_02 placebo   smoker        33 grade 10-12, matriculated     FALSE
- 3 pid_03 placebo   smoker        30 post-secondary                FALSE
- 4 pid_04 placebo   non-smoker    34 grade 10-12, not matriculated FALSE
- 5 pid_05 treatment non-smoker    29 grade 10-12, matriculated     FALSE
- 6 pid_06 placebo   smoker        34 post-secondary                FALSE
- 7 pid_07 placebo   non-smoker    31 grade 10-12, not matriculated FALSE
- 8 pid_08 placebo   smoker        30 grade 10-12, not matriculated FALSE
- 9 pid_09 treatment non-smoker    35 grade 10-12, not matriculated FALSE
-10 pid_10 treatment non-smoker    32 less than grade 9             FALSE
-# ℹ 34 more rows</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(arm, education) <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 44 × 6
-   pid    arm       smoker       age education                     sex  
-   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;                         &lt;lgl&gt;
- 1 pid_01 placebo   non-smoker    26 grade 10-12, matriculated     FALSE
- 2 pid_02 placebo   smoker        33 grade 10-12, matriculated     FALSE
- 3 pid_03 placebo   smoker        30 post-secondary                FALSE
- 4 pid_04 placebo   non-smoker    34 grade 10-12, not matriculated FALSE
- 5 pid_05 treatment non-smoker    29 grade 10-12, matriculated     FALSE
- 6 pid_06 placebo   smoker        34 post-secondary                FALSE
- 7 pid_07 placebo   non-smoker    31 grade 10-12, not matriculated FALSE
- 8 pid_08 placebo   smoker        30 grade 10-12, not matriculated FALSE
- 9 pid_09 treatment non-smoker    35 grade 10-12, not matriculated FALSE
-10 pid_10 treatment non-smoker    32 less than grade 9             FALSE
-# ℹ 34 more rows</code></pre>
-</div>
-</div>
-<p>Now try this yourself. Group the table_01 dataset by education_level and smoker.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>table_01 <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  ___ <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><em>Answer for yourself</em> How many distinct groups did this produce?</p>
-<p>Now undo the previous grouping.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="in"># build all the code for this exercise</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Also verify what the output looks like when you omit the <code>print()</code> function at the end.</p>
-</section>
-<section id="performing-summaries" class="level3">
-<h3 class="anchored" data-anchor-id="performing-summaries">Performing summaries</h3>
-<p>Once we have set up a grouping for a data table, we can then calculate summary data with the <code>summarize()</code> function. This function works similarly to <code>mutate()</code>, in that we provide it with statements of the form <code>&lt;new column name&gt; = &lt;computation&gt;</code>, where <code>&lt;new column name&gt;</code> stands for the name of the new column that is being created and <code>&lt;computation&gt;</code> stands for the computation that is used to generate the values in the new column.</p>
-<p>As an example, using <code>table_02</code> we want to calculate the median ph of participants, by <code>arm</code>, we could write <code>summarise(median_ph = median(ph))</code>, and this would create a new column called <code>median_ph</code></p>
-<p>Try this out. First group by <code>arm</code> and then make the new column:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(____) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now see what it looks like if you instead group by <code>timepoint</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(____) <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now try grouping by both <code>timepoint</code> and <code>arm</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(__, __) <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We can perform multiple summaries at once by adding more statements inside the summarise() function, separated by a <code>,</code>. To try this out, calculate the median <code>nugent</code> in addition to the median ph</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(____) <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___, ___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>When performing summaries, we often want to know how many observations there are in each group (i.e., we want to count). We can do this with the function <code>n()</code>, which inside summarise() gives us the group size. So, we can count by adding a statement such as <code>count = n()</code> inside `summarise(). Try this out.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(____) <span class="sc">%&gt;%</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___, ___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="making-tables-wider-or-longer" class="level3">
-<h3 class="anchored" data-anchor-id="making-tables-wider-or-longer">Making tables wider or longer</h3>
-<p>For efficient data processing, we usually want tables in long form, where each columns is one variable and each row is one observation. However, in some applications, for example when making a table easier to read for humans, a wide format can be preferred. In a wide format, some variables are displayed as column names, and other variables are distributed over multiple columns.</p>
-<p>First, make a summary table that shows median <code>ph</code> by <code>arm</code> and <code>time_point</code>, just like you did above, and save it to a variable <code>ph_summary_long</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ph_summary_long <span class="ot">&lt;-</span> table_02 <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(___) <span class="sc">%&gt;%</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now, try using <code>pivot_wider()</code> to make a column for each arm. Remember, use <code>?pivot_wider</code> if you want help, and try asking google or chatGPT if you get stuck.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ph_summary_long <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(____)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>What if you wanted to instead make a column for each time point, and have the arms be different rows?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ph_summary_long <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(____)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="combining-datasets-with-joins" class="level3">
-<h3 class="anchored" data-anchor-id="combining-datasets-with-joins">Combining datasets with joins</h3>
-<p>Finally, we sometimes encounter the situation where we have two data sets that contain different pieces of information about the same subjects or objects, and we need to merge these tables for further analysis. In this situation, we need to perform a join, and there are multiple different types of joins available: left_join(), right_join(), inner_join(), full_join(). These joins all differ in how they handle cases where an observation is present in only one of the two tables but missing in the other.</p>
-<p>Our instructional dataset has no missing values, so all types of joins are actually equivalent. Try to join <code>table_01</code> and <code>table_02</code> using <code>left_join()</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="in"># join table_01 and table_02</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR9tPyPsytCG61tkO4oKHRh4m72XDsdu0s0ss_1RbWrmXOWug_-_l5-cSQjnI951EOeiNxkxWT5V9wW/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
