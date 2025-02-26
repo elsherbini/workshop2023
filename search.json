@@ -76,11 +76,35 @@
     ]
   },
   {
+    "objectID": "materials/3-workshop3/5-targetted-viromics/index.html",
+    "href": "materials/3-workshop3/5-targetted-viromics/index.html",
+    "title": "Targetted Viromics",
+    "section": "",
+    "text": "link_to_slides",
+    "crumbs": [
+      "AWS Instance IPs",
+      "<b>3. Bioinformatics and Viral Genomics - February 22-28 2025</b>",
+      "<b>Module 5</b>:Targetted Viromics and Phylogenetics"
+    ]
+  },
+  {
+    "objectID": "materials/3-workshop3/5-targetted-viromics/index.html#slides",
+    "href": "materials/3-workshop3/5-targetted-viromics/index.html#slides",
+    "title": "Targetted Viromics",
+    "section": "",
+    "text": "link_to_slides",
+    "crumbs": [
+      "AWS Instance IPs",
+      "<b>3. Bioinformatics and Viral Genomics - February 22-28 2025</b>",
+      "<b>Module 5</b>:Targetted Viromics and Phylogenetics"
+    ]
+  },
+  {
     "objectID": "materials/3-workshop3/5-targetted-viromics/index.html#exercises",
     "href": "materials/3-workshop3/5-targetted-viromics/index.html#exercises",
     "title": "Targetted Viromics",
     "section": "Exercises",
-    "text": "Exercises\n\nExercise 1\n\n\n\nExercise 2\n\n\n\nExercise 3",
+    "text": "Exercises\n\nExercise 1\nlink to exercise 1\n\n\n\nExercise 2\nlink to exercise 2\n\n\n\nExercise 3\nlink to exercise 3",
     "crumbs": [
       "AWS Instance IPs",
       "<b>3. Bioinformatics and Viral Genomics - February 22-28 2025</b>",
