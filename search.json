@@ -64,6 +64,18 @@
     ]
   },
   {
+    "objectID": "materials/3-workshop3/genomics_adventure_wrapper/index.html#to-download-your-fastqc-results",
+    "href": "materials/3-workshop3/genomics_adventure_wrapper/index.html#to-download-your-fastqc-results",
+    "title": "Genomics Adventure in Durban",
+    "section": "to download your fastqc results",
+    "text": "to download your fastqc results\n# replace &lt;your-ip-address&gt; with the correct IP address\nscp genomics@&lt;your-ip-address&gt;:`/home/genomics/workshop_materials/genomics_adventure/sequencing_data/ecoli/*.html` ./",
+    "crumbs": [
+      "AWS Instance IPs",
+      "<b>3. Bioinformatics and Viral Genomics - February 22-28 2025</b>",
+      "<b>Interactive 1</b>:Genomics Adventure"
+    ]
+  },
+  {
     "objectID": "materials/3-workshop3/4-mapping-and-assembly/index.html",
     "href": "materials/3-workshop3/4-mapping-and-assembly/index.html",
     "title": "Alignment, mapping, and variant calling",
