@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Luis Chica">
+<meta name="dcterms.date" content="2025-02-27">
 
 <title>Data Science for Biology Workshop Series - Building Sucessful Sequencing Libraries</title>
 <style>
@@ -20,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,6 +66,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../materials/3-workshop3/5-targetted-viromics/index.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -128,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Building Sucessful Sequencing Libraries</h1>
+          <h1 class="quarto-secondary-nav-title">Workshop III – Bioinformatics and Viral Genomics</h1>
         </a>     
     </div>
   </nav>
@@ -271,13 +308,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
  <span class="menu-text"><b>3. Bioinformatics and Viral Genomics - February 22-28 2025</b></span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/3-workshop3/0-welcome/index.html" class="sidebar-item-text sidebar-link">
@@ -321,8 +358,11 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text"><b>Module 6</b>:Untargetted Viromics</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/3-workshop3/6-untargetted-viromics/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><b>Module 6</b>:Untargetted Viromics</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
  <span class="menu-text"><b>Interactive 2</b>:Genomics Adventure</span>
   </li>
@@ -339,6 +379,30 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#setting" id="toc-setting" class="nav-link" data-scroll-target="#setting">Setting</a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a>
+  <ul class="collapse">
+  <li><a href="#step-1-set-up-a-new-rmarkdwonquarto-document" id="toc-step-1-set-up-a-new-rmarkdwonquarto-document" class="nav-link" data-scroll-target="#step-1-set-up-a-new-rmarkdwonquarto-document">Step 1: Set up a new RMarkdwon/Quarto document</a></li>
+  <li><a href="#step-2-initiate-your-environment" id="toc-step-2-initiate-your-environment" class="nav-link" data-scroll-target="#step-2-initiate-your-environment">Step 2: Initiate your environment</a></li>
+  <li><a href="#step-3-set-the-location-and-load-our-input-files" id="toc-step-3-set-the-location-and-load-our-input-files" class="nav-link" data-scroll-target="#step-3-set-the-location-and-load-our-input-files">Step 3: Set the location and load our input files</a></li>
+  <li><a href="#step-4-merging-our-metadata-with-our-data-table" id="toc-step-4-merging-our-metadata-with-our-data-table" class="nav-link" data-scroll-target="#step-4-merging-our-metadata-with-our-data-table">Step 4: Merging our metadata with our data table</a></li>
+  <li><a href="#step-5-preliminary-bigtable-plots" id="toc-step-5-preliminary-bigtable-plots" class="nav-link" data-scroll-target="#step-5-preliminary-bigtable-plots">Step 5: Preliminary bigtable plots</a></li>
+  <li><a href="#step-6-filtering-strategies" id="toc-step-6-filtering-strategies" class="nav-link" data-scroll-target="#step-6-filtering-strategies">Step 6: Filtering Strategies</a></li>
+  <li><a href="#step-7-analyse-taxon-counts" id="toc-step-7-analyse-taxon-counts" class="nav-link" data-scroll-target="#step-7-analyse-taxon-counts">Step 7: Analyse taxon counts</a></li>
+  <li><a href="#step-8-statistical-tests" id="toc-step-8-statistical-tests" class="nav-link" data-scroll-target="#step-8-statistical-tests">Step 8: Statistical tests</a></li>
+  <li><a href="#step-9-contig-based-analysis" id="toc-step-9-contig-based-analysis" class="nav-link" data-scroll-target="#step-9-contig-based-analysis">Step 9: Contig based analysis</a></li>
+  </ul></li>
+  <li><a href="#additional-documentation-command-line-code-for-running-a-untargeted-viromics-analysis." id="toc-additional-documentation-command-line-code-for-running-a-untargeted-viromics-analysis." class="nav-link" data-scroll-target="#additional-documentation-command-line-code-for-running-a-untargeted-viromics-analysis.">Additional documentation: command-line code for running a untargeted viromics analysis.</a>
+  <ul class="collapse">
+  <li><a href="#setting-variables-and-creating-directories" id="toc-setting-variables-and-creating-directories" class="nav-link" data-scroll-target="#setting-variables-and-creating-directories"><strong>Setting variables and creating directories</strong></a></li>
+  <li><a href="#binning-using-reneo" id="toc-binning-using-reneo" class="nav-link" data-scroll-target="#binning-using-reneo">Binning using Reneo</a></li>
+  <li><a href="#phage-prediction-using-jaeger-genomad-and-deepvirfinder" id="toc-phage-prediction-using-jaeger-genomad-and-deepvirfinder" class="nav-link" data-scroll-target="#phage-prediction-using-jaeger-genomad-and-deepvirfinder">Phage Prediction using Jaeger, geNomad, and DeepVirFinder</a></li>
+  <li><a href="#integrative-workflows-for-phage-prediction-taxonomic-classification-lifestyle-prediction-and-host-prediction" id="toc-integrative-workflows-for-phage-prediction-taxonomic-classification-lifestyle-prediction-and-host-prediction" class="nav-link" data-scroll-target="#integrative-workflows-for-phage-prediction-taxonomic-classification-lifestyle-prediction-and-host-prediction">Integrative workflows for phage prediction, taxonomic classification, lifestyle prediction, and host prediction</a></li>
+  <li><a href="#step-4-quality-assessment-using-checkv" id="toc-step-4-quality-assessment-using-checkv" class="nav-link" data-scroll-target="#step-4-quality-assessment-using-checkv"><strong>Step 4: Quality Assessment using CheckV</strong></a></li>
+  <li><a href="#phold-for-phage-annotation" id="toc-phold-for-phage-annotation" class="nav-link" data-scroll-target="#phold-for-phage-annotation">Phold for Phage Annotation</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -347,7 +411,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Building Sucessful Sequencing Libraries</h1>
+<h1 class="title d-none d-lg-block">Workshop III – Bioinformatics and Viral Genomics</h1>
 </div>
 
 
@@ -355,6 +419,12 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2025-02-27</p>
+    </div>
+  </div>
   
     
   </div>
@@ -366,9 +436,904 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="slides" class="level2">
 <h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ6OG7kqCIPFws9y5QFhQJGy9xh7dYKZI6IXGSreqMHqyO8E-qUia_7TcYGFkHweO87tLFULz13OaP6/embed?start=true&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<p>module_1_lindsay_droit_20250224.pdf</p>
+<style>
+  #myid {
+    border: 10px solid rgba(20,130,130,.2);
+    margin: 0;
+  }
+  .myclass {
+    max-width: 100%;
+    width: 100%;
+    height: 550px;
+  }
+</style>
+<p><embed src="UntargetedViromics.pdf" id="myid" class="myclass img-fluid"></p>
+</section>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>The tables used for this exercise are the main outputs of Hecatomb (https://github.com/shandley/hecatomb), a software aimed to increase virus discovery on complex samples (Metagenomic WGS or VLP prep WGS).</p>
+</section>
+<section id="dataset" class="level2">
+<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
+<p>Primarily, we will use a file called <code>bigtable.tsv</code>. This file has the taxonomic classification of each read that was used as input to Hecatomb. It also has the alignment statistics and the number of equal reads found for each sample.</p>
+<p>We will also use the file called <code>metadata.tsv</code>. The samples in the test dataset are samples taken from deceased Macaques from the study “SIV Infection-Mediated Changes in Gastrointestinal Bacterial Microbiome and Virome Are Associated with Immunodeficiency and Prevented by Vaccination” (https://www.sciencedirect.com/science/article/pii/S1931312816300518). The metadata contains the individuals’ gender and the vaccine that was administered.</p>
+</section>
+<section id="setting" class="level2">
+<h2 class="anchored" data-anchor-id="setting">Setting</h2>
+<p>We are going to connect to the Rstudio server that is running on our machines ::: {.cell}</p>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>http<span class="sc">:</span><span class="er">//</span><span class="dv">44</span>.<span class="dv">202</span>.<span class="fl">27.9</span><span class="sc">:</span><span class="dv">8787</span> <span class="co">#IMPORTANT: Change 44.202.27.9 by your IP</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Paste it in your browser</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>user<span class="sc">:</span> genomics</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>password<span class="sc">:</span>evomics2025</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>:::</p>
+<p>Also, we are going to connect to using ssh within the terminal. Then, we can go to workshop_materials and create a new directory called untargetedViromis. Then, go to that directory. Finally, we are going to download our dataset.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> genomics@serverIP <span class="co">#connect to the server</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/workshop_materials/</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> untargetedViromics <span class="co">#create a new working directory</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> untargetedViromics</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/luisalbertoc95/UV_data-Workshop-III-Bioinformatics-SA-2025.git  </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> UV_data-Workshop-III-Bioinformatics-SA-2025 uv_data <span class="co">#Change the name to work with a shorter one. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="analysis" class="level2">
+<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<section id="step-1-set-up-a-new-rmarkdwonquarto-document" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-set-up-a-new-rmarkdwonquarto-document">Step 1: Set up a new RMarkdwon/Quarto document</h3>
+</section>
+<section id="step-2-initiate-your-environment" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-initiate-your-environment">Step 2: Initiate your environment</h3>
+<p>First, We are going to set our working directory for all the chunks</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">set</span>(<span class="at">root.dir =</span> <span class="st">"/Users/luischica/Desktop/uv_data"</span>) <span class="co">#IMPORTANT: change /Users/luischica/Desktop/Workshop_SA/data by ~/workshop_materials/untargetedViromics/uv_data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Optionally, if you are using a normal R script, you can use: <strong>setwd(pathToYourWorkingDirectory)</strong></p>
+<p>For this exercise we will use 4 packages: ggplot2, dplyr and tidyr from the tidyverse suite, but also we will need the rstatix package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check and install tidyverse if needed, then load it</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"tidyverse"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check and install rstatix if needed, then load it</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"rstatix"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"rstatix"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Check and install DECIPHER if needed, then load it</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"DECIPHER"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"BiocManager"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">"BiocManager"</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">"DECIPHER"</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DECIPHER)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-3-set-the-location-and-load-our-input-files" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-set-the-location-and-load-our-input-files">Step 3: Set the location and load our input files</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">'bigtable.tsv'</span>,<span class="at">header=</span>T,<span class="at">sep=</span><span class="st">'</span><span class="sc">\t</span><span class="st">'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>meta <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'metadata.tsv'</span>,<span class="at">header=</span>T,<span class="at">sep=</span><span class="st">'</span><span class="sc">\t</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Inspect the dataframes</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                         seqID              sampleID count normCount alnType
+1 A13-258-124-06_CGTACG:1:6006 A13-258-124-06_CGTACG     1  1.012666      aa
+2 A13-258-124-06_CGTACG:1:6007 A13-258-124-06_CGTACG     1  1.012666      aa
+3 A13-258-124-06_CGTACG:1:6019 A13-258-124-06_CGTACG     1  1.012666      aa
+4 A13-258-124-06_CGTACG:1:6020 A13-258-124-06_CGTACG     1  1.012666      aa
+5 A13-258-124-06_CGTACG:1:6030 A13-258-124-06_CGTACG     1  1.012666      aa
+6 A13-258-124-06_CGTACG:1:6031 A13-258-124-06_CGTACG     1  1.012666      aa
+    targetID    evalue pident fident nident mismatches  qcov  tcov qstart qend
+1 A0A1W5PTE0 2.240e-46   97.3  0.973     73          2 0.962 0.166    234   10
+2     E0NZW5 1.941e-23   74.1  0.741     46         16 0.795 0.785     18  203
+3 A0A349YS28 4.343e-17   51.9  0.519     40         37 0.991 0.193      3  233
+4 A0A2N5ZDN1 3.061e-35   81.8  0.818     63         14 0.987 0.279      4  234
+5 A0A1Q6JQ74 4.923e-17   56.5  0.565     39         30 0.885 0.107     15  221
+6 A0A345MUW0 7.251e-24   85.0  0.850     51          9 0.933 0.163     12  191
+  qlen tstart tend tlen alnlen bits
+1  234    372  446  452    225  167
+2  234     16   77   79    186  101
+3  233    155  231  399    231   83
+4  234    161  237  276    231  135
+5  234    422  490  643    207   83
+6  193    294  353  369    180  102
+                                            targetName taxMethod  kingdom
+1                                       VP1 (Fragment)    TopHit  Viruses
+2 Toxin-antitoxin system, toxin component, HicA family    TopHit Bacteria
+3                              Uncharacterized protein       LCA Bacteria
+4                       Lysine--tRNA ligase (Fragment)    TopHit Bacteria
+5                      Phage tail tape measure protein    TopHit Bacteria
+6             A0A345MUW0_9VIRU Uncharacterized protein       LCA  Viruses
+                        phylum                       class
+1                Cossaviricota             Quintoviricetes
+2                   Firmicutes               Negativicutes
+3 unclassified Bacteria phylum unclassified Bacteria class
+4                Bacteroidetes                 Bacteroidia
+5                   Firmicutes                  Clostridia
+6               Hofneiviricota              Faserviricetes
+                        order                               family
+1                Piccovirales                         Parvoviridae
+2             Selenomonadales                     Selenomonadaceae
+3 unclassified Bacteria order         unclassified Bacteria family
+4            Marinilabiliales unclassified Marinilabiliales family
+5               Clostridiales    unclassified Clostridiales family
+6               Tubulavirales                           Inoviridae
+                                genus                        species
+1                     Protoparvovirus               Simian bufavirus
+2                         Selenomonas Selenomonas sp. oral taxon 149
+3         unclassified Bacteria genus  unclassified Bacteria species
+4 unclassified Marinilabiliales genus     Marinilabiliales bacterium
+5    unclassified Clostridiales genus  Clostridiales bacterium 59_14
+6       unclassified Inoviridae genus                 Inoviridae sp.
+  baltimoreType baltimoreGroup
+1         ssDNA             II
+2          &lt;NA&gt;           &lt;NA&gt;
+3          &lt;NA&gt;           &lt;NA&gt;
+4          &lt;NA&gt;           &lt;NA&gt;
+5          &lt;NA&gt;           &lt;NA&gt;
+6         ssDNA             II</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(meta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               sampleID  vaccine sex MacGuffinGroup
+1  A13-04-182-06_TAGCTT     sham   F              B
+2  A13-12-250-06_GGCTAC     sham   F              B
+3 A13-135-177-06_AGTTCC Ad_alone   F              A
+4 A13-151-169-06_ATGTCA Ad_alone   F              A
+5 A13-252-114-06_CCGTCC     sham   M              A
+6 A13-253-140-06_GTCCGC     sham   M              B</code></pre>
+</div>
+</div>
+</section>
+<section id="step-4-merging-our-metadata-with-our-data-table" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-merging-our-metadata-with-our-data-table">Step 4: Merging our metadata with our data table</h3>
+<p>The merge function with perform an inner join by default, or you can specify outer, and left- and right-outer. This shouldn’t matter if you have metadata for all of your samples.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dataMeta <span class="ot">&lt;-</span>  <span class="fu">merge</span>(data, meta, <span class="at">by=</span><span class="st">'sampleID'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-5-preliminary-bigtable-plots" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-preliminary-bigtable-plots">Step 5: Preliminary bigtable plots</h3>
+<p>First, we will plot the alignment length against identity, and facet by viral family. We show the different alignment types by color, and we can scale the point size by the cluster number. The alpha=0.1 will help us to set it to 10% opacity and the points will overlap a lot at this scale.</p>
+<p>Before making our plot, we will filter our dataMeta in order to remove all non viral taxonomic annotation. The function filter() will take all the hits to the word Viruses in our Kingdom column ::: {.cell}</p>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>viruses <span class="ot">&lt;-</span> dataMeta <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(kingdom<span class="sc">==</span><span class="st">"Viruses"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>:::</p>
+<p>Now we can make our first plot</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(viruses) <span class="sc">+</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x=</span>alnlen,<span class="at">y=</span>pident,<span class="at">color=</span>alnType,<span class="at">size=</span>count),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha=</span><span class="fl">0.1</span>) <span class="sc">+</span> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>family)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can immediately see that a handful of viral families make up a majority of the viral hits. You can use these plots to help guide filtering strategies. We can divide the alignments into ‘quadrants’ by adding alignment length and percent identity thresholds, for instance alignment length of 150 and percent identity of 75.</p>
+<p>We can also add some threshold lines to divide our plot into quadrants. This quadrants will be useful to see how much can we trust in each alignment.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(viruses) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x=</span>alnlen,<span class="at">y=</span>pident,<span class="at">color=</span>alnType,<span class="at">size=</span>count),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha=</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>family) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">150</span>,<span class="at">colour=</span><span class="st">'red'</span>,<span class="at">linetype=</span><span class="st">'longdash'</span>) <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">75</span>,<span class="at">colour=</span><span class="st">'red'</span>,<span class="at">linetype=</span><span class="st">'longdash'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can see that for Adenoviridae and Parvoviridae the majority of hits occupy the top two quadrants, and we can be reasonably confident about these alignments. For Podoviridae and Circoviridae, the majority of hits occupy the bottom two quadrants. This could indicate that the viruses are only distantly related to the reference genomes in these families.</p>
+<p><strong>Task: plot the Bacterial hits faceted by phylum</strong></p>
+</section>
+<section id="step-6-filtering-strategies" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-filtering-strategies">Step 6: Filtering Strategies</h3>
+<p>Hecatomb is not intended to be a black box of predetermined filtering cutoffs that returns an immutable table of hits. Instead, it delivers as much information as possible to empower the user to decide which hits they want to keep and which hits to purge. Let’s take our raw viral hits data frame viruses and filter them to only keep the ones we are confident about.</p>
+<p>The e-value is one of the most common metrics to use for filtering alignments. Let’s see what hits would be removed if we used a fairly stringent cutoff of 1e-20. We will create a new data set that contains only the hits remaining after applying the p-value threshold.</p>
+<p>We are going to see two strategies for filtering our table. In the first strategy, we will add an additional column to our data set. This column will have 2 possible values: “filter” and “pass”. whether a read is tagged as filter or pass will depend of the the threshold added in the function ifelse()</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>virusesFiltered <span class="ot">&lt;-</span> viruses <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">filter=</span><span class="fu">ifelse</span>(evalue<span class="sc">&lt;</span><span class="fl">1e-20</span>,<span class="st">'pass'</span>,<span class="st">'filter'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can plot our new table</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(virusesFiltered) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x=</span>alnlen,<span class="at">y=</span>pident,<span class="at">color=</span>filter),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha=</span><span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>family)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The red sequences are destined to be removed, while the blue sequences will be kept. Some viral families will be removed altogether, which is probably a good thing if they only have low quality hits.</p>
+<p>The second strategy, is a more straightforward method. We only need to use the function filter() and the desired e-value threshold. No additional column will be added.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>virusesFiltered <span class="ot">&lt;-</span> viruses <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(evalue<span class="sc">&lt;</span><span class="fl">1e-20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Going back to the quadrant concept, you might only want to keep sequences above a certain length and percent identity:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>virusesFiltered <span class="ot">=</span> virusesFiltered <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(alnlen<span class="sc">&gt;</span><span class="dv">150</span> <span class="sc">&amp;</span> pident<span class="sc">&gt;</span><span class="dv">75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, our filtered table has an alignment filter, an identity % filter and our previous p-value filter.</p>
+<p>There are many alignment metrics included in the bigtable for you to choose from.</p>
+<p><strong>Task: Filter your raw viral hits to only keep protein hits with an evalue &lt; 1e-10</strong></p>
+</section>
+<section id="step-7-analyse-taxon-counts" class="level3">
+<h3 class="anchored" data-anchor-id="step-7-analyse-taxon-counts">Step 7: Analyse taxon counts</h3>
+<ol type="A">
+<li>Make Per family plots First, we will sum the normalized count of each read to a family level using the columns sampleID and family</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>viralFamCounts <span class="ot">&lt;-</span> virusesFiltered <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(family) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">normCount=</span><span class="fu">sum</span>(normCount)) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(normCount))</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>viralFamCounts<span class="sc">$</span>family <span class="ot">&lt;-</span> <span class="fu">factor</span>(viralFamCounts<span class="sc">$</span>family,<span class="at">levels=</span>viralFamCounts<span class="sc">$</span>family)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(viralFamCounts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  family                      normCount
+  &lt;fct&gt;                           &lt;dbl&gt;
+1 unclassified Viruses family     2188.
+2 Adenoviridae                    1906.
+3 Microviridae                    1831.
+4 Parvoviridae                    1274.
+5 Picornaviridae                   741.
+6 Siphoviridae                     720.</code></pre>
+</div>
+</div>
+<p>After having our new dataframe with the counts per Family, we can create our abundance plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(viralFamCounts) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x=</span>family,<span class="at">y=</span>normCount),<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="A">
+<li>Discriminate our family plots by sample ID</li>
+</ol>
+<p>The previous plot are a good way to understand the overall abundance of each family in all our samples. However, with that plot is impossible to differentiate between samples and therefore, between different treatments. We can sum our normalized counts in a similar way we did before. Now we are going to add the variable “sampleID” to the function <code>group_by()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>viralFamCounts <span class="ot">&lt;-</span> virusesFiltered <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sampleID,family) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">normCount=</span><span class="fu">sum</span>(normCount)) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(normCount))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(viralFamCounts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+# Groups:   sampleID [4]
+  sampleID              family                      normCount
+  &lt;chr&gt;                 &lt;chr&gt;                           &lt;dbl&gt;
+1 A13-151-169-06_ATGTCA Adenoviridae                    1777.
+2 A13-151-169-06_ATGTCA Parvoviridae                     993.
+3 A13-135-177-06_AGTTCC unclassified Viruses family      956.
+4 A13-256-115-06_GTTTCG Microviridae                     620.
+5 A13-253-140-06_GTCCGC Myoviridae                       490.
+6 A13-253-140-06_GTCCGC Picornaviridae                   486.</code></pre>
+</div>
+</div>
+<p>and then, make the new plot, filling by family</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(viralFamCounts) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x=</span>sampleID,<span class="at">y=</span>normCount, <span class="at">fill =</span>family ),<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Task: Make a stacked bar chart of the viral families for the Male and Female monkeys</strong></p>
+<ol start="3" type="A">
+<li>Visualizing groups We have a few viral families that are very prominent in our samples. For the purposes of the tutorial we have a completely made up sample group category called MacGuffinGroup. Let’s see if there is a difference in viral loads according to our MacGuffinGroup groups. Collect sample counts for Microviridae. Include the metadata group in group_by() so you can use it in the plot.</li>
+</ol>
+<p>For our first plot we are going to focus exclusively in Microviridae family</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>podoCounts <span class="ot">&lt;-</span> virusesFiltered <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(family,sampleID,MacGuffinGroup) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(family<span class="sc">==</span><span class="st">'Podoviridae'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">sum</span>(normCount))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, we can plot using jitter plots, box plots or violin plots</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(podoCounts) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">x=</span>MacGuffinGroup,<span class="at">y=</span>n),<span class="at">width =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="step-8-statistical-tests" class="level3">
+<h3 class="anchored" data-anchor-id="step-8-statistical-tests">Step 8: Statistical tests</h3>
+<p>In Step 6, we compared the viral counts between the two sample groups for Podoviridae, and it appeared as though group B had more viral sequence hits on average than group A. We can compare the normalized counts for these two groups to see if they’re significantly different.</p>
+<ol type="A">
+<li>Student’s T-test</li>
+</ol>
+<p>Let’s check out the data frame we made earlier that we’ll be using for the test</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(podoCounts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+# Groups:   family, sampleID [6]
+  family      sampleID              MacGuffinGroup      n
+  &lt;chr&gt;       &lt;chr&gt;                 &lt;chr&gt;           &lt;dbl&gt;
+1 Podoviridae A13-04-182-06_TAGCTT  B                4.56
+2 Podoviridae A13-12-250-06_GGCTAC  B              203.  
+3 Podoviridae A13-135-177-06_AGTTCC A                1.91
+4 Podoviridae A13-151-169-06_ATGTCA A               12.7 
+5 Podoviridae A13-252-114-06_CCGTCC A                8.22
+6 Podoviridae A13-253-140-06_GTCCGC B               67.9 </code></pre>
+</div>
+</div>
+<p>We will use the base-r function t.test(), which takes two vectors. One vector has the group A counts and the other has the group B counts. We can use the filter() and pull() functions within the t.test() function. The function pull will take the column n, which has our abundance values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    podoCounts <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(MacGuffinGroup<span class="sc">==</span><span class="st">'A'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(n),</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    podoCounts <span class="sc">%&gt;%</span> </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(MacGuffinGroup<span class="sc">==</span><span class="st">'B'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(n),</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">alternative=</span><span class="st">'two.sided'</span>,</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">paired=</span>F,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">var.equal=</span>T)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  podoCounts %&gt;% filter(MacGuffinGroup == "A") %&gt;% pull(n) and podoCounts %&gt;% filter(MacGuffinGroup == "B") %&gt;% pull(n)
+t = -2.0096, df = 8, p-value = 0.07933
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -145.561036    9.996944
+sample estimates:
+mean of x mean of y 
+ 7.701613 75.483659 </code></pre>
+</div>
+</div>
+<ol start="2" type="A">
+<li>Wilcoxon test</li>
+</ol>
+<p>The Wilcoxon test is analogue to the t-test, however is used when our values do not follow a normal distribution. The syntax for this test is very similar to the t-test</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    podoCounts <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(MacGuffinGroup<span class="sc">==</span><span class="st">'A'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(n),</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    podoCounts <span class="sc">%&gt;%</span> </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(MacGuffinGroup<span class="sc">==</span><span class="st">'B'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(n),</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">alternative=</span><span class="st">'t'</span>,</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">paired=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum exact test
+
+data:  podoCounts %&gt;% filter(MacGuffinGroup == "A") %&gt;% pull(n) and podoCounts %&gt;% filter(MacGuffinGroup == "B") %&gt;% pull(n)
+W = 4, p-value = 0.09524
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+</div>
+<p>In some cases, the viral loads have minor importance for answering a research question, instead we might be just interested in comparing the presence or absence of viruses. For this you could use a Fisher’s exact test. To perform this test you need to assign a presence ‘1’ or absence ‘0’ for each viral family/genus/etc for each sample.</p>
+<p>First we are going to apply and even more stringent filter to be sure about the alignments ::: {.cell}</p>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>virusesStringent <span class="ot">&lt;-</span> viruses <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(evalue<span class="sc">&lt;</span><span class="fl">1e-30</span>,alnlen<span class="sc">&gt;</span><span class="dv">150</span>,pident<span class="sc">&gt;</span><span class="dv">75</span>,alnType<span class="sc">==</span><span class="st">'aa'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>:::</p>
+<p>Then we will assign anything with any hits as ‘present’ for that an specific viral family (It can be done for all of them). For this example we are going to use Myoviridae.</p>
+<p>Our chunk has two lines. The first one will extract the counts for Myoviridae and the second will merge our new table with our metadata file</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>myovirPresAbs <span class="ot">&lt;-</span> virusesStringent <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(family<span class="sc">==</span><span class="st">'Myoviridae'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(sampleID) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">sum</span>(normCount)) <span class="sc">%&gt;%</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">present=</span><span class="fu">ifelse</span>(n<span class="sc">&gt;</span><span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>myovirPresAbs <span class="ot">&lt;-</span> <span class="fu">merge</span>(myovirPresAbs,meta,<span class="at">by=</span><span class="st">'sampleID'</span>,<span class="at">all=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If we visualise our “myovirPresAbs” table, we will see some values missing or NA. Those are the samples in which no presence of Myoviridae was found. We can convert the NAs to zeros.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>myovirPresAbs[<span class="fu">is.na</span>(myovirPresAbs)] <span class="ot">=</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To do the Fisher’s exact test we need to specify a 2x2 grid; The first column will be the number with Myoviridae for each group. The second column will be the numbers without for each group.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># matrix rows</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>mtxGroupA <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    myovirPresAbs <span class="sc">%&gt;%</span> </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(MacGuffinGroup<span class="sc">==</span><span class="st">'A'</span>,present<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(n),</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    myovirPresAbs <span class="sc">%&gt;%</span> </span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(MacGuffinGroup<span class="sc">==</span><span class="st">'A'</span>,present<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(n))</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>mtxGroupB <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    myovirPresAbs <span class="sc">%&gt;%</span> </span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(MacGuffinGroup<span class="sc">==</span><span class="st">'B'</span>,present<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(n),</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>    myovirPresAbs <span class="sc">%&gt;%</span> </span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(MacGuffinGroup<span class="sc">==</span><span class="st">'B'</span>,present<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(n))</span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a><span class="co"># create the 2x2 matrix</span></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>myovirFishMtx <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(mtxGroupA,mtxGroupB),<span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a><span class="co"># this bit is not necessary, but lets add row and col names to illustrate the matrix layout</span></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(myovirFishMtx) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'GroupA'</span>,<span class="st">'GroupB'</span>)</span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(myovirFishMtx) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'present'</span>,<span class="st">'absent'</span>)</span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a><span class="co"># view</span></span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>myovirFishMtx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        GroupA GroupB
+present      1      5
+absent       4      0</code></pre>
+</div>
+</div>
+<p>We can run our t-test using our new matrix as input</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fisher.test</span>(myovirFishMtx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Fisher's Exact Test for Count Data
+
+data:  myovirFishMtx
+p-value = 0.04762
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.000000 0.975779
+sample estimates:
+odds ratio 
+         0 </code></pre>
+</div>
+</div>
+</section>
+<section id="step-9-contig-based-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="step-9-contig-based-analysis">Step 9: Contig based analysis</h3>
+<p>Contig analysis is a very important approach when identifying viruses from a metagenomic or VLP prep sample. Because of the length of the contigs, new genomic features can be identified and used for generating a taxonomic classification, functional analysis and more.</p>
+<ol type="A">
+<li>Fist, we will load our taxonomy table generated from hecatomb. This table relates every contig with their best hit in the data base.</li>
+</ol>
+<p>For the purpose of this exercise we will filter our table for contigs classified at family level as Caudovirales. and with a sequence length between 2000 and 3000 base pairs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>contig_data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">'MMseqsTax.txt'</span>,<span class="at">header=</span>T,<span class="at">sep=</span><span class="st">'</span><span class="sc">\t</span><span class="st">'</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>caudovirales_data <span class="ot">&lt;-</span> contig_data <span class="sc">%&gt;%</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Order <span class="sc">==</span> <span class="st">"Caudovirales"</span> <span class="sc">&amp;</span> qlen <span class="sc">&gt;</span> <span class="dv">2000</span> <span class="sc">&amp;</span> qlen <span class="sc">&lt;</span> <span class="dv">3000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(contigID) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="A">
+<li>We will load our fasta file generated after the assembly using the package Biostrings, included in the package DECIPHER. We can also use the package [] for selecting our target contigs from the fasta file</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>contigs <span class="ot">&lt;-</span> <span class="fu">readDNAStringSet</span>(<span class="st">"assembly.fasta"</span>, <span class="at">format=</span><span class="st">"fasta"</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>caudo_contigs <span class="ot">&lt;-</span> contigs[caudovirales_data<span class="sc">$</span>contigID] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="A">
+<li>We can use our set of contigs to make a multiple sequence alignment (MSA) with the final purpose of generating a phylogeny tree.</li>
+</ol>
+<p>The steps to make our MSA are going to be based on the decision diagram from the DEIPHER package</p>
+<p><img src="WF_MSA.png" class="img-fluid" alt="Formula"> Steps:</p>
+<ol type="A">
+<li>Create the multiple sequences alignement</li>
+<li>Remove ambiguous regions from the alignment</li>
+</ol>
+<ol start="3" type="a">
+<li>Create the phylogenetic tree</li>
+</ol>
+<ol start="4" type="A">
+<li>Plot the dendrogram</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#A</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>aln_contig <span class="ot">&lt;-</span> <span class="fu">AlignSeqs</span>(caudo_contigs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Determining distance matrix based on shared 10-mers:
+================================================================================
+
+Time difference of 0.04 secs
+
+Clustering into groups by similarity:
+================================================================================
+
+Time difference of 0 secs
+
+Aligning Sequences:
+================================================================================
+
+Time difference of 2.76 secs
+
+Iteration 1 of 2:
+
+Determining distance matrix based on alignment:
+================================================================================
+
+Time difference of 0 secs
+
+Reclustering into groups by similarity:
+================================================================================
+
+Time difference of 0 secs
+
+Realigning Sequences:
+================================================================================
+
+Time difference of 1.98 secs
+
+Iteration 2 of 2:
+
+Determining distance matrix based on alignment:
+================================================================================
+
+Time difference of 0 secs
+
+Reclustering into groups by similarity:
+================================================================================
+
+Time difference of 0 secs
+
+Realigning Sequences:
+================================================================================
+
+Time difference of 1.07 secs
+
+Refining the alignment:
+================================================================================
+
+Time difference of 3.2 secs</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#B</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>stagger_aln_contig<span class="ot">&lt;-</span> <span class="fu">StaggerAlignment</span>(aln_contig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Calculating distance matrix:
+================================================================================
+
+Time difference of 0 secs
+
+Constructing neighbor-joining tree:
+================================================================================
+
+Time difference of 0 secs
+
+Staggering insertions and deletions:
+================================================================================
+
+Time difference of 0.67 secs</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BrowseSeqs</span>(stagger_aln_contig, <span class="at">highlight=</span><span class="dv">1</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co">#C</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">TreeLine</span>(stagger_aln_contig, <span class="at">reconstruct=</span><span class="cn">TRUE</span>, <span class="at">maxTime=</span><span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Optimizing model parameters:
+JC69     -ln(L) = 62850, AICc = 125775, BIC = 125989
+JC69+G4  -ln(L) = 62814, AICc = 125705, BIC = 125924
+K80      -ln(L) = 62843, AICc = 125763, BIC = 125982
+K80+G4   -ln(L) = 62806, AICc = 125692, BIC = 125916
+F81      -ln(L) = 62406, AICc = 124893, BIC = 125123
+F81+G4   -ln(L) = 62374, AICc = 124832, BIC = 125068
+HKY85    -ln(L) = 62402, AICc = 124887, BIC = 125123
+HKY85+G4 -ln(L) = 62372, AICc = 124830, BIC = 125072
+T92      -ln(L) = 62416, AICc = 124911, BIC = 125135
+T92+G4   -ln(L) = 62384, AICc = 124850, BIC = 125080
+TN93     -ln(L) = 62401, AICc = 124888, BIC = 125130
+TN93+G4  -ln(L) = 62369, AICc = 124826, BIC = 125074
+SYM      -ln(L) = 62755, AICc = 125596, BIC = 125838
+SYM+G4   -ln(L) = 62706, AICc = 125499, BIC = 125747
+GTR      -ln(L) = 62386, AICc = 124863, BIC = 125122
+GTR+G4   -ln(L) = 62352, AICc = 124798, BIC = 125063
+
+The selected model was:  GTR+G4
+
+PHASE 1 OF 3: INITIAL TREES
+
+1/3. Optimizing initial tree #1 of 10 to 100:
+-ln(L) = 62350.7 (-0.002%), 2 Climbs  
+1/3. Optimizing initial tree #2 of 10 to 100:
+-ln(L) = 62346.9 (-0.006%), 3 Climbs  
+1/3. Optimizing initial tree #3 of 10 to 100:
+-ln(L) = 62349.4 (+0.004%), 6 Climbs  
+
+PHASE 2 OF 3: REGROW GENERATION 1 OF 10 TO 20
+
+2/3. Optimizing regrown tree #1 of 10 to 100:
+-ln(L) = 62345.2 (-0.003%), 1 Climb  
+2/3. Optimizing regrown tree #2 of 11 to 100:
+-ln(L) = 62346.1 (+0.001%), 2 Climbs  
+2/3. Optimizing regrown tree #3 of 11 to 100:
+-ln(L) = 62353.4 (+0.013%), 0 Climbs  
+2/3. Optimizing regrown tree #4 of 11 to 100:
+-ln(L) = 62345.5 (~0.000%), 3 Climbs  
+2/3. Optimizing regrown tree #5 of 11 to 100:
+-ln(L) = 62345.4 (~0.000%), 2 Climbs  
+2/3. Optimizing regrown tree #6 of 11 to 100:
+-ln(L) = 62346.4 (+0.002%), 3 Climbs  
+2/3. Optimizing regrown tree #7 of 11 to 100:
+-ln(L) = 62345.2 (~0.000%), 2 Climbs  
+2/3. Optimizing regrown tree #8 of 11 to 100:
+-ln(L) = 62347.9 (+0.004%), 1 Climb  
+2/3. Optimizing regrown tree #9 of 11 to 100:
+-ln(L) = 62347.6 (+0.004%), 4 Climbs  
+
+PHASE 3 OF 3: SHAKEN TREES
+
+Grafting 1 tree to the best tree:
+-ln(L) = 62344.1 (-0.002%), 1 Graft of 3  
+
+3/3. Optimizing shaken tree #1 of 3 to 1000:
+-ln(L) = 62349.9 (+0.009%), 5 Climbs  
+3/3. Optimizing shaken tree #2 of 3 to 1000:
+-ln(L) = 62361.3 (+0.028%), 4 Climbs  
+3/3. Optimizing shaken tree #3 of 3 to 1000:
+-ln(L) = 62371.9 (+0.045%), 3 Climbs  
+
+Grafting 3 trees to the best tree:
+-ln(L) = 62344.1 (0.000%), 0 Grafts of 10  
+
+Model parameters:
+Frequency(A) = 0.284
+Frequency(C) = 0.204
+Frequency(G) = 0.199
+Frequency(T) = 0.313
+Rate A &lt;-&gt; C = 1.125
+Rate A &lt;-&gt; G = 1.336
+Rate A &lt;-&gt; T = 1.040
+Rate C &lt;-&gt; G = 1.437
+Rate C &lt;-&gt; T = 1.124
+Rate G &lt;-&gt; T = 1.000
+Alpha = 10.863
+
+Time difference of 223.28 secs</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#D</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">dendrapply</span>(tree,</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>         <span class="cf">function</span>(x) {</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>                 s <span class="ot">&lt;-</span> <span class="fu">attr</span>(x, <span class="st">"probability"</span>) </span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>                 <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(s) <span class="sc">&amp;&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(s)) {</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>                         s <span class="ot">&lt;-</span> <span class="fu">formatC</span>(<span class="fu">as.numeric</span>(s), <span class="at">digits=</span><span class="dv">2</span>, <span class="at">format=</span><span class="st">"f"</span>)</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">attr</span>(x, <span class="st">"edgetext"</span>) <span class="ot">&lt;-</span> <span class="fu">paste</span>(s, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>                 }</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">attr</span>(x, <span class="st">"edgePar"</span>) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">p.col=</span><span class="cn">NA</span>, <span class="at">p.lwd=</span><span class="fl">1e-5</span>, <span class="at">t.col=</span><span class="st">"#CC55AA"</span>)</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>                 <span class="cf">if</span> (<span class="fu">is.leaf</span>(x))</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>                   </span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(x, <span class="st">"nodePar"</span>) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">lab.font=</span><span class="dv">3</span>, <span class="at">pch=</span><span class="cn">NA</span>)</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>x </span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>}),</span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="at">horiz=</span><span class="cn">TRUE</span>,<span class="at">yaxt=</span><span class="st">'n'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="additional-documentation-command-line-code-for-running-a-untargeted-viromics-analysis." class="level2">
+<h2 class="anchored" data-anchor-id="additional-documentation-command-line-code-for-running-a-untargeted-viromics-analysis.">Additional documentation: command-line code for running a untargeted viromics analysis.</h2>
+<p>This document outlines a step-by-step workflow for predicting viruses in metagenomic samples using a combination of binning, phage prediction, and quality assessment tools. Conda/Mamba installation instructions are provided for each tool.</p>
+<section id="setting-variables-and-creating-directories" class="level3">
+<h3 class="anchored" data-anchor-id="setting-variables-and-creating-directories"><strong>Setting variables and creating directories</strong></h3>
+<div class="sourceCode" id="cb48"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>ASSEMBLY="~/workshop_materials/untargetedViromics/uv_data/assembly.fasta"</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>mkdir ~/workshop_materials/untargetedViromics/runningTools</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>PHAGEPRED_WD="~/workshop_materials/untargetedViromics/runningTools/phagePrediction"</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>QUALPRED_WD="~/workshop_materials/untargetedViromics/runningTools/Qual"</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>CPUS_PER_TASK=4</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>cd ~/workshop_materials/untargetedViromics/runningTools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="binning-using-reneo" class="level3">
+<h3 class="anchored" data-anchor-id="binning-using-reneo">Binning using Reneo</h3>
+<p><strong>Do not run</strong></p>
+<section id="description" class="level4">
+<h4 class="anchored" data-anchor-id="description"><strong>Description</strong></h4>
+<p>Reneo is a binning tool that groups contigs into bins (putative genomes) based on coverage, sequence composition, and a flow decomposition algorithm that allows us to get complete genomes from our contigs. This step is important for reducing complexity and isolating viral contigs.</p>
+</section>
+<section id="conda-installation" class="level4">
+<h4 class="anchored" data-anchor-id="conda-installation"><strong>Conda Installation</strong></h4>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> reneo <span class="at">-c</span> bioconda reneo</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate reneo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="command" class="level4">
+<h4 class="anchored" data-anchor-id="command"><strong>Command</strong></h4>
+<div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="ex">reneo</span> run <span class="at">--input</span> <span class="st">"</span><span class="va">${ASSEMBLY}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">--reads</span> <span class="st">"</span><span class="va">${READS}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">--minlength</span> 1000 <span class="dt">\</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">--output</span> <span class="st">"</span><span class="va">${RENEO_OUT}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">--threads</span> <span class="va">${CPUS_PER_TASK}</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"reneo done"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="phage-prediction-using-jaeger-genomad-and-deepvirfinder" class="level3">
+<h3 class="anchored" data-anchor-id="phage-prediction-using-jaeger-genomad-and-deepvirfinder">Phage Prediction using Jaeger, geNomad, and DeepVirFinder</h3>
+<section id="description-1" class="level4">
+<h4 class="anchored" data-anchor-id="description-1"><strong>Description</strong></h4>
+</section>
+<section id="jaeger" class="level4">
+<h4 class="anchored" data-anchor-id="jaeger">Jaeger</h4>
+<p><strong>Methodology:</strong> Jaeger uses a machine learning model based on convolutional neural networks (CNNs) to predict phage sequences. It analyzes genomic features such as k-mer frequencies, GC content, and sequence length. <strong>Strengths:</strong> High sensitivity for detecting novel phages due to its ability to learn complex patterns in viral sequences. Can process both reads and contigs, making it versatile for different types of metagenomic data. Performs well on low-abundance sequences and fragmented genomes.</p>
+</section>
+<section id="genomad" class="level4">
+<h4 class="anchored" data-anchor-id="genomad">geNomad</h4>
+<p><strong>Methodology:</strong> geNomad combines homology-based searches (e.g., against protein domain databases like Pfam) with neural network models to classify sequences as viral, plasmid, or chromosomal. The homology component identifies conserved viral and plasmid proteins. The machine learning component uses k-mer frequencies and genomic features to refine predictions. <strong>Strengths:</strong> High accuracy in distinguishing between viruses, plasmids, and host sequences. Effective for novel sequences due to its hybrid approach. Provides detailed annotations, including viral taxonomy and functional genes.</p>
+</section>
+<section id="deepvirfinder" class="level4">
+<h4 class="anchored" data-anchor-id="deepvirfinder">DeepVirFinder</h4>
+<p><strong>Methodology:</strong> DeepVirFinder employs a deep learning model based on convolutional neural networks (CNNs) to predict viral sequences. It uses k-mer frequencies and sequence composition as input features. <strong>Strengths:</strong> High sensitivity for detecting novel viruses, even in the absence of close homologs in reference databases. Works well on short reads and fragmented contigs. Can be applied to both DNA and RNA viruses.</p>
+</section>
+<section id="virsorter2" class="level4">
+<h4 class="anchored" data-anchor-id="virsorter2">VirSorter2</h4>
+<p><strong>Methodology:</strong> VirSorter2 combines homology-based searches (using curated viral protein databases) with machine learning models to identify phage sequences. It uses genomic features such as gene density, strand shifts, and viral hallmark genes. <strong>Strengths:</strong> High accuracy in detecting phages and viral contigs in metagenomic assemblies. Can classify sequences into lytic, lysogenic, or eukaryotic viruses. Includes a curated database of viral proteins for improved homology-based detection.</p>
+</section>
+<section id="conda-installation-1" class="level4">
+<h4 class="anchored" data-anchor-id="conda-installation-1"><strong>Conda Installation</strong></h4>
+<div class="sourceCode" id="cb51"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Jaeger</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">-n</span> jaeger <span class="at">-c</span> bioconda jaeger</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate jaeger</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co">## geNomad **Do not run**</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">-n</span> genomad <span class="at">-c</span> bioconda genomad</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate genomad</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="co">## virsorter **Do not run**</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">-n</span> vs2 <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda virsorter=2</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="ex">virsorter</span> setup <span class="at">-d</span> db <span class="at">-j</span> 4</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="co">## DeepVirFinder</span></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">--name</span> dvf python=3.6 numpy theano=1.0.3 keras=2.2.4 scikit-learn Biopython h5py=2.10.0</span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/jessieren/DeepVirFinder</span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> DeepVirFinder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="commands" class="level4">
+<h4 class="anchored" data-anchor-id="commands"><strong>Commands</strong></h4>
+<div class="sourceCode" id="cb52"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">"</span><span class="va">${PHAGEPRED_WD}</span><span class="st">"</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co">## DeepVirFinder</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate dvf</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> dvf.py <span class="at">-i</span> <span class="st">"</span><span class="va">${ASSEMBLY}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">-o</span> <span class="st">"</span><span class="va">${PHAGEPRED_WD}</span><span class="st">/deepvirfinder"</span> <span class="dt">\</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">-l</span> 1000 <span class="dt">\</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">-c</span> <span class="va">${CPUS_PER_TASK}</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"deepvirfinder done"</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="co">## Jaeger</span></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate jaeger</span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="ex">Jaeger</span> <span class="at">-i</span> <span class="st">"</span><span class="va">${ASSEMBLY}</span><span class="st">"</span>  <span class="dt">\</span></span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">-o</span> <span class="st">"</span><span class="va">${PHAGEPRED_WD}</span><span class="st">/jaeger"</span> <span class="dt">\</span></span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">-s</span> 2.5 <span class="dt">\</span></span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">--fsize</span> 1000 <span class="dt">\</span></span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">--stride</span> 1000</span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"jaeger done"</span></span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a><span class="co">## geNomad **Do not run**</span></span>
+<span id="cb52-22"><a href="#cb52-22" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate genomad</span>
+<span id="cb52-23"><a href="#cb52-23" aria-hidden="true" tabindex="-1"></a><span class="ex">genomad</span> end-to-end <span class="at">--min-score</span> 0.6 <span class="dt">\</span></span>
+<span id="cb52-24"><a href="#cb52-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">--cleanup</span> <span class="dt">\</span></span>
+<span id="cb52-25"><a href="#cb52-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">--threads</span> <span class="va">${CPUS_PER_TASK}</span> <span class="dt">\</span></span>
+<span id="cb52-26"><a href="#cb52-26" aria-hidden="true" tabindex="-1"></a>       <span class="st">"</span><span class="va">${ASSEMBLY}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb52-27"><a href="#cb52-27" aria-hidden="true" tabindex="-1"></a>       <span class="st">"</span><span class="va">${PHAGEPRED_WD}</span><span class="st">/geNomad"</span> <span class="dt">\</span></span>
+<span id="cb52-28"><a href="#cb52-28" aria-hidden="true" tabindex="-1"></a>       <span class="st">"</span><span class="va">${GENOMAD_DB}</span><span class="st">"</span></span>
+<span id="cb52-29"><a href="#cb52-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-30"><a href="#cb52-30" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"genomad done"</span></span>
+<span id="cb52-31"><a href="#cb52-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-32"><a href="#cb52-32" aria-hidden="true" tabindex="-1"></a><span class="co">## virsorter **Do not run**</span></span>
+<span id="cb52-33"><a href="#cb52-33" aria-hidden="true" tabindex="-1"></a><span class="ex">virsorter</span> run <span class="at">-w</span> <span class="st">"</span><span class="va">${PHAGEPRED_WD}</span><span class="st">/virsorter"</span> <span class="dt">\</span></span>
+<span id="cb52-34"><a href="#cb52-34" aria-hidden="true" tabindex="-1"></a>-i <span class="st">"</span><span class="va">${ASSEMBLY}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb52-35"><a href="#cb52-35" aria-hidden="true" tabindex="-1"></a>--include-groups <span class="st">"dsDNAphage,ssDNA, RNA"</span> <span class="dt">\</span></span>
+<span id="cb52-36"><a href="#cb52-36" aria-hidden="true" tabindex="-1"></a>-j 4 <span class="dt">\</span></span>
+<span id="cb52-37"><a href="#cb52-37" aria-hidden="true" tabindex="-1"></a>--min-length 1000 <span class="dt">\</span></span>
+<span id="cb52-38"><a href="#cb52-38" aria-hidden="true" tabindex="-1"></a>--min-score 0.8 <span class="dt">\</span></span>
+<span id="cb52-39"><a href="#cb52-39" aria-hidden="true" tabindex="-1"></a>--provirus-off  <span class="dt">\</span></span>
+<span id="cb52-40"><a href="#cb52-40" aria-hidden="true" tabindex="-1"></a>all</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="integrative-workflows-for-phage-prediction-taxonomic-classification-lifestyle-prediction-and-host-prediction" class="level3">
+<h3 class="anchored" data-anchor-id="integrative-workflows-for-phage-prediction-taxonomic-classification-lifestyle-prediction-and-host-prediction">Integrative workflows for phage prediction, taxonomic classification, lifestyle prediction, and host prediction</h3>
+<section id="conda-installation-2" class="level4">
+<h4 class="anchored" data-anchor-id="conda-installation-2"><strong>Conda Installation</strong></h4>
+<div class="sourceCode" id="cb53"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">-n</span> phabox2 phabox=2.1.10 <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda <span class="at">-y</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Downloading the database using wget</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/workshop_materials/untargetedViromics/runningTools</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/KennthShang/PhaBOX/releases/download/v2/phabox_db_v2.zip</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> phabox_db_v2.zip <span class="op">&gt;</span> /dev/null</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="command-1" class="level4">
+<h4 class="anchored" data-anchor-id="command-1"><strong>Command</strong></h4>
+<div class="sourceCode" id="cb54"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate phabox2</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="ex">phabox2</span> <span class="at">--task</span> end_to_end <span class="at">--dbdir</span> phabox_db_v2 <span class="dt">\</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">--outpth</span>  <span class="va">${PHAGEPRED_WD}</span>/Phabox_OUT <span class="dt">\</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">--contigs</span> <span class="va">${ASSEMBLY}</span> <span class="dt">\</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">--len</span> 1000 <span class="dt">\</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">--threads</span> <span class="va">${CPUS_PER_TASK}</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"phabox2 done"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="step-4-quality-assessment-using-checkv" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-quality-assessment-using-checkv"><strong>Step 4: Quality Assessment using CheckV</strong></h3>
+<section id="description-2" class="level4">
+<h4 class="anchored" data-anchor-id="description-2"><strong>Description</strong></h4>
+<p>CheckV is a tool designed to assess the quality and completeness of viral genomes recovered from metagenomes. It employs a multi-step approach: <strong>Completeness Estimation:</strong> Uses a database of high-quality reference viral genomes to identify conserved, single-copy genes (e.g., capsid proteins, terminases, integrases) that serve as markers for viral completeness. Estimates completeness by detecting the presence/absence of these hallmark genes and their collinearity (gene order conservation). <strong>Contamination Detection:</strong> Identifies host contamination (e.g., bacterial or eukaryotic genes) using a database of non-viral sequences. Flags sequences with atypical GC content, codon usage, or gene content for further scrutiny.</p>
+</section>
+<section id="conda-installation-3" class="level4">
+<h4 class="anchored" data-anchor-id="conda-installation-3"><strong>Conda Installation</strong></h4>
+<div class="sourceCode" id="cb55"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">-n</span> checkv <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda checkv</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate checkv</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="ex">checkv</span> download_database ./</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="command-2" class="level4">
+<h4 class="anchored" data-anchor-id="command-2"><strong>Command</strong></h4>
+<div class="sourceCode" id="cb56"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">"</span><span class="va">${QUALPRED_WD}</span><span class="st">"</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="ex">checkv</span> end_to_end <span class="st">"</span><span class="va">${ASSEMBLY}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">"</span><span class="va">${QUALPRED_WD}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">-d</span> checkv-db-v1.5 <span class="dt">\</span></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">-t</span> <span class="va">${CPUS_PER_TASK}</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"checkV done"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="phold-for-phage-annotation" class="level3">
+<h3 class="anchored" data-anchor-id="phold-for-phage-annotation">Phold for Phage Annotation</h3>
+<p><strong>Do not Run</strong></p>
+<section id="description-3" class="level4">
+<h4 class="anchored" data-anchor-id="description-3"><strong>Description</strong></h4>
+<p>Phold is a protein structure prediction and annotation tool designed specifically for bacteriophages. It combines homology-based searches with protein language models to annotate phage genomes. Annotation is performed by aligning the predicted structures to a database of structures usinf foldseek.</p>
+</section>
+<section id="conda-installation-4" class="level4">
+<h4 class="anchored" data-anchor-id="conda-installation-4"><strong>Conda Installation</strong></h4>
+<div class="sourceCode" id="cb57"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">-n</span> pholdENV <span class="at">-c</span> bioconda phold</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate pholdENV</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="ex">phold</span> install <span class="co">#Installs the databases</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="command-3" class="level4">
+<h4 class="anchored" data-anchor-id="command-3"><strong>Command</strong></h4>
+<p>`<code>{.bash} phold run -i "${ASSEMBLY}" \        -o "${PHAGEPRED_WD}/phold" \        -d "${PHOLD_DB}" \        -t ${CPUS_PER_TASK} --cpu echo "phold done"</code></p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -781,6 +1746,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../materials/3-workshop3/5-targetted-viromics/index.html" class="pagination-link" aria-label="<b>Module 5</b>:Targetted Viromics and Phylogenetics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><b>Module 5</b>:Targetted Viromics and Phylogenetics</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

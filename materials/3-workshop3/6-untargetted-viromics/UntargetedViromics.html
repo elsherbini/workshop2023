@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Luis Chica">
+<meta name="dcterms.date" content="2025-02-27">
+
+<title>Data Science for Biology Workshop Series - Workshop III – Bioinformatics and Viral Genomics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Data Science for Biology Workshop Series</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../instance_ips.html"> 
+<span class="menu-text">AWS Instance IPs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../installation-instructions.html"> 
+<span class="menu-text">Installation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../datasets.html"> 
+<span class="menu-text">Datasets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../resources.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../past_workshops.html"> 
+<span class="menu-text">Past Workshops</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/elsherbini/durban-data-science-for-biology"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+          <h1 class="quarto-secondary-nav-title">Workshop III – Bioinformatics and Viral Genomics</h1>
+        </a>     
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text"><em>1. Reproducible Data Analysis with R</em></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/0-welcome/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 0:</b> Welcome to the workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/1-data-generation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 1</b>: How data analysis is informed by data generation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/2-intro-to-r/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 2</b>: Intro to R, Rstudio, and Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/3-tidyverse-101/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 3</b>: Intro to data visualization and data wrangling with the <code>tidyverse</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/4-tidyverse-201/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 4</b>: Data wrangling and more data visualization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/5-tableone/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 5</b>: <code>tableone</code> and its Basic Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/6-hypothesis-testing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 6</b>: Data transformations and more statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/7-custom-data-visualizations/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 7</b>: Customizing data visualizations using <code>colorspace</code>, <code>ggplot2</code>, and <code>patchwork</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/1-workshop1/8-group-projects/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Group Project</b> -Applying what you’ve learned to new data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text"><em>2. Working with High Dimensional Data in R - The Human Microbiome</em></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/0-welcome/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 0:</b> Welcome to the workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/1-library-prep/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 1</b>: Sequencing Library Preparation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/2-r-refresher/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 2</b>: R Refresher</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/3-16s_processing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 3</b>: 16S Data Processing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/4-16s-pt1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 4</b>: Exploring High Dimensional Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/5-16s-pt2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 5</b>: Correlations and Ordinations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/6-virgo/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 6</b>: Shotgun Metagenomics and VIRGO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/7-keynote/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 7</b>: Keynote</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/2-workshop2/8-group-project/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Group Activity:</b> Applying what you’ve learned to new data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text"><b>3. Bioinformatics and Viral Genomics - February 22-28 2025</b></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/3-workshop3/0-welcome/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 0:</b> Welcome to the workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/3-workshop3/1-viral-sequencing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 1</b>: Preparing libraries for viromics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/3-workshop3/2-intro-to-unix/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 2</b>: Intro to the Unix Shell</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/3-workshop3/3-sequence-files-quality-adapters/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 3</b>:Intro to Bioinformatics I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/3-workshop3/genomics_adventure_wrapper/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Interactive 1</b>:Genomics Adventure</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/3-workshop3/4-mapping-and-assembly/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 4</b>: Read Mapping and Variant Calling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/3-workshop3/5-targetted-viromics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 5</b>:Targetted Viromics and Phylogenetics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../materials/3-workshop3/6-untargetted-viromics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><b>Module 6</b>:Untargetted Viromics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text"><b>Interactive 2</b>:Genomics Adventure</span>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Workshop III – Bioinformatics and Viral Genomics</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Luis Chica </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 27, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>The tables used for this exercise are the main outputs of Hecatomb (https://github.com/shandley/hecatomb), a software aimed to increase virus discovery on complex samples (Metagenomic WGS or VLP prep WGS).</p>
+</section>
+<section id="dataset" class="level2">
+<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
+<p>Primarily, we will use a file called <code>bigtable.tsv</code>. This file has the taxonomic classification of each read that was used as input to Hecatomb. It also has the alignment statistics and the number of equal reads found for each sample.</p>
+<p>We will also use the file called <code>metadata.tsv</code>. The samples in the test dataset are samples taken from deceased Macaques from the study “SIV Infection-Mediated Changes in Gastrointestinal Bacterial Microbiome and Virome Are Associated with Immunodeficiency and Prevented by Vaccination” (https://www.sciencedirect.com/science/article/pii/S1931312816300518). The metadata contains the individuals’ gender and the vaccine that was administered.</p>
+</section>
+<section id="setting" class="level2">
+<h2 class="anchored" data-anchor-id="setting">Setting</h2>
+<p>We are going to connect to the Rstudio server that is running on our machines</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>http<span class="sc">:</span><span class="er">//</span><span class="dv">44</span>.<span class="dv">202</span>.<span class="fl">27.9</span><span class="sc">:</span><span class="dv">8787</span> <span class="co">#IMPORTANT: Change 44.202.27.9 by your IP</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Paste it in your browser</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>user<span class="sc">:</span> genomics</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>password<span class="sc">:</span>evomics2025</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Also, we are going to connect to using ssh within the terminal. Then, we can go to workshop_materials and create a new directory called untargetedViromis. Then, go to that directory. Finally, we are going to download our dataset.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> genomics@serverIP <span class="co">#connect to the server</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/workshop_materials/</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> untargetedViromics <span class="co">#create a new working directory</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> untargetedViromics</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/luisalbertoc95/UV_data-Workshop-III-Bioinformatics-SA-2025.git  </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> UV_data-Workshop-III-Bioinformatics-SA-2025 uv_data <span class="co">#Change the name to work with a shorter one. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="analysis" class="level2">
+<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<section id="step-1-set-up-a-new-rmarkdwonquarto-document" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-set-up-a-new-rmarkdwonquarto-document">Step 1: Set up a new RMarkdwon/Quarto document</h3>
+</section>
+<section id="step-2-initiate-your-environment" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-initiate-your-environment">Step 2: Initiate your environment</h3>
+<p>First, We are going to set our working directory for all the chunks</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">set</span>(<span class="at">root.dir =</span> <span class="st">"/Users/luischica/Desktop/uv_data"</span>) <span class="co">#IMPORTANT: change /Users/luischica/Desktop/Workshop_SA/data by ~/workshop_materials/untargetedViromics/uv_data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Optionally, if you are using a normal R script, you can use: <strong>setwd(pathToYourWorkingDirectory)</strong></p>
+<p>For this exercise we will use 4 packages: ggplot2, dplyr and tidyr from the tidyverse suite, but also we will need the rstatix package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check and install tidyverse if needed, then load it</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"tidyverse"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check and install rstatix if needed, then load it</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"rstatix"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"rstatix"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Check and install DECIPHER if needed, then load it</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"DECIPHER"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"BiocManager"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">"BiocManager"</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">"DECIPHER"</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DECIPHER)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-3-set-the-location-and-load-our-input-files" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-set-the-location-and-load-our-input-files">Step 3: Set the location and load our input files</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">'bigtable.tsv'</span>,<span class="at">header=</span>T,<span class="at">sep=</span><span class="st">'</span><span class="sc">\t</span><span class="st">'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>meta <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'metadata.tsv'</span>,<span class="at">header=</span>T,<span class="at">sep=</span><span class="st">'</span><span class="sc">\t</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Inspect the dataframes</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                         seqID              sampleID count normCount alnType
+1 A13-258-124-06_CGTACG:1:6006 A13-258-124-06_CGTACG     1  1.012666      aa
+2 A13-258-124-06_CGTACG:1:6007 A13-258-124-06_CGTACG     1  1.012666      aa
+3 A13-258-124-06_CGTACG:1:6019 A13-258-124-06_CGTACG     1  1.012666      aa
+4 A13-258-124-06_CGTACG:1:6020 A13-258-124-06_CGTACG     1  1.012666      aa
+5 A13-258-124-06_CGTACG:1:6030 A13-258-124-06_CGTACG     1  1.012666      aa
+6 A13-258-124-06_CGTACG:1:6031 A13-258-124-06_CGTACG     1  1.012666      aa
+    targetID    evalue pident fident nident mismatches  qcov  tcov qstart qend
+1 A0A1W5PTE0 2.240e-46   97.3  0.973     73          2 0.962 0.166    234   10
+2     E0NZW5 1.941e-23   74.1  0.741     46         16 0.795 0.785     18  203
+3 A0A349YS28 4.343e-17   51.9  0.519     40         37 0.991 0.193      3  233
+4 A0A2N5ZDN1 3.061e-35   81.8  0.818     63         14 0.987 0.279      4  234
+5 A0A1Q6JQ74 4.923e-17   56.5  0.565     39         30 0.885 0.107     15  221
+6 A0A345MUW0 7.251e-24   85.0  0.850     51          9 0.933 0.163     12  191
+  qlen tstart tend tlen alnlen bits
+1  234    372  446  452    225  167
+2  234     16   77   79    186  101
+3  233    155  231  399    231   83
+4  234    161  237  276    231  135
+5  234    422  490  643    207   83
+6  193    294  353  369    180  102
+                                            targetName taxMethod  kingdom
+1                                       VP1 (Fragment)    TopHit  Viruses
+2 Toxin-antitoxin system, toxin component, HicA family    TopHit Bacteria
+3                              Uncharacterized protein       LCA Bacteria
+4                       Lysine--tRNA ligase (Fragment)    TopHit Bacteria
+5                      Phage tail tape measure protein    TopHit Bacteria
+6             A0A345MUW0_9VIRU Uncharacterized protein       LCA  Viruses
+                        phylum                       class
+1                Cossaviricota             Quintoviricetes
+2                   Firmicutes               Negativicutes
+3 unclassified Bacteria phylum unclassified Bacteria class
+4                Bacteroidetes                 Bacteroidia
+5                   Firmicutes                  Clostridia
+6               Hofneiviricota              Faserviricetes
+                        order                               family
+1                Piccovirales                         Parvoviridae
+2             Selenomonadales                     Selenomonadaceae
+3 unclassified Bacteria order         unclassified Bacteria family
+4            Marinilabiliales unclassified Marinilabiliales family
+5               Clostridiales    unclassified Clostridiales family
+6               Tubulavirales                           Inoviridae
+                                genus                        species
+1                     Protoparvovirus               Simian bufavirus
+2                         Selenomonas Selenomonas sp. oral taxon 149
+3         unclassified Bacteria genus  unclassified Bacteria species
+4 unclassified Marinilabiliales genus     Marinilabiliales bacterium
+5    unclassified Clostridiales genus  Clostridiales bacterium 59_14
+6       unclassified Inoviridae genus                 Inoviridae sp.
+  baltimoreType baltimoreGroup
+1         ssDNA             II
+2          &lt;NA&gt;           &lt;NA&gt;
+3          &lt;NA&gt;           &lt;NA&gt;
+4          &lt;NA&gt;           &lt;NA&gt;
+5          &lt;NA&gt;           &lt;NA&gt;
+6         ssDNA             II</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(meta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               sampleID  vaccine sex MacGuffinGroup
+1  A13-04-182-06_TAGCTT     sham   F              B
+2  A13-12-250-06_GGCTAC     sham   F              B
+3 A13-135-177-06_AGTTCC Ad_alone   F              A
+4 A13-151-169-06_ATGTCA Ad_alone   F              A
+5 A13-252-114-06_CCGTCC     sham   M              A
+6 A13-253-140-06_GTCCGC     sham   M              B</code></pre>
+</div>
+</div>
+</section>
+<section id="step-4-merging-our-metadata-with-our-data-table" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-merging-our-metadata-with-our-data-table">Step 4: Merging our metadata with our data table</h3>
+<p>The merge function with perform an inner join by default, or you can specify outer, and left- and right-outer. This shouldn’t matter if you have metadata for all of your samples.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dataMeta <span class="ot">&lt;-</span>  <span class="fu">merge</span>(data, meta, <span class="at">by=</span><span class="st">'sampleID'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-5-preliminary-bigtable-plots" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-preliminary-bigtable-plots">Step 5: Preliminary bigtable plots</h3>
+<p>First, we will plot the alignment length against identity, and facet by viral family. We show the different alignment types by color, and we can scale the point size by the cluster number. The alpha=0.1 will help us to set it to 10% opacity and the points will overlap a lot at this scale.</p>
+<p>Before making our plot, we will filter our dataMeta in order to remove all non viral taxonomic annotation. The function filter() will take all the hits to the word Viruses in our Kingdom column</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>viruses <span class="ot">&lt;-</span> dataMeta <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(kingdom<span class="sc">==</span><span class="st">"Viruses"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can make our first plot</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(viruses) <span class="sc">+</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x=</span>alnlen,<span class="at">y=</span>pident,<span class="at">color=</span>alnType,<span class="at">size=</span>count),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha=</span><span class="fl">0.1</span>) <span class="sc">+</span> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>family)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="UntargetedViromics_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can immediately see that a handful of viral families make up a majority of the viral hits. You can use these plots to help guide filtering strategies. We can divide the alignments into ‘quadrants’ by adding alignment length and percent identity thresholds, for instance alignment length of 150 and percent identity of 75.</p>
+<p>We can also add some threshold lines to divide our plot into quadrants. This quadrants will be useful to see how much can we trust in each alignment.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(viruses) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x=</span>alnlen,<span class="at">y=</span>pident,<span class="at">color=</span>alnType,<span class="at">size=</span>count),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha=</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>family) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">150</span>,<span class="at">colour=</span><span class="st">'red'</span>,<span class="at">linetype=</span><span class="st">'longdash'</span>) <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">75</span>,<span class="at">colour=</span><span class="st">'red'</span>,<span class="at">linetype=</span><span class="st">'longdash'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="UntargetedViromics_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can see that for Adenoviridae and Parvoviridae the majority of hits occupy the top two quadrants, and we can be reasonably confident about these alignments. For Podoviridae and Circoviridae, the majority of hits occupy the bottom two quadrants. This could indicate that the viruses are only distantly related to the reference genomes in these families.</p>
+<p><strong>Task: plot the Bacterial hits faceted by phylum</strong></p>
+</section>
+<section id="step-6-filtering-strategies" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-filtering-strategies">Step 6: Filtering Strategies</h3>
+<p>Hecatomb is not intended to be a black box of predetermined filtering cutoffs that returns an immutable table of hits. Instead, it delivers as much information as possible to empower the user to decide which hits they want to keep and which hits to purge. Let’s take our raw viral hits data frame viruses and filter them to only keep the ones we are confident about.</p>
+<p>The e-value is one of the most common metrics to use for filtering alignments. Let’s see what hits would be removed if we used a fairly stringent cutoff of 1e-20. We will create a new data set that contains only the hits remaining after applying the p-value threshold.</p>
+<p>We are going to see two strategies for filtering our table. In the first strategy, we will add an additional column to our data set. This column will have 2 possible values: “filter” and “pass”. whether a read is tagged as filter or pass will depend of the the threshold added in the function ifelse()</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>virusesFiltered <span class="ot">&lt;-</span> viruses <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">filter=</span><span class="fu">ifelse</span>(evalue<span class="sc">&lt;</span><span class="fl">1e-20</span>,<span class="st">'pass'</span>,<span class="st">'filter'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can plot our new table</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(virusesFiltered) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x=</span>alnlen,<span class="at">y=</span>pident,<span class="at">color=</span>filter),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">alpha=</span><span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>family)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="UntargetedViromics_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The red sequences are destined to be removed, while the blue sequences will be kept. Some viral families will be removed altogether, which is probably a good thing if they only have low quality hits.</p>
+<p>The second strategy, is a more straightforward method. We only need to use the function filter() and the desired e-value threshold. No additional column will be added.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>virusesFiltered <span class="ot">&lt;-</span> viruses <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(evalue<span class="sc">&lt;</span><span class="fl">1e-20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Going back to the quadrant concept, you might only want to keep sequences above a certain length and percent identity:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>virusesFiltered <span class="ot">=</span> virusesFiltered <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(alnlen<span class="sc">&gt;</span><span class="dv">150</span> <span class="sc">&amp;</span> pident<span class="sc">&gt;</span><span class="dv">75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, our filtered table has an alignment filter, an identity % filter and our previous p-value filter.</p>
+<p>There are many alignment metrics included in the bigtable for you to choose from.</p>
+<p><strong>Task: Filter your raw viral hits to only keep protein hits with an evalue &lt; 1e-10</strong></p>
+</section>
+<section id="step-7-analyse-taxon-counts" class="level3">
+<h3 class="anchored" data-anchor-id="step-7-analyse-taxon-counts">Step 7: Analyse taxon counts</h3>
+<ol type="A">
+<li>Make Per family plots First, we will sum the normalized count of each read to a family level using the columns sampleID and family</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>viralFamCounts <span class="ot">&lt;-</span> virusesFiltered <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(family) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">normCount=</span><span class="fu">sum</span>(normCount)) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(normCount))</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>viralFamCounts<span class="sc">$</span>family <span class="ot">&lt;-</span> <span class="fu">factor</span>(viralFamCounts<span class="sc">$</span>family,<span class="at">levels=</span>viralFamCounts<span class="sc">$</span>family)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(viralFamCounts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  family                      normCount
+  &lt;fct&gt;                           &lt;dbl&gt;
+1 unclassified Viruses family     2188.
+2 Adenoviridae                    1906.
+3 Microviridae                    1831.
+4 Parvoviridae                    1274.
+5 Picornaviridae                   741.
+6 Siphoviridae                     720.</code></pre>
+</div>
+</div>
+<p>After having our new dataframe with the counts per Family, we can create our abundance plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(viralFamCounts) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x=</span>family,<span class="at">y=</span>normCount),<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="UntargetedViromics_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="A">
+<li>Discriminate our family plots by sample ID</li>
+</ol>
+<p>The previous plot are a good way to understand the overall abundance of each family in all our samples. However, with that plot is impossible to differentiate between samples and therefore, between different treatments. We can sum our normalized counts in a similar way we did before. Now we are going to add the variable “sampleID” to the function <code>group_by()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>viralFamCounts <span class="ot">&lt;-</span> virusesFiltered <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sampleID,family) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">normCount=</span><span class="fu">sum</span>(normCount)) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(normCount))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(viralFamCounts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+# Groups:   sampleID [4]
+  sampleID              family                      normCount
+  &lt;chr&gt;                 &lt;chr&gt;                           &lt;dbl&gt;
+1 A13-151-169-06_ATGTCA Adenoviridae                    1777.
+2 A13-151-169-06_ATGTCA Parvoviridae                     993.
+3 A13-135-177-06_AGTTCC unclassified Viruses family      956.
+4 A13-256-115-06_GTTTCG Microviridae                     620.
+5 A13-253-140-06_GTCCGC Myoviridae                       490.
+6 A13-253-140-06_GTCCGC Picornaviridae                   486.</code></pre>
+</div>
+</div>
+<p>and then, make the new plot, filling by family</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(viralFamCounts) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x=</span>sampleID,<span class="at">y=</span>normCount, <span class="at">fill =</span>family ),<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="UntargetedViromics_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Task: Make a stacked bar chart of the viral families for the Male and Female monkeys</strong></p>
+<ol start="3" type="A">
+<li>Visualizing groups We have a few viral families that are very prominent in our samples. For the purposes of the tutorial we have a completely made up sample group category called MacGuffinGroup. Let’s see if there is a difference in viral loads according to our MacGuffinGroup groups. Collect sample counts for Microviridae. Include the metadata group in group_by() so you can use it in the plot.</li>
+</ol>
+<p>For our first plot we are going to focus exclusively in Microviridae family</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>podoCounts <span class="ot">&lt;-</span> virusesFiltered <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(family,sampleID,MacGuffinGroup) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(family<span class="sc">==</span><span class="st">'Podoviridae'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">sum</span>(normCount))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, we can plot using jitter plots, box plots or violin plots</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(podoCounts) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">x=</span>MacGuffinGroup,<span class="at">y=</span>n),<span class="at">width =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="UntargetedViromics_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="step-8-statistical-tests" class="level3">
+<h3 class="anchored" data-anchor-id="step-8-statistical-tests">Step 8: Statistical tests</h3>
+<p>In Step 6, we compared the viral counts between the two sample groups for Podoviridae, and it appeared as though group B had more viral sequence hits on average than group A. We can compare the normalized counts for these two groups to see if they’re significantly different.</p>
+<ol type="A">
+<li>Student’s T-test</li>
+</ol>
+<p>Let’s check out the data frame we made earlier that we’ll be using for the test</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(podoCounts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+# Groups:   family, sampleID [6]
+  family      sampleID              MacGuffinGroup      n
+  &lt;chr&gt;       &lt;chr&gt;                 &lt;chr&gt;           &lt;dbl&gt;
+1 Podoviridae A13-04-182-06_TAGCTT  B                4.56
+2 Podoviridae A13-12-250-06_GGCTAC  B              203.  
+3 Podoviridae A13-135-177-06_AGTTCC A                1.91
+4 Podoviridae A13-151-169-06_ATGTCA A               12.7 
+5 Podoviridae A13-252-114-06_CCGTCC A                8.22
+6 Podoviridae A13-253-140-06_GTCCGC B               67.9 </code></pre>
+</div>
+</div>
+<p>We will use the base-r function t.test(), which takes two vectors. One vector has the group A counts and the other has the group B counts. We can use the filter() and pull() functions within the t.test() function. The function pull will take the column n, which has our abundance values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    podoCounts <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(MacGuffinGroup<span class="sc">==</span><span class="st">'A'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(n),</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    podoCounts <span class="sc">%&gt;%</span> </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(MacGuffinGroup<span class="sc">==</span><span class="st">'B'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(n),</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">alternative=</span><span class="st">'two.sided'</span>,</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">paired=</span>F,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">var.equal=</span>T)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  podoCounts %&gt;% filter(MacGuffinGroup == "A") %&gt;% pull(n) and podoCounts %&gt;% filter(MacGuffinGroup == "B") %&gt;% pull(n)
+t = -2.0096, df = 8, p-value = 0.07933
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -145.561036    9.996944
+sample estimates:
+mean of x mean of y 
+ 7.701613 75.483659 </code></pre>
+</div>
+</div>
+<ol start="2" type="A">
+<li>Wilcoxon test</li>
+</ol>
+<p>The Wilcoxon test is analogue to the t-test, however is used when our values do not follow a normal distribution. The syntax for this test is very similar to the t-test</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    podoCounts <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(MacGuffinGroup<span class="sc">==</span><span class="st">'A'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(n),</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    podoCounts <span class="sc">%&gt;%</span> </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(MacGuffinGroup<span class="sc">==</span><span class="st">'B'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(n),</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">alternative=</span><span class="st">'t'</span>,</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">paired=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum exact test
+
+data:  podoCounts %&gt;% filter(MacGuffinGroup == "A") %&gt;% pull(n) and podoCounts %&gt;% filter(MacGuffinGroup == "B") %&gt;% pull(n)
+W = 4, p-value = 0.09524
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+</div>
+<p>In some cases, the viral loads have minor importance for answering a research question, instead we might be just interested in comparing the presence or absence of viruses. For this you could use a Fisher’s exact test. To perform this test you need to assign a presence ‘1’ or absence ‘0’ for each viral family/genus/etc for each sample.</p>
+<p>First we are going to apply and even more stringent filter to be sure about the alignments</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>virusesStringent <span class="ot">&lt;-</span> viruses <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(evalue<span class="sc">&lt;</span><span class="fl">1e-30</span>,alnlen<span class="sc">&gt;</span><span class="dv">150</span>,pident<span class="sc">&gt;</span><span class="dv">75</span>,alnType<span class="sc">==</span><span class="st">'aa'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then we will assign anything with any hits as ‘present’ for that an specific viral family (It can be done for all of them). For this example we are going to use Myoviridae.</p>
+<p>Our chunk has two lines. The first one will extract the counts for Myoviridae and the second will merge our new table with our metadata file</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>myovirPresAbs <span class="ot">&lt;-</span> virusesStringent <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(family<span class="sc">==</span><span class="st">'Myoviridae'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(sampleID) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">sum</span>(normCount)) <span class="sc">%&gt;%</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">present=</span><span class="fu">ifelse</span>(n<span class="sc">&gt;</span><span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>myovirPresAbs <span class="ot">&lt;-</span> <span class="fu">merge</span>(myovirPresAbs,meta,<span class="at">by=</span><span class="st">'sampleID'</span>,<span class="at">all=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If we visualise our “myovirPresAbs” table, we will see some values missing or NA. Those are the samples in which no presence of Myoviridae was found. We can convert the NAs to zeros.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>myovirPresAbs[<span class="fu">is.na</span>(myovirPresAbs)] <span class="ot">=</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To do the Fisher’s exact test we need to specify a 2x2 grid; The first column will be the number with Myoviridae for each group. The second column will be the numbers without for each group.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># matrix rows</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>mtxGroupA <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    myovirPresAbs <span class="sc">%&gt;%</span> </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(MacGuffinGroup<span class="sc">==</span><span class="st">'A'</span>,present<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(n),</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    myovirPresAbs <span class="sc">%&gt;%</span> </span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(MacGuffinGroup<span class="sc">==</span><span class="st">'A'</span>,present<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(n))</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>mtxGroupB <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    myovirPresAbs <span class="sc">%&gt;%</span> </span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(MacGuffinGroup<span class="sc">==</span><span class="st">'B'</span>,present<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(n),</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>    myovirPresAbs <span class="sc">%&gt;%</span> </span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(MacGuffinGroup<span class="sc">==</span><span class="st">'B'</span>,present<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(n))</span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a><span class="co"># create the 2x2 matrix</span></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>myovirFishMtx <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(mtxGroupA,mtxGroupB),<span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a><span class="co"># this bit is not necessary, but lets add row and col names to illustrate the matrix layout</span></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(myovirFishMtx) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'GroupA'</span>,<span class="st">'GroupB'</span>)</span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(myovirFishMtx) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'present'</span>,<span class="st">'absent'</span>)</span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a><span class="co"># view</span></span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>myovirFishMtx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        GroupA GroupB
+present      1      5
+absent       4      0</code></pre>
+</div>
+</div>
+<p>We can run our t-test using our new matrix as input</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fisher.test</span>(myovirFishMtx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Fisher's Exact Test for Count Data
+
+data:  myovirFishMtx
+p-value = 0.04762
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.000000 0.975779
+sample estimates:
+odds ratio 
+         0 </code></pre>
+</div>
+</div>
+</section>
+<section id="step-9-contig-based-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="step-9-contig-based-analysis">Step 9: Contig based analysis</h3>
+<p>Contig analysis is a very important approach when identifying viruses from a metagenomic or VLP prep sample. Because of the length of the contigs, new genomic features can be identified and used for generating a taxonomic classification, functional analysis and more.</p>
+<ol type="A">
+<li>Fist, we will load our taxonomy table generated from hecatomb. This table relates every contig with their best hit in the data base.</li>
+</ol>
+<p>For the purpose of this exercise we will filter our table for contigs classified at family level as Caudovirales. and with a sequence length between 2000 and 3000 base pairs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>contig_data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">'MMseqsTax.txt'</span>,<span class="at">header=</span>T,<span class="at">sep=</span><span class="st">'</span><span class="sc">\t</span><span class="st">'</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>caudovirales_data <span class="ot">&lt;-</span> contig_data <span class="sc">%&gt;%</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Order <span class="sc">==</span> <span class="st">"Caudovirales"</span> <span class="sc">&amp;</span> qlen <span class="sc">&gt;</span> <span class="dv">2000</span> <span class="sc">&amp;</span> qlen <span class="sc">&lt;</span> <span class="dv">3000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(contigID) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="A">
+<li>We will load our fasta file generated after the assembly using the package Biostrings, included in the package DECIPHER. We can also use the package [] for selecting our target contigs from the fasta file</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>contigs <span class="ot">&lt;-</span> <span class="fu">readDNAStringSet</span>(<span class="st">"assembly.fasta"</span>, <span class="at">format=</span><span class="st">"fasta"</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>caudo_contigs <span class="ot">&lt;-</span> contigs[caudovirales_data<span class="sc">$</span>contigID] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="A">
+<li>We can use our set of contigs to make a multiple sequence alignment (MSA) with the final purpose of generating a phylogeny tree.</li>
+</ol>
+<p>The steps to make our MSA are going to be based on the decision diagram from the DEIPHER package</p>
+<p><img src="WF_MSA.png" class="img-fluid" alt="Formula"> Steps:</p>
+<ol type="A">
+<li>Create the multiple sequences alignement</li>
+<li>Remove ambiguous regions from the alignment</li>
+</ol>
+<ol start="3" type="a">
+<li>Create the phylogenetic tree</li>
+</ol>
+<ol start="4" type="A">
+<li>Plot the dendrogram</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#A</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>aln_contig <span class="ot">&lt;-</span> <span class="fu">AlignSeqs</span>(caudo_contigs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Determining distance matrix based on shared 10-mers:
+================================================================================
+
+Time difference of 0.04 secs
+
+Clustering into groups by similarity:
+================================================================================
+
+Time difference of 0 secs
+
+Aligning Sequences:
+================================================================================
+
+Time difference of 2.76 secs
+
+Iteration 1 of 2:
+
+Determining distance matrix based on alignment:
+================================================================================
+
+Time difference of 0 secs
+
+Reclustering into groups by similarity:
+================================================================================
+
+Time difference of 0 secs
+
+Realigning Sequences:
+================================================================================
+
+Time difference of 1.99 secs
+
+Iteration 2 of 2:
+
+Determining distance matrix based on alignment:
+================================================================================
+
+Time difference of 0 secs
+
+Reclustering into groups by similarity:
+================================================================================
+
+Time difference of 0 secs
+
+Realigning Sequences:
+================================================================================
+
+Time difference of 1.07 secs
+
+Refining the alignment:
+================================================================================
+
+Time difference of 3.22 secs</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#B</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>stagger_aln_contig<span class="ot">&lt;-</span> <span class="fu">StaggerAlignment</span>(aln_contig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Calculating distance matrix:
+================================================================================
+
+Time difference of 0 secs
+
+Constructing neighbor-joining tree:
+================================================================================
+
+Time difference of 0 secs
+
+Staggering insertions and deletions:
+================================================================================
+
+Time difference of 0.65 secs</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BrowseSeqs</span>(stagger_aln_contig, <span class="at">highlight=</span><span class="dv">1</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co">#C</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">TreeLine</span>(stagger_aln_contig, <span class="at">reconstruct=</span><span class="cn">TRUE</span>, <span class="at">maxTime=</span><span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Optimizing model parameters:
+JC69     -ln(L) = 62850, AICc = 125775, BIC = 125989
+JC69+G4  -ln(L) = 62814, AICc = 125705, BIC = 125924
+K80      -ln(L) = 62843, AICc = 125763, BIC = 125982
+K80+G4   -ln(L) = 62806, AICc = 125692, BIC = 125916
+F81      -ln(L) = 62406, AICc = 124893, BIC = 125123
+F81+G4   -ln(L) = 62374, AICc = 124832, BIC = 125068
+HKY85    -ln(L) = 62402, AICc = 124887, BIC = 125123
+HKY85+G4 -ln(L) = 62372, AICc = 124830, BIC = 125072
+T92      -ln(L) = 62416, AICc = 124911, BIC = 125135
+T92+G4   -ln(L) = 62384, AICc = 124850, BIC = 125080
+TN93     -ln(L) = 62401, AICc = 124888, BIC = 125130
+TN93+G4  -ln(L) = 62369, AICc = 124826, BIC = 125074
+SYM      -ln(L) = 62755, AICc = 125596, BIC = 125838
+SYM+G4   -ln(L) = 62706, AICc = 125499, BIC = 125747
+GTR      -ln(L) = 62386, AICc = 124863, BIC = 125122
+GTR+G4   -ln(L) = 62352, AICc = 124798, BIC = 125063
+
+The selected model was:  GTR+G4
+
+PHASE 1 OF 3: INITIAL TREES
+
+1/3. Optimizing initial tree #1 of 10 to 100:
+-ln(L) = 62350.7 (-0.002%), 2 Climbs  
+1/3. Optimizing initial tree #2 of 10 to 100:
+-ln(L) = 62351.2 (+0.001%), 3 Climbs  
+1/3. Optimizing initial tree #3 of 10 to 100:
+-ln(L) = 62346.3 (-0.007%), 4 Climbs  
+
+PHASE 2 OF 3: REGROW GENERATION 1 OF 10 TO 20
+
+2/3. Optimizing regrown tree #1 of 10 to 100:
+-ln(L) = 62350.6 (+0.007%), 2 Climbs  
+2/3. Optimizing regrown tree #2 of 10 to 100:
+-ln(L) = 62345.7 (-0.001%), 1 Climb  
+2/3. Optimizing regrown tree #3 of 12 to 100:
+-ln(L) = 62344.4 (-0.002%), 2 Climbs  
+2/3. Optimizing regrown tree #4 of 13 to 100:
+-ln(L) = 62352.7 (+0.013%), 1 Climb  
+2/3. Optimizing regrown tree #5 of 13 to 100:
+-ln(L) = 62348.1 (+0.006%), 2 Climbs  
+2/3. Optimizing regrown tree #6 of 13 to 100:
+-ln(L) = 62345.4 (+0.002%), 2 Climbs  
+2/3. Optimizing regrown tree #7 of 13 to 100:
+-ln(L) = 62347.2 (+0.004%), 1 Climb  
+2/3. Optimizing regrown tree #8 of 13 to 100:
+-ln(L) = 62346.2 (+0.003%), 1 Climb  
+2/3. Optimizing regrown tree #9 of 13 to 100:
+-ln(L) = 62345.3 (+0.001%), 2 Climbs  
+
+PHASE 3 OF 3: SHAKEN TREES
+
+Grafting 1 tree to the best tree:
+-ln(L) = 62344.4 (0.000%), 0 Grafts of 4  
+
+3/3. Optimizing shaken tree #1 of 3 to 1000:
+-ln(L) = 62352.9 (+0.014%), 11 Climbs  
+3/3. Optimizing shaken tree #2 of 3 to 1000:
+-ln(L) = 62345.4 (+0.002%), 11 Climbs  
+3/3. Optimizing shaken tree #3 of 3 to 1000:
+-ln(L) = 62368.2 (+0.038%), 10 Climbs  
+
+Grafting 3 trees to the best tree:
+-ln(L) = 62344.4 (0.000%), 0 Grafts of 7  
+
+Model parameters:
+Frequency(A) = 0.284
+Frequency(C) = 0.204
+Frequency(G) = 0.200
+Frequency(T) = 0.313
+Rate A &lt;-&gt; C = 1.181
+Rate A &lt;-&gt; G = 1.367
+Rate A &lt;-&gt; T = 1.093
+Rate C &lt;-&gt; G = 1.453
+Rate C &lt;-&gt; T = 1.172
+Rate G &lt;-&gt; T = 1.000
+Alpha = 11.198
+
+Time difference of 240.55 secs</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#D</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">dendrapply</span>(tree,</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>         <span class="cf">function</span>(x) {</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>                 s <span class="ot">&lt;-</span> <span class="fu">attr</span>(x, <span class="st">"probability"</span>) </span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>                 <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(s) <span class="sc">&amp;&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(s)) {</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>                         s <span class="ot">&lt;-</span> <span class="fu">formatC</span>(<span class="fu">as.numeric</span>(s), <span class="at">digits=</span><span class="dv">2</span>, <span class="at">format=</span><span class="st">"f"</span>)</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">attr</span>(x, <span class="st">"edgetext"</span>) <span class="ot">&lt;-</span> <span class="fu">paste</span>(s, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>                 }</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">attr</span>(x, <span class="st">"edgePar"</span>) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">p.col=</span><span class="cn">NA</span>, <span class="at">p.lwd=</span><span class="fl">1e-5</span>, <span class="at">t.col=</span><span class="st">"#CC55AA"</span>)</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>                 <span class="cf">if</span> (<span class="fu">is.leaf</span>(x))</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>                   </span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(x, <span class="st">"nodePar"</span>) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">lab.font=</span><span class="dv">3</span>, <span class="at">pch=</span><span class="cn">NA</span>)</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>x </span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>}),</span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="at">horiz=</span><span class="cn">TRUE</span>,<span class="at">yaxt=</span><span class="st">'n'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="UntargetedViromics_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/elsherbini\.github\.io\/durban-data-science-for-biology\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2023. Huge thanks to <a href="https://github.com/andrewpbray">Andrew P. Bray</a> and <a href="https://github.com/clauswilke">Claus O. Wilke</a> for open source code and sharing content.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This page is built <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
