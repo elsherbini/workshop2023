@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Science for Biology Workshop Series - Building Sucessful Sequencing Libraries</title>
+<title>Data Science for Biology Workshop Series - Best Practices and Send-Off</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../materials/2-workshop2/2-r-refresher/index.html" rel="next">
-<link href="../../../materials/2-workshop2/0-welcome/index.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -130,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Building Sucessful Sequencing Libraries</h1>
+          <h1 class="quarto-secondary-nav-title">Best Practices and Send-Off</h1>
         </a>     
     </div>
   </nav>
@@ -208,13 +240,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text"><em>2. Working with High Dimensional Data in R - The Human Microbiome</em></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../materials/2-workshop2/0-welcome/index.html" class="sidebar-item-text sidebar-link">
@@ -223,7 +255,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../materials/2-workshop2/1-library-prep/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../materials/2-workshop2/1-library-prep/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><b>Module 1</b>: Sequencing Library Preparation</span></a>
   </div>
 </li>
@@ -352,7 +384,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a>
+  <ul class="collapse">
+  <li><a href="#vscode" id="toc-vscode" class="nav-link" data-scroll-target="#vscode">VSCode</a></li>
+  <li><a href="#snakemake" id="toc-snakemake" class="nav-link" data-scroll-target="#snakemake">Snakemake</a></li>
+  <li><a href="#ai-tools-in-2025" id="toc-ai-tools-in-2025" class="nav-link" data-scroll-target="#ai-tools-in-2025">AI tools in 2025</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -361,7 +398,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Building Sucessful Sequencing Libraries</h1>
+<h1 class="title d-none d-lg-block">Best Practices and Send-Off</h1>
 </div>
 
 
@@ -378,11 +415,116 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<blockquote class="blockquote">
+<p>Say goodbye to the workshop and reflect on your new-found superpowers</p>
+</blockquote>
 <section id="slides" class="level2">
 <h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ6OG7kqCIPFws9y5QFhQJGy9xh7dYKZI6IXGSreqMHqyO8E-qUia_7TcYGFkHweO87tLFULz13OaP6/embed?start=true&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<p><a href="../../../materials/3-workshop3/7-bast-practices-and-send-off/slides.html">Make slides full screen</a></p>
+<iframe class="slide-deck" src="slides.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+<section id="vscode" class="level3">
+<h3 class="anchored" data-anchor-id="vscode">VSCode</h3>
+<p>VSCode is a code text editor application that provides an easy-to-use interface for viewing and writing code/scripts. This section will detail how to 1) install VSCode as an application on your computer, 2) install VSCode extensions and 3) setup launching VSCode as an interface to view and edit your files on the O2 cluster.</p>
+<section id="install-vscode-application" class="level4">
+<h4 class="anchored" data-anchor-id="install-vscode-application">Install VSCode application</h4>
+<p>To install VSCode on your computer, use <a href="https://code.visualstudio.com/download">this link</a>.</p>
+</section>
+<section id="install-vscode-extensions" class="level4">
+<h4 class="anchored" data-anchor-id="install-vscode-extensions">Install VSCode extensions</h4>
+<p>VSCode has a number of extensions that allow each user to customize their own coding experience. We recommend the installation of three extensions:</p>
+<ul>
+<li><p><code>Rainbow CSV</code> - identifies “,” as the separator in CSV files, highlights each column with a different color</p></li>
+<li><p><code>VSCode-pdf</code> - view PDF files directly within the VSCode interface</p></li>
+<li><p><code>Remote-SSH</code> - allows users to login and access their own HPC cluster and view their files through the VSCode interface (see next section)</p></li>
+</ul>
+<p>To install extensions:</p>
+<ol type="1">
+<li><p>Navigate to the toolbar on the far left of the VSCode interface and click on the icon that resembles four squares.</p></li>
+<li><p>Use the search bar that has the caption “Search Extensions in Marketplace” to find extensions that you like and install each of them individually.</p></li>
+<li><p>An additional step for <code>Remote-SSH</code> installation involves changing the connect timeout setting. As O2 login requires Duo authentication, there is often a slight delay and more time is needed to complete the authentication and login properly. To adjust this, please follow steps 4-6.</p></li>
+<li><p>Navigate to the extension page for <code>Remote-SSH</code> (on the toolbar on the far left, select the icon with four squares, then input remote-ssh into the search bar) <img src="./images/remote_ssh_settings_step1.png" class="img-fluid" style="width:90.0%"><br>
+</p></li>
+<li><p>Select the gear button and press Settings <img src="./images/remote_ssh_settings_step2.png" class="img-fluid" style="width:90.0%"><br>
+</p></li>
+<li><p>Input 120 seconds for the <code>Remote.SSH: Connect Timeout</code> parameter <img src="./images/remote_ssh_settings_step3.png" class="img-fluid" style="width:90.0%"><br>
+</p></li>
+</ol>
+</section>
+<section id="setup-remote-access-with-vscode" class="level4">
+<h4 class="anchored" data-anchor-id="setup-remote-access-with-vscode">Setup remote access with VSCode</h4>
+<p>While logging into O2 on the terminal only provides a command-line interface and linux commands are needed to modify files, the main advantage of accessing O2 through VSCode is it allows users to easily view and edit their files in an interactive manner within the VSCode application.</p>
+<p>After installation of VSCode and the Remote-SSH extension, establish a SSH connection to O2 through VSCode:</p>
+<ol type="1">
+<li><p>Press the bottom left purple icon to ‘Open a Remote Window’. This will prompt a few options to be displayed at the top near the search bar <img src="./images/remote_ssh_launch_step1.png" class="img-fluid" style="width:90.0%"></p></li>
+<li><p>Select ‘Add New SSH Host’ and then input the following and enter</p></li>
+</ol>
+<div id="575d388e" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| eval: false</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>user_name<span class="op">&gt;@&lt;</span>server address<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>Select <code>&lt;path to config&gt;/.ssh/config</code> as the SSH configuration file to update</li>
+<li>Input password for login</li>
+<li>Login complete (Note: login may take longer at the first instance because VSCode will download its own server.)</li>
+</ol>
+<p>After setup, directly click the bottom left purple icon each time and input login credentials to launch O2 on VSCode each time.</p>
+</section>
+<section id="additional-steps-to-not-need-pasword" class="level4">
+<h4 class="anchored" data-anchor-id="additional-steps-to-not-need-pasword">Additional steps to not need pasword</h4>
+<p>After setting up VSCode, Remote-SSH extension and establishing a connection to O2 login node through VSCode, follow these steps to launch VSCode on a remote server.</p>
+<ol type="1">
+<li>Generate SSH key on your own computer’s terminal with the following command. When prompted for file name, press enter to use the default file name. Enter a passphrase to protect your SSH keys.</li>
+</ol>
+<div id="6a493d79" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| eval: false</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">## input this line into your computer's terminal</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ssh<span class="op">-</span>keygen <span class="op">-</span>t rsa</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">## sample output (See O2 documentation for reference)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>Generating public<span class="op">/</span>private rsa key pair.</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Enter <span class="bu">file</span> <span class="kw">in</span> which to save the key (<span class="op">/</span>USERHOME<span class="op">/</span>.ssh<span class="op">/</span>id_rsa):</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>Enter passphrase (empty <span class="cf">for</span> no passphrase):</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>Enter same passphrase again:</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>Your identification has been saved <span class="kw">in</span> <span class="op">/</span>USERHOME<span class="op">/</span>.ssh<span class="op">/</span>id_rsa.</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>Your public key has been saved <span class="kw">in</span> <span class="op">/</span>USERHOME<span class="op">/</span>.ssh<span class="op">/</span>id_rsa.pub.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Copy your computer’s SSH public key onto the O2 SSH authorized_keys file, which allows your computer and O2 to recognize each other</li>
+</ol>
+<ul>
+<li>Linux or Mac:</li>
+</ul>
+<div id="dfe293ed" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| eval: false</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">## input this line into your computer's terminal</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ssh<span class="op">-</span>copy<span class="op">-</span><span class="bu">id</span> <span class="op">-</span>i $HOME<span class="op">/</span>.ssh<span class="op">/</span>id_rsa.pub <span class="op">&lt;</span>user_name<span class="op">&gt;@&lt;</span>server address<span class="op">&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">## input O2 password and complete Duo authentication</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Windows:</li>
+</ul>
+<div id="1d8b5ca7" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">##| eval: false</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">## input this line into your computer's terminal</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Get<span class="op">-</span>Content <span class="st">"$env:USERPROFILE\.ssh\id_rsa.pub"</span> <span class="op">|</span> ssh <span class="op">&lt;</span>user_name<span class="op">&gt;@&lt;</span>server address<span class="op">&gt;</span> <span class="st">"mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">## input O2 password and complete Duo authentication</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="snakemake" class="level3">
+<h3 class="anchored" data-anchor-id="snakemake">Snakemake</h3>
+<p>We could (and should!) do a whole workshop on using Snakemake for bioinformatics pipelines.</p>
+<p>For now, take a look at their excellent documentation here: (https://snakemake.readthedocs.io/en/stable/index.html)[https://snakemake.readthedocs.io/en/stable/index.html]</p>
+<p>And consider that AI tools are quite good at snakemake.</p>
+</section>
+<section id="ai-tools-in-2025" class="level3">
+<h3 class="anchored" data-anchor-id="ai-tools-in-2025">AI tools in 2025</h3>
+<p><a href="https://chatgpt.com/">https://chatgpt.com/</a> - Quite good but costs money to use the more powerful models.</p>
+<p><a href="https://chat.deepseek.com/">https://chat.deepseek.com/</a> - Same performance as chatGPT’s o1 model, but for free as of today.</p>
+<p><a href="https://www.phind.com/">https://www.phind.com/</a> - This is an interesting one to watch, especially if you plan to use AI to help do the tinking part of your research, not just the coding part. Provides sources, and tries to synthesize more stuff together. Performs a lot better if you pay a subscription.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -795,18 +937,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../../materials/2-workshop2/0-welcome/index.html" class="pagination-link" aria-label="<b>Module 0:</b> Welcome to the workshop">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><b>Module 0:</b> Welcome to the workshop</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../../materials/2-workshop2/2-r-refresher/index.html" class="pagination-link" aria-label="<b>Module 2</b>: R Refresher">
-        <span class="nav-page-text"><b>Module 2</b>: R Refresher</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
